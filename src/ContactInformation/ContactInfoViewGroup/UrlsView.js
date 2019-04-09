@@ -27,9 +27,9 @@ class ContactInformationView extends React.Component {
 
     return (
       <Row key={key}>
-        {PrintKeyValue('ui-vendors.contactInfo.url', get(val, 'value', ''), 5, false)}
-        {PrintKeyValue('ui-vendors.contactInfo.language', getLanguageUrl, 3, false)}
-        {PrintKeyValue('ui-vendors.contactInfo.categories', categoriesUrl, 4, false)}
+        {PrintKeyValue('ui-organizations.contactInfo.url', get(val, 'value', ''), 5, false)}
+        {PrintKeyValue('ui-organizations.contactInfo.language', getLanguageUrl, 3, false)}
+        {PrintKeyValue('ui-organizations.contactInfo.categories', categoriesUrl, 4, false)}
         {rowUrlCount &&
           <div style={{ width: '100%' }}>
             <hr />
@@ -43,7 +43,7 @@ class ContactInformationView extends React.Component {
     const { dataVal } = this.props;
     return (
       <Col xs={12} className={css.rowHeader}>
-        <div className={css.subHeadings}>{<FormattedMessage id="ui-vendors.contactInfo.urls" />}</div>
+        <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactInfo.urls" />}</div>
         {dataVal.map(this.getUrls)}
       </Col>
     );

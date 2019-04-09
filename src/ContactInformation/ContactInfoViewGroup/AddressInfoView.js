@@ -33,13 +33,13 @@ class AddressInfoView extends React.Component {
     ];
 
     const labelMap = {
-      addressLine1: <FormattedMessage id="ui-vendors.data.contactTypes.addressLine1" />,
-      addressLine2: <FormattedMessage id="ui-vendors.data.contactTypes.addressLine2" />,
-      city: <FormattedMessage id="ui-vendors.data.contactTypes.city" />,
-      stateRegion: <FormattedMessage id="ui-vendors.data.contactTypes.stateProviceOrRegion" />,
-      zipCode: <FormattedMessage id="ui-vendors.data.contactTypes.zipOrPostalCode" />,
-      country: <FormattedMessage id="ui-vendors.data.contactTypes.country" />,
-      categories: <FormattedMessage id="ui-vendors.data.contactTypes.categories" />
+      addressLine1: <FormattedMessage id="ui-organizations.data.contactTypes.addressLine1" />,
+      addressLine2: <FormattedMessage id="ui-organizations.data.contactTypes.addressLine2" />,
+      city: <FormattedMessage id="ui-organizations.data.contactTypes.city" />,
+      stateRegion: <FormattedMessage id="ui-organizations.data.contactTypes.stateProviceOrRegion" />,
+      zipCode: <FormattedMessage id="ui-organizations.data.contactTypes.zipOrPostalCode" />,
+      country: <FormattedMessage id="ui-organizations.data.contactTypes.country" />,
+      categories: <FormattedMessage id="ui-organizations.data.contactTypes.categories" />
     };
 
     return (
@@ -55,7 +55,7 @@ class AddressInfoView extends React.Component {
     const { dataVal } = this.props;
     return (
       <Col xs={12} className={css.rowHeader}>
-        <div className={css.subHeadings}>{<FormattedMessage id="ui-vendors.data.contactTypes.address" />}</div>
+        <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.data.contactTypes.address" />}</div>
         {dataVal.map(this.getAddress)}
       </Col>
     );

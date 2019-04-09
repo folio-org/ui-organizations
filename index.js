@@ -5,7 +5,7 @@ import Route from 'react-router-dom/Route';
 import Main from './src/Main';
 import Settings from './src/Settings';
 
-class Vendors extends Component {
+class Organizations extends Component {
   static propTypes = {
     stripes: PropTypes.shape({
       connect: PropTypes.func.isRequired,
@@ -37,4 +37,4 @@ class Vendors extends Component {
   }
 }
 
-export default Vendors;
+export default Organizations;

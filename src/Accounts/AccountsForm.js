@@ -28,12 +28,12 @@ class AccountsForm extends Component {
       <Row>
         <Col xs={12}>
           {fields.length === 0 &&
-            <div><em>{<FormattedMessage id="ui-vendors.accounts.pleaseAddAccount" />}</em></div>
+            <div><em>{<FormattedMessage id="ui-organizations.accounts.pleaseAddAccount" />}</em></div>
           }
           {fields.map(this.renderSubForm)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-vendors.accounts.add" />}</Button>
+          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.accounts.add" />}</Button>
         </Col>
       </Row>
     );
@@ -49,19 +49,19 @@ class AccountsForm extends Component {
           <Col xs={12} md={6}>
             <Row>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-vendors.accounts.name" />} name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth required />
+                <Field label={<FormattedMessage id="ui-organizations.accounts.name" />} name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth required />
               </Col>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-vendors.accounts.accountNumber" />} name={`${elem}.account_no`} id={`${elem}.account_no`} validate={[Required]} component={TextField} fullWidth />
+                <Field label={<FormattedMessage id="ui-organizations.accounts.accountNumber" />} name={`${elem}.account_no`} id={`${elem}.account_no`} validate={[Required]} component={TextField} fullWidth />
               </Col>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-vendors.accounts.description" />} name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
+                <Field label={<FormattedMessage id="ui-organizations.accounts.description" />} name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
               </Col>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-vendors.accounts.payable" />} name={`${elem}.app_system_no`} id={`${elem}.app_system_no`} component={TextField} fullWidth />
+                <Field label={<FormattedMessage id="ui-organizations.accounts.payable" />} name={`${elem}.app_system_no`} id={`${elem}.app_system_no`} component={TextField} fullWidth />
               </Col>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-vendors.accounts.paymentMethod" />} name={`${elem}.payment_method`} id={`${elem}.payment_method`} dataOptions={paymentMethodDD} validate={[Required]} component={Select} fullWidth required />
+                <Field label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />} name={`${elem}.payment_method`} id={`${elem}.payment_method`} dataOptions={paymentMethodDD} validate={[Required]} component={Select} fullWidth required />
               </Col>
             </Row>
           </Col>

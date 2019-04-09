@@ -75,12 +75,12 @@ class ContactPeopleView extends React.Component {
     ];
 
     const labelMap = {
-      addressLine1: <FormattedMessage id="ui-vendors.data.contactTypes.addressLine1" />,
-      addressLine2: <FormattedMessage id="ui-vendors.data.contactTypes.addressLine2" />,
-      stateRegion: <FormattedMessage id="ui-vendors.data.contactTypes.stateProviceOrRegion" />,
-      zipCode: <FormattedMessage id="ui-vendors.data.contactTypes.zipOrPostalCode" />,
-      country: <FormattedMessage id="ui-vendors.data.contactTypes.country" />,
-      categories: <FormattedMessage id="ui-vendors.data.contactTypes.categories" />
+      addressLine1: <FormattedMessage id="ui-organizations.data.contactTypes.addressLine1" />,
+      addressLine2: <FormattedMessage id="ui-organizations.data.contactTypes.addressLine2" />,
+      stateRegion: <FormattedMessage id="ui-organizations.data.contactTypes.stateProviceOrRegion" />,
+      zipCode: <FormattedMessage id="ui-organizations.data.contactTypes.zipOrPostalCode" />,
+      country: <FormattedMessage id="ui-organizations.data.contactTypes.country" />,
+      categories: <FormattedMessage id="ui-organizations.data.contactTypes.categories" />
     };
 
     return (
@@ -95,7 +95,7 @@ class ContactPeopleView extends React.Component {
   printKeyValue(label, val, colNum, isRequire) {
     return (
       <Col xs={colNum}>
-        <KeyValue label={<FormattedMessage id={`ui-vendors.contactPeople.${label}`} />} value={val} required={isRequire} />
+        <KeyValue label={<FormattedMessage id={`ui-organizations.contactPeople.${label}`} />} value={val} required={isRequire} />
       </Col>
     );
   }
@@ -155,7 +155,7 @@ class ContactPeopleView extends React.Component {
         <Row key={key}>
           {this.printKeyValue('name', fullName, 3, false)}
           <Col xs={3}>
-            <KeyValue label={<FormattedMessage id="ui-vendors.contactPeople.inactive" />}>
+            <KeyValue label={<FormattedMessage id="ui-organizations.contactPeople.inactive" />}>
               <BoolToCheckbox name="Status" value={get(val, ['inactive'])} />
             </KeyValue>
           </Col>
@@ -165,7 +165,7 @@ class ContactPeopleView extends React.Component {
             <Fragment>
               <Col xs={12}>
                 <hr />
-                <div className={css.sub2Headings}>{<FormattedMessage id="ui-vendors.contactPeople.addesses" />}</div>
+                <div className={css.sub2Headings}>{<FormattedMessage id="ui-organizations.contactPeople.addesses" />}</div>
               </Col>
               <Col xs={12}>
                 { addressComplete.map(this.getAddresses) }
@@ -176,7 +176,7 @@ class ContactPeopleView extends React.Component {
             <Fragment>
               <Col xs={12}>
                 <hr />
-                <div className={css.sub2Headings}>{<FormattedMessage id="ui-vendors.contactPeople.phoneNumbers" />}</div>
+                <div className={css.sub2Headings}>{<FormattedMessage id="ui-organizations.contactPeople.phoneNumbers" />}</div>
               </Col>
               <Col xs={12}>
                 { addPhoneNumbers.map(this.getAddPhoneNumbers) }
@@ -187,7 +187,7 @@ class ContactPeopleView extends React.Component {
             <Fragment>
               <Col xs={12}>
                 <hr />
-                <div className={css.sub2Headings}>{<FormattedMessage id="ui-vendors.contactPeople.emails" />}</div>
+                <div className={css.sub2Headings}>{<FormattedMessage id="ui-organizations.contactPeople.emails" />}</div>
               </Col>
               <Col xs={12}>
                 { addEmails.map(this.getAddEmails) }
@@ -198,7 +198,7 @@ class ContactPeopleView extends React.Component {
             <Fragment>
               <Col xs={12}>
                 <hr />
-                <div className={css.sub2Headings}>{<FormattedMessage id="ui-vendors.contactPeople.urls" />}</div>
+                <div className={css.sub2Headings}>{<FormattedMessage id="ui-organizations.contactPeople.urls" />}</div>
               </Col>
               <Col xs={12}>
                 { addURLS.map(this.getAddUrls) }
@@ -227,7 +227,7 @@ class ContactPeopleView extends React.Component {
     } else {
       return (
         <div>
-          <p>{<FormattedMessage id="ui-vendors.contactPeople.noContactAvailable" />}</p>
+          <p>{<FormattedMessage id="ui-organizations.contactPeople.noContactAvailable" />}</p>
         </div>
       );
     }

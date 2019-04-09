@@ -29,11 +29,11 @@ class TogglePassword extends Component {
     return (
       <Row>
         <Col xs={10}>
-          <Field label={<FormattedMessage id="ui-vendors.edit.password" />} name={name} id={id} type={this.state.showPassword ? 'text' : 'password'} component={TextField} autoComplete="nope" fullWidth />
+          <Field label={<FormattedMessage id="ui-organizations.edit.password" />} name={name} id={id} type={this.state.showPassword ? 'text' : 'password'} component={TextField} autoComplete="nope" fullWidth />
         </Col>
         <Col xs={2} style={{ paddingTop: '20px', marginBottom: '0' }}>
           <Button id={buttonID} onClick={() => this.togglePassword()}>
-            { this.state.showPassword ? <FormattedMessage id="ui-vendors.edit.hide" /> : <FormattedMessage id="ui-vendors.edit.show" /> }
+            { this.state.showPassword ? <FormattedMessage id="ui-organizations.edit.hide" /> : <FormattedMessage id="ui-organizations.edit.show" /> }
           </Button>
         </Col>
       </Row>

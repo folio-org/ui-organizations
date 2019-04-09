@@ -20,7 +20,7 @@ class AdditionalUrls extends Component {
     return (
       <Row key={index}>
         <UrlsMF index={index} fields={fields} name={`${elem}`} id={`${elem}`} {...this.props} />
-        {RemoveButton(fields, index, 'btn-remove-url', 'ui-vendors.contactPeople.remove')}
+        {RemoveButton(fields, index, 'btn-remove-url', 'ui-organizations.contactPeople.remove')}
       </Row>
     );
   }
@@ -31,19 +31,19 @@ class AdditionalUrls extends Component {
       <Row>
         { !contactPeopleForm &&
           <Col xs={12}>
-            <div className={css.subHeadings}>{<FormattedMessage id="ui-vendors.contactPeople.url" />}</div>
+            <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactPeople.url" />}</div>
           </Col>
         }
         {fields.length === 0 &&
           <Col xs={6}>
-            <div><em>{<FormattedMessage id="ui-vendors.contactPeople.pleaseAddUrl" />}</em></div>
+            <div><em>{<FormattedMessage id="ui-organizations.contactPeople.pleaseAddUrl" />}</em></div>
           </Col>
         }
         <Col xs={12}>
           {fields.map(this.renderSub)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-vendors.contactPeople.addUrl" />}</Button>
+          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.contactPeople.addUrl" />}</Button>
         </Col>
       </Row>
     );

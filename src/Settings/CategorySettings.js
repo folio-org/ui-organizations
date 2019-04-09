@@ -18,8 +18,8 @@ class CategorySettings extends Component {
   render() {
     const { stripes } = this.props;
     const columnMapping = {
-      value: <FormattedMessage id="ui-vendors.settings.name" />,
-      action: <FormattedMessage id="ui-vendors.settings.action" />
+      value: <FormattedMessage id="ui-organizations.settings.name" />,
+      action: <FormattedMessage id="ui-organizations.settings.action" />
     };
 
     return (
@@ -27,7 +27,7 @@ class CategorySettings extends Component {
         stripes={stripes}
         baseUrl="vendor-storage/categories"
         records="categories"
-        label={<FormattedMessage id="ui-vendors.settings.categories" />}
+        label={<FormattedMessage id="ui-organizations.settings.categories" />}
         labelSingular="Category"
         objectLabel="Categories"
         visibleFields={['value']}

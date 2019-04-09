@@ -35,7 +35,7 @@ class EmailAddresses extends Component {
     return (
       <Row key={index} className={css.panels}>
         <EmailsMF index={index} fields={fields} name={`${elem}`} id={`${elem}`} {...this.props} />
-        {this.removeButtonEml(fields, index, 'btn-remove-emailAddress', 'ui-vendors.contactInfo.remove')}
+        {this.removeButtonEml(fields, index, 'btn-remove-emailAddress', 'ui-organizations.contactInfo.remove')}
       </Row>
     );
   }
@@ -45,18 +45,18 @@ class EmailAddresses extends Component {
     return (
       <Row>
         <Col xs={12}>
-          <div className={css.subHeadings}>{<FormattedMessage id="ui-vendors.contactInfo.emailAddress" />}</div>
+          <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactInfo.emailAddress" />}</div>
         </Col>
         {fields.length === 0 &&
           <Col xs={12}>
-            <div><em>{<FormattedMessage id="ui-vendors.contactInfo.pleaseAddEmail" />}</em></div>
+            <div><em>{<FormattedMessage id="ui-organizations.contactInfo.pleaseAddEmail" />}</em></div>
           </Col>
         }
         <Col xs={12}>
           {fields.map(this.renderSubEmailAddresses)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-vendors.contactInfo.addEmail" />}</Button>
+          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.contactInfo.addEmail" />}</Button>
         </Col>
       </Row>
     );

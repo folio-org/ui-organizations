@@ -4,43 +4,43 @@ import { FormattedMessage } from 'react-intl';
 const Filters = () => {
   return [
     {
-      label: <FormattedMessage id="ui-vendors.filterConfig.vendorStatus" />,
+      label: <FormattedMessage id="ui-organizations.filterConfig.vendorStatus" />,
       name: 'vendor_status',
       cql: 'vendor_status',
       values: ['Active', 'Inactive', 'Pending']
     },
     {
-      label: <FormattedMessage id="ui-vendors.filterConfig.addressCategory" />,
+      label: <FormattedMessage id="ui-organizations.filterConfig.addressCategory" />,
       name: 'category',
       cql: 'addresses',
       values: ['Accounting', 'Books', 'Customer Service', 'Databases', 'Ebooks', 'Econtent', 'General', 'Journals', 'Licenses', 'Primary', 'Sales', 'Serials', 'Returns', 'Shipments', 'Payments', 'Technical Support', 'Other']
     },
     {
-      label: <FormattedMessage id="ui-vendors.filterConfig.contactPeopleCategory" />,
+      label: <FormattedMessage id="ui-organizations.filterConfig.contactPeopleCategory" />,
       name: 'category',
       cql: 'contacts',
       values: ['Accounting', 'Books', 'Customer Service', 'Databases', 'Ebooks', 'Econtent', 'General', 'Journals', 'Licenses', 'Primary', 'Sales', 'Serials', 'Returns', 'Shipments', 'Payments', 'Technical Support', 'Other']
     },
     {
-      label: <FormattedMessage id="ui-vendors.filterConfig.country" />,
+      label: <FormattedMessage id="ui-organizations.filterConfig.country" />,
       name: 'country',
       cql: 'addresses',
       values: []
     },
     {
-      label: <FormattedMessage id="ui-vendors.filterConfig.languages" />,
+      label: <FormattedMessage id="ui-organizations.filterConfig.languages" />,
       name: 'language',
       cql: 'language',
       values: []
     },
     {
-      label: <FormattedMessage id="ui-vendors.filterConfig.paymentMethod" />,
+      label: <FormattedMessage id="ui-organizations.filterConfig.paymentMethod" />,
       name: 'payment_method',
       cql: 'payment_method',
       values: ['Cash', 'Credit Card/P-Card', 'EFT', 'Deposit Account']
     },
     {
-      label: <FormattedMessage id="ui-vendors.filterConfig.statsAvailable" />,
+      label: <FormattedMessage id="ui-organizations.filterConfig.statsAvailable" />,
       name: 'available',
       cql: 'interfaces',
       values: [

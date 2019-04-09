@@ -21,7 +21,7 @@ class ContactInformationView extends React.Component {
   printKeyValue(label, val, isRequire) {
     return (
       <Col xs={3}>
-        <KeyValue label={<FormattedMessage id={`ui-vendors.contactInfo.${label}`} />} value={val} required={isRequire} />
+        <KeyValue label={<FormattedMessage id={`ui-organizations.contactInfo.${label}`} />} value={val} required={isRequire} />
       </Col>
     );
   }
@@ -53,7 +53,7 @@ class ContactInformationView extends React.Component {
     const { dataVal } = this.props;
     return (
       <Col xs={12} className={css.rowHeader}>
-        <div className={css.subHeadings}>{<FormattedMessage id="ui-vendors.contactInfo.phoneNumbers" />}</div>
+        <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactInfo.phoneNumbers" />}</div>
         { dataVal.map(this.getPhoneNumbers) }
       </Col>
     );

@@ -155,7 +155,7 @@ class AddressesMF extends Component {
             constraints={constraints}
           >
             <div ref={this.fieldRef} style={{ width:'100%' }}>
-              <Field onChange={this.onInputChange} onClearField={this.onInputClear} label={<FormattedMessage id="ui-vendors.data.contactTypes.addressLine1" />} name={`${name}.addressLine1`} id={`${name}.addressLine1`} component={TextField} fullWidth />
+              <Field onChange={this.onInputChange} onClearField={this.onInputClear} label={<FormattedMessage id="ui-organizations.data.contactTypes.addressLine1" />} name={`${name}.addressLine1`} id={`${name}.addressLine1`} component={TextField} fullWidth />
             </div>
             {
               isOpen && (
@@ -169,22 +169,22 @@ class AddressesMF extends Component {
           </TetherComponent>
         </Col>
         <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-vendors.data.contactTypes.addressLine2" />} name={`${name}.addressLine2`} id={`${name}.addressLine2`} component={TextField} fullWidth />
+          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.addressLine2" />} name={`${name}.addressLine2`} id={`${name}.addressLine2`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-vendors.data.contactTypes.city" />} name={`${name}.city`} id={`${name}.city`} component={TextField} fullWidth />
+          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.city" />} name={`${name}.city`} id={`${name}.city`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-vendors.data.contactTypes.stateProviceOrRegion" />} name={`${name}.stateRegion`} id={`${name}.stateRegion`} component={TextField} fullWidth />
+          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.stateProviceOrRegion" />} name={`${name}.stateRegion`} id={`${name}.stateRegion`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-vendors.data.contactTypes.zipOrPostalCode" />} name={`${name}.zipCode`} id={`${name}.zipCode`} component={TextField} fullWidth />
+          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.zipOrPostalCode" />} name={`${name}.zipCode`} id={`${name}.zipCode`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-vendors.data.contactTypes.country" />} name={`${name}.country`} id={`${name}.country`} component={Select} dataOptions={dropdownCountry} validate={[Required]} fullWidth required />
+          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.country" />} name={`${name}.country`} id={`${name}.country`} component={Select} dataOptions={dropdownCountry} validate={[Required]} fullWidth required />
         </Col>
         <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-vendors.data.contactTypes.language" />} name={`${name}.language`} id={`${name}.language`} component={Select} dataOptions={dropdownLanguages} fullWidth />
+          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.language" />} name={`${name}.language`} id={`${name}.language`} component={Select} dataOptions={dropdownLanguages} fullWidth />
         </Col>
         <Col xs={12} md={3}>
           <CategoryDropdown {...this.props} />
