@@ -277,10 +277,10 @@ class Main extends Component {
       'Vendor Status': data => _.toString(_.get(data, ['vendor_status'], ''))
     };
     const columnMapping = {
-      'Name': <FormattedMessage id="ui-vendors.main.name" />,
-      'Code': <FormattedMessage id="ui-vendors.main.code" />,
-      'Description': <FormattedMessage id="ui-vendors.main.description" />,
-      'Vendor status': <FormattedMessage id="ui-vendors.main.vendorStatus" />
+      'Name': <FormattedMessage id="ui-organizations.main.name" />,
+      'Code': <FormattedMessage id="ui-organizations.main.code" />,
+      'Description': <FormattedMessage id="ui-organizations.main.description" />,
+      'Vendor status': <FormattedMessage id="ui-organizations.main.vendorStatus" />
     };
 
     return (

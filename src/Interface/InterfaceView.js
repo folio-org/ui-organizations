@@ -19,7 +19,7 @@ class InterfaceView extends React.Component {
   printKeyValue(label, val) {
     return (
       <Col xs={3}>
-        <KeyValue label={<FormattedMessage id={`ui-vendors.interface.${label}`} />} value={val} />
+        <KeyValue label={<FormattedMessage id={`ui-organizations.interface.${label}`} />} value={val} />
       </Col>
     );
   }
@@ -34,10 +34,10 @@ class InterfaceView extends React.Component {
         {this.printKeyValue('password', _.get(val, ['password'], ''))}
         {this.printKeyValue('notes', _.get(val, ['notes'], ''))}
         <Col xs={12}>
-          <div className={css.subHeadings}><b>{<FormattedMessage id="ui-vendors.interface.statistics" />}</b></div>
+          <div className={css.subHeadings}><b>{<FormattedMessage id="ui-organizations.interface.statistics" />}</b></div>
         </Col>
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-vendors.interface.available" />}>
+          <KeyValue label={<FormattedMessage id="ui-organizations.interface.available" />}>
             <BoolToCheckbox name="Available" value={_.get(val, ['available'])} />
           </KeyValue>
         </Col>
@@ -67,7 +67,7 @@ class InterfaceView extends React.Component {
     } else {
       return (
         <div>
-          <p>{<FormattedMessage id="ui-vendors.interface.noInterfaceAvail" />}</p>
+          <p>{<FormattedMessage id="ui-organizations.interface.noInterfaceAvail" />}</p>
         </div>
       );
     }

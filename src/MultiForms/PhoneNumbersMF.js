@@ -160,7 +160,7 @@ class PhoneNumbersMF extends Component {
               <Field
                 onChange={this.onInputChange}
                 onClearField={this.onInputClear}
-                label={<FormattedMessage id="ui-vendors.contactPeople.phoneNumber" />}
+                label={<FormattedMessage id="ui-organizations.contactPeople.phoneNumber" />}
                 name={`${name}.phone_number`}
                 id={`${name}.phone_number`}
                 component={TextField}
@@ -181,10 +181,10 @@ class PhoneNumbersMF extends Component {
           </TetherComponent>
         </Col>
         <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-vendors.contactPeople.type" />} name={`${name}.type`} id={`${name}.type`} component={Select} fullWidth dataOptions={dropdownPhoneType} />
+          <Field label={<FormattedMessage id="ui-organizations.contactPeople.type" />} name={`${name}.type`} id={`${name}.type`} component={Select} fullWidth dataOptions={dropdownPhoneType} />
         </Col>
         <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-vendors.contactPeople.language" />} name={`${name}.language`} id={`${name}.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
+          <Field label={<FormattedMessage id="ui-organizations.contactPeople.language" />} name={`${name}.language`} id={`${name}.language`} component={Select} fullWidth dataOptions={dropdownLanguages} />
         </Col>
         <Col xs={12} md={3}>
           <CategoryDropdown {...this.props} />

@@ -110,7 +110,7 @@ class FormVendor extends Component {
     const message = (
       <em className={css.requiredIcon} style={{ color: 'red', display: 'flex', alignItems: 'center' }}>
         <Icon icon="validation-error" size="medium" />
-        {<FormattedMessage id="ui-vendors.edit.requiredFields" />}
+        {<FormattedMessage id="ui-organizations.edit.requiredFields" />}
       </em>
     );
 
@@ -126,28 +126,28 @@ class FormVendor extends Component {
           </Col>
           <Col xs={12} md={8}>
             <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
-              <Accordion label={<FormattedMessage id="ui-vendors.summary" />} id="summarySection" displayWhenClosed={isDisplayError('summaryErr')} displayWhenOpen={isDisplayError('summaryErr')}>
+              <Accordion label={<FormattedMessage id="ui-organizations.summary" />} id="summarySection" displayWhenClosed={isDisplayError('summaryErr')} displayWhenOpen={isDisplayError('summaryErr')}>
                 <SummaryForm {...this.props} />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-vendors.contactInformation" />} id="contactInformationSection" displayWhenClosed={isDisplayError('contactInfoErr')} displayWhenOpen={isDisplayError('contactInfoErr')}>
+              <Accordion label={<FormattedMessage id="ui-organizations.contactInformation" />} id="contactInformationSection" displayWhenClosed={isDisplayError('contactInfoErr')} displayWhenOpen={isDisplayError('contactInfoErr')}>
                 <ContactInformationForm {...this.props} />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-vendors.contactPeople" />} id="contactPeopleSection" displayWhenClosed={isDisplayError('contactPeopleErr')} displayWhenOpen={isDisplayError('contactPeopleErr')}>
+              <Accordion label={<FormattedMessage id="ui-organizations.contactPeople" />} id="contactPeopleSection" displayWhenClosed={isDisplayError('contactPeopleErr')} displayWhenOpen={isDisplayError('contactPeopleErr')}>
                 <ContactPeopleForm {...this.props} />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-vendors.agreements" />} id="agreementsSection" displayWhenClosed={isDisplayError('agreementsErr')} displayWhenOpen={isDisplayError('agreementsErr')}>
+              <Accordion label={<FormattedMessage id="ui-organizations.agreements" />} id="agreementsSection" displayWhenClosed={isDisplayError('agreementsErr')} displayWhenOpen={isDisplayError('agreementsErr')}>
                 <AgreementsForm {...this.props} />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-vendors.vendorInformation" />} id="vendorInformationSection">
+              <Accordion label={<FormattedMessage id="ui-organizations.vendorInformation" />} id="vendorInformationSection">
                 <VendorInformationForm {...this.props} />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-vendors.ediInformation" />} id="EDIInformationSection" displayWhenClosed={isDisplayError('ediErr')} displayWhenOpen={isDisplayError('ediErr')}>
+              <Accordion label={<FormattedMessage id="ui-organizations.ediInformation" />} id="EDIInformationSection" displayWhenClosed={isDisplayError('ediErr')} displayWhenOpen={isDisplayError('ediErr')}>
                 <EdiInformationForm {...this.props} />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-vendors.interface" />} id="interfacesSection" displayWhenClosed={isDisplayError('interfacesErr')} displayWhenOpen={isDisplayError('interfacesErr')}>
+              <Accordion label={<FormattedMessage id="ui-organizations.interface" />} id="interfacesSection" displayWhenClosed={isDisplayError('interfacesErr')} displayWhenOpen={isDisplayError('interfacesErr')}>
                 <InterfaceForm {...this.props} />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-vendors.accounts" />} id="accountsSection" displayWhenClosed={isDisplayError('accountsErr')} displayWhenOpen={isDisplayError('accountsErr')}>
+              <Accordion label={<FormattedMessage id="ui-organizations.accounts" />} id="accountsSection" displayWhenClosed={isDisplayError('accountsErr')} displayWhenOpen={isDisplayError('accountsErr')}>
                 <AccountsForm {...this.props} />
               </Accordion>
             </AccordionSet>
@@ -157,7 +157,7 @@ class FormVendor extends Component {
                   {
                     showDeleteButton &&
                     <Button type="button" buttonStyle="danger" onClick={() => { this.deleteVendor(this.props.initialValues.id); }}>
-                      {<FormattedMessage id="ui-vendors.edit.delete" />}
+                      {<FormattedMessage id="ui-organizations.edit.delete" />}
                       &nbsp;
                       <strong><i>{this.props.initialValues.name}</i></strong>
                     </Button>

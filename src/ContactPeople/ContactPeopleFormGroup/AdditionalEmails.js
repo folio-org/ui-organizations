@@ -20,7 +20,7 @@ class AdditionalEmails extends Component {
     return (
       <Row key={index}>
         <EmailsMF index={index} fields={fields} name={`${elem}`} id={`${elem}`} {...this.props} />
-        {RemoveButton(fields, index, 'btn-remove-eml', 'ui-vendors.contactPeople.remove')}
+        {RemoveButton(fields, index, 'btn-remove-eml', 'ui-organizations.contactPeople.remove')}
       </Row>
     );
   }
@@ -31,19 +31,19 @@ class AdditionalEmails extends Component {
       <Row>
         { !contactPeopleForm &&
           <Col xs={12}>
-            <div className={css.subHeadings}>{<FormattedMessage id="ui-vendors.contactPeople.email" />}</div>
+            <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactPeople.email" />}</div>
           </Col>
         }
         {fields.length === 0 &&
           <Col xs={6}>
-            <div><em>{<FormattedMessage id="ui-vendors.contactPeople.pleaseAddEmail" />}</em></div>
+            <div><em>{<FormattedMessage id="ui-organizations.contactPeople.pleaseAddEmail" />}</em></div>
           </Col>
         }
         <Col xs={12}>
           {fields.map(this.renderSub)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-vendors.contactPeople.addEmail" />}</Button>
+          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.contactPeople.addEmail" />}</Button>
         </Col>
       </Row>
     );

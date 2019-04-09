@@ -38,7 +38,7 @@ class CategoryDropdown extends Component {
     return (
       <Field
         component={MultiSelection}
-        label={<FormattedMessage id="ui-vendors.data.contactTypes.categories" />}
+        label={<FormattedMessage id="ui-organizations.data.contactTypes.categories" />}
         name={`${name}.categories`}
         style={{ height: '80px' }}
         onBlur={(e) => { e.preventDefault(); }}

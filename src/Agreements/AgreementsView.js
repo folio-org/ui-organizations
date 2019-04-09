@@ -21,16 +21,16 @@ class AgreementsView extends React.Component {
     return (
       <Row key={key}>
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-vendors.agreement.name" />} value={_.get(val, 'name')} />
+          <KeyValue label={<FormattedMessage id="ui-organizations.agreement.name" />} value={_.get(val, 'name')} />
         </Col>
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-vendors.agreement.discount" />} value={discount} />
+          <KeyValue label={<FormattedMessage id="ui-organizations.agreement.discount" />} value={discount} />
         </Col>
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-vendors.agreement.referenceUrl" />} value={_.get(val, 'reference_url')} />
+          <KeyValue label={<FormattedMessage id="ui-organizations.agreement.referenceUrl" />} value={_.get(val, 'reference_url')} />
         </Col>
         <Col xs={12}>
-          <KeyValue label={<FormattedMessage id="ui-vendors.agreement.notes" />} value={_.get(val, 'notes')} />
+          <KeyValue label={<FormattedMessage id="ui-organizations.agreement.notes" />} value={_.get(val, 'notes')} />
         </Col>
         {rowCount &&
           <div style={{ width: '100%' }}>
@@ -53,7 +53,7 @@ class AgreementsView extends React.Component {
     } else {
       return (
         <div>
-          <p>{<FormattedMessage id="ui-vendors.agreement.noAgreementsAvailable" />}</p>
+          <p>{<FormattedMessage id="ui-organizations.agreement.noAgreementsAvailable" />}</p>
         </div>
       );
     }

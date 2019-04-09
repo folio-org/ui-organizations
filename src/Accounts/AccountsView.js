@@ -18,7 +18,7 @@ class AccountsView extends React.Component {
   printKeyValue(label, val, isRequire) {
     return (
       <Col xs={3}>
-        <KeyValue label={<FormattedMessage id={`ui-vendors.accounts.${label}`} />} value={val} required={isRequire} />
+        <KeyValue label={<FormattedMessage id={`ui-organizations.accounts.${label}`} />} value={val} required={isRequire} />
       </Col>
     );
   }
@@ -57,7 +57,7 @@ class AccountsView extends React.Component {
     } else {
       return (
         <div>
-          <p>{<FormattedMessage id="ui-vendors.accounts.noAccountsAvail" />}</p>
+          <p>{<FormattedMessage id="ui-organizations.accounts.noAccountsAvail" />}</p>
         </div>
       );
     }

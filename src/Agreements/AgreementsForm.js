@@ -18,13 +18,13 @@ class AgreementsForm extends Component {
         <Col xs={12}>
           {fields.length === 0 &&
             <Col xs={6}>
-              <div><em>{<FormattedMessage id="ui-vendors.agreement.pleaseAddAgreements" />}</em></div>
+              <div><em>{<FormattedMessage id="ui-organizations.agreement.pleaseAddAgreements" />}</em></div>
             </Col>
           }
           {fields.map(this.renderSubForm)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-vendors.agreement.add" />}</Button>
+          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.agreement.add" />}</Button>
         </Col>
       </Row>
     );
@@ -35,20 +35,20 @@ class AgreementsForm extends Component {
       <div key={index} className={css.panels}>
         <Row key={index}>
           <Col xs={12} md={4}>
-            <Field label={<FormattedMessage id="ui-vendors.agreement.name" />} name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth required />
+            <Field label={<FormattedMessage id="ui-organizations.agreement.name" />} name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth required />
           </Col>
           <Col xs={12} md={4}>
-            <Field label={<FormattedMessage id="ui-vendors.agreement.discountSym" />} name={`${elem}.discount`} id={`${elem}.discount`} type="number" component={TextField} fullWidth />
+            <Field label={<FormattedMessage id="ui-organizations.agreement.discountSym" />} name={`${elem}.discount`} id={`${elem}.discount`} type="number" component={TextField} fullWidth />
           </Col>
           <Col xs={12} md={4}>
-            <Field label={<FormattedMessage id="ui-vendors.agreement.referenceUrl" />} name={`${elem}.reference_url`} id={`${elem}.reference_url`} validate={[isURLValid]} type="text" component={TextField} fullWidth />
+            <Field label={<FormattedMessage id="ui-organizations.agreement.referenceUrl" />} name={`${elem}.reference_url`} id={`${elem}.reference_url`} validate={[isURLValid]} type="text" component={TextField} fullWidth />
           </Col>
           <Col xs={12}>
-            <Field label={<FormattedMessage id="ui-vendors.agreement.notes" />} name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />
+            <Field label={<FormattedMessage id="ui-organizations.agreement.notes" />} name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />
           </Col>
           <Col xs={12} style={{ textAlign: 'right' }}>
             <Button onClick={() => fields.remove(index)} buttonStyle="danger">
-              {<FormattedMessage id="ui-vendors.agreement.remove" />}
+              {<FormattedMessage id="ui-organizations.agreement.remove" />}
             </Button>
           </Col>
         </Row>

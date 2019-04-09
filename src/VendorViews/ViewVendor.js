@@ -114,7 +114,7 @@ class ViewVendor extends Component {
             style={{ visibility: !initialValues ? 'hidden' : 'visible' }}
             onClick={this.props.onEdit}
             href={this.props.editLink}
-            title={<FormattedMessage id="ui-vendors.view.editLink" />}
+            title={<FormattedMessage id="ui-organizations.view.editLink" />}
           />
         </IfPermission>
       </PaneMenu>
@@ -122,7 +122,7 @@ class ViewVendor extends Component {
 
     if (!initialValues) {
       return (
-        <Pane id="pane-vendordetails" defaultWidth={this.props.paneWidth} paneTitle={<FormattedMessage id="ui-vendors.view.details" />} lastMenu={lastMenu} dismissible onClose={this.props.onClose}>
+        <Pane id="pane-vendordetails" defaultWidth={this.props.paneWidth} paneTitle={<FormattedMessage id="ui-organizations.view.details" />} lastMenu={lastMenu} dismissible onClose={this.props.onClose}>
           <div style={{ paddingTop: '1rem' }}><Icon icon="spinner-ellipsis" width="100px" /></div>
         </Pane>
       );
@@ -132,32 +132,32 @@ class ViewVendor extends Component {
       <Pane id="pane-vendordetails" defaultWidth={this.props.paneWidth} paneTitle={_.get(initialValues, ['name'], '')} lastMenu={lastMenu} dismissible onClose={this.props.onClose}>
         <Row end="xs"><Col xs><ExpandAllButton accordionStatus={this.state.sections} onToggle={this.handleExpandAll} /></Col></Row>
         <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
-          <Accordion label={<FormattedMessage id="ui-vendors.summary" />} id="summarySection">
+          <Accordion label={<FormattedMessage id="ui-organizations.summary" />} id="summarySection">
             <SummaryView initialValues={initialValues} {...this.props} />
           </Accordion>
-          <Accordion label={<FormattedMessage id="ui-vendors.contactInformation" />} id="contactInformationSection">
+          <Accordion label={<FormattedMessage id="ui-organizations.contactInformation" />} id="contactInformationSection">
             <ContactInformationView initialValues={initialValues} {...this.props} />
           </Accordion>
-          <Accordion label={<FormattedMessage id="ui-vendors.contactPeople" />} id="contactPeopleSection">
+          <Accordion label={<FormattedMessage id="ui-organizations.contactPeople" />} id="contactPeopleSection">
             <ContactPeopleView initialValues={initialValues} {...this.props} />
           </Accordion>
-          <Accordion label={<FormattedMessage id="ui-vendors.agreements" />} id="agreementsSection">
+          <Accordion label={<FormattedMessage id="ui-organizations.agreements" />} id="agreementsSection">
             <AgreementsView initialValues={initialValues} {...this.props} />
           </Accordion>
-          <Accordion label={<FormattedMessage id="ui-vendors.vendorInformation" />} id="vendorInformationSection">
+          <Accordion label={<FormattedMessage id="ui-organizations.vendorInformation" />} id="vendorInformationSection">
             <VendorInformationView initialValues={initialValues} {...this.props} />
           </Accordion>
-          <Accordion label={<FormattedMessage id="ui-vendors.ediInformation" />} id="EDIInformationSection">
+          <Accordion label={<FormattedMessage id="ui-organizations.ediInformation" />} id="EDIInformationSection">
             <EdiInformationView initialValues={initialValues} {...this.props} />
           </Accordion>
-          <Accordion label={<FormattedMessage id="ui-vendors.interface" />} id="interfaceSection">
+          <Accordion label={<FormattedMessage id="ui-organizations.interface" />} id="interfaceSection">
             <InterfaceView initialValues={initialValues} {...this.props} />
           </Accordion>
-          <Accordion label={<FormattedMessage id="ui-vendors.accounts" />} id="accountsSection">
+          <Accordion label={<FormattedMessage id="ui-organizations.accounts" />} id="accountsSection">
             <AccountsView initialValues={initialValues} {...this.props} />
           </Accordion>
         </AccordionSet>
-        <Layer isOpen={query.layer ? query.layer === 'edit' : false} label={<FormattedMessage id="ui-vendors.view.editVendorDialog" />}>
+        <Layer isOpen={query.layer ? query.layer === 'edit' : false} label={<FormattedMessage id="ui-organizations.view.editVendorDialog" />}>
           <this.connectedPaneDetails
             stripes={this.props.stripes}
             initialValues={initialValues}

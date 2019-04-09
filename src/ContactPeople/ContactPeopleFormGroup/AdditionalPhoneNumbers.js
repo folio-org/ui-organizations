@@ -20,7 +20,7 @@ class AdditionalPhoneNumbers extends Component {
     return (
       <Row key={index}>
         <PhoneNumbersMF index={index} fields={fields} name={`${elem}`} id={`${elem}`} {...this.props} />
-        {RemoveButton(fields, index, 'btn-remove-phoneNumber', 'ui-vendors.contactPeople.remove')}
+        {RemoveButton(fields, index, 'btn-remove-phoneNumber', 'ui-organizations.contactPeople.remove')}
       </Row>
     );
   }
@@ -31,19 +31,19 @@ class AdditionalPhoneNumbers extends Component {
       <Row>
         { !contactPeopleForm &&
           <Col xs={12}>
-            <div className={css.subHeadings}>{<FormattedMessage id="ui-vendors.contactPeople.phoneNumber" />}</div>
+            <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactPeople.phoneNumber" />}</div>
           </Col>
         }
         {fields.length === 0 &&
           <Col xs={6}>
-            <div><em>{<FormattedMessage id="ui-vendors.contactPeople.pleaseAddPhoneNumbers" />}</em></div>
+            <div><em>{<FormattedMessage id="ui-organizations.contactPeople.pleaseAddPhoneNumbers" />}</em></div>
           </Col>
         }
         <Col xs={12}>
           {fields.map(this.renderSubPhoneNumbers)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-vendors.contactPeople.addPhoneNumber" />}</Button>
+          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.contactPeople.addPhoneNumber" />}</Button>
         </Col>
       </Row>
     );
