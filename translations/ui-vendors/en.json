@@ -1,5 +1,5 @@
 {
-  "meta.title": "Vendor",
+  "meta.title": "Organization",
   "search": "Search",
   "resultCount": "{count, number} {count, plural, one {Record found} other {Records found}}",
 
@@ -285,7 +285,7 @@
   "view.editLink": "Edit link",
   "view.editVendorDialog": "Edit vendor dialog",
   "view.details": "Details",
-  
+
   "edit.delete": "Delete",
   "edit.requiredFields": "Required fields!",
   "edit.password": "Password",
@@ -479,15 +479,3 @@
 
   "end": ""
 }
-
-
-
-
-
-
-
-
-
-
-
-

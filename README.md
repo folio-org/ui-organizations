@@ -1,6 +1,6 @@
-# ui-vendors
+# ui-organizations
 
-The ui-vendors allows for the management of Vendor records in FOLIO. It includes summary information, contact information and other details regarding the vendor interaction and preferences.
+The ui-organizations allows for the management of Organization records in FOLIO. It includes summary information, contact information and other details regarding the organization interaction and preferences.
 
 
 Copyright (C) 2017 The Open Library Foundation.
@@ -9,7 +9,7 @@ This software is distributed under the terms of the Apache License, Version 2.0.
 
 ## Prerequisites
 
-In order to view and log into the platform being served up, a suitable OKAPI backend will need to be running. The [Folio testing-backend](https://app.vagrantup.com/folio/boxes/testing-backend) Vagrant box should work if your app does not yet have its own backend module. 
+In order to view and log into the platform being served up, a suitable OKAPI backend will need to be running. The [Folio testing-backend](https://app.vagrantup.com/folio/boxes/testing-backend) Vagrant box should work if your app does not yet have its own backend module.
 
 ## Run your new app
 
