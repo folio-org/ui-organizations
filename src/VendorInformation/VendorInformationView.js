@@ -19,7 +19,7 @@ class VendorInformationView extends React.Component {
     if (dataVal) {
       return (
         <Row className={css.horizontalLine}>
-          {PrintBoolToCheckbox('ui-organizations.vendorInfo.paymentMethod', get(dataVal, 'paymentMethod'), 3, false)}
+          {PrintKeyValue('ui-organizations.vendorInfo.paymentMethod', get(dataVal, 'paymentMethod'), 3, false)}
           {PrintBoolToCheckbox('ui-organizations.vendorInfo.accessProvider', get(dataVal, 'accessProvider'), 3, false)}
           {PrintBoolToCheckbox('ui-organizations.vendorInfo.governmental', toString(get(dataVal, ['governmental'])), 3, false)}
           {PrintBoolToCheckbox('ui-organizations.vendorInfo.licensor', toString(get(dataVal, ['licensor'])), 3, false)}
@@ -43,7 +43,7 @@ class VendorInformationView extends React.Component {
           </Col>
           {PrintKeyValue('ui-organizations.vendorInfo.taxID', toString(get(dataVal, ['taxId'])), 3, false)}
           {PrintKeyValue('ui-organizations.vendorInfo.taxPercentage', toString(get(dataVal, ['taxPercentage'])), 3, false)}
-          {PrintKeyValue('ui-organizations.vendorInfo.liableForVAT', toString(get(dataVal, ['liableForVat'])), 3, false)}
+          {PrintBoolToCheckbox('ui-organizations.vendorInfo.liableForVAT', !!get(dataVal, ['liableForVat']), 3)}
         </Row>
       );
     } else {

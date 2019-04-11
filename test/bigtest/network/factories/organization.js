@@ -5,5 +5,12 @@ export default Factory.extend({
   name: faker.company.companyName,
   code: faker.random.uuid,
   description: faker.lorem.text,
-  status: 'Active',
+  status: 'active',
+  addresses: [],
+  agreements: [],
+  contacts: [],
+  emails: [],
+  interfaces: [],
+  phoneNumbers: [],
+  urls: [],
 });

@@ -15,7 +15,7 @@ const PrintBoolToCheckbox = (label, val, colNum, isRequire) => {
   return (
     <Col xs={colNum}>
       <KeyValue label={<FormattedMessage id={label} />} required={isRequire}>
-        <BoolToCheckbox name={<FormattedMessage id={label} />} value={val} />
+        <BoolToCheckbox value={val} />
       </KeyValue>
     </Col>
   );

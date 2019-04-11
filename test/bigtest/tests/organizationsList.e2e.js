@@ -2,7 +2,10 @@ import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
 import setupApplication from '../helpers/setup-application';
-import OrganizationsListInteractor from '../interactors/organizationsList';
+import {
+  OrganizationDetailsInteractor,
+  OrganizationsListInteractor,
+} from '../interactors';
 
 const ORGANIZATIONS_COUNT = 13;
 
@@ -10,6 +13,7 @@ describe('Organizations list', () => {
   setupApplication();
 
   const orgsList = new OrganizationsListInteractor();
+  const orgDetails = new OrganizationDetailsInteractor();
 
   beforeEach(function () {
     this.server.createList('organization', ORGANIZATIONS_COUNT);
@@ -29,5 +33,15 @@ describe('Organizations list', () => {
 
   it('displays create new organization button', () => {
     expect(orgsList.hasCreateOrganizationButton).to.be.true;
+  });
+
+  describe('clicking on the first organization', function () {
+    beforeEach(async function () {
+      await orgsList.organizationRows(0).click();
+    });
+
+    it('loads the organization\'s details', function () {
+      expect(orgDetails.$root).to.exist;
+    });
   });
 });
