@@ -8,6 +8,11 @@ import { filters2cql } from '@folio/stripes/components';
 import FormatTime from '../Utils/FormatTime';
 import packageInfo from '../../package';
 // Components and Pages
+import {
+  ORGANIZATIONS_API,
+  CATEGORIES_API,
+  CONTACTS_API,
+} from '../common/constants';
 import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
 import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
@@ -54,7 +59,7 @@ class Main extends Component {
       clear: true,
       records: 'organizations',
       recordsRequired: '%{resultCount}',
-      path: 'organizations-storage/organizations',
+      path: ORGANIZATIONS_API,
       perRequest: RESULT_COUNT_INCREMENT,
       GET: {
         params: {
@@ -114,7 +119,7 @@ class Main extends Component {
     vendorCategory: {
       type: 'okapi',
       records: 'categories',
-      path: 'organizations-storage/categories'
+      path: CATEGORIES_API
     },
     queryCustom: {
       initialValue: {
@@ -125,7 +130,7 @@ class Main extends Component {
     vendorID: {
       type: 'okapi',
       records: 'organizations',
-      path: 'organizations-storage/organizations',
+      path: ORGANIZATIONS_API,
       params: {
         query: (...args) => {
           const newData = `${args[2].queryCustom.vendorIDQuery}`;
@@ -137,7 +142,7 @@ class Main extends Component {
     contacts: {
       type: 'okapi',
       records: 'contacts',
-      path: 'organizations-storage/contacts',
+      path: CONTACTS_API,
       params: {
         query: (...args) => {
           // const newData = 'query=(id="d375f933-a093-4348-a594-0c02442946f3*")';
@@ -284,37 +289,39 @@ class Main extends Component {
     };
 
     return (
-      <SearchAndSort
-        packageInfo={this.props.packageInfo || packageInfo}
-        objectName="vendors"
-        baseRoute={packageInfo.stripes.route}
-        filterConfig={filterConfig}
-        visibleColumns={this.props.visibleColumns ? this.props.visibleColumns : ['Name', 'Code', 'Description', 'Status']}
-        columnMapping={columnMapping}
-        resultsFormatter={resultsFormatter}
-        viewRecordComponent={ViewVendor}
-        onCreate={this.create}
-        editRecordComponent={PaneDetails}
-        newRecordInitialValues={{}}
-        initialResultCount={INITIAL_RESULT_COUNT}
-        resultCountIncrement={RESULT_COUNT_INCREMENT}
-        finishedResourceName="perms"
-        viewRecordPerms="organizations-storage.organizations.item.get"
-        newRecordPerms="organizations-storage.organizations.item.post,login.item.post"
-        parentResources={this.props.resources}
-        parentMutator={this.props.mutator}
-        detailProps={this.props.stripes}
-        stripes={this.stripes}
-        searchableIndexes={searchableIndexes}
-        selectedIndex={_.get(this.props.resources.query, 'qindex')}
-        searchableIndexesPlaceholder={null}
-        onChangeIndex={this.onChangeIndex}
-        onSelectRow={onSelectRow}
-        disableRecordCreation={disableRecordCreation}
-        onComponentWillUnmount={onComponentWillUnmount}
-        browseOnly={browseOnly}
-        showSingleResult={showSingleResult}
-      />
+      <div data-test-organizations-list>
+        <SearchAndSort
+          packageInfo={this.props.packageInfo || packageInfo}
+          objectName="organization"
+          baseRoute={packageInfo.stripes.route}
+          filterConfig={filterConfig}
+          visibleColumns={this.props.visibleColumns ? this.props.visibleColumns : ['Name', 'Code', 'Description', 'Status']}
+          columnMapping={columnMapping}
+          resultsFormatter={resultsFormatter}
+          viewRecordComponent={ViewVendor}
+          onCreate={this.create}
+          editRecordComponent={PaneDetails}
+          newRecordInitialValues={{}}
+          initialResultCount={INITIAL_RESULT_COUNT}
+          resultCountIncrement={RESULT_COUNT_INCREMENT}
+          finishedResourceName="perms"
+          viewRecordPerms="organizations-storage.organizations.item.get"
+          newRecordPerms="organizations-storage.organizations.item.post,login.item.post"
+          parentResources={this.props.resources}
+          parentMutator={this.props.mutator}
+          detailProps={this.props.stripes}
+          stripes={this.stripes}
+          searchableIndexes={searchableIndexes}
+          selectedIndex={_.get(this.props.resources.query, 'qindex')}
+          searchableIndexesPlaceholder={null}
+          onChangeIndex={this.onChangeIndex}
+          onSelectRow={onSelectRow}
+          disableRecordCreation={disableRecordCreation}
+          onComponentWillUnmount={onComponentWillUnmount}
+          browseOnly={browseOnly}
+          showSingleResult={showSingleResult}
+        />
+      </div>
     );
   }
 }
