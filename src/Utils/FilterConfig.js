@@ -5,8 +5,8 @@ const Filters = () => {
   return [
     {
       label: <FormattedMessage id="ui-organizations.filterConfig.vendorStatus" />,
-      name: 'vendor_status',
-      cql: 'vendor_status',
+      name: 'status',
+      cql: 'status',
       values: ['Active', 'Inactive', 'Pending']
     },
     {
@@ -35,8 +35,8 @@ const Filters = () => {
     },
     {
       label: <FormattedMessage id="ui-organizations.filterConfig.paymentMethod" />,
-      name: 'payment_method',
-      cql: 'payment_method',
+      name: 'paymentMethod',
+      cql: 'paymentMethod',
       values: ['Cash', 'Credit Card/P-Card', 'EFT', 'Deposit Account']
     },
     {
@@ -52,14 +52,14 @@ const Filters = () => {
 };
 
 const SearchableIndexes = [
-  { label: 'All', value: 'all', makeQuery: term => `(name="${term}*" or code="${term}*" or language="${term}*" or aliases="${term}*" or erp_code="${term}*" or tax_id="${term}*" or interfaces="${term}*" or contacts="${term}*")` },
+  { label: 'All', value: 'all', makeQuery: term => `(name="${term}*" or code="${term}*" or language="${term}*" or aliases="${term}*" or erpCode="${term}*" or taxId="${term}*" or interfaces="${term}*" or contacts="${term}*")` },
   { label: 'Name', value: 'name', makeQuery: term => `(name="${term}*")` },
   { label: 'Contacts', value: 'contacts', makeQuery: term => `(contacts="${term}*")` },
   { label: 'Code', value: 'code', makeQuery: term => `(code="${term}*")` },
   { label: 'Language', value: 'language', makeQuery: term => `(language="${term}*")` },
   { label: 'Alias', value: 'aliases', makeQuery: term => `(aliases="${term}*")` },
-  { label: 'Accounting code', value: 'erp_code', makeQuery: term => `(erp_code="${term}*")` },
-  { label: 'Tax ID', value: 'tax_id', makeQuery: term => `(tax_id="${term}*")` },
+  { label: 'Accounting code', value: 'erpCode', makeQuery: term => `(erpCode="${term}*")` },
+  { label: 'Tax ID', value: 'taxId', makeQuery: term => `(taxId="${term}*")` },
   { label: 'Interfaces', value: 'interfaces', makeQuery: term => `(interfaces="${term}*")` }
 ];
 

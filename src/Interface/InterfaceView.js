@@ -41,11 +41,11 @@ class InterfaceView extends React.Component {
             <BoolToCheckbox name="Available" value={_.get(val, ['available'])} />
           </KeyValue>
         </Col>
-        {this.printKeyValue('deliveryMethod', _.get(val, ['delivery_method'], ''))}
-        {this.printKeyValue('statisticsFormat', _.get(val, ['statistics_format'], ''))}
-        {this.printKeyValue('locallyStored', _.get(val, ['locally_stored'], ''))}
-        {this.printKeyValue('onlineLocation', _.get(val, ['online_location'], ''))}
-        {this.printKeyValue('statisticsNotes', _.get(val, ['statistics_notes'], ''))}
+        {this.printKeyValue('deliveryMethod', _.get(val, ['deliveryMethod'], ''))}
+        {this.printKeyValue('statisticsFormat', _.get(val, ['statisticsFormat'], ''))}
+        {this.printKeyValue('locallyStored', _.get(val, ['locallyStored'], ''))}
+        {this.printKeyValue('onlineLocation', _.get(val, ['onlineLocation'], ''))}
+        {this.printKeyValue('statisticsNotes', _.get(val, ['statisticsNotes'], ''))}
         {rowCount &&
           <div style={{ width: '100%' }}>
             <hr />

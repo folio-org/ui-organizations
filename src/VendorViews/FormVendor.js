@@ -32,8 +32,8 @@ class FormVendor extends Component {
     const sectionErrArray = [];
     // Display error condition
     errorKeys.forEach(key => {
-      if ((key === 'name' || key === 'code' || key === 'vendor_status') && (sectionErrArray.indexOf('summaryErr') === -1)) sectionErrArray.push('summaryErr');
-      if ((key === 'addresses' || key === 'phone_numbers' || key === 'email' || key === 'urls') && (sectionErrArray.indexOf('contactInfoErr') === -1)) sectionErrArray.push('contactInfoErr');
+      if ((key === 'name' || key === 'code' || key === 'status') && (sectionErrArray.indexOf('summaryErr') === -1)) sectionErrArray.push('summaryErr');
+      if ((key === 'addresses' || key === 'phoneNumbers' || key === 'email' || key === 'urls') && (sectionErrArray.indexOf('contactInfoErr') === -1)) sectionErrArray.push('contactInfoErr');
       if ((key === 'contacts') && (sectionErrArray.indexOf('contactPeopleErr') === -1)) sectionErrArray.push('contactPeopleErr');
       if ((key === 'agreements') && (sectionErrArray.indexOf('agreementsErr') === -1)) sectionErrArray.push('agreementsErr');
       if ((key === 'edi') && (sectionErrArray.indexOf('ediErr') === -1)) sectionErrArray.push('ediErr');
@@ -44,8 +44,8 @@ class FormVendor extends Component {
     if (errorKeys.length > 0) {
       const newSections = { ...sections };
       errorKeys.forEach(key => {
-        if (key === 'name' || key === 'code' || key === 'vendor_status') newSections.summarySection = true;
-        if (key === 'addresses' || key === 'phone_numbers' || key === 'email' || key === 'urls') newSections.contactInformationSection = true;
+        if (key === 'name' || key === 'code' || key === 'status') newSections.summarySection = true;
+        if (key === 'addresses' || key === 'phoneNumbers' || key === 'email' || key === 'urls') newSections.contactInformationSection = true;
         if (key === 'contacts') newSections.contactPeopleSection = true;
         if (key === 'agreements') newSections.agreementsSection = true;
         if (key === 'interfaces') newSections.interfacesSection = true;
@@ -96,7 +96,7 @@ class FormVendor extends Component {
     const { parentMutator } = this.props;
     parentMutator.records.DELETE({ id: ID }).then(() => {
       parentMutator.query.update({
-        _path: '/vendors',
+        _path: '/organizations',
         layer: null
       });
     });
@@ -151,7 +151,7 @@ class FormVendor extends Component {
                 <AccountsForm {...this.props} />
               </Accordion>
             </AccordionSet>
-            <IfPermission perm="vendor-storage.vendors.item.delete">
+            <IfPermission perm="organizations-storage.organizations.item.delete">
               <Row end="xs">
                 <Col xs={12}>
                   {

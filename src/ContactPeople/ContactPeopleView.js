@@ -104,7 +104,7 @@ class ContactPeopleView extends React.Component {
     const categories = CatIDToLabel(val.categories, this.getVendorcategory()) || '';
     return (
       <Row key={key} className={css.rptBlocks}>
-        {this.printKeyValue('phoneNumber', get(val, ['phone_number'], ''), 3, false)}
+        {this.printKeyValue('phoneNumber', get(val, ['phoneNumber'], ''), 3, false)}
         {this.printKeyValue('type', get(val, ['type'], ''), 3, false)}
         {this.printKeyValue('language', get(val, ['language'], ''), 3, false)}
         {this.printKeyValue('categories', categories, 3, false)}
@@ -143,10 +143,10 @@ class ContactPeopleView extends React.Component {
   }
 
   renderContacts(val, key) {
-    const fullName = `${get(val, 'prefix', '')} ${get(val, 'first_name', '')} ${get(val, 'last_name', '')}`;
+    const fullName = `${get(val, 'prefix', '')} ${get(val, 'firstName', '')} ${get(val, 'lastName', '')}`;
     const language = `${get(val, 'language', '')}`;
     const addressComplete = get(val, 'addresses', '');
-    const addPhoneNumbers = get(val, 'phone_numbers', '');
+    const addPhoneNumbers = get(val, 'phoneNumbers', '');
     const addEmails = get(val, 'emails', '');
     const addURLS = get(val, 'urls', '');
 

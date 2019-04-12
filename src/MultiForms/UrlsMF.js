@@ -37,7 +37,7 @@ class UrlsMF extends Component {
       const num = formValues.contacts;
       if (!num) return false;
       num.map((val) => {
-        const contactPerson = val.contact_person;
+        const contactPerson = val.contactPerson;
         if (!contactPerson || contactPerson <= 0) return false;
         const urls = contactPerson.urls;
         if (!urls || urls <= 0) return false;

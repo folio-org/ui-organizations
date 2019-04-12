@@ -30,10 +30,10 @@ class SummaryView extends React.Component {
           <KeyValue label={<FormattedMessage id="ui-organizations.summary.code" />} value={_.get(dataVal, 'code', '')} />
         </Col>
         <Col xs={4}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.summary.accountingCode" />} value={_.get(dataVal, ['erp_code'], '')} />
+          <KeyValue label={<FormattedMessage id="ui-organizations.summary.accountingCode" />} value={_.get(dataVal, ['erpCode'], '')} />
         </Col>
         <Col xs={4}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.summary.vendorStatus" />} value={_.get(dataVal, 'vendor_status', '')} />
+          <KeyValue label={<FormattedMessage id="ui-organizations.summary.vendorStatus" />} value={_.get(dataVal, 'status', '')} />
         </Col>
         <Col xs={4}>
           <KeyValue label={<FormattedMessage id="ui-organizations.summary.defaultLanguage" />} value={getLanguage} />

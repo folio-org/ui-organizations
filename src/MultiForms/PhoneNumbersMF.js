@@ -28,7 +28,7 @@ class PhoneNumbersMF extends Component {
     const formValues = getFormValues('FormVendor')(store.getState());
     // Get Phone Number
     const getPhoneNum = () => {
-      const num = formValues.phone_numbers;
+      const num = formValues.phoneNumbers;
       if (!num) return false;
       return num.map((val) => arrPhones.push(val));
     };
@@ -38,9 +38,9 @@ class PhoneNumbersMF extends Component {
       const num = formValues.contacts;
       if (!num) return false;
       num.map((val) => {
-        const contactPerson = val.contact_person;
+        const contactPerson = val.contactPerson;
         if (!contactPerson || contactPerson <= 0) return false;
-        const phoneNums = contactPerson.phone_numbers;
+        const phoneNums = contactPerson.phoneNumbers;
         if (!phoneNums || phoneNums <= 0) return false;
         phoneNums.map((item) => arrPhones.push(item));
         return false;
@@ -49,7 +49,7 @@ class PhoneNumbersMF extends Component {
     };
     getAdditional();
     // Remove Duplicates
-    const arrItemsNoDuplicate = _.uniqBy(arrPhones, (e) => e.phone_number);
+    const arrItemsNoDuplicate = _.uniqBy(arrPhones, (e) => e.phoneNumber);
     // Update state
     if (!_.isEqual(arrItemsNoDuplicate, prevState.itemCollection)) {
       return { itemCollection: arrItemsNoDuplicate };
@@ -80,7 +80,7 @@ class PhoneNumbersMF extends Component {
     if (!_.isEmpty(itemCollection) && (e.trim().length >= 1)) {
       const num = itemCollection;
       const objFiltered = _.filter(num, (o) => {
-        const phoneNumber = (o.phone_number || []);
+        const phoneNumber = (o.phoneNumber || []);
         if (!_.includes(phoneNumber, e)) return false;
         return o;
       });
@@ -120,7 +120,7 @@ class PhoneNumbersMF extends Component {
       return (
         <div key={i}>
           <div className={css.inlineButton} onClick={() => this.onClickItem(name, item)} onKeyPress={(e) => this.onKeyPressed(e)} role="presentation">
-            {item.phone_number}
+            {item.phoneNumber}
           </div>
         </div>
       );
@@ -161,8 +161,8 @@ class PhoneNumbersMF extends Component {
                 onChange={this.onInputChange}
                 onClearField={this.onInputClear}
                 label={<FormattedMessage id="ui-organizations.contactPeople.phoneNumber" />}
-                name={`${name}.phone_number`}
-                id={`${name}.phone_number`}
+                name={`${name}.phoneNumber`}
+                id={`${name}.phoneNumber`}
                 component={TextField}
                 validate={[Required]}
                 fullWidth

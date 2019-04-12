@@ -37,7 +37,7 @@ class AddressesMF extends Component {
       const num = formValues.contacts;
       if (!num) return false;
       num.map((val) => {
-        const contactPerson = val.contact_person;
+        const contactPerson = val.contactPerson;
         if (!contactPerson || contactPerson <= 0) return false;
         const address = contactPerson.addresses;
         if (!address || address <= 0) return false;

@@ -100,7 +100,7 @@ class PaneDetails extends React.Component {
     const { parentMutator } = this.props;
     parentMutator.records.DELETE({ id: ID }).then(() => {
       parentMutator.query.update({
-        _path: '/vendor',
+        _path: '/organization',
         layer: null
       });
     });

@@ -12,7 +12,7 @@ class ContactInformationForm extends React.Component {
           <br />
         </Col>
         <Col xs={12}>
-          <FieldArray label="Phone Numbers" name="phone_numbers" id="phone_numbers" component={PhoneNumbers} {...this.props} />
+          <FieldArray label="Phone Numbers" name="phoneNumbers" id="phoneNumbers" component={PhoneNumbers} {...this.props} />
           <br />
         </Col>
         <Col xs={12}>

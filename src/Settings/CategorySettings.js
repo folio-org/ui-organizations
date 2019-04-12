@@ -25,7 +25,7 @@ class CategorySettings extends Component {
     return (
       <this.connectedControlledVocab
         stripes={stripes}
-        baseUrl="vendor-storage/categories"
+        baseUrl="organizations-storage/categories"
         records="categories"
         label={<FormattedMessage id="ui-organizations.settings.categories" />}
         labelSingular="Category"

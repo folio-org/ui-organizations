@@ -52,9 +52,9 @@ class Main extends Component {
     records: {
       type: 'okapi',
       clear: true,
-      records: 'vendors',
+      records: 'organizations',
       recordsRequired: '%{resultCount}',
-      path: 'vendor-storage/vendors',
+      path: 'organizations-storage/organizations',
       perRequest: RESULT_COUNT_INCREMENT,
       GET: {
         params: {
@@ -71,7 +71,7 @@ class Main extends Component {
               Name: 'name',
               Code: 'code',
               Description: 'description',
-              endor_status: 'vendor_status',
+              Status: 'status',
             };
 
             const index = resourceData.query.qindex ? resourceData.query.qindex : 'all';
@@ -114,7 +114,7 @@ class Main extends Component {
     vendorCategory: {
       type: 'okapi',
       records: 'categories',
-      path: 'vendor-storage/categories'
+      path: 'organizations-storage/categories'
     },
     queryCustom: {
       initialValue: {
@@ -124,8 +124,8 @@ class Main extends Component {
     },
     vendorID: {
       type: 'okapi',
-      records: 'vendors',
-      path: 'vendor-storage/vendors',
+      records: 'organizations',
+      path: 'organizations-storage/organizations',
       params: {
         query: (...args) => {
           const newData = `${args[2].queryCustom.vendorIDQuery}`;
@@ -137,7 +137,7 @@ class Main extends Component {
     contacts: {
       type: 'okapi',
       records: 'contacts',
-      path: 'vendor-storage/contacts',
+      path: 'organizations-storage/contacts',
       params: {
         query: (...args) => {
           // const newData = 'query=(id="d375f933-a093-4348-a594-0c02442946f3*")';
@@ -156,7 +156,7 @@ class Main extends Component {
           { label: 'Credit Card/P-Card', value: 'Credit Card P Card' },
           { label: 'EFT', value: 'EFT' },
           { label: 'Deposit Account', value: 'Deposit Account' },
-          { label: 'Physical Check', value: 'Physical_check' },
+          { label: 'Physical Check', value: 'Physical Check' },
           { label: 'Bank Draft', value: 'Bank Draft' },
           { label: 'Internal Transfer', value: 'Internal Transfer' },
           { label: 'Other', value: 'other' },
@@ -186,20 +186,20 @@ class Main extends Component {
         ],
         transmissionModeDD: [
           { label: '-- Select --', value: '' },
-          { label: 'ASCII', value: 'ascii' },
-          { label: 'Binary', value: 'binary' },
+          { label: 'ASCII', value: 'ASCII' },
+          { label: 'Binary', value: 'Binary' },
         ],
         connectionModeDD: [
           { label: '-- Select --', value: '' },
-          { label: 'Active', value: 'active' },
-          { label: 'Passive', value: 'passive' },
+          { label: 'Active', value: 'Active' },
+          { label: 'Passive', value: 'Passive' },
         ],
         deliveryMethodDD: [
           { label: '-- Select --', value: '' },
-          { label: 'Online', value: 'online' },
-          { label: 'FTP', value: 'ftp' },
-          { label: 'Email', value: 'email' },
-          { label: 'Other', value: 'other' },
+          { label: 'Online', value: 'Online' },
+          { label: 'FTP', value: 'FTP' },
+          { label: 'Email', value: 'Email' },
+          { label: 'Other', value: 'Other' },
         ],
         formatDD: [
           { label: '-- Select --', value: '' },
@@ -254,10 +254,10 @@ class Main extends Component {
     const { mutator } = this.props;
     // Convert time
     const time = FormatTime(data, 'post');
-    if (time) { data.edi.edi_job.time = time; }
+    if (time) { data.edi.ediJob.time = time; }
     mutator.records.POST(data).then(newLedger => {
       mutator.query.update({
-        _path: `/vendors/view/${newLedger.id}`,
+        _path: `/organizations/view/${newLedger.id}`,
         layer: null
       });
     });
@@ -274,13 +274,13 @@ class Main extends Component {
       'Name': data => _.get(data, ['name'], ''),
       'Code': data => _.get(data, ['code'], ''),
       'Description': data => _.get(data, ['description'], ''),
-      'Vendor Status': data => _.toString(_.get(data, ['vendor_status'], ''))
+      'Status': data => _.toString(_.get(data, ['status'], ''))
     };
     const columnMapping = {
       'Name': <FormattedMessage id="ui-organizations.main.name" />,
       'Code': <FormattedMessage id="ui-organizations.main.code" />,
       'Description': <FormattedMessage id="ui-organizations.main.description" />,
-      'Vendor status': <FormattedMessage id="ui-organizations.main.vendorStatus" />
+      'Status': <FormattedMessage id="ui-organizations.main.vendorStatus" />
     };
 
     return (
@@ -289,7 +289,7 @@ class Main extends Component {
         objectName="vendors"
         baseRoute={packageInfo.stripes.route}
         filterConfig={filterConfig}
-        visibleColumns={this.props.visibleColumns ? this.props.visibleColumns : ['Name', 'Code', 'Description', 'Vendor status']}
+        visibleColumns={this.props.visibleColumns ? this.props.visibleColumns : ['Name', 'Code', 'Description', 'Status']}
         columnMapping={columnMapping}
         resultsFormatter={resultsFormatter}
         viewRecordComponent={ViewVendor}
@@ -299,8 +299,8 @@ class Main extends Component {
         initialResultCount={INITIAL_RESULT_COUNT}
         resultCountIncrement={RESULT_COUNT_INCREMENT}
         finishedResourceName="perms"
-        viewRecordPerms="vendor-storage.vendors.item.get"
-        newRecordPerms="vendor-storage.vendors.item.post,login.item.post"
+        viewRecordPerms="organizations-storage.organizations.item.get"
+        newRecordPerms="organizations-storage.organizations.item.post,login.item.post"
         parentResources={this.props.resources}
         parentMutator={this.props.mutator}
         detailProps={this.props.stripes}

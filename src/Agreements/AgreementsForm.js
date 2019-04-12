@@ -41,7 +41,7 @@ class AgreementsForm extends Component {
             <Field label={<FormattedMessage id="ui-organizations.agreement.discountSym" />} name={`${elem}.discount`} id={`${elem}.discount`} type="number" component={TextField} fullWidth />
           </Col>
           <Col xs={12} md={4}>
-            <Field label={<FormattedMessage id="ui-organizations.agreement.referenceUrl" />} name={`${elem}.reference_url`} id={`${elem}.reference_url`} validate={[isURLValid]} type="text" component={TextField} fullWidth />
+            <Field label={<FormattedMessage id="ui-organizations.agreement.referenceUrl" />} name={`${elem}.referenceUrl`} id={`${elem}.referenceUrl`} validate={[isURLValid]} type="text" component={TextField} fullWidth />
           </Col>
           <Col xs={12}>
             <Field label={<FormattedMessage id="ui-organizations.agreement.notes" />} name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />

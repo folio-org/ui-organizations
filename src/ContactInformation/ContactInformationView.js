@@ -32,7 +32,7 @@ class ContactInformationView extends Component {
         <Row>
           <div style={{ width: '100%' }}>
             <AddressInfoView dataVal={initialValues.addresses} dropdownVendorCategories={this.getVendorcategory()} />
-            <PhoneNumbersView dataVal={initialValues.phone_numbers} dropdownVendorCategories={this.getVendorcategory()} />
+            <PhoneNumbersView dataVal={initialValues.phoneNumbers} dropdownVendorCategories={this.getVendorcategory()} />
             <EmailView dataVal={initialValues.emails} dropdownVendorCategories={this.getVendorcategory()} />
             <UrlsView dataVal={initialValues.urls} dropdownVendorCategories={this.getVendorcategory()} />
           </div>

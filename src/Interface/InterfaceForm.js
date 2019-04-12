@@ -71,19 +71,19 @@ class InterfaceForm extends Component {
             <Field label={<FormattedMessage id="ui-organizations.interface.available" />} name={`${elem}.available`} id={`${elem}.available`} component={Checkbox} />
           </Col>
           <Col xs={12} md={6}>
-            <Field label={<FormattedMessage id="ui-organizations.interface.deliveryMethod" />} name={`${elem}.delivery_method`} id={`${elem}.delivery_method`} component={Select} fullWidth dataOptions={deliveryMethodDD} />
+            <Field label={<FormattedMessage id="ui-organizations.interface.deliveryMethod" />} name={`${elem}.deliveryMethod`} id={`${elem}.deliveryMethod`} component={Select} fullWidth dataOptions={deliveryMethodDD} />
           </Col>
           <Col xs={12} md={6}>
-            <Field label={<FormattedMessage id="ui-organizations.interface.statisticsFormat" />} name={`${elem}.statistics_format`} id={`${elem}.statistics_format`} component={Select} fullWidth dataOptions={formatDD} />
+            <Field label={<FormattedMessage id="ui-organizations.interface.statisticsFormat" />} name={`${elem}.statisticsFormat`} id={`${elem}.statisticsFormat`} component={Select} fullWidth dataOptions={formatDD} />
           </Col>
           <Col xs={12} md={6}>
-            <Field label={<FormattedMessage id="ui-organizations.interface.locallyStored" />} name={`${elem}.locally_stored`} id={`${elem}.locally_stored`} component={TextField} fullWidth />
+            <Field label={<FormattedMessage id="ui-organizations.interface.locallyStored" />} name={`${elem}.locallyStored`} id={`${elem}.locallyStored`} component={TextField} fullWidth />
           </Col>
           <Col xs={12} md={6}>
-            <Field label={<FormattedMessage id="ui-organizations.interface.onlineLocation" />} name={`${elem}.online_location`} id={`${elem}.online_location`} component={TextField} fullWidth />
+            <Field label={<FormattedMessage id="ui-organizations.interface.onlineLocation" />} name={`${elem}.onlineLocation`} id={`${elem}.onlineLocation`} component={TextField} fullWidth />
           </Col>
           <Col xs={12} md={6}>
-            <Field label={<FormattedMessage id="ui-organizations.interface.statisticsNotes" />} name={`${elem}.statistics_notes`} id={`${elem}.statistics_notes`} component={TextArea} fullWidth />
+            <Field label={<FormattedMessage id="ui-organizations.interface.statisticsNotes" />} name={`${elem}.statisticsNotes`} id={`${elem}.statisticsNotes`} component={TextArea} fullWidth />
           </Col>
           <Col xs={12} style={{ textAlign: 'right' }}>
             <Button onClick={() => fields.remove(index)} buttonStyle="danger">
