@@ -52,32 +52,32 @@ class AccountsForm extends Component {
                 <Field label={<FormattedMessage id="ui-organizations.accounts.name" />} name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth required />
               </Col>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-organizations.accounts.accountNumber" />} name={`${elem}.account_no`} id={`${elem}.account_no`} validate={[Required]} component={TextField} fullWidth />
+                <Field label={<FormattedMessage id="ui-organizations.accounts.accountNumber" />} name={`${elem}.accountNo`} id={`${elem}.accountNo`} validate={[Required]} component={TextField} fullWidth />
               </Col>
               <Col xs={12}>
                 <Field label={<FormattedMessage id="ui-organizations.accounts.description" />} name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
               </Col>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-organizations.accounts.payable" />} name={`${elem}.app_system_no`} id={`${elem}.app_system_no`} component={TextField} fullWidth />
+                <Field label={<FormattedMessage id="ui-organizations.accounts.payable" />} name={`${elem}.appSystemNo`} id={`${elem}.appSystemNo`} component={TextField} fullWidth />
               </Col>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />} name={`${elem}.payment_method`} id={`${elem}.payment_method`} dataOptions={paymentMethodDD} validate={[Required]} component={Select} fullWidth required />
+                <Field label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />} name={`${elem}.paymentMethod`} id={`${elem}.paymentMethod`} dataOptions={paymentMethodDD} validate={[Required]} component={Select} fullWidth required />
               </Col>
             </Row>
           </Col>
           <Col xs={12} md={6}>
             <Row>
               <Col xs={12}>
-                <Field label="Account Status*" name={`${elem}.account_status`} id={`${elem}.account_status`} dataOptions={statusDD} validate={[Required]} component={Select} fullWidth />
+                <Field label="Account Status*" name={`${elem}.accountStatus`} id={`${elem}.accountStatus`} dataOptions={statusDD} validate={[Required]} component={Select} fullWidth />
               </Col>
               <Col xs={12}>
-                <Field label="Contact Info" name={`${elem}.contact_info`} id={`${elem}.contact_info`} component={TextField} fullWidth />
+                <Field label="Contact Info" name={`${elem}.contactInfo`} id={`${elem}.contactInfo`} component={TextField} fullWidth />
               </Col>
               <Col xs={12}>
-                <Field label="Library Code*" name={`${elem}.library_code`} id={`${elem}.library_code`} validate={[Required]} component={TextField} fullWidth />
+                <Field label="Library Code*" name={`${elem}.libraryCode`} id={`${elem}.libraryCode`} validate={[Required]} component={TextField} fullWidth />
               </Col>
               <Col xs={12}>
-                <Field label="Library EDI Code*" name={`${elem}.library_edi_code`} id={`${elem}.library_edi_code`} validate={[Required]} component={TextField} fullWidth />
+                <Field label="Library EDI Code*" name={`${elem}.libraryEdiCode`} id={`${elem}.libraryEdiCode`} validate={[Required]} component={TextField} fullWidth />
               </Col>
             </Row>
           </Col>

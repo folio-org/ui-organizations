@@ -19,12 +19,12 @@
     "home": "/organizations?sort=Name",
     "hasSettings": true,
     "okapiInterfaces": {
-      "vendor-storage.vendors": "1.0",
-      "vendor-storage.emails": "1.0",
-      "vendor-storage.phone-numbers": "1.0",
-      "vendor-storage.addresses": "1.0",
-      "vendor-storage.url": "1.0",
-      "vendor-storage.categories": "1.0"
+      "organizations-storage.organizations": "1.0",
+      "organizations-storage.emails": "1.0",
+      "organizations-storage.phone-numbers": "1.0",
+      "organizations-storage.addresses": "1.0",
+      "organizations-storage.urls": "1.0",
+      "organizations-storage.categories": "1.0"
     },
     "queryResource": "query",
     "icons": [
@@ -37,7 +37,8 @@
     "permissionSets" : [
       {
         "permissionName": "module.organizations.enabled",
-        "displayName": "UI: Organizations module is enabled"
+        "displayName": "UI: Organizations module is enabled",
+        "visible": true
       },
       {
         "permissionName": "settings.organizations.enabled",
@@ -48,471 +49,99 @@
         ]
       },
       {
-        "permissionName" : "vendor-storage.accounts.collection.get",
-        "displayName" : "account collection get",
-        "description" : "Get a collection of accounts"
-      },
-      {
-        "permissionName" : "vendor-storage.accounts.item.post",
-        "displayName" : "account post",
-        "description" : "Create a new account"
-      },
-      {
-        "permissionName" : "vendor-storage.accounts.item.get",
-        "displayName" : "account get",
-        "description" : "Fetch an account"
-      },
-      {
-        "permissionName" : "vendor-storage.accounts.item.put",
-        "displayName" : "account put",
-        "description" : "Update an account"
-      },
-      {
-        "permissionName" : "vendor-storage.accounts.item.delete",
-        "displayName" : "account delete",
-        "description" : "Delete a account"
-      },
-      {
-        "permissionName" : "vendor-storage.accounts.all",
-        "displayName" : "account all",
-        "description" : "All permissions for account",
-        "subPermissions" : [
-          "vendor-storage.accounts.collection.get",
-          "vendor-storage.accounts.item.post",
-          "vendor-storage.accounts.item.get",
-          "vendor-storage.accounts.item.put",
-          "vendor-storage.accounts.item.delete"
-        ]
-      },
-      {
-        "permissionName" : "vendor-storage.addresses.collection.get",
-        "displayName" : "address collection get",
-        "description" : "Get a collection of addresses"
-      },
-      {
-        "permissionName" : "vendor-storage.addresses.item.post",
-        "displayName" : "address post",
-        "description" : "Create a new address"
-      },
-      {
-        "permissionName" : "vendor-storage.addresses.item.get",
-        "displayName" : "address get",
-        "description" : "Fetch a address"
-      },
-      {
-        "permissionName" : "vendor-storage.addresses.item.put",
-        "displayName" : "address put",
-        "description" : "Update a address"
-      },
-      {
-        "permissionName" : "vendor-storage.addresses.item.delete",
-        "displayName" : "address delete",
-        "description" : "Delete a address"
-      },
-      {
-        "permissionName" : "vendor-storage.addresses.all",
-        "displayName" : "address all",
-        "description" : "All permissions for address",
-        "subPermissions" : [
-          "vendor-storage.addresses.collection.get",
-          "vendor-storage.addresses.item.post",
-          "vendor-storage.addresses.item.get",
-          "vendor-storage.addresses.item.put",
-          "vendor-storage.addresses.item.delete"
-        ]
-      },
-      {
-        "permissionName" : "vendor-storage.agreements.collection.get",
-        "displayName" : "agreement collection get",
-        "description" : "Get a collection of agreements"
-      },
-      {
-        "permissionName" : "vendor-storage.agreements.item.post",
-        "displayName" : "agreement post",
-        "description" : "Create a new agreement"
-      },
-      {
-        "permissionName" : "vendor-storage.agreements.item.get",
-        "displayName" : "agreement get",
-        "description" : "Fetch a agreement"
-      },
-      {
-        "permissionName" : "vendor-storage.agreements.item.put",
-        "displayName" : "agreement put",
-        "description" : "Update a agreement"
-      },
-      {
-        "permissionName" : "vendor-storage.agreements.item.delete",
-        "displayName" : "agreement delete",
-        "description" : "Delete a agreement"
-      },
-      {
-        "permissionName" : "vendor-storage.agreements.all",
-        "displayName" : "agreement all",
-        "description" : "All permissions for agreement",
-        "subPermissions" : [
-          "vendor-storage.agreements.collection.get",
-          "vendor-storage.agreements.item.post",
-          "vendor-storage.agreements.item.get",
-          "vendor-storage.agreements.item.put",
-          "vendor-storage.agreements.item.delete"
-        ]
-      },
-      {
-        "permissionName" : "vendor-storage.aliases.collection.get",
-        "displayName" : "alias collection get",
-        "description" : "Get a collection of aliases"
-      },
-      {
-        "permissionName" : "vendor-storage.aliases.item.post",
-        "displayName" : "alias post",
-        "description" : "Create a new alias"
-      },
-      {
-        "permissionName" : "vendor-storage.aliases.item.get",
-        "displayName" : "alias get",
-        "description" : "Fetch a alias"
-      },
-      {
-        "permissionName" : "vendor-storage.aliases.item.put",
-        "displayName" : "alias put",
-        "description" : "Update a alias"
-      },
-      {
-        "permissionName" : "vendor-storage.aliases.item.delete",
-        "displayName" : "alias delete",
-        "description" : "Delete a alias"
-      },
-      {
-        "permissionName" : "vendor-storage.aliases.all",
-        "displayName" : "alias all",
-        "description" : "All permissions for alias",
-        "subPermissions" : [
-          "vendor-storage.aliases.collection.get",
-          "vendor-storage.aliases.item.post",
-          "vendor-storage.aliases.item.get",
-          "vendor-storage.aliases.item.put",
-          "vendor-storage.aliases.item.delete"
-        ]
-      },
-      {
-        "permissionName" : "vendor-storage.categories.collection.get",
-        "displayName" : "ccategory collection get",
-        "description" : "Get a collection of categories"
-      },
-      {
-        "permissionName" : "vendor-storage.categories.item.post",
-        "displayName" : "category post",
-        "description" : "Create a new category"
-      },
-      {
-        "permissionName" : "vendor-storage.categories.item.get",
-        "displayName" : "category get",
-        "description" : "Fetch a category"
-      },
-      {
-        "permissionName" : "vendor-storage.categories.item.put",
-        "displayName" : "category put",
-        "description" : "Update a category"
-      },
-      {
-        "permissionName" : "vendor-storage.categories.item.delete",
-        "displayName" : "category delete",
-        "description" : "Delete a category"
-      },
-      {
-        "permissionName" : "vendor-storage.categories.all",
-        "displayName" : "category all",
-        "description" : "All permissions for category",
-        "subPermissions" : [
-          "vendor-storage.categories.collection.get",
-          "vendor-storage.categories.item.post",
-          "vendor-storage.categories.item.get",
-          "vendor-storage.categories.item.put",
-          "vendor-storage.categories.item.delete"
-        ]
-      },
-      {
-        "permissionName" : "vendor-storage.contacts.collection.get",
-        "displayName" : "contact collection get",
-        "description" : "Get a collection of contacts"
-      },
-      {
-        "permissionName" : "vendor-storage.contacts.item.post",
-        "displayName" : "contact post",
-        "description" : "Create a new contact"
-      },
-      {
-        "permissionName" : "vendor-storage.contacts.item.get",
-        "displayName" : "contact get",
-        "description" : "Fetch a contact"
-      },
-      {
-        "permissionName" : "vendor-storage.contacts.item.put",
-        "displayName" : "contact put",
-        "description" : "Update a contact"
-      },
-      {
-        "permissionName" : "vendor-storage.contacts.item.delete",
-        "displayName" : "contact delete",
-        "description" : "Delete a contact"
-      },
-      {
-        "permissionName" : "vendor-storage.contacts.all",
-        "displayName" : "contact all",
-        "description" : "All permissions for contact",
-        "subPermissions" : [
-          "vendor-storage.contacts.collection.get",
-          "vendor-storage.contacts.item.post",
-          "vendor-storage.contacts.item.get",
-          "vendor-storage.contacts.item.put",
-          "vendor-storage.contacts.item.delete"
-        ]
-      },
-      {
-        "permissionName" : "vendor-storage.emails.collection.get",
-        "displayName" : "email collection get",
-        "description" : "Get a collection of emails"
-      },
-      {
-        "permissionName" : "vendor-storage.emails.item.post",
-        "displayName" : "email post",
-        "description" : "Create a new email"
-      },
-      {
-        "permissionName" : "vendor-storage.emails.item.get",
-        "displayName" : "email get",
-        "description" : "Fetch a email"
-      },
-      {
-        "permissionName" : "vendor-storage.emails.item.put",
-        "displayName" : "email put",
-        "description" : "Update a email"
-      },
-      {
-        "permissionName" : "vendor-storage.emails.item.delete",
-        "displayName" : "email delete",
-        "description" : "Delete a email"
-      },
-      {
-        "permissionName" : "vendor-storage.emails.all",
-        "displayName" : "email all",
-        "description" : "All permissions for email",
-        "subPermissions" : [
-          "vendor-storage.emails.collection.get",
-          "vendor-storage.emails.item.post",
-          "vendor-storage.emails.item.get",
-          "vendor-storage.emails.item.put",
-          "vendor-storage.emails.item.delete"
-        ]
-      },
-      {
-        "permissionName" : "vendor-storage.interfaces.collection.get",
-        "displayName" : "interface collection get",
-        "description" : "Get a collection of interface"
-      },
-      {
-        "permissionName" : "vendor-storage.interfaces.item.post",
-        "displayName" : "interface post",
-        "description" : "Create a new interface"
-      },
-      {
-        "permissionName" : "vendor-storage.interfaces.item.get",
-        "displayName" : "interface get",
-        "description" : "Fetch a interface"
-      },
-      {
-        "permissionName" : "vendor-storage.interfaces.item.put",
-        "displayName" : "interface put",
-        "description" : "Update a interface"
-      },
-      {
-        "permissionName" : "vendor-storage.interfaces.item.delete",
-        "displayName" : "interface delete",
-        "description" : "Delete a interface"
-      },
-      {
-        "permissionName" : "vendor-storage.interfaces.all",
-        "displayName" : "interface all",
-        "description" : "All permissions for interface",
-        "subPermissions" : [
-          "vendor-storage.interfaces.collection.get",
-          "vendor-storage.interfaces.item.post",
-          "vendor-storage.interfaces.item.get",
-          "vendor-storage.interfaces.item.put",
-          "vendor-storage.interfaces.item.delete"
-        ]
-      },
-      {
-        "permissionName" : "vendor-storage.phone-numbers.collection.get",
-        "displayName" : "phone_number collection get",
-        "description" : "Get a collection of phone_numbers"
-      },
-      {
-        "permissionName" : "vendor-storage.phone-numbers.item.post",
-        "displayName" : "phone_number post",
-        "description" : "Create a new phone_number"
-      },
-      {
-        "permissionName" : "vendor-storage.phone-numbers.item.get",
-        "displayName" : "phone_number get",
-        "description" : "Fetch a phone_number"
-      },
-      {
-        "permissionName" : "vendor-storage.phone-numbers.item.put",
-        "displayName" : "phone_number put",
-        "description" : "Update a phone_number"
-      },
-      {
-        "permissionName" : "vendor-storage.phone-numbers.item.delete",
-        "displayName" : "phone_number delete",
-        "description" : "Delete a phone_number"
-      },
-      {
-        "permissionName" : "vendor-storage.phone-numbers.all",
-        "displayName" : "phone_number all",
-        "description" : "All permissions for phone_number",
-        "subPermissions" : [
-          "vendor-storage.phone-numbers.collection.get",
-          "vendor-storage.phone-numbers.item.post",
-          "vendor-storage.phone-numbers.item.get",
-          "vendor-storage.phone-numbers.item.put",
-          "vendor-storage.phone-numbers.item.delete"
-        ]
-      },
-      {
-        "permissionName" : "vendor-storage.urls.collection.get",
-        "displayName" : "url collection get",
-        "description" : "Get a collection of urls"
-      },
-      {
-        "permissionName" : "vendor-storage.urls.item.post",
-        "displayName" : "url post",
-        "description" : "Create a new url"
-      },
-      {
-        "permissionName" : "vendor-storage.urls.item.get",
-        "displayName" : "url get",
-        "description" : "Fetch a url"
-      },
-      {
-        "permissionName" : "vendor-storage.urls.item.put",
-        "displayName" : "url put",
-        "description" : "Update a url"
-      },
-      {
-        "permissionName" : "vendor-storage.urls.item.delete",
-        "displayName" : "url delete",
-        "description" : "Delete a url"
-      },
-      {
-        "permissionName" : "vendor-storage.urls.all",
-        "displayName" : "url all",
-        "description" : "All permissions for url",
-        "subPermissions" : [
-          "vendor-storage.urls.collection.get",
-          "vendor-storage.urls.item.post",
-          "vendor-storage.urls.item.get",
-          "vendor-storage.urls.item.put",
-          "vendor-storage.urls.item.delete"
-        ]
-      },
-      {
-        "permissionName" : "vendor-storage.vendor-types.collection.get",
-        "displayName" : "vendor_type collection get",
-        "description" : "Get a collection of vendor_types"
-      },
-      {
-        "permissionName" : "vendor-storage.vendor-types.item.post",
-        "displayName" : "vendor_type post",
-        "description" : "Create a new vendor_type"
-      },
-      {
-        "permissionName" : "vendor-storage.vendor-types.item.get",
-        "displayName" : "vendor_type get",
-        "description" : "Fetch a vendor_type"
-      },
-      {
-        "permissionName" : "vendor-storage.vendor-types.item.put",
-        "displayName" : "vendor_type put",
-        "description" : "Update a vendor_type"
-      },
-      {
-        "permissionName" : "vendor-storage.vendor-types.item.delete",
-        "displayName" : "vendor_type delete",
-        "description" : "Delete a vendor_type"
-      },
-      {
-        "permissionName" : "vendor-storage.vendor-types.all",
-        "displayName" : "vendor_type all",
-        "description" : "All permissions for vendor_type",
-        "subPermissions" : [
-          "vendor-storage.vendor-types.collection.get",
-          "vendor-storage.vendor-types.item.post",
-          "vendor-storage.vendor-types.item.get",
-          "vendor-storage.vendor-types.item.put",
-          "vendor-storage.vendor-types.item.delete"
-        ]
-      },
-      {
-        "permissionName" : "vendor-storage.vendors.collection.get",
-        "displayName" : "vendor collection get",
-        "description" : "Get a collection of vendors"
-      },
-      {
-        "permissionName" : "vendor-storage.vendors.item.post",
-        "displayName" : "Vendor: Can create record",
+        "permissionName" : "ui-organizations.create",
+        "displayName" : "Organizations: Create organizations",
         "visible": true,
-        "description" : "Vendor: Can create item"
-      },
-      {
-        "permissionName" : "vendor-storage.vendors.item.get",
-        "displayName" : "Vendor: Can view record",
-        "visible": true,
-        "description" : "Fetch a vendor"
-      },
-      {
-        "permissionName" : "vendor-storage.vendors.item.put",
-        "displayName" : "Vendor: Can update record",
-        "visible": true,
-        "description" : "Update a vendor"
-      },
-      {
-        "permissionName" : "vendor-storage.vendors.item.delete",
-        "displayName" : "Vendor: Can delete record",
-        "visible": true,
-        "description" : "Delete a vendor"
-      },
-      {
-        "permissionName" : "vendor-storage.vendors.all",
-        "displayName" : "Vendor: Can create, view, update and delete",
-        "visible": true,
-        "description" : "All permissions for vendors",
+        "description" : "",
         "subPermissions" : [
-          "vendor-storage.vendors.collection.get",
-          "vendor-storage.vendors.item.post",
-          "vendor-storage.vendors.item.get",
-          "vendor-storage.vendors.item.put",
-          "vendor-storage.vendors.item.delete"
+          "organizations-storage.accounts.item.post",
+          "organizations-storage.addresses.item.post",
+          "organizations-storage.agreements.item.post",
+          "organizations-storage.aliases.item.post",
+          "organizations-storage.categories.item.post",
+          "organizations-storage.contacts.item.post",
+          "organizations-storage.emails.item.post",
+          "organizations-storage.interfaces.item.post",
+          "organizations-storage.phone-numbers.item.post",
+          "organizations-storage.urls.item.post",
+          "organizations-storage.organizations.item.post"
         ]
       },
       {
-        "permissionName" : "vendor-storage.module.all",
-        "displayName" : "vendor-storage-module all",
-        "description" : "All permissions for the vendor module",
+        "permissionName" : "ui-organizations.view",
+        "displayName" : "Organizations: View organziations",
+        "visible": true,
+        "description" : "",
         "subPermissions" : [
-          "vendor-storage.accounts.all",
-          "vendor-storage.addresses.all",
-          "vendor-storage.agreements.all",
-          "vendor-storage.aliases.all",
-          "vendor-storage.categories.all",
-          "vendor-storage.contacts.all",
-          "vendor-storage.emails.all",
-          "vendor-storage.interfaces.all",
-          "vendor-storage.phone-numbers.all",
-          "vendor-storage.urls.all",
-          "vendor-storage.vendors.all",
-          "vendor-storage.vendor-types.all"
+          "organizations-storage.accounts.collection.get",
+          "organizations-storage.accounts.item.get",
+          "organizations-storage.addresses.collection.get",
+          "organizations-storage.addresses.item.get",
+          "organizations-storage.agreements.collection.get",
+          "organizations-storage.agreements.item.get",
+          "organizations-storage.aliases.collection.get",
+          "organizations-storage.aliases.item.get",
+          "organizations-storage.categories.collection.get",
+          "organizations-storage.categories.item.get",
+          "organizations-storage.contacts.collection.get",
+          "organizations-storage.contacts.item.get",
+          "organizations-storage.emails.collection.get",
+          "organizations-storage.emails.item.get",
+          "organizations-storage.interfaces.collection.get",
+          "organizations-storage.interfaces.item.get",
+          "organizations-storage.phone-numbers.collection.get",
+          "organizations-storage.phone-numbers.item.get",
+          "organizations-storage.urls.collection.get",
+          "organizations-storage.urls.item.get",
+          "organizations-storage.organizations.collection.get",
+          "organizations-storage.organizations.item.get"
+        ]
+      },
+      {
+        "permissionName" : "ui-organizations.update",
+        "displayName" : "Organizations: Update organizations",
+        "visible": true,
+        "description" : "",
+        "subPermissions" : [
+          "organizations-storage.accounts.item.put",
+          "organizations-storage.addresses.item.put",
+          "organizations-storage.agreements.item.put",
+          "organizations-storage.aliases.item.put",
+          "organizations-storage.categories.item.put",
+          "organizations-storage.contacts.item.put",
+          "organizations-storage.emails.item.put",
+          "organizations-storage.interfaces.item.put",
+          "organizations-storage.phone-numbers.item.put",
+          "organizations-storage.urls.item.put",
+          "organizations-storage.organizations.item.put"
+        ]
+      },
+      {
+        "permissionName" : "ui-organizations.delete",
+        "displayName" : "Organizations: Delete organizations",
+        "visible": true,
+        "description" : "",
+        "subPermissions" : [
+          "organizations-storage.accounts.item.delete",
+          "organizations-storage.addresses.item.delete",
+          "organizations-storage.agreements.item.delete",
+          "organizations-storage.aliases.item.delete",
+          "organizations-storage.categories.item.delete",
+          "organizations-storage.contacts.item.delete",
+          "organizations-storage.emails.item.delete",
+          "organizations-storage.interfaces.item.delete",
+          "organizations-storage.phone-numbers.item.delete",
+          "organizations-storage.urls.item.delete",
+          "organizations-storage.organizations.item.delete"
+        ]
+      },
+      {
+        "permissionName" : "ui-organizations.all",
+        "displayName" : "Organizations: all permissions for Create, View, Edit and Delete organizations",
+        "visible": true,
+        "description" : "",
+        "subPermissions" : [
+          "organizations-storage.all"
         ]
       }
     ]

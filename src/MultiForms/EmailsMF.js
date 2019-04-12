@@ -37,7 +37,7 @@ class EmailsMF extends Component {
       const num = formValues.contacts;
       if (!num) return false;
       num.map((val) => {
-        const contactPerson = val.contact_person;
+        const contactPerson = val.contactPerson;
         if (!contactPerson || contactPerson <= 0) return false;
         const emails = contactPerson.emails;
         if (!emails || emails <= 0) return false;

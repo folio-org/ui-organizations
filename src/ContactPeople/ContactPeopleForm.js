@@ -55,7 +55,7 @@ class ContactPeopleForm extends Component {
     if (contacts.length === 0) return null;
     const item = find(contacts, { id: valueID });
     if (isEmpty(item)) return null;
-    const fullName = `${get(item, 'prefix', '')} ${get(item, 'first_name', '')} ${get(item, 'last_name', '')}`;
+    const fullName = `${get(item, 'prefix', '')} ${get(item, 'firstName', '')} ${get(item, 'lastName', '')}`;
     return (
       <Fragment>
         {fullName}

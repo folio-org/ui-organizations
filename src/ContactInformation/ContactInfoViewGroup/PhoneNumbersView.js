@@ -30,7 +30,7 @@ class ContactInformationView extends React.Component {
     const { dropdownVendorCategories } = this.props;
     const rowCount = (this.props.dataVal.length - 1) !== key;
     const categories = CatIDToLabel(val.categories, dropdownVendorCategories) || '';
-    const phonenumber = get(val, 'phone_number', '');
+    const phonenumber = get(val, 'phoneNumber', '');
     const type = get(val, 'type', '');
     const getLanguage = LanguageLookup(get(val, 'language', ''));
 

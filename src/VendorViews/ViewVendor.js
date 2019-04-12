@@ -74,7 +74,7 @@ class ViewVendor extends Component {
     // Else check if data matches id
     const data = vendorData.find(u => u.id === id);
     const time = FormatTime(data, 'get');
-    if (time) { data.edi.edi_job.time = time; }
+    if (time) { data.edi.ediJob.time = time; }
     return data;
   }
 
@@ -107,7 +107,7 @@ class ViewVendor extends Component {
     const query = location.search ? queryString.parse(location.search) : {};
     const lastMenu = (
       <PaneMenu>
-        <IfPermission perm="vendor-storage.vendors.item.put">
+        <IfPermission perm="organizations-storage.organizations.item.put">
           <IconButton
             icon="edit"
             id="clickable-editvendor"

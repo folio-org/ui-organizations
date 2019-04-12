@@ -2,8 +2,8 @@ import moment from 'moment-timezone';
 import _ from 'lodash';
 
 const FormatTime = (data, type) => {
-  const date = ((((data || {}).edi || {}).edi_job || {}).date || {});
-  const time = ((((data || {}).edi || {}).edi_job || {}).time || {});
+  const date = ((((data || {}).edi || {}).ediJob || {}).date || {});
+  const time = ((((data || {}).edi || {}).ediJob || {}).time || {});
   const dateFormat = 'YYYY-MM-DDThh:mm:ss.SSSZ';
   const timezone = moment.tz.guess();
 

@@ -42,8 +42,8 @@ class EdiInformationView extends React.Component {
   render() {
     const { initialValues } = this.props;
     const dataVal = initialValues || false;
-    const ediFtp = initialValues.edi ? initialValues.edi.edi_ftp : null;
-    const ediScheduling = initialValues.edi ? initialValues.edi.edi_job : null;
+    const ediFtp = initialValues.edi ? initialValues.edi.ediFtp : null;
+    const ediScheduling = initialValues.edi ? initialValues.edi.ediJob : null;
 
     if (dataVal) {
       return (
@@ -53,16 +53,16 @@ class EdiInformationView extends React.Component {
               <Col xs={12}>
                 <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.edi.ediBasic" />}</div>
               </Col>
-              {PrintKeyValue('ui-organizations.edi.vendorEDICode', get(dataVal, 'edi.vendor_edi_code', ''), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.vendorEDIType', get(dataVal, 'edi.vendor_edi_type', ''), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.libraryEDICode', get(dataVal, 'edi.lib_edi_code', ''), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.libraryEDIType', this.getLibraryEdiCodeTypeDD(get(dataVal, 'edi.lib_edi_type', '')), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.prorateTax', get(dataVal, 'edi.prorate_tax'), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.prorateFees', get(dataVal, 'edi.prorate_fees'), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.ediNamingConvention', get(dataVal, 'edi.edi_naming_convention'), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.sendAccountNumber', get(dataVal, 'edi.send_acct_num'), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.supportOrder', get(dataVal, 'edi.support_order'), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.supportInvoice', get(dataVal, 'edi.support_invoice'), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.vendorEDICode', get(dataVal, 'edi.vendorEdiCode', ''), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.vendorEDIType', get(dataVal, 'edi.vendorEdiType', ''), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.libraryEDICode', get(dataVal, 'edi.libEdiCode', ''), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.libraryEDIType', this.getLibraryEdiCodeTypeDD(get(dataVal, 'edi.libEdiType', '')), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.prorateTax', get(dataVal, 'edi.prorateTax'), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.prorateFees', get(dataVal, 'edi.prorateFees'), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.ediNamingConvention', get(dataVal, 'edi.ediNamingConvention'), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.sendAccountNumber', get(dataVal, 'edi.sendAcctNum'), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.supportOrder', get(dataVal, 'edi.supportOrder'), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.supportInvoice', get(dataVal, 'edi.supportInvoice'), 3, false)}
               {PrintKeyValue('ui-organizations.edi.notes', get(dataVal, 'edi.notes', ''), 3, false)}
               <Col xs={12}>
                 <hr />
@@ -74,14 +74,14 @@ class EdiInformationView extends React.Component {
               <Col xs={12}>
                 <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.edi.ftpDetails" />}</div>
               </Col>
-              {PrintKeyValue('ui-organizations.edi.editFTP', get(ediFtp, ['ftp_format']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.serverAddress', get(ediFtp, ['server_address']), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.editFTP', get(ediFtp, ['ftpFormat']), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.serverAddress', get(ediFtp, ['serverAddress']), 3, false)}
               {PrintKeyValue('ui-organizations.edi.username', get(ediFtp, ['username']), 3, false)}
               {PrintKeyValue('ui-organizations.edi.password', get(ediFtp, ['password']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.ftpMode', get(ediFtp, ['ftp_mode']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.ftpPort', get(ediFtp, ['ftp_port']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.orderDirectory', get(ediFtp, ['order_directory']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.invoiceDirectory', get(ediFtp, ['invoice_directory']), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.ftpMode', get(ediFtp, ['ftpMode']), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.ftpPort', get(ediFtp, ['ftpPort']), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.orderDirectory', get(ediFtp, ['orderDirectory']), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.invoiceDirectory', get(ediFtp, ['invoiceDirectory']), 3, false)}
               {PrintKeyValue('ui-organizations.edi.notes', get(ediFtp, ['notes']), 3, false)}
               <Col xs={12}>
                 <hr />
@@ -93,20 +93,20 @@ class EdiInformationView extends React.Component {
               <Col xs={12}>
                 <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.edi.scheduling" />}</div>
               </Col>
-              {PrintBoolToCheckbox('ui-organizations.edi.scheduleEDI', toString(get(ediScheduling, ['schedule_edi'])), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.scheduleEDI', toString(get(ediScheduling, ['scheduleEdi'])), 3, false)}
               {PrintKeyValue('ui-organizations.edi.date', get(ediScheduling, ['date']), 3, false)}
               {PrintKeyValue('ui-organizations.edi.time', get(ediScheduling, ['time']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.sendToEmails', get(ediScheduling, ['send_to_emails']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.notifyAllEDI', get(ediScheduling, ['notify_all_edi']), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.notifyInvoiceOnly', toString(get(ediScheduling, ['notify_invoice_only'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.notifyErrorOnly', toString(get(ediScheduling, ['notify_error_only'])), 6, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.monday', toString(get(ediScheduling, ['is_monday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.tuesday', toString(get(ediScheduling, ['is_tuesday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.wednesday', toString(get(ediScheduling, ['is_wednesday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.thursday', toString(get(ediScheduling, ['is_thursday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.friday', toString(get(ediScheduling, ['is_friday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.saturday', toString(get(ediScheduling, ['is_saturday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.sunday', toString(get(ediScheduling, ['is_sunday'])), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.sendToEmails', get(ediScheduling, ['sendToEmails']), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.notifyAllEDI', get(ediScheduling, ['notifyAllEdi']), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.notifyInvoiceOnly', toString(get(ediScheduling, ['notifyInvoiceOnly'])), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.notifyErrorOnly', toString(get(ediScheduling, ['notifyErrorOnly'])), 6, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.monday', toString(get(ediScheduling, ['isMonday'])), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.tuesday', toString(get(ediScheduling, ['isTuesday'])), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.wednesday', toString(get(ediScheduling, ['isWednesday'])), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.thursday', toString(get(ediScheduling, ['isThursday'])), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.friday', toString(get(ediScheduling, ['isFriday'])), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.saturday', toString(get(ediScheduling, ['isSaturday'])), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.sunday', toString(get(ediScheduling, ['isSunday'])), 3, false)}
             </Row>
           }
         </div>

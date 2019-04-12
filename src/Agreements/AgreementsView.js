@@ -27,7 +27,7 @@ class AgreementsView extends React.Component {
           <KeyValue label={<FormattedMessage id="ui-organizations.agreement.discount" />} value={discount} />
         </Col>
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.agreement.referenceUrl" />} value={_.get(val, 'reference_url')} />
+          <KeyValue label={<FormattedMessage id="ui-organizations.agreement.referenceUrl" />} value={_.get(val, 'referenceUrl')} />
         </Col>
         <Col xs={12}>
           <KeyValue label={<FormattedMessage id="ui-organizations.agreement.notes" />} value={_.get(val, 'notes')} />
