@@ -273,7 +273,7 @@
   "valid.required": "Required!",
   "valid.isURLValid": "Invalid URL",
 
-  "filterConfig.vendorStatus": "Vendor status",
+  "filterConfig.vendorStatus": "Organizations status",
   "filterConfig.addressCategory": "Address category",
   "filterConfig.contactPeopleCategory": "Contact people category",
   "filterConfig.country": "Country",
@@ -304,7 +304,7 @@
   "main.name":"Name",
   "main.code":"Code",
   "main.description":"Description",
-  "main.vendorStatus": "Vendor status",
+  "main.vendorStatus": "Organizations status",
 
   "summary.name":"Name",
   "summary.code":"Code",
