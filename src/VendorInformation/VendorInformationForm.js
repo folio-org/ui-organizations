@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Field, getFormValues } from 'redux-form';
 import { MultiSelection, Select, Checkbox, TextField, AccordionSet, Accordion, Row, Col } from '@folio/stripes/components';
 import css from './VendorInformationForm.css';
+import { getDropDownItems } from '../common/utils/dropdown';
 
 class VendorInformationForm extends Component {
   static propTypes = {
@@ -18,7 +19,7 @@ class VendorInformationForm extends Component {
     }),
     dispatch: PropTypes.func,
     change: PropTypes.func,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -34,14 +35,14 @@ class VendorInformationForm extends Component {
   onChangeSelect = (e, propertyName) => {
     const { dispatch, change } = this.props;
     dispatch(change(`${propertyName}`, e));
-  }
+  };
 
   selectedValues = (propertyName) => {
     const { stripes: { store } } = this.props;
     const formValues = getFormValues('FormVendor')(store.getState());
     const currValues = formValues[propertyName];
     return currValues;
-  }
+  };
 
   // For Multi dropdown
   toString = (option) => option;
@@ -54,14 +55,20 @@ class VendorInformationForm extends Component {
 
   render() {
     const { parentResources, dropdownCurrencies } = this.props;
-    const paymentMethodDD = (parentResources.dropdown || {}).paymentMethodDD || [];
+    const paymentMethodDD = getDropDownItems(parentResources, 'paymentMethodDD', false);
 
     return (
       <Row className={css.vendorInfo}>
         <Col xs={12} md={6}>
           <Row>
             <Col xs={12}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.paymentMethod" />} name="paymentMethod" id="paymentMethod" component={Select} dataOptions={paymentMethodDD} fullWidth />
+              <Field
+                label={<FormattedMessage id="ui-organizations.vendorInfo.paymentMethod" />}
+                name="paymentMethod"
+                component={Select}
+                dataOptions={paymentMethodDD}
+                fullWidth
+              />
             </Col>
             <Col xs={12} className={css.vendorInfoCheckbox}>
               <Field label={<FormattedMessage id="ui-organizations.vendorInfo.accessProvider" />} name="accessProvider" id="accessProvider" component={Checkbox} />
@@ -80,7 +87,6 @@ class VendorInformationForm extends Component {
                 component={MultiSelection}
                 label={<FormattedMessage id="ui-organizations.vendorInfo.vendorCurrencies" />}
                 name="vendorCurrencies"
-                id="vendorCurrencies"
                 dataOptions={dropdownCurrencies}
                 style={{ height: '80px' }}
                 value={this.selectedValues('vendorCurrencies')}

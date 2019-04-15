@@ -7,6 +7,7 @@ import { Row, Col, Button, TextField, TextArea, Select, Checkbox } from '@folio/
 import { isURLValid } from '../Utils/Validate';
 import TogglePassword from '../Utils/TogglePassword';
 import css from './InterfaceForm.css';
+import { getDropDownItems } from '../common/utils/dropdown';
 
 class InterfaceForm extends Component {
   static propTypes = {
@@ -15,7 +16,7 @@ class InterfaceForm extends Component {
       vendorContactCategory: PropTypes.object,
       dropdown: PropTypes.object.isRequired
     })
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -39,12 +40,12 @@ class InterfaceForm extends Component {
         </Col>
       </Row>
     );
-  }
+  };
 
   renderInterfaceSubForm = (elem, index, fields) => {
     const { parentResources } = this.props;
-    const formatDD = (parentResources.dropdown || {}).formatDD || [];
-    const deliveryMethodDD = (parentResources.dropdown || {}).deliveryMethodDD || [];
+    const formatDD = getDropDownItems(parentResources, 'formatDD', false);
+    const deliveryMethodDD = getDropDownItems(parentResources, 'deliveryMethodDD', false);
 
     return (
       <div key={index} className={css.panels}>
@@ -71,10 +72,22 @@ class InterfaceForm extends Component {
             <Field label={<FormattedMessage id="ui-organizations.interface.available" />} name={`${elem}.available`} id={`${elem}.available`} component={Checkbox} />
           </Col>
           <Col xs={12} md={6}>
-            <Field label={<FormattedMessage id="ui-organizations.interface.deliveryMethod" />} name={`${elem}.deliveryMethod`} id={`${elem}.deliveryMethod`} component={Select} fullWidth dataOptions={deliveryMethodDD} />
+            <Field
+              label={<FormattedMessage id="ui-organizations.interface.deliveryMethod" />}
+              name={`${elem}.deliveryMethod`}
+              component={Select}
+              fullWidth
+              dataOptions={deliveryMethodDD}
+            />
           </Col>
           <Col xs={12} md={6}>
-            <Field label={<FormattedMessage id="ui-organizations.interface.statisticsFormat" />} name={`${elem}.statisticsFormat`} id={`${elem}.statisticsFormat`} component={Select} fullWidth dataOptions={formatDD} />
+            <Field
+              label={<FormattedMessage id="ui-organizations.interface.statisticsFormat" />}
+              name={`${elem}.statisticsFormat`}
+              component={Select}
+              fullWidth
+              dataOptions={formatDD}
+            />
           </Col>
           <Col xs={12} md={6}>
             <Field label={<FormattedMessage id="ui-organizations.interface.locallyStored" />} name={`${elem}.locallyStored`} id={`${elem}.locallyStored`} component={TextField} fullWidth />
@@ -93,7 +106,7 @@ class InterfaceForm extends Component {
         </Row>
       </div>
     );
-  }
+  };
 
   render() {
     return (

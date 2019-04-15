@@ -5,6 +5,7 @@ import { Pane, PaneMenu, Button } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/form';
 import css from './PaneDetails.css';
 import { FormVendor } from '../VendorViews';
+import { getDropDownItems } from '../common/utils/dropdown';
 
 class PaneDetails extends React.Component {
   static propTypes = {
@@ -21,7 +22,7 @@ class PaneDetails extends React.Component {
       dropdown: PropTypes.object.isRequired
     }),
     parentMutator: PropTypes.object
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -70,30 +71,22 @@ class PaneDetails extends React.Component {
 
   getCountryList() {
     const { parentResources } = this.props;
-    const data = parentResources.CountryList || [];
-    if (!data || data.length === 0) return null;
-    return Object.values(data);
+    return getDropDownItems(parentResources, 'countryList', true);
   }
 
   getLanguageList() {
     const { parentResources } = this.props;
-    const data = parentResources.LanguageList || [];
-    if (!data || data.length === 0) return null;
-    return Object.values(data);
+    return getDropDownItems(parentResources, 'languageList', false);
   }
 
   getCurrencies() {
     const { parentResources } = this.props;
-    const data = (parentResources.dropdown || {}).currencyDD || [];
-    if (!data || data.length === 0) return null;
-    return data;
+    return getDropDownItems(parentResources, 'currencyDD', false);
   }
 
   getPhoneType() {
     const { parentResources } = this.props;
-    const data = (parentResources.dropdown || {}).phoneTypeDD || [];
-    // if (!data || data.length === 0) return null;
-    return data;
+    return getDropDownItems(parentResources, 'phoneTypeDD', false);
   }
 
   deleteVendor(ID) {

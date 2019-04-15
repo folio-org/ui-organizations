@@ -19,11 +19,12 @@ import {
 import { isURLValid } from '../Utils/Validate';
 import css from './EdiInformationForm.css';
 import TogglePassword from '../Utils/TogglePassword';
+import { getDropDownItems } from '../common/utils/dropdown';
 
 class EdiInformationForm extends Component {
   static propTypes = {
     parentResources: PropTypes.object
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -47,11 +48,11 @@ class EdiInformationForm extends Component {
 
   render() {
     const { parentResources } = this.props;
-    const vendorEdiCodeTypeDD = (parentResources.dropdown || {}).ediCodeTypeDD || [];
-    const libraryEdiCodeTypeDD = (parentResources.dropdown || {}).ediCodeTypeDD || [];
-    const ftpDD = (parentResources.dropdown || {}).ftpDD || [];
-    const transmissionModeDD = (parentResources.dropdown || {}).transmissionModeDD || [];
-    const connectionModeDD = (parentResources.dropdown || {}).connectionModeDD || [];
+    const vendorEdiCodeTypeDD = getDropDownItems(parentResources, 'ediCodeTypeDD', false);
+    const libraryEdiCodeTypeDD = getDropDownItems(parentResources, 'ediCodeTypeDD', false);
+    const ftpDD = getDropDownItems(parentResources, 'ftpDD', false);
+    const transmissionModeDD = getDropDownItems(parentResources, 'transmissionModeDD', false);
+    const connectionModeDD = getDropDownItems(parentResources, 'connectionModeDD', false);
 
     return (
       <Col xs={12} className={css.leftPadding}>
@@ -64,13 +65,25 @@ class EdiInformationForm extends Component {
                     <Field label={<FormattedMessage id="ui-organizations.edi.vendorEDICode" />} name="edi.vendorEdiCode" id="vendorEdiCode" component={TextField} fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Field label={<FormattedMessage id="ui-organizations.edi.vendorEDIType" />} name="edi.vendorEdiType" id="vendorEdiType" component={Select} dataOptions={vendorEdiCodeTypeDD} fullWidth />
+                    <Field
+                      label={<FormattedMessage id="ui-organizations.edi.vendorEDIType" />}
+                      name="edi.vendorEdiType"
+                      component={Select}
+                      dataOptions={vendorEdiCodeTypeDD}
+                      fullWidth
+                    />
                   </Col>
                   <Col xs={12}>
                     <Field label={<FormattedMessage id="ui-organizations.edi.libraryEDICode" />} name="edi.libEdiCode" id="libEdiCode" component={TextField} fullWidth />
                   </Col>
                   <Col xs={12}>
-                    <Field label={<FormattedMessage id="ui-organizations.edi.libraryEDIType" />} name="edi.libEdiType" id="libEdiType" component={Select} dataOptions={libraryEdiCodeTypeDD} fullWidth />
+                    <Field
+                      label={<FormattedMessage id="ui-organizations.edi.libraryEDIType" />}
+                      name="edi.libEdiType"
+                      component={Select}
+                      dataOptions={libraryEdiCodeTypeDD}
+                      fullWidth
+                    />
                   </Col>
                   <Col xs={12} className={css.EDIInfoCheckbox}>
                     <Field label={<FormattedMessage id="ui-organizations.edi.prorateTax" />} name="edi.prorateTax" id="prorateTax" component={Checkbox} />
@@ -106,7 +119,13 @@ class EdiInformationForm extends Component {
               <Col xs={12} md={6}>
                 <Row>
                   <Col xs={12}>
-                    <Field label={<FormattedMessage id="ui-organizations.edi.editFTP" />} name="edi.ediFtp.ftpFormat" component={Select} dataOptions={ftpDD} fullWidth />
+                    <Field
+                      label={<FormattedMessage id="ui-organizations.edi.editFTP" />}
+                      name="edi.ediFtp.ftpFormat"
+                      component={Select}
+                      dataOptions={ftpDD}
+                      fullWidth
+                    />
                   </Col>
                   <Col xs={12}>
                     <Field

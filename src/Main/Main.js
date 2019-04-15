@@ -16,15 +16,14 @@ import {
 import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
 import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
-import LanguageList from '../Utils/Languages';
-import CountryList from '../Utils/Country';
+import languageList from '../Utils/Languages';
+import countryList from '../Utils/Country';
 import './Main.css';
 
 const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
 const filterConfig = Filters();
 const searchableIndexes = SearchableIndexes;
-const EMPTY_DROPDOWN_ITEM = { label: '', value: '' };
 
 class Main extends Component {
   static propTypes = {
@@ -157,7 +156,6 @@ class Main extends Component {
     dropdown: {
       initialValue: {
         paymentMethodDD: [
-          EMPTY_DROPDOWN_ITEM,
           { label: 'Cash', value: 'Cash' },
           { label: 'Credit Card/P-Card', value: 'Credit Card P Card' },
           { label: 'EFT', value: 'EFT' },
@@ -168,44 +166,36 @@ class Main extends Component {
           { label: 'Other', value: 'other' },
         ],
         vendorEdiCodeDD: [
-          EMPTY_DROPDOWN_ITEM,
           { label: 'Code', value: 'code' },
         ],
         ediCodeTypeDD: [
-          EMPTY_DROPDOWN_ITEM,
           { label: '31B (US-SAN)', value: '31B/US-SAN' },
           { label: '014 (EAN)', value: '014/EAN' },
           { label: '091 (Supplier-assigned ID)', value: '091/Vendor-assigned' },
           { label: '092 (Library-assigned ID)', value: '092/Customer-assigned' }
         ],
         libraryEDICodeDD: [
-          EMPTY_DROPDOWN_ITEM,
           { label: 'Code', value: 'code' },
         ],
         ftpDD: [
-          EMPTY_DROPDOWN_ITEM,
           { label: 'SFTP', value: 'SFTP' },
           { label: 'FTP', value: 'FTP' },
         ],
         transmissionModeDD: [
-          EMPTY_DROPDOWN_ITEM,
           { label: 'ASCII', value: 'ASCII' },
           { label: 'Binary', value: 'Binary' },
         ],
         connectionModeDD: [
-          EMPTY_DROPDOWN_ITEM,
           { label: 'Active', value: 'Active' },
           { label: 'Passive', value: 'Passive' },
         ],
         deliveryMethodDD: [
-          EMPTY_DROPDOWN_ITEM,
           { label: 'Online', value: 'Online' },
           { label: 'FTP', value: 'FTP' },
           { label: 'Email', value: 'Email' },
           { label: 'Other', value: 'Other' },
         ],
         formatDD: [
-          EMPTY_DROPDOWN_ITEM,
           { label: 'Counter', value: 'Counter' },
           { label: 'Delimited', value: 'delimited' },
           { label: 'Excel', value: 'excel' },
@@ -215,33 +205,29 @@ class Main extends Component {
           { label: 'Other', value: 'other' },
         ],
         statusDD: [
-          EMPTY_DROPDOWN_ITEM,
           { label: 'Active', value: 'Active' },
           { label: 'Inactive', value: 'Inactive' },
           { label: 'Pending', value: 'Pending' },
         ],
         currencyDD: ['USD', 'CAD', 'GBP', 'EUR'],
         phoneTypeDD: [
-          EMPTY_DROPDOWN_ITEM,
           { label: 'Office', value: 'Office' },
           { label: 'Mobile', value: 'Mobile' },
           { label: 'Fax', value: 'Fax' },
           { label: 'Other', value: 'Other' },
-        ]
+        ],
+        countryList,
+        languageList,
       }
-    },
-    CountryList: { initialValue: CountryList },
-    LanguageList: { initialValue: LanguageList }
+    }
   });
 
   static getDerivedStateFromProps(props) {
     const langFilter = filterConfig.find(group => group.name === 'language');
     const countryFilter = filterConfig.find(group => group.name === 'country');
     if (langFilter.values.length === 0 && countryFilter.values.length === 0) {
-      const langData = [...LanguageList].splice(1, LanguageList.length);
-      const countryData = [...CountryList].splice(1, CountryList.length);
-      langFilter.values = langData.map(rec => ({ name: rec.label, cql: rec.value }));
-      countryFilter.values = countryData.map(rec => ({ name: rec.label, cql: rec.value }));
+      langFilter.values = languageList.map(({ label, value }) => ({ name: label, cql: value }));
+      countryFilter.values = countryList.map(({ label, value }) => ({ name: label, cql: value }));
       props.mutator.initializedFilterConfig.replace(true);
     }
 

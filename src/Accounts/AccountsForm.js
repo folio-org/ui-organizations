@@ -5,6 +5,7 @@ import { Field, FieldArray } from 'redux-form';
 import { Row, Col, Button, TextField, TextArea, Select } from '@folio/stripes/components';
 import { Required } from '../Utils/Validate';
 import css from './AccountsForm.css';
+import { getDropDownItems } from '../common/utils/dropdown';
 
 
 class AccountsForm extends Component {
@@ -15,7 +16,7 @@ class AccountsForm extends Component {
         statusDD: PropTypes.array.isRequired
       })
     })
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -37,12 +38,12 @@ class AccountsForm extends Component {
         </Col>
       </Row>
     );
-  }
+  };
 
   renderSubForm = (elem, index, fields) => {
     const { parentResources } = this.props;
-    const paymentMethodDD = (parentResources.dropdown || {}).paymentMethodDD || [];
-    const statusDD = (parentResources.dropdown || {}).statusDD || [];
+    const paymentMethodDD = getDropDownItems(parentResources, 'paymentMethodDD', true);
+    const statusDD = getDropDownItems(parentResources, 'statusDD', true);
     return (
       <div key={index} className={css.panels}>
         <Row key={index}>
@@ -61,14 +62,31 @@ class AccountsForm extends Component {
                 <Field label={<FormattedMessage id="ui-organizations.accounts.payable" />} name={`${elem}.appSystemNo`} id={`${elem}.appSystemNo`} component={TextField} fullWidth />
               </Col>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />} name={`${elem}.paymentMethod`} id={`${elem}.paymentMethod`} dataOptions={paymentMethodDD} validate={[Required]} component={Select} fullWidth required />
+                <Field
+                  label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />}
+                  name={`${elem}.paymentMethod`}
+                  placeholder=" "
+                  dataOptions={paymentMethodDD}
+                  validate={[Required]}
+                  component={Select}
+                  fullWidth
+                  required
+                />
               </Col>
             </Row>
           </Col>
           <Col xs={12} md={6}>
             <Row>
               <Col xs={12}>
-                <Field label="Account Status*" name={`${elem}.accountStatus`} id={`${elem}.accountStatus`} dataOptions={statusDD} validate={[Required]} component={Select} fullWidth />
+                <Field
+                  label="Account Status*"
+                  name={`${elem}.accountStatus`}
+                  component={Select}
+                  placeholder=" "
+                  dataOptions={statusDD}
+                  validate={[Required]}
+                  fullWidth
+                />
               </Col>
               <Col xs={12}>
                 <Field label="Contact Info" name={`${elem}.contactInfo`} id={`${elem}.contactInfo`} component={TextField} fullWidth />
@@ -92,7 +110,7 @@ class AccountsForm extends Component {
         </Row>
       </div>
     );
-  }
+  };
 
   render() {
     return (

@@ -1,5 +1,4 @@
 module.exports = [
-  { label: '-- Select Country --', value: '' },
   { label: 'United States', value: 'USA' },
   { label: 'Canada', value: 'CAN' },
   { label: 'Germany', value: 'DEU' },
