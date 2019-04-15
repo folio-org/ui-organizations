@@ -181,7 +181,16 @@ class AddressesMF extends Component {
           <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.zipOrPostalCode" />} name={`${name}.zipCode`} id={`${name}.zipCode`} component={TextField} fullWidth />
         </Col>
         <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.country" />} name={`${name}.country`} id={`${name}.country`} component={Select} dataOptions={dropdownCountry} validate={[Required]} fullWidth required />
+          <Field
+            label={<FormattedMessage id="ui-organizations.data.contactTypes.country" />}
+            name={`${name}.country`}
+            component={Select}
+            placeholder=" "
+            dataOptions={dropdownCountry}
+            validate={[Required]}
+            fullWidth
+            required
+          />
         </Col>
         <Col xs={12} md={3}>
           <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.language" />} name={`${name}.language`} id={`${name}.language`} component={Select} dataOptions={dropdownLanguages} fullWidth />

@@ -16,8 +16,8 @@ import {
 import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
 import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
-import LanguageList from '../Utils/Languages';
-import CountryList from '../Utils/Country';
+import languageList from '../Utils/Languages';
+import countryList from '../Utils/Country';
 import './Main.css';
 
 const INITIAL_RESULT_COUNT = 30;
@@ -37,12 +37,12 @@ class Main extends Component {
     showSingleResult: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
     browseOnly: PropTypes.bool,
     packageInfo: PropTypes.object,
-  }
+  };
 
   static defaultProps = {
     showSingleResult: true,
     browseOnly: false,
-  }
+  };
 
   static manifest = Object.freeze({
     initializedFilterConfig: { initialValue: false },
@@ -156,7 +156,6 @@ class Main extends Component {
     dropdown: {
       initialValue: {
         paymentMethodDD: [
-          { label: '-- Select --', value: '' },
           { label: 'Cash', value: 'Cash' },
           { label: 'Credit Card/P-Card', value: 'Credit Card P Card' },
           { label: 'EFT', value: 'EFT' },
@@ -167,47 +166,36 @@ class Main extends Component {
           { label: 'Other', value: 'other' },
         ],
         vendorEdiCodeDD: [
-          {
-            'label': '-- Select --',
-            'value': ''
-          },
           { label: 'Code', value: 'code' },
         ],
         ediCodeTypeDD: [
-          { label: '-- Select --', value: '' },
           { label: '31B (US-SAN)', value: '31B/US-SAN' },
           { label: '014 (EAN)', value: '014/EAN' },
           { label: '091 (Supplier-assigned ID)', value: '091/Vendor-assigned' },
           { label: '092 (Library-assigned ID)', value: '092/Customer-assigned' }
         ],
         libraryEDICodeDD: [
-          { label: '-- Select --', value: '' },
           { label: 'Code', value: 'code' },
         ],
         ftpDD: [
-          { label: '-- Select --', value: '' },
           { label: 'SFTP', value: 'SFTP' },
           { label: 'FTP', value: 'FTP' },
         ],
         transmissionModeDD: [
-          { label: '-- Select --', value: '' },
           { label: 'ASCII', value: 'ASCII' },
           { label: 'Binary', value: 'Binary' },
         ],
         connectionModeDD: [
-          { label: '-- Select --', value: '' },
           { label: 'Active', value: 'Active' },
           { label: 'Passive', value: 'Passive' },
         ],
         deliveryMethodDD: [
-          { label: '-- Select --', value: '' },
           { label: 'Online', value: 'Online' },
           { label: 'FTP', value: 'FTP' },
           { label: 'Email', value: 'Email' },
           { label: 'Other', value: 'Other' },
         ],
         formatDD: [
-          { label: '-- Select --', value: '' },
           { label: 'Counter', value: 'Counter' },
           { label: 'Delimited', value: 'delimited' },
           { label: 'Excel', value: 'excel' },
@@ -217,33 +205,29 @@ class Main extends Component {
           { label: 'Other', value: 'other' },
         ],
         statusDD: [
-          { label: '-- Select --', value: '' },
           { label: 'Active', value: 'Active' },
           { label: 'Inactive', value: 'Inactive' },
           { label: 'Pending', value: 'Pending' },
         ],
         currencyDD: ['USD', 'CAD', 'GBP', 'EUR'],
         phoneTypeDD: [
-          { label: '-- Select Type --', value: '' },
           { label: 'Office', value: 'Office' },
           { label: 'Mobile', value: 'Mobile' },
           { label: 'Fax', value: 'Fax' },
           { label: 'Other', value: 'Other' },
-        ]
+        ],
+        countryList,
+        languageList,
       }
-    },
-    CountryList: { initialValue: CountryList },
-    LanguageList: { initialValue: LanguageList }
+    }
   });
 
   static getDerivedStateFromProps(props) {
     const langFilter = filterConfig.find(group => group.name === 'language');
     const countryFilter = filterConfig.find(group => group.name === 'country');
     if (langFilter.values.length === 0 && countryFilter.values.length === 0) {
-      const langData = [...LanguageList].splice(1, LanguageList.length);
-      const countryData = [...CountryList].splice(1, CountryList.length);
-      langFilter.values = langData.map(rec => ({ name: rec.label, cql: rec.value }));
-      countryFilter.values = countryData.map(rec => ({ name: rec.label, cql: rec.value }));
+      langFilter.values = languageList.map(({ label, value }) => ({ name: label, cql: value }));
+      countryFilter.values = countryList.map(({ label, value }) => ({ name: label, cql: value }));
       props.mutator.initializedFilterConfig.replace(true);
     }
 
@@ -266,12 +250,12 @@ class Main extends Component {
         layer: null
       });
     });
-  }
+  };
 
   onChangeIndex = (e) => {
     const qindex = e.target.value;
     this.props.mutator.query.update({ qindex });
-  }
+  };
 
   render() {
     const { onSelectRow, disableRecordCreation, onComponentWillUnmount, showSingleResult, browseOnly } = this.props;
