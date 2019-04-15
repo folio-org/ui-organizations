@@ -24,6 +24,7 @@ const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
 const filterConfig = Filters();
 const searchableIndexes = SearchableIndexes;
+const EMPTY_DROPDOWN_ITEM = { label: '', value: '' };
 
 class Main extends Component {
   static propTypes = {
@@ -37,12 +38,12 @@ class Main extends Component {
     showSingleResult: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
     browseOnly: PropTypes.bool,
     packageInfo: PropTypes.object,
-  }
+  };
 
   static defaultProps = {
     showSingleResult: true,
     browseOnly: false,
-  }
+  };
 
   static manifest = Object.freeze({
     initializedFilterConfig: { initialValue: false },
@@ -156,7 +157,7 @@ class Main extends Component {
     dropdown: {
       initialValue: {
         paymentMethodDD: [
-          { label: '-- Select --', value: '' },
+          EMPTY_DROPDOWN_ITEM,
           { label: 'Cash', value: 'Cash' },
           { label: 'Credit Card/P-Card', value: 'Credit Card P Card' },
           { label: 'EFT', value: 'EFT' },
@@ -167,47 +168,44 @@ class Main extends Component {
           { label: 'Other', value: 'other' },
         ],
         vendorEdiCodeDD: [
-          {
-            'label': '-- Select --',
-            'value': ''
-          },
+          EMPTY_DROPDOWN_ITEM,
           { label: 'Code', value: 'code' },
         ],
         ediCodeTypeDD: [
-          { label: '-- Select --', value: '' },
+          EMPTY_DROPDOWN_ITEM,
           { label: '31B (US-SAN)', value: '31B/US-SAN' },
           { label: '014 (EAN)', value: '014/EAN' },
           { label: '091 (Supplier-assigned ID)', value: '091/Vendor-assigned' },
           { label: '092 (Library-assigned ID)', value: '092/Customer-assigned' }
         ],
         libraryEDICodeDD: [
-          { label: '-- Select --', value: '' },
+          EMPTY_DROPDOWN_ITEM,
           { label: 'Code', value: 'code' },
         ],
         ftpDD: [
-          { label: '-- Select --', value: '' },
+          EMPTY_DROPDOWN_ITEM,
           { label: 'SFTP', value: 'SFTP' },
           { label: 'FTP', value: 'FTP' },
         ],
         transmissionModeDD: [
-          { label: '-- Select --', value: '' },
+          EMPTY_DROPDOWN_ITEM,
           { label: 'ASCII', value: 'ASCII' },
           { label: 'Binary', value: 'Binary' },
         ],
         connectionModeDD: [
-          { label: '-- Select --', value: '' },
+          EMPTY_DROPDOWN_ITEM,
           { label: 'Active', value: 'Active' },
           { label: 'Passive', value: 'Passive' },
         ],
         deliveryMethodDD: [
-          { label: '-- Select --', value: '' },
+          EMPTY_DROPDOWN_ITEM,
           { label: 'Online', value: 'Online' },
           { label: 'FTP', value: 'FTP' },
           { label: 'Email', value: 'Email' },
           { label: 'Other', value: 'Other' },
         ],
         formatDD: [
-          { label: '-- Select --', value: '' },
+          EMPTY_DROPDOWN_ITEM,
           { label: 'Counter', value: 'Counter' },
           { label: 'Delimited', value: 'delimited' },
           { label: 'Excel', value: 'excel' },
@@ -217,14 +215,14 @@ class Main extends Component {
           { label: 'Other', value: 'other' },
         ],
         statusDD: [
-          { label: '-- Select --', value: '' },
+          EMPTY_DROPDOWN_ITEM,
           { label: 'Active', value: 'Active' },
           { label: 'Inactive', value: 'Inactive' },
           { label: 'Pending', value: 'Pending' },
         ],
         currencyDD: ['USD', 'CAD', 'GBP', 'EUR'],
         phoneTypeDD: [
-          { label: '-- Select Type --', value: '' },
+          EMPTY_DROPDOWN_ITEM,
           { label: 'Office', value: 'Office' },
           { label: 'Mobile', value: 'Mobile' },
           { label: 'Fax', value: 'Fax' },
@@ -266,12 +264,12 @@ class Main extends Component {
         layer: null
       });
     });
-  }
+  };
 
   onChangeIndex = (e) => {
     const qindex = e.target.value;
     this.props.mutator.query.update({ qindex });
-  }
+  };
 
   render() {
     const { onSelectRow, disableRecordCreation, onComponentWillUnmount, showSingleResult, browseOnly } = this.props;
