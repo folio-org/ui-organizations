@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { MultiColumnList, Row, Col, KeyValue } from '@folio/stripes/components';
 import css from './SummaryView.css';
 import LanguageLookup from '../Utils/LanguageLookup';
+import { PrintBoolToCheckbox } from '../Utils/PrintKeyValue';
 
 class SummaryView extends React.Component {
   static propTypes = {
@@ -33,11 +34,12 @@ class SummaryView extends React.Component {
           <KeyValue label={<FormattedMessage id="ui-organizations.summary.accountingCode" />} value={_.get(dataVal, ['erpCode'], '')} />
         </Col>
         <Col xs={4}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.summary.vendorStatus" />} value={_.get(dataVal, 'status', '')} />
+          <KeyValue label={<FormattedMessage id="ui-organizations.summary.organizationStatus" />} value={_.get(dataVal, 'status', '')} />
         </Col>
         <Col xs={4}>
           <KeyValue label={<FormattedMessage id="ui-organizations.summary.defaultLanguage" />} value={getLanguage} />
         </Col>
+        {PrintBoolToCheckbox('ui-organizations.summary.isVendor', dataVal.isVendor, 4)}
         <Col xs={12}>
           <KeyValue label={<FormattedMessage id="ui-organizations.summary.description" />} value={_.get(dataVal, 'description', '')} />
         </Col>

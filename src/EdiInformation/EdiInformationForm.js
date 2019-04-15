@@ -103,8 +103,8 @@ class EdiInformationForm extends Component {
                   </Col>
                   <Col xs={12}>
                     <p>{<FormattedMessage id="ui-organizations.edi.whatMssgs" />}</p>
-                    <Field label={<FormattedMessage id="ui-organizations.edi.supportOrder" />} name="edi.supportOrder" id="supportOrder" component={Checkbox} />
-                    <Field label={<FormattedMessage id="ui-organizations.edi.supportInvoice" />} name="edi.supportInvoice" id="supportInvoice" component={Checkbox} />
+                    <Field label={<FormattedMessage id="ui-organizations.edi.orders" />} name="edi.supportOrder" id="supportOrder" component={Checkbox} />
+                    <Field label={<FormattedMessage id="ui-organizations.edi.invoices" />} name="edi.supportInvoice" id="supportInvoice" component={Checkbox} />
                   </Col>
                 </Row>
               </Col>

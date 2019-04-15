@@ -70,7 +70,7 @@ class SummaryForm extends React.Component {
           <Field label={<FormattedMessage id="ui-organizations.summary.code" />} name="code" id="code" validate={[Required]} component={TextField} fullWidth required />
           <Field label={<FormattedMessage id="ui-organizations.summary.accountingCode" />} name="erpCode" id="erpCode" component={TextField} fullWidth />
           <Field
-            label={<FormattedMessage id="ui-organizations.summary.vendorStatus" />}
+            label={<FormattedMessage id="ui-organizations.summary.organizationStatus" />}
             name="status"
             component={Select}
             placeholder=" "

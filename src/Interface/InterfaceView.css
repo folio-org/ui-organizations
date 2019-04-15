@@ -1,4 +1,5 @@
-/* ContactPeopleView.css */
+@import "../common/styles/wrapValue.css";
+
 .subHeadings {
   color: var(--subHeading-color);
   font-size: var(--subHeading-font-size);

@@ -12,7 +12,7 @@ class EdiInformationView extends React.Component {
     parentResources: PropTypes.shape({
       dropdown: PropTypes.shape({
         paymentMethodDD: PropTypes.array.isRequired,
-        ediCodeTypeDD: PropTypes.object
+        ediCodeTypeDD: PropTypes.array.isRequired
       })
     })
   }
@@ -59,7 +59,7 @@ class EdiInformationView extends React.Component {
               {PrintKeyValue('ui-organizations.edi.libraryEDIType', this.getLibraryEdiCodeTypeDD(get(dataVal, 'edi.libEdiType', '')), 3, false)}
               {PrintBoolToCheckbox('ui-organizations.edi.prorateTax', get(dataVal, 'edi.prorateTax'), 3, false)}
               {PrintBoolToCheckbox('ui-organizations.edi.prorateFees', get(dataVal, 'edi.prorateFees'), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.ediNamingConvention', get(dataVal, 'edi.ediNamingConvention'), 3, false)}
+              {PrintKeyValue('ui-organizations.edi.ediNamingConvention', get(dataVal, 'edi.ediNamingConvention'), 3)}
               {PrintBoolToCheckbox('ui-organizations.edi.sendAccountNumber', get(dataVal, 'edi.sendAcctNum'), 3, false)}
               {PrintBoolToCheckbox('ui-organizations.edi.supportOrder', get(dataVal, 'edi.supportOrder'), 3, false)}
               {PrintBoolToCheckbox('ui-organizations.edi.supportInvoice', get(dataVal, 'edi.supportInvoice'), 3, false)}
@@ -97,7 +97,7 @@ class EdiInformationView extends React.Component {
               {PrintKeyValue('ui-organizations.edi.date', get(ediScheduling, ['date']), 3, false)}
               {PrintKeyValue('ui-organizations.edi.time', get(ediScheduling, ['time']), 3, false)}
               {PrintKeyValue('ui-organizations.edi.sendToEmails', get(ediScheduling, ['sendToEmails']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.notifyAllEDI', get(ediScheduling, ['notifyAllEdi']), 3, false)}
+              {PrintBoolToCheckbox('ui-organizations.edi.notifyAllEDI', !!get(ediScheduling, 'notifyAllEdi'), 3)}
               {PrintBoolToCheckbox('ui-organizations.edi.notifyInvoiceOnly', toString(get(ediScheduling, ['notifyInvoiceOnly'])), 3, false)}
               {PrintBoolToCheckbox('ui-organizations.edi.notifyErrorOnly', toString(get(ediScheduling, ['notifyErrorOnly'])), 6, false)}
               {PrintBoolToCheckbox('ui-organizations.edi.monday', toString(get(ediScheduling, ['isMonday'])), 3, false)}

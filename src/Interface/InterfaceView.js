@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { Row, Col, KeyValue } from '@folio/stripes/components';
 import css from './InterfaceView.css';
 import BoolToCheckbox from '../Utils/BoolToCheckbox';
+import { PrintBoolToCheckbox } from '../Utils/PrintKeyValue';
 
 class InterfaceView extends React.Component {
   static propTypes = {
@@ -19,7 +20,11 @@ class InterfaceView extends React.Component {
   printKeyValue(label, val) {
     return (
       <Col xs={3}>
-        <KeyValue label={<FormattedMessage id={`ui-organizations.interface.${label}`} />} value={val} />
+        <KeyValue label={<FormattedMessage id={`ui-organizations.interface.${label}`} />}>
+          <span className={css.wrapValue}>
+            {val}
+          </span>
+        </KeyValue>
       </Col>
     );
   }
@@ -38,12 +43,12 @@ class InterfaceView extends React.Component {
         </Col>
         <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.available" />}>
-            <BoolToCheckbox name="Available" value={_.get(val, ['available'])} />
+            <BoolToCheckbox name="Available" value={!!_.get(val, 'available')} />
           </KeyValue>
         </Col>
         {this.printKeyValue('deliveryMethod', _.get(val, ['deliveryMethod'], ''))}
         {this.printKeyValue('statisticsFormat', _.get(val, ['statisticsFormat'], ''))}
-        {this.printKeyValue('locallyStored', _.get(val, ['locallyStored'], ''))}
+        {PrintBoolToCheckbox('ui-organizations.interface.locallyStored', !!_.get(val, 'locallyStored'), 3)}
         {this.printKeyValue('onlineLocation', _.get(val, ['onlineLocation'], ''))}
         {this.printKeyValue('statisticsNotes', _.get(val, ['statisticsNotes'], ''))}
         {rowCount &&
