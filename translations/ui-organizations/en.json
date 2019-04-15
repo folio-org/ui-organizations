@@ -1,5 +1,5 @@
 {
-  "meta.title": "Organization",
+  "meta.title": "Organizations",
   "search": "Search",
   "resultCount": "{count, number} {count, plural, one {Record found} other {Records found}}",
 
@@ -474,7 +474,7 @@
   "settings.categories": "Categories",
   "settings.name": "name",
   "settings.action": "actions",
-  "settings.vendorSettings": "Vendor Settings",
+  "settings.vendorSettings": "Organizations settings",
   "settings.": "",
 
   "end": ""
