@@ -81,7 +81,9 @@ class PaneDetails extends React.Component {
 
   getCurrencies() {
     const { parentResources } = this.props;
-    return getDropDownItems(parentResources, 'currencyDD', false);
+    const data = (parentResources.dropdown || {}).currencyDD || [];
+    if (!data || data.length === 0) return null;
+    return data;
   }
 
   getPhoneType() {
