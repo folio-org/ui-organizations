@@ -3,8 +3,8 @@ import {
   isVisible,
 } from '@bigtest/interactor';
 
-import { SECTIONS } from '../../../src/common/constants';
-import Button from './Button';
+import { SECTIONS } from '../../../../src/common/constants';
+import Button from '../Button';
 
 class SummarySection {
   static defaultScope = `#${SECTIONS.summarySection}`;

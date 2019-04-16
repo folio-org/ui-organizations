@@ -6,6 +6,8 @@ const configOrganizations = server => {
   });
 
   server.put(`${ORGANIZATIONS_API}/:id`);
+
+  server.post(`${ORGANIZATIONS_API}`);
 };
 
 export default configOrganizations;

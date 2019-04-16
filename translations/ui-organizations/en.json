@@ -286,6 +286,9 @@
   "view.editVendorDialog": "Edit vendor dialog",
   "view.details": "Details",
 
+  "createOrg.title": "Create organization",
+  "createOrg.submit": "Create organization",
+
   "edit.delete": "Delete",
   "edit.requiredFields": "Required fields!",
   "edit.password": "Password",
@@ -306,9 +309,9 @@
   "main.description":"Description",
   "main.vendorStatus": "Organizations status",
 
-  "summary.name":"Name",
-  "summary.code":"Code",
-  "summary.description":"Description",
+  "summary.name": "Name",
+  "summary.code": "Code",
+  "summary.description": "Description",
   "summary.organizationStatus": "Organization status",
   "summary.isVendor": "Vendor",
   "summary.accountingCode": "Accounting code",
@@ -395,6 +398,8 @@
   "vendorInfo.liableForVAT": "Liable for VAT",
   "vendorInfo.noInformationAvailable": "No information available",
 
+  "vendorTerms": "Vendor terms",
+
   "edi.ediBasic": "EDI basic",
   "edi.vendorEDICode": "Vendor EDI code",
   "edi.vendorEDIType": "Vendor EDI type",
@@ -404,7 +409,7 @@
   "edi.prorateFees": "Prorate fees",
   "edi.ediNamingConvention": "EDI naming convention",
   "edi.sendAccountNumber": "Send account number",
-  "edi.whatMssgs": "What Messages are expected for this Vendor?",
+  "edi.whatMssgs": "What messages are expected for this vendor?",
   "edi.orders": "Orders",
   "edi.invoices": "Invoices",
   "edi.notes": "Notes",
@@ -460,7 +465,7 @@
   "accounts.description": "Description",
   "accounts.payable": "Accounting code",
   "accounts.paymentMethod": "Payment method",
-  "accounts.accountStatus": "Account Status",
+  "accounts.accountStatus": "Account status",
   "accounts.contactInfo": "Contact info",
   "accounts.libraryCode": "Library code",
   "accounts.libraryEDICode": "Library EDI code",

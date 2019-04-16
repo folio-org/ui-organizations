@@ -170,6 +170,7 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-intl": "^2.4.0",
+    "react-hot-loader": "^4.3.12",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
   },

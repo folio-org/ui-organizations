@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { getFormSyncErrors } from 'redux-form';
+
 import { IfPermission } from '@folio/stripes/core';
 import { Button, Row, Col, AccordionSet, Accordion, ExpandAllButton, Icon } from '@folio/stripes/components';
-// Local Components
+
 import { SummaryForm } from '../Summary';
 import { ContactInformationForm } from '../ContactInformation';
 import { ContactPeopleForm } from '../ContactPeople';
@@ -22,7 +23,8 @@ class FormVendor extends Component {
     deleteLedger: PropTypes.func,
     parentMutator: PropTypes.object.isRequired,
     parentResources: PropTypes.object.isRequired,
-    stripes: PropTypes.object
+    stripes: PropTypes.object,
+    isVendor: PropTypes.bool,
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -103,7 +105,7 @@ class FormVendor extends Component {
   }
 
   render() {
-    const { initialValues } = this.props;
+    const { initialValues, isVendor } = this.props;
     const { sectionErrors } = this.state;
     const showDeleteButton = initialValues.id || false;
     // Errors
@@ -135,21 +137,48 @@ class FormVendor extends Component {
               <Accordion label={<FormattedMessage id="ui-organizations.contactPeople" />} id="contactPeopleSection" displayWhenClosed={isDisplayError('contactPeopleErr')} displayWhenOpen={isDisplayError('contactPeopleErr')}>
                 <ContactPeopleForm {...this.props} />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-organizations.agreements" />} id="agreementsSection" displayWhenClosed={isDisplayError('agreementsErr')} displayWhenOpen={isDisplayError('agreementsErr')}>
-                <AgreementsForm {...this.props} />
-              </Accordion>
-              <Accordion label={<FormattedMessage id="ui-organizations.vendorInformation" />} id="vendorInformationSection">
-                <VendorInformationForm {...this.props} />
-              </Accordion>
-              <Accordion label={<FormattedMessage id="ui-organizations.ediInformation" />} id="EDIInformationSection" displayWhenClosed={isDisplayError('ediErr')} displayWhenOpen={isDisplayError('ediErr')}>
-                <EdiInformationForm {...this.props} />
-              </Accordion>
               <Accordion label={<FormattedMessage id="ui-organizations.interface" />} id="interfacesSection" displayWhenClosed={isDisplayError('interfacesErr')} displayWhenOpen={isDisplayError('interfacesErr')}>
                 <InterfaceForm {...this.props} />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-organizations.accounts" />} id="accountsSection" displayWhenClosed={isDisplayError('accountsErr')} displayWhenOpen={isDisplayError('accountsErr')}>
-                <AccountsForm {...this.props} />
-              </Accordion>
+              {
+                isVendor && (
+                  <Fragment>
+                    <Accordion
+                      label={<FormattedMessage id="ui-organizations.vendorInformation" />}
+                      id="vendorInformationSection"
+                    >
+                      <VendorInformationForm {...this.props} />
+                    </Accordion>
+
+                    <Accordion
+                      label={<FormattedMessage id="ui-organizations.vendorTerms" />}
+                      id="agreementsSection"
+                      displayWhenClosed={isDisplayError('agreementsErr')}
+                      displayWhenOpen={isDisplayError('agreementsErr')}
+                    >
+                      <AgreementsForm {...this.props} />
+                    </Accordion>
+
+                    <Accordion
+                      label={<FormattedMessage id="ui-organizations.ediInformation" />}
+                      id="EDIInformationSection"
+                      displayWhenClosed={isDisplayError('ediErr')}
+                      displayWhenOpen={isDisplayError('ediErr')}
+                    >
+                      <EdiInformationForm {...this.props} />
+                    </Accordion>
+
+                    <Accordion
+                      label={<FormattedMessage id="ui-organizations.accounts" />}
+                      id="accountsSection"
+                      displayWhenClosed={isDisplayError('accountsErr')}
+                      displayWhenOpen={isDisplayError('accountsErr')}
+                    >
+                      <AccountsForm {...this.props} />
+                    </Accordion>
+                  </Fragment>
+                )
+              }
             </AccordionSet>
             <IfPermission perm="organizations-storage.organizations.item.delete">
               <Row end="xs">
