@@ -20,10 +20,6 @@ class VendorInformationView extends React.Component {
       return (
         <Row className={css.horizontalLine}>
           {PrintKeyValue('ui-organizations.vendorInfo.paymentMethod', get(dataVal, 'paymentMethod'), 3, false)}
-          {PrintBoolToCheckbox('ui-organizations.vendorInfo.accessProvider', get(dataVal, 'accessProvider'), 3, false)}
-          {PrintBoolToCheckbox('ui-organizations.vendorInfo.governmental', toString(get(dataVal, ['governmental'])), 3, false)}
-          {PrintBoolToCheckbox('ui-organizations.vendorInfo.licensor', toString(get(dataVal, ['licensor'])), 3, false)}
-          {PrintBoolToCheckbox('ui-organizations.vendorInfo.materialSupplier', get(dataVal, ['materialSupplier']), 3, false)}
           {PrintKeyValue('ui-organizations.vendorInfo.vendorCurrencies', vendorCurrencies, 3, false)}
           <Col xs={12}>
             <hr />
