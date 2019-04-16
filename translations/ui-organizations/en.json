@@ -477,8 +477,5 @@
   "settings.categories": "Categories",
   "settings.name": "name",
   "settings.action": "actions",
-  "settings.vendorSettings": "Organizations settings",
-  "settings.": "",
-
-  "end": ""
+  "settings.vendorSettings": "Organizations settings"
 }
