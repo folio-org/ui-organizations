@@ -461,5 +461,10 @@
     "summary.organizationStatus": "Organization status",
     "summary.isVendor": "Vendor",
     "edi.orders": "Orders",
-    "edi.invoices": "Invoices"
+    "edi.invoices": "Invoices",
+    "settings.": "",
+    "end": "",
+    "createOrg.title": "Create organization",
+    "createOrg.submit": "Create organization",
+    "vendorTerms": "Vendor terms"
 }
