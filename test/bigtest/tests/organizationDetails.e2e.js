@@ -95,8 +95,10 @@ describe('Organization details', () => {
 
     describe('change title and update vendor', function () {
       beforeEach(async function () {
-        await orgEdit.summarySection.click();
-        await orgEdit.name.fill(`${orgEdit.name.value} new`);
+        const name = orgEdit.summarySectionForm.name;
+
+        await orgEdit.summarySectionForm.click();
+        await name.fill(`${name.value} new`);
       });
 
       it('update Vendor Button is disabled', function () {

@@ -244,6 +244,10 @@ class Main extends Component {
     // Convert time
     const time = FormatTime(data, 'post');
     if (time) { data.edi.ediJob.time = time; }
+
+    // TODO: remove me when interfaces are done
+    data.interfaces = undefined;
+
     mutator.records.POST(data).then(newLedger => {
       mutator.query.update({
         _path: `/organizations/view/${newLedger.id}`,

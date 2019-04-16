@@ -70,18 +70,6 @@ class VendorInformationForm extends Component {
                 fullWidth
               />
             </Col>
-            <Col xs={12} className={css.vendorInfoCheckbox}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.accessProvider" />} name="accessProvider" id="accessProvider" component={Checkbox} />
-            </Col>
-            <Col xs={12} className={css.vendorInfoCheckbox}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.governmental" />} name="governmental" id="governmental" component={Checkbox} />
-            </Col>
-            <Col xs={12} className={css.vendorInfoCheckbox}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.licensor" />} name="licensor" id="licensor" component={Checkbox} />
-            </Col>
-            <Col xs={12} className={css.vendorInfoCheckbox}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.materialSupplier" />} name="materialSupplier" id="materialSupplier" component={Checkbox} />
-            </Col>
             <Col xs={12}>
               <Field
                 component={MultiSelection}
@@ -97,16 +85,27 @@ class VendorInformationForm extends Component {
                 onBlur={(e) => { e.preventDefault(); }}
               />
             </Col>
+            <Col xs={12}>
+              <Field
+                label={<FormattedMessage id="ui-organizations.vendorInfo.claimingInterval" />}
+                name="claimingInterval"
+                type="number"
+                component={TextField}
+                fullWidth
+              />
+            </Col>
+            <Col xs={12}>
+              <Field
+                label={<FormattedMessage id="ui-organizations.vendorInfo.discountPercent" />}
+                name="discountPercent"
+                component={TextField}
+                fullWidth
+              />
+            </Col>
           </Row>
         </Col>
         <Col xs={12} md={6}>
           <Row>
-            <Col xs={12}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.claimingInterval" />} name="claimingInterval" id="claimingInterval" type="number" component={TextField} fullWidth />
-            </Col>
-            <Col xs={12}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.discountPercent" />} name="discountPercent" id="discountPercent" component={TextField} fullWidth />
-            </Col>
             <Col xs={12}>
               <Field label={<FormattedMessage id="ui-organizations.vendorInfo.expectedActivationInterval" />} name="expectedActivationInterval" id="expectedActivationInterval" type="number" component={TextField} fullWidth />
             </Col>

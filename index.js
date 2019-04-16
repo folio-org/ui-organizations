@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Switch from 'react-router-dom/Switch';
 import Route from 'react-router-dom/Route';
+import { hot } from 'react-hot-loader';
 import Main from './src/Main';
 import Settings from './src/Settings';
 
@@ -37,4 +38,4 @@ class Organizations extends Component {
   }
 }
 
-export default Organizations;
+export default hot(module)(Organizations);

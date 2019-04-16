@@ -2,7 +2,15 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
-import { Row, Col, Button, TextField, TextArea, Select } from '@folio/stripes/components';
+import {
+  Row,
+  Col,
+  Button,
+  TextField,
+  TextArea,
+  Select,
+  Checkbox,
+} from '@folio/stripes/components';
 import { Required } from '../Utils/Validate';
 import css from './SummaryForm.css';
 
@@ -67,6 +75,11 @@ class SummaryForm extends React.Component {
           <Field label={<FormattedMessage id="ui-organizations.summary.name" />} name="name" id="name" validate={[Required]} component={TextField} fullWidth required />
         </Col>
         <Col xs={12} md={6}>
+          <Field
+            label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
+            name="isVendor"
+            component={Checkbox}
+          />
           <Field label={<FormattedMessage id="ui-organizations.summary.code" />} name="code" id="code" validate={[Required]} component={TextField} fullWidth required />
           <Field label={<FormattedMessage id="ui-organizations.summary.accountingCode" />} name="erpCode" id="erpCode" component={TextField} fullWidth />
           <Field

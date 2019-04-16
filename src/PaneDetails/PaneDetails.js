@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getFormValues } from 'redux-form';
+import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
+
 import { Pane, PaneMenu, Button } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/form';
+
 import css from './PaneDetails.css';
 import { FormVendor } from '../VendorViews';
 import { getDropDownItems } from '../common/utils/dropdown';
@@ -102,21 +106,24 @@ class PaneDetails extends React.Component {
   }
 
   render() {
-    const { initialValues } = this.props;
+    const { initialValues, stripes } = this.props;
     const firstMenu = this.getAddFirstMenu();
     const paneTitle = initialValues.id ? (
       <span>
         {`Edit: ${get(initialValues, ['name'], '')}`}
       </span>
-    ) : 'Create Vendor';
+    ) : <FormattedMessage id="ui-organizations.createOrg.title" />;
     const lastMenu = initialValues.id ?
       this.getLastMenu('clickable-updatevendor', 'Update vendor') :
-      this.getLastMenu('clickable-createnewvendor', 'Create vendor');
+      // TODO: send id when edit form is refactored
+      this.getLastMenu('clickable-create-organization', <FormattedMessage id="ui-organizations.createOrg.submit" />);
+    const isVendor = getFormValues('FormVendor')(stripes.store.getState()).isVendor;
 
     return (
       <form id="form-vendor">
         <Pane defaultWidth="100%" firstMenu={firstMenu} lastMenu={lastMenu} paneTitle={paneTitle}>
           <FormVendor
+            isVendor={isVendor}
             dropdownCurrencies={this.getCurrencies()}
             dropdownVendorCategories={this.getVendorCategory()}
             dropdownLanguages={this.getLanguageList()}

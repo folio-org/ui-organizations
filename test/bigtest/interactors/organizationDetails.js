@@ -3,7 +3,7 @@ import {
 } from '@bigtest/interactor';
 
 import Button from './Button';
-import ContactPeopleSection from './ContactPeopleSection';
+import { ContactPeopleSection } from './orgSections';
 
 export default interactor(class OrganizationDetailsInteractor {
   static defaultScope = '#pane-vendordetails';
