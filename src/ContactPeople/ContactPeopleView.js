@@ -92,10 +92,14 @@ class ContactPeopleView extends React.Component {
     );
   }
 
-  printKeyValue(label, val, colNum, isRequire) {
+  printKeyValue(label, val, colNum) {
     return (
       <Col xs={colNum}>
-        <KeyValue label={<FormattedMessage id={`ui-organizations.contactPeople.${label}`} />} value={val} required={isRequire} />
+        <KeyValue label={<FormattedMessage id={`ui-organizations.contactPeople.${label}`} />}>
+          <span className={css.wrapValue}>
+            {val}
+          </span>
+        </KeyValue>
       </Col>
     );
   }
