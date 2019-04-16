@@ -356,8 +356,6 @@
   "contactPeople.remove": "Remove",
   "contactPeople.removeContact": "Remove contact",
   "contactPeople.prefix": "Prefix",
-  "contactPeople.firstName": "First name*",
-  "contactPeople.lastName": "Last name*",
   "contactPeople.add": "Add",
   "contactPeople.addAddress": "Add address",
   "contactPeople.addEmail": "Add email",

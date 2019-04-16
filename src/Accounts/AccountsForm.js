@@ -53,7 +53,14 @@ class AccountsForm extends Component {
                 <Field label={<FormattedMessage id="ui-organizations.accounts.name" />} name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth required />
               </Col>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-organizations.accounts.accountNumber" />} name={`${elem}.accountNo`} id={`${elem}.accountNo`} validate={[Required]} component={TextField} fullWidth />
+                <Field
+                  label={<FormattedMessage id="ui-organizations.accounts.accountNumber" />}
+                  name={`${elem}.accountNo`}
+                  validate={[Required]}
+                  required
+                  component={TextField}
+                  fullWidth
+                />
               </Col>
               <Col xs={12}>
                 <Field label={<FormattedMessage id="ui-organizations.accounts.description" />} name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
@@ -79,12 +86,13 @@ class AccountsForm extends Component {
             <Row>
               <Col xs={12}>
                 <Field
-                  label="Account Status*"
+                  label={<FormattedMessage id="ui-organizations.accounts.accountStatus" />}
                   name={`${elem}.accountStatus`}
                   component={Select}
                   placeholder=" "
                   dataOptions={statusDD}
                   validate={[Required]}
+                  required
                   fullWidth
                 />
               </Col>
@@ -92,10 +100,24 @@ class AccountsForm extends Component {
                 <Field label="Contact Info" name={`${elem}.contactInfo`} id={`${elem}.contactInfo`} component={TextField} fullWidth />
               </Col>
               <Col xs={12}>
-                <Field label="Library Code*" name={`${elem}.libraryCode`} id={`${elem}.libraryCode`} validate={[Required]} component={TextField} fullWidth />
+                <Field
+                  label={<FormattedMessage id="ui-organizations.accounts.libraryCode" />}
+                  name={`${elem}.libraryCode`}
+                  validate={[Required]}
+                  required
+                  component={TextField}
+                  fullWidth
+                />
               </Col>
               <Col xs={12}>
-                <Field label="Library EDI Code*" name={`${elem}.libraryEdiCode`} id={`${elem}.libraryEdiCode`} validate={[Required]} component={TextField} fullWidth />
+                <Field
+                  label={<FormattedMessage id="ui-organizations.accounts.libraryEDICode" />}
+                  name={`${elem}.libraryEdiCode`}
+                  validate={[Required]}
+                  required
+                  component={TextField}
+                  fullWidth
+                />
               </Col>
             </Row>
           </Col>

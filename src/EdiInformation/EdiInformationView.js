@@ -15,7 +15,7 @@ class EdiInformationView extends React.Component {
         ediCodeTypeDD: PropTypes.array.isRequired
       })
     })
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -27,7 +27,7 @@ class EdiInformationView extends React.Component {
     const { parentResources: { dropdown: { ediCodeTypeDD } } } = this.props;
     if (isNull(item)) return '';
     const obj = find(ediCodeTypeDD, { value: item });
-    if (obj.value === '') return '';
+    if (!obj) return '';
     return obj.label;
   }
 
@@ -35,7 +35,7 @@ class EdiInformationView extends React.Component {
     const { parentResources: { dropdown: { ediCodeTypeDD } } } = this.props;
     if (isNull(item)) return '';
     const obj = find(ediCodeTypeDD, { value: item });
-    if (obj.value === '') return '';
+    if (!obj) return '';
     return obj.label;
   }
 
