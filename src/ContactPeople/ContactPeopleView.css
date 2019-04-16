@@ -1,4 +1,6 @@
 /* ContactPeopleView.css */
+@import "../common/styles/wrapValue.css";
+
 .horizontalLine {
   margin-bottom: 15px;
   padding-top: 10px;
@@ -25,5 +27,3 @@
   border-radius: --rpt-blocks-radius;
   margin-bottom: 17px;
 }
-
-
