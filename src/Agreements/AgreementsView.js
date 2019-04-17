@@ -7,7 +7,7 @@ import css from './AgreementsView.css';
 
 class AgreementsView extends React.Component {
   static propTypes = {
-    initialValues: PropTypes.object
+    agreements: PropTypes.arrayOf(PropTypes.object),
   }
 
   constructor(props) {
@@ -16,7 +16,7 @@ class AgreementsView extends React.Component {
   }
 
   getAgreements(val, key) {
-    const rowCount = this.props.initialValues.contacts.length - 1 !== key;
+    const rowCount = this.props.agreements.length - 1 !== key;
     const discount = _.get(val, 'discount') + '%';
     return (
       <Row key={key}>
@@ -42,8 +42,8 @@ class AgreementsView extends React.Component {
   }
 
   render() {
-    const { initialValues } = this.props;
-    const dataVal = initialValues.agreements.length >= 1 ? initialValues.agreements : false;
+    const { agreements } = this.props;
+    const dataVal = agreements.length >= 1 ? agreements : false;
     if (dataVal) {
       return (
         <div style={{ width: '100%' }} className={css.horizontalLine}>
@@ -59,5 +59,9 @@ class AgreementsView extends React.Component {
     }
   }
 }
+
+AgreementsView.defaultProps = {
+  agreements: [],
+};
 
 export default AgreementsView;
