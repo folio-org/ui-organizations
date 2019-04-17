@@ -48,8 +48,10 @@ class PaneDetails extends React.Component {
     );
   }
 
-  getLastMenu(id, label) {
+  getLastMenu(id, labelId) {
     const { pristine, submitting, handleSubmit } = this.props;
+    const label = <FormattedMessage id={labelId} />;
+
     return (
       <PaneMenu>
         <Button
@@ -108,15 +110,12 @@ class PaneDetails extends React.Component {
   render() {
     const { initialValues, stripes } = this.props;
     const firstMenu = this.getAddFirstMenu();
-    const paneTitle = initialValues.id ? (
-      <span>
-        {`Edit: ${get(initialValues, ['name'], '')}`}
-      </span>
-    ) : <FormattedMessage id="ui-organizations.createOrg.title" />;
+    const paneTitle = initialValues.id ?
+      <FormattedMessage id="ui-organizations.editOrg.title" values={{ name: get(initialValues, ['name'], '') }} /> :
+      <FormattedMessage id="ui-organizations.createOrg.title" />;
     const lastMenu = initialValues.id ?
-      this.getLastMenu('clickable-updatevendor', 'Update vendor') :
-      // TODO: send id when edit form is refactored
-      this.getLastMenu('clickable-create-organization', <FormattedMessage id="ui-organizations.createOrg.submit" />);
+      this.getLastMenu('clickable-update-organization', 'ui-organizations.editOrg.submit') :
+      this.getLastMenu('clickable-create-organization', 'ui-organizations.createOrg.submit');
     const isVendor = getFormValues('FormVendor')(stripes.store.getState()).isVendor;
 
     return (
