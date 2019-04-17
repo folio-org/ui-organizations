@@ -8,7 +8,7 @@ import { PrintKeyValue, PrintBoolToCheckbox } from '../Utils/PrintKeyValue';
 
 class EdiInformationView extends React.Component {
   static propTypes = {
-    initialValues: PropTypes.object,
+    organization: PropTypes.object,
     parentResources: PropTypes.shape({
       dropdown: PropTypes.shape({
         paymentMethodDD: PropTypes.array.isRequired,
@@ -40,35 +40,32 @@ class EdiInformationView extends React.Component {
   }
 
   render() {
-    const { initialValues } = this.props;
-    const dataVal = initialValues || false;
-    const ediFtp = initialValues.edi ? initialValues.edi.ediFtp : null;
-    const ediScheduling = initialValues.edi ? initialValues.edi.ediJob : null;
+    const { organization } = this.props;
+    const ediFtp = organization.edi ? organization.edi.ediFtp : null;
+    const ediScheduling = organization.edi ? organization.edi.ediJob : null;
 
-    if (dataVal) {
+    if (organization) {
       return (
         <div className={css.horizontalLine}>
-          {dataVal &&
-            <Row>
-              <Col xs={12}>
-                <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.edi.ediBasic" />}</div>
-              </Col>
-              {PrintKeyValue('ui-organizations.edi.vendorEDICode', get(dataVal, 'edi.vendorEdiCode', ''), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.vendorEDIType', get(dataVal, 'edi.vendorEdiType', ''), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.libraryEDICode', get(dataVal, 'edi.libEdiCode', ''), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.libraryEDIType', this.getLibraryEdiCodeTypeDD(get(dataVal, 'edi.libEdiType', '')), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.prorateTax', get(dataVal, 'edi.prorateTax'), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.prorateFees', get(dataVal, 'edi.prorateFees'), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.ediNamingConvention', get(dataVal, 'edi.ediNamingConvention'), 3)}
-              {PrintBoolToCheckbox('ui-organizations.edi.sendAccountNumber', get(dataVal, 'edi.sendAcctNum'), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.supportOrder', get(dataVal, 'edi.supportOrder'), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.supportInvoice', get(dataVal, 'edi.supportInvoice'), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.notes', get(dataVal, 'edi.notes', ''), 3, false)}
-              <Col xs={12}>
-                <hr />
-              </Col>
-            </Row>
-          }
+          <Row>
+            <Col xs={12}>
+              <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.edi.ediBasic" />}</div>
+            </Col>
+            {PrintKeyValue('ui-organizations.edi.vendorEDICode', get(organization, 'edi.vendorEdiCode', ''), 3, false)}
+            {PrintKeyValue('ui-organizations.edi.vendorEDIType', get(organization, 'edi.vendorEdiType', ''), 3, false)}
+            {PrintKeyValue('ui-organizations.edi.libraryEDICode', get(organization, 'edi.libEdiCode', ''), 3, false)}
+            {PrintKeyValue('ui-organizations.edi.libraryEDIType', this.getLibraryEdiCodeTypeDD(get(organization, 'edi.libEdiType', '')), 3, false)}
+            {PrintBoolToCheckbox('ui-organizations.edi.prorateTax', get(organization, 'edi.prorateTax'), 3, false)}
+            {PrintBoolToCheckbox('ui-organizations.edi.prorateFees', get(organization, 'edi.prorateFees'), 3, false)}
+            {PrintKeyValue('ui-organizations.edi.ediNamingConvention', get(organization, 'edi.ediNamingConvention'), 3)}
+            {PrintBoolToCheckbox('ui-organizations.edi.sendAccountNumber', get(organization, 'edi.sendAcctNum'), 3, false)}
+            {PrintBoolToCheckbox('ui-organizations.edi.orders', get(organization, 'edi.supportOrder'), 3, false)}
+            {PrintBoolToCheckbox('ui-organizations.edi.invoices', get(organization, 'edi.supportInvoice'), 3, false)}
+            {PrintKeyValue('ui-organizations.edi.notes', get(organization, 'edi.notes', ''), 3, false)}
+            <Col xs={12}>
+              <hr />
+            </Col>
+          </Row>
           {ediFtp &&
             <Row>
               <Col xs={12}>

@@ -12,17 +12,13 @@ import { SECTIONS } from '../common/constants';
 import { SummaryView } from '../Summary';
 import { ContactInformationView } from '../ContactInformation';
 import { ContactPeopleView } from '../ContactPeople';
-import { AgreementsView } from '../Agreements';
-import { VendorInformationView } from '../VendorInformation';
-import { EdiInformationView } from '../EdiInformation';
 import { InterfaceView } from '../Interface';
-import { AccountsView } from '../Accounts';
 import PaneDetails from '../PaneDetails';
 import FormatTime from '../Utils/FormatTime';
+import ViewVendorBlocks from './ViewVendorBlocks';
 
 class ViewVendor extends Component {
   static propTypes = {
-    initialValues: PropTypes.object,
     location: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     dropdown: PropTypes.object,
@@ -40,14 +36,14 @@ class ViewVendor extends Component {
     super(props);
     this.state = {
       sections: {
-        summarySection: false,
-        contactInformationSection: false,
+        [SECTIONS.summarySection]: false,
+        [SECTIONS.contactInformationSection]: false,
         [SECTIONS.contactPeopleSection]: true,
-        agreementsSection: false,
-        vendorInformationSection: true,
-        EDIInformationSection: false,
-        interfaceSection: false,
-        accountsSection: false,
+        [SECTIONS.vendorTermsSection]: false,
+        [SECTIONS.vendorInformationSection]: true,
+        [SECTIONS.ediInformationSection]: false,
+        [SECTIONS.interfacesSection]: false,
+        [SECTIONS.accountsSection]: false,
       }
     };
     this.connectedPaneDetails = this.props.stripes.connect(PaneDetails);
@@ -100,8 +96,8 @@ class ViewVendor extends Component {
   }
 
   render() {
-    const { location } = this.props;
-    const initialValues = this.getData();
+    const { location, parentResources } = this.props;
+    const organization = this.getData();
     const query = location.search ? queryString.parse(location.search) : {};
     const lastMenu = (
       <PaneMenu>
@@ -109,7 +105,7 @@ class ViewVendor extends Component {
           <IconButton
             icon="edit"
             id="clickable-editvendor"
-            style={{ visibility: !initialValues ? 'hidden' : 'visible' }}
+            style={{ visibility: !organization ? 'hidden' : 'visible' }}
             onClick={this.props.onEdit}
             href={this.props.editLink}
             title={<FormattedMessage id="ui-organizations.view.editLink" />}
@@ -118,7 +114,7 @@ class ViewVendor extends Component {
       </PaneMenu>
     );
 
-    if (!initialValues) {
+    if (!organization) {
       return (
         <Pane id="pane-vendordetails" defaultWidth={this.props.paneWidth} paneTitle={<FormattedMessage id="ui-organizations.view.details" />} lastMenu={lastMenu} dismissible onClose={this.props.onClose}>
           <div style={{ paddingTop: '1rem' }}><Icon icon="spinner-ellipsis" width="100px" /></div>
@@ -126,59 +122,46 @@ class ViewVendor extends Component {
       );
     }
 
-    const { isVendor } = initialValues;
+    const { isVendor } = organization;
 
     return (
-      <Pane id="pane-vendordetails" defaultWidth={this.props.paneWidth} paneTitle={_.get(initialValues, ['name'], '')} lastMenu={lastMenu} dismissible onClose={this.props.onClose}>
+      <Pane
+        id="pane-vendordetails"
+        defaultWidth={this.props.paneWidth}
+        paneTitle={_.get(organization, ['name'], '')}
+        lastMenu={lastMenu}
+        dismissible
+        onClose={this.props.onClose}
+      >
         <Row end="xs"><Col xs><ExpandAllButton data-test-exp accordionStatus={this.state.sections} onToggle={this.handleExpandAll} /></Col></Row>
         <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
-          <Accordion label={<FormattedMessage id="ui-organizations.summary" />} id="summarySection">
-            <SummaryView initialValues={initialValues} {...this.props} />
+          <Accordion label={<FormattedMessage id="ui-organizations.summary" />} id={SECTIONS.summarySection}>
+            <SummaryView initialValues={organization} {...this.props} />
           </Accordion>
-          <Accordion label={<FormattedMessage id="ui-organizations.contactInformation" />} id="contactInformationSection">
-            <ContactInformationView initialValues={initialValues} {...this.props} />
+          <Accordion label={<FormattedMessage id="ui-organizations.contactInformation" />} id={SECTIONS.contactInformationSection}>
+            <ContactInformationView initialValues={organization} {...this.props} />
           </Accordion>
           <Accordion label={<FormattedMessage id="ui-organizations.contactPeople" />} id={SECTIONS.contactPeopleSection}>
-            <ContactPeopleView initialValues={initialValues} {...this.props} />
+            <ContactPeopleView initialValues={organization} {...this.props} />
           </Accordion>
-          <Accordion label={<FormattedMessage id="ui-organizations.agreements" />} id="agreementsSection">
-            <AgreementsView initialValues={initialValues} {...this.props} />
-          </Accordion>
-          {isVendor && (
-            <Accordion
-              label={<FormattedMessage id="ui-organizations.vendorInformation" />}
-              id="vendorInformationSection"
-            >
-              <VendorInformationView
-                initialValues={initialValues}
-                {...this.props}
-              />
-            </Accordion>
-          )}
-          {isVendor && (
-            <Accordion
-              label={<FormattedMessage id="ui-organizations.ediInformation" />}
-              id="EDIInformationSection"
-            >
-              <EdiInformationView initialValues={initialValues} {...this.props} />
-            </Accordion>
-          )}
-          <Accordion label={<FormattedMessage id="ui-organizations.interface" />} id="interfaceSection">
-            <InterfaceView initialValues={initialValues} {...this.props} />
+          <Accordion label={<FormattedMessage id="ui-organizations.interface" />} id={SECTIONS.interfacesSection}>
+            <InterfaceView initialValues={organization} {...this.props} />
           </Accordion>
           {isVendor && (
-            <Accordion label={<FormattedMessage id="ui-organizations.accounts" />} id="accountsSection">
-              <AccountsView initialValues={initialValues} {...this.props} />
-            </Accordion>
+            <ViewVendorBlocks
+              parentResources={parentResources}
+              organization={organization}
+            />
           )}
+
         </AccordionSet>
         <Layer isOpen={query.layer ? query.layer === 'edit' : false} label={<FormattedMessage id="ui-organizations.view.editVendorDialog" />}>
           <this.connectedPaneDetails
             stripes={this.props.stripes}
-            initialValues={initialValues}
+            initialValues={organization}
             onSubmit={this.update}
             onCancel={this.props.onCloseEdit}
-            parentResources={this.props.parentResources}
+            parentResources={parentResources}
             parentMutator={this.props.parentMutator}
           />
         </Layer>

@@ -32,6 +32,34 @@ describe('Organization details', () => {
     expect(orgDetails.editOrganizationButton.isPresent).to.be.true;
   });
 
+  it('summarySection is displayed', function () {
+    expect(orgDetails.summarySection.isPresent).to.be.true;
+  });
+
+  it('contactInformationSection is displayed', function () {
+    expect(orgDetails.contactInformationSection.isPresent).to.be.true;
+  });
+
+  it('interfacesSection is displayed', function () {
+    expect(orgDetails.interfacesSection.isPresent).to.be.true;
+  });
+
+  it('vendorInformationSection is not displayed', function () {
+    expect(orgDetails.vendorInformationSection.isPresent).to.be.false;
+  });
+
+  it('vendorTermsSection is not displayed', function () {
+    expect(orgDetails.vendorTermsSection.isPresent).to.be.false;
+  });
+
+  it('ediInformationSection is not displayed', function () {
+    expect(orgDetails.ediInformationSection.isPresent).to.be.false;
+  });
+
+  it('accountsSection is not displayed', function () {
+    expect(orgDetails.accountsSection.isPresent).to.be.false;
+  });
+
   it('contact people section is expanded', () => {
     expect(orgDetails.contactPeopleSection.isExpanded).to.be.true;
   });
