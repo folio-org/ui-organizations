@@ -78,6 +78,7 @@ class SummaryForm extends React.Component {
           <Field
             label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
             name="isVendor"
+            type="checkbox"
             component={Checkbox}
           />
           <Field label={<FormattedMessage id="ui-organizations.summary.code" />} name="code" id="code" validate={[Required]} component={TextField} fullWidth required />

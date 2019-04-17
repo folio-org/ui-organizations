@@ -289,6 +289,9 @@
   "createOrg.title": "Create organization",
   "createOrg.submit": "Create organization",
 
+  "editOrg.title": "Edit - {name}",
+  "editOrg.submit": "Update organization",
+
   "edit.delete": "Delete",
   "edit.requiredFields": "Required fields!",
   "edit.password": "Password",
@@ -460,6 +463,7 @@
   "interface.add": "Add",
   "interface.pleaseAddInterface": "Please add interface",
 
+  "accounts.account.accountStatus": "Account status",
   "accounts.name": "Name",
   "accounts.accountNumber": "Account number",
   "accounts.description": "Description",

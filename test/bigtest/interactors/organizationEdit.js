@@ -25,7 +25,7 @@ class SummarySectionForm extends SummarySection {
 export default interactor(class OrganizationEditInteractor {
   static defaultScope = '#form-vendor';
 
-  updateVendorButton = new Button('#clickable-updatevendor');
+  updateVendorButton = new Button('#clickable-update-organization');
   createOrgButton = new Button('#clickable-create-organization');
 
   summarySectionForm = new SummarySectionForm();

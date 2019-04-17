@@ -86,7 +86,7 @@ class AccountsForm extends Component {
             <Row>
               <Col xs={12}>
                 <Field
-                  label={<FormattedMessage id="ui-organizations.accounts.accountStatus" />}
+                  label={<FormattedMessage id="ui-organizations.accounts.account.accountStatus" />}
                   name={`${elem}.accountStatus`}
                   component={Select}
                   placeholder=" "
@@ -122,7 +122,13 @@ class AccountsForm extends Component {
             </Row>
           </Col>
           <Col xs={12}>
-            <Field label="notes" name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />
+            <Field
+              label={<FormattedMessage id="ui-organizations.accounts.notes" />}
+              name={`${elem}.notes`}
+              id={`${elem}.notes`}
+              component={TextArea}
+              fullWidth
+            />
           </Col>
           <Col xs={12} style={{ textAlign: 'right' }}>
             <Button onClick={() => fields.remove(index)} buttonStyle="danger">
