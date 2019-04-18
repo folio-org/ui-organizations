@@ -56,7 +56,7 @@ class EmailAddresses extends Component {
           {fields.map(this.renderSubEmailAddresses)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.contactInfo.addEmail" />}</Button>
+          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.contactInfo.actions.addEmail" />}</Button>
         </Col>
       </Row>
     );

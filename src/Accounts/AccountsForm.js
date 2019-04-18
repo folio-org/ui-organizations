@@ -97,7 +97,13 @@ class AccountsForm extends Component {
                 />
               </Col>
               <Col xs={12}>
-                <Field label="Contact Info" name={`${elem}.contactInfo`} id={`${elem}.contactInfo`} component={TextField} fullWidth />
+                <Field
+                  label={<FormattedMessage id="ui-organizations.accounts.account.contactInfo" />}
+                  name={`${elem}.contactInfo`}
+                  id={`${elem}.contactInfo`}
+                  component={TextField}
+                  fullWidth
+                />
               </Col>
               <Col xs={12}>
                 <Field

@@ -44,7 +44,7 @@ class PhoneNumbers extends Component {
           {fields.map(this.renderSubPhoneNumbers)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.contactInfo.addPhoneNumber" />}</Button>
+          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.contactInfo.actions.addPhoneNumber" />}</Button>
         </Col>
       </Row>
     );
