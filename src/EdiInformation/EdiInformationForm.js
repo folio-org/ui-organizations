@@ -57,7 +57,10 @@ class EdiInformationForm extends Component {
     return (
       <Col xs={12} className={css.leftPadding}>
         <AccordionSet accordionStatus={this.state.subSections} onToggle={this.onToggleSubSection}>
-          <Accordion label="EDI Basic" id="ediBasicSection">
+          <Accordion
+            label={<FormattedMessage id="ui-organizations.edi.ediBasic" />}
+            id="ediBasicSection"
+          >
             <Row>
               <Col xs={12} md={6}>
                 <Row>
@@ -102,7 +105,7 @@ class EdiInformationForm extends Component {
                     <Field label={<FormattedMessage id="ui-organizations.edi.sendAccountNumber" />} name="edi.sendAcctNum" id="sendAcctNum" component={Checkbox} />
                   </Col>
                   <Col xs={12}>
-                    <p>{<FormattedMessage id="ui-organizations.edi.whatMssgs" />}</p>
+                    <p>{<FormattedMessage id="ui-organizations.edi.receiveNotifications" />}</p>
                     <Field label={<FormattedMessage id="ui-organizations.edi.orders" />} name="edi.supportOrder" id="supportOrder" component={Checkbox} />
                     <Field label={<FormattedMessage id="ui-organizations.edi.invoices" />} name="edi.supportInvoice" id="supportInvoice" component={Checkbox} />
                   </Col>

@@ -53,7 +53,7 @@ class AddressInfo extends Component {
           {fields.map(this.renderSubAddress)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.data.contactTypes.add" />}</Button>
+          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.contactInfo.actions.addAddress" />}</Button>
         </Col>
       </Row>
     );
