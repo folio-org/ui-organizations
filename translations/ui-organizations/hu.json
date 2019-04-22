@@ -466,5 +466,13 @@
     "end": "",
     "createOrg.title": "Create organization",
     "createOrg.submit": "Create organization",
-    "vendorTerms": "Vendor terms"
+    "vendorTerms": "Vendor terms",
+    "editOrg.title": "Edit - {name}",
+    "editOrg.submit": "Update organization",
+    "accounts.account.accountStatus": "Account status",
+    "contactInfo.actions.addAddress": "Add address",
+    "contactInfo.actions.addPhoneNumber": "Add phone number",
+    "contactInfo.actions.addEmail": "Add email",
+    "edi.receiveNotifications": "What messages are expected for this vendor?",
+    "accounts.account.contactInfo": "Contact info"
 }
