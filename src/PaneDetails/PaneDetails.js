@@ -7,12 +7,12 @@ import { get } from 'lodash';
 import { Pane, PaneMenu, Button } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/form';
 
-import css from './PaneDetails.css';
 import { FormVendor } from '../VendorViews';
 import { getDropDownItems } from '../common/utils/dropdown';
 
 class PaneDetails extends React.Component {
   static propTypes = {
+    stripes: PropTypes.object.isRequired,
     initialValues: PropTypes.object,
     handleSubmit: PropTypes.func.isRequired,
     onSave: PropTypes.func,
@@ -35,17 +35,6 @@ class PaneDetails extends React.Component {
     this.getCurrencies = this.getCurrencies.bind(this);
     this.getCountryList = this.getCountryList.bind(this);
     this.getLanguageList = this.getLanguageList.bind(this);
-  }
-
-  getAddFirstMenu() {
-    const { onCancel } = this.props;
-    return (
-      <PaneMenu>
-        <button type="button" id="clickable-closenewvendordialog" onClick={onCancel} title="close" aria-label="Close New Vendor Dialog">
-          <span className={css.closeButton}>&times;</span>
-        </button>
-      </PaneMenu>
-    );
   }
 
   getLastMenu(id, labelId) {
@@ -108,8 +97,7 @@ class PaneDetails extends React.Component {
   }
 
   render() {
-    const { initialValues, stripes } = this.props;
-    const firstMenu = this.getAddFirstMenu();
+    const { initialValues, stripes, onCancel } = this.props;
     const paneTitle = initialValues.id ?
       <FormattedMessage id="ui-organizations.editOrg.title" values={{ name: get(initialValues, ['name'], '') }} /> :
       <FormattedMessage id="ui-organizations.createOrg.title" />;
@@ -120,7 +108,13 @@ class PaneDetails extends React.Component {
 
     return (
       <form id="form-vendor">
-        <Pane defaultWidth="100%" firstMenu={firstMenu} lastMenu={lastMenu} paneTitle={paneTitle}>
+        <Pane
+          defaultWidth="100%"
+          dismissible
+          lastMenu={lastMenu}
+          paneTitle={paneTitle}
+          onClose={onCancel}
+        >
           <FormVendor
             isVendor={isVendor}
             dropdownCurrencies={this.getCurrencies()}

@@ -94,9 +94,9 @@ class FormVendor extends Component {
     });
   }
 
-  deleteVendor(ID) {
-    const { parentMutator } = this.props;
-    parentMutator.records.DELETE({ id: ID }).then(() => {
+  deleteVendor = () => {
+    const { parentMutator, initialValues: { id } } = this.props;
+    parentMutator.records.DELETE({ id }).then(() => {
       parentMutator.query.update({
         _path: '/organizations',
         layer: null
@@ -105,9 +105,10 @@ class FormVendor extends Component {
   }
 
   render() {
-    const { initialValues, isVendor } = this.props;
+    const { initialValues, isVendor, parentMutator, parentResources, stripes } = this.props;
     const { sectionErrors } = this.state;
-    const showDeleteButton = initialValues.id || false;
+    const { id, name } = initialValues;
+    const showDeleteButton = !!id;
     // Errors
     const message = (
       <em className={css.requiredIcon} style={{ color: 'red', display: 'flex', alignItems: 'center' }}>
@@ -135,7 +136,12 @@ class FormVendor extends Component {
                 <ContactInformationForm {...this.props} />
               </Accordion>
               <Accordion label={<FormattedMessage id="ui-organizations.contactPeople" />} id="contactPeopleSection" displayWhenClosed={isDisplayError('contactPeopleErr')} displayWhenOpen={isDisplayError('contactPeopleErr')}>
-                <ContactPeopleForm {...this.props} />
+                <ContactPeopleForm
+                  orgId={id}
+                  parentMutator={parentMutator}
+                  parentResources={parentResources}
+                  stripes={stripes}
+                />
               </Accordion>
               <Accordion label={<FormattedMessage id="ui-organizations.interface" />} id="interfacesSection" displayWhenClosed={isDisplayError('interfacesErr')} displayWhenOpen={isDisplayError('interfacesErr')}>
                 <InterfaceForm {...this.props} />
@@ -185,10 +191,10 @@ class FormVendor extends Component {
                 <Col xs={12}>
                   {
                     showDeleteButton &&
-                    <Button type="button" buttonStyle="danger" onClick={() => { this.deleteVendor(this.props.initialValues.id); }}>
+                    <Button type="button" buttonStyle="danger" onClick={this.deleteVendor}>
                       {<FormattedMessage id="ui-organizations.edit.delete" />}
                       &nbsp;
-                      <strong><i>{this.props.initialValues.name}</i></strong>
+                      <strong><i>{name}</i></strong>
                     </Button>
                   }
                 </Col>

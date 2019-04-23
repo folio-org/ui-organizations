@@ -1,15 +1,26 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isEqual, isEmpty, find, get } from 'lodash';
 import { FieldArray, getFormValues } from 'redux-form';
-import { Row, Col, List, Button, Icon } from '@folio/stripes/components';
+import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
+
+import {
+  Button,
+  Col,
+  Icon,
+  List,
+  Row,
+} from '@folio/stripes/components';
 
 class ContactPeopleForm extends Component {
   static propTypes = {
+    parentMutator: PropTypes.object,
     parentResources: PropTypes.object,
     stripes: PropTypes.shape({
       store: PropTypes.object
-    })
+    }),
+    orgId: PropTypes.string,
   };
 
   constructor(props) {
@@ -49,6 +60,14 @@ class ContactPeopleForm extends Component {
     this.fields.remove(index);
   }
 
+  getContactsUrl = (contactId) => {
+    const { orgId } = this.props;
+    const ending = contactId ? `/contacts/${contactId}/view` : '/contacts/add-contact';
+    const starting = orgId ? `/organizations/${orgId}` : '/organizations';
+
+    return `${starting}${ending}`;
+  }
+
   renderData(valueID) {
     const { parentResources } = this.props;
     const contacts = ((parentResources || {}).contacts || {}).records || [];
@@ -57,9 +76,9 @@ class ContactPeopleForm extends Component {
     if (isEmpty(item)) return null;
     const fullName = `${get(item, 'prefix', '')} ${get(item, 'firstName', '')} ${get(item, 'lastName', '')}`;
     return (
-      <Fragment>
+      <Link to={this.getContactsUrl(valueID)}>
         {fullName}
-      </Fragment>
+      </Link>
     );
   }
 
@@ -102,6 +121,14 @@ class ContactPeopleForm extends Component {
         <Col xs={12}>
           <FieldArray label="Contacts" name="contacts" id="contacts" component={this.listComponent} />
           <br />
+        </Col>
+        <Col xs={12}>
+          <Button
+            buttonStyle="primary"
+            to={this.getContactsUrl()}
+          >
+            <FormattedMessage id="ui-organizations.contactPeople.addContact" />
+          </Button>
         </Col>
       </Row>
     );
