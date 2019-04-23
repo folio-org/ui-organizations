@@ -311,6 +311,10 @@
   "main.description":"Description",
   "main.vendorStatus": "Organizations status",
 
+  "organizationStatus.active": "Active",
+  "organizationStatus.inactive": "Inactive",
+  "organizationStatus.pending": "Pending",
+
   "summary.name": "Name",
   "summary.code": "Code",
   "summary.description": "Description",
@@ -477,6 +481,7 @@
   "accounts.noAccountsAvail": "No accounts available",
   "accounts.add": "Add",
   "accounts.pleaseAddAccount": "Please add account",
+  "accounts.remove": "Remove",
 
   "settings.categories": "Categories",
   "settings.name": "name",

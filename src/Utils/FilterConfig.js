@@ -1,13 +1,15 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import { ORGANIZATION_STATUS } from '../common/constants';
+
 const Filters = () => {
   return [
     {
       label: <FormattedMessage id="ui-organizations.filterConfig.vendorStatus" />,
       name: 'status',
       cql: 'status',
-      values: ['Active', 'Inactive', 'Pending']
+      values: Object.values(ORGANIZATION_STATUS),
     },
     {
       label: <FormattedMessage id="ui-organizations.filterConfig.addressCategory" />,
