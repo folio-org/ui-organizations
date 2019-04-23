@@ -1,44 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Field, FieldArray } from 'redux-form';
 import {
-  Row,
-  Col,
+  Field,
+  FieldArray,
+} from 'redux-form';
+
+import {
   Button,
-  TextField,
-  TextArea,
-  Select,
   Checkbox,
+  Col,
+  Row,
+  Select,
+  TextArea,
+  TextField,
 } from '@folio/stripes/components';
+
+import { ORGANIZATION_STATUS } from '../common/constants';
 import { Required } from '../Utils/Validate';
 import css from './SummaryForm.css';
 
-class SummaryForm extends React.Component {
+class SummaryForm extends Component {
   static propTypes = {
-    dropdownLanguages: PropTypes.arrayOf(PropTypes.object)
+    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   };
-
-  constructor(props) {
-    super(props);
-    this.renderList = this.renderList.bind(this);
-    this.renderSubFields = this.renderSubFields.bind(this);
-  }
 
   renderList = ({ fields }) => {
     return (
       <Row>
         <Col xs={6}>
-          <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.summary.alternativeNames" />}</div>
+          <div className={css.subHeadings}>
+            {<FormattedMessage id="ui-organizations.summary.alternativeNames" />}
+          </div>
         </Col>
         <Col xs={12}>
           {fields.length === 0 &&
-            <div><em>{<FormattedMessage id="ui-organizations.summary.pleaseAddAltNames" />}</em></div>
+            <div>
+              <em>
+                {<FormattedMessage id="ui-organizations.summary.pleaseAddAltNames" />}
+              </em>
+            </div>
           }
           {fields.map(this.renderSubFields)}
         </Col>
-        <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.summary.add" />}</Button>
+        <Col
+          xs={12}
+          style={{ paddingTop: '10px' }}
+        >
+          <Button
+            data-test-add-name-button
+            onClick={() => fields.push({})}
+          >
+            {<FormattedMessage id="ui-organizations.summary.add" />}
+          </Button>
         </Col>
       </Row>
     );
@@ -46,16 +60,38 @@ class SummaryForm extends React.Component {
 
   renderSubFields = (elem, index, fields) => {
     return (
-      <div key={index} className={css.panels}>
+      <div
+        className={css.panels}
+        key={index}
+      >
         <Row>
           <Col xs={5}>
-            <Field label={<FormattedMessage id="ui-organizations.summary.alias" />} name={`${elem}.value`} id={`${elem}.value`} validate={[Required]} component={TextField} fullWidth required />
+            <Field
+              component={TextField}
+              fullWidth
+              label={<FormattedMessage id="ui-organizations.summary.alias" />}
+              name={`${elem}.value`}
+              required
+              validate={[Required]}
+            />
           </Col>
           <Col xs={5}>
-            <Field label={<FormattedMessage id="ui-organizations.summary.description" />} name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
+            <Field
+              component={TextField}
+              fullWidth
+              label={<FormattedMessage id="ui-organizations.summary.description" />}
+              name={`${elem}.description`}
+            />
           </Col>
           <Col xs={1}>
-            <Button onClick={() => fields.remove(index)} buttonStyle="danger" style={{ marginTop: '23px' }}>{<FormattedMessage id="ui-organizations.summary.remove" />}</Button>
+            <Button
+              buttonStyle="danger"
+              data-test-remove-name-button
+              onClick={() => fields.remove(index)}
+              style={{ marginTop: '23px' }}
+            >
+              {<FormattedMessage id="ui-organizations.summary.remove" />}
+            </Button>
           </Col>
         </Row>
       </div>
@@ -63,43 +99,86 @@ class SummaryForm extends React.Component {
   }
 
   render() {
-    const statusOptions = [
-      { label: 'Pending', value: 'pending' },
-      { label: 'Active', value: 'active' },
-      { label: 'Inactive', value: 'inactive' }
-    ];
-
     return (
       <Row>
         <Col xs={12}>
-          <Field label={<FormattedMessage id="ui-organizations.summary.name" />} name="name" id="name" validate={[Required]} component={TextField} fullWidth required />
-        </Col>
-        <Col xs={12} md={6}>
           <Field
+            component={TextField}
+            fullWidth
+            id="name"
+            label={<FormattedMessage id="ui-organizations.summary.name" />}
+            name="name"
+            required
+            validate={[Required]}
+          />
+        </Col>
+        <Col
+          xs={12}
+          md={6}
+        >
+          <Field
+            component={Checkbox}
             label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
             name="isVendor"
             type="checkbox"
-            component={Checkbox}
           />
-          <Field label={<FormattedMessage id="ui-organizations.summary.code" />} name="code" id="code" validate={[Required]} component={TextField} fullWidth required />
-          <Field label={<FormattedMessage id="ui-organizations.summary.accountingCode" />} name="erpCode" id="erpCode" component={TextField} fullWidth />
           <Field
+            component={TextField}
+            fullWidth
+            label={<FormattedMessage id="ui-organizations.summary.code" />}
+            name="code"
+            required
+            validate={[Required]}
+          />
+          <Field
+            component={TextField}
+            fullWidth
+            label={<FormattedMessage id="ui-organizations.summary.accountingCode" />}
+            name="erpCode"
+          />
+          <Field
+            component={Select}
+            fullWidth
             label={<FormattedMessage id="ui-organizations.summary.organizationStatus" />}
             name="status"
-            component={Select}
             placeholder=" "
-            dataOptions={statusOptions}
-            validate={[Required]}
-            fullWidth
             required
+            validate={[Required]}
+          >
+            {Object.keys(ORGANIZATION_STATUS).map((key) => (
+              <FormattedMessage
+                id={`ui-organizations.organizationStatus.${key}`}
+                key={key}
+              >
+                {(message) => <option value={ORGANIZATION_STATUS[key]}>{message}</option>}
+              </FormattedMessage>
+            ))}
+          </Field>
+          <Field
+            component={Select}
+            dataOptions={this.props.dropdownLanguages}
+            fullWidth
+            label={<FormattedMessage id="ui-organizations.summary.defaultLanguage" />}
+            name="language"
           />
-          <Field label={<FormattedMessage id="ui-organizations.summary.defaultLanguage" />} name="language" id="language" component={Select} fullWidth dataOptions={this.props.dropdownLanguages} />
         </Col>
-        <Col xs={12} md={6}>
-          <Field label={<FormattedMessage id="ui-organizations.summary.description" />} name="description" id="description" component={TextArea} style={{ width: '100%', height: '139px' }} />
+        <Col
+          xs={12}
+          md={6}
+        >
+          <Field
+            label={<FormattedMessage id="ui-organizations.summary.description" />}
+            name="description"
+            component={TextArea}
+            style={{ width: '100%', height: '139px' }}
+          />
         </Col>
         <Col xs={12}>
-          <FieldArray label="Vendor Names" name="aliases" id="aliases" component={this.renderList} />
+          <FieldArray
+            label="Vendor Names"
+            name="aliases"
+            component={this.renderList}
+          />
         </Col>
       </Row>
     );
