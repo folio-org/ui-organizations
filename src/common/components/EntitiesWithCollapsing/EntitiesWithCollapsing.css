@@ -1,0 +1,7 @@
+.entitiesWithCollapsingBtn {
+  width: 100%;
+}
+
+.entitiesWithCollapsingBtn  [class^="icon--"] {
+  margin-right: 3px;
+}
