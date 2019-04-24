@@ -10,7 +10,7 @@ export default Factory.extend({
   status: ORGANIZATION_STATUS.active,
   addresses: [],
   agreements: [],
-  contacts: [],
+  contacts: [faker.random.uuid],
   emails: [],
   interfaces: [],
   phoneNumbers: [],
