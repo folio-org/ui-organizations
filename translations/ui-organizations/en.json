@@ -357,8 +357,8 @@
 
   "contactPeople.name": "Name",
   "contactPeople.prefix": "Prefix",
-  "contactPeople.lastName": "Last name",
-  "contactPeople.firstName": "First Name",
+  "contactPeople.details.lastName": "Last name",
+  "contactPeople.details.firstName": "First Name",
   "contactPeople.status": "Status",
   "contactPeople.status.inactive": "Inactive",
   "contactPeople.status.active": "Active",
