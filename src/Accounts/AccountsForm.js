@@ -1,40 +1,57 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Field, FieldArray } from 'redux-form';
-import { Row, Col, Button, TextField, TextArea, Select } from '@folio/stripes/components';
+import {
+  Field,
+  FieldArray,
+} from 'redux-form';
+
+import {
+  Button,
+  Col,
+  Row,
+  Select,
+  TextArea,
+  TextField,
+} from '@folio/stripes/components';
+
+import { getDropDownItems } from '../common/utils/dropdown';
+import { ORGANIZATION_STATUS } from '../common/constants';
 import { Required } from '../Utils/Validate';
 import css from './AccountsForm.css';
-import { getDropDownItems } from '../common/utils/dropdown';
-
 
 class AccountsForm extends Component {
   static propTypes = {
     parentResources: PropTypes.shape({
       dropdown: PropTypes.shape({
         paymentMethodDD: PropTypes.array.isRequired,
-        statusDD: PropTypes.array.isRequired
       })
     })
   };
-
-  constructor(props) {
-    super(props);
-    this.renderForm = this.renderForm.bind(this);
-    this.renderSubForm = this.renderSubForm.bind(this);
-  }
 
   renderForm = ({ fields }) => {
     return (
       <Row>
         <Col xs={12}>
           {fields.length === 0 &&
-            <div><em>{<FormattedMessage id="ui-organizations.accounts.pleaseAddAccount" />}</em></div>
+            <div>
+              <em>
+                {<FormattedMessage id="ui-organizations.accounts.pleaseAddAccount" />}
+              </em>
+            </div>
           }
           {fields.map(this.renderSubForm)}
         </Col>
-        <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.accounts.add" />}</Button>
+        <Col
+          xs={12}
+          style={{ paddingTop: '10px' }}
+        >
+          <Button
+            data-test-add-account-button
+            onClick={() => fields.push({})}
+          >
+            {<FormattedMessage id="ui-organizations.accounts.add" />}
+          </Button>
         </Col>
       </Row>
     );
@@ -43,14 +60,27 @@ class AccountsForm extends Component {
   renderSubForm = (elem, index, fields) => {
     const { parentResources } = this.props;
     const paymentMethodDD = getDropDownItems(parentResources, 'paymentMethodDD', true);
-    const statusDD = getDropDownItems(parentResources, 'statusDD', true);
+
     return (
-      <div key={index} className={css.panels}>
+      <div
+        className={css.panels}
+        key={index}
+      >
         <Row key={index}>
-          <Col xs={12} md={6}>
+          <Col
+            xs={12}
+            md={6}
+          >
             <Row>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-organizations.accounts.name" />} name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth required />
+                <Field
+                  component={TextField}
+                  fullWidth
+                  label={<FormattedMessage id="ui-organizations.accounts.name" />}
+                  name={`${elem}.name`}
+                  required
+                  validate={[Required]}
+                />
               </Col>
               <Col xs={12}>
                 <Field
@@ -63,82 +93,110 @@ class AccountsForm extends Component {
                 />
               </Col>
               <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-organizations.accounts.description" />} name={`${elem}.description`} id={`${elem}.description`} component={TextField} fullWidth />
-              </Col>
-              <Col xs={12}>
-                <Field label={<FormattedMessage id="ui-organizations.accounts.payable" />} name={`${elem}.appSystemNo`} id={`${elem}.appSystemNo`} component={TextField} fullWidth />
+                <Field
+                  component={TextField}
+                  fullWidth
+                  label={<FormattedMessage id="ui-organizations.accounts.description" />}
+                  name={`${elem}.description`}
+                />
               </Col>
               <Col xs={12}>
                 <Field
+                  component={TextField}
+                  fullWidth
+                  label={<FormattedMessage id="ui-organizations.accounts.payable" />}
+                  name={`${elem}.appSystemNo`}
+                />
+              </Col>
+              <Col xs={12}>
+                <Field
+                  component={Select}
+                  dataOptions={paymentMethodDD}
+                  fullWidth
                   label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />}
                   name={`${elem}.paymentMethod`}
                   placeholder=" "
-                  dataOptions={paymentMethodDD}
-                  validate={[Required]}
-                  component={Select}
-                  fullWidth
                   required
+                  validate={[Required]}
                 />
               </Col>
             </Row>
           </Col>
-          <Col xs={12} md={6}>
+          <Col
+            xs={12}
+            md={6}
+          >
             <Row>
               <Col xs={12}>
                 <Field
+                  component={Select}
+                  fullWidth
                   label={<FormattedMessage id="ui-organizations.accounts.account.accountStatus" />}
                   name={`${elem}.accountStatus`}
-                  component={Select}
                   placeholder=" "
-                  dataOptions={statusDD}
-                  validate={[Required]}
                   required
-                  fullWidth
-                />
+                  validate={[Required]}
+                >
+                  {Object.keys(ORGANIZATION_STATUS).map((key) => (
+                    <FormattedMessage
+                      id={`ui-organizations.organizationStatus.${key}`}
+                      key={key}
+                    >
+                      {(message) => <option value={ORGANIZATION_STATUS[key]}>{message}</option>}
+                    </FormattedMessage>
+                  ))}
+                </Field>
               </Col>
               <Col xs={12}>
                 <Field
+                  component={TextField}
+                  fullWidth
+                  id={`${elem}.contactInfo`}
                   label={<FormattedMessage id="ui-organizations.accounts.account.contactInfo" />}
                   name={`${elem}.contactInfo`}
-                  id={`${elem}.contactInfo`}
-                  component={TextField}
-                  fullWidth
                 />
               </Col>
               <Col xs={12}>
                 <Field
+                  component={TextField}
+                  fullWidth
                   label={<FormattedMessage id="ui-organizations.accounts.libraryCode" />}
                   name={`${elem}.libraryCode`}
-                  validate={[Required]}
                   required
-                  component={TextField}
-                  fullWidth
+                  validate={[Required]}
                 />
               </Col>
               <Col xs={12}>
                 <Field
-                  label={<FormattedMessage id="ui-organizations.accounts.libraryEDICode" />}
-                  name={`${elem}.libraryEdiCode`}
-                  validate={[Required]}
-                  required
                   component={TextField}
                   fullWidth
+                  label={<FormattedMessage id="ui-organizations.accounts.libraryEDICode" />}
+                  name={`${elem}.libraryEdiCode`}
+                  required
+                  validate={[Required]}
                 />
               </Col>
             </Row>
           </Col>
           <Col xs={12}>
             <Field
-              label={<FormattedMessage id="ui-organizations.accounts.notes" />}
-              name={`${elem}.notes`}
-              id={`${elem}.notes`}
               component={TextArea}
               fullWidth
+              id={`${elem}.notes`}
+              label={<FormattedMessage id="ui-organizations.accounts.notes" />}
+              name={`${elem}.notes`}
             />
           </Col>
-          <Col xs={12} style={{ textAlign: 'right' }}>
-            <Button onClick={() => fields.remove(index)} buttonStyle="danger">
-              Remove
+          <Col
+            xs={12}
+            style={{ textAlign: 'right' }}
+          >
+            <Button
+              buttonStyle="danger"
+              data-test-remove-account-button
+              onClick={() => fields.remove(index)}
+            >
+              {<FormattedMessage id="ui-organizations.accounts.remove" />}
             </Button>
           </Col>
         </Row>
@@ -150,7 +208,11 @@ class AccountsForm extends Component {
     return (
       <Row>
         <Col xs={12}>
-          <FieldArray label="Accounts" name="accounts" id="accounts" component={this.renderForm} />
+          <FieldArray
+            label="Accounts"
+            name="accounts"
+            component={this.renderForm}
+          />
           <br />
         </Col>
       </Row>

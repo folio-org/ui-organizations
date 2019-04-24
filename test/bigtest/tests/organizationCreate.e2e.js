@@ -5,6 +5,7 @@ import setupApplication from '../helpers/setup-application';
 import {
   OrganizationEditInteractor,
 } from '../interactors';
+import { ORGANIZATION_STATUS } from '../../../src/common/constants';
 
 describe('Create organization', () => {
   setupApplication();
@@ -67,7 +68,7 @@ describe('Create organization', () => {
     describe('submit action', () => {
       beforeEach(async () => {
         await orgEdit.summarySectionForm.name.fill('Test organization create');
-        await orgEdit.summarySectionForm.status.select('Active');
+        await orgEdit.summarySectionForm.status.select(ORGANIZATION_STATUS.active);
         await orgEdit.summarySectionForm.code.fill('Test code');
         await orgEdit.createOrgButton.click();
       });
@@ -113,6 +114,51 @@ describe('Create organization', () => {
 
     it('should display accounts section', () => {
       expect(orgEdit.accountsSection.isPresent).to.be.true;
+    });
+
+    describe('add account', () => {
+      beforeEach(async () => {
+        await orgEdit.accountsSection.click();
+        await orgEdit.addAccountButton.click();
+      });
+
+      it('should add fiedls for new account', () => {
+        expect(orgEdit.removeAccountButton.isPresent).to.be.true;
+        expect(orgEdit.accounts().length).to.be.equal(1);
+      });
+
+      describe('remove account', () => {
+        beforeEach(async () => {
+          await orgEdit.removeAccountButton.click();
+        });
+
+        it('should remove fiedls for account', () => {
+          expect(orgEdit.removeNameButton.isPresent).to.be.false;
+          expect(orgEdit.accounts().length).to.be.equal(0);
+        });
+      });
+    });
+  });
+
+  describe('add alternative name', () => {
+    beforeEach(async () => {
+      await orgEdit.addNameButton.click();
+    });
+
+    it('should add fiedls for alternative name', () => {
+      expect(orgEdit.removeNameButton.isPresent).to.be.true;
+      expect(orgEdit.aliases().length).to.be.equal(1);
+    });
+
+    describe('remove alternative name', () => {
+      beforeEach(async () => {
+        await orgEdit.removeNameButton.click();
+      });
+
+      it('should remove fiedls for alternative name', () => {
+        expect(orgEdit.removeNameButton.isPresent).to.be.false;
+        expect(orgEdit.aliases().length).to.be.equal(0);
+      });
     });
   });
 });
