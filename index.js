@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Switch from 'react-router-dom/Switch';
 import Route from 'react-router-dom/Route';
 import { hot } from 'react-hot-loader';
+
+import { ContactsContainer } from './src/contacts';
 import Main from './src/Main';
 import Settings from './src/Settings';
 
@@ -19,7 +21,15 @@ class Organizations extends Component {
   constructor(props, context) {
     super(props, context);
     this.connectedApp = props.stripes.connect(Main);
+    this.connectedContactsContainer = props.stripes.connect(ContactsContainer);
   }
+
+  goToContacts = (props) => (
+    <this.connectedContactsContainer
+      {...props}
+      stripes={this.props.stripes}
+    />
+  );
 
   render() {
     if (this.props.showSettings) {
@@ -28,6 +38,14 @@ class Organizations extends Component {
     return (
       <div>
         <Switch>
+          <Route
+            path="/organizations/:orgId/contacts/"
+            render={this.goToContacts}
+          />
+          <Route
+            path="/organizations/contacts/"
+            render={this.goToContacts}
+          />
           <Route
             path={`${this.props.match.path}`}
             render={() => <this.connectedApp {...this.props} />}

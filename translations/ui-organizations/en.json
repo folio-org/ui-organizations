@@ -400,6 +400,7 @@
   "contactPeople.pleaseAddEmail": "Please add email",
   "contactPeople.pleaseAddPhoneNumbers": "Please add phone number",
   "contactPeople.pleaseAddUrl": "Please add URL",
+  "contactPeople.addContact": "Add contact",
 
   "agreement.name": "Name",
   "agreement.discount": "Discount",
@@ -473,6 +474,15 @@
   "edi.saturday": "Saturday",
   "edi.sunday": "Sunday",
   "edi.noEdiInfo": "No EDI information available",
+
+  "contacts.edit.paneTitle": "Edit contact - {name}",
+  "contacts.create.paneTitle": "Create contact",
+  "contacts.view.paneTitle": "Contact - {name}",
+  "contacts.button.edit": "Edit",
+  "contacts.button.copy": "Copy",
+  "contacts.button.unassign": "Unassign",
+  "contacts.button.delete": "Delete",
+  "contacts.button.submit": "Save & close",
 
   "interface.name": "Name",
   "interface.uri": "URI",
