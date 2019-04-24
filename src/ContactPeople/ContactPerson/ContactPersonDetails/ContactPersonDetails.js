@@ -22,13 +22,13 @@ const ContactPersonDetails = (
       </Col>
 
       <Col xs={3}>
-        <KeyValue label={<FormattedMessage id="ui-organizations.contactPeople.lastName" />}>
+        <KeyValue label={<FormattedMessage id="ui-organizations.contactPeople.details.lastName" />}>
           {lastName}
         </KeyValue>
       </Col>
 
       <Col xs={3}>
-        <KeyValue label={<FormattedMessage id="ui-organizations.contactPeople.firstName" />}>
+        <KeyValue label={<FormattedMessage id="ui-organizations.contactPeople.details.firstName" />}>
           {firstName}
         </KeyValue>
       </Col>
