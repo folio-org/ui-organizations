@@ -38,7 +38,7 @@ const renderPhone = phone => (
   </ContactPersonItem>
 );
 
-const ContactPersonPhones = ({ phones }) => {
+const ContactPersonPhones = ({ phones, withCollapsing }) => {
   if (!phones.length) return null;
 
   const renderHeader = () => (
@@ -46,11 +46,13 @@ const ContactPersonPhones = ({ phones }) => {
   );
 
   const renderBody = () => (
-    <EntitiesWithCollapsing
-      renderEntity={renderPhone}
-      entities={phones}
-      showMoreLabel={<FormattedMessage id="ui-organizations.contactPeople.showMorePhones" />}
-    />
+    withCollapsing ? (
+      <EntitiesWithCollapsing
+        renderEntity={renderPhone}
+        entities={phones}
+        showMoreLabel={<FormattedMessage id="ui-organizations.contactPeople.showMorePhones" />}
+      />
+    ) : phones.map(renderPhone)
   );
 
   return (
@@ -63,10 +65,12 @@ const ContactPersonPhones = ({ phones }) => {
 
 ContactPersonPhones.propTypes = {
   phones: PropTypes.arrayOf(PropTypes.object),
+  withCollapsing: PropTypes.bool,
 };
 
 ContactPersonPhones.defaultProps = {
   phones: [],
+  withCollapsing: true,
 };
 
 export default ContactPersonPhones;

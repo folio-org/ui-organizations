@@ -19,13 +19,7 @@ describe('Organization details', () => {
     const organizations = this.server.createList('organization', ORGANIZATIONS_COUNT);
     const orgId = organizations[0].id;
 
-    this.server.create('contact', {
-      categories: ['123'],
-      addresses: [{ addressLine1: 'Saint Lukes', isPrimary: true }],
-      emails: [{ value: 'email@email.com', isPrimary: true }],
-      phoneNumbers: [{ phoneNumber: '1235-56' }, { phoneNumber: '12343-55-56' }],
-      urls: [{ value: 'www.email.com', isPrimary: true }],
-    });
+    this.server.create('contact');
 
     return this.visit(`/organizations/view/${orgId}`, () => {
       expect(orgDetails.$root).to.exist;

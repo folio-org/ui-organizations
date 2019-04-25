@@ -38,7 +38,7 @@ const renderURL = url => (
   </ContactPersonItem>
 );
 
-const ContactPersonURLs = ({ urls }) => {
+const ContactPersonURLs = ({ urls, withCollapsing }) => {
   if (!urls.length) return null;
 
   const renderHeader = () => (
@@ -46,11 +46,13 @@ const ContactPersonURLs = ({ urls }) => {
   );
 
   const renderBody = () => (
-    <EntitiesWithCollapsing
-      renderEntity={renderURL}
-      entities={urls}
-      showMoreLabel={<FormattedMessage id="ui-organizations.contactPeople.showMoreURLs" />}
-    />
+    withCollapsing ? (
+      <EntitiesWithCollapsing
+        renderEntity={renderURL}
+        entities={urls}
+        showMoreLabel={<FormattedMessage id="ui-organizations.contactPeople.showMoreURLs" />}
+      />
+    ) : urls.map(renderURL)
   );
 
   return (
@@ -63,10 +65,12 @@ const ContactPersonURLs = ({ urls }) => {
 
 ContactPersonURLs.propTypes = {
   urls: PropTypes.arrayOf(PropTypes.object),
+  withCollapsing: PropTypes.bool,
 };
 
 ContactPersonURLs.defaultProps = {
   urls: [],
+  withCollapsing: true,
 };
 
 export default ContactPersonURLs;

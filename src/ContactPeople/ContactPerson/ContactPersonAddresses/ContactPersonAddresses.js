@@ -8,7 +8,7 @@ import ContactPersonAddress from './ContactPersonAddress';
 
 const renderAddress = address => <ContactPersonAddress address={address} />;
 
-const ContactPersonAddresses = ({ addresses }) => {
+const ContactPersonAddresses = ({ addresses, withCollapsing }) => {
   if (!addresses.length) return null;
 
   const renderHeader = () => (
@@ -16,11 +16,13 @@ const ContactPersonAddresses = ({ addresses }) => {
   );
 
   const renderBody = () => (
-    <EntitiesWithCollapsing
-      renderEntity={renderAddress}
-      entities={addresses}
-      showMoreLabel={<FormattedMessage id="ui-organizations.contactPeople.showMoreAddresses" />}
-    />
+    withCollapsing ? (
+      <EntitiesWithCollapsing
+        renderEntity={renderAddress}
+        entities={addresses}
+        showMoreLabel={<FormattedMessage id="ui-organizations.contactPeople.showMoreAddresses" />}
+      />
+    ) : addresses.map(renderAddress)
   );
 
   return (
@@ -33,10 +35,12 @@ const ContactPersonAddresses = ({ addresses }) => {
 
 ContactPersonAddresses.propTypes = {
   addresses: PropTypes.arrayOf(PropTypes.object),
+  withCollapsing: PropTypes.bool,
 };
 
 ContactPersonAddresses.defaultProps = {
   addresses: [],
+  withCollapsing: true,
 };
 
 export default ContactPersonAddresses;

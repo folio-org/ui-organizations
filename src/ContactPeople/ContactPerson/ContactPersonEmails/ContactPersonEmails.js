@@ -38,7 +38,7 @@ const renderEmail = email => (
   </ContactPersonItem>
 );
 
-const ContactPersonEmails = ({ emails }) => {
+const ContactPersonEmails = ({ emails, withCollapsing }) => {
   if (!emails.length) return null;
 
   const renderHeader = () => (
@@ -46,11 +46,13 @@ const ContactPersonEmails = ({ emails }) => {
   );
 
   const renderBody = () => (
-    <EntitiesWithCollapsing
-      renderEntity={renderEmail}
-      entities={emails}
-      showMoreLabel={<FormattedMessage id="ui-organizations.contactPeople.showMoreEmails" />}
-    />
+    withCollapsing ? (
+      <EntitiesWithCollapsing
+        renderEntity={renderEmail}
+        entities={emails}
+        showMoreLabel={<FormattedMessage id="ui-organizations.contactPeople.showMoreEmails" />}
+      />
+    ) : emails.map(renderEmail)
   );
 
   return (
@@ -63,10 +65,12 @@ const ContactPersonEmails = ({ emails }) => {
 
 ContactPersonEmails.propTypes = {
   emails: PropTypes.arrayOf(PropTypes.object),
+  withCollapsing: PropTypes.bool,
 };
 
 ContactPersonEmails.defaultProps = {
   emails: [],
+  withCollapsing: true
 };
 
 export default ContactPersonEmails;

@@ -10,9 +10,9 @@ import packageInfo from '../../package';
 // Components and Pages
 import {
   ORGANIZATIONS_API,
-  CATEGORIES_API,
   CONTACTS_API,
 } from '../common/constants';
+import { categoriesResource } from '../common/resources';
 import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
 import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
@@ -116,11 +116,7 @@ class Main extends Component {
         staticFallback: { params: {} },
       },
     },
-    vendorCategory: {
-      type: 'okapi',
-      records: 'categories',
-      path: CATEGORIES_API
-    },
+    vendorCategory: categoriesResource,
     queryCustom: {
       initialValue: {
         vendorIDQuery: 'query=(name=null)',
