@@ -23,7 +23,7 @@ const renderAccount = (val, key) => (
     {printKeyValue('description', get(val, ['description'], ''), false)}
     {printKeyValue('payable', get(val, ['appSystemNo'], ''), false)}
     {printKeyValue('paymentMethod', get(val, ['paymentMethod'], ''), false)}
-    {printKeyValue('contactInfo', get(val, ['contactInfo'], ''), false)}
+    {printKeyValue('account.contactInfo', get(val, ['contactInfo'], ''), false)}
     {printKeyValue('libraryCode', get(val, ['libraryCode'], ''), false)}
     {printKeyValue('libraryEDICode', get(val, ['libraryEdiCode'], ''), false)}
     {printKeyValue('notes', get(val, ['notes'], ''), false)}
