@@ -19,6 +19,8 @@
     "home": "/organizations?sort=Name",
     "hasSettings": true,
     "okapiInterfaces": {
+      "organizations-storage.contacts": "1.0",
+      "organizations-storage.interfaces": "1.0",
       "organizations-storage.organizations": "1.0",
       "organizations-storage.emails": "1.0",
       "organizations-storage.phone-numbers": "1.0",
@@ -69,7 +71,7 @@
       },
       {
         "permissionName": "ui-organizations.view",
-        "displayName": "Organizations: View organziations",
+        "displayName": "Organizations: View organizations",
         "visible": true,
         "description": "",
         "subPermissions": [
@@ -178,7 +180,7 @@
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.20",
     "prop-types": "^15.5.10",
-    "query-string": "^5.0.0",
+    "query-string": "^6.1.0",
     "react-router-dom": "^4.3.1",
     "react-tether": "^1.0.1",
     "redux-form": "^7.3.0",
