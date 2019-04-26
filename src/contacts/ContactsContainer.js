@@ -7,7 +7,7 @@ import {
   Paneset,
 } from '@folio/stripes/components';
 
-import ContactsView from './ContactsView';
+import ViewContact from './ViewContact';
 import ContactsEditContainer from './ContactsEditContainer';
 
 class ContactsContainer extends Component {
@@ -19,7 +19,7 @@ class ContactsContainer extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.connectedContactsView = props.stripes.connect(ContactsView);
+    this.connectedViewContact = props.stripes.connect(ViewContact);
     this.connectedContactsEditContainer = props.stripes.connect(ContactsEditContainer);
   }
 
@@ -39,10 +39,8 @@ class ContactsContainer extends Component {
   );
 
   goToView = (props) => (
-    <this.connectedContactsView
+    <this.connectedViewContact
       {...props}
-      onClose={this.onCancel}
-      onSubmit={this.onSubmit}
       stripes={this.props.stripes}
       baseUrl={this.props.match.url}
     />
