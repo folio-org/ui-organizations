@@ -7,12 +7,17 @@ import {
   Button,
   Pane,
   PaneMenu,
+  Row,
+  Col,
 } from '@folio/stripes/components';
 import { AppIcon } from '@folio/stripes/core';
 
 import {
   CONTACTS_API,
-} from '../common/constants';
+} from '../../common/constants';
+import { categoriesResource } from '../../common/resources';
+import { transformCategoriesForSelect } from '../../common/utils/category';
+import EditContact from './EditContact';
 
 function getLastMenu(handleSubmit) {
   return (
@@ -34,7 +39,7 @@ function getLastMenu(handleSubmit) {
   );
 }
 
-class ContactsEditContainer extends Component {
+class EditContactContainer extends Component {
   static manifest = Object.freeze({
     contact: {
       type: 'okapi',
@@ -43,12 +48,14 @@ class ContactsEditContainer extends Component {
         return undefined;
       }
     },
+    categories: categoriesResource,
   });
 
   render() {
-    const { onSubmit, onClose, match, resources } = this.props;
+    const { onSubmit, onClose, match, resources, stripes } = this.props;
     const isNew = !match.params.id;
     const loadedContact = get(resources, 'contact.records[0]', {});
+    const categories = get(resources, 'categories.records', []);
     const contact = isNew ? {} : loadedContact;
     const { firstName, lastName } = contact;
     const name = `${lastName}, ${firstName}`;
@@ -61,21 +68,31 @@ class ContactsEditContainer extends Component {
         appIcon={<AppIcon app="organizations" appIconKey="organizations" />}
         defaultWidth="fill"
         dismissible
+        id="edit-contact"
         lastMenu={getLastMenu(onSubmit)}
         onClose={onClose}
         paneTitle={paneTitle}
       >
-        Edit component
+        <Row>
+          <Col xs={12} md={8} mdOffset={2}>
+            <EditContact
+              categories={transformCategoriesForSelect(categories)}
+              initialValues={contact}
+              stripes={stripes}
+            />
+          </Col>
+        </Row>
       </Pane>
     );
   }
 }
 
-ContactsEditContainer.propTypes = {
-  onSubmit: PropTypes.func,
+EditContactContainer.propTypes = {
   match: PropTypes.object,
   onClose: PropTypes.func,
+  onSubmit: PropTypes.func,
   resources: PropTypes.object,
+  stripes: PropTypes.object,
 };
 
-export default ContactsEditContainer;
+export default EditContactContainer;
