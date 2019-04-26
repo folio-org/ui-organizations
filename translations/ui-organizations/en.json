@@ -289,10 +289,8 @@
   "view.details": "Details",
 
   "createOrg.title": "Create organization",
-  "createOrg.submit": "Create organization",
-
   "editOrg.title": "Edit - {name}",
-  "editOrg.submit": "Update organization",
+  "updateOrg.submit": "Save",
 
   "edit.delete": "Delete",
   "edit.requiredFields": "Required fields!",
