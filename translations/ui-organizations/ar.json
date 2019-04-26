@@ -505,5 +505,6 @@
     "contacts.button.copy": "نسخ",
     "contacts.button.unassign": "إلغاء تعيين",
     "contacts.button.delete": "حذف",
-    "contacts.button.submit": "حفظ وإغلاق"
+    "contacts.button.submit": "حفظ وإغلاق",
+    "updateOrg.submit": "Save"
 }

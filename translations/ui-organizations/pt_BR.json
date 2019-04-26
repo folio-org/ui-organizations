@@ -505,5 +505,6 @@
     "contacts.button.copy": "Copiar",
     "contacts.button.unassign": "Cancelar atribuição",
     "contacts.button.delete": "Excluir",
-    "contacts.button.submit": "Salvar e fechar"
+    "contacts.button.submit": "Salvar e fechar",
+    "updateOrg.submit": "Save"
 }
