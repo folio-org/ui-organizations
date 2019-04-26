@@ -102,8 +102,8 @@ class PaneDetails extends React.Component {
       <FormattedMessage id="ui-organizations.editOrg.title" values={{ name: get(initialValues, ['name'], '') }} /> :
       <FormattedMessage id="ui-organizations.createOrg.title" />;
     const lastMenu = initialValues.id ?
-      this.getLastMenu('clickable-update-organization', 'ui-organizations.editOrg.submit') :
-      this.getLastMenu('clickable-create-organization', 'ui-organizations.createOrg.submit');
+      this.getLastMenu('clickable-update-organization', 'ui-organizations.updateOrg.submit') :
+      this.getLastMenu('clickable-create-organization', 'ui-organizations.updateOrg.submit');
     const isVendor = getFormValues('FormVendor')(stripes.store.getState()).isVendor;
 
     return (
