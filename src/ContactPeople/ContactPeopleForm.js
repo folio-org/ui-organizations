@@ -12,6 +12,7 @@ import {
   List,
   Row,
 } from '@folio/stripes/components';
+import { Pluggable } from '@folio/stripes/core';
 
 class ContactPeopleForm extends Component {
   static propTypes = {
@@ -68,6 +69,10 @@ class ContactPeopleForm extends Component {
     return `${starting}${ending}`;
   }
 
+  addContacts = contacts => {
+    this.fields.push(...contacts.map(contact => contact.id));
+  };
+
   renderData(valueID) {
     const { parentResources } = this.props;
     const contacts = ((parentResources || {}).contacts || {}).records || [];
@@ -115,6 +120,27 @@ class ContactPeopleForm extends Component {
     );
   }
 
+  renderAddContactButton = () => {
+    const { stripes } = this.props;
+
+    return (
+      <Pluggable
+        aria-haspopup="true"
+        type="find-contact"
+        dataKey="contact"
+        searchLabel={<FormattedMessage id="ui-organizations.contactPeople.addContact" />}
+        searchButtonStyle="default"
+        disableRecordCreation
+        stripes={stripes}
+        addContacts={this.addContacts}
+      >
+        <span>
+          <FormattedMessage id="ui-organizations.contactPeople.noFindContactPlugin" />
+        </span>
+      </Pluggable>
+    );
+  }
+
   render() {
     return (
       <Row>
@@ -123,12 +149,7 @@ class ContactPeopleForm extends Component {
           <br />
         </Col>
         <Col xs={12}>
-          <Button
-            buttonStyle="primary"
-            to={this.getContactsUrl()}
-          >
-            <FormattedMessage id="ui-organizations.contactPeople.addContact" />
-          </Button>
+          {this.renderAddContactButton()}
         </Col>
       </Row>
     );

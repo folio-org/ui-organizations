@@ -8,11 +8,8 @@ import { filters2cql } from '@folio/stripes/components';
 import FormatTime from '../Utils/FormatTime';
 import packageInfo from '../../package';
 // Components and Pages
-import {
-  ORGANIZATIONS_API,
-  CONTACTS_API,
-} from '../common/constants';
-import { categoriesResource } from '../common/resources';
+import { ORGANIZATIONS_API } from '../common/constants';
+import { categoriesResource, baseContactsResource } from '../common/resources';
 import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
 import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
@@ -136,9 +133,7 @@ class Main extends Component {
       }
     },
     contacts: {
-      type: 'okapi',
-      records: 'contacts',
-      path: CONTACTS_API,
+      ...baseContactsResource,
       params: {
         query: (...args) => {
           // const newData = 'query=(id="d375f933-a093-4348-a594-0c02442946f3*")';
