@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Switch from 'react-router-dom/Switch';
 import Route from 'react-router-dom/Route';
+import { FormattedMessage } from 'react-intl';
 
 import {
+  Callout,
   Paneset,
 } from '@folio/stripes/components';
 
@@ -21,6 +23,7 @@ class ContactsContainer extends Component {
     super(props, context);
     this.connectedViewContact = props.stripes.connect(ViewContact);
     this.connectedEditContactContainer = props.stripes.connect(EditContactContainer);
+    this.callout = React.createRef();
   }
 
   onCancel = () => this.props.history.goBack();
@@ -34,6 +37,7 @@ class ContactsContainer extends Component {
       {...props}
       onClose={this.onCancel}
       onSubmit={this.onSubmit}
+      showMessage={this.showMessage}
       stripes={this.props.stripes}
     />
   );
@@ -41,10 +45,19 @@ class ContactsContainer extends Component {
   goToView = (props) => (
     <this.connectedViewContact
       {...props}
+      orgId={this.props.match.params.orgId}
+      showMessage={this.showMessage}
       stripes={this.props.stripes}
       baseUrl={this.props.match.url}
     />
   );
+
+  showMessage = (messageKey, messageType = 'success') => {
+    this.callout.current.sendCallout({
+      type: messageType,
+      message: <FormattedMessage id={messageKey} />,
+    });
+  }
 
   render() {
     const { match } = this.props;
@@ -66,6 +79,7 @@ class ContactsContainer extends Component {
             render={this.goToEdit}
           />
         </Switch>
+        <Callout ref={this.callout} />
       </Paneset>
     );
   }

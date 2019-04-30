@@ -509,6 +509,11 @@
   "contacts.button.unassign": "Unassign",
   "contacts.button.delete": "Delete",
   "contacts.button.submit": "Save & close",
+  "contacts.message.unassigned.fail": "The contact was not unassigned",
+  "contacts.message.unassigned.success": "The contact was unassigned",
+  "contacts.confirmUnassign.confirmLabel": "Confirm",
+  "contacts.confirmUnassign.heading": "Unassign from organization",
+  "contacts.confirmUnassign.message": "Are you sure you want to unassign the contact from organization?",
 
   "interface.name": "Name",
   "interface.uri": "URI",

@@ -1,0 +1,87 @@
+import { beforeEach, describe, it } from '@bigtest/mocha';
+import { expect } from 'chai';
+import { map } from 'lodash';
+
+import setupApplication from '../helpers/setup-application';
+import {
+  OrganizationEditInteractor,
+} from '../interactors';
+
+describe('Organization edit', () => {
+  setupApplication();
+
+  const orgEdit = new OrganizationEditInteractor();
+  let contacts = null;
+
+  beforeEach(function () {
+    contacts = this.server.createList('contact', 2);
+    const org = this.server.create('organization', { contacts: map(contacts, 'id') });
+
+    return this.visit(`/organizations/view/${org.id}?layer=edit`, () => {
+      expect(orgEdit.$root).to.exist;
+    });
+  });
+
+  it('shows the close edit pane button', function () {
+    expect(orgEdit.closePaneButton.isPresent).to.be.true;
+  });
+
+  describe('clicking on the close pane button', function () {
+    beforeEach(async function () {
+      await orgEdit.closePaneButton.click();
+    });
+
+    it('organization\'s edit pane is closed', function () {
+      expect(orgEdit.isPresent).to.be.false;
+    });
+  });
+
+  it('edit organization layer is open', function () {
+    expect(orgEdit.isPresent).to.be.true;
+  });
+
+  it('contact people section is expanded', function () {
+    expect(orgEdit.contactPeopleSection.isExpanded).to.be.true;
+  });
+
+  it('update Vendor Button is disabled', function () {
+    expect(orgEdit.updateVendorButton.isDisabled).to.be.true;
+  });
+
+  describe('change title and update vendor', function () {
+    beforeEach(async function () {
+      const name = orgEdit.summarySectionForm.name;
+
+      await orgEdit.summarySectionForm.click();
+      await name.fill(`${name.value} new`);
+    });
+
+    it('update Vendor Button is disabled', function () {
+      expect(orgEdit.updateVendorButton.isDisabled).to.be.false;
+    });
+
+    describe('click update vendor button', function () {
+      beforeEach(async function () {
+        await orgEdit.updateVendorButton.click();
+      });
+
+      it('Edit layer is closed', function () {
+        expect(orgEdit.isPresent).to.be.false;
+      });
+    });
+  });
+
+  it('displays Contact List', function () {
+    expect(orgEdit.contactList.contacts().length).to.equal(contacts.length);
+  });
+
+  describe('click unassign contact button', function () {
+    beforeEach(async function () {
+      await orgEdit.contactList.contacts(0).unassign.click();
+    });
+
+    it('contact is unassigned', function () {
+      expect(orgEdit.contactList.contacts().length).to.equal(contacts.length - 1);
+    });
+  });
+});

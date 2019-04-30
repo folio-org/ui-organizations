@@ -114,36 +114,5 @@ describe('Organization details', () => {
     it('edit organization layer is open', function () {
       expect(orgEdit.isPresent).to.be.true;
     });
-
-    it('contact people section is expanded', function () {
-      expect(orgEdit.contactPeopleSection.isExpanded).to.be.true;
-    });
-
-    it('update Vendor Button is disabled', function () {
-      expect(orgEdit.updateVendorButton.isDisabled).to.be.true;
-    });
-
-    describe('change title and update vendor', function () {
-      beforeEach(async function () {
-        const name = orgEdit.summarySectionForm.name;
-
-        await orgEdit.summarySectionForm.click();
-        await name.fill(`${name.value} new`);
-      });
-
-      it('update Vendor Button is disabled', function () {
-        expect(orgEdit.updateVendorButton.isDisabled).to.be.false;
-      });
-
-      describe('click update vendor button', function () {
-        beforeEach(async function () {
-          await orgEdit.updateVendorButton.click();
-        });
-
-        it('Edit layer is closed', function () {
-          expect(orgEdit.isPresent).to.be.false;
-        });
-      });
-    });
   });
 });

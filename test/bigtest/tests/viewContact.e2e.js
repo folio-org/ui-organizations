@@ -31,4 +31,24 @@ describe('View contact', () => {
       expect(viewContact.contactPerson.isPresent).to.be.true;
     });
   });
+
+  describe('click unassign button', () => {
+    beforeEach(async function () {
+      await viewContact.unassignButton.click();
+    });
+
+    it('confirmation modal for unassign should be presented', () => {
+      expect(viewContact.unassignConfirmation.isPresent).to.be.true;
+    });
+
+    describe('click confirm unassign button', () => {
+      beforeEach(async function () {
+        await viewContact.unassignConfirmation.confirmButton.click();
+      });
+
+      it('confirmation modal for unassign should disappear', () => {
+        expect(viewContact.unassignConfirmation.isPresent).to.be.false;
+      });
+    });
+  });
 });
