@@ -506,5 +506,6 @@
     "contacts.button.unassign": "إلغاء تعيين",
     "contacts.button.delete": "حذف",
     "contacts.button.submit": "حفظ وإغلاق",
-    "updateOrg.submit": "حفظ"
+    "updateOrg.submit": "حفظ",
+    "contactPeople.noFindContactPlugin": "no find-contact plugin"
 }
