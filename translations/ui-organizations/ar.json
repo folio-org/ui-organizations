@@ -507,5 +507,5 @@
     "contacts.button.delete": "حذف",
     "contacts.button.submit": "حفظ وإغلاق",
     "updateOrg.submit": "حفظ",
-    "contactPeople.noFindContactPlugin": "no find-contact plugin"
+    "contactPeople.noFindContactPlugin": "لا يوجد برنامج إضافي للعثور على جهات اتصال"
 }
