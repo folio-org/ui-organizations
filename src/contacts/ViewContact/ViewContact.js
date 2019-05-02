@@ -13,10 +13,11 @@ import { AppIcon } from '@folio/stripes/core';
 
 import ContactPerson from '../../ContactPeople/ContactPerson';
 
-const ViewContact = ({ onClose, contact, categories, baseUrl }) => {
+const ViewContact = ({ onClose, contact, categories, baseUrl, unassign }) => {
   // eslint-disable-next-line react/prop-types
   const getActionMenu = ({ onToggle }) => {
-    const editUrl = `${baseUrl}/${contact.id}/edit`;
+    const contactId = contact.id;
+    const editUrl = `${baseUrl}/${contactId}/edit`;
 
     return (
       <div data-test-view-contact-actions>
@@ -40,17 +41,20 @@ const ViewContact = ({ onClose, contact, categories, baseUrl }) => {
             <FormattedMessage id="ui-organizations.contacts.button.copy" />
           </Icon>
         </Button>
-        <Button
-          data-test-contacts-action-unassign
-          buttonStyle="dropdownItem"
-          onClick={() => {
-            onToggle();
-          }}
-        >
-          <Icon icon="document">
-            <FormattedMessage id="ui-organizations.contacts.button.unassign" />
-          </Icon>
-        </Button>
+        {contactId && (
+          <Button
+            data-test-contacts-action-unassign
+            buttonStyle="dropdownItem"
+            onClick={() => {
+              onToggle();
+              unassign();
+            }}
+          >
+            <Icon icon="document">
+              <FormattedMessage id="ui-organizations.contacts.button.unassign" />
+            </Icon>
+          </Button>
+        )}
         <Button
           data-test-contacts-action-delete
           buttonStyle="dropdownItem"
@@ -94,6 +98,7 @@ ViewContact.propTypes = {
   contact: PropTypes.object.isRequired,
   categories: PropTypes.arrayOf(PropTypes.object),
   baseUrl: PropTypes.string.isRequired,
+  unassign: PropTypes.func.isRequired,
 };
 
 export default ViewContact;

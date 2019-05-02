@@ -280,7 +280,7 @@ class Main extends Component {
           viewRecordComponent={ViewVendor}
           onCreate={this.create}
           editRecordComponent={PaneDetails}
-          newRecordInitialValues={{}}
+          newRecordInitialValues={{ contacts: [] }}
           initialResultCount={INITIAL_RESULT_COUNT}
           resultCountIncrement={RESULT_COUNT_INCREMENT}
           finishedResourceName="perms"

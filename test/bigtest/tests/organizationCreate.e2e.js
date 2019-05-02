@@ -22,6 +22,14 @@ describe('Create organization', () => {
     expect(orgEdit.isPresent).to.be.true;
   });
 
+  it('should display contact people section', () => {
+    expect(orgEdit.contactPeopleSection.isPresent).to.be.true;
+  });
+
+  it('displays Add Contact button', () => {
+    expect(orgEdit.contactPeopleSection.addContactButton.isPresent).to.be.true;
+  });
+
   describe('submit button', () => {
     it('should be present', () => {
       expect(orgEdit.createOrgButton.isPresent).to.be.true;
@@ -39,10 +47,6 @@ describe('Create organization', () => {
 
     it('should display contact information section', () => {
       expect(orgEdit.contactInformationSection.isPresent).to.be.true;
-    });
-
-    it('should display contact people section', () => {
-      expect(orgEdit.contactPeopleSection.isPresent).to.be.true;
     });
 
     it('should display interfaces section', () => {
@@ -90,10 +94,6 @@ describe('Create organization', () => {
 
     it('should display contact information section', () => {
       expect(orgEdit.contactInformationSection.isPresent).to.be.true;
-    });
-
-    it('should display contact people section', () => {
-      expect(orgEdit.contactPeopleSection.isPresent).to.be.true;
     });
 
     it('should display interfaces section', () => {

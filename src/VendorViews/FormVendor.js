@@ -7,6 +7,7 @@ import { getFormSyncErrors } from 'redux-form';
 import { IfPermission } from '@folio/stripes/core';
 import { Button, Row, Col, AccordionSet, Accordion, ExpandAllButton, Icon } from '@folio/stripes/components';
 
+import { SECTIONS } from '../common/constants';
 import { SummaryForm } from '../Summary';
 import { ContactInformationForm } from '../ContactInformation';
 import { ContactPeopleForm } from '../ContactPeople';
@@ -15,6 +16,7 @@ import { VendorInformationForm } from '../VendorInformation';
 import { EdiInformationForm } from '../EdiInformation';
 import { InterfaceForm } from '../Interface';
 import { AccountsForm } from '../Accounts';
+
 import css from './css/FormVendor.css';
 
 class FormVendor extends Component {
@@ -112,7 +114,7 @@ class FormVendor extends Component {
     // Errors
     const message = (
       <em className={css.requiredIcon} style={{ color: 'red', display: 'flex', alignItems: 'center' }}>
-        <Icon icon="validation-error" size="medium" />
+        <Icon icon="exclamation-circle" size="medium" />
         {<FormattedMessage id="ui-organizations.edit.requiredFields" />}
       </em>
     );
@@ -135,7 +137,12 @@ class FormVendor extends Component {
               <Accordion label={<FormattedMessage id="ui-organizations.contactInformation" />} id="contactInformationSection" displayWhenClosed={isDisplayError('contactInfoErr')} displayWhenOpen={isDisplayError('contactInfoErr')}>
                 <ContactInformationForm {...this.props} />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-organizations.contactPeople" />} id="contactPeopleSection" displayWhenClosed={isDisplayError('contactPeopleErr')} displayWhenOpen={isDisplayError('contactPeopleErr')}>
+              <Accordion
+                label={<FormattedMessage id="ui-organizations.contactPeople" />}
+                id={SECTIONS.contactPeopleSection}
+                displayWhenClosed={isDisplayError('contactPeopleErr')}
+                displayWhenOpen={isDisplayError('contactPeopleErr')}
+              >
                 <ContactPeopleForm
                   orgId={id}
                   parentMutator={parentMutator}
