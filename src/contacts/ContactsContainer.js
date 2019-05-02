@@ -8,7 +8,7 @@ import {
 } from '@folio/stripes/components';
 
 import ViewContact from './ViewContact';
-import ContactsEditContainer from './ContactsEditContainer';
+import EditContactContainer from './EditContact';
 
 class ContactsContainer extends Component {
   static propTypes = {
@@ -20,7 +20,7 @@ class ContactsContainer extends Component {
   constructor(props, context) {
     super(props, context);
     this.connectedViewContact = props.stripes.connect(ViewContact);
-    this.connectedContactsEditContainer = props.stripes.connect(ContactsEditContainer);
+    this.connectedEditContactContainer = props.stripes.connect(EditContactContainer);
   }
 
   onCancel = () => this.props.history.goBack();
@@ -30,7 +30,7 @@ class ContactsContainer extends Component {
   }
 
   goToEdit = (props) => (
-    <this.connectedContactsEditContainer
+    <this.connectedEditContactContainer
       {...props}
       onClose={this.onCancel}
       onSubmit={this.onSubmit}
