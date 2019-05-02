@@ -66,7 +66,7 @@ class PaneDetails extends React.Component {
 
   getCountryList() {
     const { parentResources } = this.props;
-    return getDropDownItems(parentResources, 'countryList', true);
+    return getDropDownItems(parentResources, 'countryList', false);
   }
 
   getLanguageList() {

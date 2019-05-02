@@ -7,7 +7,6 @@ import { Col, Select, TextField } from '@folio/stripes/components';
 import { FormattedMessage } from 'react-intl';
 import CategoryDropdown from '../Utils/CategoryDropdown';
 import css from './css/MultiForms.css';
-import { Required } from '../Utils/Validate';
 
 class AddressesMF extends Component {
   static propTypes = {
@@ -185,11 +184,8 @@ class AddressesMF extends Component {
             label={<FormattedMessage id="ui-organizations.data.contactTypes.country" />}
             name={`${name}.country`}
             component={Select}
-            placeholder=" "
             dataOptions={dropdownCountry}
-            validate={[Required]}
             fullWidth
-            required
           />
         </Col>
         <Col xs={12} md={3}>
