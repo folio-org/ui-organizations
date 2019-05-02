@@ -12,6 +12,9 @@ export default interactor(class ViewContactInteractor {
 
   contactPerson = new ContactPersonInteractor();
   actions = new Interactor('[data-test-view-contact-actions]')
+  paneHeaderCenterButton = new Button('[class*=paneHeaderCenterButton---]');
   unassignButton = new Button('[data-test-contacts-action-unassign]');
+  deleteButton = new Button('[data-test-contacts-action-delete]');
   unassignConfirmation = new ConfirmationModal('#unassign-contact-modal');
+  deleteConfirmation = new ConfirmationModal('#delete-contact-modal');
 });
