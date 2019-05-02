@@ -12,3 +12,12 @@ export const unassign = (mutator, contactId, org) => {
 
   return Promise.resolve();
 };
+
+export const deleteContact = (orgMutator, contactMutator, contactId, org) => {
+  if (contactId) {
+    return unassign(orgMutator, contactId, org)
+      .then(() => contactMutator.DELETE({ id: contactId }));
+  }
+
+  return Promise.resolve();
+};

@@ -13,7 +13,7 @@ import { AppIcon } from '@folio/stripes/core';
 
 import ContactPerson from '../../ContactPeople/ContactPerson';
 
-const ViewContact = ({ onClose, contact, categories, baseUrl, unassign }) => {
+const ViewContact = ({ onClose, contact, categories, baseUrl, unassign, deleteContact }) => {
   // eslint-disable-next-line react/prop-types
   const getActionMenu = ({ onToggle }) => {
     const contactId = contact.id;
@@ -60,6 +60,7 @@ const ViewContact = ({ onClose, contact, categories, baseUrl, unassign }) => {
           buttonStyle="dropdownItem"
           onClick={() => {
             onToggle();
+            deleteContact();
           }}
         >
           <Icon icon="trash">
@@ -99,6 +100,7 @@ ViewContact.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
   baseUrl: PropTypes.string.isRequired,
   unassign: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired,
 };
 
 export default ViewContact;

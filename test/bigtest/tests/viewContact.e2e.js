@@ -34,6 +34,7 @@ describe('View contact', () => {
 
   describe('click unassign button', () => {
     beforeEach(async function () {
+      await viewContact.paneHeaderCenterButton.click();
       await viewContact.unassignButton.click();
     });
 
@@ -48,6 +49,37 @@ describe('View contact', () => {
 
       it('confirmation modal for unassign should disappear', () => {
         expect(viewContact.unassignConfirmation.isPresent).to.be.false;
+      });
+    });
+  });
+
+  describe('click delete button', () => {
+    beforeEach(async function () {
+      await viewContact.paneHeaderCenterButton.click();
+      await viewContact.deleteButton.click();
+    });
+
+    it('confirmation modal for delete should be presented', () => {
+      expect(viewContact.deleteConfirmation.isPresent).to.be.true;
+    });
+
+    describe('click confirm delete button', () => {
+      beforeEach(async function () {
+        await viewContact.deleteConfirmation.confirmButton.click();
+      });
+
+      it('confirmation modal for delete should disappear', () => {
+        expect(viewContact.deleteConfirmation.isPresent).to.be.false;
+      });
+    });
+
+    describe('click cancel delete button', () => {
+      beforeEach(async function () {
+        await viewContact.deleteConfirmation.cancelButton.click();
+      });
+
+      it('confirmation modal for delete should disappear', () => {
+        expect(viewContact.deleteConfirmation.isPresent).to.be.false;
       });
     });
   });
