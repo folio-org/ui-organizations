@@ -36,9 +36,23 @@ const getContactsUrl = (orgId, contactId) => {
   return `${starting}${ending}`;
 };
 
-const AddContactButton = ({ fields, stripes }) => {
+const AddContactButton = ({ fields, stripes, orgId }) => {
   const addContacts = contacts => {
     fields.push(...contacts.map(contact => contact.id));
+  };
+
+  const renderNewContactBtn = () => {
+    const url = `/organizations${orgId ? orgId + '/' : ''}/contacts/add-contact`;
+
+    return (
+      <Button
+        marginBottom0
+        buttonStyle="primary"
+        to={url}
+      >
+        <FormattedMessage id="ui-organizations.contactPeople.newContact" />
+      </Button>
+    );
   };
 
   return (
@@ -51,6 +65,7 @@ const AddContactButton = ({ fields, stripes }) => {
       disableRecordCreation
       stripes={stripes}
       addContacts={addContacts}
+      renderNewContactBtn={renderNewContactBtn}
     >
       <span data-test-add-contact>
         <FormattedMessage id="ui-organizations.contactPeople.noFindContactPlugin" />
@@ -62,6 +77,7 @@ const AddContactButton = ({ fields, stripes }) => {
 AddContactButton.propTypes = {
   fields: PropTypes.object,
   stripes: PropTypes.object,
+  orgId: PropTypes.string,
 };
 
 const ContactPeopleList = ({ fields, contactsMap, orgId, categoriesDict, stripes }) => {
@@ -117,6 +133,7 @@ const ContactPeopleList = ({ fields, contactsMap, orgId, categoriesDict, stripes
       <AddContactButton
         fields={fields}
         stripes={stripes}
+        orgId={orgId}
       />
     </React.Fragment>
   );

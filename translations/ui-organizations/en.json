@@ -426,6 +426,7 @@
   "contactPeople.pleaseAddPhoneNumbers": "Please add phone number",
   "contactPeople.pleaseAddUrl": "Please add URL",
   "contactPeople.addContact": "Add contact",
+  "contactPeople.newContact": "New",
   "contactPeople.noFindContactPlugin": "no find-contact plugin",
 
   "agreement.name": "Name",
