@@ -506,5 +506,6 @@
     "contacts.button.unassign": "Unassign",
     "contacts.button.delete": "Delete",
     "contacts.button.submit": "Save & close",
-    "updateOrg.submit": "Save"
+    "updateOrg.submit": "Save",
+    "contactPeople.noFindContactPlugin": "no find-contact plugin"
 }
