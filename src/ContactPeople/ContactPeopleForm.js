@@ -57,6 +57,8 @@ class ContactPeopleForm extends Component {
     return `${starting}${ending}`;
   }
 
+  fetchContacts = () => this.setState({ contactArrState: [] });
+
   render() {
     const { orgId, parentResources, stripes } = this.props;
     const categoriesDict = get(parentResources, 'vendorCategory.records', []);
@@ -72,6 +74,7 @@ class ContactPeopleForm extends Component {
             name="contacts"
             component={ContactPeopleList}
             props={{
+              fetchContacts: this.fetchContacts,
               categoriesDict,
               contactsMap,
               orgId,
