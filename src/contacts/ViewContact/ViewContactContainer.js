@@ -10,7 +10,7 @@ import {
 
 import {
   categoriesResource,
-  contactResource,
+  contactDetailsResource,
   organizationResource,
 } from '../../common/resources';
 import ViewContact from './ViewContact';
@@ -32,7 +32,7 @@ class ViewContactContainer extends Component {
   };
 
   static manifest = Object.freeze({
-    contact: contactResource,
+    contact: contactDetailsResource,
     categories: categoriesResource,
     organization: organizationResource,
   });
@@ -63,19 +63,18 @@ class ViewContactContainer extends Component {
     this.hideConfirmUnassign();
     unassign(mutator.organization, contactId, org)
       .then(() => showMessage('ui-organizations.contacts.message.unassigned.success'))
+      .then(() => this.onClose())
       .catch(() => showMessage('ui-organizations.contacts.message.unassigned.fail', 'error'));
   }
 
   onDeleteContact = () => {
-    const { match, mutator, resources, showMessage } = this.props;
+    const { match, mutator, resources } = this.props;
     const org = get(resources, 'organization.records.0');
     const contactId = get(match, 'params.id');
 
     this.hideConfirmDelete();
     deleteContact(mutator.organization, mutator.contact, contactId, org)
-      .then(() => showMessage('ui-organizations.contacts.message.deleted.success'))
-      .then(this.onClose)
-      .catch(() => showMessage('ui-organizations.contacts.message.deleted.fail', 'error'));
+      .finally(() => this.onClose());
   }
 
   render() {
