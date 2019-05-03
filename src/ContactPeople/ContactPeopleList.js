@@ -47,7 +47,7 @@ const AddContactButton = ({ fetchContacts, fields, stripes, orgId }) => {
   };
 
   const renderNewContactBtn = () => {
-    const url = `/organizations${orgId ? orgId + '/' : ''}/contacts/add-contact`;
+    const url = `/organizations${orgId ? '/' + orgId : ''}/contacts/add-contact`;
 
     return (
       <Button
