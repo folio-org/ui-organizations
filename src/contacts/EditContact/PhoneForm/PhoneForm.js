@@ -21,10 +21,11 @@ const addPhoneNumberFields = {
   requiredFields: ['phoneNumber'],
 };
 
-const PhoneForm = ({ store, change, dispatch, categories }) => (
+const PhoneForm = ({ store, change, dispatch, categories, categoriesFormatter }) => (
   <ContactDetailsForm
     buttonName={<FormattedMessage id="ui-organizations.contactPeople.addPhoneNumber" />}
     categories={categories}
+    categoriesFormatter={categoriesFormatter}
     change={change}
     dispatch={dispatch}
     emptyListMessage={<FormattedMessage id="ui-organizations.contactPeople.pleaseAddPhoneNumbers" />}
@@ -39,6 +40,7 @@ const PhoneForm = ({ store, change, dispatch, categories }) => (
 
 PhoneForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
+  categoriesFormatter: PropTypes.func.isRequired,
   change: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   store: PropTypes.object.isRequired,

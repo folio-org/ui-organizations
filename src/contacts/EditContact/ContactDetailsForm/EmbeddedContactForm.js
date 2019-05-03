@@ -19,6 +19,7 @@ import css from './ContactDetailsForm.css';
 class EmbeddedContactForm extends Component {
   static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.object),
+    categoriesFormatter: PropTypes.func.isRequired,
     change: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     fieldComponents: PropTypes.object.isRequired,
@@ -58,7 +59,7 @@ class EmbeddedContactForm extends Component {
           checked={input.value}
           id={props.id}
           onChange={() => this.setPrimary(this.props.fieldKey)}
-          name="isPrimary"
+          name={`${this.props.name}[${this.props.fieldKey}].isPrimary`}
         />
         {this.props.labelForPrimaryFieldsGroup}
       </label>
@@ -68,6 +69,7 @@ class EmbeddedContactForm extends Component {
   render() {
     const {
       categories,
+      categoriesFormatter,
       fieldComponents,
       fieldKey,
       fieldName,
@@ -90,7 +92,14 @@ class EmbeddedContactForm extends Component {
       }
 
       if (field === 'categories') {
-        fieldProps = { fieldProps, ...{ dataOptions: categories, onBlur: e => e.preventDefault() } };
+        fieldProps = {
+          fieldProps,
+          ...{
+            dataOptions: categories.map(({ id }) => id),
+            formatter: categoriesFormatter,
+            onBlur: e => e.preventDefault(),
+          }
+        };
       }
 
       return (
