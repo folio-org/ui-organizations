@@ -15,6 +15,7 @@ import {
 } from '../../common/resources';
 import ViewContact from './ViewContact';
 import {
+  deleteContact,
   unassign,
 } from './util';
 
@@ -37,6 +38,7 @@ class ViewContactContainer extends Component {
   });
 
   state = {
+    showConfirmDelete: false,
     showConfirmUnassign: false,
   };
 
@@ -47,6 +49,11 @@ class ViewContactContainer extends Component {
   showConfirmUnassign = () => this.setState({ showConfirmUnassign: true });
 
   hideConfirmUnassign = () => this.setState({ showConfirmUnassign: false });
+
+  showConfirmDelete = () => this.setState({ showConfirmDelete: true });
+
+  hideConfirmDelete = () => this.setState({ showConfirmDelete: false });
+
 
   onUnassign = () => {
     const { match, mutator, resources, showMessage } = this.props;
@@ -59,9 +66,21 @@ class ViewContactContainer extends Component {
       .catch(() => showMessage('ui-organizations.contacts.message.unassigned.fail', 'error'));
   }
 
+  onDeleteContact = () => {
+    const { match, mutator, resources, showMessage } = this.props;
+    const org = get(resources, 'organization.records.0');
+    const contactId = get(match, 'params.id');
+
+    this.hideConfirmDelete();
+    deleteContact(mutator.organization, mutator.contact, contactId, org)
+      .then(() => showMessage('ui-organizations.contacts.message.deleted.success'))
+      .then(this.onClose)
+      .catch(() => showMessage('ui-organizations.contacts.message.deleted.fail', 'error'));
+  }
+
   render() {
     const { resources, baseUrl } = this.props;
-    const { showConfirmUnassign } = this.state;
+    const { showConfirmDelete, showConfirmUnassign } = this.state;
 
     const contact = get(resources, 'contact.records[0]', {});
     const categories = get(resources, 'categories.records', []);
@@ -73,10 +92,11 @@ class ViewContactContainer extends Component {
     return (
       <React.Fragment>
         <ViewContact
-          categories={categories}
-          onClose={this.onClose}
-          contact={contact}
           baseUrl={baseUrl}
+          categories={categories}
+          contact={contact}
+          deleteContact={this.showConfirmDelete}
+          onClose={this.onClose}
           unassign={this.showConfirmUnassign}
         />
         {showConfirmUnassign && (
@@ -87,6 +107,17 @@ class ViewContactContainer extends Component {
             message={<FormattedMessage id="ui-organizations.contacts.confirmUnassign.message" />}
             onCancel={this.hideConfirmUnassign}
             onConfirm={this.onUnassign}
+            open
+          />
+        )}
+        {showConfirmDelete && (
+          <ConfirmationModal
+            id="delete-contact-modal"
+            confirmLabel={<FormattedMessage id="ui-organizations.contacts.confirmDelete.confirmLabel" />}
+            heading={<FormattedMessage id="ui-organizations.contacts.confirmDelete.heading" />}
+            message={<FormattedMessage id="ui-organizations.contacts.confirmDelete.message" />}
+            onCancel={this.hideConfirmDelete}
+            onConfirm={this.onDeleteContact}
             open
           />
         )}
