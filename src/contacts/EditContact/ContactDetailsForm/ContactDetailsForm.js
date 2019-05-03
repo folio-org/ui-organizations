@@ -14,6 +14,7 @@ class ContactDetailsForm extends Component {
   static propTypes = {
     buttonName: PropTypes.node.isRequired,
     categories: PropTypes.arrayOf(PropTypes.object),
+    categoriesFormatter: PropTypes.func.isRequired,
     change: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     emptyListMessage: PropTypes.node.isRequired,
@@ -29,6 +30,7 @@ class ContactDetailsForm extends Component {
     const {
       buttonName,
       categories,
+      categoriesFormatter,
       change,
       dispatch,
       fieldsOptions,
@@ -61,6 +63,7 @@ class ContactDetailsForm extends Component {
               >
                 <EmbeddedContactForm
                   categories={categories}
+                  categoriesFormatter={categoriesFormatter}
                   change={change}
                   dispatch={dispatch}
                   fieldComponents={fieldsOptions.fieldComponents}

@@ -22,12 +22,14 @@ const addAddressFields = {
     categories: MultiSelection,
   },
   visibleFields: ['addressLine1', 'addressLine2', 'city', 'stateRegion', 'zipCode', 'country', 'language', 'categories'],
+  requiredFields: ['addressLine1'],
 };
 
-const AddressForm = ({ store, change, dispatch, categories }) => (
+const AddressForm = ({ store, change, dispatch, categories, categoriesFormatter }) => (
   <ContactDetailsForm
     buttonName={<FormattedMessage id="ui-organizations.contactPeople.addAddress" />}
     categories={categories}
+    categoriesFormatter={categoriesFormatter}
     change={change}
     dispatch={dispatch}
     emptyListMessage={<FormattedMessage id="ui-organizations.contactPeople.pleaseAddAddress" />}
@@ -42,6 +44,7 @@ const AddressForm = ({ store, change, dispatch, categories }) => (
 
 AddressForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
+  categoriesFormatter: PropTypes.func.isRequired,
   change: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   store: PropTypes.object.isRequired,

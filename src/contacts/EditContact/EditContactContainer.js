@@ -12,11 +12,7 @@ import {
 } from '@folio/stripes/components';
 import { AppIcon } from '@folio/stripes/core';
 
-import {
-  CONTACTS_API,
-} from '../../common/constants';
-import { categoriesResource } from '../../common/resources';
-import { transformCategoriesForSelect } from '../../common/utils/category';
+import { categoriesResource, contactResource } from '../../common/resources';
 import EditContact from './EditContact';
 
 function getLastMenu(handleSubmit) {
@@ -41,13 +37,7 @@ function getLastMenu(handleSubmit) {
 
 class EditContactContainer extends Component {
   static manifest = Object.freeze({
-    contact: {
-      type: 'okapi',
-      path: (queryParams, pathComponents) => {
-        if (pathComponents.id) return `${CONTACTS_API}/${pathComponents.id}`;
-        return undefined;
-      }
-    },
+    contact: contactResource,
     categories: categoriesResource,
   });
 
@@ -76,7 +66,7 @@ class EditContactContainer extends Component {
         <Row>
           <Col xs={12} md={8} mdOffset={2}>
             <EditContact
-              categories={transformCategoriesForSelect(categories)}
+              categories={categories}
               initialValues={contact}
               stripes={stripes}
             />

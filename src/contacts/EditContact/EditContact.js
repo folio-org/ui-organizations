@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field } from 'redux-form';
 
+import { find } from 'lodash';
+
 import stripesForm from '@folio/stripes/form';
 import {
   Accordion,
@@ -27,6 +29,14 @@ class EditContact extends Component {
     dispatch: PropTypes.func.isRequired,
     change: PropTypes.func.isRequired,
     categories: PropTypes.arrayOf(PropTypes.object),
+  };
+
+  categoriesFormatter = ({ option }) => {
+    const item = find(this.props.categories, { id: option }) || option;
+
+    if (!item) return option;
+
+    return <option key={item.id}>{item.value}</option>;
   };
 
   render() {
@@ -92,10 +102,11 @@ class EditContact extends Component {
             <Col xs={3}>
               <Field
                 component={MultiSelection}
-                dataOptions={categories}
+                dataOptions={categories.map(({ id }) => id)}
                 label={<FormattedMessage id="ui-organizations.contactPeople.categories" />}
                 name="categories"
                 onBlur={(e) => e.preventDefault()}
+                formatter={this.categoriesFormatter}
               />
             </Col>
           </Row>
@@ -106,6 +117,7 @@ class EditContact extends Component {
             >
               <AddressForm
                 categories={categories}
+                categoriesFormatter={this.categoriesFormatter}
                 change={change}
                 dispatch={dispatch}
                 store={store}
@@ -117,6 +129,7 @@ class EditContact extends Component {
             >
               <PhoneForm
                 categories={categories}
+                categoriesFormatter={this.categoriesFormatter}
                 change={change}
                 dispatch={dispatch}
                 store={store}
@@ -128,6 +141,7 @@ class EditContact extends Component {
             >
               <EmailForm
                 categories={categories}
+                categoriesFormatter={this.categoriesFormatter}
                 change={change}
                 dispatch={dispatch}
                 store={store}
@@ -139,6 +153,7 @@ class EditContact extends Component {
             >
               <UrlForm
                 categories={categories}
+                categoriesFormatter={this.categoriesFormatter}
                 change={change}
                 dispatch={dispatch}
                 store={store}
