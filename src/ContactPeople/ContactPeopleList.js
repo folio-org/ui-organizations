@@ -36,9 +36,14 @@ const getContactsUrl = (orgId, contactId) => {
   return `${starting}${ending}`;
 };
 
-const AddContactButton = ({ fields, stripes, orgId }) => {
-  const addContacts = contacts => {
-    fields.push(...contacts.map(contact => contact.id));
+const AddContactButton = ({ fetchContacts, fields, stripes, orgId }) => {
+  const addContacts = (contacts = []) => {
+    const addedContactIds = new Set(fields.getAll());
+    const newContacts = contacts.filter(({ id }) => !addedContactIds.has(id));
+    if (newContacts.length) {
+      fields.push(...map(newContacts, 'id'));
+      fetchContacts();
+    }
   };
 
   const renderNewContactBtn = () => {
@@ -75,12 +80,13 @@ const AddContactButton = ({ fields, stripes, orgId }) => {
 };
 
 AddContactButton.propTypes = {
+  fetchContacts: PropTypes.func.isRequired,
   fields: PropTypes.object,
   stripes: PropTypes.object,
   orgId: PropTypes.string,
 };
 
-const ContactPeopleList = ({ fields, contactsMap, orgId, categoriesDict, stripes }) => {
+const ContactPeopleList = ({ fetchContacts, fields, contactsMap, orgId, categoriesDict, stripes }) => {
   const contentData = fields.getAll().map((contactId, _index) => ({
     ...get(contactsMap, contactId, {}),
     _index,
@@ -131,6 +137,7 @@ const ContactPeopleList = ({ fields, contactsMap, orgId, categoriesDict, stripes
       />
       <br />
       <AddContactButton
+        fetchContacts={fetchContacts}
         fields={fields}
         stripes={stripes}
         orgId={orgId}
@@ -140,6 +147,7 @@ const ContactPeopleList = ({ fields, contactsMap, orgId, categoriesDict, stripes
 };
 
 ContactPeopleList.propTypes = {
+  fetchContacts: PropTypes.func.isRequired,
   fields: PropTypes.object,
   orgId: PropTypes.string,
   categoriesDict: PropTypes.arrayOf(PropTypes.object),
