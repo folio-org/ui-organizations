@@ -545,5 +545,6 @@
     "contacts.confirmDelete.heading": "Delete contact",
     "contacts.confirmDelete.message": "Are you sure you want to delete the contact?",
     "contacts.message.deleted.fail": "The contact was not deleted",
-    "contacts.message.deleted.success": "The contact was deleted"
+    "contacts.message.deleted.success": "The contact was deleted",
+    "contactPeople.newContact": "New"
 }
