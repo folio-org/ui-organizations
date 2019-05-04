@@ -6,11 +6,15 @@ import { Field } from 'redux-form';
 import { find } from 'lodash';
 
 import stripesForm from '@folio/stripes/form';
+import { AppIcon } from '@folio/stripes/core';
 import {
   Accordion,
   AccordionSet,
+  Button,
   Col,
   MultiSelection,
+  Pane,
+  PaneMenu,
   Row,
   Select,
   TextField,
@@ -25,10 +29,15 @@ import css from './EditContact.css';
 
 class EditContact extends Component {
   static propTypes = {
-    stripes: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    change: PropTypes.func.isRequired,
     categories: PropTypes.arrayOf(PropTypes.object),
+    change: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
+    paneTitle: PropTypes.node.isRequired,
+    pristine: PropTypes.func.isRequired,
+    stripes: PropTypes.object.isRequired,
+    submitting: PropTypes.func.isRequired,
   };
 
   categoriesFormatter = ({ option }) => {
@@ -39,129 +48,181 @@ class EditContact extends Component {
     return <option key={item.id}>{item.value}</option>;
   };
 
+  getLastMenu = (handleSubmit) => {
+    return (
+      <PaneMenu>
+        <FormattedMessage id="ui-organizations.contacts.button.save">
+          {(title) => (
+            <Button
+              buttonStyle="primary"
+              disabled={this.props.pristine || this.props.submitting}
+              marginBottom0
+              onClick={handleSubmit}
+              title={title}
+              type="submit"
+            >
+              {title}
+            </Button>
+          )}
+        </FormattedMessage>
+      </PaneMenu>
+    );
+  }
+
   render() {
-    const { stripes: { store }, change, dispatch, categories } = this.props;
+    const {
+      categories,
+      change,
+      dispatch,
+      handleSubmit,
+      onClose,
+      paneTitle,
+      stripes: { store },
+    } = this.props;
 
     return (
-      <AccordionSet>
-        <Accordion
-          label={<FormattedMessage id="ui-organizations.contactPeople" />}
-        >
-          <Row>
-            <Col xs={12}>
-              <div className={css.legend}>
-                {<FormattedMessage id="ui-organizations.contactPeople.name" />}
-              </div>
-            </Col>
-            <Col xs={3}>
-              <Field
-                component={TextField}
-                fullWidth
-                label={<FormattedMessage id="ui-organizations.contactPeople.prefix" />}
-                name="prefix"
-              />
-            </Col>
-            <Col xs={3}>
-              <Field
-                component={TextField}
-                fullWidth
-                label={<FormattedMessage id="ui-organizations.contactPeople.details.lastName" />}
-                name="lastName"
-                required
-                validate={[Required]}
-              />
-            </Col>
-            <Col xs={3}>
-              <Field
-                component={TextField}
-                fullWidth
-                label={<FormattedMessage id="ui-organizations.contactPeople.details.firstName" />}
-                name="firstName"
-                required
-                validate={[Required]}
-              />
-            </Col>
-            <Col xs={3}>
-              <Field
-                component={Select}
-                fullWidth
-                label={<FormattedMessage id="ui-organizations.contactPeople.status" />}
-                name="inactive"
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={3}>
-              <Field
-                component={Select}
-                fullWidth
-                label={<FormattedMessage id="ui-organizations.contactPeople.language" />}
-                name="language"
-              />
-            </Col>
-            <Col xs={3}>
-              <Field
-                component={MultiSelection}
-                dataOptions={categories.map(({ id }) => id)}
-                label={<FormattedMessage id="ui-organizations.contactPeople.categories" />}
-                name="categories"
-                onBlur={(e) => e.preventDefault()}
-                formatter={this.categoriesFormatter}
-              />
-            </Col>
-          </Row>
-          <Row start="xs">
-            <Col
-              data-test-address-form
-              xs={12}
-            >
-              <AddressForm
-                categories={categories}
-                categoriesFormatter={this.categoriesFormatter}
-                change={change}
-                dispatch={dispatch}
-                store={store}
-              />
-            </Col>
-            <Col
-              data-test-phone-form
-              xs={12}
-            >
-              <PhoneForm
-                categories={categories}
-                categoriesFormatter={this.categoriesFormatter}
-                change={change}
-                dispatch={dispatch}
-                store={store}
-              />
-            </Col>
-            <Col
-              data-test-email-form
-              xs={12}
-            >
-              <EmailForm
-                categories={categories}
-                categoriesFormatter={this.categoriesFormatter}
-                change={change}
-                dispatch={dispatch}
-                store={store}
-              />
-            </Col>
-            <Col
-              data-test-url-form
-              xs={12}
-            >
-              <UrlForm
-                categories={categories}
-                categoriesFormatter={this.categoriesFormatter}
-                change={change}
-                dispatch={dispatch}
-                store={store}
-              />
-            </Col>
-          </Row>
-        </Accordion>
-      </AccordionSet>
+      <Pane
+        appIcon={
+          <AppIcon
+            app="organizations"
+            appIconKey="organizations"
+          />
+        }
+        defaultWidth="fill"
+        dismissible
+        id="edit-contact"
+        lastMenu={this.getLastMenu(handleSubmit)}
+        onClose={onClose}
+        paneTitle={paneTitle}
+      >
+        <Row>
+          <Col
+            xs={12}
+            md={8}
+            mdOffset={2}
+          >
+            <AccordionSet>
+              <Accordion
+                label={<FormattedMessage id="ui-organizations.contactPeople" />}
+              >
+                <Row>
+                  <Col xs={12}>
+                    <div className={css.legend}>
+                      {<FormattedMessage id="ui-organizations.contactPeople.name" />}
+                    </div>
+                  </Col>
+                  <Col xs={3}>
+                    <Field
+                      component={TextField}
+                      fullWidth
+                      label={<FormattedMessage id="ui-organizations.contactPeople.prefix" />}
+                      name="prefix"
+                    />
+                  </Col>
+                  <Col xs={3}>
+                    <Field
+                      component={TextField}
+                      fullWidth
+                      label={<FormattedMessage id="ui-organizations.contactPeople.details.lastName" />}
+                      name="lastName"
+                      required
+                      validate={[Required]}
+                    />
+                  </Col>
+                  <Col xs={3}>
+                    <Field
+                      component={TextField}
+                      fullWidth
+                      label={<FormattedMessage id="ui-organizations.contactPeople.details.firstName" />}
+                      name="firstName"
+                      required
+                      validate={[Required]}
+                    />
+                  </Col>
+                  <Col xs={3}>
+                    <Field
+                      component={Select}
+                      fullWidth
+                      label={<FormattedMessage id="ui-organizations.contactPeople.status" />}
+                      name="inactive"
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={3}>
+                    <Field
+                      component={Select}
+                      fullWidth
+                      label={<FormattedMessage id="ui-organizations.contactPeople.language" />}
+                      name="language"
+                    />
+                  </Col>
+                  <Col xs={3}>
+                    <Field
+                      component={MultiSelection}
+                      dataOptions={categories.map(({ id }) => id)}
+                      label={<FormattedMessage id="ui-organizations.contactPeople.categories" />}
+                      name="categories"
+                      onBlur={(e) => e.preventDefault()}
+                      formatter={this.categoriesFormatter}
+                    />
+                  </Col>
+                </Row>
+                <Row start="xs">
+                  <Col
+                    data-test-address-form
+                    xs={12}
+                  >
+                    <AddressForm
+                      categories={categories}
+                      categoriesFormatter={this.categoriesFormatter}
+                      change={change}
+                      dispatch={dispatch}
+                      store={store}
+                    />
+                  </Col>
+                  <Col
+                    data-test-phone-form
+                    xs={12}
+                  >
+                    <PhoneForm
+                      categories={categories}
+                      categoriesFormatter={this.categoriesFormatter}
+                      change={change}
+                      dispatch={dispatch}
+                      store={store}
+                    />
+                  </Col>
+                  <Col
+                    data-test-email-form
+                    xs={12}
+                  >
+                    <EmailForm
+                      categories={categories}
+                      categoriesFormatter={this.categoriesFormatter}
+                      change={change}
+                      dispatch={dispatch}
+                      store={store}
+                    />
+                  </Col>
+                  <Col
+                    data-test-url-form
+                    xs={12}
+                  >
+                    <UrlForm
+                      categories={categories}
+                      categoriesFormatter={this.categoriesFormatter}
+                      change={change}
+                      dispatch={dispatch}
+                      store={store}
+                    />
+                  </Col>
+                </Row>
+              </Accordion>
+            </AccordionSet>
+          </Col>
+        </Row>
+      </Pane>
     );
   }
 }

@@ -1,6 +1,5 @@
 import { without } from 'lodash';
 
-// eslint-disable-next-line import/prefer-default-export
 export const unassign = (mutator, contactId, org) => {
   if (org) {
     const contacts = without(org.contacts, contactId);
@@ -20,4 +19,14 @@ export const deleteContact = (orgMutator, contactMutator, contactId, org) => {
   }
 
   return Promise.resolve();
+};
+
+export const saveContact = (contactMutator, contact) => {
+  let method = contactMutator.POST;
+
+  if (contact.id) {
+    method = contactMutator.PUT;
+  }
+
+  return method(contact);
 };
