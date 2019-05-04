@@ -103,7 +103,7 @@ class ViewContactContainer extends Component {
             id="unassign-contact-modal"
             confirmLabel={<FormattedMessage id="ui-organizations.contacts.confirmUnassign.confirmLabel" />}
             heading={<FormattedMessage id="ui-organizations.contacts.confirmUnassign.heading" />}
-            message={<FormattedMessage id="ui-organizations.contacts.confirmUnassign.message" />}
+            message={<FormattedMessage id="ui-organizations.contacts.confirmUnassign.message1" />}
             onCancel={this.hideConfirmUnassign}
             onConfirm={this.onUnassign}
             open
