@@ -514,7 +514,7 @@
   "contacts.message.unassigned.success": "The contact was unassigned",
   "contacts.confirmUnassign.confirmLabel": "Confirm",
   "contacts.confirmUnassign.heading": "Unassign from organization",
-  "contacts.confirmUnassign.message": "Are you sure you want to unassign the contact from organization?",
+  "contacts.confirmUnassign.message1": "Are you sure you want to unassign the contact from this organization?",
   "contacts.confirmDelete.confirmLabel": "Confirm",
   "contacts.confirmDelete.heading": "Delete contact",
   "contacts.confirmDelete.message": "Are you sure you want to delete the contact?",
