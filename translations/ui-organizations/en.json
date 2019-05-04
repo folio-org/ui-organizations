@@ -509,7 +509,7 @@
   "contacts.button.copy": "Copy",
   "contacts.button.unassign": "Unassign",
   "contacts.button.delete": "Delete",
-  "contacts.button.submit": "Save & close",
+  "contacts.button.save": "Save",
   "contacts.message.unassigned.fail": "The contact was not unassigned",
   "contacts.message.unassigned.success": "The contact was unassigned",
   "contacts.confirmUnassign.confirmLabel": "Confirm",
@@ -520,6 +520,8 @@
   "contacts.confirmDelete.message": "Are you sure you want to delete the contact?",
   "contacts.message.deleted.fail": "The contact was not deleted",
   "contacts.message.deleted.success": "The contact was deleted",
+  "contacts.message.saved.fail": "The contact was not saved",
+  "contacts.message.saved.success": "The contact was saved",
 
   "interface.name": "Name",
   "interface.uri": "URI",

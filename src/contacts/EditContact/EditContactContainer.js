@@ -1,39 +1,15 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+
 import { get } from 'lodash';
 
 import {
-  Button,
-  Pane,
-  PaneMenu,
-  Row,
-  Col,
-} from '@folio/stripes/components';
-import { AppIcon } from '@folio/stripes/core';
-
-import { categoriesResource, contactResource } from '../../common/resources';
+  categoriesResource,
+  contactResource,
+} from '../../common/resources';
+import { saveContact } from '../ViewContact/util';
 import EditContact from './EditContact';
-
-function getLastMenu(handleSubmit) {
-  return (
-    <PaneMenu>
-      <FormattedMessage id="ui-organizations.contacts.button.submit">
-        {(title) => (
-          <Button
-            buttonStyle="primary"
-            marginBottom0
-            onClick={handleSubmit}
-            title={title}
-            type="submit"
-          >
-            {title}
-          </Button>
-        )}
-      </FormattedMessage>
-    </PaneMenu>
-  );
-}
 
 class EditContactContainer extends Component {
   static manifest = Object.freeze({
@@ -41,8 +17,17 @@ class EditContactContainer extends Component {
     categories: categoriesResource,
   });
 
+  onSubmit = (contact) => {
+    const { mutator, onClose, showMessage } = this.props;
+
+    saveContact(mutator.contact, contact)
+      .then(() => showMessage('ui-organizations.contacts.message.saved.success', 'success'))
+      .then(() => onClose())
+      .catch(() => showMessage('ui-organizations.contacts.message.saved.fail', 'error'));
+  }
+
   render() {
-    const { onSubmit, onClose, match, resources, stripes } = this.props;
+    const { onClose, match, resources, stripes } = this.props;
     const isNew = !match.params.id;
     const loadedContact = get(resources, 'contact.records[0]', {});
     const categories = get(resources, 'categories.records', []);
@@ -54,34 +39,24 @@ class EditContactContainer extends Component {
       : <FormattedMessage id="ui-organizations.contacts.edit.paneTitle" values={{ name }} />;
 
     return (
-      <Pane
-        appIcon={<AppIcon app="organizations" appIconKey="organizations" />}
-        defaultWidth="fill"
-        dismissible
-        id="edit-contact"
-        lastMenu={getLastMenu(onSubmit)}
+      <EditContact
+        categories={categories}
+        initialValues={contact}
         onClose={onClose}
+        onSubmit={this.onSubmit}
         paneTitle={paneTitle}
-      >
-        <Row>
-          <Col xs={12} md={8} mdOffset={2}>
-            <EditContact
-              categories={categories}
-              initialValues={contact}
-              stripes={stripes}
-            />
-          </Col>
-        </Row>
-      </Pane>
+        stripes={stripes}
+      />
     );
   }
 }
 
 EditContactContainer.propTypes = {
   match: PropTypes.object,
+  mutator: PropTypes.object,
   onClose: PropTypes.func,
-  onSubmit: PropTypes.func,
   resources: PropTypes.object,
+  showMessage: PropTypes.func,
   stripes: PropTypes.object,
 };
 

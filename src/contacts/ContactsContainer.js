@@ -28,15 +28,10 @@ class ContactsContainer extends Component {
 
   onCancel = () => this.props.history.goBack();
 
-  onSubmit = () => {
-    this.props.history.goBack();
-  }
-
   goToEdit = (props) => (
     <this.connectedEditContactContainer
       {...props}
       onClose={this.onCancel}
-      onSubmit={this.onSubmit}
       showMessage={this.showMessage}
       stripes={this.props.stripes}
     />
