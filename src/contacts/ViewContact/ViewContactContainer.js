@@ -10,7 +10,7 @@ import {
 
 import {
   categoriesResource,
-  contactDetailsResource,
+  contactResource,
   organizationResource,
 } from '../../common/resources';
 import ViewContact from './ViewContact';
@@ -32,7 +32,7 @@ class ViewContactContainer extends Component {
   };
 
   static manifest = Object.freeze({
-    contact: contactDetailsResource,
+    contact: contactResource,
     categories: categoriesResource,
     organization: organizationResource,
   });
