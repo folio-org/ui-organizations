@@ -2,6 +2,7 @@ import {
   clickable,
   collection,
   interactor,
+  text,
 } from '@bigtest/interactor';
 
 import Button from './Button';
@@ -42,4 +43,5 @@ export default interactor(class CreateContactInteractor {
   phoneForm = new PhoneForm();
   emailForm = new EmailForm();
   urlForm = new UrlForm();
+  paneTitle = text('[class*="paneTitleLabel---"]');
 });
