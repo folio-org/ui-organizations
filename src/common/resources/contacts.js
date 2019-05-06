@@ -4,6 +4,9 @@ export const contactResource = {
   throwErrors: false,
   type: 'okapi',
   path: `${CONTACTS_API}/:{id}`,
+  POST: {
+    path: CONTACTS_API,
+  }
 };
 
 export const baseContactsResource = {

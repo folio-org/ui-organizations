@@ -48,14 +48,16 @@ class EditContact extends Component {
     return <option key={item.id}>{item.value}</option>;
   };
 
-  getLastMenu = (handleSubmit) => {
+  getLastMenu = () => {
+    const { pristine, submitting, handleSubmit } = this.props;
+
     return (
       <PaneMenu>
         <FormattedMessage id="ui-organizations.contacts.button.save">
           {(title) => (
             <Button
               buttonStyle="primary"
-              disabled={this.props.pristine || this.props.submitting}
+              disabled={pristine || submitting}
               marginBottom0
               onClick={handleSubmit}
               title={title}
@@ -74,7 +76,6 @@ class EditContact extends Component {
       categories,
       change,
       dispatch,
-      handleSubmit,
       onClose,
       paneTitle,
       stripes: { store },
@@ -91,7 +92,7 @@ class EditContact extends Component {
         defaultWidth="fill"
         dismissible
         id="edit-contact"
-        lastMenu={this.getLastMenu(handleSubmit)}
+        lastMenu={this.getLastMenu()}
         onClose={onClose}
         paneTitle={paneTitle}
       >

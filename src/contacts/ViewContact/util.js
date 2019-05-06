@@ -20,13 +20,3 @@ export const deleteContact = (orgMutator, contactMutator, contactId, org) => {
 
   return Promise.resolve();
 };
-
-export const saveContact = (contactMutator, contact) => {
-  let method = contactMutator.POST;
-
-  if (contact.id) {
-    method = contactMutator.PUT;
-  }
-
-  return method(contact);
-};
