@@ -8,26 +8,38 @@ import {
   categoriesResource,
   contactResource,
 } from '../../common/resources';
-import { saveContact } from '../ViewContact/util';
+import { saveContact } from './util';
 import EditContact from './EditContact';
 
 class EditContactContainer extends Component {
   static manifest = Object.freeze({
     contact: contactResource,
     categories: categoriesResource,
+    query: {},
   });
 
+  onClose = (contactId = this.props.match.params.id) => {
+    const { orgId, mutator } = this.props;
+    const starting = orgId ? `/organizations/${orgId}` : '/organizations';
+
+    mutator.query.replace({
+      _path: `${starting}/contacts/${contactId}/view`,
+    });
+  }
+
   onSubmit = (contact) => {
-    const { mutator, onClose, showMessage } = this.props;
+    const { mutator, showMessage } = this.props;
 
     saveContact(mutator.contact, contact)
-      .then(() => showMessage('ui-organizations.contacts.message.saved.success', 'success'))
-      .then(() => onClose())
+      .then(({ id }) => {
+        showMessage('ui-organizations.contacts.message.saved.success', 'success');
+        this.onClose(id);
+      })
       .catch(() => showMessage('ui-organizations.contacts.message.saved.fail', 'error'));
   }
 
   render() {
-    const { onClose, match, resources, stripes } = this.props;
+    const { match, resources, stripes } = this.props;
     const isNew = !match.params.id;
     const loadedContact = get(resources, 'contact.records[0]', {});
     const categories = get(resources, 'categories.records', []);
@@ -42,7 +54,7 @@ class EditContactContainer extends Component {
       <EditContact
         categories={categories}
         initialValues={contact}
-        onClose={onClose}
+        onClose={this.onClose}
         onSubmit={this.onSubmit}
         paneTitle={paneTitle}
         stripes={stripes}
@@ -54,7 +66,7 @@ class EditContactContainer extends Component {
 EditContactContainer.propTypes = {
   match: PropTypes.object,
   mutator: PropTypes.object,
-  onClose: PropTypes.func,
+  orgId: PropTypes.string,
   resources: PropTypes.object,
   showMessage: PropTypes.func,
   stripes: PropTypes.object,

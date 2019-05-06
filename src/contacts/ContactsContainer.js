@@ -14,7 +14,6 @@ import EditContactContainer from './EditContact';
 
 class ContactsContainer extends Component {
   static propTypes = {
-    history: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     stripes: PropTypes.object.isRequired,
   };
@@ -26,12 +25,10 @@ class ContactsContainer extends Component {
     this.callout = React.createRef();
   }
 
-  onCancel = () => this.props.history.goBack();
-
   goToEdit = (props) => (
     <this.connectedEditContactContainer
       {...props}
-      onClose={this.onCancel}
+      orgId={this.props.match.params.orgId}
       showMessage={this.showMessage}
       stripes={this.props.stripes}
     />

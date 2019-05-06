@@ -21,7 +21,6 @@ import {
 
 class ViewContactContainer extends Component {
   static propTypes = {
-    history: PropTypes.object,
     resources: PropTypes.object,
     baseUrl: PropTypes.string.isRequired,
     mutator: PropTypes.object,
@@ -35,6 +34,7 @@ class ViewContactContainer extends Component {
     contact: contactResource,
     categories: categoriesResource,
     organization: organizationResource,
+    query: {},
   });
 
   state = {
@@ -43,7 +43,11 @@ class ViewContactContainer extends Component {
   };
 
   onClose = () => {
-    this.props.history.goBack();
+    const { orgId, mutator } = this.props;
+    mutator.query.replace({
+      _path: orgId ? `/organizations/view/${orgId}` : '/organizations',
+      layer: orgId ? 'edit' : 'create',
+    });
   };
 
   showConfirmUnassign = () => this.setState({ showConfirmUnassign: true });
