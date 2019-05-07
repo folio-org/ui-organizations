@@ -546,5 +546,9 @@
     "contacts.confirmDelete.message": "Tem certeza de que deseja excluir o contato?",
     "contacts.message.deleted.fail": "O contato não foi excluído",
     "contacts.message.deleted.success": "O contato foi excluído",
-    "contactPeople.newContact": "Novo"
+    "contactPeople.newContact": "Novo",
+    "contacts.button.save": "Salvar",
+    "contacts.message.saved.fail": "O contato não foi salvo",
+    "contacts.message.saved.success": "O contato foi salvo",
+    "contacts.confirmUnassign.message1": "Tem certeza de que deseja cancelar a atribuição do contato desta organização?"
 }
