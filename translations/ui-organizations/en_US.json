@@ -546,5 +546,9 @@
     "contacts.confirmDelete.message": "Are you sure you want to delete the contact?",
     "contacts.message.deleted.fail": "The contact was not deleted",
     "contacts.message.deleted.success": "The contact was deleted",
-    "contactPeople.newContact": "New"
+    "contactPeople.newContact": "New",
+    "contacts.button.save": "Save",
+    "contacts.message.saved.fail": "The contact was not saved",
+    "contacts.message.saved.success": "The contact was saved",
+    "contacts.confirmUnassign.message1": "Are you sure you want to unassign the contact from this organization?"
 }
