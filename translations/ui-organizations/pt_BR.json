@@ -403,7 +403,7 @@
     "edi.password": "Senha",
     "edi.ftpMode": "Modo de FTP",
     "edi.ftpConnectionMode": "Modo de conexão FTP",
-    "edi.ftpPort": "Porta do FTP",
+    "edi.ftpPort": "Porta FTP",
     "edi.orderDirectory": "Diretório de pedidos",
     "edi.invoiceDirectory": "Diretório de fatura",
     "edi.scheduling": "Agendamento",
