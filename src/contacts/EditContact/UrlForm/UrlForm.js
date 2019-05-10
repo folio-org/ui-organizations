@@ -21,7 +21,7 @@ const addUrlFields = {
   requiredFields: ['value'],
 };
 
-const UrlForm = ({ store, change, dispatch, categories, categoriesFormatter }) => (
+const UrlForm = ({ store, change, dispatch, categories, categoriesFormatter, languageList = [] }) => (
   <ContactDetailsForm
     buttonName={<FormattedMessage id="ui-organizations.contactPeople.addUrl" />}
     categories={categories}
@@ -33,6 +33,7 @@ const UrlForm = ({ store, change, dispatch, categories, categoriesFormatter }) =
     label={<FormattedMessage id="ui-organizations.contactPeople.addUrl" />}
     labelForFieldsGroup={<FormattedMessage id="ui-organizations.contactPeople.url" />}
     labelForPrimaryFieldsGroup={<FormattedMessage id="ui-organizations.contactPeople.primaryUrl" />}
+    languageList={languageList}
     name="urls"
     store={store}
   />
@@ -43,6 +44,7 @@ UrlForm.propTypes = {
   categoriesFormatter: PropTypes.func.isRequired,
   change: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
+  languageList: PropTypes.arrayOf(PropTypes.object),
   store: PropTypes.object.isRequired,
 };
 

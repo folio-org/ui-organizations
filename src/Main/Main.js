@@ -15,6 +15,7 @@ import { ViewVendor } from '../VendorViews';
 import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
 import languageList from '../Utils/Languages';
 import countryList from '../Utils/Country';
+import phoneTypesList from '../Utils/PhoneTypes';
 import './Main.css';
 
 const INITIAL_RESULT_COUNT = 30;
@@ -201,12 +202,7 @@ class Main extends Component {
           { label: 'Pending', value: 'Pending' },
         ],
         currencyDD: ['USD', 'CAD', 'GBP', 'EUR'],
-        phoneTypeDD: [
-          { label: 'Office', value: 'Office' },
-          { label: 'Mobile', value: 'Mobile' },
-          { label: 'Fax', value: 'Fax' },
-          { label: 'Other', value: 'Other' },
-        ],
+        phoneTypesList,
         countryList,
         languageList,
       }

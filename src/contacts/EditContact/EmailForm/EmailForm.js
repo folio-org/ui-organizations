@@ -21,7 +21,7 @@ const addEmailFields = {
   requiredFields: ['value'],
 };
 
-const EmailForm = ({ store, change, dispatch, categories, categoriesFormatter }) => (
+const EmailForm = ({ store, change, dispatch, categories, categoriesFormatter, languageList = [] }) => (
   <ContactDetailsForm
     buttonName={<FormattedMessage id="ui-organizations.contactPeople.addEmail" />}
     categories={categories}
@@ -33,6 +33,7 @@ const EmailForm = ({ store, change, dispatch, categories, categoriesFormatter })
     label={<FormattedMessage id="ui-organizations.contactPeople.addEmail" />}
     labelForFieldsGroup={<FormattedMessage id="ui-organizations.contactPeople.email" />}
     labelForPrimaryFieldsGroup={<FormattedMessage id="ui-organizations.contactPeople.primaryEmail" />}
+    languageList={languageList}
     name="emails"
     store={store}
   />
@@ -43,6 +44,7 @@ EmailForm.propTypes = {
   categoriesFormatter: PropTypes.func.isRequired,
   change: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
+  languageList: PropTypes.arrayOf(PropTypes.object),
   store: PropTypes.object.isRequired,
 };
 

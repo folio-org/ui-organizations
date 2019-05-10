@@ -22,6 +22,8 @@ class ContactDetailsForm extends Component {
     label: PropTypes.node.isRequired,
     labelForFieldsGroup: PropTypes.node.isRequired,
     labelForPrimaryFieldsGroup: PropTypes.node.isRequired,
+    languageList: PropTypes.arrayOf(PropTypes.object),
+    phoneTypesList: PropTypes.arrayOf(PropTypes.object),
     name: PropTypes.string.isRequired,
     store: PropTypes.object.isRequired,
   };
@@ -36,7 +38,9 @@ class ContactDetailsForm extends Component {
       fieldsOptions,
       labelForFieldsGroup,
       labelForPrimaryFieldsGroup,
+      languageList,
       name,
+      phoneTypesList,
       store,
     } = this.props;
 
@@ -73,7 +77,9 @@ class ContactDetailsForm extends Component {
                   labelForFieldsGroup={labelForFieldsGroup}
                   labelForPrimaryFieldsGroup={labelForPrimaryFieldsGroup}
                   labelMap={fieldsOptions.labelMap}
+                  languageList={languageList}
                   name={name}
+                  phoneTypesList={phoneTypesList}
                   requiredFields={fieldsOptions.requiredFields}
                   store={store}
                   visibleFields={fieldsOptions.visibleFields}
