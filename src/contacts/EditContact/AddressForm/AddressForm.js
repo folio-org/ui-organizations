@@ -25,7 +25,7 @@ const addAddressFields = {
   requiredFields: ['addressLine1'],
 };
 
-const AddressForm = ({ store, change, dispatch, categories, categoriesFormatter }) => (
+const AddressForm = ({ store, change, dispatch, categories, categoriesFormatter, languageList = [] }) => (
   <ContactDetailsForm
     buttonName={<FormattedMessage id="ui-organizations.contactPeople.addAddress" />}
     categories={categories}
@@ -37,6 +37,7 @@ const AddressForm = ({ store, change, dispatch, categories, categoriesFormatter 
     label={<FormattedMessage id="ui-organizations.contactPeople.addAddress" />}
     labelForFieldsGroup={<FormattedMessage id="ui-organizations.contactPeople.address" />}
     labelForPrimaryFieldsGroup={<FormattedMessage id="ui-organizations.contactPeople.primaryAddress" />}
+    languageList={languageList}
     name="addresses"
     store={store}
   />
@@ -47,6 +48,7 @@ AddressForm.propTypes = {
   categoriesFormatter: PropTypes.func.isRequired,
   change: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
+  languageList: PropTypes.arrayOf(PropTypes.object),
   store: PropTypes.object.isRequired,
 };
 

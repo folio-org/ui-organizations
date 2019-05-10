@@ -20,12 +20,18 @@ import {
   TextField,
 } from '@folio/stripes/components';
 
+import { EMPTY_DROPDOWN_ITEM } from '../../common/utils/dropdown';
+import languageList from '../../Utils/Languages';
+import phoneTypesList from '../../Utils/PhoneTypes';
 import { Required } from '../../Utils/Validate';
 import AddressForm from './AddressForm';
 import EmailForm from './EmailForm';
 import PhoneForm from './PhoneForm';
 import UrlForm from './UrlForm';
+import { CONTACT_STATUSES } from './constants';
 import css from './EditContact.css';
+
+const getDropdownList = (list) => ([EMPTY_DROPDOWN_ITEM, ...list]);
 
 class EditContact extends Component {
   static propTypes = {
@@ -143,16 +149,27 @@ class EditContact extends Component {
                   <Col xs={3}>
                     <Field
                       component={Select}
+                      dataOptions={[EMPTY_DROPDOWN_ITEM]}
                       fullWidth
                       label={<FormattedMessage id="ui-organizations.contactPeople.status" />}
                       name="inactive"
-                    />
+                    >
+                      {Object.keys(CONTACT_STATUSES).map((key) => (
+                        <FormattedMessage
+                          id={`ui-organizations.contactPeople.status.${key}`}
+                          key={key}
+                        >
+                          {(message) => <option value={CONTACT_STATUSES[key]}>{message}</option>}
+                        </FormattedMessage>
+                      ))}
+                    </Field>
                   </Col>
                 </Row>
                 <Row>
                   <Col xs={3}>
                     <Field
                       component={Select}
+                      dataOptions={getDropdownList(languageList)}
                       fullWidth
                       label={<FormattedMessage id="ui-organizations.contactPeople.language" />}
                       name="language"
@@ -179,6 +196,7 @@ class EditContact extends Component {
                       categoriesFormatter={this.categoriesFormatter}
                       change={change}
                       dispatch={dispatch}
+                      languageList={getDropdownList(languageList)}
                       store={store}
                     />
                   </Col>
@@ -191,6 +209,8 @@ class EditContact extends Component {
                       categoriesFormatter={this.categoriesFormatter}
                       change={change}
                       dispatch={dispatch}
+                      languageList={getDropdownList(languageList)}
+                      phoneTypesList={getDropdownList(phoneTypesList)}
                       store={store}
                     />
                   </Col>
@@ -203,6 +223,7 @@ class EditContact extends Component {
                       categoriesFormatter={this.categoriesFormatter}
                       change={change}
                       dispatch={dispatch}
+                      languageList={getDropdownList(languageList)}
                       store={store}
                     />
                   </Col>
@@ -215,6 +236,7 @@ class EditContact extends Component {
                       categoriesFormatter={this.categoriesFormatter}
                       change={change}
                       dispatch={dispatch}
+                      languageList={getDropdownList(languageList)}
                       store={store}
                     />
                   </Col>

@@ -28,6 +28,8 @@ class EmbeddedContactForm extends Component {
     handleDelete: PropTypes.func.isRequired,
     labelForFieldsGroup: PropTypes.node.isRequired,
     labelForPrimaryFieldsGroup: PropTypes.node.isRequired,
+    languageList: PropTypes.arrayOf(PropTypes.object),
+    phoneTypesList: PropTypes.arrayOf(PropTypes.object),
     name: PropTypes.string.isRequired,
     requiredFields: PropTypes.arrayOf(PropTypes.string),
     store: PropTypes.object.isRequired,
@@ -75,7 +77,9 @@ class EmbeddedContactForm extends Component {
       fieldName,
       handleDelete,
       labelForFieldsGroup,
+      languageList,
       name,
+      phoneTypesList,
       requiredFields,
       visibleFields,
     } = this.props;
@@ -98,6 +102,24 @@ class EmbeddedContactForm extends Component {
             dataOptions: categories.map(({ id }) => id),
             formatter: categoriesFormatter,
             onBlur: e => e.preventDefault(),
+          }
+        };
+      }
+
+      if (field === 'language') {
+        fieldProps = {
+          fieldProps,
+          ...{
+            dataOptions: languageList,
+          }
+        };
+      }
+
+      if (field === 'type') {
+        fieldProps = {
+          fieldProps,
+          ...{
+            dataOptions: phoneTypesList,
           }
         };
       }

@@ -83,7 +83,7 @@ class PaneDetails extends React.Component {
 
   getPhoneType() {
     const { parentResources } = this.props;
-    return getDropDownItems(parentResources, 'phoneTypeDD', false);
+    return getDropDownItems(parentResources, 'phoneTypesList', false);
   }
 
   deleteVendor(ID) {
