@@ -14,8 +14,8 @@ import { ContactPeopleForm } from '../ContactPeople';
 import { AgreementsForm } from '../Agreements';
 import { VendorInformationForm } from '../VendorInformation';
 import { EdiInformationForm } from '../EdiInformation';
-import { InterfaceForm } from '../Interface';
 import { AccountsForm } from '../Accounts';
+import { InterfacesListContainer } from '../Interface';
 
 import css from './css/FormVendor.css';
 
@@ -27,7 +27,7 @@ class FormVendor extends Component {
     parentResources: PropTypes.object.isRequired,
     stripes: PropTypes.object,
     isVendor: PropTypes.bool,
-  }
+  };
 
   static getDerivedStateFromProps(props, state) {
     const { stripes: { store } } = props;
@@ -151,7 +151,13 @@ class FormVendor extends Component {
                 />
               </Accordion>
               <Accordion label={<FormattedMessage id="ui-organizations.interface" />} id="interfacesSection" displayWhenClosed={isDisplayError('interfacesErr')} displayWhenOpen={isDisplayError('interfacesErr')}>
-                <InterfaceForm {...this.props} />
+                <InterfacesListContainer
+                  orgId={id}
+                  parentMutator={parentMutator}
+                  parentResources={parentResources}
+                  stripes={stripes}
+                  initialValues={initialValues}
+                />
               </Accordion>
               {
                 isVendor && (

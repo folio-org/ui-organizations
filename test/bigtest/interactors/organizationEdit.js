@@ -17,6 +17,7 @@ import {
 } from './orgSections';
 
 import ContactList from './ContactList';
+import InterfaceList from './Interfaces/InterfaceList';
 
 class SummarySectionForm extends SummarySection {
   name = new Interactor('input[name="name"]');
@@ -51,4 +52,5 @@ export default interactor(class OrganizationEditInteractor {
   removeAccountButton = new Button('[data-test-remove-account-button]');
   accounts = collection('input[name*=accountNo]');
   contactList = new ContactList();
+  interfaceList = new InterfaceList();
 });
