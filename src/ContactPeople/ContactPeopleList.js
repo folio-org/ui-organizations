@@ -41,7 +41,7 @@ const AddContactButton = ({ fetchContacts, fields, stripes, orgId }) => {
     const addedContactIds = new Set(fields.getAll());
     const newContacts = contacts.filter(({ id }) => !addedContactIds.has(id));
     if (newContacts.length) {
-      fields.push(...map(newContacts, 'id'));
+      newContacts.forEach(contact => fields.push(contact.id));
       fetchContacts();
     }
   };
