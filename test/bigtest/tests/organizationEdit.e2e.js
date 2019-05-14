@@ -89,7 +89,17 @@ describe('Organization edit', () => {
 
   describe('interfaces list section', () => {
     it('display expected list length', () => {
-      expect(orgEdit.interfaceList.contacts().length).to.equal(interfaces.length);
+      expect(orgEdit.interfaceList.interfaces().length).to.equal(interfaces.length);
+    });
+
+    describe('click unassign interface button', function () {
+      beforeEach(async function () {
+        await orgEdit.interfaceList.interfaces(0).unassign.click();
+      });
+
+      it('interface is unassigned', function () {
+        expect(orgEdit.interfaceList.interfaces().length).to.equal(interfaces.length - 1);
+      });
     });
   });
 });
