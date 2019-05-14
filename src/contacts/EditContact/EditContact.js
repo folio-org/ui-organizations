@@ -185,6 +185,14 @@ class EditContact extends Component {
                       formatter={this.categoriesFormatter}
                     />
                   </Col>
+                  <Col xs={3}>
+                    <Field
+                      component={TextField}
+                      fullWidth
+                      label={<FormattedMessage id="ui-organizations.contactPeople.note" />}
+                      name="notes"
+                    />
+                  </Col>
                 </Row>
                 <Row start="xs">
                   <Col
