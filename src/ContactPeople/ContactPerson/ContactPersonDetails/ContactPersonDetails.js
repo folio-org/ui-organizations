@@ -50,7 +50,7 @@ const ContactPersonDetails = (
         </KeyValue>
       </Col>
 
-      <Col xs={3}>
+      <Col xs={6}>
         <KeyValue label={<FormattedMessage id="ui-organizations.contactPeople.note" />}>
           {notes}
         </KeyValue>

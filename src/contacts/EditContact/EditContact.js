@@ -17,6 +17,7 @@ import {
   PaneMenu,
   Row,
   Select,
+  TextArea,
   TextField,
 } from '@folio/stripes/components';
 
@@ -185,9 +186,9 @@ class EditContact extends Component {
                       formatter={this.categoriesFormatter}
                     />
                   </Col>
-                  <Col xs={3}>
+                  <Col xs={6}>
                     <Field
-                      component={TextField}
+                      component={TextArea}
                       fullWidth
                       label={<FormattedMessage id="ui-organizations.contactPeople.note" />}
                       name="notes"
