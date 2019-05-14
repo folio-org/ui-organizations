@@ -12,7 +12,7 @@ import { SECTIONS } from '../common/constants';
 import { SummaryView } from '../Summary';
 import { ContactInformationView } from '../ContactInformation';
 import { ContactPeopleView } from '../ContactPeople';
-import { InterfaceView } from '../Interface';
+import { InterfacesViewContainer } from '../Interface';
 import PaneDetails from '../PaneDetails';
 import FormatTime from '../Utils/FormatTime';
 import ViewVendorBlocks from './ViewVendorBlocks';
@@ -145,7 +145,7 @@ class ViewVendor extends Component {
             <ContactPeopleView initialValues={organization} {...this.props} />
           </Accordion>
           <Accordion label={<FormattedMessage id="ui-organizations.interface" />} id={SECTIONS.interfacesSection}>
-            <InterfaceView initialValues={organization} {...this.props} />
+            <InterfacesViewContainer initialValues={organization} {...this.props} />
           </Accordion>
           {isVendor && (
             <ViewVendorBlocks

@@ -9,7 +9,11 @@ import FormatTime from '../Utils/FormatTime';
 import packageInfo from '../../package';
 // Components and Pages
 import { ORGANIZATIONS_API } from '../common/constants';
-import { categoriesResource, baseContactsResource } from '../common/resources';
+import {
+  categoriesResource,
+  baseContactsResource,
+  interfacesResource,
+} from '../common/resources';
 import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
 import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
@@ -119,6 +123,7 @@ class Main extends Component {
       initialValue: {
         vendorIDQuery: 'query=(name=null)',
         contactIDs: 'query=(id=null)',
+        interfaceIDs: 'query=(id=null)',
       }
     },
     vendorID: {
@@ -144,7 +149,16 @@ class Main extends Component {
         },
       }
     },
-
+    interfaces: {
+      ...interfacesResource,
+      params: {
+        query: (...args) => {
+          const newData = `${args[2].queryCustom.interfaceIDs}`;
+          const cql = `${newData} sortby id`;
+          return cql;
+        },
+      }
+    },
     dropdown: {
       initialValue: {
         paymentMethodDD: [
@@ -232,9 +246,6 @@ class Main extends Component {
     const time = FormatTime(data, 'post');
     if (time) { data.edi.ediJob.time = time; }
 
-    // TODO: remove me when interfaces are done
-    data.interfaces = undefined;
-
     mutator.records.POST(data).then(newLedger => {
       mutator.query.update({
         _path: `/organizations/view/${newLedger.id}`,
@@ -276,7 +287,7 @@ class Main extends Component {
           viewRecordComponent={ViewVendor}
           onCreate={this.create}
           editRecordComponent={PaneDetails}
-          newRecordInitialValues={{ contacts: [] }}
+          newRecordInitialValues={{ contacts: [], interfaces: [] }}
           initialResultCount={INITIAL_RESULT_COUNT}
           resultCountIncrement={RESULT_COUNT_INCREMENT}
           finishedResourceName="perms"

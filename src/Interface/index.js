@@ -1,4 +1,9 @@
 import InterfaceForm from './InterfaceForm';
-import InterfaceView from './InterfaceView';
+import InterfacesViewContainer from './InterfacesViewContainer';
+import InterfacesListContainer from './InterfacesListContainer';
 
-export { InterfaceForm, InterfaceView };
+export {
+  InterfaceForm,
+  InterfacesViewContainer,
+  InterfacesListContainer,
+};
