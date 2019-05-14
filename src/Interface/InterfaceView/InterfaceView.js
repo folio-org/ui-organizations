@@ -81,7 +81,7 @@ export const InterfaceView = ({ item = {}, isNarrow = false }) => {
             <Checkbox
               type="checkbox"
               checked={Boolean(available)}
-              disabled="disabled"
+              disabled
             />
           </KeyValue>
         </Col>

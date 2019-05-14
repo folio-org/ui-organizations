@@ -13,9 +13,7 @@ describe('Create organization', () => {
   const orgEdit = new OrganizationEditInteractor();
 
   beforeEach(function () {
-    return this.visit('/organizations/view?layer=create', () => {
-      expect(orgEdit.$root).to.exist;
-    });
+    this.visit('/organizations/view?layer=create');
   });
 
   it('should render form', () => {
