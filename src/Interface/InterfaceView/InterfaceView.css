@@ -1,4 +1,4 @@
-@import "../common/styles/wrapValue.css";
+@import "../../common/styles/wrapValue.css";
 
 .subHeadings {
   color: var(--subHeading-color);

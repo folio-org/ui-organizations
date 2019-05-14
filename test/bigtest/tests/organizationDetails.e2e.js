@@ -5,6 +5,7 @@ import setupApplication from '../helpers/setup-application';
 import {
   OrganizationDetailsInteractor,
   OrganizationEditInteractor,
+  InterfacesViewInteractor,
 } from '../interactors';
 
 const ORGANIZATIONS_COUNT = 13;
@@ -14,9 +15,15 @@ describe('Organization details', () => {
 
   const orgDetails = new OrganizationDetailsInteractor();
   const orgEdit = new OrganizationEditInteractor();
+  const orgInterface = new InterfacesViewInteractor();
 
   beforeEach(function () {
-    const organizations = this.server.createList('organization', ORGANIZATIONS_COUNT);
+    const vendorInterface = this.server.create('interface');
+    const organizations = this.server.createList(
+      'organization',
+      ORGANIZATIONS_COUNT,
+      { interfaces: [vendorInterface.id] }
+    );
     const orgId = organizations[0].id;
 
     this.server.create('contact');
@@ -113,6 +120,16 @@ describe('Organization details', () => {
 
     it('edit organization layer is open', function () {
       expect(orgEdit.isPresent).to.be.true;
+    });
+  });
+
+  describe('vendor interface section', () => {
+    beforeEach(async function () {
+      await orgDetails.interfacesSection.headerButton.click();
+    });
+
+    it('vendor interface is displayed', () => {
+      expect(orgInterface.interfaces(0).isPresent).to.be.true;
     });
   });
 });

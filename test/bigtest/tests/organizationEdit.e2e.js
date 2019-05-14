@@ -12,10 +12,12 @@ describe('Organization edit', () => {
 
   const orgEdit = new OrganizationEditInteractor();
   let contacts = null;
+  let interfaces = null;
 
   beforeEach(function () {
     contacts = this.server.createList('contact', 2);
-    const org = this.server.create('organization', { contacts: map(contacts, 'id') });
+    interfaces = this.server.createList('interface', 2);
+    const org = this.server.create('organization', { contacts: map(contacts, 'id'), interfaces: map(interfaces, 'id') });
 
     return this.visit(`/organizations/view/${org.id}?layer=edit`, () => {
       expect(orgEdit.$root).to.exist;
@@ -82,6 +84,12 @@ describe('Organization edit', () => {
 
     it('contact is unassigned', function () {
       expect(orgEdit.contactList.contacts().length).to.equal(contacts.length - 1);
+    });
+  });
+
+  describe('interfaces list section', () => {
+    it('display expected list length', () => {
+      expect(orgEdit.interfaceList.contacts().length).to.equal(interfaces.length);
     });
   });
 });

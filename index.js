@@ -5,6 +5,7 @@ import Route from 'react-router-dom/Route';
 import { hot } from 'react-hot-loader';
 
 import { ContactsContainer } from './src/contacts';
+import { InterfaceContainer } from './src/interfaces';
 import Main from './src/Main';
 import Settings from './src/Settings';
 
@@ -22,10 +23,18 @@ class Organizations extends Component {
     super(props, context);
     this.connectedApp = props.stripes.connect(Main);
     this.connectedContactsContainer = props.stripes.connect(ContactsContainer);
+    this.connectedInterfaceContainer = props.stripes.connect(InterfaceContainer);
   }
 
   goToContacts = (props) => (
     <this.connectedContactsContainer
+      {...props}
+      stripes={this.props.stripes}
+    />
+  );
+
+  goToInterface = (props) => (
+    <this.connectedInterfaceContainer
       {...props}
       stripes={this.props.stripes}
     />
@@ -45,6 +54,14 @@ class Organizations extends Component {
           <Route
             path="/organizations/contacts/"
             render={this.goToContacts}
+          />
+          <Route
+            path="/organizations/:orgId/interface/"
+            render={this.goToInterface}
+          />
+          <Route
+            path="/organizations/interface/"
+            render={this.goToInterface}
           />
           <Route
             path={`${this.props.match.path}`}
