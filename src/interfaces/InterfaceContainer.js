@@ -10,13 +10,14 @@ import {
 } from '@folio/stripes/components';
 
 import { ViewInterfaceContainer } from './ViewInterface/ViewInterfaceContainer';
+import EditInterfaceContainer from './EditInterface';
 import {
   ADD_INTERFACE_URL,
   EDIT_INTERFACE_URL,
   VIEW_INTERFACE_URL
 } from './constants';
 
-export class InterfaceContainer extends Component { // eslint-disable-line import/prefer-default-export
+class InterfaceContainer extends Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
     stripes: PropTypes.object.isRequired,
@@ -25,13 +26,14 @@ export class InterfaceContainer extends Component { // eslint-disable-line impor
   constructor(props, context) {
     super(props, context);
     this.connectedViewInterface = props.stripes.connect(ViewInterfaceContainer);
-    this.connectedEditInterface = null; // it needs to connect appropriate component
+    this.connectedEditInterface = props.stripes.connect(EditInterfaceContainer);
     this.callout = React.createRef();
   }
 
   goToEdit = (props) => (
     <this.connectedEditInterface
       {...props}
+      orgId={this.props.match.params.orgId}
       showMessage={this.showMessage}
       stripes={this.props.stripes}
     />
@@ -40,10 +42,10 @@ export class InterfaceContainer extends Component { // eslint-disable-line impor
   goToView = (props) => (
     <this.connectedViewInterface
       {...props}
+      baseUrl={this.props.match.url}
       orgId={this.props.match.params.orgId}
       showMessage={this.showMessage}
       stripes={this.props.stripes}
-      baseUrl={this.props.match.url}
     />
   );
 
@@ -79,3 +81,5 @@ export class InterfaceContainer extends Component { // eslint-disable-line impor
     );
   }
 }
+
+export default InterfaceContainer;

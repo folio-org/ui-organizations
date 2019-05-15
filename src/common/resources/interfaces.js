@@ -11,4 +11,7 @@ export const interfaceResource = {
   throwErrors: false,
   type: 'okapi',
   path: `${INTERFACES_API}/:{id}`,
+  POST: {
+    path: INTERFACES_API,
+  }
 };

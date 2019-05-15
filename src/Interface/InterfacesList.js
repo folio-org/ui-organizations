@@ -128,7 +128,6 @@ const InterfacesList = ({ fetchInterfaces, fields, interfaces, orgId, stripes })
         formatter={resultsFormatter}
         rowFormatter={anchoredRowFormatter}
         visibleColumns={visibleColumns}
-        rowMetadata={orgId}
       />
       <br />
       <AddInterfaceButton

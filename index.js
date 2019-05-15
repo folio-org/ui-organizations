@@ -5,7 +5,7 @@ import Route from 'react-router-dom/Route';
 import { hot } from 'react-hot-loader';
 
 import { ContactsContainer } from './src/contacts';
-import { InterfaceContainer } from './src/interfaces';
+import InterfaceContainer from './src/interfaces';
 import Main from './src/Main';
 import Settings from './src/Settings';
 
@@ -48,19 +48,19 @@ class Organizations extends Component {
       <div>
         <Switch>
           <Route
-            path="/organizations/:orgId/contacts/"
-            render={this.goToContacts}
-          />
-          <Route
             path="/organizations/contacts/"
             render={this.goToContacts}
           />
           <Route
-            path="/organizations/:orgId/interface/"
+            path="/organizations/interface/"
             render={this.goToInterface}
           />
           <Route
-            path="/organizations/interface/"
+            path="/organizations/:orgId/contacts/"
+            render={this.goToContacts}
+          />
+          <Route
+            path="/organizations/:orgId/interface/"
             render={this.goToInterface}
           />
           <Route
