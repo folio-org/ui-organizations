@@ -28,7 +28,7 @@ export const InterfaceView = ({ item = {}, isNarrow = false }) => {
   } = item;
 
   return (
-    <React.Fragment>
+    <div data-test-interface-pane-view>
       <Row>
         <Col xs={columnsAmount}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.name" />}>
@@ -121,7 +121,7 @@ export const InterfaceView = ({ item = {}, isNarrow = false }) => {
           </KeyValue>
         </Col>
       </Row>
-    </React.Fragment>
+    </div>
   );
 };
 

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  get,
-  noop,
-} from 'lodash';
+import { get } from 'lodash';
+import { FormattedMessage } from 'react-intl';
 
-import { Icon } from '@folio/stripes/components';
+import { ConfirmationModal, Icon } from '@folio/stripes/components';
 
 import ViewInterface from './ViewInterface';
-import { interfaceResource } from '../../common/resources';
+import { interfaceResource, organizationResource } from '../../common/resources';
+import { deleteInterface, unassignInterface } from './util';
 
 export class ViewInterfaceContainer extends Component {
   static propTypes = {
@@ -16,12 +15,20 @@ export class ViewInterfaceContainer extends Component {
     baseUrl: PropTypes.string.isRequired,
     orgId: PropTypes.string,
     mutator: PropTypes.object,
+    match: PropTypes.object,
+    showMessage: PropTypes.func.isRequired,
   };
 
   static manifest = Object.freeze({
     interface: interfaceResource,
+    organization: organizationResource,
     query: {}
   });
+
+  state = {
+    showConfirmDelete: false,
+    showConfirmUnassign: false,
+  };
 
   onClose = () => {
     const { orgId, mutator } = this.props;
@@ -29,6 +36,35 @@ export class ViewInterfaceContainer extends Component {
       _path: orgId ? `/organizations/view/${orgId}` : '/organizations',
       layer: orgId ? 'edit' : 'create',
     });
+  };
+
+  showConfirmUnassign = () => this.setState({ showConfirmUnassign: true });
+
+  hideConfirmUnassign = () => this.setState({ showConfirmUnassign: false });
+
+  showConfirmDelete = () => this.setState({ showConfirmDelete: true });
+
+  hideConfirmDelete = () => this.setState({ showConfirmDelete: false });
+
+  onUnassign = () => {
+    const { match, mutator, resources, showMessage } = this.props;
+    const org = get(resources, 'organization.records.0');
+    const interfaceId = get(match, 'params.id');
+
+    this.hideConfirmUnassign();
+    unassignInterface(mutator.organization, interfaceId, org)
+      .then(() => this.onClose())
+      .catch(() => showMessage('ui-organizations.interface.message.unassigned.fail', 'error'));
+  };
+
+  onDelete = () => {
+    const { match, mutator, resources } = this.props;
+    const org = get(resources, 'organization.records.0');
+    const interfaceId = get(match, 'params.id');
+
+    this.hideConfirmDelete();
+    deleteInterface(mutator.organization, mutator.interface, interfaceId, org)
+      .finally(() => this.onClose());
   };
 
   render() {
@@ -40,14 +76,40 @@ export class ViewInterfaceContainer extends Component {
       return <Icon icon="spinner-ellipsis" />;
     }
 
+    const { showConfirmDelete, showConfirmUnassign } = this.state;
+
     return (
-      <ViewInterface
-        baseUrl={baseUrl}
-        item={currentInterface}
-        deleteInterface={noop}
-        onClose={this.onClose}
-        unassign={noop}
-      />
+      <React.Fragment>
+        <ViewInterface
+          baseUrl={baseUrl}
+          item={currentInterface}
+          deleteInterface={this.showConfirmDelete}
+          onClose={this.onClose}
+          unassign={this.showConfirmUnassign}
+        />
+        {showConfirmUnassign && (
+          <ConfirmationModal
+            id="unassign-interface-modal"
+            confirmLabel={<FormattedMessage id="ui-organizations.interface.confirmUnassign.confirmLabel" />}
+            heading={<FormattedMessage id="ui-organizations.interface.confirmUnassign.heading" />}
+            message={<FormattedMessage id="ui-organizations.interface.confirmUnassign.message1" />}
+            onCancel={this.hideConfirmUnassign}
+            onConfirm={this.onUnassign}
+            open
+          />
+        )}
+        {showConfirmDelete && (
+          <ConfirmationModal
+            id="delete-interface-modal"
+            confirmLabel={<FormattedMessage id="ui-organizations.interface.confirmDelete.confirmLabel" />}
+            heading={<FormattedMessage id="ui-organizations.interface.confirmDelete.heading" />}
+            message={<FormattedMessage id="ui-organizations.interface.confirmDelete.message" />}
+            onCancel={this.hideConfirmDelete}
+            onConfirm={this.onDelete}
+            open
+          />
+        )}
+      </React.Fragment>
     );
   }
 }

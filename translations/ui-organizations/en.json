@@ -547,6 +547,13 @@
   "interface.button.unassign": "Unassign",
   "interface.button.delete": "Delete",
   "interface.button.save": "Save",
+  "interface.confirmUnassign.confirmLabel": "Confirm",
+  "interface.confirmUnassign.heading": "Unassign from organization",
+  "interface.confirmUnassign.message1": "Are you sure you want to unassign the interface from this organization?",
+  "interface.confirmDelete.confirmLabel": "Confirm",
+  "interface.confirmDelete.heading": "Delete interface",
+  "interface.confirmDelete.message": "Are you sure you want to delete the interface?",
+  "interface.message.unassigned.fail": "The interface was not unassigned",
 
   "accounts.account.accountStatus": "Account status",
   "accounts.account.contactInfo": "Contact info",
