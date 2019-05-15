@@ -44,4 +44,5 @@ export default interactor(class CreateContactInteractor {
   emailForm = new EmailForm();
   urlForm = new UrlForm();
   paneTitle = text('[class*="paneTitleLabel---"]');
+  noteField = text('[name="notes"]');
 });
