@@ -10,4 +10,4 @@ export const columnMapping = {
   unassign: null,
 };
 
-export const visibleColumns = ['name', 'url'];
+export const visibleColumns = ['name', 'url', 'unassign'];
