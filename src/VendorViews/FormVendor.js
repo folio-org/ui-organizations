@@ -150,7 +150,12 @@ class FormVendor extends Component {
                   stripes={stripes}
                 />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-organizations.interface" />} id="interfacesSection" displayWhenClosed={isDisplayError('interfacesErr')} displayWhenOpen={isDisplayError('interfacesErr')}>
+              <Accordion
+                label={<FormattedMessage id="ui-organizations.interface" />}
+                id="interfacesSection"
+                displayWhenClosed={isDisplayError('interfacesErr')}
+                displayWhenOpen={isDisplayError('interfacesErr')}
+              >
                 <InterfacesListContainer
                   orgId={id}
                   parentMutator={parentMutator}

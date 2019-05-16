@@ -1,4 +1,4 @@
-import { CONTACTS_API } from '../constants';
+import { CONTACTS_API, MAX_LIMIT } from '../constants';
 
 export const contactResource = {
   throwErrors: false,
@@ -14,4 +14,5 @@ export const baseContactsResource = {
   type: 'okapi',
   records: 'contacts',
   path: CONTACTS_API,
+  perRequest: MAX_LIMIT,
 };
