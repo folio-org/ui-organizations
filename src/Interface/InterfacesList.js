@@ -64,7 +64,7 @@ const AddInterfaceButton = ({ fetchInterfaces, fields, stripes, orgId }) => {
       disableRecordCreation
       stripes={stripes}
       addInterfaces={addInterfaces}
-      renderNewContactBtn={renderNewInterfaceBtn}
+      renderNewInterfaceBtn={renderNewInterfaceBtn}
     >
       <span data-test-add-interface>
         <FormattedMessage id="ui-organizations.interface.noFindInterfacePlugin" />
