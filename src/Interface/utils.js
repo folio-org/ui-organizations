@@ -1,3 +1,5 @@
+import { MAX_LIMIT } from '../common/constants';
+
 export const updateInterfaces = (interfaces, mutator) => {
   let newQuery = 'query=(id=null)';
 
@@ -23,5 +25,5 @@ export const fetchInterfaces = (interfaceIds = [], mutator) => {
     query = `query=(${buildQuery})`;
   }
 
-  return mutator.GET({ params: { query } });
+  return mutator.GET({ params: { query, limit: MAX_LIMIT } });
 };
