@@ -58,13 +58,14 @@ export class ViewInterfaceContainer extends Component {
   };
 
   onDelete = () => {
-    const { match, mutator, resources } = this.props;
+    const { match, mutator, resources, showMessage } = this.props;
     const org = get(resources, 'organization.records.0');
     const interfaceId = get(match, 'params.id');
 
     this.hideConfirmDelete();
     deleteInterface(mutator.organization, mutator.interface, interfaceId, org)
-      .finally(() => this.onClose());
+      .then(() => this.onClose())
+      .catch(() => showMessage('ui-organizations.interface.message.delete.fail', 'error'));
   };
 
   render() {

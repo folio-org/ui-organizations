@@ -555,6 +555,7 @@
   "interface.confirmDelete.heading": "Delete interface",
   "interface.confirmDelete.message": "Are you sure you want to delete the interface?",
   "interface.message.unassigned.fail": "The interface was not unassigned",
+  "interface.message.delete.fail": "The interface was not deleted",
   "interface.create.paneTitle": "Create interface",
   "interface.edit.paneTitle": "Edit interface - {name}",
   "interface.message.saved.fail": "The interface was not saved",

@@ -72,13 +72,14 @@ class ViewContactContainer extends Component {
   }
 
   onDeleteContact = () => {
-    const { match, mutator, resources } = this.props;
+    const { match, mutator, resources, showMessage } = this.props;
     const org = get(resources, 'organization.records.0');
     const contactId = get(match, 'params.id');
 
     this.hideConfirmDelete();
     deleteContact(mutator.organization, mutator.contact, contactId, org)
-      .finally(() => this.onClose());
+      .then(() => this.onClose())
+      .catch(() => showMessage('ui-organizations.contacts.message.deleted.fail', 'error'));
   }
 
   render() {
