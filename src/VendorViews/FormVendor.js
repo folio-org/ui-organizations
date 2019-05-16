@@ -109,7 +109,7 @@ class FormVendor extends Component {
   render() {
     const { initialValues, isVendor, parentMutator, parentResources, stripes } = this.props;
     const { sectionErrors } = this.state;
-    const { id, name } = initialValues;
+    const { id, name, interfaces = [] } = initialValues;
     const showDeleteButton = !!id;
     // Errors
     const message = (
@@ -156,7 +156,7 @@ class FormVendor extends Component {
                   parentMutator={parentMutator}
                   parentResources={parentResources}
                   stripes={stripes}
-                  initialValues={initialValues}
+                  storedInterfaces={interfaces}
                 />
               </Accordion>
               {

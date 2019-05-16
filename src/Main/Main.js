@@ -149,6 +149,11 @@ class Main extends Component {
         },
       }
     },
+    interfacesManualFetch: {
+      ...interfacesResource,
+      fetch: false,
+      accumulate: true,
+    },
     interfaces: {
       ...interfacesResource,
       params: {
