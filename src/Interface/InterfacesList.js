@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { get, map } from 'lodash';
+import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
@@ -30,12 +30,13 @@ const getInterfaceUrl = (orgId, interfaceId) => {
 };
 
 const AddInterfaceButton = ({ fetchInterfaces, fields, stripes, orgId }) => {
-  const addInterface = (interfaces = []) => {
+  const addInterfaces = (interfaces = []) => {
     const addedInterfacesIds = new Set(fields.getAll());
     const newInterface = interfaces.filter(({ id }) => !addedInterfacesIds.has(id));
     if (newInterface.length) {
-      fields.push(...map(newInterface, 'id'));
-      fetchInterfaces();
+      const interfaceIds = newInterface.map(inface => inface.id);
+      fetchInterfaces([...addedInterfacesIds, ...interfaceIds]);
+      interfaceIds.forEach(id => fields.push(id));
     }
   };
 
@@ -62,7 +63,7 @@ const AddInterfaceButton = ({ fetchInterfaces, fields, stripes, orgId }) => {
       searchButtonStyle="default"
       disableRecordCreation
       stripes={stripes}
-      addInterface={addInterface}
+      addInterfaces={addInterfaces}
       renderNewContactBtn={renderNewInterfaceBtn}
     >
       <span data-test-add-interface>
@@ -128,7 +129,6 @@ const InterfacesList = ({ fetchInterfaces, fields, interfaces, orgId, stripes })
         formatter={resultsFormatter}
         rowFormatter={anchoredRowFormatter}
         visibleColumns={visibleColumns}
-        rowMetadata={orgId}
       />
       <br />
       <AddInterfaceButton

@@ -525,6 +525,7 @@
 
   "interface.name": "Name",
   "interface.uri": "URI",
+  "interface.url": "URL",
   "interface.username": "Username",
   "interface.password": "Password",
   "interface.notes": "Notes",
@@ -554,6 +555,10 @@
   "interface.confirmDelete.heading": "Delete interface",
   "interface.confirmDelete.message": "Are you sure you want to delete the interface?",
   "interface.message.unassigned.fail": "The interface was not unassigned",
+  "interface.create.paneTitle": "Create interface",
+  "interface.edit.paneTitle": "Edit interface - {name}",
+  "interface.message.saved.fail": "The interface was not saved",
+  "interface.message.saved.success": "The interface was saved",
 
   "accounts.account.accountStatus": "Account status",
   "accounts.account.contactInfo": "Contact info",

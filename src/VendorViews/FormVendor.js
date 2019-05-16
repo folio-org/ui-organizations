@@ -109,7 +109,7 @@ class FormVendor extends Component {
   render() {
     const { initialValues, isVendor, parentMutator, parentResources, stripes } = this.props;
     const { sectionErrors } = this.state;
-    const { id, name } = initialValues;
+    const { id, name, interfaces = [] } = initialValues;
     const showDeleteButton = !!id;
     // Errors
     const message = (
@@ -150,13 +150,18 @@ class FormVendor extends Component {
                   stripes={stripes}
                 />
               </Accordion>
-              <Accordion label={<FormattedMessage id="ui-organizations.interface" />} id="interfacesSection" displayWhenClosed={isDisplayError('interfacesErr')} displayWhenOpen={isDisplayError('interfacesErr')}>
+              <Accordion
+                label={<FormattedMessage id="ui-organizations.interface" />}
+                id="interfacesSection"
+                displayWhenClosed={isDisplayError('interfacesErr')}
+                displayWhenOpen={isDisplayError('interfacesErr')}
+              >
                 <InterfacesListContainer
                   orgId={id}
                   parentMutator={parentMutator}
                   parentResources={parentResources}
                   stripes={stripes}
-                  initialValues={initialValues}
+                  storedInterfaces={interfaces}
                 />
               </Accordion>
               {
