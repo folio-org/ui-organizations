@@ -1,5 +1,6 @@
 import {
   interactor,
+  text,
 } from '@bigtest/interactor';
 
 import Button from './Button';
@@ -13,6 +14,11 @@ import {
   VendorInformationSection,
   VendorTermsSection,
 } from './orgSections';
+
+@interactor class Note {
+  static defaultScope = '[data-test-contact-people-note]';
+  value = text('[class*=kvRoot---]');
+}
 
 export default interactor(class OrganizationDetailsInteractor {
   static defaultScope = '#pane-vendordetails';
@@ -30,4 +36,5 @@ export default interactor(class OrganizationDetailsInteractor {
   accountsSection = new AccountsSection();
 
   expandAllButton = new Button('[class*=paneContent---] div[class*=row---] [class*=button---]');
+  note = new Note();
 });

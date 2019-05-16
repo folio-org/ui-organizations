@@ -47,6 +47,7 @@ const ContactPerson = ({ contact, categories, withCollapsing }) => {
         language={contact.language}
         isInactive={contact.inactive}
         categories={contactCategories}
+        notes={contact.notes}
       />
 
       <ContactPersonAddresses

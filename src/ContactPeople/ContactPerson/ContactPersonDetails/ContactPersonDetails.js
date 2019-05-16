@@ -7,7 +7,7 @@ import { Row, Col, KeyValue } from '@folio/stripes/components';
 import ContactPersonSection from '../ContactPersonSection';
 
 const ContactPersonDetails = (
-  { firstName, lastName, prefix, language, categories, isInactive }
+  { firstName, lastName, prefix, language, categories, isInactive, notes }
 ) => {
   const renderHeader = () => (
     <FormattedMessage id="ui-organizations.contactPeople.name" />
@@ -49,6 +49,15 @@ const ContactPersonDetails = (
           {categories}
         </KeyValue>
       </Col>
+
+      <Col
+        data-test-contact-people-note
+        xs={6}
+      >
+        <KeyValue label={<FormattedMessage id="ui-organizations.contactPeople.note" />}>
+          {notes}
+        </KeyValue>
+      </Col>
     </Row>
   );
 
@@ -67,6 +76,7 @@ ContactPersonDetails.propTypes = {
   language: PropTypes.string,
   isInactive: PropTypes.bool,
   categories: PropTypes.string,
+  notes: PropTypes.string,
 };
 
 ContactPersonDetails.defaultProps = {
