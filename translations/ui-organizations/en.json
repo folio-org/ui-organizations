@@ -553,6 +553,7 @@
   "interface.edit.paneTitle": "Edit interface - {name}",
   "interface.message.saved.fail": "The interface was not saved",
   "interface.message.saved.success": "The interface was saved",
+  "interface.type": "Type",
 
   "accounts.account.accountStatus": "Account status",
   "accounts.account.contactInfo": "Contact info",
