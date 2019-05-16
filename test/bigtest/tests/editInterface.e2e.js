@@ -3,6 +3,7 @@ import { expect } from 'chai';
 
 import setupApplication from '../helpers/setup-application';
 
+import { INTERFACE_TYPES } from '../../../src/common/constants';
 import { InterfaceEditInteractor } from '../interactors';
 
 describe('Edit interface', () => {
@@ -29,6 +30,7 @@ describe('Edit interface', () => {
   describe('Save interface', () => {
     beforeEach(async function () {
       await page.name.fill('new name');
+      await page.selectType(INTERFACE_TYPES);
       await page.saveButton.click();
     });
 

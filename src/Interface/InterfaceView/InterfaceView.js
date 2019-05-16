@@ -14,6 +14,7 @@ import css from './InterfaceView.css';
 export const InterfaceView = ({ item = {}, isNarrow = false }) => {
   const columnsAmount = isNarrow ? 6 : 3;
   const {
+    type = [],
     name,
     uri,
     username,
@@ -30,6 +31,13 @@ export const InterfaceView = ({ item = {}, isNarrow = false }) => {
   return (
     <React.Fragment>
       <Row>
+        <Col xs={12}>
+          <KeyValue label={<FormattedMessage id="ui-organizations.interface.type" />}>
+            <span className={css.wrapValue}>
+              {type.join(', ')}
+            </span>
+          </KeyValue>
+        </Col>
         <Col xs={columnsAmount}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.name" />}>
             <span className={css.wrapValue}>

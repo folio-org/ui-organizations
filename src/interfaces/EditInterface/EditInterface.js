@@ -20,6 +20,7 @@ import {
 import { isURLValid } from '../../Utils/Validate';
 import TogglePassword from '../../Utils/TogglePassword';
 import { shapeOptions } from './const';
+import { INTERFACE_OPTIONS } from './util';
 
 import css from './EditInterface.css';
 
@@ -85,6 +86,18 @@ class EditInterface extends Component {
             md={8}
             mdOffset={2}
           >
+            <Row>
+              <Col xs={6}>
+                <Field
+                  component={Select}
+                  dataOptions={INTERFACE_OPTIONS}
+                  fullWidth
+                  label={<FormattedMessage id="ui-organizations.interface.type" />}
+                  multiple
+                  name="type"
+                />
+              </Col>
+            </Row>
             <Row>
               <Col
                 xs={12}
