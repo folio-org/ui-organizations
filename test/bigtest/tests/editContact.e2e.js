@@ -5,13 +5,15 @@ import setupApplication from '../helpers/setup-application';
 
 import { CreateContactInteractor } from '../interactors';
 
+const TEST_NOTE = 'Test note';
+
 describe('Edit contact', () => {
   setupApplication();
 
   const editContact = new CreateContactInteractor();
 
   beforeEach(function () {
-    const contact = this.server.create('contact');
+    const contact = this.server.create('contact', { notes: TEST_NOTE });
     const organization = this.server.create('organization', {
       contacts: [contact.id],
     });
@@ -26,6 +28,7 @@ describe('Edit contact', () => {
       expect(editContact.saveButton.isPresent).to.be.true;
       expect(editContact.saveButton.isDisabled).to.be.true;
       expect(editContact.paneTitle).to.include('Edit contact');
+      expect(editContact.noteField).to.be.equal(TEST_NOTE);
     });
   });
 

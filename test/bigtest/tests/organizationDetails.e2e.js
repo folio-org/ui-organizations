@@ -9,6 +9,7 @@ import {
 } from '../interactors';
 
 const ORGANIZATIONS_COUNT = 13;
+const TEST_NOTE = 'Test note';
 
 describe('Organization details', () => {
   setupApplication();
@@ -26,7 +27,7 @@ describe('Organization details', () => {
     );
     const orgId = organizations[0].id;
 
-    this.server.create('contact');
+    this.server.create('contact', { notes: TEST_NOTE });
 
     return this.visit(`/organizations/view/${orgId}`, () => {
       expect(orgDetails.$root).to.exist;
@@ -47,6 +48,10 @@ describe('Organization details', () => {
 
   it('contactInformationSection is displayed', function () {
     expect(orgDetails.contactInformationSection.isPresent).to.be.true;
+  });
+
+  it('note is displayed', function () {
+    expect(orgDetails.note.value).to.contain(TEST_NOTE);
   });
 
   it('interfacesSection is displayed', function () {
