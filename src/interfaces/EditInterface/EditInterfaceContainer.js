@@ -13,6 +13,7 @@ import {
   deliveryMethodDD,
   formatDD,
 } from './const';
+import { getBackQuery } from '../../common/utils/createItem';
 
 class EditInterfaceContainer extends Component {
   static manifest = Object.freeze({
@@ -22,12 +23,10 @@ class EditInterfaceContainer extends Component {
 
   onClose = (interfaceId = this.props.match.params.id) => {
     const { orgId, mutator } = this.props;
-    const starting = orgId ? `/organizations/${orgId}` : '/organizations';
+    const query = getBackQuery(orgId, interfaceId, 'interface');
 
-    mutator.query.replace({
-      _path: `${starting}/interface/${interfaceId}/view`,
-    });
-  }
+    mutator.query.replace(query);
+  };
 
   onSubmit = (formValues) => {
     const { mutator, showMessage } = this.props;
