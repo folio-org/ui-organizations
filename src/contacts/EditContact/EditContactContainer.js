@@ -10,6 +10,7 @@ import {
 } from '../../common/resources';
 import { saveContact } from './util';
 import EditContact from './EditContact';
+import { getBackQuery } from '../../common/utils/createItem';
 
 class EditContactContainer extends Component {
   static manifest = Object.freeze({
@@ -20,12 +21,10 @@ class EditContactContainer extends Component {
 
   onClose = (contactId = this.props.match.params.id) => {
     const { orgId, mutator } = this.props;
-    const starting = orgId ? `/organizations/${orgId}` : '/organizations';
+    const query = getBackQuery(orgId, contactId, 'contacts');
 
-    mutator.query.replace({
-      _path: `${starting}/contacts/${contactId}/view`,
-    });
-  }
+    mutator.query.replace(query);
+  };
 
   onSubmit = (contact) => {
     const { mutator, showMessage } = this.props;
