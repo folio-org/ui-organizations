@@ -16,6 +16,8 @@ import {
 import { Required } from '../../../Utils/Validate';
 import css from './ContactDetailsForm.css';
 
+const itemToString = option => option;
+
 class EmbeddedContactForm extends Component {
   static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.object),
@@ -29,8 +31,8 @@ class EmbeddedContactForm extends Component {
     labelForFieldsGroup: PropTypes.node.isRequired,
     labelForPrimaryFieldsGroup: PropTypes.node.isRequired,
     languageList: PropTypes.arrayOf(PropTypes.object),
-    phoneTypesList: PropTypes.arrayOf(PropTypes.object),
     name: PropTypes.string.isRequired,
+    phoneTypesList: PropTypes.arrayOf(PropTypes.object),
     requiredFields: PropTypes.arrayOf(PropTypes.string),
     store: PropTypes.object.isRequired,
     visibleFields: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -102,6 +104,7 @@ class EmbeddedContactForm extends Component {
             dataOptions: categories.map(({ id }) => id),
             formatter: categoriesFormatter,
             onBlur: e => e.preventDefault(),
+            itemToString,
           }
         };
       }

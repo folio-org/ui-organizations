@@ -55,6 +55,8 @@ class EditContact extends Component {
     return <option key={item.id}>{item.value}</option>;
   };
 
+  itemToString = option => option;
+
   getLastMenu = () => {
     const { pristine, submitting, handleSubmit } = this.props;
 
@@ -180,10 +182,11 @@ class EditContact extends Component {
                     <Field
                       component={MultiSelection}
                       dataOptions={categories.map(({ id }) => id)}
+                      formatter={this.categoriesFormatter}
+                      itemToString={this.itemToString}
                       label={<FormattedMessage id="ui-organizations.contactPeople.categories" />}
                       name="categories"
                       onBlur={(e) => e.preventDefault()}
-                      formatter={this.categoriesFormatter}
                     />
                   </Col>
                   <Col xs={6}>
