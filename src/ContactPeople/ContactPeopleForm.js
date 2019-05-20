@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isEqual, isEmpty, get } from 'lodash';
-import { FieldArray, getFormValues } from 'redux-form';
+import { get } from 'lodash';
+import { FieldArray } from 'redux-form';
 
 import {
   Col,
   Row,
 } from '@folio/stripes/components';
 
+import { mutatorGet } from '../common/utils';
 import ContactPeopleList from './ContactPeopleList';
 
 class ContactPeopleForm extends Component {
@@ -18,39 +19,13 @@ class ContactPeopleForm extends Component {
       store: PropTypes.object,
     }),
     orgId: PropTypes.string,
+    storedContactIds: PropTypes.arrayOf(PropTypes.object),
   };
 
-  state = {
-    contactArrState: [],
-  }
+  componentDidMount() {
+    const { storedContactIds } = this.props;
 
-  static getDerivedStateFromProps(props, { contactArrState = [] }) {
-    const { parentMutator, stripes: { store } } = props;
-    const formValues = getFormValues('FormVendor')(store.getState());
-    const contactArrProp = formValues.contacts;
-    const queryContacts = (arr) => {
-      if (isEmpty(arr)) return false;
-      let newQuery = 'query=(id=null)';
-
-      if (arr.length >= 1) {
-        const items = arr.map(item => {
-          return `id="${item}"`;
-        });
-        const buildQuery = items.join(' or ');
-
-        newQuery = `query=(${buildQuery})`;
-      }
-
-      return parentMutator.queryCustom.update({ contactIDs: newQuery });
-    };
-
-    if (!isEqual(contactArrProp, contactArrState)) {
-      queryContacts(contactArrProp);
-
-      return { contactArrState: contactArrProp };
-    }
-
-    return null;
+    this.fetchContacts(storedContactIds);
   }
 
   getContactsUrl = (contactId) => {
@@ -61,12 +36,16 @@ class ContactPeopleForm extends Component {
     return `${starting}${ending}`;
   }
 
-  fetchContacts = () => this.setState({ contactArrState: [] });
+  fetchContacts = (contactIds = []) => {
+    const { parentMutator } = this.props;
+
+    mutatorGet(parentMutator.contactsManualFetch, contactIds);
+  }
 
   render() {
     const { orgId, parentResources, stripes } = this.props;
     const categoriesDict = get(parentResources, 'vendorCategory.records', []);
-    const contactsMap = get(parentResources, 'contacts.records', []).reduce((acc, contact) => {
+    const contactsMap = get(parentResources, 'contactsManualFetch.records', []).reduce((acc, contact) => {
       acc[contact.id] = contact;
 
       return acc;

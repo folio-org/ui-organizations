@@ -10,7 +10,7 @@ import {
 } from '@folio/stripes/components';
 
 import InterfacesList from './InterfacesList';
-import { fetchInterfaces } from './utils';
+import { mutatorGet } from '../common/utils';
 
 class InterfacesListContainer extends Component {
   static propTypes = {
@@ -32,7 +32,7 @@ class InterfacesListContainer extends Component {
   refreshInterfaces = (interfaceIds = []) => {
     const { parentMutator } = this.props;
 
-    fetchInterfaces(interfaceIds, parentMutator.interfacesManualFetch);
+    mutatorGet(parentMutator.interfacesManualFetch, interfaceIds);
   }
 
   render() {

@@ -1,5 +1,4 @@
-import { MAX_LIMIT } from '../common/constants';
-
+// eslint-disable-next-line import/prefer-default-export
 export const updateInterfaces = (interfaces, mutator) => {
   let newQuery = 'query=(id=null)';
 
@@ -13,19 +12,4 @@ export const updateInterfaces = (interfaces, mutator) => {
   }
 
   mutator.queryCustom.update({ interfaceIDs: newQuery });
-};
-
-export const fetchInterfaces = (interfaceIds = [], mutator) => {
-  let query = 'query=(id=null)';
-
-  if (interfaceIds.length >= 1) {
-    const items = interfaceIds.map(item => {
-      return `id="${item}"`;
-    });
-    const buildQuery = items.join(' or ');
-
-    query = `query=(${buildQuery})`;
-  }
-
-  return mutator.GET({ params: { query, limit: MAX_LIMIT } });
 };

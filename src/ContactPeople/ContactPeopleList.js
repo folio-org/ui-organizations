@@ -39,11 +39,11 @@ const getContactsUrl = (orgId, contactId) => {
 const AddContactButton = ({ fetchContacts, fields, stripes, orgId }) => {
   const addContacts = (contacts = []) => {
     const addedContactIds = new Set(fields.getAll());
-    const newContacts = contacts.filter(({ id }) => !addedContactIds.has(id));
+    const newContactsIds = map(contacts.filter(({ id }) => !addedContactIds.has(id)), 'id');
 
-    if (newContacts.length) {
-      newContacts.forEach(contact => fields.push(contact.id));
-      fetchContacts();
+    if (newContactsIds.length) {
+      fetchContacts([...addedContactIds, ...newContactsIds]);
+      newContactsIds.forEach(contactId => fields.push(contactId));
     }
   };
 
