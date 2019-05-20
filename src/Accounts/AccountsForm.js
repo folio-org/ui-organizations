@@ -25,8 +25,8 @@ class AccountsForm extends Component {
     parentResources: PropTypes.shape({
       dropdown: PropTypes.shape({
         paymentMethodDD: PropTypes.array.isRequired,
-      })
-    })
+      }),
+    }),
   };
 
   renderForm = ({ fields }) => {

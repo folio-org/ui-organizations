@@ -8,7 +8,6 @@ import {
   Row,
 } from '@folio/stripes/components';
 
-
 import ContactPeopleList from './ContactPeopleList';
 
 class ContactPeopleForm extends Component {
@@ -16,7 +15,7 @@ class ContactPeopleForm extends Component {
     parentMutator: PropTypes.object,
     parentResources: PropTypes.object,
     stripes: PropTypes.shape({
-      store: PropTypes.object
+      store: PropTypes.object,
     }),
     orgId: PropTypes.string,
   };
@@ -32,20 +31,25 @@ class ContactPeopleForm extends Component {
     const queryContacts = (arr) => {
       if (isEmpty(arr)) return false;
       let newQuery = 'query=(id=null)';
+
       if (arr.length >= 1) {
         const items = arr.map(item => {
           return `id="${item}"`;
         });
         const buildQuery = items.join(' or ');
+
         newQuery = `query=(${buildQuery})`;
       }
+
       return parentMutator.queryCustom.update({ contactIDs: newQuery });
     };
 
     if (!isEqual(contactArrProp, contactArrState)) {
       queryContacts(contactArrProp);
+
       return { contactArrState: contactArrProp };
     }
+
     return null;
   }
 
@@ -64,6 +68,7 @@ class ContactPeopleForm extends Component {
     const categoriesDict = get(parentResources, 'vendorCategory.records', []);
     const contactsMap = get(parentResources, 'contacts.records', []).reduce((acc, contact) => {
       acc[contact.id] = contact;
+
       return acc;
     }, {});
 

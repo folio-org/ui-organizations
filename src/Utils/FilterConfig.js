@@ -15,31 +15,31 @@ const Filters = () => {
       label: <FormattedMessage id="ui-organizations.filterConfig.addressCategory" />,
       name: 'category',
       cql: 'addresses',
-      values: ['Accounting', 'Books', 'Customer Service', 'Databases', 'Ebooks', 'Econtent', 'General', 'Journals', 'Licenses', 'Primary', 'Sales', 'Serials', 'Returns', 'Shipments', 'Payments', 'Technical Support', 'Other']
+      values: ['Accounting', 'Books', 'Customer Service', 'Databases', 'Ebooks', 'Econtent', 'General', 'Journals', 'Licenses', 'Primary', 'Sales', 'Serials', 'Returns', 'Shipments', 'Payments', 'Technical Support', 'Other'],
     },
     {
       label: <FormattedMessage id="ui-organizations.filterConfig.contactPeopleCategory" />,
       name: 'category',
       cql: 'contacts',
-      values: ['Accounting', 'Books', 'Customer Service', 'Databases', 'Ebooks', 'Econtent', 'General', 'Journals', 'Licenses', 'Primary', 'Sales', 'Serials', 'Returns', 'Shipments', 'Payments', 'Technical Support', 'Other']
+      values: ['Accounting', 'Books', 'Customer Service', 'Databases', 'Ebooks', 'Econtent', 'General', 'Journals', 'Licenses', 'Primary', 'Sales', 'Serials', 'Returns', 'Shipments', 'Payments', 'Technical Support', 'Other'],
     },
     {
       label: <FormattedMessage id="ui-organizations.filterConfig.country" />,
       name: 'country',
       cql: 'addresses',
-      values: []
+      values: [],
     },
     {
       label: <FormattedMessage id="ui-organizations.filterConfig.languages" />,
       name: 'language',
       cql: 'language',
-      values: []
+      values: [],
     },
     {
       label: <FormattedMessage id="ui-organizations.filterConfig.paymentMethod" />,
       name: 'paymentMethod',
       cql: 'paymentMethod',
-      values: ['Cash', 'Credit Card/P-Card', 'EFT', 'Deposit Account']
+      values: ['Cash', 'Credit Card/P-Card', 'EFT', 'Deposit Account'],
     },
     {
       label: <FormattedMessage id="ui-organizations.filterConfig.statsAvailable" />,
@@ -47,9 +47,9 @@ const Filters = () => {
       cql: 'interfaces',
       values: [
         { name: 'Yes', cql: 'true' },
-        { name: 'No', cql: 'false' }
-      ]
-    }
+        { name: 'No', cql: 'false' },
+      ],
+    },
   ];
 };
 
@@ -62,7 +62,7 @@ const SearchableIndexes = [
   { label: 'Alias', value: 'aliases', makeQuery: term => `(aliases="${term}*")` },
   { label: 'Accounting code', value: 'erpCode', makeQuery: term => `(erpCode="${term}*")` },
   { label: 'Tax ID', value: 'taxId', makeQuery: term => `(taxId="${term}*")` },
-  { label: 'Interfaces', value: 'interfaces', makeQuery: term => `(interfaces="${term}*")` }
+  { label: 'Interfaces', value: 'interfaces', makeQuery: term => `(interfaces="${term}*")` },
 ];
 
 export { Filters, SearchableIndexes };

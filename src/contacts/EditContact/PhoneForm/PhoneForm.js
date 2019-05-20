@@ -21,7 +21,15 @@ const addPhoneNumberFields = {
   requiredFields: ['phoneNumber'],
 };
 
-const PhoneForm = ({ store, change, dispatch, categories, categoriesFormatter, languageList = [], phoneTypesList = [] }) => (
+const PhoneForm = ({
+  categories,
+  categoriesFormatter,
+  change,
+  dispatch,
+  languageList = [],
+  phoneTypesList = [],
+  store,
+}) => (
   <ContactDetailsForm
     buttonName={<FormattedMessage id="ui-organizations.contactPeople.addPhoneNumber" />}
     categories={categories}

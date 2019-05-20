@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { Row, Col, KeyValue } from '@folio/stripes/components';
 import css from '../ContactInformationView.css';
-import LanguageLookup from '../../Utils/LanguageLookup';
+import languageLookUp from '../../Utils/languageLookUp';
 import CatIDToLabel from '../../Utils/CatIDToLabel';
 
-class ContactInformationView extends React.Component {
+class PhoneNumbersView extends React.Component {
   static propTypes = {
     dataVal: PropTypes.arrayOf(PropTypes.object),
     dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
@@ -32,7 +32,7 @@ class ContactInformationView extends React.Component {
     const categories = CatIDToLabel(val.categories, dropdownVendorCategories) || '';
     const phonenumber = get(val, 'phoneNumber', '');
     const type = get(val, 'type', '');
-    const getLanguage = LanguageLookup(get(val, 'language', ''));
+    const getLanguage = languageLookUp(get(val, 'language', ''));
 
     return (
       <Row key={key}>
@@ -51,13 +51,14 @@ class ContactInformationView extends React.Component {
 
   render() {
     const { dataVal } = this.props;
+
     return (
       <Col xs={12} className={css.rowHeader}>
         <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactInfo.phoneNumbers" />}</div>
-        { dataVal.map(this.getPhoneNumbers) }
+        {dataVal.map(this.getPhoneNumbers)}
       </Col>
     );
   }
 }
 
-export default ContactInformationView;
+export default PhoneNumbersView;

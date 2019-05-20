@@ -11,6 +11,7 @@ const configInterfaces = server => {
 
   server.get(`${INTERFACES_API}/:id`, (schema, request) => {
     const orgInterface = schema.interfaces.find(request.params.id);
+
     return orgInterface
       ? orgInterface.attrs
       : new Response(404, { errors: 'interface not found' });

@@ -14,9 +14,11 @@ describe('Vendor organization details', () => {
   beforeEach(function () {
     const vendorOrg = this.server.create('organization', { isVendor: true });
 
-    return this.visit(`/organizations/view/${vendorOrg.id}`, () => {
-      expect(orgDetails.$root).to.exist;
-    });
+    this.visit(`/organizations/view/${vendorOrg.id}`);
+  });
+
+  it('renders Organization details', () => {
+    expect(orgDetails.$root).to.exist;
   });
 
   it('summarySection is displayed', function () {

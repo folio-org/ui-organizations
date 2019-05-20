@@ -12,9 +12,9 @@ class EdiInformationView extends React.Component {
     parentResources: PropTypes.shape({
       dropdown: PropTypes.shape({
         paymentMethodDD: PropTypes.array.isRequired,
-        ediCodeTypeDD: PropTypes.array.isRequired
-      })
-    })
+        ediCodeTypeDD: PropTypes.array.isRequired,
+      }),
+    }),
   };
 
   constructor(props) {
@@ -25,17 +25,23 @@ class EdiInformationView extends React.Component {
 
   getVendorCodeTypeItem(item) {
     const { parentResources: { dropdown: { ediCodeTypeDD } } } = this.props;
+
     if (isNull(item)) return '';
     const obj = find(ediCodeTypeDD, { value: item });
+
     if (!obj) return '';
+
     return obj.label;
   }
 
   getLibraryEdiCodeTypeDD(item) {
     const { parentResources: { dropdown: { ediCodeTypeDD } } } = this.props;
+
     if (isNull(item)) return '';
     const obj = find(ediCodeTypeDD, { value: item });
+
     if (!obj) return '';
+
     return obj.label;
   }
 

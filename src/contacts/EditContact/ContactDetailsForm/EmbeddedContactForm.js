@@ -105,7 +105,7 @@ class EmbeddedContactForm extends Component {
             formatter: categoriesFormatter,
             onBlur: e => e.preventDefault(),
             itemToString,
-          }
+          },
         };
       }
 
@@ -114,7 +114,7 @@ class EmbeddedContactForm extends Component {
           fieldProps,
           ...{
             dataOptions: languageList,
-          }
+          },
         };
       }
 
@@ -123,7 +123,7 @@ class EmbeddedContactForm extends Component {
           fieldProps,
           ...{
             dataOptions: phoneTypesList,
-          }
+          },
         };
       }
 

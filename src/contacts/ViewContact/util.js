@@ -3,6 +3,7 @@ import { without } from 'lodash';
 export const unassign = (mutator, contactId, org) => {
   if (org) {
     const contacts = without(org.contacts, contactId);
+
     return mutator.PUT({
       ...org,
       contacts,

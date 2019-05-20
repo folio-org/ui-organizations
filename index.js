@@ -44,6 +44,7 @@ class Organizations extends Component {
     if (this.props.showSettings) {
       return <Settings {...this.props} />;
     }
+
     return (
       <div>
         <Switch>

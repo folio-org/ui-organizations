@@ -23,9 +23,9 @@ class PaneDetails extends React.Component {
     parentResources: PropTypes.shape({
       vendorCategory: PropTypes.object,
       vendorContactCategory: PropTypes.object,
-      dropdown: PropTypes.object.isRequired
+      dropdown: PropTypes.object.isRequired,
     }),
-    parentMutator: PropTypes.object
+    parentMutator: PropTypes.object,
   };
 
   constructor(props) {
@@ -60,38 +60,46 @@ class PaneDetails extends React.Component {
   getVendorCategory() {
     const { parentResources } = this.props;
     const records = (parentResources.vendorCategory || {}).records || [];
+
     if (records.length === 0) return null;
+
     return records;
   }
 
   getCountryList() {
     const { parentResources } = this.props;
+
     return getDropDownItems(parentResources, 'countryList', false);
   }
 
   getLanguageList() {
     const { parentResources } = this.props;
+
     return getDropDownItems(parentResources, 'languageList', false);
   }
 
   getCurrencies() {
     const { parentResources } = this.props;
     const data = (parentResources.dropdown || {}).currencyDD || [];
+
     if (!data || data.length === 0) return null;
+
     return data;
   }
 
   getPhoneType() {
     const { parentResources } = this.props;
+
     return getDropDownItems(parentResources, 'phoneTypesList', false);
   }
 
   deleteVendor(ID) {
     const { parentMutator } = this.props;
+
     parentMutator.records.DELETE({ id: ID }).then(() => {
       parentMutator.query.update({
         _path: '/organization',
-        layer: null
+        layer: null,
       });
     });
   }

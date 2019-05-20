@@ -14,5 +14,5 @@ export const interfaceResource = {
   path: `${INTERFACES_API}/:{id}`,
   POST: {
     path: INTERFACES_API,
-  }
+  },
 };

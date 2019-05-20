@@ -13,26 +13,34 @@ import ContactPersonURLs from './ContactPersonURLs';
 const ContactPerson = ({ contact, categories, withCollapsing }) => {
   const addresses = get(contact, 'addresses', []).map(address => {
     const updatedAddress = cloneDeep(address);
+
     updatedAddress.primaryAddress = address.isPrimary;
     updatedAddress.categories = transformCategoryIdsToLables(categories, address.categories);
+
     return updatedAddress;
   });
 
   const emails = get(contact, 'emails', []).map(email => {
     const updatedEmail = cloneDeep(email);
+
     updatedEmail.categories = transformCategoryIdsToLables(categories, email.categories);
+
     return updatedEmail;
   });
 
   const phoneNumbers = get(contact, 'phoneNumbers', []).map(phone => {
     const updatedPhone = cloneDeep(phone);
+
     updatedPhone.categories = transformCategoryIdsToLables(categories, phone.categories);
+
     return updatedPhone;
   });
 
   const urls = get(contact, 'urls', []).map(url => {
     const updatedUrl = cloneDeep(url);
+
     updatedUrl.categories = transformCategoryIdsToLables(categories, url.categories);
+
     return updatedUrl;
   });
 

@@ -36,7 +36,7 @@ const EntitiesWithCollapsing = ({ entities, renderEntity, showMoreLabel }) => {
 EntitiesWithCollapsing.propTypes = {
   entities: PropTypes.arrayOf(PropTypes.object),
   renderEntity: PropTypes.func.isRequired,
-  showMoreLabel: PropTypes.node
+  showMoreLabel: PropTypes.node,
 };
 
 EntitiesWithCollapsing.defaultProps = {

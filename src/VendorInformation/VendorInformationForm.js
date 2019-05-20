@@ -12,10 +12,10 @@ class VendorInformationForm extends Component {
     parentResources: PropTypes.shape({
       vendorCategory: PropTypes.object,
       vendorContactCategory: PropTypes.object,
-      dropdown: PropTypes.object.isRequired
+      dropdown: PropTypes.object.isRequired,
     }),
     stripes: PropTypes.shape({
-      store: PropTypes.object
+      store: PropTypes.object,
     }),
     dispatch: PropTypes.func,
     change: PropTypes.func,
@@ -26,7 +26,7 @@ class VendorInformationForm extends Component {
     this.state = {
       subSections: {
         taxSection: true,
-      }
+      },
     };
     this.onChangeSelect = this.onChangeSelect.bind(this);
     this.selectedValues = this.selectedValues.bind(this);
@@ -34,6 +34,7 @@ class VendorInformationForm extends Component {
 
   onChangeSelect = (e, propertyName) => {
     const { dispatch, change } = this.props;
+
     dispatch(change(`${propertyName}`, e));
   };
 
@@ -41,6 +42,7 @@ class VendorInformationForm extends Component {
     const { stripes: { store } } = this.props;
     const formValues = getFormValues('FormVendor')(store.getState());
     const currValues = formValues[propertyName];
+
     return currValues;
   };
 
@@ -50,6 +52,7 @@ class VendorInformationForm extends Component {
   filterItems = (filterText, list) => {
     const filterRegExp = new RegExp(`^${filterText}`, 'i');
     const renderedItems = filterText ? list.filter(item => item.search(filterRegExp) !== -1) : list;
+
     return { renderedItems };
   };
 

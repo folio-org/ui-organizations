@@ -17,7 +17,7 @@ class InterfacesListContainer extends Component {
     parentMutator: PropTypes.object,
     parentResources: PropTypes.object,
     stripes: PropTypes.shape({
-      store: PropTypes.object
+      store: PropTypes.object,
     }),
     orgId: PropTypes.string,
     storedInterfaces: PropTypes.arrayOf(PropTypes.object),
@@ -31,6 +31,7 @@ class InterfacesListContainer extends Component {
 
   refreshInterfaces = (interfaceIds = []) => {
     const { parentMutator } = this.props;
+
     fetchInterfaces(interfaceIds, parentMutator.interfacesManualFetch);
   }
 
@@ -38,6 +39,7 @@ class InterfacesListContainer extends Component {
     const { orgId, parentResources, stripes } = this.props;
     const interfaces = get(parentResources, 'interfacesManualFetch.records', []).reduce((acc, item) => {
       acc[item.id] = item;
+
       return acc;
     }, {});
 

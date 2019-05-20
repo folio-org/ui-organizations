@@ -1,6 +1,6 @@
 import {
   interactor,
-  collection
+  collection,
 } from '@bigtest/interactor';
 
 export default interactor(class InterfacesViewInteractor {

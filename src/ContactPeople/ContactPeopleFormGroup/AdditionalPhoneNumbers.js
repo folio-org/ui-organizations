@@ -10,13 +10,14 @@ class AdditionalPhoneNumbers extends Component {
   static propTypes = {
     fields: PropTypes.object,
     stripes: PropTypes.shape({
-      store: PropTypes.object
+      store: PropTypes.object,
     }),
     contactPeopleForm: PropTypes.string,
   };
 
   renderSubPhoneNumbers = (elem, index) => {
     const { fields } = this.props;
+
     return (
       <Row key={index}>
         <PhoneNumbersMF index={index} fields={fields} name={`${elem}`} id={`${elem}`} {...this.props} />
@@ -27,9 +28,10 @@ class AdditionalPhoneNumbers extends Component {
 
   render() {
     const { fields, contactPeopleForm } = this.props;
+
     return (
       <Row>
-        { !contactPeopleForm &&
+        {!contactPeopleForm &&
           <Col xs={12}>
             <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactPeople.phoneNumber" />}</div>
           </Col>

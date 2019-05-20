@@ -8,6 +8,7 @@ export const updateInterfaces = (interfaces, mutator) => {
       return `id="${item}"`;
     });
     const buildQuery = items.join(' or ');
+
     newQuery = `query=(${buildQuery})`;
   }
 
@@ -22,6 +23,7 @@ export const fetchInterfaces = (interfaceIds = [], mutator) => {
       return `id="${item}"`;
     });
     const buildQuery = items.join(' or ');
+
     query = `query=(${buildQuery})`;
   }
 

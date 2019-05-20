@@ -13,11 +13,11 @@ class AddressesMF extends Component {
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     dropdownCountry: PropTypes.arrayOf(PropTypes.object),
     stripes: PropTypes.shape({
-      store: PropTypes.object
+      store: PropTypes.object,
     }),
     dispatch: PropTypes.func,
     change: PropTypes.func,
-    name: PropTypes.string
+    name: PropTypes.string,
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -27,27 +27,37 @@ class AddressesMF extends Component {
     // Get Addresses
     const getAddressNum = () => {
       const num = formValues.addresses;
+
       if (!num) return false;
+
       return num.map((val) => arrItems.push(val));
     };
+
     getAddressNum();
     // Get Contact Addresses
     const getAdditional = () => {
       const num = formValues.contacts;
+
       if (!num) return false;
       num.map((val) => {
         const contactPerson = val.contactPerson;
+
         if (!contactPerson || contactPerson <= 0) return false;
         const address = contactPerson.addresses;
+
         if (!address || address <= 0) return false;
         address.map((item) => arrItems.push(item));
+
         return false;
       });
+
       return false;
     };
+
     getAdditional();
     // Remove Duplicates
     const arrItemsNoDuplicate = _.uniqBy(arrItems, (e) => e.addressLine1);
+
     // Update state
     if (!_.isEqual(arrItemsNoDuplicate, prevState.itemCollection)) {
       return { itemCollection: arrItemsNoDuplicate };
@@ -60,7 +70,7 @@ class AddressesMF extends Component {
     super(props);
     this.state = {
       isOpen: false,
-      filteredCollection: []
+      filteredCollection: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onInputClear = this.onInputClear.bind(this);
@@ -69,6 +79,7 @@ class AddressesMF extends Component {
     this.renderItem = this.renderItem.bind(this);
 
     this.fieldRef = React.createRef();
+
     return false;
   }
 
@@ -76,34 +87,42 @@ class AddressesMF extends Component {
   // variables and prop names needs to be change for other use
   onInputChange(obj, e) {
     const { isOpen, itemCollection } = this.state;
+
     if (!_.isEmpty(itemCollection) && (e.trim().length >= 1)) {
       const num = itemCollection;
       const objFiltered = _.filter(num, (o) => {
         if (!_.includes(o.addressLine1, e)) return false;
+
         return o;
       });
+
       if (!_.isEmpty(objFiltered) && !isOpen) {
         return this.setState({ isOpen: true, filteredCollection: objFiltered });
       } else if (_.isEmpty(objFiltered) && isOpen) {
         return this.setState({ isOpen: false, filteredCollection: [] });
       }
+
       return false;
     }
 
     if (isOpen) this.setState({ isOpen: false, filteredCollection: [] });
+
     return false;
   }
 
   onInputClear() {
     const { isOpen } = this.state;
+
     if (isOpen) this.setState({ isOpen: false, filteredCollection: [] });
   }
 
   onClickItem(name, item) {
     const { isOpen } = this.state;
     const { dispatch, change } = this.props;
+
     dispatch(change(`${name}`, item));
     if (isOpen) this.setState({ isOpen: false, filteredCollection: [] });
+
     return false;
   }
 
@@ -122,6 +141,7 @@ class AddressesMF extends Component {
         </div>
       );
     });
+
     return (<div>{listItems}</div>);
   }
   // End Input Actions
@@ -131,7 +151,7 @@ class AddressesMF extends Component {
     const {
       name,
       dropdownLanguages,
-      dropdownCountry
+      dropdownCountry,
     } = this.props;
     const constraints = [{
       to: 'window',
@@ -139,7 +159,7 @@ class AddressesMF extends Component {
     },
     {
       to: 'scrollParent',
-      pin: false
+      pin: false,
     }];
 
     const defaultWidth = 100;
@@ -153,12 +173,12 @@ class AddressesMF extends Component {
             targetAttachment="bottom left"
             constraints={constraints}
           >
-            <div ref={this.fieldRef} style={{ width:'100%' }}>
+            <div ref={this.fieldRef} style={{ width: '100%' }}>
               <Field onChange={this.onInputChange} onClearField={this.onInputClear} label={<FormattedMessage id="ui-organizations.data.contactTypes.addressLine1" />} name={`${name}.addressLine1`} id={`${name}.addressLine1`} component={TextField} fullWidth />
             </div>
             {
               isOpen && (
-              <div className={css.dropdown} style={{ width:`${clientWidth}px` }}>
+              <div className={css.dropdown} style={{ width: `${clientWidth}px` }}>
                 <span className={css.dropDownItem}>
                   {this.renderItem(name)}
                 </span>
@@ -198,6 +218,5 @@ class AddressesMF extends Component {
     );
   }
 }
-
 
 export default AddressesMF;

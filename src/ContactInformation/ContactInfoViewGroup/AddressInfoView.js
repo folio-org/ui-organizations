@@ -9,7 +9,7 @@ import CatIDToLabel from '../../Utils/CatIDToLabel';
 class AddressInfoView extends React.Component {
   static propTypes = {
     dataVal: PropTypes.arrayOf(PropTypes.object),
-    dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object)
+    dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
   };
 
   constructor(props) {
@@ -19,7 +19,8 @@ class AddressInfoView extends React.Component {
 
   getAddress(val, key) {
     const { dropdownVendorCategories } = this.props;
-    const newVal = Object.assign({}, val);
+    const newVal = { ...val };
+
     newVal.categories = CatIDToLabel(val.categories, dropdownVendorCategories) || '';
 
     const visibleFields = [
@@ -29,7 +30,7 @@ class AddressInfoView extends React.Component {
       'stateRegion',
       'zipCode',
       'country',
-      'categories'
+      'categories',
     ];
 
     const labelMap = {
@@ -39,7 +40,7 @@ class AddressInfoView extends React.Component {
       stateRegion: <FormattedMessage id="ui-organizations.data.contactTypes.stateProviceOrRegion" />,
       zipCode: <FormattedMessage id="ui-organizations.data.contactTypes.zipOrPostalCode" />,
       country: <FormattedMessage id="ui-organizations.data.contactTypes.country" />,
-      categories: <FormattedMessage id="ui-organizations.data.contactTypes.categories" />
+      categories: <FormattedMessage id="ui-organizations.data.contactTypes.categories" />,
     };
 
     return (
@@ -53,6 +54,7 @@ class AddressInfoView extends React.Component {
 
   render() {
     const { dataVal } = this.props;
+
     return (
       <Col xs={12} className={css.rowHeader}>
         <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.data.contactTypes.address" />}</div>

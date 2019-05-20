@@ -1,3 +1,1 @@
-import InterfaceContainer from './InterfaceContainer';
-
-export default InterfaceContainer;
+export { default } from './InterfaceContainer';

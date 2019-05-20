@@ -70,7 +70,7 @@ ContactPersonEmails.propTypes = {
 
 ContactPersonEmails.defaultProps = {
   emails: [],
-  withCollapsing: true
+  withCollapsing: true,
 };
 
 export default ContactPersonEmails;

@@ -9,7 +9,7 @@ class AddressInfo extends Component {
   static propTypes = {
     fields: PropTypes.object,
     stripes: PropTypes.shape({
-      store: PropTypes.object
+      store: PropTypes.object,
     }),
     contactPeopleForm: PropTypes.string,
   };
@@ -31,6 +31,7 @@ class AddressInfo extends Component {
 
   renderSubAddress = (elem, index, fields) => {
     const { contactPeopleForm } = this.props;
+
     return (
       <Row key={index} className={!contactPeopleForm ? css.panels : css.panelsChild}>
         <AddressesMF index={index} fields={fields} name={`${elem}`} id={`${elem}`} {...this.props} />
@@ -41,6 +42,7 @@ class AddressInfo extends Component {
 
   render() {
     const { fields } = this.props;
+
     return (
       <Row>
         <Col xs={6}>

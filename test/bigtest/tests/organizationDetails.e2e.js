@@ -23,15 +23,17 @@ describe('Organization details', () => {
     const organizations = this.server.createList(
       'organization',
       ORGANIZATIONS_COUNT,
-      { interfaces: [vendorInterface.id] }
+      { interfaces: [vendorInterface.id] },
     );
     const orgId = organizations[0].id;
 
     this.server.create('contact', { notes: TEST_NOTE });
 
-    return this.visit(`/organizations/view/${orgId}`, () => {
-      expect(orgDetails.$root).to.exist;
-    });
+    this.visit(`/organizations/view/${orgId}`);
+  });
+
+  it('renders Organization details', () => {
+    expect(orgDetails.$root).to.exist;
   });
 
   it('shows the close details pane button', () => {

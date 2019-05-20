@@ -52,7 +52,7 @@ class Main extends Component {
       initialValue: {
         query: '',
         filters: '',
-        sort: 'Name'
+        sort: 'Name',
       },
     },
     resultCount: { initialValue: INITIAL_RESULT_COUNT },
@@ -86,6 +86,7 @@ class Main extends Component {
 
             let cql = searchableIndex.makeQuery(resourceData.query.query || '');
             const filterCql = filters2cql(filterConfig, resourceData.query.filters);
+
             if (filterCql) {
               if (cql) {
                 cql = `(${cql}) and ${filterCql}`;
@@ -95,23 +96,28 @@ class Main extends Component {
             }
 
             const { sort } = resourceData.query;
+
             if (sort) {
               const sortIndexes = sort.split(',').map((sort1) => {
                 let reverse = false;
+
                 if (sort1.startsWith('-')) {
                   // eslint-disable-next-line no-param-reassign
                   sort1 = sort1.substr(1);
                   reverse = true;
                 }
                 let sortIndex = sortMap[sort1] || sort1;
+
                 if (reverse) {
                   sortIndex = `${sortIndex.replace(' ', '/sort.descending ')}/sort.descending`;
                 }
+
                 return sortIndex;
               });
 
               cql += ` sortby ${sortIndexes.join(' ')}`;
             }
+
             return cql;
           },
         },
@@ -124,7 +130,7 @@ class Main extends Component {
         vendorIDQuery: 'query=(name=null)',
         contactIDs: 'query=(id=null)',
         interfaceIDs: 'query=(id=null)',
-      }
+      },
     },
     vendorID: {
       type: 'okapi',
@@ -134,9 +140,10 @@ class Main extends Component {
         query: (...args) => {
           const newData = `${args[2].queryCustom.vendorIDQuery}`;
           const cql = `${newData} sortby id`;
+
           return cql;
         },
-      }
+      },
     },
     contacts: {
       ...baseContactsResource,
@@ -145,9 +152,10 @@ class Main extends Component {
           // const newData = 'query=(id="d375f933-a093-4348-a594-0c02442946f3*")';
           const newData = `${args[2].queryCustom.contactIDs}`;
           const cql = `${newData} sortby id`;
+
           return cql;
         },
-      }
+      },
     },
     interfacesManualFetch: {
       ...interfacesResource,
@@ -160,9 +168,10 @@ class Main extends Component {
         query: (...args) => {
           const newData = `${args[2].queryCustom.interfaceIDs}`;
           const cql = `${newData} sortby id`;
+
           return cql;
         },
-      }
+      },
     },
     dropdown: {
       initialValue: {
@@ -183,7 +192,7 @@ class Main extends Component {
           { label: '31B (US-SAN)', value: '31B/US-SAN' },
           { label: '014 (EAN)', value: '014/EAN' },
           { label: '091 (Supplier-assigned ID)', value: '091/Vendor-assigned' },
-          { label: '092 (Library-assigned ID)', value: '092/Customer-assigned' }
+          { label: '092 (Library-assigned ID)', value: '092/Customer-assigned' },
         ],
         libraryEDICodeDD: [
           { label: 'Code', value: 'code' },
@@ -224,13 +233,14 @@ class Main extends Component {
         phoneTypesList,
         countryList,
         languageList,
-      }
-    }
+      },
+    },
   });
 
   static getDerivedStateFromProps(props) {
     const langFilter = filterConfig.find(group => group.name === 'language');
     const countryFilter = filterConfig.find(group => group.name === 'country');
+
     if (langFilter.values.length === 0 && countryFilter.values.length === 0) {
       langFilter.values = languageList.map(({ label, value }) => ({ name: label, cql: value }));
       countryFilter.values = countryList.map(({ label, value }) => ({ name: label, cql: value }));
@@ -249,18 +259,20 @@ class Main extends Component {
     const { mutator } = this.props;
     // Convert time
     const time = FormatTime(data, 'post');
+
     if (time) { data.edi.ediJob.time = time; }
 
     mutator.records.POST(data).then(newLedger => {
       mutator.query.update({
         _path: `/organizations/view/${newLedger.id}`,
-        layer: null
+        layer: null,
       });
     });
   };
 
   onChangeIndex = (e) => {
     const qindex = e.target.value;
+
     this.props.mutator.query.update({ qindex });
   };
 
@@ -270,13 +282,13 @@ class Main extends Component {
       'Name': data => _.get(data, ['name'], ''),
       'Code': data => _.get(data, ['code'], ''),
       'Description': data => _.get(data, ['description'], ''),
-      'Status': data => _.toString(_.get(data, ['status'], ''))
+      'Status': data => _.toString(_.get(data, ['status'], '')),
     };
     const columnMapping = {
       'Name': <FormattedMessage id="ui-organizations.main.name" />,
       'Code': <FormattedMessage id="ui-organizations.main.code" />,
       'Description': <FormattedMessage id="ui-organizations.main.description" />,
-      'Status': <FormattedMessage id="ui-organizations.main.vendorStatus" />
+      'Status': <FormattedMessage id="ui-organizations.main.vendorStatus" />,
     };
 
     return (

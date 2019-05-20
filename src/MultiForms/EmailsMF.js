@@ -14,11 +14,11 @@ class EmailsMF extends Component {
     dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     stripes: PropTypes.shape({
-      store: PropTypes.object
+      store: PropTypes.object,
     }),
     dispatch: PropTypes.func,
     change: PropTypes.func,
-    name: PropTypes.string
+    name: PropTypes.string,
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -28,31 +28,42 @@ class EmailsMF extends Component {
     // Get Phone Number
     const getEmailNum = () => {
       const num = formValues.emails;
+
       if (!num) return false;
+
       return num.map((val) => arrItems.push(val));
     };
+
     getEmailNum();
     // Get Additional Phone Number
     const getAdditional = () => {
       const num = formValues.contacts;
+
       if (!num) return false;
       num.map((val) => {
         const contactPerson = val.contactPerson;
+
         if (!contactPerson || contactPerson <= 0) return false;
         const emails = contactPerson.emails;
+
         if (!emails || emails <= 0) return false;
         emails.map((item) => arrItems.push(item));
+
         return false;
       });
+
       return false;
     };
+
     getAdditional();
     // Remove Duplicates
     const arrItemsNoDuplicate = _.uniqBy(arrItems, (e) => e.value);
+
     // Update state
     if (!_.isEqual(arrItemsNoDuplicate, prevState.itemCollection)) {
       return { itemCollection: arrItemsNoDuplicate };
     }
+
     return null;
   }
 
@@ -60,7 +71,7 @@ class EmailsMF extends Component {
     super(props);
     this.state = {
       isOpen: false,
-      filteredCollection: []
+      filteredCollection: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onInputClear = this.onInputClear.bind(this);
@@ -69,6 +80,7 @@ class EmailsMF extends Component {
     this.renderItem = this.renderItem.bind(this);
 
     this.fieldRef = React.createRef();
+
     return false;
   }
 
@@ -76,34 +88,42 @@ class EmailsMF extends Component {
   // variables and prop names needs to be change for other use
   onInputChange(obj, e) {
     const { isOpen, itemCollection } = this.state;
+
     if (!_.isEmpty(itemCollection) && (e.trim().length >= 1)) {
       const num = itemCollection;
       const objFiltered = _.filter(num, (o) => {
         if (!_.includes(o.value, e)) return false;
+
         return o;
       });
+
       if (!_.isEmpty(objFiltered) && !isOpen) {
         return this.setState({ isOpen: true, filteredCollection: objFiltered });
       } else if (_.isEmpty(objFiltered) && isOpen) {
         return this.setState({ isOpen: false, filteredCollection: [] });
       }
+
       return false;
     }
 
     if (isOpen) this.setState({ isOpen: false, filteredCollection: [] });
+
     return false;
   }
 
   onInputClear() {
     const { isOpen } = this.state;
+
     if (isOpen) this.setState({ isOpen: false, filteredCollection: [] });
   }
 
   onClickItem(name, item) {
     const { isOpen } = this.state;
     const { dispatch, change } = this.props;
+
     dispatch(change(`${name}`, item));
     if (isOpen) this.setState({ isOpen: false, filteredCollection: [] });
+
     return false;
   }
 
@@ -122,6 +142,7 @@ class EmailsMF extends Component {
         </div>
       );
     });
+
     return (<div>{listItems}</div>);
   }
   // End Input Actions
@@ -130,7 +151,7 @@ class EmailsMF extends Component {
     const { isOpen } = this.state;
     const {
       name,
-      dropdownLanguages
+      dropdownLanguages,
     } = this.props;
     const constraints = [{
       to: 'window',
@@ -138,7 +159,7 @@ class EmailsMF extends Component {
     },
     {
       to: 'scrollParent',
-      pin: false
+      pin: false,
     }];
 
     const defaultWidth = 100;
@@ -152,7 +173,7 @@ class EmailsMF extends Component {
             targetAttachment="bottom left"
             constraints={constraints}
           >
-            <div ref={this.fieldRef} style={{ width:'100%' }}>
+            <div ref={this.fieldRef} style={{ width: '100%' }}>
               <Field
                 onChange={this.onInputChange}
                 onClearField={this.onInputClear}
@@ -167,7 +188,7 @@ class EmailsMF extends Component {
             </div>
             {
               isOpen && (
-              <div className={css.dropdown} style={{ width:`${clientWidth}px` }}>
+              <div className={css.dropdown} style={{ width: `${clientWidth}px` }}>
                 <span className={css.dropDownItem}>
                   {this.renderItem(name)}
                 </span>
@@ -189,6 +210,5 @@ class EmailsMF extends Component {
     );
   }
 }
-
 
 export default EmailsMF;
