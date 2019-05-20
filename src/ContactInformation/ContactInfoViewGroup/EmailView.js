@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { Row, Col, KeyValue } from '@folio/stripes/components';
 import css from '../ContactInformationView.css';
-import LanguageLookup from '../../Utils/LanguageLookup';
+import languageLookUp from '../../Utils/languageLookUp';
 import CatIDToLabel from '../../Utils/CatIDToLabel';
 
-class ContactInformationView extends React.Component {
+class EmailView extends React.Component {
   static propTypes = {
     dataVal: PropTypes.arrayOf(PropTypes.object),
     dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
@@ -30,7 +30,7 @@ class ContactInformationView extends React.Component {
     const { dropdownVendorCategories } = this.props;
     const rowEmailCount = (this.props.dataVal.length - 1) !== key;
     const categoriesEml = CatIDToLabel(val.categories, dropdownVendorCategories) || '';
-    const getLanguageEml = LanguageLookup(get(val, 'language', ''));
+    const getLanguageEml = languageLookUp(get(val, 'language', ''));
 
     return (
       <Row key={key}>
@@ -48,6 +48,7 @@ class ContactInformationView extends React.Component {
 
   render() {
     const { dataVal } = this.props;
+
     return (
       <Col xs={12} className={css.rowHeader}>
         <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactInfo.emailAddress" />}</div>
@@ -57,4 +58,4 @@ class ContactInformationView extends React.Component {
   }
 }
 
-export default ContactInformationView;
+export default EmailView;

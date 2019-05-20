@@ -8,24 +8,25 @@ class TogglePassword extends Component {
   static propTypes = {
     name: PropTypes.string,
     id: PropTypes.string,
-    buttonID: PropTypes.string
+    buttonID: PropTypes.string,
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      showPassword: false
+      showPassword: false,
     };
   }
 
   togglePassword() {
     this.setState(({ showPassword }) => ({
-      showPassword: !showPassword
+      showPassword: !showPassword,
     }));
   }
 
   render() {
     const { name, id, buttonID } = this.props;
+
     return (
       <Row>
         <Col xs={10}>
@@ -33,7 +34,7 @@ class TogglePassword extends Component {
         </Col>
         <Col xs={2} style={{ paddingTop: '20px', marginBottom: '0' }}>
           <Button id={buttonID} onClick={() => this.togglePassword()}>
-            { this.state.showPassword ? <FormattedMessage id="ui-organizations.edit.hide" /> : <FormattedMessage id="ui-organizations.edit.show" /> }
+            {this.state.showPassword ? <FormattedMessage id="ui-organizations.edit.hide" /> : <FormattedMessage id="ui-organizations.edit.show" />}
           </Button>
         </Col>
       </Row>

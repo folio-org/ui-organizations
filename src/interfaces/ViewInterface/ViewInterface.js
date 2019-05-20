@@ -14,7 +14,6 @@ import { AppIcon } from '@folio/stripes/core';
 import { EDIT_INTERFACE_URL } from '../constants';
 import { InterfaceView } from '../../Interface/InterfaceView/InterfaceView';
 
-
 const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface }) => {
   // eslint-disable-next-line react/prop-types
   const getActionMenu = ({ onToggle }) => {

@@ -34,6 +34,7 @@ class FormVendor extends Component {
     const { sections } = state;
     const errorKeys = Object.keys(getFormSyncErrors('FormVendor')(store.getState()));
     const sectionErrArray = [];
+
     // Display error condition
     errorKeys.forEach(key => {
       if ((key === 'name' || key === 'code' || key === 'status') && (sectionErrArray.indexOf('summaryErr') === -1)) sectionErrArray.push('summaryErr');
@@ -47,6 +48,7 @@ class FormVendor extends Component {
     // Accordion error condition
     if (errorKeys.length > 0) {
       const newSections = { ...sections };
+
       errorKeys.forEach(key => {
         if (key === 'name' || key === 'code' || key === 'status') newSections.summarySection = true;
         if (key === 'addresses' || key === 'phoneNumbers' || key === 'email' || key === 'urls') newSections.contactInformationSection = true;
@@ -55,8 +57,10 @@ class FormVendor extends Component {
         if (key === 'interfaces') newSections.interfacesSection = true;
         if (key === 'accounts') newSections.accountsSection = true;
       });
+
       return { sections: newSections, sectionErrors: sectionErrArray };
     }
+
     return { sectionErrors: sectionErrArray };
   }
 
@@ -71,9 +75,9 @@ class FormVendor extends Component {
         vendorInformationSection: false,
         EDIInformationSection: false,
         interfacesSection: false,
-        accountsSection: false
+        accountsSection: false,
       },
-      sectionErrors: []
+      sectionErrors: [],
     };
     this.deleteVendor = this.deleteVendor.bind(this);
     this.onToggleSection = this.onToggleSection.bind(this);
@@ -83,7 +87,9 @@ class FormVendor extends Component {
   onToggleSection({ id }) {
     this.setState((curState) => {
       const newState = _.cloneDeep(curState);
+
       newState.sections[id] = !curState.sections[id];
+
       return newState;
     });
   }
@@ -91,17 +97,20 @@ class FormVendor extends Component {
   handleExpandAll(obj) {
     this.setState((curState) => {
       const newState = _.cloneDeep(curState);
+
       newState.sections = obj;
+
       return newState;
     });
   }
 
   deleteVendor = () => {
     const { parentMutator, initialValues: { id } } = this.props;
+
     parentMutator.records.DELETE({ id }).then(() => {
       parentMutator.query.update({
         _path: '/organizations',
-        layer: null
+        layer: null,
       });
     });
   }

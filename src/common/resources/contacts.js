@@ -6,7 +6,7 @@ export const contactResource = {
   path: `${CONTACTS_API}/:{id}`,
   POST: {
     path: CONTACTS_API,
-  }
+  },
 };
 
 export const baseContactsResource = {

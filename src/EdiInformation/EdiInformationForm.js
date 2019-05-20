@@ -14,7 +14,7 @@ import {
   Checkbox,
   Datepicker,
   AccordionSet,
-  Accordion
+  Accordion,
 } from '@folio/stripes/components';
 import { isURLValid } from '../Utils/Validate';
 import css from './EdiInformationForm.css';
@@ -23,7 +23,7 @@ import { getDropDownItems } from '../common/utils/dropdown';
 
 class EdiInformationForm extends Component {
   static propTypes = {
-    parentResources: PropTypes.object
+    parentResources: PropTypes.object,
   };
 
   constructor(props) {
@@ -32,8 +32,8 @@ class EdiInformationForm extends Component {
       subSections: {
         ediBasicSection: true,
         ftpDetailsSection: true,
-        schedulingSection: true
-      }
+        schedulingSection: true,
+      },
     };
     this.onToggleSubSection = this.onToggleSubSection.bind(this);
   }
@@ -41,7 +41,9 @@ class EdiInformationForm extends Component {
   onToggleSubSection(newAccordionStatus) {
     this.setState((curState) => {
       const newState = _.cloneDeep(curState);
+
       newState.subSections = newAccordionStatus;
+
       return newState;
     });
   }

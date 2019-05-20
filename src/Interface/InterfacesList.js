@@ -33,8 +33,10 @@ const AddInterfaceButton = ({ fetchInterfaces, fields, stripes, orgId }) => {
   const addInterfaces = (interfaces = []) => {
     const addedInterfacesIds = new Set(fields.getAll());
     const newInterface = interfaces.filter(({ id }) => !addedInterfacesIds.has(id));
+
     if (newInterface.length) {
       const interfaceIds = newInterface.map(inface => inface.id);
+
       fetchInterfaces([...addedInterfacesIds, ...interfaceIds]);
       interfaceIds.forEach(id => fields.push(id));
     }

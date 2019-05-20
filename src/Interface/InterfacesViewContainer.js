@@ -36,6 +36,7 @@ class InterfacesViewContainer extends React.Component {
   render() {
     const { parentResources } = this.props;
     const interfaces = get(parentResources, 'interfaces', {});
+
     if (interfaces.isPending) {
       return <Icon icon="spinner-ellipsis" />;
     }

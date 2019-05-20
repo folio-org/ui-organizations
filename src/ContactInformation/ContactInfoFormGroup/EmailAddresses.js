@@ -9,7 +9,7 @@ class EmailAddresses extends Component {
   static propTypes = {
     fields: PropTypes.object,
     stripes: PropTypes.shape({
-      store: PropTypes.object
+      store: PropTypes.object,
     }),
     dispatch: PropTypes.func,
     change: PropTypes.func,
@@ -42,6 +42,7 @@ class EmailAddresses extends Component {
 
   render() {
     const { fields } = this.props;
+
     return (
       <Row>
         <Col xs={12}>

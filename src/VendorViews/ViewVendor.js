@@ -44,7 +44,7 @@ class ViewVendor extends Component {
         [SECTIONS.ediInformationSection]: false,
         [SECTIONS.interfacesSection]: false,
         [SECTIONS.accountsSection]: false,
-      }
+      },
     };
     this.connectedPaneDetails = this.props.stripes.connect(PaneDetails);
     this.handleExpandAll = this.handleExpandAll.bind(this);
@@ -54,10 +54,13 @@ class ViewVendor extends Component {
   static getDerivedStateFromProps(props, state) {
     const { parentMutator, parentResources, match: { params: { id } } } = props;
     const vendorID = (parentResources.vendorID || {}).records || [];
+
     if (!_.isEqual(vendorID, state.vendorData)) {
       parentMutator.queryCustom.update({ vendorIDQuery: `query=(id=${id})` });
+
       return { vendorData: vendorID };
     }
+
     return null;
   }
 
@@ -68,14 +71,18 @@ class ViewVendor extends Component {
     const vendorData = !_.isEmpty(selectData) ? selectData : [];
     const data = vendorData.find(u => u.id === id);
     const time = FormatTime(data, 'get');
+
     if (time) { data.edi.ediJob.time = time; }
+
     return data;
   }
 
   onToggleSection({ id }) {
     this.setState((curState) => {
       const newState = _.cloneDeep(curState);
+
       newState.sections[id] = !curState.sections[id];
+
       return newState;
     });
   }
@@ -83,7 +90,9 @@ class ViewVendor extends Component {
   handleExpandAll(obj) {
     this.setState((curState) => {
       const newState = _.cloneDeep(curState);
+
       newState.sections = obj;
+
       return newState;
     });
   }

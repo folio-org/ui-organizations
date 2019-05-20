@@ -13,9 +13,9 @@ class ContactPeopleView extends React.Component {
     parentResources: PropTypes.shape({
       dropdown: PropTypes.object.isRequired,
       dropdownCategories: PropTypes.arrayOf(PropTypes.object),
-      CountryList: PropTypes.arrayOf(PropTypes.object)
+      CountryList: PropTypes.arrayOf(PropTypes.object),
     }),
-    parentMutator: PropTypes.object
+    parentMutator: PropTypes.object,
   }
 
   componentDidMount() {
@@ -36,11 +36,13 @@ class ContactPeopleView extends React.Component {
     const { parentMutator } = this.props;
 
     let newQuery = 'query=(id=null)';
+
     if (contacts.length >= 1) {
       const items = contacts.map(item => {
         return `id="${item}"`;
       });
       const biuldQuery = items.join(' or ');
+
       newQuery = `query=(${biuldQuery})`;
     }
 

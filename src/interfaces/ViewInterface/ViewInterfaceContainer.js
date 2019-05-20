@@ -22,7 +22,7 @@ export class ViewInterfaceContainer extends Component {
   static manifest = Object.freeze({
     interface: interfaceResource,
     organization: organizationResource,
-    query: {}
+    query: {},
   });
 
   state = {
@@ -32,6 +32,7 @@ export class ViewInterfaceContainer extends Component {
 
   onClose = () => {
     const { orgId, mutator } = this.props;
+
     mutator.query.replace({
       _path: orgId ? `/organizations/view/${orgId}` : '/organizations',
       layer: orgId ? 'edit' : 'create',

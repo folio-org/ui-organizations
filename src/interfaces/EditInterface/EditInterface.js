@@ -37,6 +37,7 @@ class EditInterface extends Component {
 
   getLastMenu = () => {
     const { handleSubmit, pristine, submitting } = this.props;
+
     return (
       <PaneMenu>
         <FormattedMessage id="ui-organizations.interface.button.save">

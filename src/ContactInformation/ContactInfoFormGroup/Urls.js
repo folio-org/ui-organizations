@@ -6,11 +6,11 @@ import css from '../ContactInfoFormGroup.css';
 import { UrlsMF } from '../../MultiForms';
 import RemoveButton from '../../Utils/RemoveButton';
 
-class Url extends Component {
+class Urls extends Component {
   static propTypes = {
     fields: PropTypes.object,
     stripes: PropTypes.shape({
-      store: PropTypes.object
+      store: PropTypes.object,
     }),
     contactPeopleForm: PropTypes.string,
   };
@@ -26,6 +26,7 @@ class Url extends Component {
 
   render() {
     const { fields } = this.props;
+
     return (
       <Row>
         <Col xs={12}>
@@ -45,4 +46,4 @@ class Url extends Component {
   }
 }
 
-export default Url;
+export default Urls;

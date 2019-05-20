@@ -6,7 +6,7 @@ import {
   KeyValue,
   Col,
   Row,
-  Checkbox
+  Checkbox,
 } from '@folio/stripes/components';
 
 import css from './InterfaceView.css';

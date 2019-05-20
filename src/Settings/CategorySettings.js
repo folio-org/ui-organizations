@@ -7,7 +7,7 @@ class CategorySettings extends Component {
   static propTypes = {
     stripes: PropTypes.shape({
       connect: PropTypes.func.isRequired,
-    }).isRequired
+    }).isRequired,
   };
 
   constructor(props) {
@@ -19,7 +19,7 @@ class CategorySettings extends Component {
     const { stripes } = this.props;
     const columnMapping = {
       value: <FormattedMessage id="ui-organizations.settings.name" />,
-      action: <FormattedMessage id="ui-organizations.settings.action" />
+      action: <FormattedMessage id="ui-organizations.settings.action" />,
     };
 
     return (

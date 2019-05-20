@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/prefer-default-export
 export const getBackQuery = (orgId, entityId, entityName) => {
   const starting = orgId ? `/organizations/${orgId}` : '/organizations';
 
@@ -20,5 +21,3 @@ export const getBackQuery = (orgId, entityId, entityName) => {
     sort: 'Name',
   };
 };
-
-export default getBackQuery;

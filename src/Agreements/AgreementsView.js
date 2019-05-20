@@ -18,6 +18,7 @@ class AgreementsView extends React.Component {
   getAgreements(val, key) {
     const rowCount = this.props.agreements.length - 1 !== key;
     const discount = _.get(val, 'discount') + '%';
+
     return (
       <Row key={key}>
         <Col xs={3}>
@@ -44,6 +45,7 @@ class AgreementsView extends React.Component {
   render() {
     const { agreements } = this.props;
     const dataVal = agreements.length >= 1 ? agreements : false;
+
     if (dataVal) {
       return (
         <div style={{ width: '100%' }} className={css.horizontalLine}>

@@ -14,7 +14,7 @@ import EditInterfaceContainer from './EditInterface';
 import {
   ADD_INTERFACE_URL,
   EDIT_INTERFACE_URL,
-  VIEW_INTERFACE_URL
+  VIEW_INTERFACE_URL,
 } from './constants';
 
 class InterfaceContainer extends Component {

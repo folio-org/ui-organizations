@@ -24,7 +24,7 @@ const labelMap = {
   zipCode: <FormattedMessage id="ui-organizations.contactPeople.zipCode" />,
   country: <FormattedMessage id="ui-organizations.contactPeople.country" />,
   language: <FormattedMessage id="ui-organizations.contactPeople.language" />,
-  categories: <FormattedMessage id="ui-organizations.contactPeople.categories" />
+  categories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
 };
 
 const ContactPersonAddress = ({ address }) => (

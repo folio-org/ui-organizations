@@ -44,6 +44,7 @@ class ViewContactContainer extends Component {
 
   onClose = () => {
     const { orgId, mutator } = this.props;
+
     mutator.query.replace({
       _path: orgId ? `/organizations/view/${orgId}` : '/organizations',
       layer: orgId ? 'edit' : 'create',
@@ -57,7 +58,6 @@ class ViewContactContainer extends Component {
   showConfirmDelete = () => this.setState({ showConfirmDelete: true });
 
   hideConfirmDelete = () => this.setState({ showConfirmDelete: false });
-
 
   onUnassign = () => {
     const { match, mutator, resources, showMessage } = this.props;

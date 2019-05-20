@@ -6,9 +6,15 @@ import { Row, Col, KeyValue } from '@folio/stripes/components';
 
 import ContactPersonSection from '../ContactPersonSection';
 
-const ContactPersonDetails = (
-  { firstName, lastName, prefix, language, categories, isInactive, notes }
-) => {
+const ContactPersonDetails = ({
+  categories,
+  firstName,
+  isInactive,
+  language,
+  lastName,
+  notes,
+  prefix,
+}) => {
   const renderHeader = () => (
     <FormattedMessage id="ui-organizations.contactPeople.name" />
   );

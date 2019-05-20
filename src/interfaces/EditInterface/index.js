@@ -1,3 +1,1 @@
-import EditInterfaceContainer from './EditInterfaceContainer';
-
-export default EditInterfaceContainer;
+export { default } from './EditInterfaceContainer';

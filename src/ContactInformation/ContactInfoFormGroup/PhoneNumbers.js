@@ -10,7 +10,7 @@ class PhoneNumbers extends Component {
   static propTypes = {
     fields: PropTypes.object,
     stripes: PropTypes.shape({
-      store: PropTypes.object
+      store: PropTypes.object,
     }),
     contactPeopleForm: PropTypes.string,
   };
@@ -28,9 +28,10 @@ class PhoneNumbers extends Component {
 
   render() {
     const { fields, contactPeopleForm } = this.props;
+
     return (
       <Row>
-        { !contactPeopleForm &&
+        {!contactPeopleForm &&
           <Col xs={12}>
             <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactInfo.phoneNumbers" />}</div>
           </Col>

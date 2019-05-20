@@ -3,6 +3,7 @@ import { without } from 'lodash';
 export const unassignInterface = (mutator, interfaceId, org) => {
   if (org) {
     const interfaces = without(org.interfaces, interfaceId);
+
     return mutator.PUT({
       ...org,
       interfaces,

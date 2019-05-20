@@ -15,7 +15,7 @@ class PhoneNumbersMF extends Component {
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     dropdownPhoneType: PropTypes.arrayOf(PropTypes.object),
     stripes: PropTypes.shape({
-      store: PropTypes.object
+      store: PropTypes.object,
     }),
     dispatch: PropTypes.func,
     change: PropTypes.func,
@@ -29,31 +29,42 @@ class PhoneNumbersMF extends Component {
     // Get Phone Number
     const getPhoneNum = () => {
       const num = formValues.phoneNumbers;
+
       if (!num) return false;
+
       return num.map((val) => arrPhones.push(val));
     };
+
     getPhoneNum();
     // Get Phone Number
     const getAdditional = () => {
       const num = formValues.contacts;
+
       if (!num) return false;
       num.map((val) => {
         const contactPerson = val.contactPerson;
+
         if (!contactPerson || contactPerson <= 0) return false;
         const phoneNums = contactPerson.phoneNumbers;
+
         if (!phoneNums || phoneNums <= 0) return false;
         phoneNums.map((item) => arrPhones.push(item));
+
         return false;
       });
+
       return false;
     };
+
     getAdditional();
     // Remove Duplicates
     const arrItemsNoDuplicate = _.uniqBy(arrPhones, (e) => e.phoneNumber);
+
     // Update state
     if (!_.isEqual(arrItemsNoDuplicate, prevState.itemCollection)) {
       return { itemCollection: arrItemsNoDuplicate };
     }
+
     return null;
   }
 
@@ -61,7 +72,7 @@ class PhoneNumbersMF extends Component {
     super(props);
     this.state = {
       isOpen: false,
-      filteredCollection: []
+      filteredCollection: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.onInputClear = this.onInputClear.bind(this);
@@ -70,6 +81,7 @@ class PhoneNumbersMF extends Component {
     this.renderItem = this.renderItem.bind(this);
 
     this.fieldRef = React.createRef();
+
     return false;
   }
 
@@ -77,11 +89,14 @@ class PhoneNumbersMF extends Component {
   // variables and prop names needs to be change for other use
   onInputChange(obj, e) {
     const { isOpen, itemCollection } = this.state;
+
     if (!_.isEmpty(itemCollection) && (e.trim().length >= 1)) {
       const num = itemCollection;
       const objFiltered = _.filter(num, (o) => {
         const phoneNumber = (o.phoneNumber || []);
+
         if (!_.includes(phoneNumber, e)) return false;
+
         return o;
       });
 
@@ -90,23 +105,28 @@ class PhoneNumbersMF extends Component {
       } else if (_.isEmpty(objFiltered) && isOpen) {
         return this.setState({ isOpen: false, filteredCollection: [] });
       }
+
       return false;
     }
 
     if (isOpen) this.setState({ isOpen: false, filteredCollection: [] });
+
     return false;
   }
 
   onInputClear() {
     const { isOpen } = this.state;
+
     if (isOpen) this.setState({ isOpen: false, filteredCollection: [] });
   }
 
   onClickItem(name, item) {
     const { isOpen } = this.state;
     const { dispatch, change } = this.props;
+
     dispatch(change(`${name}`, item));
     if (isOpen) this.setState({ isOpen: false, filteredCollection: [] });
+
     return false;
   }
 
@@ -125,6 +145,7 @@ class PhoneNumbersMF extends Component {
         </div>
       );
     });
+
     return (<div>{listItems}</div>);
   }
   // End Input Actions
@@ -142,7 +163,7 @@ class PhoneNumbersMF extends Component {
     },
     {
       to: 'scrollParent',
-      pin: false
+      pin: false,
     }];
 
     const defaultWidth = 100;
@@ -156,7 +177,7 @@ class PhoneNumbersMF extends Component {
             targetAttachment="bottom left"
             constraints={constraints}
           >
-            <div ref={this.fieldRef} style={{ width:'100%' }}>
+            <div ref={this.fieldRef} style={{ width: '100%' }}>
               <Field
                 onChange={this.onInputChange}
                 onClearField={this.onInputClear}
@@ -171,7 +192,7 @@ class PhoneNumbersMF extends Component {
             </div>
             {
               isOpen && (
-              <div className={css.dropdown} style={{ width:`${clientWidth}px` }}>
+              <div className={css.dropdown} style={{ width: `${clientWidth}px` }}>
                 <span className={css.dropDownItem}>
                   {this.renderItem(name)}
                 </span>
