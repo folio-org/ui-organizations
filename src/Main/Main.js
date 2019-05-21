@@ -157,6 +157,11 @@ class Main extends Component {
         },
       },
     },
+    contactsManualFetch: {
+      ...baseContactsResource,
+      fetch: false,
+      accumulate: true,
+    },
     interfacesManualFetch: {
       ...interfacesResource,
       fetch: false,

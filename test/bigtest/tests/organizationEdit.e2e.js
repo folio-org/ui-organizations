@@ -87,6 +87,16 @@ describe('Organization edit', () => {
     });
   });
 
+  describe('click on contact row', function () {
+    beforeEach(async function () {
+      await orgEdit.contactList.contacts(0).click();
+    });
+
+    it('closes org edit form', function () {
+      expect(orgEdit.isPresent).to.be.false;
+    });
+  });
+
   describe('interfaces list section', () => {
     it('display expected list length', () => {
       expect(orgEdit.interfaceList.interfaces().length).to.equal(interfaces.length);
