@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import { FormattedMessage } from 'react-intl';
+
+import {
+  get,
+  toString,
+} from 'lodash';
 // Folio
 import { SearchAndSort } from '@folio/stripes/smart-components';
 import { filters2cql } from '@folio/stripes/components';
@@ -282,18 +286,37 @@ class Main extends Component {
   };
 
   render() {
-    const { onSelectRow, disableRecordCreation, onComponentWillUnmount, showSingleResult, browseOnly } = this.props;
+    const {
+      browseOnly,
+      disableRecordCreation,
+      mutator,
+      onComponentWillUnmount,
+      onSelectRow,
+      resources,
+      showSingleResult,
+      stripes,
+      visibleColumns,
+    } = this.props;
     const resultsFormatter = {
-      'Name': data => _.get(data, ['name'], ''),
-      'Code': data => _.get(data, ['code'], ''),
-      'Description': data => _.get(data, ['description'], ''),
-      'Status': data => _.toString(_.get(data, ['status'], '')),
+      'Name': data => get(data, ['name'], ''),
+      'Code': data => get(data, ['code'], ''),
+      'Description': data => get(data, ['description'], ''),
+      'Status': data => toString(get(data, ['status'], '')),
+      'isVendor': ({ isVendor }) => <FormattedMessage id={`ui-organizations.main.isVendor.${isVendor ? 'yes' : 'no'}`} />,
     };
     const columnMapping = {
       'Name': <FormattedMessage id="ui-organizations.main.name" />,
       'Code': <FormattedMessage id="ui-organizations.main.code" />,
       'Description': <FormattedMessage id="ui-organizations.main.description" />,
       'Status': <FormattedMessage id="ui-organizations.main.vendorStatus" />,
+      'isVendor': <FormattedMessage id="ui-organizations.main.isVendor" />,
+    };
+    const columnWidths = {
+      'Name': '15%',
+      'Code': '10%',
+      'Description': '40%',
+      'Status': '10%',
+      'isVendor': '10%',
     };
 
     return (
@@ -303,8 +326,9 @@ class Main extends Component {
           objectName="organization"
           baseRoute={packageInfo.stripes.route}
           filterConfig={filterConfig}
-          visibleColumns={this.props.visibleColumns ? this.props.visibleColumns : ['Name', 'Code', 'Description', 'Status']}
+          visibleColumns={visibleColumns || ['Name', 'Code', 'Description', 'Status', 'isVendor']}
           columnMapping={columnMapping}
+          columnWidths={columnWidths}
           resultsFormatter={resultsFormatter}
           viewRecordComponent={ViewVendor}
           onCreate={this.create}
@@ -315,12 +339,12 @@ class Main extends Component {
           finishedResourceName="perms"
           viewRecordPerms="organizations-storage.organizations.item.get"
           newRecordPerms="organizations-storage.organizations.item.post,login.item.post"
-          parentResources={this.props.resources}
-          parentMutator={this.props.mutator}
-          detailProps={this.props.stripes}
-          stripes={this.stripes}
+          parentResources={resources}
+          parentMutator={mutator}
+          detailProps={stripes}
+          stripes={stripes}
           searchableIndexes={searchableIndexes}
-          selectedIndex={_.get(this.props.resources.query, 'qindex')}
+          selectedIndex={get(resources.query, 'qindex')}
           searchableIndexesPlaceholder={null}
           onChangeIndex={this.onChangeIndex}
           onSelectRow={onSelectRow}
