@@ -50,6 +50,15 @@ const Filters = () => {
         { name: 'No', cql: 'false' },
       ],
     },
+    {
+      label: <FormattedMessage id="ui-organizations.filterConfig.isVendor" />,
+      name: 'isVendor',
+      cql: 'isVendor',
+      values: [
+        { name: 'Yes', cql: 'true' },
+        { name: 'No', cql: 'false' },
+      ],
+    },
   ];
 };
 

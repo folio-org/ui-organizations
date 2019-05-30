@@ -275,13 +275,14 @@
   "valid.required": "Required!",
   "valid.isURLValid": "Invalid URL",
 
-  "filterConfig.vendorStatus": "Organizations status",
   "filterConfig.addressCategory": "Address category",
   "filterConfig.contactPeopleCategory": "Contact people category",
   "filterConfig.country": "Country",
+  "filterConfig.isVendor": "Is vendor",
   "filterConfig.languages": "Languages",
   "filterConfig.paymentMethod": "Payment method",
   "filterConfig.statsAvailable": "Stats available",
+  "filterConfig.vendorStatus": "Organizations status",
 
   "view.edit": "Edit",
   "view.editLink": "Edit link",
@@ -307,9 +308,12 @@
   "interface": "Interface",
   "accounts": "Accounts",
 
-  "main.name":"Name",
   "main.code":"Code",
   "main.description":"Description",
+  "main.isVendor.no": "No",
+  "main.isVendor.yes": "Yes",
+  "main.isVendor": "Vendor",
+  "main.name":"Name",
   "main.vendorStatus": "Organizations status",
 
   "organizationStatus.active": "Active",
