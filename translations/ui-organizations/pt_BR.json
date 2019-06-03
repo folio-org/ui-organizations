@@ -571,5 +571,9 @@
     "interface.confirmDelete.heading": "Excluir interface",
     "interface.confirmDelete.message": "Tem certeza de que deseja excluir a interface?",
     "interface.message.unassigned.fail": "A interface não foi desatribuída",
-    "interface.message.delete.fail": "A interface não foi excluída"
+    "interface.message.delete.fail": "A interface não foi excluída",
+    "filterConfig.isVendor": "É fornecedor",
+    "main.isVendor.no": "Não",
+    "main.isVendor.yes": "Sim",
+    "main.isVendor": "Fornecedor"
 }
