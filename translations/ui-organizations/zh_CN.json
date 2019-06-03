@@ -571,5 +571,9 @@
     "interface.confirmDelete.heading": "删除用户界面",
     "interface.confirmDelete.message": "您确定要删除此用户界面吗？",
     "interface.message.unassigned.fail": "The interface was not unassigned",
-    "interface.message.delete.fail": "用户界面未被删除"
+    "interface.message.delete.fail": "用户界面未被删除",
+    "filterConfig.isVendor": "Is vendor",
+    "main.isVendor.no": "No",
+    "main.isVendor.yes": "Yes",
+    "main.isVendor": "Vendor"
 }

@@ -571,5 +571,9 @@
     "interface.confirmDelete.heading": "Delete interface",
     "interface.confirmDelete.message": "Are you sure you want to delete the interface?",
     "interface.message.unassigned.fail": "The interface was not unassigned",
-    "interface.message.delete.fail": "The interface was not deleted"
+    "interface.message.delete.fail": "The interface was not deleted",
+    "filterConfig.isVendor": "Is vendor",
+    "main.isVendor.no": "No",
+    "main.isVendor.yes": "Yes",
+    "main.isVendor": "Vendor"
 }

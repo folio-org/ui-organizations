@@ -571,5 +571,9 @@
     "interface.confirmDelete.heading": "حذف الواجهة",
     "interface.confirmDelete.message": "هل أنت متأكد من أنك تريد حذف الواجهة؟",
     "interface.message.unassigned.fail": "لم يتم إلغاء تعيين الواجهة",
-    "interface.message.delete.fail": "لم يتم حذف الواجهة"
+    "interface.message.delete.fail": "لم يتم حذف الواجهة",
+    "filterConfig.isVendor": "Is vendor",
+    "main.isVendor.no": "لا",
+    "main.isVendor.yes": "نعم",
+    "main.isVendor": "Vendor"
 }
