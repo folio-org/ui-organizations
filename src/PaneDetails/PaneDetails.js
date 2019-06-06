@@ -46,7 +46,6 @@ class PaneDetails extends React.Component {
         <Button
           id={id}
           type="submit"
-          title={label}
           disabled={pristine || submitting}
           onClick={handleSubmit}
           style={{ marginBottom: '0' }}
