@@ -111,14 +111,20 @@ class ViewVendor extends Component {
     const lastMenu = (
       <PaneMenu>
         <IfPermission perm="organizations-storage.organizations.item.put">
-          <IconButton
-            icon="edit"
-            id="clickable-editvendor"
-            style={{ visibility: !organization ? 'hidden' : 'visible' }}
-            onClick={this.props.onEdit}
-            href={this.props.editLink}
-            title={<FormattedMessage id="ui-organizations.view.editLink" />}
-          />
+          <FormattedMessage id="ui-organizations.view.edit">
+            {
+              (title) => (
+                <IconButton
+                  icon="edit"
+                  id="clickable-editvendor"
+                  style={{ visibility: !organization ? 'hidden' : 'visible' }}
+                  onClick={this.props.onEdit}
+                  ariaLabel={title}
+                  title={title}
+                />
+              )
+            }
+          </FormattedMessage>
         </IfPermission>
       </PaneMenu>
     );
