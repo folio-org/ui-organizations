@@ -12,7 +12,6 @@ class SettingsPage extends Component {
         route: 'category',
         label: <FormattedMessage id="ui-organizations.settings.categories" />,
         component: CategorySettings,
-        perm: 'settings.vendors.enabled',
       },
     ];
   }
