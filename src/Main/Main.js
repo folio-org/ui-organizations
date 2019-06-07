@@ -338,7 +338,7 @@ class Main extends Component {
           resultCountIncrement={RESULT_COUNT_INCREMENT}
           finishedResourceName="perms"
           viewRecordPerms="organizations-storage.organizations.item.get"
-          newRecordPerms="organizations-storage.organizations.item.post,login.item.post"
+          newRecordPerms="organizations-storage.organizations.item.post"
           parentResources={resources}
           parentMutator={mutator}
           detailProps={stripes}
