@@ -19,6 +19,7 @@
     "home": "/organizations?sort=Name",
     "hasSettings": true,
     "okapiInterfaces": {
+      "configuration": "2.0",
       "organizations-storage.contacts": "1.1",
       "organizations-storage.interfaces": "1.1",
       "organizations-storage.organizations": "1.0",
@@ -48,6 +49,14 @@
         "visible": true,
         "subPermissions": [
           "settings.enabled"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.third-party-services",
+        "displayName": "Organizations: Permissions required to call services apart from mod-organizations-storage",
+        "description": "",
+        "subPermissions": [
+          "configuration.entries.collection.get"
         ]
       },
       {
@@ -96,7 +105,8 @@
           "organizations-storage.urls.collection.get",
           "organizations-storage.urls.item.get",
           "organizations-storage.organizations.collection.get",
-          "organizations-storage.organizations.item.get"
+          "organizations-storage.organizations.item.get",
+          "ui-organizations.third-party-services"
         ]
       },
       {
@@ -143,6 +153,7 @@
         "visible": true,
         "description": "",
         "subPermissions": [
+          "ui-organizations.third-party-services",
           "organizations-storage.module.all"
         ]
       }
