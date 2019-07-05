@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { MultiColumnList, Row, Col, KeyValue } from '@folio/stripes/components';
+import { ViewMetaData } from '@folio/stripes/smart-components';
 import css from './SummaryView.css';
 import languageLookUp from '../Utils/languageLookUp';
 import { PrintBoolToCheckbox } from '../Utils/PrintKeyValue';
@@ -22,8 +23,15 @@ class SummaryView extends React.Component {
     };
     const getLanguage = languageLookUp(_.get(dataVal, 'language', ''));
 
+    const metadata = _.get(dataVal, 'metadata');
+
     return (
       <Row>
+        <Row>
+          <Col xs={12}>
+            {metadata && <ViewMetaData metadata={metadata} />}
+          </Col>
+        </Row>
         <Col xs={4}>
           <KeyValue label={<FormattedMessage id="ui-organizations.summary.name" />} value={_.get(dataVal, 'name', '')} />
         </Col>
