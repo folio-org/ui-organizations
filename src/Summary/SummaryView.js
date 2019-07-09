@@ -44,7 +44,7 @@ class SummaryView extends React.Component {
         <Col xs={4}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.summary.accountingCode" />}
-            value={get(initialValues, ['erpCode'], '')}
+            value={get(initialValues, 'erpCode', '')}
           />
         </Col>
         <Col xs={4}>
