@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { get, cloneDeep } from 'lodash';
+import _ from 'lodash';
 import { getFormSyncErrors } from 'redux-form';
 
 import { IfPermission } from '@folio/stripes/core';
@@ -87,7 +87,7 @@ class FormVendor extends Component {
 
   onToggleSection({ id }) {
     this.setState((curState) => {
-      const newState = cloneDeep(curState);
+      const newState = _.cloneDeep(curState);
 
       newState.sections[id] = !curState.sections[id];
 
@@ -97,7 +97,7 @@ class FormVendor extends Component {
 
   handleExpandAll(obj) {
     this.setState((curState) => {
-      const newState = cloneDeep(curState);
+      const newState = _.cloneDeep(curState);
 
       newState.sections = obj;
 
@@ -133,7 +133,7 @@ class FormVendor extends Component {
       return sectionErrors.indexOf(sectionName) > -1 ? message : null;
     };
 
-    const metadata = get(initialValues, 'metadata');
+    const metadata = _.get(initialValues, 'metadata');
 
     return (
       <div id="form-add-new-vendor">
