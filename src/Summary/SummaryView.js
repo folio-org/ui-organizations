@@ -31,26 +31,48 @@ class SummaryView extends React.Component {
           {metadata && <ViewMetaData metadata={metadata} />}
         </Col>
         <Col xs={4}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.summary.name" />} value={get(dataVal, 'name', '')} />
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.summary.name" />}
+            value={get(dataVal, 'name', '')}
+          />
         </Col>
         <Col xs={4}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.summary.code" />} value={get(dataVal, 'code', '')} />
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.summary.code" />}
+            value={get(dataVal, 'code', '')}
+          />
         </Col>
         <Col xs={4}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.summary.accountingCode" />} value={get(dataVal, ['erpCode'], '')} />
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.summary.accountingCode" />}
+            value={get(dataVal, ['erpCode'], '')}
+          />
         </Col>
         <Col xs={4}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.summary.organizationStatus" />} value={get(dataVal, 'status', '')} />
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.summary.organizationStatus" />}
+            value={get(dataVal, 'status', '')}
+          />
         </Col>
         <Col xs={4}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.summary.defaultLanguage" />} value={getLanguage} />
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.summary.defaultLanguage" />}
+            value={getLanguage}
+          />
         </Col>
         {PrintBoolToCheckbox('ui-organizations.summary.isVendor', dataVal.isVendor, 4)}
         <Col xs={12}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.summary.description" />} value={get(dataVal, 'description', '')} />
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.summary.description" />}
+            value={get(dataVal, 'description', '')}
+          />
         </Col>
         <Col xs={12} className={css.rowHeader}>
-          <div className={css.subHeadings}><b>{<FormattedMessage id="ui-organizations.summary.alternativeNames" />}</b></div>
+          <div className={css.subHeadings}>
+            <b>
+              <FormattedMessage id="ui-organizations.summary.alternativeNames" />
+            </b>
+          </div>
           <MultiColumnList
             contentData={initialValues.aliases}
             columnWidths={columnWidths}
