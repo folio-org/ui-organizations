@@ -6,6 +6,7 @@ import { getFormSyncErrors } from 'redux-form';
 
 import { IfPermission } from '@folio/stripes/core';
 import { Button, Row, Col, AccordionSet, Accordion, ExpandAllButton, Icon } from '@folio/stripes/components';
+import { ViewMetaData } from '@folio/stripes/smart-components';
 
 import { SECTIONS } from '../common/constants';
 import { SummaryForm } from '../Summary';
@@ -132,6 +133,8 @@ class FormVendor extends Component {
       return sectionErrors.indexOf(sectionName) > -1 ? message : null;
     };
 
+    const metadata = _.get(initialValues, 'metadata');
+
     return (
       <div id="form-add-new-vendor">
         <Row center="xs" style={{ textAlign: 'left' }}>
@@ -141,6 +144,7 @@ class FormVendor extends Component {
           <Col xs={12} md={8}>
             <AccordionSet accordionStatus={this.state.sections} onToggle={this.onToggleSection}>
               <Accordion label={<FormattedMessage id="ui-organizations.summary" />} id="summarySection" displayWhenClosed={isDisplayError('summaryErr')} displayWhenOpen={isDisplayError('summaryErr')}>
+                {metadata && <ViewMetaData metadata={metadata} />}
                 <SummaryForm {...this.props} />
               </Accordion>
               <Accordion label={<FormattedMessage id="ui-organizations.contactInformation" />} id="contactInformationSection" displayWhenClosed={isDisplayError('contactInfoErr')} displayWhenOpen={isDisplayError('contactInfoErr')}>
