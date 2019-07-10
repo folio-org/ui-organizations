@@ -15,4 +15,10 @@ export default Factory.extend({
   interfaces: [],
   phoneNumbers: [],
   urls: [],
+  metadata: {
+    createdDate: faker.date.past(),
+    createdByUserId: faker.random.uuid,
+    updatedDate: faker.date.past(),
+    updatedByUserId: faker.random.uuid,
+  },
 });

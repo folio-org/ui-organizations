@@ -80,6 +80,20 @@ describe('Organization details', () => {
     expect(orgDetails.contactPeopleSection.isExpanded).to.be.true;
   });
 
+  describe('metadata', function () {
+    beforeEach(async function () {
+      await orgDetails.summarySection.headerButton.click();
+    });
+
+    it('summary section is opened', function () {
+      expect(orgDetails.summarySection.isExpanded).to.be.true;
+    });
+
+    it('metadata is displayed', function () {
+      expect(orgDetails.summarySection.metadata.isPresent).to.be.true;
+    });
+  });
+
   describe('click contact people section', function () {
     beforeEach(async function () {
       await orgDetails.contactPeopleSection.headerButton.click();

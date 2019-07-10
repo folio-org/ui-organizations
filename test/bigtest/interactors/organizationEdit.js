@@ -1,7 +1,7 @@
 import {
   collection,
   interactor,
-  Interactor,
+  Interactor, isVisible,
 } from '@bigtest/interactor';
 
 import Button from './Button';

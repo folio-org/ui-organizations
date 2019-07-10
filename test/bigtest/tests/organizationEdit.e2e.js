@@ -28,6 +28,20 @@ describe('Organization edit', () => {
     expect(orgEdit.closePaneButton.isPresent).to.be.true;
   });
 
+  describe('metadata', function () {
+    beforeEach(async function () {
+      await orgEdit.summarySectionForm.headerButton.click();
+    });
+
+    it('summary section is opened', function () {
+      expect(orgEdit.summarySectionForm.isExpanded).to.be.true;
+    });
+
+    it('metadata is displayed', function () {
+      expect(orgEdit.summarySectionForm.metadata.isPresent).to.be.true;
+    });
+  });
+
   describe('clicking on the close pane button', function () {
     beforeEach(async function () {
       await orgEdit.closePaneButton.click();
