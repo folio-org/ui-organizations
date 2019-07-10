@@ -46,6 +46,8 @@ class ViewVendor extends Component {
     paneWidth: PropTypes.string.isRequired,
     poURL: PropTypes.string,
     showToast: PropTypes.func.isRequired,
+    tagsToggle: PropTypes.func,
+    tagsEnabled: PropTypes.bool,
   };
 
   constructor(props) {
@@ -180,11 +182,26 @@ class ViewVendor extends Component {
   };
 
   render() {
-    const { location, parentResources, connectedSource } = this.props;
+    const { location, parentResources, connectedSource, tagsEnabled, tagsToggle } = this.props;
     const organization = this.getData();
     const query = location.search ? queryString.parse(location.search) : {};
+    const tags = _.get(organization, 'tags.tagList') || [];
     const lastMenu = (
       <PaneMenu>
+        {tagsEnabled && (
+          <FormattedMessage id="ui-organizations.showTags">
+            {(title) => (
+              <IconButton
+                ariaLabel={title}
+                badgeCount={tags.length}
+                icon="tag"
+                id="clickable-show-tags"
+                onClick={tagsToggle}
+                title={title}
+              />
+            )}
+          </FormattedMessage>
+        )}
         <IfPermission perm="organizations-storage.organizations.item.put">
           <FormattedMessage id="ui-organizations.view.edit">
             {
