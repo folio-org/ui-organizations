@@ -1,7 +1,7 @@
 {
     "meta.title": "供应商",
     "search": "搜索",
-    "resultCount": "{count, number} {count, plural, 一个 {已找到记录} 其它 {已找到记录}}",
+    "resultCount": "{count, number} {count, plural, one {已找到记录} other {已找到记录}}",
     "data.contactTypes.email": "电子邮件",
     "data.contactTypes.mail": "邮件（主要地址）",
     "data.contactTypes.textMessage": "短信",
