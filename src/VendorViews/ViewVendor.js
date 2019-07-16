@@ -170,7 +170,11 @@ class ViewVendor extends Component {
           )}
 
         </AccordionSet>
-        <Layer isOpen={query.layer ? query.layer === 'edit' : false} label={<FormattedMessage id="ui-organizations.view.editVendorDialog" />}>
+        <Layer
+          isOpen={query.layer ? query.layer === 'edit' : false}
+          label={<FormattedMessage id="ui-organizations.view.editVendorDialog" />}
+          contentLabel="Edit vendor dialog"
+        >
           <this.connectedPaneDetails
             stripes={this.props.stripes}
             initialValues={organization}
