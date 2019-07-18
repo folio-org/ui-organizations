@@ -12,21 +12,20 @@
     "node": ">=8.9.4"
   },
   "stripes": {
-    "type": "app",
+    "actsAs": ["app", "settings"],
     "displayName": "ui-organizations.meta.title",
     "moduleName": "Organizations",
     "route": "/organizations",
     "home": "/organizations?sort=Name",
-    "hasSettings": true,
     "okapiInterfaces": {
       "configuration": "2.0",
       "organizations-storage.addresses": "1.0",
       "organizations-storage.categories": "1.0",
-      "organizations-storage.contacts": "1.1",
+      "organizations-storage.contacts": "1.1 2.0",
       "organizations-storage.emails": "1.0",
-      "organizations-storage.interfaces": "1.1",
-      "organizations-storage.organizations": "1.0",
-      "organizations-storage.phone-numbers": "1.0",
+      "organizations-storage.interfaces": "1.1 2.0",
+      "organizations-storage.organizations": "1.0 2.0",
+      "organizations-storage.phone-numbers": "1.0 2.0",
       "organizations-storage.urls": "1.0",
       "users": "15.0"
     },
