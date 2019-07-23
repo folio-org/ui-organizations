@@ -1,6 +1,13 @@
 # Change history for ui-organizations
 
-## [1.2.0](https://github.com/folio-org/ui-organizations/tree/v1.1.0) (2019-06-11)
+## [1.3.0](https://github.com/folio-org/ui-organizations/tree/v1.3.0) (2019-07-23)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.2.0...v1.3.0)
+
+* [UIORGS-9](https://issues.folio.org/browse/UIORGS-9) Add metadata widget to the top of the organization record
+* [UIORGS-76](https://issues.folio.org/browse/UIORGS-76) Permissions problems with ui-organizations (more fixes)
+* [UIORGS-81](https://issues.folio.org/browse/UIORGS-81) test permissions with BigTest
+
+## [1.2.0](https://github.com/folio-org/ui-organizations/tree/v1.2.0) (2019-06-11)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.1.0...v1.2.0)
 * [UIORGS-76](https://issues.folio.org/browse/UIORGS-76) Permissions problems with ui-organizations;
 * [UIORGS-72](https://issues.folio.org/browse/UIORGS-72) Add “Is Vendor” column to Organizations search results and add Filter for "Is Vendor";
