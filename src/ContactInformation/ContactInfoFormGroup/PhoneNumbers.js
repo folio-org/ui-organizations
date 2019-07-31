@@ -1,55 +1,88 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Row, Col, Button } from '@folio/stripes/components';
-import css from '../ContactInfoFormGroup.css';
-import PhoneNumbersMF from '../../MultiForms/PhoneNumbersMF';
-import RemoveButton from '../../Utils/RemoveButton';
+import {
+  Field,
+  FieldArray,
+} from 'redux-form';
 
-class PhoneNumbers extends Component {
-  static propTypes = {
-    fields: PropTypes.object,
-    stripes: PropTypes.shape({
-      store: PropTypes.object,
-    }),
-    contactPeopleForm: PropTypes.string,
-  };
+import {
+  Col,
+  RepeatableField,
+  Row,
+  Select,
+} from '@folio/stripes/components';
+import { FieldAutoSuggest } from '@folio/stripes-acq-components';
 
-  renderSubPhoneNumbers = (elem, index, fields) => {
-    const { contactPeopleForm } = this.props;
+import CategoryDropdown from '../../Utils/CategoryDropdown';
+import { Required } from '../../Utils/Validate';
 
-    return (
-      <Row key={index} className={!contactPeopleForm ? css.panels : css.panelsChild}>
-        <PhoneNumbersMF index={index} fields={fields} name={`${elem}`} id={`${elem}`} {...this.props} />
-        {RemoveButton(fields, index, 'btn-remove-phonenumbers', 'ui-organizations.contactInfo.remove')}
-      </Row>
-    );
-  }
-
-  render() {
-    const { fields, contactPeopleForm } = this.props;
+const PhoneNumbers = ({ dropdownVendorCategories, dropdownPhoneType, dropdownLanguages }) => {
+  const PhoneNumbersMF = (name, index, fields) => {
+    const valueKey = 'phoneNumber';
+    const items = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
 
     return (
       <Row>
-        {!contactPeopleForm &&
-          <Col xs={12}>
-            <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactInfo.phoneNumbers" />}</div>
-          </Col>
-        }
-        {fields.length === 0 &&
-          <Col xs={6}>
-            <div><em>{<FormattedMessage id="ui-organizations.contactInfo.pleaseAddPhoneNumber" />}</em></div>
-          </Col>
-        }
-        <Col xs={12}>
-          {fields.map(this.renderSubPhoneNumbers)}
+        <Col xs={12} md={3}>
+          <FieldAutoSuggest
+            items={items}
+            labelId="ui-organizations.contactPeople.phoneNumber"
+            name={`${name}.phoneNumber`}
+            required
+            validate={[Required]}
+            valueKey={valueKey}
+            onSelect={(item) => {
+              fields.remove(index);
+              fields.insert(index, item);
+            }}
+          />
         </Col>
-        <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.contactInfo.actions.addPhoneNumber" />}</Button>
+        <Col xs={12} md={3}>
+          <Field
+            label={<FormattedMessage id="ui-organizations.contactPeople.type" />}
+            name={`${name}.type`}
+            id={`${name}.type`}
+            component={Select}
+            fullWidth
+            dataOptions={dropdownPhoneType}
+          />
+        </Col>
+        <Col xs={12} md={3}>
+          <Field
+            label={<FormattedMessage id="ui-organizations.contactPeople.language" />}
+            name={`${name}.language`}
+            id={`${name}.language`}
+            component={Select}
+            fullWidth
+            dataOptions={dropdownLanguages}
+          />
+        </Col>
+        <Col xs={12} md={3}>
+          <CategoryDropdown
+            dropdownVendorCategories={dropdownVendorCategories}
+            name={name}
+          />
         </Col>
       </Row>
     );
-  }
-}
+  };
+
+  return (
+    <FieldArray
+      addLabel={<FormattedMessage id="ui-organizations.contactInfo.actions.addPhoneNumber" />}
+      component={RepeatableField}
+      legend={<FormattedMessage id="ui-organizations.contactInfo.phoneNumbers" />}
+      name="phoneNumbers"
+      renderField={PhoneNumbersMF}
+    />
+  );
+};
+
+PhoneNumbers.propTypes = {
+  dropdownPhoneType: PropTypes.arrayOf(PropTypes.object),
+  dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
+  dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default PhoneNumbers;

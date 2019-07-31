@@ -7,9 +7,9 @@ import {
 } from 'redux-form';
 
 import {
-  Button,
   Checkbox,
   Col,
+  RepeatableField,
   Row,
   Select,
   TextArea,
@@ -18,83 +18,34 @@ import {
 
 import { ORGANIZATION_STATUS } from '../common/constants';
 import { Required } from '../Utils/Validate';
-import css from './SummaryForm.css';
 
 class SummaryForm extends Component {
   static propTypes = {
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   };
 
-  renderList = ({ fields }) => {
+  renderAlias = (elem) => {
     return (
       <Row>
-        <Col xs={6}>
-          <div className={css.subHeadings}>
-            {<FormattedMessage id="ui-organizations.summary.alternativeNames" />}
-          </div>
+        <Col xs>
+          <Field
+            component={TextField}
+            fullWidth
+            label={<FormattedMessage id="ui-organizations.summary.alias" />}
+            name={`${elem}.value`}
+            required
+            validate={[Required]}
+          />
         </Col>
-        <Col xs={12}>
-          {fields.length === 0 &&
-            <div>
-              <em>
-                {<FormattedMessage id="ui-organizations.summary.pleaseAddAltNames" />}
-              </em>
-            </div>
-          }
-          {fields.map(this.renderSubFields)}
-        </Col>
-        <Col
-          xs={12}
-          style={{ paddingTop: '10px' }}
-        >
-          <Button
-            data-test-add-name-button
-            onClick={() => fields.push({})}
-          >
-            {<FormattedMessage id="ui-organizations.summary.add" />}
-          </Button>
+        <Col xs>
+          <Field
+            component={TextField}
+            fullWidth
+            label={<FormattedMessage id="ui-organizations.summary.description" />}
+            name={`${elem}.description`}
+          />
         </Col>
       </Row>
-    );
-  }
-
-  renderSubFields = (elem, index, fields) => {
-    return (
-      <div
-        className={css.panels}
-        key={index}
-      >
-        <Row>
-          <Col xs={5}>
-            <Field
-              component={TextField}
-              fullWidth
-              label={<FormattedMessage id="ui-organizations.summary.alias" />}
-              name={`${elem}.value`}
-              required
-              validate={[Required]}
-            />
-          </Col>
-          <Col xs={5}>
-            <Field
-              component={TextField}
-              fullWidth
-              label={<FormattedMessage id="ui-organizations.summary.description" />}
-              name={`${elem}.description`}
-            />
-          </Col>
-          <Col xs={1}>
-            <Button
-              buttonStyle="danger"
-              data-test-remove-name-button
-              onClick={() => fields.remove(index)}
-              style={{ marginTop: '23px' }}
-            >
-              {<FormattedMessage id="ui-organizations.summary.remove" />}
-            </Button>
-          </Col>
-        </Row>
-      </div>
     );
   }
 
@@ -175,9 +126,11 @@ class SummaryForm extends Component {
         </Col>
         <Col xs={12}>
           <FieldArray
-            label="Vendor Names"
+            addLabel={<FormattedMessage id="ui-organizations.summary.add" />}
+            component={RepeatableField}
+            legend={<FormattedMessage id="ui-organizations.summary.alternativeNames" />}
             name="aliases"
-            component={this.renderList}
+            renderField={this.renderAlias}
           />
         </Col>
       </Row>
