@@ -33,7 +33,12 @@ class AgreementsForm extends Component {
           {fields.map(this.renderSubForm)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.agreement.add" />}</Button>
+          <Button
+            data-test-vendor-term-add
+            onClick={() => fields.push({})}
+          >
+            <FormattedMessage id="ui-organizations.agreement.add" />
+          </Button>
         </Col>
       </Row>
     );
@@ -57,6 +62,7 @@ class AgreementsForm extends Component {
           </Col>
           <Col xs={12} style={{ textAlign: 'right' }}>
             <IconButton
+              data-test-vendor-term-remove
               icon="trash"
               onClick={() => fields.remove(index)}
             >

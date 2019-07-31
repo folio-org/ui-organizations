@@ -16,17 +16,22 @@ import { FieldAutoSuggest } from '@folio/stripes-acq-components';
 
 import CategoryDropdown from '../../Utils/CategoryDropdown';
 import { Required } from '../../Utils/Validate';
+import FieldLanguage from './FieldLanguage';
 
 const PhoneNumbers = ({ dropdownVendorCategories, dropdownPhoneType, dropdownLanguages }) => {
   const PhoneNumbersMF = (name, index, fields) => {
     const valueKey = 'phoneNumber';
-    const items = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
+    const phones = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
 
     return (
       <Row>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-phone-number
+          xs={12}
+          md={3}
+        >
           <FieldAutoSuggest
-            items={items}
+            items={phones}
             labelId="ui-organizations.contactPeople.phoneNumber"
             name={`${name}.phoneNumber`}
             required
@@ -38,7 +43,11 @@ const PhoneNumbers = ({ dropdownVendorCategories, dropdownPhoneType, dropdownLan
             }}
           />
         </Col>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-phone-type
+          xs={12}
+          md={3}
+        >
           <Field
             label={<FormattedMessage id="ui-organizations.contactPeople.type" />}
             name={`${name}.type`}
@@ -48,17 +57,21 @@ const PhoneNumbers = ({ dropdownVendorCategories, dropdownPhoneType, dropdownLan
             dataOptions={dropdownPhoneType}
           />
         </Col>
-        <Col xs={12} md={3}>
-          <Field
-            label={<FormattedMessage id="ui-organizations.contactPeople.language" />}
-            name={`${name}.language`}
-            id={`${name}.language`}
-            component={Select}
-            fullWidth
-            dataOptions={dropdownLanguages}
+        <Col
+          data-test-phone-language
+          xs={12}
+          md={3}
+        >
+          <FieldLanguage
+            namePrefix={name}
+            dropdownLanguages={dropdownLanguages}
           />
         </Col>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-phone-category
+          xs={12}
+          md={3}
+        >
           <CategoryDropdown
             dropdownVendorCategories={dropdownVendorCategories}
             name={name}
@@ -72,6 +85,7 @@ const PhoneNumbers = ({ dropdownVendorCategories, dropdownPhoneType, dropdownLan
     <FieldArray
       addLabel={<FormattedMessage id="ui-organizations.contactInfo.actions.addPhoneNumber" />}
       component={RepeatableField}
+      id="phone-numbers"
       legend={<FormattedMessage id="ui-organizations.contactInfo.phoneNumbers" />}
       name="phoneNumbers"
       renderField={PhoneNumbersMF}

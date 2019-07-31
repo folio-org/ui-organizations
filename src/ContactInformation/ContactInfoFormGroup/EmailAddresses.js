@@ -10,24 +10,28 @@ import {
   Col,
   RepeatableField,
   Row,
-  Select,
   TextField,
 } from '@folio/stripes/components';
 import { FieldAutoSuggest } from '@folio/stripes-acq-components';
 
 import CategoryDropdown from '../../Utils/CategoryDropdown';
 import { Required } from '../../Utils/Validate';
+import FieldLanguage from './FieldLanguage';
 
 const EmailAddresses = ({ dropdownLanguages, dropdownVendorCategories }) => {
   const EmailsMF = (name, index, fields) => {
     const valueKey = 'value';
-    const items = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
+    const emails = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
 
     return (
       <Row>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-email-value
+          xs={12}
+          md={3}
+        >
           <FieldAutoSuggest
-            items={items}
+            items={emails}
             labelId="ui-organizations.contactInfo.emailAddress"
             name={`${name}.${valueKey}`}
             required
@@ -39,7 +43,11 @@ const EmailAddresses = ({ dropdownLanguages, dropdownVendorCategories }) => {
             }}
           />
         </Col>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-email-description
+          xs={12}
+          md={3}
+        >
           <Field
             label={<FormattedMessage id="ui-organizations.contactInfo.description" />}
             name={`${name}.description`}
@@ -47,16 +55,21 @@ const EmailAddresses = ({ dropdownLanguages, dropdownVendorCategories }) => {
             fullWidth
           />
         </Col>
-        <Col xs={12} md={3}>
-          <Field
-            label={<FormattedMessage id="ui-organizations.contactInfo.language" />}
-            name={`${name}.language`}
-            component={Select}
-            fullWidth
-            dataOptions={dropdownLanguages}
+        <Col
+          data-test-email-language
+          xs={12}
+          md={3}
+        >
+          <FieldLanguage
+            namePrefix={name}
+            dropdownLanguages={dropdownLanguages}
           />
         </Col>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-email-category
+          xs={12}
+          md={3}
+        >
           <CategoryDropdown
             dropdownVendorCategories={dropdownVendorCategories}
             name={name}
@@ -70,6 +83,7 @@ const EmailAddresses = ({ dropdownLanguages, dropdownVendorCategories }) => {
     <FieldArray
       addLabel={<FormattedMessage id="ui-organizations.contactInfo.actions.addEmail" />}
       component={RepeatableField}
+      id="emails"
       legend={<FormattedMessage id="ui-organizations.contactInfo.emailAddress" />}
       name="emails"
       renderField={EmailsMF}

@@ -30,6 +30,22 @@ class ContactPeopleForm extends ContactPeopleSection {
   addContactButton = new Button('[data-test-add-contact]');
 }
 
+class VendorTermsForm extends VendorTermsSection {
+  addButton = new Button('[data-test-vendor-term-add]');
+  removeButton = new Button('[data-test-vendor-term-remove]');
+}
+
+class ContactInformationForm extends ContactInformationSection {
+  addressAddButton = new Button('#addresses-add-button');
+  addressRemoveButton = new Button('#addresses [data-test-repeatable-field-remove-item-button]');
+  urlAddButton = new Button('#urls-add-button');
+  urlRemoveButton = new Button('#urls [data-test-repeatable-field-remove-item-button]');
+  emailAddButton = new Button('#emails-add-button');
+  emailRemoveButton = new Button('#emails [data-test-repeatable-field-remove-item-button]');
+  phoneAddButton = new Button('#phone-numbers-add-button');
+  phoneRemoveButton = new Button('#phone-numbers [data-test-repeatable-field-remove-item-button]');
+}
+
 export default interactor(class OrganizationEditInteractor {
   static defaultScope = '#form-vendor';
 
@@ -38,11 +54,11 @@ export default interactor(class OrganizationEditInteractor {
   closePaneButton = new Button('[class*=paneHeaderButtonsArea---] [icon=times]');
 
   summarySectionForm = new SummarySectionForm();
-  contactInformationSection = new ContactInformationSection();
+  contactInformationSection = new ContactInformationForm();
   contactPeopleSection = new ContactPeopleForm();
   interfacesSection = new InterfacesSection();
   vendorInformationSection = new VendorInformationSection();
-  vendorTermsSection = new VendorTermsSection();
+  vendorTermsSection = new VendorTermsForm();
   ediInformationSection = new EdiInformationSection();
   accountsSection = new AccountsSection();
   addNameButton = new Button('#aliases-add-button');

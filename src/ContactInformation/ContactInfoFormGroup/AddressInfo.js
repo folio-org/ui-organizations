@@ -16,6 +16,7 @@ import {
 import { FieldAutoSuggest } from '@folio/stripes-acq-components';
 
 import CategoryDropdown from '../../Utils/CategoryDropdown';
+import FieldLanguage from './FieldLanguage';
 
 const AddressInfo = ({ dropdownCountry, dropdownLanguages, dropdownVendorCategories }) => {
   // eslint-disable-next-line react/prop-types
@@ -25,7 +26,11 @@ const AddressInfo = ({ dropdownCountry, dropdownLanguages, dropdownVendorCategor
 
     return (
       <Row>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-address-1
+          xs={12}
+          md={3}
+        >
           <FieldAutoSuggest
             name={`${name}.addressLine1`}
             labelId="ui-organizations.data.contactTypes.addressLine1"
@@ -37,19 +42,61 @@ const AddressInfo = ({ dropdownCountry, dropdownLanguages, dropdownVendorCategor
             }}
           />
         </Col>
-        <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.addressLine2" />} name={`${name}.addressLine2`} id={`${name}.addressLine2`} component={TextField} fullWidth />
+        <Col
+          data-test-address-2
+          xs={12}
+          md={3}
+        >
+          <Field
+            label={<FormattedMessage id="ui-organizations.data.contactTypes.addressLine2" />}
+            name={`${name}.addressLine2`}
+            component={TextField}
+            fullWidth
+          />
         </Col>
-        <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.city" />} name={`${name}.city`} id={`${name}.city`} component={TextField} fullWidth />
+        <Col
+          data-test-address-city
+          xs={12}
+          md={3}
+        >
+          <Field
+            label={<FormattedMessage id="ui-organizations.data.contactTypes.city" />}
+            name={`${name}.city`}
+            component={TextField}
+            fullWidth
+          />
         </Col>
-        <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.stateProviceOrRegion" />} name={`${name}.stateRegion`} id={`${name}.stateRegion`} component={TextField} fullWidth />
+        <Col
+          data-test-address-state
+          xs={12}
+          md={3}
+        >
+          <Field
+            label={<FormattedMessage id="ui-organizations.data.contactTypes.stateProviceOrRegion" />}
+            name={`${name}.stateRegion`}
+            id={`${name}.stateRegion`}
+            component={TextField}
+            fullWidth
+          />
         </Col>
-        <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.zipOrPostalCode" />} name={`${name}.zipCode`} id={`${name}.zipCode`} component={TextField} fullWidth />
+        <Col
+          data-test-address-zip
+          xs={12}
+          md={3}
+        >
+          <Field
+            label={<FormattedMessage id="ui-organizations.data.contactTypes.zipOrPostalCode" />}
+            name={`${name}.zipCode`}
+            id={`${name}.zipCode`}
+            component={TextField}
+            fullWidth
+          />
         </Col>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-address-country
+          xs={12}
+          md={3}
+        >
           <Field
             label={<FormattedMessage id="ui-organizations.data.contactTypes.country" />}
             name={`${name}.country`}
@@ -58,10 +105,21 @@ const AddressInfo = ({ dropdownCountry, dropdownLanguages, dropdownVendorCategor
             fullWidth
           />
         </Col>
-        <Col xs={12} md={3}>
-          <Field label={<FormattedMessage id="ui-organizations.data.contactTypes.language" />} name={`${name}.language`} id={`${name}.language`} component={Select} dataOptions={dropdownLanguages} fullWidth />
+        <Col
+          data-test-address-language
+          xs={12}
+          md={3}
+        >
+          <FieldLanguage
+            namePrefix={name}
+            dropdownLanguages={dropdownLanguages}
+          />
         </Col>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-address-category
+          xs={12}
+          md={3}
+        >
           <CategoryDropdown
             dropdownVendorCategories={dropdownVendorCategories}
             name={name}
@@ -75,6 +133,7 @@ const AddressInfo = ({ dropdownCountry, dropdownLanguages, dropdownVendorCategor
     <FieldArray
       addLabel={<FormattedMessage id="ui-organizations.contactInfo.actions.addAddress" />}
       component={RepeatableField}
+      id="addresses"
       legend={<FormattedMessage id="ui-organizations.data.contactTypes.address" />}
       name="addresses"
       renderField={Address}

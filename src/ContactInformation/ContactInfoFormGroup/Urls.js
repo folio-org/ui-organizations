@@ -10,24 +10,28 @@ import {
   Col,
   RepeatableField,
   Row,
-  Select,
   TextField,
 } from '@folio/stripes/components';
 import { FieldAutoSuggest } from '@folio/stripes-acq-components';
 
 import CategoryDropdown from '../../Utils/CategoryDropdown';
 import { isURLValid, Required } from '../../Utils/Validate';
+import FieldLanguage from './FieldLanguage';
 
 const Urls = ({ dropdownLanguages, dropdownVendorCategories }) => {
   const UrlsMF = (name, index, fields) => {
     const valueKey = 'value';
-    const items = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
+    const urls = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
 
     return (
       <Row>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-url-value
+          xs={12}
+          md={3}
+        >
           <FieldAutoSuggest
-            items={items}
+            items={urls}
             labelId="ui-organizations.contactInfo.url"
             name={`${name}.${valueKey}`}
             required
@@ -40,7 +44,11 @@ const Urls = ({ dropdownLanguages, dropdownVendorCategories }) => {
             }}
           />
         </Col>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-url-description
+          xs={12}
+          md={3}
+        >
           <Field
             label={<FormattedMessage id="ui-organizations.contactInfo.description" />}
             name={`${name}.description`}
@@ -48,17 +56,21 @@ const Urls = ({ dropdownLanguages, dropdownVendorCategories }) => {
             fullWidth
           />
         </Col>
-        <Col xs={12} md={3}>
-          <Field
-            label={<FormattedMessage id="ui-organizations.contactInfo.language" />}
-            name={`${name}.language`}
-            id={`${name}.language`}
-            component={Select}
-            fullWidth
-            dataOptions={dropdownLanguages}
+        <Col
+          data-test-url-language
+          xs={12}
+          md={3}
+        >
+          <FieldLanguage
+            namePrefix={name}
+            dropdownLanguages={dropdownLanguages}
           />
         </Col>
-        <Col xs={12} md={3}>
+        <Col
+          data-test-url-category
+          xs={12}
+          md={3}
+        >
           <CategoryDropdown
             dropdownVendorCategories={dropdownVendorCategories}
             name={name}
@@ -72,6 +84,7 @@ const Urls = ({ dropdownLanguages, dropdownVendorCategories }) => {
     <FieldArray
       addLabel={<FormattedMessage id="ui-organizations.contactInfo.addURL" />}
       component={RepeatableField}
+      id="urls"
       legend={<FormattedMessage id="ui-organizations.contactInfo.urls" />}
       name="urls"
       renderField={UrlsMF}
