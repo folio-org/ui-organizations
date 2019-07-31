@@ -159,4 +159,57 @@ describe('Create organization', () => {
       });
     });
   });
+
+  describe('add vendor term', () => {
+    beforeEach(async () => {
+      await orgEdit.summarySectionForm.isVendor.click();
+      await orgEdit.vendorTermsSection.addButton.click();
+    });
+
+    it('should add field with remove button', () => {
+      expect(orgEdit.vendorTermsSection.removeButton.isPresent).to.be.true;
+    });
+
+    describe('click remove vendor term', () => {
+      beforeEach(async () => {
+        await orgEdit.vendorTermsSection.removeButton.click();
+      });
+
+      it('disappears item and remove button', () => {
+        expect(orgEdit.vendorTermsSection.removeButton.isPresent).to.be.false;
+      });
+    });
+  });
+
+  describe('add address, email, url and phone', () => {
+    beforeEach(async () => {
+      await orgEdit.contactInformationSection.addressAddButton.click();
+      await orgEdit.contactInformationSection.urlAddButton.click();
+      await orgEdit.contactInformationSection.emailAddButton.click();
+      await orgEdit.contactInformationSection.phoneAddButton.click();
+    });
+
+    it('should add field with remove button', () => {
+      expect(orgEdit.contactInformationSection.addressRemoveButton.isPresent).to.be.true;
+      expect(orgEdit.contactInformationSection.urlRemoveButton.isPresent).to.be.true;
+      expect(orgEdit.contactInformationSection.emailRemoveButton.isPresent).to.be.true;
+      expect(orgEdit.contactInformationSection.phoneRemoveButton.isPresent).to.be.true;
+    });
+
+    describe('click remove', () => {
+      beforeEach(async () => {
+        await orgEdit.contactInformationSection.addressRemoveButton.click();
+        await orgEdit.contactInformationSection.urlRemoveButton.click();
+        await orgEdit.contactInformationSection.emailRemoveButton.click();
+        await orgEdit.contactInformationSection.phoneRemoveButton.click();
+      });
+
+      it('disappears item and remove button', () => {
+        expect(orgEdit.contactInformationSection.addressRemoveButton.isPresent).to.be.false;
+        expect(orgEdit.contactInformationSection.urlRemoveButton.isPresent).to.be.false;
+        expect(orgEdit.contactInformationSection.emailRemoveButton.isPresent).to.be.false;
+        expect(orgEdit.contactInformationSection.phoneRemoveButton.isPresent).to.be.false;
+      });
+    });
+  });
 });

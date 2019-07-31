@@ -9,6 +9,7 @@ import {
 import {
   Button,
   Col,
+  IconButton,
   Row,
   Select,
   TextArea,
@@ -191,13 +192,13 @@ class AccountsForm extends Component {
             xs={12}
             style={{ textAlign: 'right' }}
           >
-            <Button
-              buttonStyle="danger"
+            <IconButton
               data-test-remove-account-button
+              icon="trash"
               onClick={() => fields.remove(index)}
             >
               {<FormattedMessage id="ui-organizations.accounts.remove" />}
-            </Button>
+            </IconButton>
           </Col>
         </Row>
       </div>
