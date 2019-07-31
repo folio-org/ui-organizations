@@ -1,0 +1,20 @@
+// eslint-disable-next-line import/prefer-default-export
+export const CATEGORIES = {
+  accounting: 'Accounting',
+  books: 'Books',
+  customService: 'Customer Service',
+  databases: 'Databases',
+  ebooks: 'Ebooks',
+  econtent: 'Econtent',
+  general: 'General',
+  journals: 'Journals',
+  licenses: 'Licenses',
+  primary: 'Primary',
+  sales: 'Sales',
+  serials: 'Serials',
+  returns: 'Returns',
+  shipments: 'Shipments',
+  payments: 'Payments',
+  techSupport: 'Technical Support',
+  other: 'Other',
+};
