@@ -283,6 +283,19 @@
   "filterConfig.paymentMethod": "Payment method",
   "filterConfig.statsAvailable": "Stats available",
   "filterConfig.vendorStatus": "Organizations status",
+  "filterConfig.boolean.true": "True",
+  "filterConfig.boolean.false": "False",
+
+  "search.keyword": "All",
+  "search.name": "Name",
+  "search.contacts": "Contacts",
+  "search.code": "Code",
+  "search.language": "Language",
+  "search.aliases": "Alias",
+  "search.erpCode": "Accounting code",
+  "search.taxId": "Tax ID",
+  "search.interfaces": "Interfaces",
+
 
   "view.edit": "Edit",
   "view.editVendorDialog": "Edit vendor dialog",
@@ -318,6 +331,11 @@
   "organizationStatus.active": "Active",
   "organizationStatus.inactive": "Inactive",
   "organizationStatus.pending": "Pending",
+
+  "paymentMethod.cach": "Cash",
+  "paymentMethod.card": "Credit Card/P-Card",
+  "paymentMethod.eft": "EFT",
+  "paymentMethod.depAccount": "Deposit Account",
 
   "summary.name": "Name",
   "summary.code": "Code",

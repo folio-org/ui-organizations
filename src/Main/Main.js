@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import {
   get,
   toString,
 } from 'lodash';
 // Folio
-import { SearchAndSort } from '@folio/stripes/smart-components';
-import { filters2cql } from '@folio/stripes/components';
+import { SearchAndSort, makeQueryFunction } from '@folio/stripes/smart-components';
+import {
+  getActiveFilters,
+  handleFilterChange,
+  changeSearchIndex,
+} from '@folio/stripes-acq-components';
+
 import FormatTime from '../Utils/FormatTime';
 import packageInfo from '../../package';
 // Components and Pages
@@ -20,16 +29,20 @@ import {
 } from '../common/resources';
 import PaneDetails from '../PaneDetails';
 import { ViewVendor } from '../VendorViews';
-import { Filters, SearchableIndexes } from '../Utils/FilterConfig';
 import languageList from '../Utils/Languages';
 import countryList from '../Utils/Country';
 import phoneTypesList from '../Utils/PhoneTypes';
+
+import OrganizationsFilter from './OrganizationsFilter';
+import { filterConfig } from './OrganizationsFilterConfig';
+import {
+  organizationsSearchQueryTemplate,
+  searchableIndexes,
+} from './OrganizationsSearchConfig';
 import './Main.css';
 
 const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
-const filterConfig = Filters();
-const searchableIndexes = SearchableIndexes;
 
 class Main extends Component {
   static propTypes = {
@@ -43,6 +56,7 @@ class Main extends Component {
     showSingleResult: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
     browseOnly: PropTypes.bool,
     packageInfo: PropTypes.object,
+    intl: intlShape.isRequired,
   };
 
   static defaultProps = {
@@ -51,7 +65,6 @@ class Main extends Component {
   };
 
   static manifest = Object.freeze({
-    initializedFilterConfig: { initialValue: false },
     query: {
       initialValue: {
         query: '',
@@ -69,61 +82,17 @@ class Main extends Component {
       perRequest: RESULT_COUNT_INCREMENT,
       GET: {
         params: {
-          query: (...args) => {
-            /*
-              This code is not DRY as it is copied from makeQueryFunction in stripes-components.
-              This is necessary, as makeQueryFunction only referneces query paramaters as a data source.
-              STRIPES-480 is intended to correct this and allow this query function to be replace with a call
-              to makeQueryFunction.
-              https://issues.folio.org/browse/STRIPES-480
-            */
-            const resourceData = args[2];
-            const sortMap = {
+          query: makeQueryFunction(
+            'cql.allRecords=1',
+            organizationsSearchQueryTemplate,
+            {
               Name: 'name',
               Code: 'code',
               Description: 'description',
               Status: 'status',
-            };
-
-            const index = resourceData.query.qindex ? resourceData.query.qindex : 'all';
-            const searchableIndex = searchableIndexes.find(idx => idx.value === index);
-
-            let cql = searchableIndex.makeQuery(resourceData.query.query || '');
-            const filterCql = filters2cql(filterConfig, resourceData.query.filters);
-
-            if (filterCql) {
-              if (cql) {
-                cql = `(${cql}) and ${filterCql}`;
-              } else {
-                cql = filterCql;
-              }
-            }
-
-            const { sort } = resourceData.query;
-
-            if (sort) {
-              const sortIndexes = sort.split(',').map((sort1) => {
-                let reverse = false;
-
-                if (sort1.startsWith('-')) {
-                  // eslint-disable-next-line no-param-reassign
-                  sort1 = sort1.substr(1);
-                  reverse = true;
-                }
-                let sortIndex = sortMap[sort1] || sort1;
-
-                if (reverse) {
-                  sortIndex = `${sortIndex.replace(' ', '/sort.descending ')}/sort.descending`;
-                }
-
-                return sortIndex;
-              });
-
-              cql += ` sortby ${sortIndexes.join(' ')}`;
-            }
-
-            return cql;
-          },
+            },
+            filterConfig,
+          ),
         },
         staticFallback: { params: {} },
       },
@@ -246,22 +215,13 @@ class Main extends Component {
     },
   });
 
-  static getDerivedStateFromProps(props) {
-    const langFilter = filterConfig.find(group => group.name === 'language');
-    const countryFilter = filterConfig.find(group => group.name === 'country');
-
-    if (langFilter.values.length === 0 && countryFilter.values.length === 0) {
-      langFilter.values = languageList.map(({ label, value }) => ({ name: label, cql: value }));
-      countryFilter.values = countryList.map(({ label, value }) => ({ name: label, cql: value }));
-      props.mutator.initializedFilterConfig.replace(true);
-    }
-
-    return null;
-  }
-
   constructor(props) {
     super(props);
     this.state = {};
+
+    this.getActiveFilters = getActiveFilters.bind(this);
+    this.handleFilterChange = handleFilterChange.bind(this);
+    this.changeSearchIndex = changeSearchIndex.bind(this);
   }
 
   create = (data) => {
@@ -279,10 +239,23 @@ class Main extends Component {
     });
   };
 
-  onChangeIndex = (e) => {
-    const qindex = e.target.value;
+  getTranslateSearchableIndexes = () => {
+    const { intl: { formatMessage } } = this.props;
 
-    this.props.mutator.query.update({ qindex });
+    return searchableIndexes.map(index => {
+      const label = formatMessage({ id: `ui-organizations.search.${index.label}` });
+
+      return { ...index, label };
+    });
+  }
+
+  renderFilters = (onChange) => {
+    return (
+      <OrganizationsFilter
+        activeFilters={this.getActiveFilters()}
+        onChange={onChange}
+      />
+    );
   };
 
   render() {
@@ -325,7 +298,6 @@ class Main extends Component {
           packageInfo={this.props.packageInfo || packageInfo}
           objectName="organization"
           baseRoute={packageInfo.stripes.route}
-          filterConfig={filterConfig}
           visibleColumns={visibleColumns || ['Name', 'Code', 'Description', 'Status', 'isVendor']}
           columnMapping={columnMapping}
           columnWidths={columnWidths}
@@ -343,19 +315,21 @@ class Main extends Component {
           parentMutator={mutator}
           detailProps={stripes}
           stripes={stripes}
-          searchableIndexes={searchableIndexes}
+          searchableIndexes={this.getTranslateSearchableIndexes()}
           selectedIndex={get(resources.query, 'qindex')}
           searchableIndexesPlaceholder={null}
-          onChangeIndex={this.onChangeIndex}
+          onChangeIndex={this.changeSearchIndex}
           onSelectRow={onSelectRow}
           disableRecordCreation={disableRecordCreation}
           onComponentWillUnmount={onComponentWillUnmount}
           browseOnly={browseOnly}
           showSingleResult={showSingleResult}
+          renderFilters={this.renderFilters}
+          onFilterChange={this.handleFilterChange}
         />
       </div>
     );
   }
 }
 
-export default Main;
+export default injectIntl(Main);
