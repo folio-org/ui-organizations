@@ -46,7 +46,7 @@ export default interactor(class OrganizationEditInteractor {
   ediInformationSection = new EdiInformationSection();
   accountsSection = new AccountsSection();
   addNameButton = new Button('#aliases-add-button');
-  removeNameButton = new Button('[data-test-remove-name-button]');
+  removeNameButton = new Button('#aliases [data-test-repeatable-field-remove-item-button]');
   aliases = collection('input[name*=value]');
   addAccountButton = new Button('[data-test-add-account-button]');
   removeAccountButton = new Button('[data-test-remove-account-button]');
