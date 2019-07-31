@@ -45,7 +45,7 @@ export default interactor(class OrganizationEditInteractor {
   vendorTermsSection = new VendorTermsSection();
   ediInformationSection = new EdiInformationSection();
   accountsSection = new AccountsSection();
-  addNameButton = new Button('[data-test-add-name-button]');
+  addNameButton = new Button('#aliases-add-button');
   removeNameButton = new Button('[data-test-remove-name-button]');
   aliases = collection('input[name*=value]');
   addAccountButton = new Button('[data-test-add-account-button]');

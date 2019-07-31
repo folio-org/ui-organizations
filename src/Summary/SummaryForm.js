@@ -128,6 +128,7 @@ class SummaryForm extends Component {
           <FieldArray
             addLabel={<FormattedMessage id="ui-organizations.summary.add" />}
             component={RepeatableField}
+            id="aliases"
             legend={<FormattedMessage id="ui-organizations.summary.alternativeNames" />}
             name="aliases"
             renderField={this.renderAlias}
