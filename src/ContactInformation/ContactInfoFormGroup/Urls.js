@@ -17,8 +17,9 @@ import { FieldAutoSuggest } from '@folio/stripes-acq-components';
 import CategoryDropdown from '../../Utils/CategoryDropdown';
 import { isURLValid, Required } from '../../Utils/Validate';
 import FieldLanguage from './FieldLanguage';
+import createAddNewItem from './createAddNewItem';
 
-const Urls = ({ dropdownLanguages, dropdownVendorCategories }) => {
+const Urls = ({ defaultLanguage, dropdownLanguages, dropdownVendorCategories }) => {
   const UrlsMF = (name, index, fields) => {
     const valueKey = 'value';
     const urls = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
@@ -87,12 +88,14 @@ const Urls = ({ dropdownLanguages, dropdownVendorCategories }) => {
       id="urls"
       legend={<FormattedMessage id="ui-organizations.contactInfo.urls" />}
       name="urls"
+      onAdd={createAddNewItem(defaultLanguage)}
       renderField={UrlsMF}
     />
   );
 };
 
 Urls.propTypes = {
+  defaultLanguage: PropTypes.string,
   dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
