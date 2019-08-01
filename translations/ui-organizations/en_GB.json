@@ -575,5 +575,18 @@
     "filterConfig.isVendor": "Is vendor",
     "main.isVendor.no": "No",
     "main.isVendor.yes": "Yes",
-    "main.isVendor": "Vendor"
+    "main.isVendor": "Vendor",
+    "filterConfig.boolean.true": "True",
+    "filterConfig.boolean.false": "False",
+    "search.name": "Name",
+    "search.contacts": "Contacts",
+    "search.code": "Code",
+    "search.language": "Language",
+    "search.aliases": "Alias",
+    "search.erpCode": "Accounting code",
+    "search.taxId": "Tax ID",
+    "search.interfaces": "Interfaces",
+    "paymentMethod.cach": "Cash",
+    "paymentMethod.card": "Credit Card/P-Card",
+    "paymentMethod.depAccount": "Deposit Account"
 }
