@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Field, FieldArray } from 'redux-form';
-import { Row, Col, Button, TextField, TextArea } from '@folio/stripes/components';
+
+import {
+  Button,
+  Col,
+  IconButton,
+  Row,
+  TextArea,
+  TextField,
+} from '@folio/stripes/components';
+
 import { Required, isURLValid } from '../Utils/Validate';
 import css from './AgreementsForm.css';
 
@@ -24,7 +33,12 @@ class AgreementsForm extends Component {
           {fields.map(this.renderSubForm)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.agreement.add" />}</Button>
+          <Button
+            data-test-vendor-term-add
+            onClick={() => fields.push({})}
+          >
+            <FormattedMessage id="ui-organizations.agreement.add" />
+          </Button>
         </Col>
       </Row>
     );
@@ -47,9 +61,13 @@ class AgreementsForm extends Component {
             <Field label={<FormattedMessage id="ui-organizations.agreement.notes" />} name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />
           </Col>
           <Col xs={12} style={{ textAlign: 'right' }}>
-            <Button onClick={() => fields.remove(index)} buttonStyle="danger">
+            <IconButton
+              data-test-vendor-term-remove
+              icon="trash"
+              onClick={() => fields.remove(index)}
+            >
               {<FormattedMessage id="ui-organizations.agreement.remove" />}
-            </Button>
+            </IconButton>
           </Col>
         </Row>
       </div>

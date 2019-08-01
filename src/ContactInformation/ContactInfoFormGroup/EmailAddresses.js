@@ -1,67 +1,99 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Row, Col, Button } from '@folio/stripes/components';
-import css from '../ContactInfoFormGroup.css';
-import EmailsMF from '../../MultiForms/EmailsMF';
+import {
+  Field,
+  FieldArray,
+} from 'redux-form';
 
-class EmailAddresses extends Component {
-  static propTypes = {
-    fields: PropTypes.object,
-    stripes: PropTypes.shape({
-      store: PropTypes.object,
-    }),
-    dispatch: PropTypes.func,
-    change: PropTypes.func,
-  };
+import {
+  Col,
+  RepeatableField,
+  Row,
+  TextField,
+} from '@folio/stripes/components';
+import { FieldAutoSuggest } from '@folio/stripes-acq-components';
 
-  constructor(props) {
-    super(props);
-    this.renderSubEmailAddresses = this.renderSubEmailAddresses.bind(this);
-    this.removeButtonEml = this.removeButtonEml.bind(this);
-  }
+import CategoryDropdown from '../../Utils/CategoryDropdown';
+import { Required } from '../../Utils/Validate';
+import FieldLanguage from './FieldLanguage';
 
-  removeButtonEml(fields, index, id, label) {
-    return (
-      <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
-        <Button id={id} onClick={() => fields.remove(index)} buttonStyle="danger">
-          {<FormattedMessage id={label} />}
-        </Button>
-      </Col>
-    );
-  }
-
-  renderSubEmailAddresses = (elem, index, fields) => {
-    return (
-      <Row key={index} className={css.panels}>
-        <EmailsMF index={index} fields={fields} name={`${elem}`} id={`${elem}`} {...this.props} />
-        {this.removeButtonEml(fields, index, 'btn-remove-emailAddress', 'ui-organizations.contactInfo.remove')}
-      </Row>
-    );
-  }
-
-  render() {
-    const { fields } = this.props;
+const EmailAddresses = ({ dropdownLanguages, dropdownVendorCategories }) => {
+  const EmailsMF = (name, index, fields) => {
+    const valueKey = 'value';
+    const emails = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
 
     return (
       <Row>
-        <Col xs={12}>
-          <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.contactInfo.emailAddress" />}</div>
+        <Col
+          data-test-email-value
+          xs={12}
+          md={3}
+        >
+          <FieldAutoSuggest
+            items={emails}
+            labelId="ui-organizations.contactInfo.emailAddress"
+            name={`${name}.${valueKey}`}
+            required
+            validate={[Required]}
+            valueKey={valueKey}
+            onSelect={(item) => {
+              fields.remove(index);
+              fields.insert(index, item);
+            }}
+          />
         </Col>
-        {fields.length === 0 &&
-          <Col xs={12}>
-            <div><em>{<FormattedMessage id="ui-organizations.contactInfo.pleaseAddEmail" />}</em></div>
-          </Col>
-        }
-        <Col xs={12}>
-          {fields.map(this.renderSubEmailAddresses)}
+        <Col
+          data-test-email-description
+          xs={12}
+          md={3}
+        >
+          <Field
+            label={<FormattedMessage id="ui-organizations.contactInfo.description" />}
+            name={`${name}.description`}
+            component={TextField}
+            fullWidth
+          />
         </Col>
-        <Col xs={12} style={{ paddingTop: '10px' }}>
-          <Button onClick={() => fields.push({})}>{<FormattedMessage id="ui-organizations.contactInfo.actions.addEmail" />}</Button>
+        <Col
+          data-test-email-language
+          xs={12}
+          md={3}
+        >
+          <FieldLanguage
+            namePrefix={name}
+            dropdownLanguages={dropdownLanguages}
+          />
+        </Col>
+        <Col
+          data-test-email-category
+          xs={12}
+          md={3}
+        >
+          <CategoryDropdown
+            dropdownVendorCategories={dropdownVendorCategories}
+            name={name}
+          />
         </Col>
       </Row>
     );
-  }
-}
+  };
+
+  return (
+    <FieldArray
+      addLabel={<FormattedMessage id="ui-organizations.contactInfo.actions.addEmail" />}
+      component={RepeatableField}
+      id="emails"
+      legend={<FormattedMessage id="ui-organizations.contactInfo.emailAddress" />}
+      name="emails"
+      renderField={EmailsMF}
+    />
+  );
+};
+
+EmailAddresses.propTypes = {
+  dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
+  dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default EmailAddresses;
