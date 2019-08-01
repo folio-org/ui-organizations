@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { AccordionSet } from '@folio/stripes/components';
@@ -9,6 +9,7 @@ import LANGUAGE_OPTIONS from '../Utils/Languages';
 
 import {
   FILTERS,
+  DEFAULT_FILTERS,
   BOOLEAN_OPTIONS,
   CATEGORY_OPTIONS,
   STATUS_OPTIONS,
@@ -16,6 +17,10 @@ import {
 } from './constants';
 
 const OrganizationsFilter = ({ activeFilters, onChange }) => {
+  useEffect(() => {
+    DEFAULT_FILTERS.forEach(onChange);
+  }, [onChange]);
+
   return (
     <AccordionSet>
       <AcqCheckboxFilter
@@ -24,6 +29,7 @@ const OrganizationsFilter = ({ activeFilters, onChange }) => {
         name={FILTERS.STATUS}
         onChange={onChange}
         options={STATUS_OPTIONS}
+        closedByDefault={false}
       />
 
       <AcqCheckboxFilter

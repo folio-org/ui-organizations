@@ -20,6 +20,13 @@ export const FILTERS = {
   IS_VENDOR: 'isVendor',
 };
 
+export const DEFAULT_FILTERS = [
+  {
+    name: FILTERS.STATUS,
+    values: [ORGANIZATION_STATUS.active, ORGANIZATION_STATUS.pending],
+  },
+];
+
 export const STATUS_OPTIONS = Object.values(ORGANIZATION_STATUS).map(status => ({
   value: status,
   label: ORGANIZATION_STATUS_LABELS[status],
