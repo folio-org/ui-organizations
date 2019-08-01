@@ -1,8 +1,9 @@
 function createAddNewItem(defaultLanguage) {
   return fields => {
-    const newItem = defaultLanguage
-      ? { language: defaultLanguage }
-      : {};
+    const newItem = {};
+
+    if (defaultLanguage) newItem.language = defaultLanguage;
+    if (fields.length === 0) newItem.isPrimary = true;
 
     fields.push(newItem);
   };

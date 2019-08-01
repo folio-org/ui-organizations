@@ -21,6 +21,7 @@ import css from './css/FormVendor.css';
 
 class FormVendor extends Component {
   static propTypes = {
+    dispatchChange: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
     deleteLedger: PropTypes.func,
     parentMutator: PropTypes.object.isRequired,
@@ -110,6 +111,7 @@ class FormVendor extends Component {
 
   render() {
     const {
+      dispatchChange,
       dropdownCountry,
       dropdownLanguages,
       dropdownPhoneType,
@@ -153,6 +155,7 @@ class FormVendor extends Component {
               <Accordion label={<FormattedMessage id="ui-organizations.contactInformation" />} id="contactInformationSection" displayWhenClosed={isDisplayError('contactInfoErr')} displayWhenOpen={isDisplayError('contactInfoErr')}>
                 <ContactInformationForm
                   defaultLanguage={language}
+                  dispatchChange={dispatchChange}
                   dropdownCountry={dropdownCountry}
                   dropdownLanguages={dropdownLanguages}
                   dropdownPhoneType={dropdownPhoneType}

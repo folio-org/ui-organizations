@@ -15,6 +15,7 @@ import {
 
 const ContactInformationForm = ({
   defaultLanguage,
+  dispatchChange,
   dropdownCountry,
   dropdownLanguages,
   dropdownPhoneType,
@@ -25,6 +26,7 @@ const ContactInformationForm = ({
       <Col xs={12}>
         <AddressInfo
           defaultLanguage={defaultLanguage}
+          dispatchChange={dispatchChange}
           dropdownCountry={dropdownCountry}
           dropdownLanguages={dropdownLanguages}
           dropdownVendorCategories={dropdownVendorCategories}
@@ -33,6 +35,7 @@ const ContactInformationForm = ({
       <Col xs={12}>
         <PhoneNumbers
           defaultLanguage={defaultLanguage}
+          dispatchChange={dispatchChange}
           dropdownLanguages={dropdownLanguages}
           dropdownVendorCategories={dropdownVendorCategories}
           dropdownPhoneType={dropdownPhoneType}
@@ -41,6 +44,7 @@ const ContactInformationForm = ({
       <Col xs={12}>
         <EmailAddresses
           defaultLanguage={defaultLanguage}
+          dispatchChange={dispatchChange}
           dropdownLanguages={dropdownLanguages}
           dropdownVendorCategories={dropdownVendorCategories}
         />
@@ -48,6 +52,7 @@ const ContactInformationForm = ({
       <Col xs={12}>
         <Urls
           defaultLanguage={defaultLanguage}
+          dispatchChange={dispatchChange}
           dropdownLanguages={dropdownLanguages}
           dropdownVendorCategories={dropdownVendorCategories}
         />
@@ -58,6 +63,7 @@ const ContactInformationForm = ({
 
 ContactInformationForm.propTypes = {
   defaultLanguage: PropTypes.string,
+  dispatchChange: PropTypes.func,
   dropdownCountry: PropTypes.arrayOf(PropTypes.object),
   dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   dropdownPhoneType: PropTypes.arrayOf(PropTypes.object),
