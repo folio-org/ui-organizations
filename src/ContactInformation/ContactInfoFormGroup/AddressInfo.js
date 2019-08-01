@@ -17,8 +17,9 @@ import { FieldAutoSuggest } from '@folio/stripes-acq-components';
 
 import CategoryDropdown from '../../Utils/CategoryDropdown';
 import FieldLanguage from './FieldLanguage';
+import createAddNewItem from './createAddNewItem';
 
-const AddressInfo = ({ dropdownCountry, dropdownLanguages, dropdownVendorCategories }) => {
+const AddressInfo = ({ defaultLanguage, dropdownCountry, dropdownLanguages, dropdownVendorCategories }) => {
   // eslint-disable-next-line react/prop-types
   const Address = (name, index, fields) => {
     const valueKey = 'addressLine1';
@@ -136,12 +137,14 @@ const AddressInfo = ({ dropdownCountry, dropdownLanguages, dropdownVendorCategor
       id="addresses"
       legend={<FormattedMessage id="ui-organizations.data.contactTypes.address" />}
       name="addresses"
+      onAdd={createAddNewItem(defaultLanguage)}
       renderField={Address}
     />
   );
 };
 
 AddressInfo.propTypes = {
+  defaultLanguage: PropTypes.string,
   dropdownCountry: PropTypes.arrayOf(PropTypes.object),
   dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),

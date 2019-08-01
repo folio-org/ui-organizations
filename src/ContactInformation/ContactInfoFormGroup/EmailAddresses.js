@@ -17,8 +17,9 @@ import { FieldAutoSuggest } from '@folio/stripes-acq-components';
 import CategoryDropdown from '../../Utils/CategoryDropdown';
 import { Required } from '../../Utils/Validate';
 import FieldLanguage from './FieldLanguage';
+import createAddNewItem from './createAddNewItem';
 
-const EmailAddresses = ({ dropdownLanguages, dropdownVendorCategories }) => {
+const EmailAddresses = ({ defaultLanguage, dropdownLanguages, dropdownVendorCategories }) => {
   const EmailsMF = (name, index, fields) => {
     const valueKey = 'value';
     const emails = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
@@ -86,12 +87,14 @@ const EmailAddresses = ({ dropdownLanguages, dropdownVendorCategories }) => {
       id="emails"
       legend={<FormattedMessage id="ui-organizations.contactInfo.emailAddress" />}
       name="emails"
+      onAdd={createAddNewItem(defaultLanguage)}
       renderField={EmailsMF}
     />
   );
 };
 
 EmailAddresses.propTypes = {
+  defaultLanguage: PropTypes.string,
   dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
