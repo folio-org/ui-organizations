@@ -5,7 +5,19 @@ import _ from 'lodash';
 import queryString from 'query-string';
 // Folio
 import { IfPermission } from '@folio/stripes/core';
-import { Pane, PaneMenu, Row, Col, Icon, IconButton, Layer, AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes/components';
+import {
+  Pane,
+  PaneMenu,
+  Row,
+  Col,
+  Icon,
+  IconButton,
+  Layer,
+  AccordionSet,
+  Accordion,
+  ExpandAllButton,
+  ConfirmationModal,
+} from '@folio/stripes/components';
 import { withTags } from '@folio/stripes/smart-components';
 import { MenuSection, Button } from '@folio/stripes-components';
 
@@ -31,7 +43,9 @@ class ViewVendor extends Component {
     parentMutator: PropTypes.object.isRequired,
     editLink: PropTypes.string,
     paneWidth: PropTypes.string.isRequired,
-  }
+    poURL: PropTypes.string,
+    showToast: PropTypes.func.isRequired,
+  };
 
   constructor(props) {
     super(props);
@@ -46,6 +60,7 @@ class ViewVendor extends Component {
         [SECTIONS.interfacesSection]: false,
         [SECTIONS.accountsSection]: false,
       },
+      showConfirmDelete: false,
     };
     this.connectedPaneDetails = this.props.stripes.connect(PaneDetails);
     this.handleExpandAll = this.handleExpandAll.bind(this);
@@ -103,7 +118,25 @@ class ViewVendor extends Component {
     this.props.parentMutator.records.PUT(data).then(() => {
       this.props.onCloseEdit();
     });
-  }
+  };
+
+  mountDeleteLineConfirm = () => this.setState({ showConfirmDelete: true });
+
+  unmountDeleteLineConfirm = () => this.setState({ showConfirmDelete: false });
+
+  deleteOrganization = () => {
+    const { parentMutator, showToast } = this.props;
+    const organization = this.getData();
+    const { id, name } = organization;
+
+    parentMutator.records.DELETE({ id }).then(() => {
+      showToast('ui-organizations.organization.delete.success', 'success', { organizationName: name });
+      parentMutator.query.update({
+        _path: '/organizations',
+        layer: null,
+      });
+    });
+  };
 
   getActionMenu = ({ onToggle }) => {
     const { onEdit } = this.props;
@@ -186,7 +219,7 @@ class ViewVendor extends Component {
       );
     }
 
-    const { isVendor } = organization;
+    const { isVendor, name } = organization;
 
     return (
       <Pane
@@ -234,6 +267,18 @@ class ViewVendor extends Component {
             parentMutator={this.props.parentMutator}
           />
         </Layer>
+
+        {this.state.showConfirmDelete && (
+          <ConfirmationModal
+            id="delete-line-confirmation"
+            confirmLabel={<FormattedMessage id="ui-organizations.organization.delete.confirmLabel" />}
+            heading={<FormattedMessage id="ui-organizations.organization.delete.heading" values={{ organizationName: `${name}` }} />}
+            message={<FormattedMessage id="ui-organizations.view.delete.message" />}
+            onCancel={this.unmountDeleteLineConfirm}
+            onConfirm={this.deleteOrganization}
+            open
+          />
+        )}
       </Pane>
     );
   }

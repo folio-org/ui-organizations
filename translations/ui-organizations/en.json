@@ -296,11 +296,16 @@
   "search.taxId": "Tax ID",
   "search.interfaces": "Interfaces",
 
+  "organization.delete.heading": "Delete {organizationName}?",
+  "organization.delete.confirmLabel": "Delete?",
+  "organization.delete.success": "The organization {organizationName} was successfully deleted",
+
 
   "view.edit": "Edit",
   "view.delete": "Delete",
   "view.editVendorDialog": "Edit vendor dialog",
   "view.details": "Details",
+  "view.delete.message": "Delete organization?",
 
   "createOrg.title": "Create organization",
   "editOrg.title": "Edit - {name}",

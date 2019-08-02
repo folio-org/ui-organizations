@@ -12,10 +12,12 @@ import {
 } from 'lodash';
 // Folio
 import { SearchAndSort, makeQueryFunction } from '@folio/stripes/smart-components';
+import { Callout } from '@folio/stripes/components';
 import {
   getActiveFilters,
   handleFilterChange,
   changeSearchIndex,
+  showToast,
 } from '@folio/stripes-acq-components';
 
 import FormatTime from '../Utils/FormatTime';
@@ -215,13 +217,15 @@ class Main extends Component {
     },
   });
 
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.state = {};
 
     this.getActiveFilters = getActiveFilters.bind(this);
     this.handleFilterChange = handleFilterChange.bind(this);
     this.changeSearchIndex = changeSearchIndex.bind(this);
+    this.callout = React.createRef();
+    this.showToast = showToast.bind(this);
   }
 
   create = (data) => {
@@ -313,7 +317,7 @@ class Main extends Component {
           newRecordPerms="organizations-storage.organizations.item.post"
           parentResources={resources}
           parentMutator={mutator}
-          detailProps={stripes}
+          detailProps={{ showToast: this.showToast }}
           stripes={stripes}
           searchableIndexes={this.getTranslateSearchableIndexes()}
           selectedIndex={get(resources.query, 'qindex')}
@@ -327,6 +331,7 @@ class Main extends Component {
           renderFilters={this.renderFilters}
           onFilterChange={this.handleFilterChange}
         />
+        <Callout ref={this.callout} />
       </div>
     );
   }
