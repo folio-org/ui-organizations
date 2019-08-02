@@ -10,6 +10,8 @@ const configOrganizations = server => {
 
   server.put(`${ORGANIZATIONS_API}/:id`, put('organizations'));
 
+  server.delete(`${ORGANIZATIONS_API}/:id`, 'organizations');
+
   server.post(`${ORGANIZATIONS_API}`, noop);
 };
 

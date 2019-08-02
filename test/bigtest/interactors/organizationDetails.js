@@ -20,6 +20,15 @@ import {
   value = text('[class*=kvRoot---]');
 }
 
+@interactor class OrganizationDetailsActions {
+  static defaultScope = '#data-test-organizations-details-actions';
+
+  toggle = new Button('[class*=paneHeaderCenterButton---]');
+  viewPOButton = new Button('[data-test-organization-details-actions-view-po]');
+  delete = new Button('[data-test-button-delete-organization]');
+  edit = new Button('[data-test-button-edit-organization]');
+}
+
 export default interactor(class OrganizationDetailsInteractor {
   static defaultScope = '#pane-vendordetails';
 
@@ -34,6 +43,7 @@ export default interactor(class OrganizationDetailsInteractor {
   vendorTermsSection = new VendorTermsSection();
   ediInformationSection = new EdiInformationSection();
   accountsSection = new AccountsSection();
+  actions = new OrganizationDetailsActions();
 
   expandAllButton = new Button('[class*=paneContent---] div[class*=row---] [class*=button---]');
   note = new Note();

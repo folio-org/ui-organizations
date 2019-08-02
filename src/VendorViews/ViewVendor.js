@@ -143,11 +143,11 @@ class ViewVendor extends Component {
     const organization = this.getData();
 
     return (
-      <MenuSection id="data-test-line-details-actions">
+      <MenuSection id="data-test-organizations-details-actions">
         <IfPermission perm="organizations-storage.organizations.item.delete">
           <Button
             buttonStyle="dropdownItem"
-            data-test-button-delete-line
+            data-test-button-delete-organization
             onClick={() => {
               onToggle();
               this.mountDeleteLineConfirm();
@@ -162,7 +162,7 @@ class ViewVendor extends Component {
           {organization && (
             <Button
               buttonStyle="dropdownItem"
-              data-test-button-delete-line
+              data-test-button-delete-organization
               onClick={() => {
                 onToggle();
                 onEdit();
@@ -270,7 +270,7 @@ class ViewVendor extends Component {
 
         {this.state.showConfirmDelete && (
           <ConfirmationModal
-            id="delete-line-confirmation"
+            id="delete-organization-confirmation"
             confirmLabel={<FormattedMessage id="ui-organizations.organization.delete.confirmLabel" />}
             heading={<FormattedMessage id="ui-organizations.organization.delete.heading" values={{ organizationName: `${name}` }} />}
             message={<FormattedMessage id="ui-organizations.view.delete.message" />}
