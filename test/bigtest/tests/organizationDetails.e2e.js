@@ -6,8 +6,8 @@ import {
   OrganizationDetailsInteractor,
   OrganizationEditInteractor,
   InterfacesViewInteractor,
+  ConfirmationModalInteractor,
 } from '../interactors';
-import ConfirmationModal from '../../../../ui-orders/test/bigtest/interactors/confirmation';
 
 const ORGANIZATIONS_COUNT = 13;
 const TEST_NOTE = 'Test note';
@@ -160,7 +160,7 @@ describe('Organization details', () => {
   });
 
   describe('click delete Organization', () => {
-    const deleteLineConfirmation = new ConfirmationModal('#delete-organization-confirmation');
+    const deleteLineConfirmation = new ConfirmationModalInteractor('#delete-organization-confirmation');
 
     beforeEach(async function () {
       await orgDetails.actions.toggle.click();
@@ -173,12 +173,12 @@ describe('Organization details', () => {
   });
 
   describe('click delete Organization and cancel', () => {
-    const deleteLineConfirmation = new ConfirmationModal('#delete-organization-confirmation');
+    const deleteLineConfirmation = new ConfirmationModalInteractor('#delete-organization-confirmation');
 
     beforeEach(async function () {
       await orgDetails.actions.toggle.click();
       await orgDetails.actions.delete.click();
-      await deleteLineConfirmation.cancel();
+      await deleteLineConfirmation.cancelButton.click();
     });
 
     it('closes delete Organization confirmation', () => {
@@ -191,12 +191,12 @@ describe('Organization details', () => {
   });
 
   describe('click delete Organization and confirm', () => {
-    const deleteLineConfirmation = new ConfirmationModal('#delete-organization-confirmation');
+    const deleteLineConfirmation = new ConfirmationModalInteractor('#delete-organization-confirmation');
 
     beforeEach(async function () {
       await orgDetails.actions.toggle.click();
       await orgDetails.actions.delete.click();
-      await deleteLineConfirmation.confirm();
+      await deleteLineConfirmation.confirmButton.click();
     });
 
     it('closes delete Organization confirmation', () => {
