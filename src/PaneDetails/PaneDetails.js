@@ -12,6 +12,8 @@ import { getDropDownItems } from '../common/utils/dropdown';
 
 class PaneDetails extends React.Component {
   static propTypes = {
+    change: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
     stripes: PropTypes.object.isRequired,
     initialValues: PropTypes.object,
     handleSubmit: PropTypes.func.isRequired,
@@ -103,6 +105,12 @@ class PaneDetails extends React.Component {
     });
   }
 
+  dispatchChange = (fieldName, value) => {
+    const { change, dispatch } = this.props;
+
+    dispatch(change(fieldName, value));
+  }
+
   render() {
     const { initialValues, stripes, onCancel } = this.props;
     const paneTitle = initialValues.id ?
@@ -124,6 +132,7 @@ class PaneDetails extends React.Component {
         >
           <FormVendor
             isVendor={isVendor}
+            dispatchChange={this.dispatchChange}
             dropdownCurrencies={this.getCurrencies()}
             dropdownVendorCategories={this.getVendorCategory()}
             dropdownLanguages={this.getLanguageList()}

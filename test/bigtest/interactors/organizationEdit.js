@@ -1,13 +1,14 @@
 import {
+  clickable,
   collection,
   interactor,
   Interactor,
 } from '@bigtest/interactor';
 
+import { SECTIONS } from '../../../src/common/constants';
 import Button from './Button';
 import {
   SummarySection,
-  ContactInformationSection,
   ContactPeopleSection,
   InterfacesSection,
   VendorInformationSection,
@@ -18,6 +19,8 @@ import {
 
 import ContactList from './ContactList';
 import InterfaceList from './Interfaces/InterfaceList';
+import CheckboxInteractor from './CheckboxInteractor';
+import TextFieldInteractor from './TextFieldInteractor';
 
 class SummarySectionForm extends SummarySection {
   name = new Interactor('input[name="name"]');
@@ -35,9 +38,19 @@ class VendorTermsForm extends VendorTermsSection {
   removeButton = new Button('[data-test-vendor-term-remove]');
 }
 
-class ContactInformationForm extends ContactInformationSection {
+@interactor class AddressesForm {
+  static defaultScope = '#addresses';
   addressAddButton = new Button('#addresses-add-button');
-  addressRemoveButton = new Button('#addresses [data-test-repeatable-field-remove-item-button]');
+  removeButtons = collection('[data-test-repeatable-field-remove-item-button]', Button);
+  primaryCheckboxes = collection('[data-test-checkbox-is-primary]', CheckboxInteractor);
+  addressLineInputs = collection('[data-test-address-1] input', TextFieldInteractor);
+}
+
+@interactor class ContactInformationForm {
+  static defaultScope = `#${SECTIONS.contactInformationSection}`;
+
+  toggle = clickable('[class*=defaultCollapseButton---]');
+  addresses = new AddressesForm();
   urlAddButton = new Button('#urls-add-button');
   urlRemoveButton = new Button('#urls [data-test-repeatable-field-remove-item-button]');
   emailAddButton = new Button('#emails-add-button');

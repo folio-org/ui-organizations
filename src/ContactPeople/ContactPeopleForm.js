@@ -19,7 +19,7 @@ class ContactPeopleForm extends Component {
       store: PropTypes.object,
     }),
     orgId: PropTypes.string,
-    storedContactIds: PropTypes.arrayOf(PropTypes.object),
+    storedContactIds: PropTypes.arrayOf(PropTypes.string),
   };
 
   componentDidMount() {
