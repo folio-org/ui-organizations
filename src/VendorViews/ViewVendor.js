@@ -5,8 +5,21 @@ import _ from 'lodash';
 import queryString from 'query-string';
 // Folio
 import { IfPermission } from '@folio/stripes/core';
-import { Pane, PaneMenu, Row, Col, Icon, IconButton, Layer, AccordionSet, Accordion, ExpandAllButton } from '@folio/stripes/components';
+import {
+  Pane,
+  PaneMenu,
+  Row,
+  Col,
+  Icon,
+  IconButton,
+  Layer,
+  AccordionSet,
+  Accordion,
+  ExpandAllButton,
+  ConfirmationModal,
+} from '@folio/stripes/components';
 import { withTags } from '@folio/stripes/smart-components';
+import { MenuSection, Button } from '@folio/stripes-components';
 
 import { SECTIONS } from '../common/constants';
 import { SummaryView } from '../Summary';
@@ -30,7 +43,9 @@ class ViewVendor extends Component {
     parentMutator: PropTypes.object.isRequired,
     editLink: PropTypes.string,
     paneWidth: PropTypes.string.isRequired,
-  }
+    poURL: PropTypes.string,
+    showToast: PropTypes.func.isRequired,
+  };
 
   constructor(props) {
     super(props);
@@ -45,6 +60,7 @@ class ViewVendor extends Component {
         [SECTIONS.interfacesSection]: false,
         [SECTIONS.accountsSection]: false,
       },
+      showConfirmDelete: false,
     };
     this.connectedPaneDetails = this.props.stripes.connect(PaneDetails);
     this.handleExpandAll = this.handleExpandAll.bind(this);
@@ -102,7 +118,65 @@ class ViewVendor extends Component {
     this.props.parentMutator.records.PUT(data).then(() => {
       this.props.onCloseEdit();
     });
-  }
+  };
+
+  mountDeleteLineConfirm = () => this.setState({ showConfirmDelete: true });
+
+  unmountDeleteLineConfirm = () => this.setState({ showConfirmDelete: false });
+
+  deleteOrganization = () => {
+    const { parentMutator, showToast } = this.props;
+    const organization = this.getData();
+    const { id, name } = organization;
+
+    parentMutator.records.DELETE({ id }).then(() => {
+      showToast('ui-organizations.organization.delete.success', 'success', { organizationName: name });
+      parentMutator.query.update({
+        _path: '/organizations',
+        layer: null,
+      });
+    });
+  };
+
+  getActionMenu = ({ onToggle }) => {
+    const { onEdit } = this.props;
+    const organization = this.getData();
+
+    return (
+      <MenuSection id="data-test-organizations-details-actions">
+        <IfPermission perm="organizations-storage.organizations.item.delete">
+          <Button
+            buttonStyle="dropdownItem"
+            data-test-button-delete-organization
+            onClick={() => {
+              onToggle();
+              this.mountDeleteLineConfirm();
+            }}
+          >
+            <Icon size="small" icon="trash">
+              <FormattedMessage id="ui-organizations.view.delete" />
+            </Icon>
+          </Button>
+        </IfPermission>
+        <IfPermission perm="organizations-storage.organizations.item.put">
+          {organization && (
+            <Button
+              buttonStyle="dropdownItem"
+              data-test-button-delete-organization
+              onClick={() => {
+                onToggle();
+                onEdit();
+              }}
+            >
+              <Icon size="small" icon="edit">
+                <FormattedMessage id="ui-organizations.view.edit" />
+              </Icon>
+            </Button>
+          )}
+        </IfPermission>
+      </MenuSection>
+    );
+  };
 
   render() {
     const { location, parentResources } = this.props;
@@ -131,13 +205,21 @@ class ViewVendor extends Component {
 
     if (!organization) {
       return (
-        <Pane id="pane-vendordetails" defaultWidth={this.props.paneWidth} paneTitle={<FormattedMessage id="ui-organizations.view.details" />} lastMenu={lastMenu} dismissible onClose={this.props.onClose}>
+        <Pane
+          id="pane-vendordetails"
+          defaultWidth={this.props.paneWidth}
+          paneTitle={<FormattedMessage id="ui-organizations.view.details" />}
+          lastMenu={lastMenu}
+          dismissible
+          actionMenu={this.getActionMenu}
+          onClose={this.props.onClose}
+        >
           <div style={{ paddingTop: '1rem' }}><Icon icon="spinner-ellipsis" width="100px" /></div>
         </Pane>
       );
     }
 
-    const { isVendor } = organization;
+    const { isVendor, name } = organization;
 
     return (
       <Pane
@@ -145,6 +227,7 @@ class ViewVendor extends Component {
         defaultWidth={this.props.paneWidth}
         paneTitle={_.get(organization, ['name'], '')}
         lastMenu={lastMenu}
+        actionMenu={this.getActionMenu}
         dismissible
         onClose={this.props.onClose}
       >
@@ -184,6 +267,18 @@ class ViewVendor extends Component {
             parentMutator={this.props.parentMutator}
           />
         </Layer>
+
+        {this.state.showConfirmDelete && (
+          <ConfirmationModal
+            id="delete-organization-confirmation"
+            confirmLabel={<FormattedMessage id="ui-organizations.organization.delete.confirmLabel" />}
+            heading={<FormattedMessage id="ui-organizations.organization.delete.heading" values={{ organizationName: `${name}` }} />}
+            message={<FormattedMessage id="ui-organizations.view.delete.message" />}
+            onCancel={this.unmountDeleteLineConfirm}
+            onConfirm={this.deleteOrganization}
+            open
+          />
+        )}
       </Pane>
     );
   }

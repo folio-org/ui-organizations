@@ -6,6 +6,7 @@ import {
   OrganizationDetailsInteractor,
   OrganizationEditInteractor,
   InterfacesViewInteractor,
+  ConfirmationModalInteractor,
 } from '../interactors';
 
 const ORGANIZATIONS_COUNT = 13;
@@ -34,6 +35,20 @@ describe('Organization details', () => {
 
   it('renders Organization details', () => {
     expect(orgDetails.$root).to.exist;
+  });
+
+  it("doesn't show Organization Details action menu", () => {
+    expect(orgDetails.actions.isPresent).to.be.false;
+  });
+
+  describe('click on header', () => {
+    beforeEach(async function () {
+      await orgDetails.actions.toggle.click();
+    });
+
+    it('shows action menu', () => {
+      expect(orgDetails.actions.isPresent).to.be.true;
+    });
   });
 
   it('shows the close details pane button', () => {
@@ -141,6 +156,55 @@ describe('Organization details', () => {
 
     it('edit organization layer is open', function () {
       expect(orgEdit.isPresent).to.be.true;
+    });
+  });
+
+  describe('click delete Organization', () => {
+    const deleteLineConfirmation = new ConfirmationModalInteractor('#delete-organization-confirmation');
+
+    beforeEach(async function () {
+      await orgDetails.actions.toggle.click();
+      await orgDetails.actions.delete.click();
+    });
+
+    it('shows delete Organization confirmation', () => {
+      expect(deleteLineConfirmation.isVisible).to.be.true;
+    });
+  });
+
+  describe('click delete Organization and cancel', () => {
+    const deleteLineConfirmation = new ConfirmationModalInteractor('#delete-organization-confirmation');
+
+    beforeEach(async function () {
+      await orgDetails.actions.toggle.click();
+      await orgDetails.actions.delete.click();
+      await deleteLineConfirmation.cancelButton.click();
+    });
+
+    it('closes delete Organization confirmation', () => {
+      expect(deleteLineConfirmation.isPresent).to.be.false;
+    });
+
+    it('shows Organization Details Pane', () => {
+      expect(orgDetails.isVisible).to.be.true;
+    });
+  });
+
+  describe('click delete Organization and confirm', () => {
+    const deleteLineConfirmation = new ConfirmationModalInteractor('#delete-organization-confirmation');
+
+    beforeEach(async function () {
+      await orgDetails.actions.toggle.click();
+      await orgDetails.actions.delete.click();
+      await deleteLineConfirmation.confirmButton.click();
+    });
+
+    it('closes delete Organization confirmation', () => {
+      expect(deleteLineConfirmation.isPresent).to.be.false;
+    });
+
+    it('closes Organization Details Pane', () => {
+      expect(orgDetails.isPresent).to.be.false;
     });
   });
 

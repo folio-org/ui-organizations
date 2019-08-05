@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { getFormSyncErrors } from 'redux-form';
 
-import { IfPermission } from '@folio/stripes/core';
-import { Button, Row, Col, AccordionSet, Accordion, ExpandAllButton, Icon } from '@folio/stripes/components';
+import { Row, Col, AccordionSet, Accordion, ExpandAllButton, Icon } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 
 import { SECTIONS } from '../common/constants';
@@ -85,7 +84,6 @@ class FormVendor extends Component {
       },
       sectionErrors: [],
     };
-    this.deleteVendor = this.deleteVendor.bind(this);
     this.onToggleSection = this.onToggleSection.bind(this);
     this.handleExpandAll = this.handleExpandAll.bind(this);
   }
@@ -110,17 +108,6 @@ class FormVendor extends Component {
     });
   }
 
-  deleteVendor = () => {
-    const { parentMutator, initialValues: { id } } = this.props;
-
-    parentMutator.records.DELETE({ id }).then(() => {
-      parentMutator.query.update({
-        _path: '/organizations',
-        layer: null,
-      });
-    });
-  }
-
   render() {
     const {
       dropdownCountry,
@@ -135,8 +122,8 @@ class FormVendor extends Component {
       stripes,
     } = this.props;
     const { sectionErrors } = this.state;
-    const { id, name, interfaces = [], contacts = [] } = initialValues;
-    const showDeleteButton = !!id;
+    const { id, interfaces = [], contacts = [] } = initialValues;
+
     // Errors
     const message = (
       <em className={css.requiredIcon} style={{ color: 'red', display: 'flex', alignItems: 'center' }}>
@@ -240,20 +227,6 @@ class FormVendor extends Component {
                 )
               }
             </AccordionSet>
-            <IfPermission perm="organizations-storage.organizations.item.delete">
-              <Row end="xs">
-                <Col xs={12}>
-                  {
-                    showDeleteButton &&
-                    <Button type="button" buttonStyle="danger" onClick={this.deleteVendor}>
-                      {<FormattedMessage id="ui-organizations.edit.delete" />}
-                      &nbsp;
-                      <strong><i>{name}</i></strong>
-                    </Button>
-                  }
-                </Col>
-              </Row>
-            </IfPermission>
           </Col>
         </Row>
       </div>
