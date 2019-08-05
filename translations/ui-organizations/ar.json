@@ -575,5 +575,18 @@
     "filterConfig.isVendor": "هو موّرد",
     "main.isVendor.no": "لا",
     "main.isVendor.yes": "نعم",
-    "main.isVendor": "الموّرد"
+    "main.isVendor": "الموّرد",
+    "filterConfig.boolean.true": "صحيح",
+    "filterConfig.boolean.false": "غير صحيح",
+    "search.name": "الاسم",
+    "search.contacts": "جهات الاتصال",
+    "search.code": "رمز",
+    "search.language": "اللغة",
+    "search.aliases": "اسم مستعار",
+    "search.erpCode": "رمز المحاسبة",
+    "search.taxId": "معرف الضريبة",
+    "search.interfaces": "واجهات",
+    "paymentMethod.cach": "نقدًا",
+    "paymentMethod.card": "بطاقة ائتمان",
+    "paymentMethod.depAccount": "حساب الإيداع"
 }

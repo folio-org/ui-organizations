@@ -111,7 +111,7 @@ class PaneDetails extends React.Component {
     const lastMenu = initialValues.id ?
       this.getLastMenu('clickable-update-organization', 'ui-organizations.updateOrg.submit') :
       this.getLastMenu('clickable-create-organization', 'ui-organizations.updateOrg.submit');
-    const isVendor = getFormValues('FormVendor')(stripes.store.getState()).isVendor;
+    const { isVendor, language } = getFormValues('FormVendor')(stripes.store.getState()) || {};
 
     return (
       <form id="form-vendor">
@@ -130,6 +130,7 @@ class PaneDetails extends React.Component {
             dropdownCountry={this.getCountryList()}
             dropdownPhoneType={this.getPhoneType()}
             deleteVendor={this.deleteVendor}
+            language={language}
             {...this.props}
           />
         </Pane>

@@ -575,5 +575,18 @@
     "filterConfig.isVendor": "是供应商",
     "main.isVendor.no": "否",
     "main.isVendor.yes": "是",
-    "main.isVendor": "供应商"
+    "main.isVendor": "供应商",
+    "filterConfig.boolean.true": "True",
+    "filterConfig.boolean.false": "False",
+    "search.name": "Name",
+    "search.contacts": "Contacts",
+    "search.code": "Code",
+    "search.language": "Language",
+    "search.aliases": "Alias",
+    "search.erpCode": "Accounting code",
+    "search.taxId": "Tax ID",
+    "search.interfaces": "Interfaces",
+    "paymentMethod.cach": "Cash",
+    "paymentMethod.card": "Credit Card/P-Card",
+    "paymentMethod.depAccount": "Deposit Account"
 }

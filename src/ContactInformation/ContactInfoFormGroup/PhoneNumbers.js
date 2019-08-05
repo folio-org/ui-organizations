@@ -17,8 +17,9 @@ import { FieldAutoSuggest } from '@folio/stripes-acq-components';
 import CategoryDropdown from '../../Utils/CategoryDropdown';
 import { Required } from '../../Utils/Validate';
 import FieldLanguage from './FieldLanguage';
+import createAddNewItem from './createAddNewItem';
 
-const PhoneNumbers = ({ dropdownVendorCategories, dropdownPhoneType, dropdownLanguages }) => {
+const PhoneNumbers = ({ defaultLanguage, dropdownVendorCategories, dropdownPhoneType, dropdownLanguages }) => {
   const PhoneNumbersMF = (name, index, fields) => {
     const valueKey = 'phoneNumber';
     const phones = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
@@ -88,12 +89,14 @@ const PhoneNumbers = ({ dropdownVendorCategories, dropdownPhoneType, dropdownLan
       id="phone-numbers"
       legend={<FormattedMessage id="ui-organizations.contactInfo.phoneNumbers" />}
       name="phoneNumbers"
+      onAdd={createAddNewItem(defaultLanguage)}
       renderField={PhoneNumbersMF}
     />
   );
 };
 
 PhoneNumbers.propTypes = {
+  defaultLanguage: PropTypes.string,
   dropdownPhoneType: PropTypes.arrayOf(PropTypes.object),
   dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),

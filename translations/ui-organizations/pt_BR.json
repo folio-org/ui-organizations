@@ -575,5 +575,18 @@
     "filterConfig.isVendor": "É fornecedor",
     "main.isVendor.no": "Não",
     "main.isVendor.yes": "Sim",
-    "main.isVendor": "Fornecedor"
+    "main.isVendor": "Fornecedor",
+    "filterConfig.boolean.true": "Verdadeiro",
+    "filterConfig.boolean.false": "Falso",
+    "search.name": "Nome",
+    "search.contacts": "Contatos",
+    "search.code": "Código",
+    "search.language": "Idioma",
+    "search.aliases": "Alias",
+    "search.erpCode": "Código contábil",
+    "search.taxId": "ID do imposto",
+    "search.interfaces": "Interfaces",
+    "paymentMethod.cach": "Dinheiro",
+    "paymentMethod.card": "Cartão de crédito",
+    "paymentMethod.depAccount": "Conta de depósito"
 }

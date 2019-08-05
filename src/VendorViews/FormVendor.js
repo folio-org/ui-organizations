@@ -27,6 +27,11 @@ class FormVendor extends Component {
     parentResources: PropTypes.object.isRequired,
     stripes: PropTypes.object,
     isVendor: PropTypes.bool,
+    language: PropTypes.string,
+    dropdownCountry: PropTypes.arrayOf(PropTypes.object),
+    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
+    dropdownPhoneType: PropTypes.arrayOf(PropTypes.object),
+    dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -104,7 +109,18 @@ class FormVendor extends Component {
   }
 
   render() {
-    const { initialValues, isVendor, parentMutator, parentResources, stripes } = this.props;
+    const {
+      dropdownCountry,
+      dropdownLanguages,
+      dropdownPhoneType,
+      dropdownVendorCategories,
+      initialValues,
+      isVendor,
+      language,
+      parentMutator,
+      parentResources,
+      stripes,
+    } = this.props;
     const { sectionErrors } = this.state;
     const { id, interfaces = [], contacts = [] } = initialValues;
 
@@ -135,7 +151,13 @@ class FormVendor extends Component {
                 <SummaryForm {...this.props} />
               </Accordion>
               <Accordion label={<FormattedMessage id="ui-organizations.contactInformation" />} id="contactInformationSection" displayWhenClosed={isDisplayError('contactInfoErr')} displayWhenOpen={isDisplayError('contactInfoErr')}>
-                <ContactInformationForm {...this.props} />
+                <ContactInformationForm
+                  defaultLanguage={language}
+                  dropdownCountry={dropdownCountry}
+                  dropdownLanguages={dropdownLanguages}
+                  dropdownPhoneType={dropdownPhoneType}
+                  dropdownVendorCategories={dropdownVendorCategories}
+                />
               </Accordion>
               <Accordion
                 label={<FormattedMessage id="ui-organizations.contactPeople" />}
