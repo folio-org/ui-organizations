@@ -40,6 +40,8 @@ describe('Organization edit', () => {
     it('metadata is displayed', function () {
       expect(orgEdit.summarySectionForm.metadata.isPresent).to.be.true;
     });
+
+    it('vendor checkbox should be display', function () {
       expect(orgEdit.summarySectionForm.isVendor.isPresent).to.be.false;
     });
   });
