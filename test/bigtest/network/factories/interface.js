@@ -5,7 +5,5 @@ export default Factory.extend({
   name: faker.name.title,
   uri: faker.internet.url,
   notes: faker.lorem.text,
-  username: faker.name.title,
-  password: faker.internet.password,
   available: true,
 });

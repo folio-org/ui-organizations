@@ -9,7 +9,7 @@ export const saveInterface = (
 
   return vendorInterface[httpMethod](values)
     .then(({ id }) => {
-      if (!creds.id || creds.username !== username || creds.password !== password) {
+      if ((!creds.id && (username || password)) || creds.username !== username || creds.password !== password) {
         interfaceId.replace(id);
         interfaceCredentials[creds.id ? 'PUT' : 'POST']({
           ...creds,

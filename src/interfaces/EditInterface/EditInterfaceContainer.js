@@ -16,14 +16,6 @@ import {
 } from './const';
 import { getBackQuery } from '../../common/utils/createItem';
 
-const isLoaded = (isNew, { vendorInterface, interfaceCredentials }) => {
-  const { hasLoaded, failed } = interfaceCredentials || {};
-  const isCredsLoaded = hasLoaded || failed;
-  const isInterfaceLoaded = get(vendorInterface, 'hasLoaded');
-
-  return isNew || (isInterfaceLoaded && isCredsLoaded);
-};
-
 class EditInterfaceContainer extends Component {
   static manifest = Object.freeze({
     interfaceCredentials: interfaceCredentialsResource,
@@ -33,9 +25,9 @@ class EditInterfaceContainer extends Component {
   });
 
   getCreds() {
-    const { interfaceCredentials } = this.props.resources;
+    const { interfaceCredentials } = this.props.resources || {};
 
-    return (!interfaceCredentials.failed && get(interfaceCredentials, 'records.0')) || {};
+    return (!get(interfaceCredentials, 'failed') && get(interfaceCredentials, 'records.0')) || {};
   }
 
   onClose = (interfaceId = this.props.match.params.id) => {
@@ -60,8 +52,6 @@ class EditInterfaceContainer extends Component {
   render() {
     const { match, resources, stripes } = this.props;
     const isNew = !match.params.id;
-
-    if (!isLoaded(isNew, resources)) return null;
     const loadedInterface = get(resources, 'vendorInterface.records[0]', {});
     const { username, password } = this.getCreds();
     const initialValues = isNew ? {} : {
