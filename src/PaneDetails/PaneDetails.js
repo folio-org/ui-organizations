@@ -4,7 +4,7 @@ import { getFormValues } from 'redux-form';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
 
-import { Pane, PaneMenu, Button } from '@folio/stripes/components';
+import { Pane, PaneMenu, Button, ConfirmationModal } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/form';
 
 import { FormVendor } from '../VendorViews';
@@ -32,6 +32,9 @@ class PaneDetails extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      isVendorUncheckConfirm: false,
+    };
     this.deleteVendor = this.deleteVendor.bind(this);
     this.getVendorCategory = this.getVendorCategory.bind(this);
     this.getCurrencies = this.getCurrencies.bind(this);
@@ -105,14 +108,30 @@ class PaneDetails extends React.Component {
     });
   }
 
+  hideVendorUncheckConfirm = () => this.setState({ isVendorUncheckConfirm: false });
+
+  handleVendorUncheck = () => {
+    const { change, dispatch } = this.props;
+
+    this.setState({ isVendorUncheckConfirm: false });
+    dispatch(change('isVendor', false));
+  };
+
   dispatchChange = (fieldName, value) => {
     const { change, dispatch } = this.props;
 
-    dispatch(change(fieldName, value));
+    console.log(fieldName, value);
+
+    if (fieldName === 'isVendor' && !value) {
+      this.setState({ isVendorUncheckConfirm: true });
+    } else {
+      dispatch(change(fieldName, value));
+    }
   }
 
   render() {
     const { initialValues, stripes, onCancel } = this.props;
+    const { isVendorUncheckConfirm } = this.state;
     const paneTitle = initialValues.id ?
       <FormattedMessage id="ui-organizations.editOrg.title" values={{ name: get(initialValues, ['name'], '') }} /> :
       <FormattedMessage id="ui-organizations.createOrg.title" />;
@@ -142,6 +161,16 @@ class PaneDetails extends React.Component {
             language={language}
             {...this.props}
           />
+          {isVendorUncheckConfirm && (
+            <ConfirmationModal
+              confirmLabel={<FormattedMessage id="ui-organizations.vendor.confirmation.confirm" />}
+              heading={<FormattedMessage id="ui-organizations.vendor.confirmation.heading" />}
+              message={<FormattedMessage id="ui-organizations.vendor.confirmation.message" />}
+              onCancel={this.hideVendorUncheckConfirm}
+              onConfirm={this.handleVendorUncheck}
+              open
+            />
+          )}
         </Pane>
       </form>
     );

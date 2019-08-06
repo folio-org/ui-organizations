@@ -22,6 +22,8 @@ import { Required } from '../Utils/Validate';
 class SummaryForm extends Component {
   static propTypes = {
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
+    dispatchChange: PropTypes.func,
+    isVendor: PropTypes.bool,
   };
 
   renderAlias = (elem) => {
@@ -47,9 +49,18 @@ class SummaryForm extends Component {
         </Col>
       </Row>
     );
+  };
+
+  onChangeVendor = (e) => {
+    const { dispatchChange } = this.props;
+    const { checked } = e.target;
+
+    dispatchChange('isVendor', checked);
   }
 
   render() {
+    const { isVendor } = this.props;
+
     return (
       <Row>
         <Col xs={12}>
@@ -67,11 +78,11 @@ class SummaryForm extends Component {
           xs={12}
           md={6}
         >
-          <Field
-            component={Checkbox}
+          <Checkbox
             label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
             name="isVendor"
-            type="checkbox"
+            checked={isVendor}
+            onChange={this.onChangeVendor}
           />
           <Field
             component={TextField}
