@@ -24,7 +24,7 @@ import TextFieldInteractor from './TextFieldInteractor';
 
 class SummarySectionForm extends SummarySection {
   name = new Interactor('input[name="name"]');
-  isVendor = new Interactor('input[name="isVendor"]');
+  isVendor = new CheckboxInteractor('input[name="isVendor"]');
   code = new Interactor('input[name="code"]');
   status = new Interactor('select[name="status"]');
 }

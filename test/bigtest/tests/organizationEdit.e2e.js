@@ -40,6 +40,8 @@ describe('Organization edit', () => {
     it('metadata is displayed', function () {
       expect(orgEdit.summarySectionForm.metadata.isPresent).to.be.true;
     });
+      expect(orgEdit.summarySectionForm.isVendor.isPresent).to.be.false;
+    });
   });
 
   describe('clicking on the close pane button', function () {

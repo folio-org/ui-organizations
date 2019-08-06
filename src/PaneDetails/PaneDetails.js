@@ -118,11 +118,9 @@ class PaneDetails extends React.Component {
   };
 
   dispatchChange = (fieldName, value) => {
-    const { change, dispatch } = this.props;
+    const { change, dispatch, initialValues } = this.props;
 
-    console.log(fieldName, value);
-
-    if (fieldName === 'isVendor' && !value) {
+    if (fieldName === 'isVendor' && !value && initialValues.id) {
       this.setState({ isVendorUncheckConfirm: true });
     } else {
       dispatch(change(fieldName, value));
@@ -161,7 +159,7 @@ class PaneDetails extends React.Component {
             language={language}
             {...this.props}
           />
-          {isVendorUncheckConfirm && (
+          {initialValues.id && isVendorUncheckConfirm && (
             <ConfirmationModal
               confirmLabel={<FormattedMessage id="ui-organizations.vendor.confirmation.confirm" />}
               heading={<FormattedMessage id="ui-organizations.vendor.confirmation.heading" />}
