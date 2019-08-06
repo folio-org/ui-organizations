@@ -74,7 +74,10 @@ const InterfaceView = ({ resources, item = {}, isNarrow = false }) => {
             </span>
           </KeyValue>
         </Col>
-        <Col xs={columnsAmount - 1}>
+        <Col
+          data-test-password
+          xs={columnsAmount - 1}
+        >
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.password" />}>
             <span className={css.wrapValue}>
               {password}
@@ -83,7 +86,10 @@ const InterfaceView = ({ resources, item = {}, isNarrow = false }) => {
         </Col>
         <Col xs={1}>
           <IfPermission perm="organizations-storage.interfaces.credentials.item.get">
-            <Button onClick={showCreds}>
+            <Button
+              data-test-show-creds
+              onClick={showCreds}
+            >
               <FormattedMessage id="ui-organizations.edit.show" />
             </Button>
           </IfPermission>
