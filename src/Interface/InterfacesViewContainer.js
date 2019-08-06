@@ -9,7 +9,7 @@ import {
 
 import { Icon } from '@folio/stripes/components';
 
-import { InterfaceView } from './InterfaceView/InterfaceView';
+import InterfaceView from './InterfaceView/InterfaceView';
 import { updateInterfaces } from './utils';
 
 class InterfacesViewContainer extends React.Component {

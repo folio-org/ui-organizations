@@ -6,7 +6,10 @@ import { FormattedMessage } from 'react-intl';
 import { ConfirmationModal, Icon } from '@folio/stripes/components';
 
 import ViewInterface from './ViewInterface';
-import { interfaceResource, organizationResource } from '../../common/resources';
+import {
+  interfaceResource,
+  organizationResource,
+} from '../../common/resources';
 import { deleteInterface, unassignInterface } from './util';
 
 export class ViewInterfaceContainer extends Component {
@@ -20,7 +23,7 @@ export class ViewInterfaceContainer extends Component {
   };
 
   static manifest = Object.freeze({
-    interface: interfaceResource,
+    vendorInterface: interfaceResource,
     organization: organizationResource,
     query: {},
   });
@@ -64,7 +67,7 @@ export class ViewInterfaceContainer extends Component {
     const interfaceId = get(match, 'params.id');
 
     this.hideConfirmDelete();
-    deleteInterface(mutator.organization, mutator.interface, interfaceId, org)
+    deleteInterface(mutator.organization, mutator.vendorInterface, interfaceId, org)
       .then(() => this.onClose())
       .catch(() => showMessage('ui-organizations.interface.message.delete.fail', 'error'));
   };
@@ -72,9 +75,9 @@ export class ViewInterfaceContainer extends Component {
   render() {
     const { resources, baseUrl } = this.props;
 
-    const currentInterface = get(resources, 'interface.records[0]', {});
+    const currentInterface = get(resources, 'vendorInterface.records[0]', {});
 
-    if (get(resources, 'interface.isPending', true)) {
+    if (get(resources, 'vendorInterface.isPending', true)) {
       return <Icon icon="spinner-ellipsis" />;
     }
 

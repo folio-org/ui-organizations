@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 
 import {
+  interfaceCredentialsResource,
   interfaceResource,
 } from '../../common/resources';
 import { saveInterface } from './util';
@@ -15,11 +16,27 @@ import {
 } from './const';
 import { getBackQuery } from '../../common/utils/createItem';
 
+const isLoaded = (isNew, { vendorInterface, interfaceCredentials }) => {
+  const { hasLoaded, failed } = interfaceCredentials || {};
+  const isCredsLoaded = hasLoaded || failed;
+  const isInterfaceLoaded = get(vendorInterface, 'hasLoaded');
+
+  return isNew || (isInterfaceLoaded && isCredsLoaded);
+};
+
 class EditInterfaceContainer extends Component {
   static manifest = Object.freeze({
-    interface: interfaceResource,
+    interfaceCredentials: interfaceCredentialsResource,
+    interfaceId: {},
     query: {},
+    vendorInterface: interfaceResource,
   });
+
+  getCreds() {
+    const { interfaceCredentials } = this.props.resources;
+
+    return (!interfaceCredentials.failed && get(interfaceCredentials, 'records.0')) || {};
+  }
 
   onClose = (interfaceId = this.props.match.params.id) => {
     const { orgId, mutator } = this.props;
@@ -30,9 +47,10 @@ class EditInterfaceContainer extends Component {
 
   onSubmit = (formValues) => {
     const { mutator, showMessage } = this.props;
+    const creds = this.getCreds();
 
-    saveInterface(mutator.interface, formValues)
-      .then(({ id }) => {
+    saveInterface(mutator, formValues, creds)
+      .then((id) => {
         showMessage('ui-organizations.interface.message.saved.success', 'success');
         this.onClose(id);
       })
@@ -42,8 +60,15 @@ class EditInterfaceContainer extends Component {
   render() {
     const { match, resources, stripes } = this.props;
     const isNew = !match.params.id;
-    const loadedInterface = get(resources, 'interface.records[0]', {});
-    const initialValues = isNew ? {} : loadedInterface;
+
+    if (!isLoaded(isNew, resources)) return null;
+    const loadedInterface = get(resources, 'vendorInterface.records[0]', {});
+    const { username, password } = this.getCreds();
+    const initialValues = isNew ? {} : {
+      ...loadedInterface,
+      username,
+      password,
+    };
     const { name } = initialValues;
     const paneTitle = isNew
       ? <FormattedMessage id="ui-organizations.interface.create.paneTitle" />
