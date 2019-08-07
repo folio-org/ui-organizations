@@ -40,9 +40,54 @@ describe('Organization edit', () => {
     it('metadata is displayed', function () {
       expect(orgEdit.summarySectionForm.metadata.isPresent).to.be.true;
     });
+  });
+
+  describe('vendor checkbox', function () {
+    beforeEach(async function () {
+      await orgEdit.summarySectionForm.headerButton.click();
+    });
 
     it('vendor checkbox should be display', function () {
-      expect(orgEdit.summarySectionForm.isVendor.isPresent).to.be.false;
+      expect(orgEdit.summarySectionForm.isVendor.isPresent).to.be.true;
+    });
+
+    describe('confirmation modal', function () {
+      beforeEach(async function () {
+        await orgEdit.summarySectionForm.isVendor.clickAndBlur();
+        await orgEdit.summarySectionForm.isVendor.clickAndBlur();
+      });
+
+      it('should be display', function () {
+        expect(orgEdit.vendorConfirmationModal.isPresent).to.be.true;
+      });
+    });
+
+    describe('uncheck and click cancel', function () {
+      beforeEach(async function () {
+        await orgEdit.summarySectionForm.isVendor.clickAndBlur();
+        await orgEdit.summarySectionForm.isVendor.clickAndBlur();
+        await orgEdit.vendorConfirmationModal.cancelButton.click();
+      });
+
+      it('closes confirmation modal', () => {
+        expect(orgEdit.vendorConfirmationModal.isPresent).to.be.false;
+      });
+    });
+
+    describe('uncheck and click confirm', function () {
+      beforeEach(async function () {
+        await orgEdit.summarySectionForm.isVendor.clickAndBlur();
+        await orgEdit.summarySectionForm.isVendor.clickAndBlur();
+        await orgEdit.vendorConfirmationModal.confirmButton.click();
+      });
+
+      it('closes onfirmation modal', () => {
+        expect(orgEdit.vendorConfirmationModal.isPresent).to.be.false;
+      });
+
+      it('should be unchecked', () => {
+        expect(orgEdit.summarySectionForm.isVendor.isChecked).to.be.false;
+      });
     });
   });
 

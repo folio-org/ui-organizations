@@ -161,6 +161,7 @@ class PaneDetails extends React.Component {
           />
           {initialValues.id && isVendorUncheckConfirm && (
             <ConfirmationModal
+              id="uncheck-is-vendor-confirmation"
               confirmLabel={<FormattedMessage id="ui-organizations.vendor.confirmation.confirm" />}
               heading={<FormattedMessage id="ui-organizations.vendor.confirmation.heading" />}
               message={<FormattedMessage id="ui-organizations.vendor.confirmation.message" />}
