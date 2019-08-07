@@ -12,9 +12,9 @@ import {
 import { AppIcon } from '@folio/stripes/core';
 
 import { EDIT_INTERFACE_URL } from '../constants';
-import { InterfaceView } from '../../Interface/InterfaceView/InterfaceView';
+import InterfaceView from '../../Interface/InterfaceView/InterfaceView';
 
-const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface }) => {
+const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getCreds }) => {
   // eslint-disable-next-line react/prop-types
   const getActionMenu = ({ onToggle }) => {
     const interfaceId = item.id;
@@ -86,7 +86,10 @@ const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface }) =>
           md={8}
           mdOffset={2}
         >
-          <InterfaceView item={item} />
+          <InterfaceView
+            getCreds={getCreds}
+            item={item}
+          />
         </Col>
       </Row>
     </Pane>
@@ -99,6 +102,7 @@ ViewInterface.propTypes = {
   baseUrl: PropTypes.string.isRequired,
   unassign: PropTypes.func.isRequired,
   deleteInterface: PropTypes.func.isRequired,
+  getCreds: PropTypes.func.isRequired,
 };
 
 export default ViewInterface;

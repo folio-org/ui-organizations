@@ -1,6 +1,7 @@
 import {
   Interactor,
   interactor,
+  text,
 } from '@bigtest/interactor';
 
 import Button from '../Button';
@@ -16,4 +17,6 @@ export default interactor(class InterfacePaneInteractor {
   deleteButton = new Button('[data-test-interface-action-delete]');
   unassignConfirmation = new ConfirmationModal('#unassign-interface-modal');
   deleteConfirmation = new ConfirmationModal('#delete-interface-modal');
+  showCredsButton = new Button('[data-test-show-creds]');
+  passwordBlockText = text('[data-test-password');
 });
