@@ -8,7 +8,7 @@ import {
 
 import {
   Checkbox,
-  Col,
+  Col, ConfirmationModal,
   RepeatableField,
   Row,
   Select,
@@ -23,6 +23,11 @@ class SummaryForm extends Component {
   static propTypes = {
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     dispatchChange: PropTypes.func,
+    initialValues: PropTypes.object,
+  };
+
+  state = {
+    isVendorUncheckConfirm: false,
   };
 
   renderAlias = (elem) => {
@@ -50,8 +55,21 @@ class SummaryForm extends Component {
     );
   };
 
+  hideVendorUncheckConfirm = () => {
+    this.setState({ isVendorUncheckConfirm: false });
+    this.props.dispatchChange('isVendor', true);
+  };
+
+  handleVendorUncheck = () => this.setState({ isVendorUncheckConfirm: false });
+
+  onChangeIsVendor = (e, value) => {
+    const { initialValues } = this.props;
+
+    if (initialValues.id && !value) this.setState({ isVendorUncheckConfirm: true });
+  };
+
   render() {
-    const { dispatchChange } = this.props;
+    const { isVendorUncheckConfirm } = this.state;
 
     return (
       <Row>
@@ -75,7 +93,7 @@ class SummaryForm extends Component {
             label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
             name="isVendor"
             type="checkbox"
-            onChange={(e, value) => dispatchChange('isVendor', value)}
+            onChange={this.onChangeIsVendor}
           />
           <Field
             component={TextField}
@@ -138,6 +156,18 @@ class SummaryForm extends Component {
             renderField={this.renderAlias}
           />
         </Col>
+
+        {isVendorUncheckConfirm && (
+          <ConfirmationModal
+            id="uncheck-is-vendor-confirmation"
+            confirmLabel={<FormattedMessage id="ui-organizations.vendor.confirmation.confirm" />}
+            heading={<FormattedMessage id="ui-organizations.vendor.confirmation.heading" />}
+            message={<FormattedMessage id="ui-organizations.vendor.confirmation.message" />}
+            onCancel={this.hideVendorUncheckConfirm}
+            onConfirm={this.handleVendorUncheck}
+            open
+          />
+        )}
       </Row>
     );
   }
