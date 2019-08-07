@@ -7,9 +7,11 @@ import { ConfirmationModal, Icon } from '@folio/stripes/components';
 
 import ViewInterface from './ViewInterface';
 import {
+  interfaceCredentialsResource,
   interfaceResource,
   organizationResource,
 } from '../../common/resources';
+import { getResourceDataItem } from '../../common/utils';
 import { deleteInterface, unassignInterface } from './util';
 
 export class ViewInterfaceContainer extends Component {
@@ -23,9 +25,10 @@ export class ViewInterfaceContainer extends Component {
   };
 
   static manifest = Object.freeze({
-    vendorInterface: interfaceResource,
+    interfaceCredentials: interfaceCredentialsResource,
     organization: organizationResource,
     query: {},
+    vendorInterface: interfaceResource,
   });
 
   state = {
@@ -72,6 +75,8 @@ export class ViewInterfaceContainer extends Component {
       .catch(() => showMessage('ui-organizations.interface.message.delete.fail', 'error'));
   };
 
+  getCreds = () => getResourceDataItem(this.props.resources, 'interfaceCredentials');
+
   render() {
     const { resources, baseUrl } = this.props;
 
@@ -91,6 +96,7 @@ export class ViewInterfaceContainer extends Component {
           deleteInterface={this.showConfirmDelete}
           onClose={this.onClose}
           unassign={this.showConfirmUnassign}
+          getCreds={this.getCreds}
         />
         {showConfirmUnassign && (
           <ConfirmationModal

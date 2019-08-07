@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
-import { withRouter } from 'react-router';
 
 import {
   KeyValue,
@@ -13,13 +11,11 @@ import {
 } from '@folio/stripes/components';
 import {
   IfPermission,
-  stripesConnect,
 } from '@folio/stripes/core';
 
-import { interfaceCredentialsResource } from '../../common/resources';
 import css from './InterfaceView.css';
 
-const InterfaceView = ({ resources, item = {}, isNarrow = false }) => {
+const InterfaceView = ({ getCreds, item = {}, isNarrow = false }) => {
   const columnsAmount = isNarrow ? 6 : 3;
   const {
     type = [],
@@ -35,7 +31,7 @@ const InterfaceView = ({ resources, item = {}, isNarrow = false }) => {
   } = item;
   const [{ username, password }, setCreds] = React.useState({ username: '***', password: '***' });
   const showCreds = () => {
-    const creds = (!get(resources, 'interfaceCredentialsfailed') && get(resources, 'interfaceCredentials.records.0')) || {};
+    const creds = getCreds();
 
     setCreds({
       username: creds.username || '',
@@ -161,14 +157,10 @@ const InterfaceView = ({ resources, item = {}, isNarrow = false }) => {
   );
 };
 
-InterfaceView.manifest = {
-  interfaceCredentials: interfaceCredentialsResource,
-};
-
 InterfaceView.propTypes = {
-  item: PropTypes.object.isRequired,
-  resources: PropTypes.object.isRequired,
+  getCreds: PropTypes.func.isRequired,
   isNarrow: PropTypes.bool,
+  item: PropTypes.object.isRequired,
 };
 
-export default withRouter(stripesConnect(InterfaceView));
+export default InterfaceView;
