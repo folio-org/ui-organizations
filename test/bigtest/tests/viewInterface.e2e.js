@@ -75,7 +75,18 @@ describe('View interface', () => {
     });
   });
 
-  it('should be present', () => {
+  it('should be present, password is hidden', () => {
     expect(viewInterface.orgInterface.isPresent).to.be.true;
+    expect(viewInterface.passwordBlockText).to.contain('***');
+  });
+
+  describe('click show password', () => {
+    beforeEach(async function () {
+      await viewInterface.showCredsButton.click();
+    });
+
+    it('displays password value, without asterisks', () => {
+      expect(viewInterface.passwordBlockText).to.not.contain('***');
+    });
   });
 });

@@ -7,18 +7,20 @@ import {
   Col,
   Row,
   Checkbox,
+  Button,
 } from '@folio/stripes/components';
+import {
+  IfPermission,
+} from '@folio/stripes/core';
 
 import css from './InterfaceView.css';
 
-export const InterfaceView = ({ item = {}, isNarrow = false }) => {
+const InterfaceView = ({ getCreds, item = {}, isNarrow = false }) => {
   const columnsAmount = isNarrow ? 6 : 3;
   const {
     type = [],
     name,
     uri,
-    username,
-    password,
     notes,
     available,
     deliveryMethod,
@@ -27,6 +29,15 @@ export const InterfaceView = ({ item = {}, isNarrow = false }) => {
     onlineLocation,
     statisticsNotes,
   } = item;
+  const [{ username, password }, setCreds] = React.useState({ username: '***', password: '***' });
+  const showCreds = () => {
+    const creds = getCreds();
+
+    setCreds({
+      username: creds.username || '',
+      password: creds.password || '',
+    });
+  };
 
   return (
     <div data-test-interface-pane-view>
@@ -59,12 +70,25 @@ export const InterfaceView = ({ item = {}, isNarrow = false }) => {
             </span>
           </KeyValue>
         </Col>
-        <Col xs={columnsAmount}>
+        <Col
+          data-test-password
+          xs={columnsAmount - 1}
+        >
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.password" />}>
             <span className={css.wrapValue}>
               {password}
             </span>
           </KeyValue>
+        </Col>
+        <Col xs={1}>
+          <IfPermission perm="organizations-storage.interfaces.credentials.item.get">
+            <Button
+              data-test-show-creds
+              onClick={showCreds}
+            >
+              <FormattedMessage id="ui-organizations.edit.show" />
+            </Button>
+          </IfPermission>
         </Col>
       </Row>
       <Row>
@@ -134,8 +158,9 @@ export const InterfaceView = ({ item = {}, isNarrow = false }) => {
 };
 
 InterfaceView.propTypes = {
-  item: PropTypes.object.isRequired,
+  getCreds: PropTypes.func.isRequired,
   isNarrow: PropTypes.bool,
+  item: PropTypes.object.isRequired,
 };
 
 export default InterfaceView;
