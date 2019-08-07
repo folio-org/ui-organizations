@@ -108,7 +108,10 @@ class PaneDetails extends React.Component {
     });
   }
 
-  hideVendorUncheckConfirm = () => this.setState({ isVendorUncheckConfirm: false });
+  hideVendorUncheckConfirm = () => {
+    this.setState({ isVendorUncheckConfirm: false });
+    this.dispatchChange('isVendor', true);
+  };
 
   handleVendorUncheck = () => {
     const { change, dispatch } = this.props;
@@ -125,7 +128,7 @@ class PaneDetails extends React.Component {
     } else {
       dispatch(change(fieldName, value));
     }
-  }
+  };
 
   render() {
     const { initialValues, stripes, onCancel } = this.props;

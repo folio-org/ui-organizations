@@ -23,7 +23,6 @@ class SummaryForm extends Component {
   static propTypes = {
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     dispatchChange: PropTypes.func,
-    isVendor: PropTypes.bool,
   };
 
   renderAlias = (elem) => {
@@ -51,15 +50,8 @@ class SummaryForm extends Component {
     );
   };
 
-  onChangeVendor = (e) => {
-    const { dispatchChange } = this.props;
-    const { checked } = e.target;
-
-    dispatchChange('isVendor', checked);
-  }
-
   render() {
-    const { isVendor } = this.props;
+    const { dispatchChange } = this.props;
 
     return (
       <Row>
@@ -78,11 +70,12 @@ class SummaryForm extends Component {
           xs={12}
           md={6}
         >
-          <Checkbox
+          <Field
+            component={Checkbox}
             label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
             name="isVendor"
-            checked={isVendor}
-            onChange={this.onChangeVendor}
+            type="checkbox"
+            onChange={(e, value) => dispatchChange('isVendor', value)}
           />
           <Field
             component={TextField}
