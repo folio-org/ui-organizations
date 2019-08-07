@@ -588,5 +588,10 @@
     "search.interfaces": "Interfaces",
     "paymentMethod.cach": "Dinheiro",
     "paymentMethod.card": "Cartão de crédito",
-    "paymentMethod.depAccount": "Conta de depósito"
+    "paymentMethod.depAccount": "Conta de depósito",
+    "organization.delete.heading": "Excluir {organizationName}?",
+    "organization.delete.confirmLabel": "Excluir?",
+    "organization.delete.success": "A organização {organizationName} foi excluída com sucesso",
+    "view.delete": "Excluir",
+    "view.delete.message": "Excluir organização?"
 }
