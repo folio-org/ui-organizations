@@ -153,6 +153,4 @@ export default stripesForm({
   form: 'FormVendor',
   navigationCheck: true,
   enableReinitialize: true,
-  keepDirtyOnReinitialize: true,
-  pure: false,
 })(PaneDetails);
