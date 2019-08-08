@@ -20,13 +20,13 @@ import {
 
 import { ORGANIZATION_STATUS } from '../common/constants';
 import { Required } from '../Utils/Validate';
+import resetVendorFields from './resetVendorFields';
 
 class SummaryForm extends Component {
   static propTypes = {
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     dispatchChange: PropTypes.func.isRequired,
-    initialValues: PropTypes.object,
-    stripes: PropTypes.object.isRequired,
+    initialValues: PropTypes.object.isRequired,
   };
 
   state = {
@@ -70,15 +70,8 @@ class SummaryForm extends Component {
 
   resetVendorFields = () => {
     const { dispatchChange } = this.props;
-    const fieldsExclude = ['id', 'metadata', 'changelogs'];
 
-    const { stripes } = this.props;
-    const formValue = getFormValues('FormVendor')(stripes.store.getState()) || {};
-    const registeredFields = get(stripes.store.getState(), ['form', 'FormVendor', 'registeredFields'], {});
-    const fieldToReset = Object.keys(formValue)
-      .filter(key => !Object.keys(registeredFields).includes(key) && !fieldsExclude.includes(key));
-
-    fieldToReset.forEach(field => dispatchChange(field, null));
+    resetVendorFields.forEach(field => dispatchChange(field, null));
   };
 
   onChangeIsVendor = (e, value) => {
