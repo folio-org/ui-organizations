@@ -44,7 +44,7 @@ class ViewVendor extends Component {
     editLink: PropTypes.string,
     paneWidth: PropTypes.string.isRequired,
     poURL: PropTypes.string,
-    showToast: PropTypes.func.isRequired,
+    showHtmlToast: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -125,12 +125,15 @@ class ViewVendor extends Component {
   unmountDeleteLineConfirm = () => this.setState({ showConfirmDelete: false });
 
   deleteOrganization = () => {
-    const { parentMutator, showToast } = this.props;
+    const { parentMutator, showHtmlToast } = this.props;
     const organization = this.getData();
     const { id, name } = organization;
 
     parentMutator.records.DELETE({ id }).then(() => {
-      showToast('ui-organizations.organization.delete.success', 'success', { organizationName: name });
+      showHtmlToast('ui-organizations.organization.delete.success', {
+        messageType: 'success',
+        values: { organizationName: name },
+      });
       parentMutator.query.update({
         _path: '/organizations',
         layer: null,

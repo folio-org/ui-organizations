@@ -225,7 +225,7 @@ class Main extends Component {
     this.handleFilterChange = handleFilterChange.bind(this);
     this.changeSearchIndex = changeSearchIndex.bind(this);
     this.callout = React.createRef();
-    this.showToast = showHtmlToast.bind(this);
+    this.showHtmlToast = showHtmlToast.bind(this);
   }
 
   create = (data) => {
@@ -317,7 +317,7 @@ class Main extends Component {
           newRecordPerms="organizations-storage.organizations.item.post"
           parentResources={resources}
           parentMutator={mutator}
-          detailProps={{ showToast: this.showToast }}
+          detailProps={{ showHtmlToast: this.showHtmlToast }}
           stripes={stripes}
           searchableIndexes={this.getTranslateSearchableIndexes()}
           selectedIndex={get(resources.query, 'qindex')}
