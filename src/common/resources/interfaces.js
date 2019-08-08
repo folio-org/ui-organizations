@@ -28,3 +28,10 @@ export const interfaceCredentialsResource = {
     path: `${INTERFACES_API}/%{interfaceId}/credentials`,
   },
 };
+
+export const viewVendorCredsResource = {
+  ...interfaceCredentialsResource,
+  accumulate: true,
+  fetch: false,
+  path: `${INTERFACES_API}/!{item.id}/credentials`,
+};

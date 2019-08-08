@@ -9,7 +9,7 @@ import {
 
 import { Icon } from '@folio/stripes/components';
 
-import InterfaceView from './InterfaceView/InterfaceView';
+import InterfaceViewContainer from './InterfaceView';
 import { updateInterfaces } from './utils';
 
 class InterfacesViewContainer extends React.Component {
@@ -54,7 +54,7 @@ class InterfacesViewContainer extends React.Component {
               key={item.id}
             >
               {index > 0 ? (<div style={{ width: '100%' }}><hr /></div>) : null}
-              <InterfaceView
+              <InterfaceViewContainer
                 item={item}
                 isNarrow
               />
