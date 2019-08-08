@@ -176,7 +176,6 @@
     "@folio/stripes": "^2.7.0",
     "@folio/stripes-cli": "^1.8.0",
     "@folio/stripes-components": "^5.4.0",
-    "@folio/react-intl-safe-html": "^1.0.3",
     "babel-eslint": "^9.0.0",
     "babel-polyfill": "^6.26.0",
     "chai": "^4.2.0",

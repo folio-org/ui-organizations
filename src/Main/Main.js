@@ -17,9 +17,9 @@ import {
   getActiveFilters,
   handleFilterChange,
   changeSearchIndex,
+  showHtmlToast,
 } from '@folio/stripes-acq-components';
 
-import { showToast } from './showToast';
 import FormatTime from '../Utils/FormatTime';
 import packageInfo from '../../package';
 // Components and Pages
@@ -225,7 +225,7 @@ class Main extends Component {
     this.handleFilterChange = handleFilterChange.bind(this);
     this.changeSearchIndex = changeSearchIndex.bind(this);
     this.callout = React.createRef();
-    this.showToast = showToast.bind(this);
+    this.showToast = showHtmlToast.bind(this);
   }
 
   create = (data) => {
