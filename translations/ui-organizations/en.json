@@ -297,8 +297,8 @@
   "search.interfaces": "Interfaces",
 
   "organization.delete.heading": "Delete {organizationName}?",
-  "organization.delete.confirmLabel": "Delete?",
-  "organization.delete.success": "The organization {organizationName} was successfully deleted",
+  "organization.delete.confirmLabel": "Delete",
+  "organization.delete.success": "The organization <b>{organizationName}</b> was successfully <b>deleted</b>",
 
 
   "view.edit": "Edit",

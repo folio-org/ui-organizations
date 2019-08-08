@@ -17,9 +17,9 @@ import {
   getActiveFilters,
   handleFilterChange,
   changeSearchIndex,
-  showToast,
 } from '@folio/stripes-acq-components';
 
+import { showToast } from './showToast';
 import FormatTime from '../Utils/FormatTime';
 import packageInfo from '../../package';
 // Components and Pages
