@@ -30,8 +30,8 @@ const InterfaceView = ({ getCreds, item = {}, isNarrow = false }) => {
     statisticsNotes,
   } = item;
   const [{ username, password }, setCreds] = React.useState({ username: '***', password: '***' });
-  const showCreds = () => {
-    const creds = getCreds();
+  const showCreds = async () => {
+    const creds = await getCreds() || {};
 
     setCreds({
       username: creds.username || '',
