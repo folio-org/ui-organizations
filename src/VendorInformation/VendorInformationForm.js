@@ -116,7 +116,7 @@ class VendorInformationForm extends Component {
               <Field label={<FormattedMessage id="ui-organizations.vendorInfo.expectedInvoiceInterval" />} name="expectedInvoiceInterval" id="expectedInvoiceInterval" type="number" component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.expectedReceiptInterval" />} name="expectedInvoiceInterval" id="expectedReceiptInterval" type="number" component={TextField} fullWidth />
+              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.expectedReceiptInterval" />} name="expectedReceiptInterval" id="expectedReceiptInterval" type="number" component={TextField} fullWidth />
             </Col>
             <Col xs={12}>
               <Field label={<FormattedMessage id="ui-organizations.vendorInfo.renewalActivationInterval" />} name="renewalActivationInterval" id="renewalActivationInterval" type="number" component={TextField} fullWidth />
