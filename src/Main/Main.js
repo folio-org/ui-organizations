@@ -17,7 +17,7 @@ import {
   getActiveFilters,
   handleFilterChange,
   changeSearchIndex,
-  showHtmlToast,
+  showToast,
 } from '@folio/stripes-acq-components';
 
 import FormatTime from '../Utils/FormatTime';
@@ -225,7 +225,7 @@ class Main extends Component {
     this.handleFilterChange = handleFilterChange.bind(this);
     this.changeSearchIndex = changeSearchIndex.bind(this);
     this.callout = React.createRef();
-    this.showHtmlToast = showHtmlToast.bind(this);
+    this.showToast = showToast.bind(this);
   }
 
   create = (data) => {
@@ -251,7 +251,7 @@ class Main extends Component {
 
       return { ...index, label };
     });
-  }
+  };
 
   renderFilters = (onChange) => {
     return (
@@ -317,7 +317,7 @@ class Main extends Component {
           newRecordPerms="organizations-storage.organizations.item.post"
           parentResources={resources}
           parentMutator={mutator}
-          detailProps={{ showHtmlToast: this.showHtmlToast }}
+          detailProps={{ showToast: this.showToast }}
           stripes={stripes}
           searchableIndexes={this.getTranslateSearchableIndexes()}
           selectedIndex={get(resources.query, 'qindex')}
