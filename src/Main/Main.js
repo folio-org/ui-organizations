@@ -251,7 +251,7 @@ class Main extends Component {
 
       return { ...index, label };
     });
-  }
+  };
 
   renderFilters = (onChange) => {
     return (
