@@ -1,51 +1,53 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { get } from 'lodash';
 
-import { Row, Icon } from '@folio/stripes/components';
-import { AddressInfoView, PhoneNumbersView, EmailView, UrlsView } from './ContactInfoViewGroup';
+import { Icon, Row, Col } from '@folio/stripes/components';
 
-class ContactInformationView extends Component {
-  static propTypes = {
-    initialValues: PropTypes.object,
-    parentResources: PropTypes.shape({
-      dropdown: PropTypes.object.isRequired,
-    }),
-  };
+import {
+  hydrateAddresses,
+  mixCategories,
+} from '../common/utils';
+import ContactPersonAddresses from '../ContactPeople/ContactPerson/ContactPersonAddresses';
+import ContactPersonPhones from '../ContactPeople/ContactPerson/ContactPersonPhones';
+import ContactPersonEmails from '../ContactPeople/ContactPerson/ContactPersonEmails';
+import ContactPersonURLs from '../ContactPeople/ContactPerson/ContactPersonURLs';
+import ContactInfoAddress from './ContactInfoAddress';
 
-  getVendorcategory() {
-    const { parentResources } = this.props;
-    const data = ((parentResources || {}).vendorCategory || {}).records || [];
+const renderAddress = (address, i) => <ContactInfoAddress address={address} key={i} />;
 
-    if (data.length === 0) return null;
+const ContactInformationView = ({ initialValues, parentResources }) => {
+  const categories = get(parentResources, 'vendorCategory.records', []);
 
-    return data;
-  }
-
-  render() {
-    const { initialValues } = this.props;
-
-    if (!initialValues) {
-      return (
-        <div style={{ paddingTop: '1rem' }}><Icon icon="spinner-ellipsis" width="100px" /></div>
-      );
-    }
-
+  if (!initialValues) {
     return (
-      <div style={{ width: '100%' }}>
-        <Row>
-          <div style={{ width: '100%' }}>
-            <AddressInfoView dataVal={initialValues.addresses} dropdownVendorCategories={this.getVendorcategory()} />
-            <PhoneNumbersView
-              dataVal={initialValues.phoneNumbers}
-              dropdownVendorCategories={this.getVendorcategory()}
-            />
-            <EmailView dataVal={initialValues.emails} dropdownVendorCategories={this.getVendorcategory()} />
-            <UrlsView dataVal={initialValues.urls} dropdownVendorCategories={this.getVendorcategory()} />
-          </div>
-        </Row>
-      </div>
+      <div style={{ paddingTop: '1rem' }}><Icon icon="spinner-ellipsis" width="100px" /></div>
     );
   }
-}
+
+  const addresses = hydrateAddresses(categories, initialValues.addresses);
+  const emails = mixCategories(categories, initialValues.emails);
+  const phoneNumbers = mixCategories(categories, initialValues.phoneNumbers);
+  const urls = mixCategories(categories, initialValues.urls);
+
+  return (
+    <Row>
+      <Col xs={12}>
+        <ContactPersonAddresses
+          addresses={addresses}
+          renderAddress={renderAddress}
+        />
+        <ContactPersonPhones phones={phoneNumbers} />
+        <ContactPersonEmails emails={emails} />
+        <ContactPersonURLs urls={urls} />
+      </Col>
+    </Row>
+  );
+};
+
+ContactInformationView.propTypes = {
+  initialValues: PropTypes.object,
+  parentResources: PropTypes.object.isRequired,
+};
 
 export default ContactInformationView;

@@ -42,9 +42,9 @@ class EditContact extends Component {
     handleSubmit: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     paneTitle: PropTypes.node.isRequired,
-    pristine: PropTypes.func.isRequired,
+    pristine: PropTypes.bool.isRequired,
     stripes: PropTypes.object.isRequired,
-    submitting: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired,
   };
 
   categoriesFormatter = ({ option }) => {
