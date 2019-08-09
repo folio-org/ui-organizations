@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { get, cloneDeep } from 'lodash';
 
-import { transformCategoryIdsToLables } from '../../common/utils/category';
+import {
+  hydrateAddresses,
+  mixCategories,
+  transformCategoryIdsToLables,
+} from '../../common/utils';
 
 import ContactPersonDetails from './ContactPersonDetails';
 import ContactPersonAddresses from './ContactPersonAddresses';
@@ -11,39 +14,10 @@ import ContactPersonEmails from './ContactPersonEmails';
 import ContactPersonURLs from './ContactPersonURLs';
 
 const ContactPerson = ({ contact, categories, withCollapsing }) => {
-  const addresses = get(contact, 'addresses', []).map(address => {
-    const updatedAddress = cloneDeep(address);
-
-    updatedAddress.primaryAddress = address.isPrimary;
-    updatedAddress.categories = transformCategoryIdsToLables(categories, address.categories);
-
-    return updatedAddress;
-  });
-
-  const emails = get(contact, 'emails', []).map(email => {
-    const updatedEmail = cloneDeep(email);
-
-    updatedEmail.categories = transformCategoryIdsToLables(categories, email.categories);
-
-    return updatedEmail;
-  });
-
-  const phoneNumbers = get(contact, 'phoneNumbers', []).map(phone => {
-    const updatedPhone = cloneDeep(phone);
-
-    updatedPhone.categories = transformCategoryIdsToLables(categories, phone.categories);
-
-    return updatedPhone;
-  });
-
-  const urls = get(contact, 'urls', []).map(url => {
-    const updatedUrl = cloneDeep(url);
-
-    updatedUrl.categories = transformCategoryIdsToLables(categories, url.categories);
-
-    return updatedUrl;
-  });
-
+  const addresses = hydrateAddresses(categories, contact.addresses);
+  const emails = mixCategories(categories, contact.emails);
+  const phoneNumbers = mixCategories(categories, contact.phoneNumbers);
+  const urls = mixCategories(categories, contact.urls);
   const contactCategories = transformCategoryIdsToLables(categories, contact.categories);
 
   return (
