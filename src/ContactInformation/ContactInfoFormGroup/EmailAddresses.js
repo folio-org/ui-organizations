@@ -20,6 +20,7 @@ import { Required } from '../../Utils/Validate';
 import FieldLanguage from './FieldLanguage';
 import createAddNewItem from './createAddNewItem';
 import FieldIsPrimary from './FieldIsPrimary';
+import css from './ContactInfoCard.css';
 
 const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownLanguages, dropdownVendorCategories }) => {
   const EmailsMF = (name, index, fields) => {
@@ -37,6 +38,7 @@ const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownLanguages, dr
 
     return (
       <Card
+        cardClass={css.contactInfoCard}
         hasMargin
         headerStart={nodeIsPrimary}
       >

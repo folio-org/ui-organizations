@@ -20,6 +20,7 @@ import { Required } from '../../Utils/Validate';
 import FieldLanguage from './FieldLanguage';
 import createAddNewItem from './createAddNewItem';
 import FieldIsPrimary from './FieldIsPrimary';
+import css from './ContactInfoCard.css';
 
 const PhoneNumbers = ({
   defaultLanguage,
@@ -43,6 +44,7 @@ const PhoneNumbers = ({
 
     return (
       <Card
+        cardClass={css.contactInfoCard}
         hasMargin
         headerStart={nodeIsPrimary}
       >
