@@ -6,9 +6,9 @@ import { EntitiesWithCollapsing } from '../../../common/components';
 import ContactPersonSection from '../ContactPersonSection';
 import ContactPersonAddress from './ContactPersonAddress';
 
-const renderAddress = address => <ContactPersonAddress address={address} />;
+const renderAddressFn = (address, i) => <ContactPersonAddress address={address} key={i} />;
 
-const ContactPersonAddresses = ({ addresses, withCollapsing }) => {
+const ContactPersonAddresses = ({ addresses, withCollapsing, renderAddress }) => {
   if (!addresses.length) return null;
 
   const renderHeader = () => (
@@ -36,11 +36,13 @@ const ContactPersonAddresses = ({ addresses, withCollapsing }) => {
 ContactPersonAddresses.propTypes = {
   addresses: PropTypes.arrayOf(PropTypes.object),
   withCollapsing: PropTypes.bool,
+  renderAddress: PropTypes.func,
 };
 
 ContactPersonAddresses.defaultProps = {
   addresses: [],
   withCollapsing: true,
+  renderAddress: renderAddressFn,
 };
 
 export default ContactPersonAddresses;
