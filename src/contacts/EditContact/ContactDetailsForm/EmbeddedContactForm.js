@@ -99,7 +99,7 @@ class EmbeddedContactForm extends Component {
 
       if (field === 'categories') {
         fieldProps = {
-          fieldProps,
+          ...fieldProps,
           ...{
             dataOptions: categories.map(({ id }) => id),
             formatter: categoriesFormatter,
@@ -111,7 +111,7 @@ class EmbeddedContactForm extends Component {
 
       if (field === 'language') {
         fieldProps = {
-          fieldProps,
+          ...fieldProps,
           ...{
             dataOptions: languageList,
           },
@@ -120,7 +120,7 @@ class EmbeddedContactForm extends Component {
 
       if (field === 'type') {
         fieldProps = {
-          fieldProps,
+          ...fieldProps,
           ...{
             dataOptions: phoneTypesList,
           },
