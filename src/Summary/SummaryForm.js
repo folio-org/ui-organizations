@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import {
   Field,
   FieldArray,
+  getFormValues,
 } from 'redux-form';
+import { get } from 'lodash';
 
 import {
   Checkbox,
-  Col,
+  Col, ConfirmationModal,
   RepeatableField,
   Row,
   Select,
@@ -18,10 +20,17 @@ import {
 
 import { ORGANIZATION_STATUS } from '../common/constants';
 import { Required } from '../Utils/Validate';
+import resetVendorFields from './resetVendorFields';
 
 class SummaryForm extends Component {
   static propTypes = {
     dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
+    dispatchChange: PropTypes.func.isRequired,
+    initialValues: PropTypes.object.isRequired,
+  };
+
+  state = {
+    isVendorUncheckConfirm: false,
   };
 
   renderAlias = (elem) => {
@@ -47,9 +56,33 @@ class SummaryForm extends Component {
         </Col>
       </Row>
     );
-  }
+  };
+
+  hideVendorUncheckConfirm = () => {
+    this.setState({ isVendorUncheckConfirm: false });
+    this.props.dispatchChange('isVendor', true);
+  };
+
+  handleVendorUncheck = () => {
+    this.setState({ isVendorUncheckConfirm: false });
+    this.resetVendorFields();
+  };
+
+  resetVendorFields = () => {
+    const { dispatchChange } = this.props;
+
+    resetVendorFields.forEach(field => dispatchChange(field, null));
+  };
+
+  onChangeIsVendor = (e, value) => {
+    const { initialValues } = this.props;
+
+    if (initialValues.id && !value) this.setState({ isVendorUncheckConfirm: true });
+  };
 
   render() {
+    const { isVendorUncheckConfirm } = this.state;
+
     return (
       <Row>
         <Col xs={12}>
@@ -72,6 +105,7 @@ class SummaryForm extends Component {
             label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
             name="isVendor"
             type="checkbox"
+            onChange={this.onChangeIsVendor}
           />
           <Field
             component={TextField}
@@ -134,6 +168,18 @@ class SummaryForm extends Component {
             renderField={this.renderAlias}
           />
         </Col>
+
+        {isVendorUncheckConfirm && (
+          <ConfirmationModal
+            id="uncheck-is-vendor-confirmation"
+            confirmLabel={<FormattedMessage id="ui-organizations.vendor.confirmation.confirm" />}
+            heading={<FormattedMessage id="ui-organizations.vendor.confirmation.heading" />}
+            message={<FormattedMessage id="ui-organizations.vendor.confirmation.message" />}
+            onCancel={this.hideVendorUncheckConfirm}
+            onConfirm={this.handleVendorUncheck}
+            open
+          />
+        )}
       </Row>
     );
   }

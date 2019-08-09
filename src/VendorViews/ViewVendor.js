@@ -32,6 +32,7 @@ import ViewVendorBlocks from './ViewVendorBlocks';
 
 class ViewVendor extends Component {
   static propTypes = {
+    connectedSource: PropTypes.object,
     location: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     dropdown: PropTypes.object,
@@ -179,7 +180,7 @@ class ViewVendor extends Component {
   };
 
   render() {
-    const { location, parentResources } = this.props;
+    const { location, parentResources, connectedSource } = this.props;
     const organization = this.getData();
     const query = location.search ? queryString.parse(location.search) : {};
     const lastMenu = (
@@ -265,6 +266,7 @@ class ViewVendor extends Component {
             onCancel={this.props.onCloseEdit}
             parentResources={parentResources}
             parentMutator={this.props.parentMutator}
+            connectedSource={connectedSource}
           />
         </Layer>
 

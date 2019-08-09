@@ -317,6 +317,10 @@
   "edit.show": "Show",
   "edit.hide": "Hide",
 
+  "vendor.confirmation.heading": "Confirm vendor data deletion",
+  "vendor.confirmation.confirm": "Confirm",
+  "vendor.confirmation.message": "WARNING All Vendor information, Vendor terms, EDI information, and Accounts will be deleted from this record.",
+
   "summary": "Summary",
   "contactInformation": "Contact information",
   "contactPeople": "Contact people",

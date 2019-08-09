@@ -109,10 +109,11 @@ class PaneDetails extends React.Component {
     const { change, dispatch } = this.props;
 
     dispatch(change(fieldName, value));
-  }
+  };
 
   render() {
     const { initialValues, stripes, onCancel } = this.props;
+
     const paneTitle = initialValues.id ?
       <FormattedMessage id="ui-organizations.editOrg.title" values={{ name: get(initialValues, ['name'], '') }} /> :
       <FormattedMessage id="ui-organizations.createOrg.title" />;
