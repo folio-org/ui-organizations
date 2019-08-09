@@ -5,7 +5,7 @@ export default [
   'discountPercent',
   'expectedActivationInterval',
   'expectedInvoiceInterval',
-  'expectedInvoiceInterval',
+  'expectedReceiptInterval',
   'renewalActivationInterval',
   'subscriptionInterval',
   'taxId',
