@@ -20,6 +20,7 @@ import CategoryDropdown from '../../Utils/CategoryDropdown';
 import FieldLanguage from './FieldLanguage';
 import createAddNewItem from './createAddNewItem';
 import FieldIsPrimary from './FieldIsPrimary';
+import css from './ContactInfoCard.css';
 
 const AddressInfo = ({
   defaultLanguage,
@@ -44,6 +45,7 @@ const AddressInfo = ({
 
     return (
       <Card
+        cardClass={css.contactInfoCard}
         hasMargin
         headerStart={nodeIsPrimary}
       >

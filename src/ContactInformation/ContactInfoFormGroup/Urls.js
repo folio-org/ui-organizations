@@ -20,6 +20,7 @@ import { isURLValid, Required } from '../../Utils/Validate';
 import FieldLanguage from './FieldLanguage';
 import createAddNewItem from './createAddNewItem';
 import FieldIsPrimary from './FieldIsPrimary';
+import css from './ContactInfoCard.css';
 
 const Urls = ({ defaultLanguage, dispatchChange, dropdownLanguages, dropdownVendorCategories }) => {
   const UrlsMF = (name, index, fields) => {
@@ -37,6 +38,7 @@ const Urls = ({ defaultLanguage, dispatchChange, dropdownLanguages, dropdownVend
 
     return (
       <Card
+        cardClass={css.contactInfoCard}
         hasMargin
         headerStart={nodeIsPrimary}
       >
