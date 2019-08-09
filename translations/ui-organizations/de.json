@@ -593,5 +593,8 @@
     "organization.delete.confirmLabel": "Delete?",
     "organization.delete.success": "The organization {organizationName} was successfully deleted",
     "view.delete": "Delete",
-    "view.delete.message": "Delete organization?"
+    "view.delete.message": "Delete organization?",
+    "vendor.confirmation.heading": "Confirm vendor data deletion",
+    "vendor.confirmation.confirm": "Confirm",
+    "vendor.confirmation.message": "WARNING All Vendor information, Vendor terms, EDI information, and Accounts will be deleted from this record."
 }

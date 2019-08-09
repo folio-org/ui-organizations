@@ -593,5 +593,8 @@
     "organization.delete.confirmLabel": "Excluir?",
     "organization.delete.success": "A organização {organizationName} foi excluída com sucesso",
     "view.delete": "Excluir",
-    "view.delete.message": "Excluir organização?"
+    "view.delete.message": "Excluir organização?",
+    "vendor.confirmation.heading": "Confirme a exclusão de dados do fornecedor",
+    "vendor.confirmation.confirm": "Confirmar",
+    "vendor.confirmation.message": "AVISO: Todas as informações do fornecedor, termos do fornecedor, informações EDI e contas serão excluídos desse registro."
 }
