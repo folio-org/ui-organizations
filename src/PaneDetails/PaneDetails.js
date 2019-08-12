@@ -125,6 +125,7 @@ class PaneDetails extends React.Component {
     return (
       <form id="form-vendor">
         <Pane
+          data-test-form-vendor-pane
           defaultWidth="100%"
           dismissible
           lastMenu={lastMenu}

@@ -14,14 +14,13 @@ describe('Organization edit', () => {
   let contacts = null;
   let interfaces = null;
 
-  beforeEach(function () {
+  beforeEach(async function () {
     contacts = this.server.createList('contact', 2);
     interfaces = this.server.createList('interface', 2);
     const org = this.server.create('organization', { contacts: map(contacts, 'id'), interfaces: map(interfaces, 'id') });
 
-    return this.visit(`/organizations/view/${org.id}?layer=edit`, () => {
-      expect(orgEdit.$root).to.exist;
-    });
+    this.visit(`/organizations/view/${org.id}?layer=edit`);
+    await orgEdit.whenLoaded();
   });
 
   it('shows the close edit pane button', function () {
