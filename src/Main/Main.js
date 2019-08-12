@@ -45,6 +45,7 @@ import './Main.css';
 
 const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
+const getHelperResourcePath = (helper, id) => `${ORGANIZATIONS_API}/${id}`;
 
 class Main extends Component {
   static propTypes = {
@@ -330,6 +331,7 @@ class Main extends Component {
           showSingleResult={showSingleResult}
           renderFilters={this.renderFilters}
           onFilterChange={this.handleFilterChange}
+          getHelperResourcePath={getHelperResourcePath}
         />
         <Callout ref={this.callout} />
       </div>

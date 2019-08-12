@@ -5,6 +5,7 @@
   "showMore": "Show more",
   "primaryItem": "Primary",
   "alternateItem": "Alternate",
+  "showTags": "Show tags",
 
   "data.contactTypes.address": "Address",
   "data.contactTypes.addressLine1": "Address 1",
