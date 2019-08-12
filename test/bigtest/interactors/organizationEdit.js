@@ -3,6 +3,7 @@ import {
   collection,
   interactor,
   Interactor,
+  isVisible,
 } from '@bigtest/interactor';
 
 import { SECTIONS } from '../../../src/common/constants';
@@ -85,4 +86,8 @@ export default interactor(class OrganizationEditInteractor {
   interfaceList = new InterfaceList();
 
   vendorConfirmationModal = new ConfirmationModal('#uncheck-is-vendor-confirmation');
+  formIsVisible = isVisible('[data-test-form-vendor-pane]');
+  whenLoaded() {
+    return this.timeout(5000).when(() => this.formIsVisible);
+  }
 });

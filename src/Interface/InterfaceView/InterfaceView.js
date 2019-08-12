@@ -30,6 +30,7 @@ const InterfaceView = ({ getCreds, item = {}, isNarrow = false }) => {
     statisticsNotes,
   } = item;
   const [{ username, password }, setCreds] = React.useState({ username: '***', password: '***' });
+  const [hasShowButton, setHasShowButton] = React.useState(true);
   const showCreds = async () => {
     const creds = await getCreds() || {};
 
@@ -37,6 +38,7 @@ const InterfaceView = ({ getCreds, item = {}, isNarrow = false }) => {
       username: creds.username || '',
       password: creds.password || '',
     });
+    setHasShowButton(false);
   };
 
   return (
@@ -72,7 +74,7 @@ const InterfaceView = ({ getCreds, item = {}, isNarrow = false }) => {
         </Col>
         <Col
           data-test-password
-          xs={columnsAmount - 1}
+          xs={hasShowButton ? columnsAmount - 2 : columnsAmount}
         >
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.password" />}>
             <span className={css.wrapValue}>
@@ -80,16 +82,18 @@ const InterfaceView = ({ getCreds, item = {}, isNarrow = false }) => {
             </span>
           </KeyValue>
         </Col>
-        <Col xs={1}>
-          <IfPermission perm="organizations-storage.interfaces.credentials.item.get">
-            <Button
-              data-test-show-creds
-              onClick={showCreds}
-            >
-              <FormattedMessage id="ui-organizations.edit.show" />
-            </Button>
-          </IfPermission>
-        </Col>
+        {hasShowButton && (
+          <Col xs={2}>
+            <IfPermission perm="organizations-storage.interfaces.credentials.item.get">
+              <Button
+                data-test-show-creds
+                onClick={showCreds}
+              >
+                <FormattedMessage id="ui-organizations.edit.show" />
+              </Button>
+            </IfPermission>
+          </Col>
+        )}
       </Row>
       <Row>
         <Col xs={12}>
