@@ -40,13 +40,11 @@
     "permissionSets": [
       {
         "permissionName": "module.organizations.enabled",
-        "displayName": "UI: Organizations module is enabled",
-        "visible": true
+        "displayName": "UI: Organizations module is enabled"
       },
       {
         "permissionName": "settings.organizations.enabled",
         "displayName": "Settings (Organization): Display list of settings for Organization",
-        "visible": true,
         "subPermissions": [
           "settings.enabled"
         ]
@@ -61,30 +59,10 @@
         ]
       },
       {
-        "permissionName": "ui-organizations.create",
-        "displayName": "Organizations: Create organizations",
-        "visible": true,
-        "description": "",
+        "permissionName": "ui-organizations.basic.view",
+        "displayName": "Organizations: Basic view",
         "subPermissions": [
-          "organizations-storage.accounts.item.post",
-          "organizations-storage.addresses.item.post",
-          "organizations-storage.agreements.item.post",
-          "organizations-storage.aliases.item.post",
-          "organizations-storage.categories.item.post",
-          "organizations-storage.contacts.item.post",
-          "organizations-storage.emails.item.post",
-          "organizations-storage.interfaces.item.post",
-          "organizations-storage.phone-numbers.item.post",
-          "organizations-storage.urls.item.post",
-          "organizations-storage.organizations.item.post"
-        ]
-      },
-      {
-        "permissionName": "ui-organizations.view",
-        "displayName": "Organizations: View organizations",
-        "visible": true,
-        "description": "",
-        "subPermissions": [
+          "module.organizations.enabled",
           "organizations-storage.accounts.collection.get",
           "organizations-storage.accounts.item.get",
           "organizations-storage.addresses.collection.get",
@@ -101,18 +79,27 @@
           "organizations-storage.emails.item.get",
           "organizations-storage.interfaces.collection.get",
           "organizations-storage.interfaces.item.get",
+          "organizations-storage.organizations.collection.get",
+          "organizations-storage.organizations.item.get",
           "organizations-storage.phone-numbers.collection.get",
           "organizations-storage.phone-numbers.item.get",
           "organizations-storage.urls.collection.get",
           "organizations-storage.urls.item.get",
-          "organizations-storage.organizations.collection.get",
-          "organizations-storage.organizations.item.get",
           "ui-organizations.third-party-services"
         ]
       },
       {
-        "permissionName": "ui-organizations.update",
-        "displayName": "Organizations: Update organizations",
+        "permissionName": "ui-organizations.view",
+        "displayName": "Organizations: View",
+        "visible": true,
+        "subPermissions": [
+          "ui-organizations.basic.view",
+          "settings.organizations.enabled"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.edit",
+        "displayName": "Organizations: View, edit",
         "visible": true,
         "description": "",
         "subPermissions": [
@@ -126,12 +113,32 @@
           "organizations-storage.interfaces.item.put",
           "organizations-storage.phone-numbers.item.put",
           "organizations-storage.urls.item.put",
-          "organizations-storage.organizations.item.put"
+          "organizations-storage.organizations.item.put",
+          "ui-organizations.view"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.create",
+        "displayName": "Organizations: View, edit, create",
+        "visible": true,
+        "subPermissions": [
+          "organizations-storage.accounts.item.post",
+          "organizations-storage.addresses.item.post",
+          "organizations-storage.agreements.item.post",
+          "organizations-storage.aliases.item.post",
+          "organizations-storage.categories.item.post",
+          "organizations-storage.contacts.item.post",
+          "organizations-storage.emails.item.post",
+          "organizations-storage.interfaces.item.post",
+          "organizations-storage.phone-numbers.item.post",
+          "organizations-storage.urls.item.post",
+          "organizations-storage.organizations.item.post",
+          "ui-organizations.edit"
         ]
       },
       {
         "permissionName": "ui-organizations.delete",
-        "displayName": "Organizations: Delete organizations",
+        "displayName": "Organizations: View, edit, delete",
         "visible": true,
         "description": "",
         "subPermissions": [
@@ -145,17 +152,36 @@
           "organizations-storage.interfaces.item.delete",
           "organizations-storage.phone-numbers.item.delete",
           "organizations-storage.urls.item.delete",
-          "organizations-storage.organizations.item.delete"
+          "organizations-storage.organizations.item.delete",
+          "ui-organizations.edit"
         ]
       },
       {
-        "permissionName": "ui-organizations.all",
-        "displayName": "Organizations: all permissions for Create, View, Edit and Delete organizations",
+        "permissionName": "ui-organizations.creds.view",
+        "displayName": "Organizations: Interface usernames and passwords: view",
         "visible": true,
-        "description": "",
         "subPermissions": [
-          "ui-organizations.third-party-services",
-          "organizations-storage.module.all"
+          "organizations-storage.interfaces.credentials.item.get",
+          "ui-organizations.basic.view"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.creds.manage",
+        "displayName": "Organizations: Interface usernames and passwords: view, edit, create, delete",
+        "visible": true,
+        "subPermissions": [
+          "organizations-storage.interfaces.credentials.item.put",
+          "organizations-storage.interfaces.credentials.item.post",
+          "organizations-storage.interfaces.credentials.item.delete",
+          "ui-organizations.creds.view"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.settings",
+        "displayName": "Settings (Organizations): view, edit, create, delete",
+        "visible": true,
+        "subPermissions": [
+          "ui-organizations.view"
         ]
       }
     ]
