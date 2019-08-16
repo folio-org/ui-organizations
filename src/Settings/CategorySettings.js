@@ -21,6 +21,14 @@ class CategorySettings extends Component {
       value: <FormattedMessage id="ui-organizations.settings.name" />,
       action: <FormattedMessage id="ui-organizations.settings.action" />,
     };
+    const getDisableAttr = () => ({
+      disabled: !stripes.hasPerm('ui-organizations.settings'),
+    });
+    const actionProps = {
+      create: getDisableAttr,
+      edit: getDisableAttr,
+      delete: getDisableAttr,
+    };
 
     return (
       <this.connectedControlledVocab
@@ -36,6 +44,7 @@ class CategorySettings extends Component {
         nameKey="categories"
         id="categories"
         sortby="value"
+        actionProps={actionProps}
       />
     );
   }
