@@ -314,8 +314,8 @@ class Main extends Component {
           initialResultCount={INITIAL_RESULT_COUNT}
           resultCountIncrement={RESULT_COUNT_INCREMENT}
           finishedResourceName="perms"
-          viewRecordPerms="organizations-storage.organizations.item.get"
-          newRecordPerms="organizations-storage.organizations.item.post"
+          viewRecordPerms="ui-organizations.basic.view"
+          newRecordPerms="ui-organizations.create"
           parentResources={resources}
           parentMutator={mutator}
           detailProps={{ showToast: this.showToast }}

@@ -4,7 +4,10 @@ import { FormattedMessage } from 'react-intl';
 import { Field } from 'redux-form';
 
 import stripesForm from '@folio/stripes/form';
-import { AppIcon } from '@folio/stripes/core';
+import {
+  AppIcon,
+  IfPermission,
+} from '@folio/stripes/core';
 import {
   Button,
   Checkbox,
@@ -121,20 +124,22 @@ class EditInterface extends Component {
                   fullWidth
                 />
               </Col>
-              <Col xs={12} md={6}>
-                <Field
-                  label={<FormattedMessage id="ui-organizations.interface.username" />}
-                  name="username"
-                  component={TextField}
-                  fullWidth
-                />
-              </Col>
-              <Col xs={12} md={6}>
-                <TogglePassword
-                  name="password"
-                  buttonID="button"
-                />
-              </Col>
+              <IfPermission perm="ui-organizations.creds.manage">
+                <Col xs={12} md={6}>
+                  <Field
+                    label={<FormattedMessage id="ui-organizations.interface.username" />}
+                    name="username"
+                    component={TextField}
+                    fullWidth
+                  />
+                </Col>
+                <Col xs={12} md={6}>
+                  <TogglePassword
+                    name="password"
+                    buttonID="button"
+                  />
+                </Col>
+              </IfPermission>
               <Col xs={12}>
                 <Field
                   label={<FormattedMessage id="ui-organizations.interface.notes" />}

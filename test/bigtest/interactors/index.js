@@ -8,3 +8,4 @@ export { default as ConfirmationModalInteractor } from './ConfirmationModal';
 export { default as InterfacesViewInteractor } from './Interfaces/InterfaceView';
 export { default as InterfacesPaneInteractor } from './Interfaces/InterfacePane';
 export { default as InterfaceEditInteractor } from './Interfaces/InterfaceEdit';
+export { default as OrganizationSettingsInteractor } from './OrganizationSettingsInteractor';

@@ -147,7 +147,7 @@ class ViewVendor extends Component {
 
     return (
       <MenuSection id="data-test-organizations-details-actions">
-        <IfPermission perm="organizations-storage.organizations.item.delete">
+        <IfPermission perm="ui-organizations.delete">
           <Button
             buttonStyle="dropdownItem"
             data-test-button-delete-organization
@@ -161,7 +161,7 @@ class ViewVendor extends Component {
             </Icon>
           </Button>
         </IfPermission>
-        <IfPermission perm="organizations-storage.organizations.item.put">
+        <IfPermission perm="ui-organizations.edit">
           {organization && (
             <Button
               buttonStyle="dropdownItem"
@@ -182,27 +182,30 @@ class ViewVendor extends Component {
   };
 
   render() {
-    const { location, parentResources, connectedSource, tagsEnabled, tagsToggle } = this.props;
+    const { location, parentResources, connectedSource, tagsEnabled, tagsToggle, stripes } = this.props;
     const organization = this.getData();
     const query = location.search ? queryString.parse(location.search) : {};
+    const isEdit = query.layer ? query.layer === 'edit' : false;
     const tags = _.get(organization, 'tags.tagList') || [];
     const lastMenu = (
       <PaneMenu>
-        {tagsEnabled && (
-          <FormattedMessage id="ui-organizations.showTags">
-            {(title) => (
-              <IconButton
-                ariaLabel={title}
-                badgeCount={tags.length}
-                icon="tag"
-                id="clickable-show-tags"
-                onClick={tagsToggle}
-                title={title}
-              />
-            )}
-          </FormattedMessage>
-        )}
-        <IfPermission perm="organizations-storage.organizations.item.put">
+        <IfPermission perm="ui-organizations.edit">
+          {tagsEnabled && (
+            <FormattedMessage id="ui-organizations.showTags">
+              {(title) => (
+                <IconButton
+                  ariaLabel={title}
+                  badgeCount={tags.length}
+                  icon="tag"
+                  id="clickable-show-tags"
+                  onClick={tagsToggle}
+                  title={title}
+                />
+              )}
+            </FormattedMessage>
+          )}
+        </IfPermission>
+        <IfPermission perm="ui-organizations.edit">
           <FormattedMessage id="ui-organizations.view.edit">
             {
               (title) => (
@@ -239,6 +242,26 @@ class ViewVendor extends Component {
 
     const { isVendor, name } = organization;
 
+    if (isEdit && stripes.hasPerm('ui-organizations.edit')) {
+      return (
+        <Layer
+          isOpen
+          label={<FormattedMessage id="ui-organizations.view.editVendorDialog" />}
+          contentLabel="Edit vendor dialog"
+        >
+          <this.connectedPaneDetails
+            stripes={this.props.stripes}
+            initialValues={organization}
+            onSubmit={this.update}
+            onCancel={this.props.onCloseEdit}
+            parentResources={parentResources}
+            parentMutator={this.props.parentMutator}
+            connectedSource={connectedSource}
+          />
+        </Layer>
+      );
+    }
+
     return (
       <Pane
         id="pane-vendordetails"
@@ -271,22 +294,6 @@ class ViewVendor extends Component {
           )}
 
         </AccordionSet>
-        <Layer
-          isOpen={query.layer ? query.layer === 'edit' : false}
-          label={<FormattedMessage id="ui-organizations.view.editVendorDialog" />}
-          contentLabel="Edit vendor dialog"
-        >
-          <this.connectedPaneDetails
-            stripes={this.props.stripes}
-            initialValues={organization}
-            onSubmit={this.update}
-            onCancel={this.props.onCloseEdit}
-            parentResources={parentResources}
-            parentMutator={this.props.parentMutator}
-            connectedSource={connectedSource}
-          />
-        </Layer>
-
         {this.state.showConfirmDelete && (
           <ConfirmationModal
             id="delete-organization-confirmation"
