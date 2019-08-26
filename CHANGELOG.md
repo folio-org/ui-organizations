@@ -1,5 +1,23 @@
 # Change history for ui-organizations
 
+## [1.4.0](https://github.com/folio-org/ui-organizations/tree/v1.4.0) (2019-08-26)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.3.0...v1.4.0)
+
+### Stories
+* [UIORGS-79](https://issues.folio.org/browse/UIORGS-79) Reconfigure the UI permissions for the Organizations App
+* [UIORGS-75](https://issues.folio.org/browse/UIORGS-75) When opening Orgs app, default filtered to Active & Pending
+* [UIORGS-74](https://issues.folio.org/browse/UIORGS-74) Reconfigure the Organizations remove button and add confirmation modal
+* [UIORGS-71](https://issues.folio.org/browse/UIORGS-71) UI fix: change "remove" buttons to trashcans in Organization records
+* [UIORGS-39](https://issues.folio.org/browse/UIORGS-39) Vendor/Organization app | View Detail Record | Interface > password display
+* [UIORGS-30](https://issues.folio.org/browse/UIORGS-30) Handle vendor checkbox change in "edit organization" screen for organizations
+* [UIORGS-18](https://issues.folio.org/browse/UIORGS-18) Changes to primary address/email/phone_number/urls
+* [UIORGS-13](https://issues.folio.org/browse/UIORGS-13) Assign tags to Organization Records
+* [UIORGS-11](https://issues.folio.org/browse/UIORGS-11) Populate language fields initially with Organization "Default language"
+* [UIORGS-10](https://issues.folio.org/browse/UIORGS-10) Start with filters closed
+
+### Bug Fixes
+* [UIORGS-95](https://issues.folio.org/browse/UIORGS-95) Interface: Username and Password auto-populates with saved username/password
+
 ## [1.3.0](https://github.com/folio-org/ui-organizations/tree/v1.3.0) (2019-07-23)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.2.0...v1.3.0)
 
