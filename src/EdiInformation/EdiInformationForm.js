@@ -148,7 +148,6 @@ class EdiInformationForm extends Component {
                       name="edi.ediFtp.username"
                       type="text"
                       component={TextField}
-                      autoComplete="nope"
                       fullWidth
                     />
                   </Col>
