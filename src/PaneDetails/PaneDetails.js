@@ -34,7 +34,6 @@ class PaneDetails extends React.Component {
     super(props);
     this.deleteVendor = this.deleteVendor.bind(this);
     this.getVendorCategory = this.getVendorCategory.bind(this);
-    this.getCurrencies = this.getCurrencies.bind(this);
     this.getCountryList = this.getCountryList.bind(this);
     this.getLanguageList = this.getLanguageList.bind(this);
   }
@@ -77,15 +76,6 @@ class PaneDetails extends React.Component {
     const { parentResources } = this.props;
 
     return getDropDownItems(parentResources, 'languageList', false);
-  }
-
-  getCurrencies() {
-    const { parentResources } = this.props;
-    const data = (parentResources.dropdown || {}).currencyDD || [];
-
-    if (!data || data.length === 0) return null;
-
-    return data;
   }
 
   getPhoneType() {
@@ -135,7 +125,6 @@ class PaneDetails extends React.Component {
           <FormVendor
             isVendor={isVendor}
             dispatchChange={this.dispatchChange}
-            dropdownCurrencies={this.getCurrencies()}
             dropdownVendorCategories={this.getVendorCategory()}
             dropdownLanguages={this.getLanguageList()}
             dropdownCountry={this.getCountryList()}

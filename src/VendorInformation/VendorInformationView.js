@@ -2,10 +2,13 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { Row, Col } from '@folio/stripes/components';
+import {
+  Row,
+  Col,
+  currenciesByCode,
+} from '@folio/stripes/components';
 
 import { PrintKeyValue, PrintBoolToCheckbox } from '../Utils/PrintKeyValue';
-
 import css from './VendorInformationView.css';
 
 const VendorInformationView = ({ organization }) => {
@@ -27,7 +30,13 @@ const VendorInformationView = ({ organization }) => {
     taxPercentage = '',
     liableForVat,
   } = organization;
-  const vendorCurrenciesString = vendorCurrencies.join(', ');
+  const vendorCurrenciesString = vendorCurrencies
+    .map(currency => {
+      const currencyInfo = currenciesByCode[currency];
+
+      return currencyInfo ? `${currencyInfo.currency} (${currencyInfo.code})` : currency;
+    })
+    .join(', ');
 
   return (
     <Row className={css.horizontalLine}>

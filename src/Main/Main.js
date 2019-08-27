@@ -210,7 +210,6 @@ class Main extends Component {
           { label: 'Inactive', value: 'Inactive' },
           { label: 'Pending', value: 'Pending' },
         ],
-        currencyDD: ['USD', 'CAD', 'GBP', 'EUR'],
         phoneTypesList,
         countryList,
         languageList,
