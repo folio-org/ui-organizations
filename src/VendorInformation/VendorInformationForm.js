@@ -1,14 +1,45 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Field, getFormValues } from 'redux-form';
-import { MultiSelection, Select, Checkbox, TextField, AccordionSet, Accordion, Row, Col } from '@folio/stripes/components';
-import css from './VendorInformationForm.css';
+import { Field } from 'redux-form';
+import { find } from 'lodash';
+
+import {
+  Select,
+  Checkbox,
+  TextField,
+  AccordionSet,
+  Accordion,
+  Row,
+  Col,
+  currenciesOptions,
+} from '@folio/stripes/components';
+import { FieldMultiSelection } from '@folio/stripes-acq-components';
+
 import { getDropDownItems } from '../common/utils/dropdown';
+import css from './VendorInformationForm.css';
+
+const currencyValueOptions = currenciesOptions.map(({ value }) => value);
+const currencyToString = item => item;
+const currencyFormatter = ({ option }) => {
+  const item = find(currenciesOptions, { value: option }) || option;
+
+  if (!item) return option;
+
+  return item.label;
+};
+const currencyFilter = (filterText) => {
+  const renderedItems = filterText
+    ? currenciesOptions
+      .filter(item => item.label.includes(filterText))
+      .map(({ value }) => value)
+    : currencyValueOptions;
+
+  return { renderedItems };
+};
 
 class VendorInformationForm extends Component {
   static propTypes = {
-    dropdownCurrencies: PropTypes.arrayOf(PropTypes.string),
     parentResources: PropTypes.shape({
       vendorCategory: PropTypes.object,
       vendorContactCategory: PropTypes.object,
@@ -29,7 +60,6 @@ class VendorInformationForm extends Component {
       },
     };
     this.onChangeSelect = this.onChangeSelect.bind(this);
-    this.selectedValues = this.selectedValues.bind(this);
   }
 
   onChangeSelect = (e, propertyName) => {
@@ -38,26 +68,8 @@ class VendorInformationForm extends Component {
     dispatch(change(`${propertyName}`, e));
   };
 
-  selectedValues = (propertyName) => {
-    const { stripes: { store } } = this.props;
-    const formValues = getFormValues('FormVendor')(store.getState());
-    const currValues = formValues[propertyName];
-
-    return currValues;
-  };
-
-  // For Multi dropdown
-  toString = (option) => option;
-  formatter = ({ option }) => <div>{option}</div>;
-  filterItems = (filterText, list) => {
-    const filterRegExp = new RegExp(`^${filterText}`, 'i');
-    const renderedItems = filterText ? list.filter(item => item.search(filterRegExp) !== -1) : list;
-
-    return { renderedItems };
-  };
-
   render() {
-    const { parentResources, dropdownCurrencies } = this.props;
+    const { parentResources } = this.props;
     const paymentMethodDD = getDropDownItems(parentResources, 'paymentMethodDD', false);
 
     return (
@@ -74,18 +86,14 @@ class VendorInformationForm extends Component {
               />
             </Col>
             <Col xs={12}>
-              <Field
-                component={MultiSelection}
+              <FieldMultiSelection
                 label={<FormattedMessage id="ui-organizations.vendorInfo.vendorCurrencies" />}
                 name="vendorCurrencies"
-                dataOptions={dropdownCurrencies}
-                style={{ height: '80px' }}
-                value={this.selectedValues('vendorCurrencies')}
-                itemToString={this.toString}
-                formatter={this.formatter}
-                filter={this.filterItems}
+                dataOptions={currencyValueOptions}
+                formatter={currencyFormatter}
+                itemToString={currencyToString}
+                filter={currencyFilter}
                 onChange={(e) => this.onChangeSelect(e, 'vendorCurrencies')}
-                onBlur={(e) => { e.preventDefault(); }}
               />
             </Col>
             <Col xs={12}>
