@@ -575,7 +575,7 @@
     "filterConfig.isVendor": "هو مورّد",
     "main.isVendor.no": "لا",
     "main.isVendor.yes": "نعم",
-    "main.isVendor": "المورّد",
+    "main.isVendor": "مورّد",
     "filterConfig.boolean.true": "صحيح",
     "filterConfig.boolean.false": "غير صحيح",
     "search.name": "الاسم",
