@@ -39,7 +39,7 @@ describe('Organization details', () => {
   });
 
   it("doesn't show Organization Details action menu", () => {
-    expect(orgDetails.actions.isPresent).to.be.false;
+    expect(orgDetails.actions.isVisible).to.be.false;
   });
 
   describe('click on header', () => {
@@ -48,7 +48,7 @@ describe('Organization details', () => {
     });
 
     it('shows action menu', () => {
-      expect(orgDetails.actions.isPresent).to.be.true;
+      expect(orgDetails.actions.isVisible).to.be.true;
     });
   });
 

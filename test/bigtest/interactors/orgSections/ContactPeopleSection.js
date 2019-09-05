@@ -12,6 +12,7 @@ class ContactPeopleSection {
 
   contentStyles = attribute('[class*=content---]', 'style');
   isExpanded = styles => styles.includes('visible');
+  listIsVisible = isVisible('#contact-list');
 }
 
 export default interactor(ContactPeopleSection);

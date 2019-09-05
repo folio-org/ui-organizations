@@ -32,7 +32,7 @@ class SummarySectionForm extends SummarySection {
 }
 
 class ContactPeopleForm extends ContactPeopleSection {
-  addContactButton = new Button('[data-test-add-contact]');
+  addContactButton = new Button('[data-test-plugin-find-record-button]');
 }
 
 class VendorTermsForm extends VendorTermsSection {
