@@ -29,7 +29,7 @@ const getInterfaceUrl = (orgId, interfaceId) => {
   return `${starting}${ending}`;
 };
 
-const AddInterfaceButton = ({ fetchInterfaces, fields, stripes, orgId }) => {
+const AddInterfaceButton = ({ fetchInterfaces, fields, orgId }) => {
   const addInterfaces = (interfaces = []) => {
     const addedInterfacesIds = new Set(fields.getAll());
     const newInterface = interfaces.filter(({ id }) => !addedInterfacesIds.has(id));
@@ -60,11 +60,9 @@ const AddInterfaceButton = ({ fetchInterfaces, fields, stripes, orgId }) => {
     <Pluggable
       aria-haspopup="true"
       type="find-interface"
-      dataKey="interface"
       searchLabel={<FormattedMessage id="ui-organizations.interface.addInterface" />}
       searchButtonStyle="default"
       disableRecordCreation
-      stripes={stripes}
       addInterfaces={addInterfaces}
       renderNewInterfaceBtn={renderNewInterfaceBtn}
     >
@@ -78,11 +76,10 @@ const AddInterfaceButton = ({ fetchInterfaces, fields, stripes, orgId }) => {
 AddInterfaceButton.propTypes = {
   fetchInterfaces: PropTypes.func.isRequired,
   fields: PropTypes.object,
-  stripes: PropTypes.object,
   orgId: PropTypes.string,
 };
 
-const InterfacesList = ({ fetchInterfaces, fields, interfaces, orgId, stripes }) => {
+const InterfacesList = ({ fetchInterfaces, fields, interfaces, orgId }) => {
   const contentData = fields.getAll().map((interfaceId, _index) => ({
     ...get(interfaces, interfaceId, {}),
     _index,
@@ -136,7 +133,6 @@ const InterfacesList = ({ fetchInterfaces, fields, interfaces, orgId, stripes })
       <AddInterfaceButton
         fetchInterfaces={fetchInterfaces}
         fields={fields}
-        stripes={stripes}
         orgId={orgId}
       />
     </React.Fragment>
@@ -148,7 +144,6 @@ InterfacesList.propTypes = {
   fields: PropTypes.object,
   orgId: PropTypes.string,
   interfaces: PropTypes.object,
-  stripes: PropTypes.object,
 };
 
 export default InterfacesList;

@@ -186,7 +186,6 @@ class FormVendor extends Component {
                   orgId={id}
                   parentMutator={parentMutator}
                   parentResources={parentResources}
-                  stripes={stripes}
                   storedInterfaces={interfaces}
                 />
               </Accordion>
