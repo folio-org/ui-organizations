@@ -19,7 +19,7 @@ describe('Organization details', () => {
   const orgEdit = new OrganizationEditInteractor();
   const orgInterface = new InterfacesViewInteractor();
 
-  beforeEach(function () {
+  beforeEach(async function () {
     const vendorInterface = this.server.create('interface');
     const organizations = this.server.createList(
       'organization',
@@ -31,6 +31,7 @@ describe('Organization details', () => {
     this.server.create('contact', { notes: TEST_NOTE });
 
     this.visit(`/organizations/view/${orgId}`);
+    await orgDetails.whenLoaded();
   });
 
   it('renders Organization details', () => {
