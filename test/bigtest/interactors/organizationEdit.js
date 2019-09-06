@@ -34,7 +34,7 @@ class SummarySectionForm extends SummarySection {
 @interactor class ContactPeopleForm {
   static defaultScope = `#${SECTIONS.contactPeopleSection}`;
   headerButton = new Button(`#accordion-toggle-button-${SECTIONS.contactPeopleSection}`);
-  addContactButton = new Button('[data-test-plugin-find-record-button]');
+  addContactButton = new Button('[data-test-add-contact]');
   isExpanded = isVisible('#contact-list');
 }
 
