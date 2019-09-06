@@ -31,8 +31,11 @@ class SummarySectionForm extends SummarySection {
   status = new Interactor('select[name="status"]');
 }
 
-class ContactPeopleForm extends ContactPeopleSection {
+@interactor class ContactPeopleForm {
+  static defaultScope = `#${SECTIONS.contactPeopleSection}`;
+  headerButton = new Button(`#accordion-toggle-button-${SECTIONS.contactPeopleSection}`);
   addContactButton = new Button('[data-test-add-contact]');
+  isExpanded = isVisible('#contact-list');
 }
 
 class VendorTermsForm extends VendorTermsSection {

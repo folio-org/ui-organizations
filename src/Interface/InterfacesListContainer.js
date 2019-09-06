@@ -16,9 +16,6 @@ class InterfacesListContainer extends Component {
   static propTypes = {
     parentMutator: PropTypes.object,
     parentResources: PropTypes.object,
-    stripes: PropTypes.shape({
-      store: PropTypes.object,
-    }),
     orgId: PropTypes.string,
     storedInterfaces: PropTypes.arrayOf(PropTypes.object),
   };
@@ -36,7 +33,7 @@ class InterfacesListContainer extends Component {
   }
 
   render() {
-    const { orgId, parentResources, stripes } = this.props;
+    const { orgId, parentResources } = this.props;
     const interfaces = get(parentResources, 'interfacesManualFetch.records', []).reduce((acc, item) => {
       acc[item.id] = item;
 
@@ -53,7 +50,6 @@ class InterfacesListContainer extends Component {
               interfaces,
               fetchInterfaces: this.refreshInterfaces,
               orgId,
-              stripes,
             }}
           />
         </Col>

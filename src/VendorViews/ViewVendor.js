@@ -168,7 +168,7 @@ class ViewVendor extends Component {
           {organization && (
             <Button
               buttonStyle="dropdownItem"
-              data-test-button-delete-organization
+              data-test-button-edit-organization
               onClick={() => {
                 onToggle();
                 onEdit();

@@ -19,7 +19,7 @@ describe('Organization details', () => {
   const orgEdit = new OrganizationEditInteractor();
   const orgInterface = new InterfacesViewInteractor();
 
-  beforeEach(function () {
+  beforeEach(async function () {
     const vendorInterface = this.server.create('interface');
     const organizations = this.server.createList(
       'organization',
@@ -31,6 +31,7 @@ describe('Organization details', () => {
     this.server.create('contact', { notes: TEST_NOTE });
 
     this.visit(`/organizations/view/${orgId}`);
+    await orgDetails.whenLoaded();
   });
 
   it('renders Organization details', () => {
@@ -38,7 +39,7 @@ describe('Organization details', () => {
   });
 
   it("doesn't show Organization Details action menu", () => {
-    expect(orgDetails.actions.isPresent).to.be.false;
+    expect(orgDetails.actions.isVisible).to.be.false;
   });
 
   describe('click on header', () => {
@@ -47,7 +48,7 @@ describe('Organization details', () => {
     });
 
     it('shows action menu', () => {
-      expect(orgDetails.actions.isPresent).to.be.true;
+      expect(orgDetails.actions.isVisible).to.be.true;
     });
   });
 

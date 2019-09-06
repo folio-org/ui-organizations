@@ -15,8 +15,9 @@ describe('Create organization', () => {
 
   const orgEdit = new OrganizationEditInteractor();
 
-  beforeEach(function () {
+  beforeEach(async function () {
     this.visit('/organizations/view?layer=create');
+    await orgEdit.whenLoaded();
   });
 
   it('should render form, Add Contact button', () => {
