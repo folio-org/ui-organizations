@@ -1,6 +1,7 @@
 import {
   interactor,
   attribute,
+  isVisible,
 } from '@bigtest/interactor';
 
 import { SECTIONS } from '../../../../src/common/constants';
