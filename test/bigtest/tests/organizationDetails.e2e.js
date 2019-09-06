@@ -92,7 +92,9 @@ describe('Organization details', () => {
   });
 
   it('contact people section is expanded', () => {
-    expect(orgDetails.contactPeopleSection.isExpanded).to.be.true;
+    expect(
+      orgDetails.contactPeopleSection.isExpanded(orgDetails.contactPeopleSection.contentStyles),
+    ).to.be.true;
   });
 
   describe('metadata', function () {
@@ -115,7 +117,9 @@ describe('Organization details', () => {
     });
 
     it('contact people section is closed', function () {
-      expect(orgDetails.contactPeopleSection.isExpanded).to.be.false;
+      expect(
+        orgDetails.contactPeopleSection.isExpanded(orgDetails.contactPeopleSection.contentStyles),
+      ).to.be.false;
     });
   });
 
@@ -145,7 +149,9 @@ describe('Organization details', () => {
     });
 
     it('all sections are expanded', function () {
-      expect(orgDetails.contactPeopleSection.isExpanded).to.be.true;
+      expect(
+        orgDetails.contactPeopleSection.isExpanded(orgDetails.contactPeopleSection.contentStyles),
+      ).to.be.true;
     });
   });
 

@@ -28,10 +28,11 @@ const currencyFormatter = ({ option }) => {
 
   return item.label;
 };
-const currencyFilter = (filterText) => {
+const currencyFilter = (filterText = '') => {
+  const lowerFilterText = filterText.toLowerCase();
   const renderedItems = filterText
     ? currenciesOptions
-      .filter(item => item.label.includes(filterText))
+      .filter(item => item.label.toLowerCase().includes(lowerFilterText))
       .map(({ value }) => value)
     : currencyValueOptions;
 
