@@ -1,7 +1,6 @@
 import {
   interactor,
   attribute,
-  isVisible,
 } from '@bigtest/interactor';
 
 import { SECTIONS } from '../../../../src/common/constants';
@@ -13,7 +12,6 @@ class ContactPeopleSection {
 
   contentStyles = attribute('[class*=content---]', 'style');
   isExpanded = styles => styles.includes('visible');
-  listIsVisible = isVisible('#contact-list');
 }
 
 export default interactor(ContactPeopleSection);

@@ -105,10 +105,7 @@ describe('Organization edit', () => {
   });
 
   it('contact people section is expanded', function () {
-    expect(
-      orgEdit.contactPeopleSection.isExpanded(orgEdit.contactPeopleSection.contentStyles),
-    ).to.be.true;
-    // expect(orgEdit.contactPeopleSection.listIsVisible).to.be.true;
+    expect(orgEdit.contactPeopleSection.isExpanded).to.be.true;
   });
 
   it('update Vendor Button is disabled', function () {
