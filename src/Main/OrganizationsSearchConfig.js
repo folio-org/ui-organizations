@@ -1,3 +1,5 @@
+import { generateQueryTemplate } from '@folio/stripes-acq-components';
+
 const indexes = [
   'name',
   'contacts',
@@ -17,13 +19,4 @@ export const searchableIndexes = [
   ...indexes.map(index => ({ label: index, value: index })),
 ];
 
-export const organizationsSearchQueryTemplate = `(
-  name="%{query.query}*" or
-  code="%{query.query}*" or
-  language="%{query.query}*" or
-  aliases="%{query.query}*" or
-  erpCode="%{query.query}*" or
-  taxId="%{query.query}*" or
-  interfaces="%{query.query}*" or
-  contacts="%{query.query}*"
-)`;
+export const organizationsSearchQueryTemplate = generateQueryTemplate(indexes);
