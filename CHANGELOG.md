@@ -1,5 +1,15 @@
 # Change history for ui-organizations
 
+## [1.5.0](https://github.com/folio-org/ui-organizations/tree/v1.5.0) (2019-09-11)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.4.0...v1.5.0)
+
+### Stories
+* [UIORGS-97](https://issues.folio.org/browse/UIORGS-97) Update the currency list for vendors to rely on the standard currency list
+
+### Bug Fixes
+* [UIORGS-87](https://issues.folio.org/browse/UIORGS-87) Unable to assign an interface to an Organization
+* [UIOR-367](https://issues.folio.org/browse/UIOR-367) Fix search query
+
 ## [1.4.0](https://github.com/folio-org/ui-organizations/tree/v1.4.0) (2019-08-26)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.3.0...v1.4.0)
 

@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import queryString from 'query-string';
 // Folio
-import {
-  IfInterface,
-  IfPermission,
-} from '@folio/stripes/core';
+import { IfPermission } from '@folio/stripes/core';
 import {
   Pane,
   PaneMenu,
@@ -193,25 +190,20 @@ class ViewVendor extends Component {
     const lastMenu = (
       <PaneMenu>
         <IfPermission perm="ui-organizations.edit">
-          <IfInterface
-            name="organizations-storage.organizations"
-            version="2.1 3.0"
-          >
-            {tagsEnabled && (
-              <FormattedMessage id="ui-organizations.showTags">
-                {(title) => (
-                  <IconButton
-                    ariaLabel={title}
-                    badgeCount={tags.length}
-                    icon="tag"
-                    id="clickable-show-tags"
-                    onClick={tagsToggle}
-                    title={title}
-                  />
-                )}
-              </FormattedMessage>
-            )}
-          </IfInterface>
+          {tagsEnabled && (
+            <FormattedMessage id="ui-organizations.showTags">
+              {(title) => (
+                <IconButton
+                  ariaLabel={title}
+                  badgeCount={tags.length}
+                  icon="tag"
+                  id="clickable-show-tags"
+                  onClick={tagsToggle}
+                  title={title}
+                />
+              )}
+            </FormattedMessage>
+          )}
         </IfPermission>
         <IfPermission perm="ui-organizations.edit">
           <FormattedMessage id="ui-organizations.view.edit">
