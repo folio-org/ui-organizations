@@ -5,6 +5,7 @@ import { FieldArray } from 'redux-form';
 
 import {
   Col,
+  Icon,
   Row,
 } from '@folio/stripes/components';
 
@@ -50,6 +51,21 @@ class ContactPeopleForm extends Component {
 
       return acc;
     }, {});
+    const isLoading = !(
+      get(parentResources, 'vendorCategory.hasLoaded') &&
+      get(parentResources, 'contactsManualFetch.hasLoaded')
+    );
+
+    if (isLoading) {
+      return (
+        <div>
+          <Icon
+            icon="spinner-ellipsis"
+            width="100px"
+          />
+        </div>
+      );
+    }
 
     return (
       <Row>
