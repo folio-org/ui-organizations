@@ -65,31 +65,35 @@ const InterfaceView = ({ getCreds, item = {}, isNarrow = false }) => {
             </span>
           </KeyValue>
         </Col>
-        <Col xs={columnsAmount}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.interface.username" />}>
-            <span className={css.wrapValue}>
-              {username}
-            </span>
-          </KeyValue>
-        </Col>
-        <Col
-          data-test-password
-          xs={hasShowButton ? columnsAmount - 2 : columnsAmount}
-        >
-          <KeyValue label={<FormattedMessage id="ui-organizations.interface.password" />}>
-            <span className={css.wrapValue}>
-              {password}
-            </span>
-          </KeyValue>
-        </Col>
+        {!hasShowButton && (
+          <React.Fragment>
+            <Col xs={columnsAmount}>
+              <KeyValue label={<FormattedMessage id="ui-organizations.interface.username" />}>
+                <span className={css.wrapValue}>
+                  {username}
+                </span>
+              </KeyValue>
+            </Col>
+            <Col
+              data-test-password
+              xs={columnsAmount}
+            >
+              <KeyValue label={<FormattedMessage id="ui-organizations.interface.password" />}>
+                <span className={css.wrapValue}>
+                  {password}
+                </span>
+              </KeyValue>
+            </Col>
+          </React.Fragment>
+        )}
         {hasShowButton && (
-          <Col xs={2}>
+          <Col xs={columnsAmount}>
             <IfPermission perm="organizations-storage.interfaces.credentials.item.get">
               <Button
                 data-test-show-creds
                 onClick={showCreds}
               >
-                <FormattedMessage id="ui-organizations.edit.show" />
+                <FormattedMessage id="ui-organizations.edit.showCredentials" />
               </Button>
             </IfPermission>
           </Col>
