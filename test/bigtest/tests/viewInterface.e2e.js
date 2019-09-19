@@ -75,9 +75,8 @@ describe('View interface', () => {
     });
   });
 
-  it('should be present, password is hidden', () => {
-    expect(viewInterface.orgInterface.isPresent).to.be.true;
-    expect(viewInterface.passwordBlockText).to.contain('***');
+  it('should not be present', () => {
+    expect(viewInterface.orgInterface.isPresent).to.be.false;
   });
 
   describe('click show password', () => {
