@@ -288,13 +288,6 @@ class Main extends Component {
       'Status': <FormattedMessage id="ui-organizations.main.vendorStatus" />,
       'isVendor': <FormattedMessage id="ui-organizations.main.isVendor" />,
     };
-    const columnWidths = {
-      'Name': '15%',
-      'Code': '10%',
-      'Description': '40%',
-      'Status': '10%',
-      'isVendor': '10%',
-    };
 
     return (
       <div data-test-organizations-list>
@@ -304,7 +297,6 @@ class Main extends Component {
           baseRoute={packageInfo.stripes.route}
           visibleColumns={visibleColumns || ['Name', 'Code', 'Description', 'Status', 'isVendor']}
           columnMapping={columnMapping}
-          columnWidths={columnWidths}
           resultsFormatter={resultsFormatter}
           viewRecordComponent={ViewVendor}
           onCreate={this.create}
