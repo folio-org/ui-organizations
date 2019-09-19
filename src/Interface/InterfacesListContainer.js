@@ -6,6 +6,7 @@ import { FieldArray } from 'redux-form';
 
 import {
   Col,
+  Icon,
   Row,
 } from '@folio/stripes/components';
 
@@ -39,6 +40,18 @@ class InterfacesListContainer extends Component {
 
       return acc;
     }, {});
+    const isLoading = !get(parentResources, 'interfacesManualFetch.hasLoaded');
+
+    if (isLoading) {
+      return (
+        <div>
+          <Icon
+            icon="spinner-ellipsis"
+            width="100px"
+          />
+        </div>
+      );
+    }
 
     return (
       <Row>

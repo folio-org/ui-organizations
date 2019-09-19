@@ -13,13 +13,6 @@ import { Pluggable } from '@folio/stripes/core';
 
 import { transformCategoryIdsToLables } from '../common/utils/category';
 
-const columnWidths = {
-  'categories': '35%',
-  'emails': '35%',
-  'name': '25%',
-  'unassign': '5%',
-};
-
 const columnMapping = {
   categories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
   emails: <FormattedMessage id="ui-organizations.contactPeople.emails" />,
@@ -130,7 +123,6 @@ const ContactPeopleList = ({ fetchContacts, fields, contactsMap, orgId, categori
       <MultiColumnList
         id="contact-list"
         columnMapping={columnMapping}
-        columnWidths={columnWidths}
         contentData={contentData}
         formatter={resultsFormatter}
         rowFormatter={anchoredRowFormatter}

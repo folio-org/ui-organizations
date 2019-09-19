@@ -18,7 +18,6 @@ import {
 } from '../interfaces/constants';
 import {
   columnMapping,
-  columnWidths,
   visibleColumns,
 } from './constants';
 
@@ -123,7 +122,6 @@ const InterfacesList = ({ fetchInterfaces, fields, interfaces, orgId }) => {
       <MultiColumnList
         id="interface-list"
         columnMapping={columnMapping}
-        columnWidths={columnWidths}
         contentData={contentData}
         formatter={resultsFormatter}
         rowFormatter={anchoredRowFormatter}

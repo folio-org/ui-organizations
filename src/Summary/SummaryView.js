@@ -15,7 +15,6 @@ class SummaryView extends React.Component {
 
   render() {
     const { initialValues } = this.props;
-    const columnWidths = { 'value': '50%', 'description': '50%' };
     const columnMapping = {
       'value': <FormattedMessage id="ui-organizations.summary.alias" />,
       'description': <FormattedMessage id="ui-organizations.summary.description" />,
@@ -72,7 +71,6 @@ class SummaryView extends React.Component {
           </div>
           <MultiColumnList
             contentData={initialValues.aliases}
-            columnWidths={columnWidths}
             columnMapping={columnMapping}
           />
         </Col>
