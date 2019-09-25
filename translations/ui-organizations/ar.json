@@ -596,5 +596,6 @@
     "view.delete.message": "حذف المؤسسة؟",
     "vendor.confirmation.heading": "تأكيد حذف بيانات المورّد",
     "vendor.confirmation.confirm": "تأكيد",
-    "vendor.confirmation.message": "تحذير سيتم حذف جميع بيانات المورّد، شروط المورّد، معلومات EDI، والحسابات من هذه التسجيلة."
+    "vendor.confirmation.message": "تحذير سيتم حذف جميع بيانات المورّد، شروط المورّد، معلومات EDI، والحسابات من هذه التسجيلة.",
+    "edit.showCredentials": "عرض البيانات"
 }

@@ -1,7 +1,7 @@
 {
     "meta.title": "组织",
     "search": "搜索",
-    "resultCount": "{count, number} {count, plural, one {已找到记录} other {已找到记录}}",
+    "resultCount": "{count, number} {count, plural, one {记录找到} other {记录找到}}",
     "data.contactTypes.email": "电子邮件",
     "data.contactTypes.mail": "邮件（主要地址）",
     "data.contactTypes.textMessage": "短信",
@@ -389,7 +389,7 @@
     "edi.libraryEDICode": "图书馆EDI代码",
     "edi.libraryEDIType": "图书馆EDI类型",
     "edi.prorateTax": "按比例税",
-    "edi.prorateFees": "按比例费",
+    "edi.prorateFees": "按比例费用",
     "edi.ediNamingConvention": "EDI命名约定",
     "edi.sendAccountNumber": "发送帐号",
     "edi.whatMssgs": "预计此供应商会收到哪些消息？",
@@ -540,7 +540,7 @@
     "contacts.message.unassigned.success": "该联系人取消分配",
     "contacts.confirmUnassign.confirmLabel": "确认",
     "contacts.confirmUnassign.heading": "从组织取消分配",
-    "contacts.confirmUnassign.message": "确定要从组织中取消分配联系人吗？",
+    "contacts.confirmUnassign.message": "确定要从组织中取消分配此联系人吗？",
     "contacts.confirmDelete.confirmLabel": "确认",
     "contacts.confirmDelete.heading": "删除联系人",
     "contacts.confirmDelete.message": "确定要删除该联系人吗？",
@@ -566,7 +566,7 @@
     "contactPeople.note": "附注",
     "interface.confirmUnassign.confirmLabel": "确认",
     "interface.confirmUnassign.heading": "从组织取消分配",
-    "interface.confirmUnassign.message1": "确定要由此组织取消分配界面吗？",
+    "interface.confirmUnassign.message1": "确定要由此组织取消分配此界面吗？",
     "interface.confirmDelete.confirmLabel": "确认",
     "interface.confirmDelete.heading": "删除用户界面",
     "interface.confirmDelete.message": "您确定要删除此用户界面吗？",
@@ -596,5 +596,6 @@
     "view.delete.message": "选择组织？",
     "vendor.confirmation.heading": "确认删除供应商数据",
     "vendor.confirmation.confirm": "确认",
-    "vendor.confirmation.message": "警告 将从此记录中删除所有供应商信息、供应商条款、EDI信息和帐户。"
+    "vendor.confirmation.message": "警告 将从此记录中删除所有供应商信息、供应商条款、EDI信息和帐户。",
+    "edit.showCredentials": "Show credentials"
 }

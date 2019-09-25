@@ -596,5 +596,6 @@
     "view.delete.message": "Delete organization?",
     "vendor.confirmation.heading": "Confirm vendor data deletion",
     "vendor.confirmation.confirm": "Confirm",
-    "vendor.confirmation.message": "WARNING All Vendor information, Vendor terms, EDI information, and Accounts will be deleted from this record."
+    "vendor.confirmation.message": "WARNING All Vendor information, Vendor terms, EDI information, and Accounts will be deleted from this record.",
+    "edit.showCredentials": "Mostrar credenciales"
 }
