@@ -20,6 +20,7 @@ import {
   TextField,
 } from '@folio/stripes/components';
 
+import { validateRequired } from '@folio/stripes-acq-components';
 import { isURLValid } from '../../Utils/Validate';
 import TogglePassword from '../../Utils/TogglePassword';
 import { shapeOptions } from './const';
@@ -110,6 +111,8 @@ class EditInterface extends Component {
                 <Field
                   label={<FormattedMessage id="ui-organizations.interface.name" />}
                   name="name"
+                  required
+                  validate={validateRequired}
                   component={TextField}
                   fullWidth
                 />

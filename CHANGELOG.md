@@ -1,5 +1,10 @@
 # Change history for ui-organizations
 
+## [1.6.0] (IN PROGRESS)
+
+### Bug Fixes
+* [UIORGS-100](https://issues.folio.org/browse/UIORGS-100) Change the input of the Interface name to required
+
 ## [1.5.0](https://github.com/folio-org/ui-organizations/tree/v1.5.0) (2019-09-11)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.4.0...v1.5.0)
 
