@@ -19,7 +19,7 @@
   "data.contactTypes.primaryAddress": "Primary address",
   "data.contactTypes.alternateAddress": "Alternate address",
   "data.contactTypes.email": "Email",
-  "data.contactTypes.mail": "Mail (Primary address)",
+  "data.contactTypes.mail": "Mail (primary address)",
   "data.contactTypes.textMessage": "Text message",
   "data.contactTypes.categories": "Categories",
   "data.contactTypes.remove": "Remove",
@@ -321,7 +321,7 @@
 
   "vendor.confirmation.heading": "Confirm vendor data deletion",
   "vendor.confirmation.confirm": "Confirm",
-  "vendor.confirmation.message": "WARNING All Vendor information, Vendor terms, EDI information, and Accounts will be deleted from this record.",
+  "vendor.confirmation.message": "Warning. All vendor information, vendor terms, EDI information, and accounts will be deleted from this record.",
 
   "summary": "Summary",
   "contactInformation": "Contact information",
@@ -344,10 +344,10 @@
   "organizationStatus.inactive": "Inactive",
   "organizationStatus.pending": "Pending",
 
-  "paymentMethod.cach": "Cash",
-  "paymentMethod.card": "Credit Card/P-Card",
+  "paymentMethod.cash": "Cash",
+  "paymentMethod.card": "Credit card/P-Card",
   "paymentMethod.eft": "EFT",
-  "paymentMethod.depAccount": "Deposit Account",
+  "paymentMethod.depAccount": "Deposit account",
 
   "summary.name": "Name",
   "summary.code": "Code",
@@ -390,7 +390,7 @@
   "contactPeople.name": "Name",
   "contactPeople.prefix": "Prefix",
   "contactPeople.details.lastName": "Last name",
-  "contactPeople.details.firstName": "First Name",
+  "contactPeople.details.firstName": "First name",
   "contactPeople.status": "Status",
   "contactPeople.status.inactive": "Inactive",
   "contactPeople.status.active": "Active",
