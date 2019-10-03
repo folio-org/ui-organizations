@@ -1,6 +1,7 @@
 import {
   interactor,
   Interactor,
+  isVisible,
 } from '@bigtest/interactor';
 
 import Button from './Button';
@@ -17,4 +18,9 @@ export default interactor(class ViewContactInteractor {
   deleteButton = new Button('[data-test-contacts-action-delete]');
   unassignConfirmation = new ConfirmationModal('#unassign-contact-modal');
   deleteConfirmation = new ConfirmationModal('#delete-contact-modal');
+  pageIsVisible = isVisible('[data-test-contact-person]');
+
+  whenLoaded() {
+    return this.timeout(5000).when(() => this.pageIsVisible);
+  }
 });

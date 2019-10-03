@@ -1,25 +1,20 @@
-import { Response } from '@bigtest/mirage';
-import { noop } from 'lodash';
+import {
+  createGetAll,
+  createGetById,
+  createPost,
+  createPut,
+} from '@folio/stripes-acq-components/test/bigtest/network/configs';
 
 import { INTERFACES_API } from '../../../../src/common/constants';
-import { put } from './util';
+
+const SCHEMA_NAME = 'interfaces';
 
 const configInterfaces = server => {
-  server.get(INTERFACES_API, (schema) => {
-    return schema.interfaces.all();
-  });
-
-  server.get(`${INTERFACES_API}/:id`, (schema, request) => {
-    const orgInterface = schema.interfaces.find(request.params.id);
-
-    return orgInterface
-      ? orgInterface.attrs
-      : new Response(404, { errors: 'interface not found' });
-  });
-
-  server.put(`${INTERFACES_API}/:id`, put('interfaces'));
-
-  server.post(INTERFACES_API, noop);
+  server.get(INTERFACES_API, createGetAll(SCHEMA_NAME));
+  server.get(`${INTERFACES_API}/:id`, createGetById(SCHEMA_NAME));
+  server.put(`${INTERFACES_API}/:id`, createPut(SCHEMA_NAME));
+  server.delete(`${INTERFACES_API}/:id`, SCHEMA_NAME);
+  server.post(`${INTERFACES_API}`, createPost(SCHEMA_NAME));
 };
 
 export default configInterfaces;

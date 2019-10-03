@@ -12,24 +12,20 @@ describe('View contact', () => {
 
   const viewContact = new ViewContactInteractor();
 
-  beforeEach(function () {
+  beforeEach(async function () {
     const contact = this.server.create('contact');
+    const org = this.server.create('organization', { contacts: [contact.id] });
 
-    return this.visit(`/organizations/contacts/${contact.id}/view`, () => {
-      expect(viewContact.$root).to.exist;
-    });
+    this.visit(`/organizations/${org.id}/contacts/${contact.id}/view`);
+    await viewContact.whenLoaded();
   });
 
-  describe('actions', () => {
-    it('should be present', () => {
-      expect(viewContact.actions.isPresent).to.be.true;
-    });
+  it('actions should be present', () => {
+    expect(viewContact.actions.isPresent).to.be.true;
   });
 
-  describe('contact person section', () => {
-    it('should be present', () => {
-      expect(viewContact.contactPerson.isPresent).to.be.true;
-    });
+  it('contact person section should be present', () => {
+    expect(viewContact.contactPerson.isPresent).to.be.true;
   });
 
   describe('click unassign button', () => {

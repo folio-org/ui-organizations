@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import {
   Field,
   FieldArray,
-  getFormValues,
 } from 'redux-form';
-import { get } from 'lodash';
 
 import {
   Checkbox,

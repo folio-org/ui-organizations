@@ -10,7 +10,6 @@ import { SECTIONS } from '../../../src/common/constants';
 import Button from './Button';
 import {
   SummarySection,
-  ContactPeopleSection,
   InterfacesSection,
   VendorInformationSection,
   VendorTermsSection,
