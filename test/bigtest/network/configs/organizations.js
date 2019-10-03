@@ -1,18 +1,19 @@
-import { noop } from 'lodash';
+import {
+  createGetAll,
+  createGetById,
+  createPost,
+  createPut,
+} from '@folio/stripes-acq-components/test/bigtest/network/configs';
 
 import { ORGANIZATIONS_API } from '../../../../src/common/constants';
-import { put } from './util';
+
+const SCHEMA_NAME = 'organizations';
 
 const configOrganizations = server => {
-  server.get(ORGANIZATIONS_API, (schema) => {
-    return schema.organizations.all();
-  });
-
-  server.put(`${ORGANIZATIONS_API}/:id`, put('organizations'));
-
-  server.delete(`${ORGANIZATIONS_API}/:id`, 'organizations');
-
-  server.post(`${ORGANIZATIONS_API}`, noop);
+  server.get(ORGANIZATIONS_API, createGetAll(SCHEMA_NAME));
+  server.put(`${ORGANIZATIONS_API}/:id`, createPut(SCHEMA_NAME));
+  server.delete(`${ORGANIZATIONS_API}/:id`, createGetById(SCHEMA_NAME));
+  server.post(`${ORGANIZATIONS_API}`, createPost(SCHEMA_NAME));
 };
 
 export default configOrganizations;
