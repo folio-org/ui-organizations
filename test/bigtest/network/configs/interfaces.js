@@ -11,8 +11,9 @@ const SCHEMA_NAME = 'interfaces';
 
 const configInterfaces = server => {
   server.get(INTERFACES_API, createGetAll(SCHEMA_NAME));
+  server.get(`${INTERFACES_API}/:id`, createGetById(SCHEMA_NAME));
   server.put(`${INTERFACES_API}/:id`, createPut(SCHEMA_NAME));
-  server.delete(`${INTERFACES_API}/:id`, createGetById(SCHEMA_NAME));
+  server.delete(`${INTERFACES_API}/:id`, SCHEMA_NAME);
   server.post(`${INTERFACES_API}`, createPost(SCHEMA_NAME));
 };
 
