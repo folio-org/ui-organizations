@@ -6,7 +6,9 @@ import {
   Row,
   Col,
   currenciesByCode,
+  KeyValue,
 } from '@folio/stripes/components';
+import { PAYMENT_METHOD_LABELS } from '@folio/stripes-acq-components';
 
 import { PrintKeyValue, PrintBoolToCheckbox } from '../Utils/PrintKeyValue';
 import css from './VendorInformationView.css';
@@ -40,7 +42,11 @@ const VendorInformationView = ({ organization }) => {
 
   return (
     <Row className={css.horizontalLine}>
-      {PrintKeyValue('ui-organizations.vendorInfo.paymentMethod', paymentMethod, 3, false)}
+      <Col xs={3}>
+        <KeyValue label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />}>
+          {PAYMENT_METHOD_LABELS[paymentMethod]}
+        </KeyValue>
+      </Col>
       {PrintKeyValue('ui-organizations.vendorInfo.vendorCurrencies', vendorCurrenciesString, 3, false)}
       <Col xs={12}>
         <hr />

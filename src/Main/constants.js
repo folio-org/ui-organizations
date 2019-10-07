@@ -2,11 +2,14 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import {
+  PAYMENT_METHOD,
+  PAYMENT_METHOD_LABELS,
+} from '@folio/stripes-acq-components';
+
+import {
   ORGANIZATION_STATUS,
   ORGANIZATION_STATUS_LABELS,
   CATEGORIES,
-  ORGANIZATION_PAYMENT_METHOD,
-  ORGANIZATION_PAYMENT_METHOD_LABELS,
 } from '../common/constants';
 
 export const FILTERS = {
@@ -18,6 +21,13 @@ export const FILTERS = {
   PAYMENT_METHOD: 'paymentMethod',
   STATS_AVAILABLE: 'statsAvailable',
   IS_VENDOR: 'isVendor',
+};
+
+export const PAYMENT_METHOD_FOR_FILTER = {
+  cash: PAYMENT_METHOD.cash,
+  card: PAYMENT_METHOD.card,
+  eft: PAYMENT_METHOD.eft,
+  depAccount: PAYMENT_METHOD.depAccount,
 };
 
 export const DEFAULT_FILTERS = [
@@ -37,9 +47,9 @@ export const CATEGORY_OPTIONS = Object.values(CATEGORIES).map(category => ({
   label: category,
 }));
 
-export const PAYMENT_METHOD_OPTIONS = Object.values(ORGANIZATION_PAYMENT_METHOD).map(method => ({
+export const PAYMENT_METHOD_OPTIONS_FOR_FILTER = Object.values(PAYMENT_METHOD_FOR_FILTER).map(method => ({
   value: method,
-  label: ORGANIZATION_PAYMENT_METHOD_LABELS[method],
+  label: PAYMENT_METHOD_LABELS[method],
 }));
 
 export const BOOLEAN_OPTIONS = [

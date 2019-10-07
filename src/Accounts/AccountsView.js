@@ -1,8 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
-import { Row, Col, KeyValue } from '@folio/stripes/components';
 import { FormattedMessage } from 'react-intl';
+
+import {
+  Row,
+  Col,
+  KeyValue,
+} from '@folio/stripes/components';
+import { PAYMENT_METHOD_LABELS } from '@folio/stripes-acq-components';
+
 import css from './AccountsView.css';
 
 const printKeyValue = (label, val, isRequire) => {
@@ -22,7 +29,11 @@ const renderAccount = (val, key) => (
     {printKeyValue('accountNumber', get(val, ['accountNo'], ''), false)}
     {printKeyValue('description', get(val, ['description'], ''), false)}
     {printKeyValue('payable', get(val, ['appSystemNo'], ''), false)}
-    {printKeyValue('paymentMethod', get(val, ['paymentMethod'], ''), false)}
+    <Col xs={3} data-test-payment-method>
+      <KeyValue label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />}>
+        {PAYMENT_METHOD_LABELS[get(val, 'paymentMethod')]}
+      </KeyValue>
+    </Col>
     {printKeyValue('account.contactInfo', get(val, ['contactInfo'], ''), false)}
     {printKeyValue('libraryCode', get(val, ['libraryCode'], ''), false)}
     {printKeyValue('libraryEDICode', get(val, ['libraryEdiCode'], ''), false)}
