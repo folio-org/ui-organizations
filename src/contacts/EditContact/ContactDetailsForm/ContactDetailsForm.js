@@ -5,7 +5,7 @@ import { FieldArray } from 'redux-form';
 import {
   Button,
   Col,
-} from '@folio/stripes-components';
+} from '@folio/stripes/components';
 
 import EmbeddedContactForm from './EmbeddedContactForm';
 import css from './ContactDetailsForm.css';
