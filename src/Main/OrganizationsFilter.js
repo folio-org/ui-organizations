@@ -13,7 +13,7 @@ import {
   BOOLEAN_OPTIONS,
   CATEGORY_OPTIONS,
   STATUS_OPTIONS,
-  PAYMENT_METHOD_OPTIONS,
+  PAYMENT_METHOD_OPTIONS_FOR_FILTER,
 } from './constants';
 
 const OrganizationsFilter = ({ activeFilters, onChange }) => {
@@ -69,7 +69,7 @@ const OrganizationsFilter = ({ activeFilters, onChange }) => {
         labelId="ui-organizations.filterConfig.paymentMethod"
         name={FILTERS.PAYMENT_METHOD}
         onChange={onChange}
-        options={PAYMENT_METHOD_OPTIONS}
+        options={PAYMENT_METHOD_OPTIONS_FOR_FILTER}
       />
 
       <AcqCheckboxFilter

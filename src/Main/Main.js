@@ -156,16 +156,6 @@ class Main extends Component {
     },
     dropdown: {
       initialValue: {
-        paymentMethodDD: [
-          { label: 'Cash', value: 'Cash' },
-          { label: 'Credit Card/P-Card', value: 'Credit Card P Card' },
-          { label: 'EFT', value: 'EFT' },
-          { label: 'Deposit Account', value: 'Deposit Account' },
-          { label: 'Physical Check', value: 'Physical Check' },
-          { label: 'Bank Draft', value: 'Bank Draft' },
-          { label: 'Internal Transfer', value: 'Internal Transfer' },
-          { label: 'Other', value: 'other' },
-        ],
         vendorEdiCodeDD: [
           { label: 'Code', value: 'code' },
         ],

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
 import {
   Field,
   FieldArray,
@@ -15,21 +14,16 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
+import {
+  FieldSelect,
+  PAYMENT_METHOD_OPTIONS,
+} from '@folio/stripes-acq-components';
 
-import { getDropDownItems } from '../common/utils/dropdown';
 import { ORGANIZATION_STATUS } from '../common/constants';
 import { Required } from '../Utils/Validate';
 import css from './AccountsForm.css';
 
 class AccountsForm extends Component {
-  static propTypes = {
-    parentResources: PropTypes.shape({
-      dropdown: PropTypes.shape({
-        paymentMethodDD: PropTypes.array.isRequired,
-      }),
-    }),
-  };
-
   renderForm = ({ fields }) => {
     return (
       <Row>
@@ -59,9 +53,6 @@ class AccountsForm extends Component {
   };
 
   renderSubForm = (elem, index, fields) => {
-    const { parentResources } = this.props;
-    const paymentMethodDD = getDropDownItems(parentResources, 'paymentMethodDD', true);
-
     return (
       <div
         className={css.panels}
@@ -110,15 +101,11 @@ class AccountsForm extends Component {
                 />
               </Col>
               <Col xs={12}>
-                <Field
-                  component={Select}
-                  dataOptions={paymentMethodDD}
-                  fullWidth
+                <FieldSelect
+                  dataOptions={PAYMENT_METHOD_OPTIONS}
                   label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />}
                   name={`${elem}.paymentMethod`}
-                  placeholder=" "
                   required
-                  validate={[Required]}
                 />
               </Col>
             </Row>

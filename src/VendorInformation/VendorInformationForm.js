@@ -5,7 +5,6 @@ import { Field } from 'redux-form';
 import { find } from 'lodash';
 
 import {
-  Select,
   Checkbox,
   TextField,
   AccordionSet,
@@ -14,9 +13,12 @@ import {
   Col,
   currenciesOptions,
 } from '@folio/stripes/components';
-import { FieldMultiSelection } from '@folio/stripes-acq-components';
+import {
+  FieldMultiSelection,
+  FieldSelect,
+  PAYMENT_METHOD_OPTIONS,
+} from '@folio/stripes-acq-components';
 
-import { getDropDownItems } from '../common/utils/dropdown';
 import css from './VendorInformationForm.css';
 
 const currencyValueOptions = currenciesOptions.map(({ value }) => value);
@@ -70,20 +72,15 @@ class VendorInformationForm extends Component {
   };
 
   render() {
-    const { parentResources } = this.props;
-    const paymentMethodDD = getDropDownItems(parentResources, 'paymentMethodDD', false);
-
     return (
       <Row className={css.vendorInfo}>
         <Col xs={12} md={6}>
           <Row>
             <Col xs={12}>
-              <Field
+              <FieldSelect
                 label={<FormattedMessage id="ui-organizations.vendorInfo.paymentMethod" />}
                 name="paymentMethod"
-                component={Select}
-                dataOptions={paymentMethodDD}
-                fullWidth
+                dataOptions={PAYMENT_METHOD_OPTIONS}
               />
             </Col>
             <Col xs={12}>

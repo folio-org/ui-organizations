@@ -11,7 +11,6 @@ class EdiInformationView extends React.Component {
     organization: PropTypes.object,
     parentResources: PropTypes.shape({
       dropdown: PropTypes.shape({
-        paymentMethodDD: PropTypes.array.isRequired,
         ediCodeTypeDD: PropTypes.array.isRequired,
       }),
     }),

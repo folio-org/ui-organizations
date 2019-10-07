@@ -344,11 +344,6 @@
   "organizationStatus.inactive": "Inactive",
   "organizationStatus.pending": "Pending",
 
-  "paymentMethod.cash": "Cash",
-  "paymentMethod.card": "Credit card/P-Card",
-  "paymentMethod.eft": "EFT",
-  "paymentMethod.depAccount": "Deposit account",
-
   "summary.name": "Name",
   "summary.code": "Code",
   "summary.description": "Description",
