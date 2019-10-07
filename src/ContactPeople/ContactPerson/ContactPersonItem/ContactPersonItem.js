@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { LayoutHeader } from '@folio/stripes-components';
+import { LayoutHeader } from '@folio/stripes/components';
 
 import css from './ContactPersonItem.css';
 

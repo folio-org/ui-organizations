@@ -11,7 +11,7 @@ import {
   Col,
   Icon,
   Row,
-} from '@folio/stripes-components';
+} from '@folio/stripes/components';
 
 import { Required } from '../../../Utils/Validate';
 import css from './ContactDetailsForm.css';

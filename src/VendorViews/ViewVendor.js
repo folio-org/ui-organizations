@@ -17,9 +17,10 @@ import {
   Accordion,
   ExpandAllButton,
   ConfirmationModal,
+  MenuSection,
+  Button,
 } from '@folio/stripes/components';
 import { withTags } from '@folio/stripes/smart-components';
-import { MenuSection, Button } from '@folio/stripes-components';
 
 import { SECTIONS } from '../common/constants';
 import { SummaryView } from '../Summary';
