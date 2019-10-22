@@ -375,7 +375,7 @@
     "vendorInfo.discountPercent": "折扣百分比",
     "vendorInfo.expectedActivationInterval": "预期激活间隔",
     "vendorInfo.expectedInvoiceInterval": "预期发票间隔",
-    "vendorInfo.expectedReceiptInterval": "预期收到间隔",
+    "vendorInfo.expectedReceiptInterval": "预期接收间隔",
     "vendorInfo.renewalActivationInterval": "续订激活间隔",
     "vendorInfo.subscriptionInterval": "订阅间隔",
     "vendorInfo.tax": "税",
@@ -393,8 +393,8 @@
     "edi.ediNamingConvention": "EDI命名约定",
     "edi.sendAccountNumber": "发送帐号",
     "edi.whatMssgs": "预计此供应商会收到哪些消息？",
-    "edi.supportOrder": "Support order",
-    "edi.supportInvoice": "Support invoice",
+    "edi.supportOrder": "",
+    "edi.supportInvoice": "",
     "edi.notes": "附注",
     "edi.ftpDetails": "FTP详情",
     "edi.editFTP": "EDI FTP",
@@ -597,5 +597,5 @@
     "vendor.confirmation.heading": "确认删除供应商数据",
     "vendor.confirmation.confirm": "确认",
     "vendor.confirmation.message": "警告 将从此记录中删除所有供应商信息、供应商条款、EDI信息和帐户。",
-    "edit.showCredentials": "Show credentials"
+    "edit.showCredentials": "显示凭证"
 }
