@@ -4,7 +4,11 @@ import { getFormValues } from 'redux-form';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
 
-import { Pane, PaneMenu, Button } from '@folio/stripes/components';
+import {
+  Button,
+  Pane,
+  PaneFooter,
+} from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/form';
 
 import { FormVendor } from '../VendorViews';
@@ -38,22 +42,40 @@ class PaneDetails extends React.Component {
     this.getLanguageList = this.getLanguageList.bind(this);
   }
 
-  getLastMenu(id, labelId) {
-    const { pristine, submitting, handleSubmit } = this.props;
-    const label = <FormattedMessage id={labelId} />;
+  getPaneFooter(id, label) {
+    const { pristine, submitting, handleSubmit, onCancel } = this.props;
+
+    const start = (
+      <FormattedMessage id="ui-organizations.button.cancel">
+        {(btnLabel) => (
+          <Button
+            id="clickable-close-orgazitation-dialog-footer"
+            buttonStyle="default mega"
+            onClick={onCancel}
+          >
+            {btnLabel}
+          </Button>
+        )}
+      </FormattedMessage>
+    );
+
+    const end = (
+      <Button
+        id={id}
+        type="submit"
+        buttonStyle="primary mega"
+        disabled={pristine || submitting}
+        onClick={handleSubmit}
+      >
+        {label}
+      </Button>
+    );
 
     return (
-      <PaneMenu>
-        <Button
-          id={id}
-          type="submit"
-          disabled={pristine || submitting}
-          onClick={handleSubmit}
-          style={{ marginBottom: '0' }}
-        >
-          {label}
-        </Button>
-      </PaneMenu>
+      <PaneFooter
+        renderStart={start}
+        renderEnd={end}
+      />
     );
   }
 
@@ -107,9 +129,9 @@ class PaneDetails extends React.Component {
     const paneTitle = initialValues.id ?
       <FormattedMessage id="ui-organizations.editOrg.title" values={{ name: get(initialValues, ['name'], '') }} /> :
       <FormattedMessage id="ui-organizations.createOrg.title" />;
-    const lastMenu = initialValues.id ?
-      this.getLastMenu('clickable-update-organization', 'ui-organizations.updateOrg.submit') :
-      this.getLastMenu('clickable-create-organization', 'ui-organizations.updateOrg.submit');
+    const paneFooter = initialValues.id ?
+      this.getPaneFooter('clickable-update-organization', <FormattedMessage id="ui-organizations.button.saveAndClose" />) :
+      this.getPaneFooter('clickable-create-organization', <FormattedMessage id="ui-organizations.button.saveAndClose" />);
     const { isVendor, language } = getFormValues('FormVendor')(stripes.store.getState()) || {};
 
     return (
@@ -118,7 +140,7 @@ class PaneDetails extends React.Component {
           data-test-form-vendor-pane
           defaultWidth="100%"
           dismissible
-          lastMenu={lastMenu}
+          footer={paneFooter}
           paneTitle={paneTitle}
           onClose={onCancel}
         >
