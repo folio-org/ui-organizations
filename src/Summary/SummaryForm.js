@@ -83,7 +83,10 @@ class SummaryForm extends Component {
 
     return (
       <Row>
-        <Col xs={12}>
+        <Col
+          xs={6}
+          md={3}
+        >
           <Field
             component={TextField}
             fullWidth
@@ -95,16 +98,9 @@ class SummaryForm extends Component {
           />
         </Col>
         <Col
-          xs={12}
-          md={6}
+          xs={6}
+          md={3}
         >
-          <Field
-            component={Checkbox}
-            label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
-            name="isVendor"
-            type="checkbox"
-            onChange={this.onChangeIsVendor}
-          />
           <Field
             component={TextField}
             fullWidth
@@ -113,12 +109,22 @@ class SummaryForm extends Component {
             required
             validate={[Required]}
           />
+        </Col>
+        <Col
+          xs={6}
+          md={3}
+        >
           <Field
             component={TextField}
             fullWidth
             label={<FormattedMessage id="ui-organizations.summary.accountingCode" />}
             name="erpCode"
           />
+        </Col>
+        <Col
+          xs={6}
+          md={3}
+        >
           <Field
             component={Select}
             fullWidth
@@ -137,6 +143,11 @@ class SummaryForm extends Component {
               </FormattedMessage>
             ))}
           </Field>
+        </Col>
+        <Col
+          xs={6}
+          md={3}
+        >
           <Field
             component={Select}
             dataOptions={this.props.dropdownLanguages}
@@ -146,17 +157,29 @@ class SummaryForm extends Component {
           />
         </Col>
         <Col
-          xs={12}
-          md={6}
+          xs={6}
+          md={3}
+        >
+          <Field
+            component={Checkbox}
+            label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
+            name="isVendor"
+            type="checkbox"
+            onChange={this.onChangeIsVendor}
+            vertical
+          />
+        </Col>
+        <Col
+          xs={6}
+          md={3}
         >
           <Field
             label={<FormattedMessage id="ui-organizations.summary.description" />}
             name="description"
             component={TextArea}
-            style={{ width: '100%', height: '139px' }}
           />
         </Col>
-        <Col xs={12}>
+        <Col xs={6}>
           <FieldArray
             addLabel={<FormattedMessage id="ui-organizations.summary.add" />}
             component={RepeatableField}

@@ -74,16 +74,24 @@ class VendorInformationForm extends Component {
   render() {
     return (
       <Row className={css.vendorInfo}>
-        <Col xs={12} md={6}>
+        <Col xs={12}>
           <Row>
-            <Col xs={12}>
+            <Col
+              data-test-payment-method
+              xs={6}
+              md={3}
+            >
               <FieldSelect
+                dataOptions={PAYMENT_METHOD_OPTIONS}
                 label={<FormattedMessage id="ui-organizations.vendorInfo.paymentMethod" />}
                 name="paymentMethod"
-                dataOptions={PAYMENT_METHOD_OPTIONS}
               />
             </Col>
-            <Col xs={12}>
+            <Col
+              data-test-currency
+              xs={6}
+              md={3}
+            >
               <FieldMultiSelection
                 label={<FormattedMessage id="ui-organizations.vendorInfo.vendorCurrencies" />}
                 name="vendorCurrencies"
@@ -94,16 +102,66 @@ class VendorInformationForm extends Component {
                 onChange={(e) => this.onChangeSelect(e, 'vendorCurrencies')}
               />
             </Col>
-            <Col xs={12}>
+            <Col
+              data-test-activation-interval
+              xs={6}
+              md={3}
+            >
               <Field
+                component={TextField}
+                fullWidth
+                id="expectedActivationInterval"
+                label={<FormattedMessage id="ui-organizations.vendorInfo.expectedActivationInterval" />}
+                name="expectedActivationInterval"
+                type="number"
+              />
+            </Col>
+            <Col
+              data-test-invoice-interval
+              xs={6}
+              md={3}
+            >
+              <Field
+                component={TextField}
+                fullWidth
+                id="expectedInvoiceInterval"
+                label={<FormattedMessage id="ui-organizations.vendorInfo.expectedInvoiceInterval" />}
+                name="expectedInvoiceInterval"
+                type="number"
+              />
+            </Col>
+            <Col
+              data-test-claiming-interval
+              xs={6}
+              md={3}
+            >
+              <Field
+                component={TextField}
+                fullWidth
                 label={<FormattedMessage id="ui-organizations.vendorInfo.claimingInterval" />}
                 name="claimingInterval"
                 type="number"
-                component={TextField}
-                fullWidth
               />
             </Col>
-            <Col xs={12}>
+            <Col
+              data-test-receipt-interval
+              xs={6}
+              md={3}
+            >
+              <Field
+                component={TextField}
+                fullWidth
+                id="expectedReceiptInterval"
+                label={<FormattedMessage id="ui-organizations.vendorInfo.expectedReceiptInterval" />}
+                name="expectedReceiptInterval"
+                type="number"
+              />
+            </Col>
+            <Col
+              data-test-discount-percent
+              xs={6}
+              md={3}
+            >
               <Field
                 label={<FormattedMessage id="ui-organizations.vendorInfo.discountPercent" />}
                 name="discountPercent"
@@ -111,46 +169,84 @@ class VendorInformationForm extends Component {
                 fullWidth
               />
             </Col>
+            <Col
+              data-test-reneval-interval
+              xs={6}
+              md={3}
+            >
+              <Field
+                component={TextField}
+                fullWidth
+                id="renewalActivationInterval"
+                label={<FormattedMessage id="ui-organizations.vendorInfo.renewalActivationInterval" />}
+                name="renewalActivationInterval"
+                type="number"
+              />
+            </Col>
+            <Col
+              data-test-subscription-interval
+              xs={6}
+              md={3}
+            >
+              <Field
+                component={TextField}
+                fullWidth
+                id="subscriptionInterval"
+                label={<FormattedMessage id="ui-organizations.vendorInfo.subscriptionInterval" />}
+                name="subscriptionInterval"
+                type="number"
+              />
+            </Col>
           </Row>
         </Col>
-        <Col xs={12} md={6}>
-          <Row>
-            <Col xs={12}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.expectedActivationInterval" />} name="expectedActivationInterval" id="expectedActivationInterval" type="number" component={TextField} fullWidth />
-            </Col>
-            <Col xs={12}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.expectedInvoiceInterval" />} name="expectedInvoiceInterval" id="expectedInvoiceInterval" type="number" component={TextField} fullWidth />
-            </Col>
-            <Col xs={12}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.expectedReceiptInterval" />} name="expectedReceiptInterval" id="expectedReceiptInterval" type="number" component={TextField} fullWidth />
-            </Col>
-            <Col xs={12}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.renewalActivationInterval" />} name="renewalActivationInterval" id="renewalActivationInterval" type="number" component={TextField} fullWidth />
-            </Col>
-            <Col xs={12}>
-              <Field label={<FormattedMessage id="ui-organizations.vendorInfo.subscriptionInterval" />} name="subscriptionInterval" id="subscriptionInterval" type="number" component={TextField} fullWidth />
-            </Col>
-          </Row>
-        </Col>
+
         <Col xs={12}>
-          <Col xs={12}>
-            <br />
-            <AccordionSet accordionStatus={this.state.subSections} onToggle={this.onToggleSection}>
-              <Accordion label="Tax" id="taxSection">
-                <Row>
-                  <Col xs={12} md={4}>
-                    <Field label={<FormattedMessage id="ui-organizations.vendorInfo.taxID" />} name="taxId" id="taxId" component={TextField} fullWidth />
-                  </Col>
-                  <Col xs={12} md={4}>
-                    <Field label={<FormattedMessage id="ui-organizations.vendorInfo.taxPercentage" />} name="taxPercentage" id="taxPercentage" type="number" component={TextField} fullWidth />
-                  </Col>
-                  <Col xs={12} md={4} style={{ paddingTop: '20px' }}>
-                    <Field label={<FormattedMessage id="ui-organizations.vendorInfo.liableForVAT" />} name="liableForVat" id="liableForVat" component={Checkbox} inline={false} />
-                  </Col>
-                </Row>
-              </Accordion>
-            </AccordionSet>
-          </Col>
+          <AccordionSet accordionStatus={this.state.subSections} onToggle={this.onToggleSection}>
+            <Accordion label="Tax" id="taxSection">
+              <Row>
+                <Col
+                  data-test-tax-id
+                  xs={6}
+                  md={3}
+                >
+                  <Field
+                    component={TextField}
+                    fullWidth
+                    id="taxId"
+                    label={<FormattedMessage id="ui-organizations.vendorInfo.taxID" />}
+                    name="taxId"
+                  />
+                </Col>
+                <Col
+                  data-test-tax-percentage
+                  xs={6}
+                  md={3}
+                >
+                  <Field
+                    label={<FormattedMessage id="ui-organizations.vendorInfo.taxPercentage" />}
+                    name="taxPercentage"
+                    id="taxPercentage"
+                    type="number"
+                    component={TextField}
+                    fullWidth
+                  />
+                </Col>
+                <Col
+                  data-test-liable-for-vat
+                  xs={6}
+                  md={3}
+                >
+                  <Field
+                    label={<FormattedMessage id="ui-organizations.vendorInfo.liableForVAT" />}
+                    name="liableForVat"
+                    id="liableForVat"
+                    component={Checkbox}
+                    vertical
+                  />
+                </Col>
+              </Row>
+            </Accordion>
+          </AccordionSet>
         </Col>
       </Row>
     );

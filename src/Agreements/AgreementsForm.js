@@ -48,19 +48,63 @@ class AgreementsForm extends Component {
     return (
       <div key={index} className={css.panels}>
         <Row key={index}>
-          <Col xs={12} md={4}>
-            <Field label={<FormattedMessage id="ui-organizations.agreement.name" />} name={`${elem}.name`} id={`${elem}.name`} validate={[Required]} component={TextField} fullWidth required />
+          <Col
+            xs={6}
+            md={3}
+          >
+            <Field
+              component={TextField}
+              fullWidth
+              id={`${elem}.name`}
+              label={<FormattedMessage id="ui-organizations.agreement.name" />}
+              name={`${elem}.name`}
+              required
+              validate={[Required]}
+            />
           </Col>
-          <Col xs={12} md={4}>
-            <Field label={<FormattedMessage id="ui-organizations.agreement.discountSym" />} name={`${elem}.discount`} id={`${elem}.discount`} type="number" component={TextField} fullWidth />
+          <Col
+            xs={6}
+            md={3}
+          >
+            <Field
+              component={TextField}
+              fullWidth
+              id={`${elem}.discount`}
+              label={<FormattedMessage id="ui-organizations.agreement.discountSym" />}
+              name={`${elem}.discount`}
+              type="number"
+            />
           </Col>
-          <Col xs={12} md={4}>
-            <Field label={<FormattedMessage id="ui-organizations.agreement.referenceUrl" />} name={`${elem}.referenceUrl`} id={`${elem}.referenceUrl`} validate={[isURLValid]} type="text" component={TextField} fullWidth />
+          <Col
+            xs={6}
+            md={3}
+          >
+            <Field
+              component={TextField}
+              fullWidth
+              id={`${elem}.referenceUrl`}
+              label={<FormattedMessage id="ui-organizations.agreement.referenceUrl" />}
+              name={`${elem}.referenceUrl`}
+              type="text"
+              validate={[isURLValid]}
+            />
           </Col>
-          <Col xs={12}>
-            <Field label={<FormattedMessage id="ui-organizations.agreement.notes" />} name={`${elem}.notes`} id={`${elem}.notes`} component={TextArea} fullWidth />
+          <Col
+            xs={5}
+            md={2}
+          >
+            <Field
+              component={TextArea}
+              fullWidth
+              id={`${elem}.notes`}
+              label={<FormattedMessage id="ui-organizations.agreement.notes" />}
+              name={`${elem}.notes`}
+            />
           </Col>
-          <Col xs={12} style={{ textAlign: 'right' }}>
+          <Col
+            xs={1}
+            style={{ paddingTop: '20px' }}
+          >
             <IconButton
               data-test-vendor-term-remove
               icon="trash"
@@ -76,11 +120,12 @@ class AgreementsForm extends Component {
 
   render() {
     return (
-      <Row>
-        <Col xs={12}>
-          <FieldArray label="Agreements" name="agreements" id="agreements" component={this.renderForm} />
-        </Col>
-      </Row>
+      <FieldArray
+        component={this.renderForm}
+        id="agreements"
+        name="agreements"
+      />
+
     );
   }
 }

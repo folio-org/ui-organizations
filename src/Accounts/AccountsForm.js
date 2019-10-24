@@ -60,113 +60,129 @@ class AccountsForm extends Component {
       >
         <Row key={index}>
           <Col
-            xs={12}
-            md={6}
+            xs={6}
+            md={3}
           >
-            <Row>
-              <Col xs={12}>
-                <Field
-                  component={TextField}
-                  fullWidth
-                  label={<FormattedMessage id="ui-organizations.accounts.name" />}
-                  name={`${elem}.name`}
-                  required
-                  validate={[Required]}
-                />
-              </Col>
-              <Col xs={12}>
-                <Field
-                  label={<FormattedMessage id="ui-organizations.accounts.accountNumber" />}
-                  name={`${elem}.accountNo`}
-                  validate={[Required]}
-                  required
-                  component={TextField}
-                  fullWidth
-                />
-              </Col>
-              <Col xs={12}>
-                <Field
-                  component={TextField}
-                  fullWidth
-                  label={<FormattedMessage id="ui-organizations.accounts.description" />}
-                  name={`${elem}.description`}
-                />
-              </Col>
-              <Col xs={12}>
-                <Field
-                  component={TextField}
-                  fullWidth
-                  label={<FormattedMessage id="ui-organizations.accounts.payable" />}
-                  name={`${elem}.appSystemNo`}
-                />
-              </Col>
-              <Col xs={12}>
-                <FieldSelect
-                  dataOptions={PAYMENT_METHOD_OPTIONS}
-                  label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />}
-                  name={`${elem}.paymentMethod`}
-                  required
-                />
-              </Col>
-            </Row>
+            <Field
+              component={TextField}
+              fullWidth
+              label={<FormattedMessage id="ui-organizations.accounts.name" />}
+              name={`${elem}.name`}
+              required
+              validate={[Required]}
+            />
           </Col>
           <Col
-            xs={12}
-            md={6}
+            xs={6}
+            md={3}
           >
-            <Row>
-              <Col xs={12}>
-                <Field
-                  component={Select}
-                  fullWidth
-                  label={<FormattedMessage id="ui-organizations.accounts.account.accountStatus" />}
-                  name={`${elem}.accountStatus`}
-                  placeholder=" "
-                  required
-                  validate={[Required]}
-                >
-                  {Object.keys(ORGANIZATION_STATUS).map((key) => (
-                    <FormattedMessage
-                      id={`ui-organizations.organizationStatus.${key}`}
-                      key={key}
-                    >
-                      {(message) => <option value={ORGANIZATION_STATUS[key]}>{message}</option>}
-                    </FormattedMessage>
-                  ))}
-                </Field>
-              </Col>
-              <Col xs={12}>
-                <Field
-                  component={TextField}
-                  fullWidth
-                  id={`${elem}.contactInfo`}
-                  label={<FormattedMessage id="ui-organizations.accounts.account.contactInfo" />}
-                  name={`${elem}.contactInfo`}
-                />
-              </Col>
-              <Col xs={12}>
-                <Field
-                  component={TextField}
-                  fullWidth
-                  label={<FormattedMessage id="ui-organizations.accounts.libraryCode" />}
-                  name={`${elem}.libraryCode`}
-                  required
-                  validate={[Required]}
-                />
-              </Col>
-              <Col xs={12}>
-                <Field
-                  component={TextField}
-                  fullWidth
-                  label={<FormattedMessage id="ui-organizations.accounts.libraryEDICode" />}
-                  name={`${elem}.libraryEdiCode`}
-                  required
-                  validate={[Required]}
-                />
-              </Col>
-            </Row>
+            <Field
+              label={<FormattedMessage id="ui-organizations.accounts.accountNumber" />}
+              name={`${elem}.accountNo`}
+              validate={[Required]}
+              required
+              component={TextField}
+              fullWidth
+            />
           </Col>
-          <Col xs={12}>
+          <Col
+            xs={6}
+            md={3}
+          >
+            <Field
+              component={TextField}
+              fullWidth
+              label={<FormattedMessage id="ui-organizations.accounts.description" />}
+              name={`${elem}.description`}
+            />
+          </Col>
+          <Col
+            xs={6}
+            md={3}
+          >
+            <Field
+              component={TextField}
+              fullWidth
+              label={<FormattedMessage id="ui-organizations.accounts.payable" />}
+              name={`${elem}.appSystemNo`}
+            />
+          </Col>
+          <Col
+            xs={6}
+            md={3}
+          >
+            <FieldSelect
+              dataOptions={PAYMENT_METHOD_OPTIONS}
+              label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />}
+              name={`${elem}.paymentMethod`}
+              required
+            />
+          </Col>
+          <Col
+            xs={6}
+            md={3}
+          >
+            <Field
+              component={Select}
+              fullWidth
+              label={<FormattedMessage id="ui-organizations.accounts.account.accountStatus" />}
+              name={`${elem}.accountStatus`}
+              placeholder=" "
+              required
+              validate={[Required]}
+            >
+              {Object.keys(ORGANIZATION_STATUS).map((key) => (
+                <FormattedMessage
+                  id={`ui-organizations.organizationStatus.${key}`}
+                  key={key}
+                >
+                  {(message) => <option value={ORGANIZATION_STATUS[key]}>{message}</option>}
+                </FormattedMessage>
+              ))}
+            </Field>
+          </Col>
+          <Col
+            xs={6}
+            md={3}
+          >
+            <Field
+              component={TextField}
+              fullWidth
+              id={`${elem}.contactInfo`}
+              label={<FormattedMessage id="ui-organizations.accounts.account.contactInfo" />}
+              name={`${elem}.contactInfo`}
+            />
+          </Col>
+          <Col
+            xs={6}
+            md={3}
+          >
+            <Field
+              component={TextField}
+              fullWidth
+              label={<FormattedMessage id="ui-organizations.accounts.libraryCode" />}
+              name={`${elem}.libraryCode`}
+              required
+              validate={[Required]}
+            />
+          </Col>
+          <Col
+            xs={6}
+            md={3}
+          >
+            <Field
+              component={TextField}
+              fullWidth
+              label={<FormattedMessage id="ui-organizations.accounts.libraryEDICode" />}
+              name={`${elem}.libraryEdiCode`}
+              required
+              validate={[Required]}
+            />
+          </Col>
+          <Col
+            xs={6}
+            md={3}
+          >
             <Field
               component={TextArea}
               fullWidth
@@ -194,16 +210,10 @@ class AccountsForm extends Component {
 
   render() {
     return (
-      <Row>
-        <Col xs={12}>
-          <FieldArray
-            label="Accounts"
-            name="accounts"
-            component={this.renderForm}
-          />
-          <br />
-        </Col>
-      </Row>
+      <FieldArray
+        name="accounts"
+        component={this.renderForm}
+      />
     );
   }
 }
