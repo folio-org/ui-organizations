@@ -14,6 +14,7 @@ import {
 
 export const FILTERS = {
   STATUS: 'status',
+  TAGS: 'tags',
   ADDRESS_CATEGORY: 'address_category',
   CONTACT_CATEGORY: 'contact_category',
   ADDRESS_COUNTRY: 'address_country',

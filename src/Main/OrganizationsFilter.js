@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { AccordionSet } from '@folio/stripes/components';
-import { AcqCheckboxFilter } from '@folio/stripes-acq-components';
+import {
+  AcqCheckboxFilter,
+  AcqTagsFilter,
+} from '@folio/stripes-acq-components';
 
 import COUNTRY_OPTIONS from '../Utils/Country';
 import LANGUAGE_OPTIONS from '../Utils/Languages';
@@ -30,6 +33,13 @@ const OrganizationsFilter = ({ activeFilters, onChange }) => {
         onChange={onChange}
         options={STATUS_OPTIONS}
         closedByDefault={false}
+      />
+
+      <AcqTagsFilter
+        activeFilters={activeFilters[FILTERS.TAGS]}
+        id={FILTERS.TAGS}
+        name={FILTERS.TAGS}
+        onChange={onChange}
       />
 
       <AcqCheckboxFilter
