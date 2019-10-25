@@ -310,7 +310,6 @@
 
   "createOrg.title": "Create organization",
   "editOrg.title": "Edit - {name}",
-  "updateOrg.submit": "Save",
 
   "edit.delete": "Delete",
   "edit.requiredFields": "Required fields!",
@@ -356,6 +355,9 @@
   "summary.remove": "Remove",
   "summary.add": "Add",
   "summary.pleaseAddAltNames": "Please add alternative names",
+
+  "button.cancel": "Cancel",
+  "button.saveAndClose": "Save & close",
 
   "contactInfo.phoneNumbers": "Phone numbers",
   "contactInfo.phoneNumber": "Phone number",
