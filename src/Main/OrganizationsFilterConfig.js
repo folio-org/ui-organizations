@@ -8,6 +8,11 @@ export const filterConfig = [
     values: [],
   },
   {
+    name: FILTERS.TAGS,
+    cql: 'tags.tagList',
+    values: [],
+  },
+  {
     name: FILTERS.ADDRESS_CATEGORY,
     cql: 'addresses.categories',
     values: [],
