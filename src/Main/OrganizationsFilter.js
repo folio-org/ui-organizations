@@ -5,18 +5,16 @@ import { AccordionSet } from '@folio/stripes/components';
 import {
   AcqCheckboxFilter,
   AcqTagsFilter,
+  CountryFilter,
+  LanguageFilter,
+  PAYMENT_METHOD_OPTIONS,
 } from '@folio/stripes-acq-components';
-
-import COUNTRY_OPTIONS from '../Utils/Country';
-import LANGUAGE_OPTIONS from '../Utils/Languages';
 
 import {
   FILTERS,
   DEFAULT_FILTERS,
   BOOLEAN_OPTIONS,
-  CATEGORY_OPTIONS,
   STATUS_OPTIONS,
-  PAYMENT_METHOD_OPTIONS_FOR_FILTER,
 } from './constants';
 
 const OrganizationsFilter = ({ activeFilters, onChange }) => {
@@ -43,35 +41,25 @@ const OrganizationsFilter = ({ activeFilters, onChange }) => {
       />
 
       <AcqCheckboxFilter
-        activeFilters={activeFilters[FILTERS.ADDRESS_CATEGORY]}
-        labelId="ui-organizations.filterConfig.addressCategory"
-        name={FILTERS.ADDRESS_CATEGORY}
+        activeFilters={activeFilters[FILTERS.IS_VENDOR]}
+        labelId="ui-organizations.filterConfig.isVendor"
+        name={FILTERS.IS_VENDOR}
         onChange={onChange}
-        options={CATEGORY_OPTIONS}
+        options={BOOLEAN_OPTIONS}
       />
 
-      <AcqCheckboxFilter
-        activeFilters={activeFilters[FILTERS.CONTACT_CATEGORY]}
-        labelId="ui-organizations.filterConfig.contactPeopleCategory"
-        name={FILTERS.CONTACT_CATEGORY}
-        onChange={onChange}
-        options={CATEGORY_OPTIONS}
-      />
-
-      <AcqCheckboxFilter
+      <CountryFilter
         activeFilters={activeFilters[FILTERS.ADDRESS_COUNTRY]}
         labelId="ui-organizations.filterConfig.country"
         name={FILTERS.ADDRESS_COUNTRY}
         onChange={onChange}
-        options={COUNTRY_OPTIONS}
       />
 
-      <AcqCheckboxFilter
+      <LanguageFilter
         activeFilters={activeFilters[FILTERS.LANGUAGE]}
         labelId="ui-organizations.filterConfig.languages"
         name={FILTERS.LANGUAGE}
         onChange={onChange}
-        options={LANGUAGE_OPTIONS}
       />
 
       <AcqCheckboxFilter
@@ -79,31 +67,25 @@ const OrganizationsFilter = ({ activeFilters, onChange }) => {
         labelId="ui-organizations.filterConfig.paymentMethod"
         name={FILTERS.PAYMENT_METHOD}
         onChange={onChange}
-        options={PAYMENT_METHOD_OPTIONS_FOR_FILTER}
+        options={PAYMENT_METHOD_OPTIONS}
       />
 
-      <AcqCheckboxFilter
+      {/* UIORG-91 - Add the Stats filter to the Organization filters */}
+      {/* <AcqCheckboxFilter
         activeFilters={activeFilters[FILTERS.STATS_AVAILABLE]}
         labelId="ui-organizations.filterConfig.statsAvailable"
         name={FILTERS.STATS_AVAILABLE}
         onChange={onChange}
         options={BOOLEAN_OPTIONS}
-      />
+      /> */}
 
-      <AcqCheckboxFilter
-        activeFilters={activeFilters[FILTERS.IS_VENDOR]}
-        labelId="ui-organizations.filterConfig.isVendor"
-        name={FILTERS.IS_VENDOR}
-        onChange={onChange}
-        options={BOOLEAN_OPTIONS}
-      />
     </AccordionSet>
   );
 };
 
 OrganizationsFilter.propTypes = {
-  onChange: PropTypes.func.isRequired,
   activeFilters: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default OrganizationsFilter;
