@@ -13,16 +13,6 @@ export const filterConfig = [
     values: [],
   },
   {
-    name: FILTERS.ADDRESS_CATEGORY,
-    cql: 'addresses.categories',
-    values: [],
-  },
-  {
-    name: FILTERS.CONTACT_CATEGORY,
-    cql: FILTERS.CONTACT_CATEGORY,
-    values: [],
-  },
-  {
     name: FILTERS.ADDRESS_COUNTRY,
     cql: 'addresses',
     values: [],
