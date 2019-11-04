@@ -590,11 +590,11 @@
     "vendor.confirmation.confirm": "تأكيد",
     "vendor.confirmation.message": "تحذير سيتم حذف جميع بيانات المورّد، شروط المورّد، معلومات EDI، والحسابات من هذه التسجيلة.",
     "edit.showCredentials": "عرض البيانات",
-    "showMore": "Show more",
-    "showTags": "Show tags",
-    "search.keyword": "All",
-    "button.cancel": "Cancel",
-    "button.saveAndClose": "Save & close",
-    "interface.url": "URL",
-    "interface.type": "Type"
+    "showMore": "عرض المزيد",
+    "showTags": "عرض الوسوم",
+    "search.keyword": "الكل",
+    "button.cancel": "إلغاء",
+    "button.saveAndClose": "حفظ وإغلاق",
+    "interface.url": "عنوان URL",
+    "interface.type": "النوع"
 }
