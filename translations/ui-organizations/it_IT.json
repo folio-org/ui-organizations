@@ -583,7 +583,7 @@
     "search.interfaces": "Interfaces",
     "organization.delete.heading": "Eliminare {organizationName}?",
     "organization.delete.confirmLabel": "Eliminare?",
-    "organization.delete.success": "L'organizzazione {organizationName} è stata eliminata con successo",
+    "organization.delete.success": "L'organizzazione <b>{organizationName}</b> è stata <b>eliminata</b> con successo",
     "view.delete": "Elimina",
     "view.delete.message": "Eliminare organizzazione?",
     "vendor.confirmation.heading": "Confirm vendor data deletion",
