@@ -596,5 +596,6 @@
     "button.cancel": "إلغاء",
     "button.saveAndClose": "حفظ وإغلاق",
     "interface.url": "عنوان URL",
-    "interface.type": "النوع"
+    "interface.type": "النوع",
+    "edit.hideCredentials": "Hide credentials"
 }
