@@ -69,6 +69,7 @@
   "edit.password": "Password",
   "edit.show": "Show",
   "edit.showCredentials": "Show credentials",
+  "edit.hideCredentials": "Hide credentials",
   "edit.hide": "Hide",
 
   "vendor.confirmation.heading": "Confirm vendor data deletion",
