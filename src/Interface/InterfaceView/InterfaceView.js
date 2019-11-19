@@ -32,13 +32,15 @@ const InterfaceView = ({ getCreds, item = {}, isNarrow = false }) => {
   const [{ username, password }, setCreds] = React.useState({ username: '***', password: '***' });
   const [hasShowButton, setHasShowButton] = React.useState(true);
   const showCreds = async () => {
-    const creds = await getCreds() || {};
+    if (hasShowButton) {
+      const creds = await getCreds() || {};
 
-    setCreds({
-      username: creds.username || '',
-      password: creds.password || '',
-    });
-    setHasShowButton(false);
+      setCreds({
+        username: creds.username || '',
+        password: creds.password || '',
+      });
+    }
+    setHasShowButton(!hasShowButton);
   };
 
   return (
@@ -86,19 +88,19 @@ const InterfaceView = ({ getCreds, item = {}, isNarrow = false }) => {
             </Col>
           </React.Fragment>
         )}
-        {hasShowButton && (
-          <Col xs={columnsAmount}>
-            <IfPermission perm="organizations-storage.interfaces.credentials.item.get">
-              <Button
-                data-test-show-creds
-                onClick={showCreds}
-              >
-                <FormattedMessage id="ui-organizations.edit.showCredentials" />
-              </Button>
-            </IfPermission>
-          </Col>
-        )}
       </Row>
+      <IfPermission perm="organizations-storage.interfaces.credentials.item.get">
+        <Row>
+          <Col xs={columnsAmount}>
+            <Button
+              data-test-show-creds
+              onClick={showCreds}
+            >
+              <FormattedMessage id={`ui-organizations.edit.${hasShowButton ? 'showCredentials' : 'hideCredentials'}`} />
+            </Button>
+          </Col>
+        </Row>
+      </IfPermission>
       <Row>
         <Col xs={12}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.notes" />}>
