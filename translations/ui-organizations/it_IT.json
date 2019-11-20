@@ -596,5 +596,6 @@
     "button.cancel": "Cancel",
     "button.saveAndClose": "Save & close",
     "interface.url": "URL",
-    "interface.type": "Type"
+    "interface.type": "Type",
+    "edit.hideCredentials": "Nascondi credenziali"
 }

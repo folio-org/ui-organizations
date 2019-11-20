@@ -596,5 +596,6 @@
     "button.cancel": "Отмена",
     "button.saveAndClose": "Сохранить и закрыть",
     "interface.url": "URL",
-    "interface.type": "Тип"
+    "interface.type": "Тип",
+    "edit.hideCredentials": "Hide credentials"
 }
