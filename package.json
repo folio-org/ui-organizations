@@ -223,9 +223,6 @@
     "react": "*",
     "react-router": "*"
   },
-  "resolutions": {
-    "fake-xml-http-request": "2.0.0"
-  },
   "optionalDependencies": {
     "@folio/plugin-find-contact": "^1.1.0",
     "@folio/plugin-find-interface": "^1.0.0"
