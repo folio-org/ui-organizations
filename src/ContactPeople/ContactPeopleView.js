@@ -1,86 +1,56 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { get, isEmpty, isEqual } from 'lodash';
+import { FormattedMessage } from 'react-intl';
+import {
+  find,
+  get,
+} from 'lodash';
 
-import { Icon } from '@folio/stripes/components';
+import {
+  Icon,
+  MultiColumnList,
+} from '@folio/stripes/components';
 
-import ContactPerson from './ContactPerson';
+import { transformCategoryIdsToLables } from '../common/utils';
 
-class ContactPeopleView extends React.Component {
-  static propTypes = {
-    initialValues: PropTypes.object,
-    parentResources: PropTypes.shape({
-      dropdown: PropTypes.object.isRequired,
-      dropdownCategories: PropTypes.arrayOf(PropTypes.object),
-      CountryList: PropTypes.arrayOf(PropTypes.object),
-    }),
-    parentMutator: PropTypes.object,
-  }
+const visibleColumns = ['name', 'categories', 'email', 'phone', 'icon'];
+const columnMapping = {
+  name: <FormattedMessage id="ui-organizations.contactPeople.name" />,
+  categories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
+  email: <FormattedMessage id="ui-organizations.contactPeople.email" />,
+  phone: <FormattedMessage id="ui-organizations.contactPeople.phone" />,
+  icon: null,
+};
 
-  componentDidMount() {
-    const { initialValues } = this.props;
+const ContactPeopleView = ({ vendorCategories, contacts, openContact }) => {
+  const resultsFormatter = {
+    name: ({ firstName, lastName }) => `${firstName} ${lastName}`,
+    categories: ({ categories = [] }) => transformCategoryIdsToLables(vendorCategories, categories),
+    email: ({ emails }) => get(find(emails, 'isPrimary'), 'value', ''),
+    phone: ({ phoneNumbers }) => get(find(phoneNumbers, 'isPrimary'), 'phoneNumber', ''),
+    icon: () => <Icon icon="caret-right" />,
+  };
 
-    this.updateQueryContacts(initialValues.contacts);
-  }
+  return (
+    <MultiColumnList
+      columnMapping={columnMapping}
+      contentData={contacts}
+      formatter={resultsFormatter}
+      onRowClick={openContact}
+      visibleColumns={visibleColumns}
+    />
+  );
+};
 
-  componentDidUpdate(prevProps) {
-    const { initialValues } = this.props;
+ContactPeopleView.propTypes = {
+  vendorCategories: PropTypes.arrayOf(PropTypes.object),
+  contacts: PropTypes.arrayOf(PropTypes.object),
+  openContact: PropTypes.func.isRequired,
+};
 
-    if (!isEqual(initialValues.contacts, prevProps.initialValues.contacts)) {
-      this.updateQueryContacts(initialValues.contacts);
-    }
-  }
-
-  updateQueryContacts = contacts => {
-    const { parentMutator } = this.props;
-
-    let newQuery = 'query=(id=null)';
-
-    if (contacts.length >= 1) {
-      const items = contacts.map(item => {
-        return `id="${item}"`;
-      });
-      const biuldQuery = items.join(' or ');
-
-      newQuery = `query=(${biuldQuery})`;
-    }
-
-    parentMutator.queryCustom.update({ contactIDs: newQuery });
-  }
-
-  render() {
-    const { parentResources } = this.props;
-
-    if (get(parentResources, 'contacts.isPending', true)) {
-      return <Icon icon="spinner-ellipsis" />;
-    }
-
-    const contacts = get(parentResources, 'contacts.records', []);
-    const categories = get(parentResources, 'vendorCategory.records', []);
-
-    if (!isEmpty(contacts)) {
-      return (
-        <div style={{ width: '100%' }}>
-          {
-            contacts.map(contact => (
-              <ContactPerson
-                contact={contact}
-                categories={categories}
-                key={contact.id}
-              />
-            ))
-          }
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <p>{<FormattedMessage id="ui-organizations.contactPeople.noContactAvailable" />}</p>
-        </div>
-      );
-    }
-  }
-}
+ContactPeopleView.defaultProps = {
+  vendorCategories: [],
+  contacts: [],
+};
 
 export default ContactPeopleView;

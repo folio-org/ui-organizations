@@ -1,7 +1,6 @@
 import {
   interactor,
   isPresent,
-  text,
 } from '@bigtest/interactor';
 
 import Button from './Button';
@@ -15,11 +14,6 @@ import {
   VendorInformationSection,
   VendorTermsSection,
 } from './orgSections';
-
-@interactor class Note {
-  static defaultScope = '[data-test-contact-people-note]';
-  value = text('[class*=kvRoot---]');
-}
 
 @interactor class OrganizationDetailsActions {
   static defaultScope = '#data-test-organizations-details-actions';
@@ -46,7 +40,6 @@ export default interactor(class OrganizationDetailsInteractor {
   actions = new OrganizationDetailsActions();
 
   expandAllButton = new Button('[class*=paneContent---] div[class*=row---] [class*=button---]');
-  note = new Note();
 
   isLoaded = isPresent('[class*=paneTitleLabel---]');
   whenLoaded() {

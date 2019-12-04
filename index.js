@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Switch from 'react-router-dom/Switch';
 import Route from 'react-router-dom/Route';
 import { hot } from 'react-hot-loader';
+
+import { Callout } from '@folio/stripes/components';
+import {
+  ToastContext,
+} from '@folio/stripes-acq-components';
 
 import { ContactsContainer } from './src/contacts';
 import InterfaceContainer from './src/interfaces';
@@ -24,6 +29,8 @@ class Organizations extends Component {
     this.connectedApp = props.stripes.connect(Main);
     this.connectedContactsContainer = props.stripes.connect(ContactsContainer);
     this.connectedInterfaceContainer = props.stripes.connect(InterfaceContainer);
+
+    this.callout = React.createRef();
   }
 
   goToContacts = (props) => (
@@ -46,30 +53,33 @@ class Organizations extends Component {
     }
 
     return (
-      <div>
-        <Switch>
-          <Route
-            path="/organizations/contacts/"
-            render={this.goToContacts}
-          />
-          <Route
-            path="/organizations/interface/"
-            render={this.goToInterface}
-          />
-          <Route
-            path="/organizations/:orgId/contacts/"
-            render={this.goToContacts}
-          />
-          <Route
-            path="/organizations/:orgId/interface/"
-            render={this.goToInterface}
-          />
-          <Route
-            path={`${this.props.match.path}`}
-            render={() => <this.connectedApp {...this.props} />}
-          />
-        </Switch>
-      </div>
+      <Fragment>
+        <ToastContext.Provider value={this.callout}>
+          <Switch>
+            <Route
+              path="/organizations/contacts/"
+              render={this.goToContacts}
+            />
+            <Route
+              path="/organizations/interface/"
+              render={this.goToInterface}
+            />
+            <Route
+              path="/organizations/:orgId/contacts/"
+              render={this.goToContacts}
+            />
+            <Route
+              path="/organizations/:orgId/interface/"
+              render={this.goToInterface}
+            />
+            <Route
+              path={`${this.props.match.path}`}
+              render={() => <this.connectedApp {...this.props} />}
+            />
+          </Switch>
+        </ToastContext.Provider>
+        <Callout ref={this.callout} />
+      </Fragment>
     );
   }
 }

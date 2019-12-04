@@ -188,7 +188,7 @@ class ViewVendor extends Component {
     const query = location.search ? queryString.parse(location.search) : {};
     const isEdit = query.layer ? query.layer === 'edit' : false;
     const tags = _.get(organization, 'tags.tagList') || [];
-    const vendorCategories = _.get(parentResources, 'vendorCategory.records', []);
+    const vendorCategories = _.get(parentResources, 'vendorCategory.records');
 
     const lastMenu = (
       <PaneMenu>
@@ -227,7 +227,7 @@ class ViewVendor extends Component {
       </PaneMenu>
     );
 
-    if (!organization) {
+    if (!organization || !vendorCategories) {
       return (
         <Pane
           id="pane-vendordetails"
@@ -287,7 +287,10 @@ class ViewVendor extends Component {
             />
           </Accordion>
           <Accordion label={<FormattedMessage id="ui-organizations.contactPeople" />} id={SECTIONS.contactPeopleSection}>
-            <ContactPeopleView initialValues={organization} {...this.props} />
+            <ContactPeopleView
+              contactsIds={organization.contacts}
+              vendorCategories={vendorCategories}
+            />
           </Accordion>
           <Accordion label={<FormattedMessage id="ui-organizations.interface" />} id={SECTIONS.interfacesSection}>
             <InterfacesViewContainer initialValues={organization} {...this.props} />

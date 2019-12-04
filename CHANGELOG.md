@@ -6,6 +6,7 @@
 ### Stories
 * [UIORGS-125](https://issues.folio.org/browse/UIORGS-125) Organizations view pane: Update contact information layout
 * [UIORGS-124](https://issues.folio.org/browse/UIORGS-124) Update contact people edit form layout
+* [UIORGS-122](https://issues.folio.org/browse/UIORGS-122) Organization view pane: Update contact people view
 
 ## [1.6.0](https://github.com/folio-org/ui-organizations/tree/v1.6.0) (2019-12-04)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.5.0...v1.6.0)

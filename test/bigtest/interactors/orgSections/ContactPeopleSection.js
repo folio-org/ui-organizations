@@ -1,6 +1,8 @@
 import {
   interactor,
   attribute,
+  clickable,
+  collection,
 } from '@bigtest/interactor';
 
 import { SECTIONS } from '../../../../src/common/constants';
@@ -12,6 +14,9 @@ class ContactPeopleSection {
 
   contentStyles = attribute('[class*=content---]', 'style');
   isExpanded = styles => styles.includes('visible');
+  contacts = collection('[class*=mclRow---]', {
+    click: clickable(),
+  });
 }
 
 export default interactor(ContactPeopleSection);

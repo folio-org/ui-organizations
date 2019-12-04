@@ -10,7 +10,6 @@ import {
 } from '../interactors';
 
 const ORGANIZATIONS_COUNT = 13;
-const TEST_NOTE = 'Test note';
 
 describe('Organization details', () => {
   setupApplication();
@@ -19,11 +18,14 @@ describe('Organization details', () => {
   const orgEdit = new OrganizationEditInteractor();
   const orgInterface = new InterfacesViewInteractor();
   let category = null;
+  let organization;
+  let contact;
 
   beforeEach(async function () {
     category = this.server.create('category');
     const vendorInterface = this.server.create('interface');
-    const organizations = this.server.createList(
+
+    this.server.createList(
       'organization',
       ORGANIZATIONS_COUNT,
       {
@@ -39,11 +41,12 @@ describe('Organization details', () => {
         phoneNumbers: [{}],
       },
     );
-    const orgId = organizations[0].id;
+    contact = this.server.create('contact');
+    organization = this.server.create('organization', {
+      contacts: [contact.id],
+    });
 
-    this.server.create('contact', { notes: TEST_NOTE });
-
-    this.visit(`/organizations/view/${orgId}`);
+    this.visit(`/organizations/view/${organization.id}`);
     await orgDetails.whenLoaded();
   });
 
@@ -79,10 +82,6 @@ describe('Organization details', () => {
 
   it('contactInformationSection is displayed', function () {
     expect(orgDetails.contactInformationSection.isPresent).to.be.true;
-  });
-
-  it('note is displayed', function () {
-    expect(orgDetails.note.value).to.contain(TEST_NOTE);
   });
 
   it('interfacesSection is displayed', function () {
@@ -249,6 +248,17 @@ describe('Organization details', () => {
 
     it('contact people section contains uncategorized items', function () {
       expect(orgDetails.contactInformationSection.text).to.contain('Uncategorized');
+    });
+  });
+
+  describe('view contact person details', function () {
+    beforeEach(async function () {
+      await orgDetails.contactPeopleSection.headerButton.click();
+      await orgDetails.contactPeopleSection.contacts(0).click();
+    });
+
+    it('click on contact to view contact details screen', function () {
+      expect(this.location.pathname).to.equal(`/organizations/${organization.id}/contacts/${contact.id}/view`);
     });
   });
 });
