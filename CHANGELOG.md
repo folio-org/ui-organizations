@@ -1,9 +1,20 @@
 # Change history for ui-organizations
 
-## [1.6.0] (IN PROGRESS)
+## [1.6.0](https://github.com/folio-org/ui-organizations/tree/v1.6.0) (2019-12-04)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.5.0...v1.6.0)
+
+### Stories
+* [UIORGS-86](https://issues.folio.org/browse/UIORGS-86) Add ability to hide credentials once they've been shown
+* [UIORGS-90](https://issues.folio.org/browse/UIORGS-90) Refine Organization filters
+* [UIORGS-114](https://issues.folio.org/browse/UIORGS-114) Organization: Update "save and close" and "Cancel" Buttons - UX
+* [UIORGS-115](https://issues.folio.org/browse/UIORGS-115) Update Organization layout for create and edit
+* [UIORGS-116](https://issues.folio.org/browse/UIORGS-116) Filter organizations by tags
 
 ### Bug Fixes
+* [UIORGS-84](https://issues.folio.org/browse/UIORGS-84) Fix capitalization of phrases in ui-organizations
+* [UIORGS-99](https://issues.folio.org/browse/UIORGS-99) Username and password field for interfaces masked even if empty
 * [UIORGS-100](https://issues.folio.org/browse/UIORGS-100) Change the input of the Interface name to required
+* [STCOM-590](https://issues.folio.org/browse/STCOM-590) MCL column width updates
 
 ## [1.5.0](https://github.com/folio-org/ui-organizations/tree/v1.5.0) (2019-09-11)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.4.0...v1.5.0)
