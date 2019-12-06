@@ -35,6 +35,8 @@ describe('Organization details', () => {
           },
         ],
         urls: [{ value: 'https://www.amazon.com' }],
+        emails: [{}],
+        phoneNumbers: [{}],
       },
     );
     const orgId = organizations[0].id;

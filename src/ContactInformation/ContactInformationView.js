@@ -33,7 +33,6 @@ const ContactInformationView = ({ organization, vendorCategories }) => {
       <div style={{ paddingTop: '1rem' }}><Icon icon="spinner-ellipsis" width="100px" /></div>
     );
   }
-  const data = {};
   const cats = [
     ...vendorCategories,
     {
@@ -42,7 +41,7 @@ const ContactInformationView = ({ organization, vendorCategories }) => {
     },
   ];
 
-  cats.forEach(({ id }) => {
+  const data = cats.reduce((acc, { id }) => {
     const filterCb = filterByCatId(id);
     const addresses = organization.addresses.filter(filterCb);
     const emails = organization.emails.filter(filterCb);
@@ -50,14 +49,16 @@ const ContactInformationView = ({ organization, vendorCategories }) => {
     const urls = organization.urls.filter(filterCb);
 
     if (addresses.length || emails.length || phoneNumbers.length || urls.length) {
-      data[id] = {
+      acc[id] = {
         addresses: hydrateAddresses(vendorCategories, addresses),
         emails: mixCategories(vendorCategories, emails),
         phoneNumbers: mixCategories(vendorCategories, phoneNumbers),
         urls: mixCategories(vendorCategories, urls),
       };
     }
-  });
+
+    return acc;
+  }, {});
 
   return (
     <Layout className="margin-start-gutter">
