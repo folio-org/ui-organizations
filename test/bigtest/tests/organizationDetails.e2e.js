@@ -18,13 +18,24 @@ describe('Organization details', () => {
   const orgDetails = new OrganizationDetailsInteractor();
   const orgEdit = new OrganizationEditInteractor();
   const orgInterface = new InterfacesViewInteractor();
+  let category = null;
 
   beforeEach(async function () {
+    category = this.server.create('category');
     const vendorInterface = this.server.create('interface');
     const organizations = this.server.createList(
       'organization',
       ORGANIZATIONS_COUNT,
-      { interfaces: [vendorInterface.id] },
+      {
+        interfaces: [vendorInterface.id],
+        addresses: [
+          {
+            addressLine1: '3212 Duke Street',
+            categories: [category.id],
+          },
+        ],
+        urls: [{ value: 'https://www.amazon.com' }],
+      },
     );
     const orgId = organizations[0].id;
 
@@ -222,6 +233,20 @@ describe('Organization details', () => {
 
     it('vendor interface is displayed', () => {
       expect(orgInterface.interfaces(0).isPresent).to.be.true;
+    });
+  });
+
+  describe('click contact information section', function () {
+    beforeEach(async function () {
+      await orgDetails.contactInformationSection.headerButton.click();
+    });
+
+    it('contact people section contains assigned category', function () {
+      expect(orgDetails.contactInformationSection.text).to.contain(category.value);
+    });
+
+    it('contact people section contains uncategorized items', function () {
+      expect(orgDetails.contactInformationSection.text).to.contain('Uncategorized');
     });
   });
 });
