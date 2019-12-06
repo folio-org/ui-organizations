@@ -7,6 +7,7 @@
 * [UIORGS-125](https://issues.folio.org/browse/UIORGS-125) Organizations view pane: Update contact information layout
 * [UIORGS-124](https://issues.folio.org/browse/UIORGS-124) Update contact people edit form layout
 * [UIORGS-122](https://issues.folio.org/browse/UIORGS-122) Organization view pane: Update contact people view
+* [UIORGS-123](https://issues.folio.org/browse/UIORGS-123) Update contact people view
 
 ### Bug Fixes
 * [UIORGS-132](https://issues.folio.org/browse/UIORGS-132) Unable to search by contact information in Organizations

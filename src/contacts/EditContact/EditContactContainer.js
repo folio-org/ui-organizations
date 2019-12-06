@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { get } from 'lodash';
+
+import { stripesConnect } from '@folio/stripes/core';
 
 import {
   categoriesResource,
@@ -11,19 +13,22 @@ import {
 import { saveContact } from './util';
 import EditContact from './EditContact';
 import { getBackQuery } from '../../common/utils/createItem';
+import { DICT_CATEGORIES } from '../../common/constants';
 
 class EditContactContainer extends Component {
   static manifest = Object.freeze({
     contact: contactResource,
-    categories: categoriesResource,
+    [DICT_CATEGORIES]: categoriesResource,
     query: {},
   });
 
   onClose = (contactId = this.props.match.params.id) => {
-    const { orgId, mutator } = this.props;
+    const { orgId, mutator, onClose } = this.props;
     const query = getBackQuery(orgId, contactId, 'contacts');
 
-    mutator.query.replace(query);
+    if (onClose) {
+      onClose(orgId, contactId);
+    } else mutator.query.replace(query);
   };
 
   onSubmit = (contact) => {
@@ -41,7 +46,7 @@ class EditContactContainer extends Component {
     const { match, resources } = this.props;
     const isNew = !match.params.id;
     const loadedContact = get(resources, 'contact.records[0]', {});
-    const categories = get(resources, 'categories.records', []);
+    const categories = get(resources, `${DICT_CATEGORIES}.records`, []);
     const contact = isNew ? {} : loadedContact;
     const { firstName, lastName } = contact;
     const name = `${lastName}, ${firstName}`;
@@ -62,11 +67,12 @@ class EditContactContainer extends Component {
 }
 
 EditContactContainer.propTypes = {
-  match: PropTypes.object,
+  match: ReactRouterPropTypes.match.isRequired,
   mutator: PropTypes.object,
   orgId: PropTypes.string,
   resources: PropTypes.object,
   showMessage: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
-export default EditContactContainer;
+export default stripesConnect(EditContactContainer);

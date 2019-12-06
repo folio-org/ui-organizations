@@ -42,7 +42,7 @@ const ContactPeopleViewContainer = ({
 
   const openContact = useCallback(
     (e, { id }) => {
-      const path = `/organizations/${organizationId}/contacts/${id}/view`;
+      const path = `/organizations/${organizationId}/contacts/details/${id}/view`;
 
       history.push(path);
     },

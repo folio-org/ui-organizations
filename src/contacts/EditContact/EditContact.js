@@ -134,7 +134,7 @@ const EditContact = ({
           >
             <Accordion
               id={CONTACT_PERSON_ACCORDIONS.NAME}
-              label={<FormattedMessage id={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.NAME]} />}
+              label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.NAME]}
             >
               <Row>
                 <Col xs={3}>
@@ -210,7 +210,7 @@ const EditContact = ({
 
             <Accordion
               id={CONTACT_PERSON_ACCORDIONS.EMAILS}
-              label={<FormattedMessage id={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.EMAILS]} />}
+              label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.EMAILS]}
             >
               <Row>
                 <Col
@@ -228,7 +228,7 @@ const EditContact = ({
 
             <Accordion
               id={CONTACT_PERSON_ACCORDIONS.PHONES}
-              label={<FormattedMessage id={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.PHONES]} />}
+              label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.PHONES]}
             >
               <Row>
                 <Col
@@ -247,7 +247,7 @@ const EditContact = ({
 
             <Accordion
               id={CONTACT_PERSON_ACCORDIONS.URLS}
-              label={<FormattedMessage id={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.URLS]} />}
+              label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.URLS]}
             >
               <Row>
                 <Col
@@ -265,7 +265,7 @@ const EditContact = ({
 
             <Accordion
               id={CONTACT_PERSON_ACCORDIONS.ADDRESSES}
-              label={<FormattedMessage id={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.ADDRESSES]} />}
+              label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.ADDRESSES]}
             >
               <Row>
                 <Col

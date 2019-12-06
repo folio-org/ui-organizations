@@ -10,6 +10,7 @@ import {
 } from '@folio/stripes/components';
 
 import { mutatorGet } from '../common/utils';
+import { DICT_CATEGORIES } from '../common/constants';
 import ContactPeopleList from './ContactPeopleList';
 
 class ContactPeopleForm extends Component {
@@ -45,14 +46,14 @@ class ContactPeopleForm extends Component {
 
   render() {
     const { orgId, parentResources, stripes } = this.props;
-    const categoriesDict = get(parentResources, 'vendorCategory.records', []);
+    const categoriesDict = get(parentResources, `${DICT_CATEGORIES}.records`, []);
     const contactsMap = get(parentResources, 'contactsManualFetch.records', []).reduce((acc, contact) => {
       acc[contact.id] = contact;
 
       return acc;
     }, {});
     const isLoading = !(
-      get(parentResources, 'vendorCategory.hasLoaded') &&
+      get(parentResources, `${DICT_CATEGORIES}.hasLoaded`) &&
       get(parentResources, 'contactsManualFetch.hasLoaded')
     );
 

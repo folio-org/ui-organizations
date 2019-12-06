@@ -12,3 +12,5 @@ export const ORGANIZATION_STATUS_LABELS = {
   [ORGANIZATION_STATUS.inactive]: <FormattedMessage id="ui-organizations.organizationStatus.inactive" />,
   [ORGANIZATION_STATUS.pending]: <FormattedMessage id="ui-organizations.organizationStatus.pending" />,
 };
+
+export const DICT_CATEGORIES = 'vendorCategories';

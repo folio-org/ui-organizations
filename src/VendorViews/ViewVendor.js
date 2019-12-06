@@ -22,7 +22,10 @@ import {
 } from '@folio/stripes/components';
 import { withTags } from '@folio/stripes/smart-components';
 
-import { SECTIONS } from '../common/constants';
+import {
+  DICT_CATEGORIES,
+  SECTIONS,
+} from '../common/constants';
 import { SummaryView } from '../Summary';
 import { ContactInformationView } from '../ContactInformation';
 import { ContactPeopleView } from '../ContactPeople';
@@ -188,7 +191,7 @@ class ViewVendor extends Component {
     const query = location.search ? queryString.parse(location.search) : {};
     const isEdit = query.layer ? query.layer === 'edit' : false;
     const tags = _.get(organization, 'tags.tagList') || [];
-    const vendorCategories = _.get(parentResources, 'vendorCategory.records');
+    const vendorCategories = _.get(parentResources, `${DICT_CATEGORIES}.records`);
 
     const lastMenu = (
       <PaneMenu>
