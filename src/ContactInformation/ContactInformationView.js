@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
+import { FormattedMessage } from 'react-intl';
 
-import { Icon, Row, Col } from '@folio/stripes/components';
+import {
+  Accordion,
+  AccordionSet,
+  Icon,
+  Layout,
+} from '@folio/stripes/components';
 
 import {
   hydrateAddresses,
@@ -14,40 +19,78 @@ import ContactPersonEmails from '../ContactPeople/ContactPerson/ContactPersonEma
 import ContactPersonURLs from '../ContactPeople/ContactPerson/ContactPersonURLs';
 import ContactInfoAddress from './ContactInfoAddress';
 
+const UNCATEGORIZED_ID = 'uncategorized';
 const renderAddress = (address, i) => <ContactInfoAddress address={address} key={i} />;
+const filterByCatId = (catId) => ({ categories = [] }) => {
+  return catId === UNCATEGORIZED_ID
+    ? categories.length === 0
+    : categories.includes(catId);
+};
 
-const ContactInformationView = ({ initialValues, parentResources }) => {
-  const categories = get(parentResources, 'vendorCategory.records', []);
-
-  if (!initialValues) {
+const ContactInformationView = ({ organization, vendorCategories }) => {
+  if (!organization) {
     return (
       <div style={{ paddingTop: '1rem' }}><Icon icon="spinner-ellipsis" width="100px" /></div>
     );
   }
+  const cats = [
+    ...vendorCategories,
+    {
+      id: UNCATEGORIZED_ID,
+      value: <FormattedMessage id="ui-organizations.contactInfo.vendorCategory.uncategorized" />,
+    },
+  ];
 
-  const addresses = hydrateAddresses(categories, initialValues.addresses);
-  const emails = mixCategories(categories, initialValues.emails);
-  const phoneNumbers = mixCategories(categories, initialValues.phoneNumbers);
-  const urls = mixCategories(categories, initialValues.urls);
+  const data = cats.reduce((acc, { id }) => {
+    const filterCb = filterByCatId(id);
+    const addresses = organization.addresses.filter(filterCb);
+    const emails = organization.emails.filter(filterCb);
+    const phoneNumbers = organization.phoneNumbers.filter(filterCb);
+    const urls = organization.urls.filter(filterCb);
+
+    if (addresses.length || emails.length || phoneNumbers.length || urls.length) {
+      acc[id] = {
+        addresses: hydrateAddresses(vendorCategories, addresses),
+        emails: mixCategories(vendorCategories, emails),
+        phoneNumbers: mixCategories(vendorCategories, phoneNumbers),
+        urls: mixCategories(vendorCategories, urls),
+      };
+    }
+
+    return acc;
+  }, {});
 
   return (
-    <Row>
-      <Col xs={12}>
-        <ContactPersonAddresses
-          addresses={addresses}
-          renderAddress={renderAddress}
-        />
-        <ContactPersonPhones phones={phoneNumbers} />
-        <ContactPersonEmails emails={emails} />
-        <ContactPersonURLs urls={urls} />
-      </Col>
-    </Row>
+    <Layout className="margin-start-gutter">
+      <AccordionSet id="vendorCats">
+        {cats.map((category, index) => data[category.id] && (
+          <Accordion
+            label={category.value}
+            id={category.id}
+            closedByDefault
+            key={category.id || index}
+          >
+            <ContactPersonAddresses
+              addresses={data[category.id].addresses}
+              renderAddress={renderAddress}
+            />
+            <ContactPersonPhones phones={data[category.id].phoneNumbers} />
+            <ContactPersonEmails emails={data[category.id].emails} />
+            <ContactPersonURLs urls={data[category.id].urls} />
+          </Accordion>
+        ))}
+      </AccordionSet>
+    </Layout>
   );
 };
 
 ContactInformationView.propTypes = {
-  initialValues: PropTypes.object,
-  parentResources: PropTypes.object.isRequired,
+  organization: PropTypes.object,
+  vendorCategories: PropTypes.arrayOf(PropTypes.object),
+};
+
+ContactInformationView.defaultProps = {
+  vendorCategories: [],
 };
 
 export default ContactInformationView;

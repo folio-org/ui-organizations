@@ -188,6 +188,8 @@ class ViewVendor extends Component {
     const query = location.search ? queryString.parse(location.search) : {};
     const isEdit = query.layer ? query.layer === 'edit' : false;
     const tags = _.get(organization, 'tags.tagList') || [];
+    const vendorCategories = _.get(parentResources, 'vendorCategory.records', []);
+
     const lastMenu = (
       <PaneMenu>
         <IfPermission perm="ui-organizations.edit">
@@ -279,7 +281,10 @@ class ViewVendor extends Component {
             <SummaryView initialValues={organization} {...this.props} />
           </Accordion>
           <Accordion label={<FormattedMessage id="ui-organizations.contactInformation" />} id={SECTIONS.contactInformationSection}>
-            <ContactInformationView initialValues={organization} {...this.props} />
+            <ContactInformationView
+              organization={organization}
+              vendorCategories={vendorCategories}
+            />
           </Accordion>
           <Accordion label={<FormattedMessage id="ui-organizations.contactPeople" />} id={SECTIONS.contactPeopleSection}>
             <ContactPeopleView initialValues={organization} {...this.props} />
