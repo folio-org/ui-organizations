@@ -1,61 +1,103 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import {
+  Field,
+  FieldArray,
+} from 'redux-form';
 
 import {
-  MultiSelection,
-  Select,
+  Col,
+  RepeatableField,
+  Row,
   TextField,
 } from '@folio/stripes/components';
+import {
+  validateRequired,
+  FieldSelect,
+} from '@folio/stripes-acq-components';
 
-import ContactDetailsForm from '../ContactDetailsForm';
+import {
+  FieldLanguage,
+  FieldIsPrimary,
+} from '../../../common/components';
+import { createAddNewItem } from '../../../common/utils';
+import CategoryDropdown from '../../../Utils/CategoryDropdown';
 
-const addPhoneNumberFields = {
-  fieldComponents: {
-    phoneNumber: TextField,
-    type: Select,
-    language: Select,
-    categories: MultiSelection,
-  },
-  visibleFields: ['phoneNumber', 'type', 'language', 'categories'],
-  requiredFields: ['phoneNumber'],
+const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList }) => {
+  const addNewPhone = useCallback((fields) => createAddNewItem()(fields), []);
+
+  const renderEmailFields = (elem, index, fields) => {
+    return (
+      <Row>
+        <Col xs={3}>
+          <Field
+            component={TextField}
+            label={<FormattedMessage id="ui-organizations.contactPeople.phoneNumbers.phoneNumber" />}
+            name={`${elem}.phoneNumber`}
+            required
+            validate={validateRequired}
+          />
+        </Col>
+
+        <Col xs={3}>
+          <FieldSelect
+            label={<FormattedMessage id="ui-organizations.contactPeople.phoneNumbers.type" />}
+            name={`${elem}.type`}
+            dataOptions={phoneTypesList}
+          />
+        </Col>
+
+        <Col xs={2}>
+          <FieldLanguage
+            namePrefix={elem}
+            dropdownLanguages={languageList}
+          />
+        </Col>
+
+        <Col xs={3}>
+          <CategoryDropdown
+            dropdownVendorCategories={categories}
+            name={elem}
+          />
+        </Col>
+
+        <Col xs={1}>
+          <FieldIsPrimary
+            dispatchChange={dispatchChange}
+            fields={fields}
+            fieldIndex={index}
+            fieldPrefix={elem}
+            labelId="ui-organizations.primaryItem"
+            vertical
+          />
+        </Col>
+      </Row>
+    );
+  };
+
+  return (
+    <FieldArray
+      addLabel={<FormattedMessage id="ui-organizations.contactPeople.addPhoneNumber" />}
+      component={RepeatableField}
+      id="phoneNumbers"
+      name="phoneNumbers"
+      onAdd={addNewPhone}
+      renderField={renderEmailFields}
+    />
+  );
 };
-
-const PhoneForm = ({
-  categories,
-  categoriesFormatter,
-  change,
-  dispatch,
-  languageList = [],
-  phoneTypesList = [],
-  store,
-}) => (
-  <ContactDetailsForm
-    buttonName={<FormattedMessage id="ui-organizations.contactPeople.addPhoneNumber" />}
-    categories={categories}
-    categoriesFormatter={categoriesFormatter}
-    change={change}
-    dispatch={dispatch}
-    emptyListMessage={<FormattedMessage id="ui-organizations.contactPeople.pleaseAddPhoneNumbers" />}
-    fieldsOptions={addPhoneNumberFields}
-    label={<FormattedMessage id="ui-organizations.contactPeople.addPhoneNumber" />}
-    labelForFieldsGroup={<FormattedMessage id="ui-organizations.contactPeople.phone" />}
-    labelForPrimaryFieldsGroup={<FormattedMessage id="ui-organizations.contactPeople.primaryPhone" />}
-    languageList={languageList}
-    name="phoneNumbers"
-    phoneTypesList={phoneTypesList}
-    store={store}
-  />
-);
 
 PhoneForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
-  categoriesFormatter: PropTypes.func.isRequired,
-  change: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
   languageList: PropTypes.arrayOf(PropTypes.object),
+  dispatchChange: PropTypes.func.isRequired,
   phoneTypesList: PropTypes.arrayOf(PropTypes.object),
-  store: PropTypes.object.isRequired,
+};
+
+PhoneForm.defaultProps = {
+  languageList: [],
+  phoneTypesList: [],
 };
 
 export default PhoneForm;

@@ -15,11 +15,14 @@ import {
 } from '@folio/stripes/components';
 import { FieldAutoSuggest } from '@folio/stripes-acq-components';
 
+import {
+  FieldLanguage,
+  FieldIsPrimary,
+} from '../../common/components';
+import { createAddNewItem } from '../../common/utils';
 import CategoryDropdown from '../../Utils/CategoryDropdown';
 import { Required } from '../../Utils/Validate';
-import FieldLanguage from './FieldLanguage';
-import createAddNewItem from './createAddNewItem';
-import FieldIsPrimary from './FieldIsPrimary';
+
 import css from './ContactInfoCard.css';
 
 const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownLanguages, dropdownVendorCategories }) => {

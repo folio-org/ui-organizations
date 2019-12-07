@@ -38,7 +38,7 @@ class EditContactContainer extends Component {
   }
 
   render() {
-    const { match, resources, stripes } = this.props;
+    const { match, resources } = this.props;
     const isNew = !match.params.id;
     const loadedContact = get(resources, 'contact.records[0]', {});
     const categories = get(resources, 'categories.records', []);
@@ -56,7 +56,6 @@ class EditContactContainer extends Component {
         onClose={this.onClose}
         onSubmit={this.onSubmit}
         paneTitle={paneTitle}
-        stripes={stripes}
       />
     );
   }
@@ -68,7 +67,6 @@ EditContactContainer.propTypes = {
   orgId: PropTypes.string,
   resources: PropTypes.object,
   showMessage: PropTypes.func,
-  stripes: PropTypes.object,
 };
 
 export default EditContactContainer;

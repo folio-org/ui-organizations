@@ -1,4 +1,5 @@
-function createAddNewItem(defaultLanguage) {
+// eslint-disable-next-line import/prefer-default-export
+export function createAddNewItem(defaultLanguage) {
   return fields => {
     const newItem = {};
 
@@ -8,5 +9,3 @@ function createAddNewItem(defaultLanguage) {
     fields.push(newItem);
   };
 }
-
-export default createAddNewItem;

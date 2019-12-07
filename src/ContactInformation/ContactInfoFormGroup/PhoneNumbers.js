@@ -1,25 +1,27 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import {
-  Field,
-  FieldArray,
-} from 'redux-form';
+import { FieldArray } from 'redux-form';
 
 import {
   Card,
   Col,
   RepeatableField,
   Row,
-  Select,
 } from '@folio/stripes/components';
-import { FieldAutoSuggest } from '@folio/stripes-acq-components';
+import {
+  FieldAutoSuggest,
+  FieldSelect,
+} from '@folio/stripes-acq-components';
 
+import {
+  FieldLanguage,
+  FieldIsPrimary,
+} from '../../common/components';
+import { createAddNewItem } from '../../common/utils';
 import CategoryDropdown from '../../Utils/CategoryDropdown';
 import { Required } from '../../Utils/Validate';
-import FieldLanguage from './FieldLanguage';
-import createAddNewItem from './createAddNewItem';
-import FieldIsPrimary from './FieldIsPrimary';
+
 import css from './ContactInfoCard.css';
 
 const PhoneNumbers = ({
@@ -72,12 +74,10 @@ const PhoneNumbers = ({
             xs={12}
             md={3}
           >
-            <Field
+            <FieldSelect
               label={<FormattedMessage id="ui-organizations.contactPeople.type" />}
               name={`${name}.type`}
               id={`${name}.type`}
-              component={Select}
-              fullWidth
               dataOptions={dropdownPhoneType}
             />
           </Col>

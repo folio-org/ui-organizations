@@ -1,5 +1,9 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 import PropTypes from 'prop-types';
 import {
   Field,
@@ -11,24 +15,33 @@ import {
   Col,
   RepeatableField,
   Row,
-  Select,
   TextField,
 } from '@folio/stripes/components';
-import { FieldAutoSuggest } from '@folio/stripes-acq-components';
+import {
+  COUNTRIES,
+  FieldAutoSuggest,
+  FieldSelection,
+} from '@folio/stripes-acq-components';
 
-import CategoryDropdown from '../../Utils/CategoryDropdown';
-import FieldLanguage from './FieldLanguage';
-import createAddNewItem from './createAddNewItem';
-import FieldIsPrimary from './FieldIsPrimary';
-import css from './ContactInfoCard.css';
+import CategoryDropdown from '../../../Utils/CategoryDropdown';
+import { createAddNewItem } from '../../utils';
+import FieldLanguage from '../FieldLanguage';
+import FieldIsPrimary from '../FieldIsPrimary';
+
+import css from './AddressInfo.css';
 
 const AddressInfo = ({
   defaultLanguage,
   dispatchChange,
-  dropdownCountry,
   dropdownLanguages,
   dropdownVendorCategories,
+  intl,
 }) => {
+  const countriesOptions = COUNTRIES.map(c => ({
+    label: intl.formatMessage({ id: `stripes-acq-components.data.countries.${c.alpha3}` }),
+    value: c.alpha3,
+  }));
+
   // eslint-disable-next-line react/prop-types
   const Address = (name, index, fields) => {
     const valueKey = 'addressLine1';
@@ -122,12 +135,10 @@ const AddressInfo = ({
             xs={12}
             md={3}
           >
-            <Field
+            <FieldSelection
               label={<FormattedMessage id="ui-organizations.data.contactTypes.country" />}
               name={`${name}.country`}
-              component={Select}
-              dataOptions={dropdownCountry}
-              fullWidth
+              dataOptions={countriesOptions}
             />
           </Col>
           <Col
@@ -171,9 +182,9 @@ const AddressInfo = ({
 AddressInfo.propTypes = {
   defaultLanguage: PropTypes.string,
   dispatchChange: PropTypes.func.isRequired,
-  dropdownCountry: PropTypes.arrayOf(PropTypes.object),
   dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
+  intl: intlShape.isRequired,
 };
 
-export default AddressInfo;
+export default injectIntl(AddressInfo);

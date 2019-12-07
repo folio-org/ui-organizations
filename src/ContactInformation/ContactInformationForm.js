@@ -6,8 +6,11 @@ import {
   Row,
 } from '@folio/stripes/components';
 
+import { AddressInfo } from '../common/components';
+import languageList from '../Utils/Languages';
+import phoneTypesList from '../Utils/PhoneTypes';
+
 import {
-  AddressInfo,
   EmailAddresses,
   PhoneNumbers,
   Urls,
@@ -16,9 +19,6 @@ import {
 const ContactInformationForm = ({
   defaultLanguage,
   dispatchChange,
-  dropdownCountry,
-  dropdownLanguages,
-  dropdownPhoneType,
   dropdownVendorCategories,
 }) => {
   return (
@@ -27,8 +27,7 @@ const ContactInformationForm = ({
         <AddressInfo
           defaultLanguage={defaultLanguage}
           dispatchChange={dispatchChange}
-          dropdownCountry={dropdownCountry}
-          dropdownLanguages={dropdownLanguages}
+          dropdownLanguages={languageList}
           dropdownVendorCategories={dropdownVendorCategories}
         />
       </Col>
@@ -36,16 +35,16 @@ const ContactInformationForm = ({
         <PhoneNumbers
           defaultLanguage={defaultLanguage}
           dispatchChange={dispatchChange}
-          dropdownLanguages={dropdownLanguages}
+          dropdownLanguages={languageList}
           dropdownVendorCategories={dropdownVendorCategories}
-          dropdownPhoneType={dropdownPhoneType}
+          dropdownPhoneType={phoneTypesList}
         />
       </Col>
       <Col xs={12}>
         <EmailAddresses
           defaultLanguage={defaultLanguage}
           dispatchChange={dispatchChange}
-          dropdownLanguages={dropdownLanguages}
+          dropdownLanguages={languageList}
           dropdownVendorCategories={dropdownVendorCategories}
         />
       </Col>
@@ -53,7 +52,7 @@ const ContactInformationForm = ({
         <Urls
           defaultLanguage={defaultLanguage}
           dispatchChange={dispatchChange}
-          dropdownLanguages={dropdownLanguages}
+          dropdownLanguages={languageList}
           dropdownVendorCategories={dropdownVendorCategories}
         />
       </Col>
@@ -64,9 +63,6 @@ const ContactInformationForm = ({
 ContactInformationForm.propTypes = {
   defaultLanguage: PropTypes.string,
   dispatchChange: PropTypes.func,
-  dropdownCountry: PropTypes.arrayOf(PropTypes.object),
-  dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
-  dropdownPhoneType: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
 

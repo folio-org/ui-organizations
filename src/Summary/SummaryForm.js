@@ -8,21 +8,23 @@ import {
 
 import {
   Checkbox,
-  Col, ConfirmationModal,
+  Col,
+  ConfirmationModal,
   RepeatableField,
   Row,
   Select,
   TextArea,
   TextField,
 } from '@folio/stripes/components';
+import { FieldSelect } from '@folio/stripes-acq-components';
 
 import { ORGANIZATION_STATUS } from '../common/constants';
+import languageList from '../Utils/Languages';
 import { Required } from '../Utils/Validate';
 import resetVendorFields from './resetVendorFields';
 
 class SummaryForm extends Component {
   static propTypes = {
-    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
     dispatchChange: PropTypes.func.isRequired,
     initialValues: PropTypes.object.isRequired,
   };
@@ -148,10 +150,8 @@ class SummaryForm extends Component {
           xs={6}
           md={3}
         >
-          <Field
-            component={Select}
-            dataOptions={this.props.dropdownLanguages}
-            fullWidth
+          <FieldSelect
+            dataOptions={languageList}
             label={<FormattedMessage id="ui-organizations.summary.defaultLanguage" />}
             name="language"
           />
