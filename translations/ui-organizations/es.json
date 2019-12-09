@@ -597,5 +597,7 @@
     "button.saveAndClose": "Save & close",
     "interface.url": "URL",
     "interface.type": "Type",
-    "edit.hideCredentials": "Hide credentials"
+    "edit.hideCredentials": "Hide credentials",
+    "contactInfo.vendorCategory.uncategorized": "Uncategorized",
+    "contacts.actions.load.error": "Failed to load contacts data"
 }
