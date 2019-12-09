@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
 import { FormattedMessage } from 'react-intl';
 
-import { Select } from '@folio/stripes/components';
+import { FieldSelect } from '@folio/stripes-acq-components';
 
 const FieldLanguage = ({ dropdownLanguages, namePrefix, ...rest }) => {
   return (
-    <Field
+    <FieldSelect
       label={<FormattedMessage id="ui-organizations.contactInfo.language" />}
-      component={Select}
-      fullWidth
       dataOptions={dropdownLanguages}
       name={`${namePrefix}.language`}
       {...rest}

@@ -29,9 +29,6 @@ class FormVendor extends Component {
     stripes: PropTypes.object,
     isVendor: PropTypes.bool,
     language: PropTypes.string,
-    dropdownCountry: PropTypes.arrayOf(PropTypes.object),
-    dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
-    dropdownPhoneType: PropTypes.arrayOf(PropTypes.object),
     dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
   };
 
@@ -112,9 +109,6 @@ class FormVendor extends Component {
   render() {
     const {
       dispatchChange,
-      dropdownCountry,
-      dropdownLanguages,
-      dropdownPhoneType,
       dropdownVendorCategories,
       initialValues,
       isVendor,
@@ -156,9 +150,6 @@ class FormVendor extends Component {
                 <ContactInformationForm
                   defaultLanguage={language}
                   dispatchChange={dispatchChange}
-                  dropdownCountry={dropdownCountry}
-                  dropdownLanguages={dropdownLanguages}
-                  dropdownPhoneType={dropdownPhoneType}
                   dropdownVendorCategories={dropdownVendorCategories}
                 />
               </Accordion>

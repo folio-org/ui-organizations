@@ -12,7 +12,6 @@ import {
 import stripesForm from '@folio/stripes/form';
 
 import { FormVendor } from '../VendorViews';
-import { getDropDownItems } from '../common/utils/dropdown';
 
 class PaneDetails extends React.Component {
   static propTypes = {
@@ -38,8 +37,6 @@ class PaneDetails extends React.Component {
     super(props);
     this.deleteVendor = this.deleteVendor.bind(this);
     this.getVendorCategory = this.getVendorCategory.bind(this);
-    this.getCountryList = this.getCountryList.bind(this);
-    this.getLanguageList = this.getLanguageList.bind(this);
   }
 
   getPaneFooter(id, label) {
@@ -88,24 +85,6 @@ class PaneDetails extends React.Component {
     return records;
   }
 
-  getCountryList() {
-    const { parentResources } = this.props;
-
-    return getDropDownItems(parentResources, 'countryList', false);
-  }
-
-  getLanguageList() {
-    const { parentResources } = this.props;
-
-    return getDropDownItems(parentResources, 'languageList', false);
-  }
-
-  getPhoneType() {
-    const { parentResources } = this.props;
-
-    return getDropDownItems(parentResources, 'phoneTypesList', false);
-  }
-
   deleteVendor(ID) {
     const { parentMutator } = this.props;
 
@@ -148,9 +127,6 @@ class PaneDetails extends React.Component {
             isVendor={isVendor}
             dispatchChange={this.dispatchChange}
             dropdownVendorCategories={this.getVendorCategory()}
-            dropdownLanguages={this.getLanguageList()}
-            dropdownCountry={this.getCountryList()}
-            dropdownPhoneType={this.getPhoneType()}
             deleteVendor={this.deleteVendor}
             language={language}
             {...this.props}
