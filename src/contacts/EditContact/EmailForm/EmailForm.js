@@ -29,7 +29,10 @@ const EmailForm = ({ languageList, categories, dispatchChange }) => {
   const renderEmailFields = (elem, index, fields) => {
     return (
       <Row>
-        <Col xs={3}>
+        <Col
+          data-test-contact-email-value
+          xs={3}
+        >
           <Field
             component={TextField}
             label={<FormattedMessage id="ui-organizations.contactPeople.emails.value" />}
@@ -39,7 +42,10 @@ const EmailForm = ({ languageList, categories, dispatchChange }) => {
           />
         </Col>
 
-        <Col xs={3}>
+        <Col
+          data-test-contact-email-description
+          xs={3}
+        >
           <Field
             component={TextField}
             label={<FormattedMessage id="ui-organizations.contactPeople.emails.description" />}
@@ -47,21 +53,30 @@ const EmailForm = ({ languageList, categories, dispatchChange }) => {
           />
         </Col>
 
-        <Col xs={2}>
+        <Col
+          data-test-contact-email-language
+          xs={2}
+        >
           <FieldLanguage
             namePrefix={elem}
             dropdownLanguages={languageList}
           />
         </Col>
 
-        <Col xs={3}>
+        <Col
+          data-test-contact-email-category
+          xs={3}
+        >
           <CategoryDropdown
             dropdownVendorCategories={categories}
             name={elem}
           />
         </Col>
 
-        <Col xs={1}>
+        <Col
+          data-test-contact-email-primary
+          xs={1}
+        >
           <FieldIsPrimary
             dispatchChange={dispatchChange}
             fields={fields}

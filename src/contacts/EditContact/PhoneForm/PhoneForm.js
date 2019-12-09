@@ -30,7 +30,10 @@ const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList })
   const renderEmailFields = (elem, index, fields) => {
     return (
       <Row>
-        <Col xs={3}>
+        <Col
+          data-test-contact-phone-number
+          xs={3}
+        >
           <Field
             component={TextField}
             label={<FormattedMessage id="ui-organizations.contactPeople.phoneNumbers.phoneNumber" />}
@@ -40,7 +43,10 @@ const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList })
           />
         </Col>
 
-        <Col xs={3}>
+        <Col
+          data-test-contact-phone-type
+          xs={3}
+        >
           <FieldSelect
             label={<FormattedMessage id="ui-organizations.contactPeople.phoneNumbers.type" />}
             name={`${elem}.type`}
@@ -48,21 +54,30 @@ const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList })
           />
         </Col>
 
-        <Col xs={2}>
+        <Col
+          xs={2}
+          data-test-contact-phone-language
+        >
           <FieldLanguage
             namePrefix={elem}
             dropdownLanguages={languageList}
           />
         </Col>
 
-        <Col xs={3}>
+        <Col
+          xs={3}
+          data-test-contact-phone-category
+        >
           <CategoryDropdown
             dropdownVendorCategories={categories}
             name={elem}
           />
         </Col>
 
-        <Col xs={1}>
+        <Col
+          xs={1}
+          data-test-contact-phone-primary
+        >
           <FieldIsPrimary
             dispatchChange={dispatchChange}
             fields={fields}
