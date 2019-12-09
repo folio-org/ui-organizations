@@ -113,6 +113,8 @@
   "button.cancel": "Cancel",
   "button.saveAndClose": "Save & close",
 
+  "contacts.actions.load.error": "Failed to load contacts data",
+
   "contactInfo.phoneNumbers": "Phone numbers",
   "contactInfo.phoneNumber": "Phone number",
   "contactInfo.type": "Type",

@@ -1,4 +1,4 @@
 import ContactPeopleForm from './ContactPeopleForm';
-import ContactPeopleView from './ContactPeopleView';
+import ContactPeopleView from './ContactPeopleViewContainer';
 
 export { ContactPeopleForm, ContactPeopleView };
