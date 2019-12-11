@@ -18,7 +18,7 @@ import {
 
 import {
   FieldLanguage,
-  FieldIsPrimary,
+  ButtonIsPrimary,
 } from '../../../common/components';
 import { createAddNewItem } from '../../../common/utils';
 import CategoryDropdown from '../../../Utils/CategoryDropdown';
@@ -77,13 +77,11 @@ const EmailForm = ({ languageList, categories, dispatchChange }) => {
           data-test-contact-email-primary
           xs={1}
         >
-          <FieldIsPrimary
+          <ButtonIsPrimary
             dispatchChange={dispatchChange}
             fields={fields}
             fieldIndex={index}
-            fieldPrefix={elem}
             labelId="ui-organizations.primaryItem"
-            vertical
           />
         </Col>
       </Row>
