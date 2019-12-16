@@ -599,5 +599,5 @@
     "interface.type": "Tipo",
     "edit.hideCredentials": "Ocultar credenciais",
     "contactInfo.vendorCategory.uncategorized": "Não categorizado",
-    "contacts.actions.load.error": "Failed to load contacts data"
+    "contacts.actions.load.error": "Falha ao carregar os dados dos contatos"
 }
