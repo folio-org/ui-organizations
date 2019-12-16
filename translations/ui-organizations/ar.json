@@ -599,5 +599,5 @@
     "interface.type": "النوع",
     "edit.hideCredentials": "إخفاء البيانات",
     "contactInfo.vendorCategory.uncategorized": "غير مصنف",
-    "contacts.actions.load.error": "Failed to load contacts data"
+    "contacts.actions.load.error": "فشل تحميل بيانات جهات الاتصال"
 }
