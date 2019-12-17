@@ -2,13 +2,13 @@ import { generateQueryTemplate } from '@folio/stripes-acq-components';
 
 const indexes = [
   'name',
-  'contacts',
+  // 'contacts',
   'code',
   'language',
   'aliases',
   'erpCode',
   'taxId',
-  'interfaces',
+  // 'interfaces',
 ];
 
 export const searchableIndexes = [
