@@ -11,6 +11,7 @@ import {
 } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/form';
 
+import { DICT_CATEGORIES } from '../common/constants';
 import { FormVendor } from '../VendorViews';
 
 class PaneDetails extends React.Component {
@@ -26,7 +27,7 @@ class PaneDetails extends React.Component {
     pristine: PropTypes.bool,
     submitting: PropTypes.bool,
     parentResources: PropTypes.shape({
-      vendorCategory: PropTypes.object,
+      [DICT_CATEGORIES]: PropTypes.object,
       vendorContactCategory: PropTypes.object,
       dropdown: PropTypes.object.isRequired,
     }),
@@ -78,7 +79,7 @@ class PaneDetails extends React.Component {
 
   getVendorCategory() {
     const { parentResources } = this.props;
-    const records = (parentResources.vendorCategory || {}).records || [];
+    const records = (parentResources[DICT_CATEGORIES] || {}).records || [];
 
     if (records.length === 0) return null;
 

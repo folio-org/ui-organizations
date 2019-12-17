@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
+import { stripesConnect } from '@folio/stripes/core';
 import {
   ConfirmationModal,
   Icon,
@@ -13,6 +15,7 @@ import {
   contactResource,
   organizationResource,
 } from '../../common/resources';
+import { DICT_CATEGORIES } from '../../common/constants';
 import ViewContact from './ViewContact';
 import {
   deleteContact,
@@ -24,15 +27,15 @@ class ViewContactContainer extends Component {
     resources: PropTypes.object,
     baseUrl: PropTypes.string.isRequired,
     mutator: PropTypes.object,
-    // eslint-disable-next-line react/no-unused-prop-types
     orgId: PropTypes.string,
     showMessage: PropTypes.func.isRequired,
-    match: PropTypes.object,
+    match: ReactRouterPropTypes.match.isRequired,
+    onClose: PropTypes.func,
   };
 
   static manifest = Object.freeze({
     contact: contactResource,
-    categories: categoriesResource,
+    [DICT_CATEGORIES]: categoriesResource,
     organization: organizationResource,
     query: {},
   });
@@ -43,12 +46,16 @@ class ViewContactContainer extends Component {
   };
 
   onClose = () => {
-    const { orgId, mutator } = this.props;
+    const { orgId, mutator, onClose } = this.props;
 
-    mutator.query.replace({
-      _path: orgId ? `/organizations/view/${orgId}` : '/organizations',
-      layer: orgId ? 'edit' : 'create',
-    });
+    if (onClose) {
+      onClose(orgId);
+    } else {
+      mutator.query.replace({
+        _path: orgId ? `/organizations/view/${orgId}` : '/organizations',
+        layer: orgId ? 'edit' : 'create',
+      });
+    }
   };
 
   showConfirmUnassign = () => this.setState({ showConfirmUnassign: true });
@@ -87,17 +94,18 @@ class ViewContactContainer extends Component {
     const { showConfirmDelete, showConfirmUnassign } = this.state;
 
     const contact = get(resources, 'contact.records[0]', {});
-    const categories = get(resources, 'categories.records', []);
+    const contactCategories = get(resources, `${DICT_CATEGORIES}.records`);
+    const editUrl = `${baseUrl}/${contact.id}/edit`;
 
-    if (get(resources, 'contact.isPending', true)) {
+    if (get(resources, 'contact.isPending', true) || !contactCategories) {
       return <Icon icon="spinner-ellipsis" />;
     }
 
     return (
       <React.Fragment>
         <ViewContact
-          baseUrl={baseUrl}
-          categories={categories}
+          editUrl={editUrl}
+          categories={contactCategories}
           contact={contact}
           deleteContact={this.showConfirmDelete}
           onClose={this.onClose}
@@ -131,4 +139,4 @@ class ViewContactContainer extends Component {
   }
 }
 
-export default ViewContactContainer;
+export default stripesConnect(ViewContactContainer);

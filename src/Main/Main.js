@@ -23,7 +23,10 @@ import {
 import FormatTime from '../Utils/FormatTime';
 import packageInfo from '../../package';
 // Components and Pages
-import { ORGANIZATIONS_API } from '../common/constants';
+import {
+  ORGANIZATIONS_API,
+  DICT_CATEGORIES,
+} from '../common/constants';
 import {
   categoriesResource,
   baseContactsResource,
@@ -100,7 +103,7 @@ class Main extends Component {
         staticFallback: { params: {} },
       },
     },
-    vendorCategory: categoriesResource,
+    [DICT_CATEGORIES]: categoriesResource,
     queryCustom: {
       initialValue: {
         vendorIDQuery: 'query=(name=null)',
@@ -225,9 +228,9 @@ class Main extends Component {
 
     if (time) { data.edi.ediJob.time = time; }
 
-    mutator.records.POST(data).then(newLedger => {
+    mutator.records.POST(data).then(newOrganization => {
       mutator.query.update({
-        _path: `/organizations/view/${newLedger.id}`,
+        _path: `/organizations/view/${newOrganization.id}`,
         layer: null,
       });
     });

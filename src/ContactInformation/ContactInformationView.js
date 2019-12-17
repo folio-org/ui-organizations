@@ -13,14 +13,12 @@ import {
   hydrateAddresses,
   mixCategories,
 } from '../common/utils';
-import ContactPersonAddresses from '../ContactPeople/ContactPerson/ContactPersonAddresses';
+import ContactAddresses from '../contacts/ViewContact/ContactAddresses';
 import ContactPersonPhones from '../ContactPeople/ContactPerson/ContactPersonPhones';
 import ContactPersonEmails from '../ContactPeople/ContactPerson/ContactPersonEmails';
 import ContactPersonURLs from '../ContactPeople/ContactPerson/ContactPersonURLs';
-import ContactInfoAddress from './ContactInfoAddress';
 
 const UNCATEGORIZED_ID = 'uncategorized';
-const renderAddress = (address, i) => <ContactInfoAddress address={address} key={i} />;
 const filterByCatId = (catId) => ({ categories = [] }) => {
   return catId === UNCATEGORIZED_ID
     ? categories.length === 0
@@ -70,10 +68,7 @@ const ContactInformationView = ({ organization, vendorCategories }) => {
             closedByDefault
             key={category.id || index}
           >
-            <ContactPersonAddresses
-              addresses={data[category.id].addresses}
-              renderAddress={renderAddress}
-            />
+            <ContactAddresses addresses={data[category.id].addresses} />
             <ContactPersonPhones phones={data[category.id].phoneNumbers} />
             <ContactPersonEmails emails={data[category.id].emails} />
             <ContactPersonURLs urls={data[category.id].urls} />
