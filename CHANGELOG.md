@@ -1,12 +1,15 @@
 # Change history for ui-organizations
 
-## [1.7.0](https://github.com/folio-org/ui-organizations/tree/v1.7.0) (in progress)
-[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.6.0...v1.7.0)
+## [1.6.1](https://github.com/folio-org/ui-organizations/tree/v1.6.1) (in progress)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.6.0...v1.6.1)
 
 ### Stories
 * [UIORGS-125](https://issues.folio.org/browse/UIORGS-125) Organizations view pane: Update contact information layout
 * [UIORGS-124](https://issues.folio.org/browse/UIORGS-124) Update contact people edit form layout
 * [UIORGS-122](https://issues.folio.org/browse/UIORGS-122) Organization view pane: Update contact people view
+
+### Bug Fixes
+* [UIORGS-132](https://issues.folio.org/browse/UIORGS-132) Unable to search by contact information in Organizations
 
 ## [1.6.0](https://github.com/folio-org/ui-organizations/tree/v1.6.0) (2019-12-04)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.5.0...v1.6.0)
