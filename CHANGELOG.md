@@ -1,6 +1,6 @@
 # Change history for ui-organizations
 
-## [1.6.1](https://github.com/folio-org/ui-organizations/tree/v1.6.1) (in progress)
+## [1.6.1](https://github.com/folio-org/ui-organizations/tree/v1.6.1) (2019-12-18)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.6.0...v1.6.1)
 
 ### Stories
