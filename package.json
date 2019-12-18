@@ -1,6 +1,6 @@
 {
   "name": "@folio/organizations",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Organizations",
   "main": "index.js",
   "repository": "folio-org/ui-organizations",
@@ -172,10 +172,9 @@
         "displayName": "Settings (Organizations): view, edit, create, delete",
         "visible": true,
         "subPermissions": [
-          "ui-organizations.view",
-          "organizations-storage.categories.item.post",
-          "organizations-storage.categories.item.delete",
-          "organizations-storage.categories.item.put"
+          "configuration.all",
+          "organizations-storage.categories.all",
+          "ui-organizations.view"
         ]
       }
     ]
