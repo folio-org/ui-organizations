@@ -29,6 +29,7 @@ const ContactUrls = ({ categories, urls }) => {
       columnMapping={columnMapping}
       contentData={urls}
       formatter={resultsFormatter}
+      interactive={false}
       visibleColumns={visibleColumns}
     />
   );
