@@ -141,11 +141,6 @@ class Main extends Component {
       fetch: false,
       accumulate: true,
     },
-    interfacesManualFetch: {
-      ...interfacesResource,
-      fetch: false,
-      accumulate: true,
-    },
     interfaces: {
       ...interfacesResource,
       params: {

@@ -1,5 +1,11 @@
 # Change history for ui-organizations
 
+## [1.7.0](https://github.com/folio-org/ui-organizations/tree/v1.7.0) (In progress)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.6.1...v1.7.0)
+
+### Stories
+* [UIORGS-89](https://issues.folio.org/browse/UIORGS-89) Assign a newly created interface to an Organization record
+
 ## [1.6.1](https://github.com/folio-org/ui-organizations/tree/v1.6.1) (2019-12-18)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.6.0...v1.6.1)
 

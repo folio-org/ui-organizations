@@ -23,7 +23,6 @@ class FormVendor extends Component {
   static propTypes = {
     dispatchChange: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
-    deleteLedger: PropTypes.func,
     parentMutator: PropTypes.object.isRequired,
     parentResources: PropTypes.object.isRequired,
     stripes: PropTypes.object,
@@ -175,8 +174,6 @@ class FormVendor extends Component {
               >
                 <InterfacesListContainer
                   orgId={id}
-                  parentMutator={parentMutator}
-                  parentResources={parentResources}
                   storedInterfaces={interfaces}
                 />
               </Accordion>
