@@ -29,6 +29,7 @@ const ContactEmails = ({ categories, emails }) => {
       columnMapping={columnMapping}
       contentData={emails}
       formatter={resultsFormatter}
+      interactive={false}
       visibleColumns={visibleColumns}
     />
   );

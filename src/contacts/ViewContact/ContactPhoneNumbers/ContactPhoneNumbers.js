@@ -29,6 +29,7 @@ const ContactPhoneNumbers = ({ categories, phoneNumbers }) => {
       columnMapping={columnMapping}
       contentData={phoneNumbers}
       formatter={resultsFormatter}
+      interactive={false}
       visibleColumns={visibleColumns}
     />
   );
