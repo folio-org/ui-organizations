@@ -74,8 +74,8 @@ const ContactDetails = ({
 );
 
 ContactDetails.propTypes = {
-  lastName: PropTypes.string.isRequired,
-  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string,
+  firstName: PropTypes.string,
   prefix: PropTypes.string,
   language: PropTypes.string,
   isInactive: PropTypes.bool,

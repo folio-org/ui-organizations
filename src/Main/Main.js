@@ -136,11 +136,6 @@ class Main extends Component {
         },
       },
     },
-    contactsManualFetch: {
-      ...baseContactsResource,
-      fetch: false,
-      accumulate: true,
-    },
     interfaces: {
       ...interfacesResource,
       params: {

@@ -1,6 +1,17 @@
 // eslint-disable-next-line import/prefer-default-export
-export const saveContact = (contactMutator, contact) => {
-  const httpMethod = contact.id ? contactMutator.PUT : contactMutator.POST;
+export const saveContact = (mutator, contact, org) => {
+  const isNew = !contact.id;
+  const httpMethod = isNew ? mutator.contact.POST : mutator.contact.PUT;
 
-  return httpMethod(contact);
+  return httpMethod(contact)
+    .then(savedContact => {
+      if (isNew && org && org.id) {
+        mutator.contactsOrg.PUT({
+          ...org,
+          contacts: [...org.contacts, savedContact.id],
+        });
+      }
+
+      return savedContact;
+    });
 };

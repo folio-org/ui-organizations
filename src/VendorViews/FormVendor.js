@@ -23,8 +23,6 @@ class FormVendor extends Component {
   static propTypes = {
     dispatchChange: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
-    parentMutator: PropTypes.object.isRequired,
-    parentResources: PropTypes.object.isRequired,
     stripes: PropTypes.object,
     isVendor: PropTypes.bool,
     language: PropTypes.string,
@@ -112,9 +110,6 @@ class FormVendor extends Component {
       initialValues,
       isVendor,
       language,
-      parentMutator,
-      parentResources,
-      stripes,
     } = this.props;
     const { sectionErrors } = this.state;
     const { id, interfaces = [], contacts = [] } = initialValues;
@@ -160,10 +155,7 @@ class FormVendor extends Component {
               >
                 <ContactPeopleForm
                   orgId={id}
-                  parentMutator={parentMutator}
-                  parentResources={parentResources}
                   storedContactIds={contacts}
-                  stripes={stripes}
                 />
               </Accordion>
               <Accordion
