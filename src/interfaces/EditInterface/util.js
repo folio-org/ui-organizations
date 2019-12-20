@@ -1,14 +1,22 @@
 import { INTERFACE_TYPES } from '../../common/constants';
 
 export const saveInterface = (
-  { vendorInterface, interfaceCredentials, interfaceId },
+  { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
   { username, password, ...values },
   creds,
+  org,
 ) => {
-  const httpMethod = values.id ? 'PUT' : 'POST';
+  const isNew = !values.id;
+  const httpMethod = isNew ? 'POST' : 'PUT';
 
   return vendorInterface[httpMethod](values)
     .then(({ id }) => {
+      if (isNew && org && org.id) {
+        interfaceOrg.PUT({
+          ...org,
+          interfaces: [...org.interfaces, id],
+        });
+      }
       if ((!creds.id && (username || password)) || creds.username !== username || creds.password !== password) {
         interfaceId.replace(id);
         interfaceCredentials[creds.id ? 'PUT' : 'POST']({

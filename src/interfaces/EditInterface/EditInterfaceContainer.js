@@ -7,6 +7,7 @@ import { get } from 'lodash';
 import {
   interfaceCredentialsResource,
   interfaceResource,
+  organizationResource,
 } from '../../common/resources';
 import { saveInterface } from './util';
 import EditInterface from './EditInterface';
@@ -20,6 +21,7 @@ class EditInterfaceContainer extends Component {
   static manifest = Object.freeze({
     interfaceCredentials: interfaceCredentialsResource,
     interfaceId: {},
+    interfaceOrg: organizationResource,
     query: {},
     vendorInterface: interfaceResource,
   });
@@ -38,10 +40,10 @@ class EditInterfaceContainer extends Component {
   };
 
   onSubmit = (formValues) => {
-    const { mutator, showMessage } = this.props;
+    const { mutator, resources, showMessage } = this.props;
     const creds = this.getCreds();
 
-    saveInterface(mutator, formValues, creds)
+    saveInterface(mutator, formValues, creds, get(resources, 'interfaceOrg.records.0'))
       .then((id) => {
         showMessage('ui-organizations.interface.message.saved.success', 'success');
         this.onClose(id);

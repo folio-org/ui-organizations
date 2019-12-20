@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-
-import { get } from 'lodash';
 import { FieldArray } from 'redux-form';
 
 import {
@@ -9,70 +7,71 @@ import {
   Icon,
   Row,
 } from '@folio/stripes/components';
+import { stripesConnect } from '@folio/stripes/core';
+import { batchFetch } from '@folio/stripes-acq-components';
 
 import InterfacesList from './InterfacesList';
-import { mutatorGet } from '../common/utils';
+import { interfacesResource } from '../common/resources';
 
-class InterfacesListContainer extends Component {
-  static propTypes = {
-    parentMutator: PropTypes.object,
-    parentResources: PropTypes.object,
-    orgId: PropTypes.string,
-    storedInterfaces: PropTypes.arrayOf(PropTypes.object),
-  };
+function InterfacesListContainer({ orgId, mutator, storedInterfaces }) {
+  const [interfaces, setInterfaces] = useState();
+  const refreshInterfaces = useCallback(interfaceIds => {
+    batchFetch(mutator.interfacesManualFetch, interfaceIds || [])
+      .then(setInterfaces);
+  }, []);
 
-  componentDidMount() {
-    const { storedInterfaces } = this.props;
+  useEffect(() => refreshInterfaces(storedInterfaces), [refreshInterfaces, storedInterfaces]);
 
-    this.refreshInterfaces(storedInterfaces);
-  }
+  const isLoading = !interfaces;
 
-  refreshInterfaces = (interfaceIds = []) => {
-    const { parentMutator } = this.props;
-
-    mutatorGet(parentMutator.interfacesManualFetch, interfaceIds);
-  }
-
-  render() {
-    const { orgId, parentResources } = this.props;
-    const interfaces = get(parentResources, 'interfacesManualFetch.records', []).reduce((acc, item) => {
-      acc[item.id] = item;
-
-      return acc;
-    }, {});
-    const isLoading = !get(parentResources, 'interfacesManualFetch.hasLoaded');
-
-    if (isLoading) {
-      return (
-        <div>
-          <Icon
-            icon="spinner-ellipsis"
-            width="100px"
-          />
-        </div>
-      );
-    }
-
+  if (isLoading) {
     return (
-      <Row>
-        <Col xs={12}>
-          <FieldArray
-            name="interfaces"
-            component={InterfacesList}
-            props={{
-              interfaces,
-              fetchInterfaces: this.refreshInterfaces,
-              orgId,
-            }}
-          />
-        </Col>
-      </Row>
+      <Icon
+        icon="spinner-ellipsis"
+        width="100px"
+      />
     );
   }
+
+  const interfacesMap = interfaces.reduce((acc, item) => {
+    acc[item.id] = item;
+
+    return acc;
+  }, {});
+
+  return (
+    <Row>
+      <Col xs={12}>
+        <FieldArray
+          name="interfaces"
+          component={InterfacesList}
+          props={{
+            interfaces: interfacesMap,
+            fetchInterfaces: refreshInterfaces,
+            orgId,
+          }}
+        />
+      </Col>
+    </Row>
+  );
 }
+
+InterfacesListContainer.manifest = Object.freeze({
+  interfacesManualFetch: {
+    ...interfacesResource,
+    fetch: false,
+    accumulate: true,
+  },
+});
+
+InterfacesListContainer.propTypes = {
+  mutator: PropTypes.object.isRequired,
+  orgId: PropTypes.string,
+  storedInterfaces: PropTypes.arrayOf(PropTypes.string),
+};
 
 InterfacesListContainer.defaultProps = {
   storedInterfaces: [],
 };
 
-export default InterfacesListContainer;
+export default stripesConnect(InterfacesListContainer);
