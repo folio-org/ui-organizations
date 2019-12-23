@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { get } from 'lodash';
 
+import { Icon } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
 
 import {
   categoriesResource,
   contactResource,
+  organizationResource,
 } from '../../common/resources';
 import { saveContact } from './util';
 import EditContact from './EditContact';
@@ -20,6 +22,7 @@ class EditContactContainer extends Component {
     contact: contactResource,
     [DICT_CATEGORIES]: categoriesResource,
     query: {},
+    contactsOrg: organizationResource,
   });
 
   onClose = (contactId = this.props.match.params.id) => {
@@ -32,9 +35,9 @@ class EditContactContainer extends Component {
   };
 
   onSubmit = (contact) => {
-    const { mutator, showMessage } = this.props;
+    const { mutator, resources, showMessage } = this.props;
 
-    saveContact(mutator.contact, contact)
+    saveContact(mutator, contact, get(resources, 'contactsOrg.records.0'))
       .then(({ id }) => {
         showMessage('ui-organizations.contacts.message.saved.success', 'success');
         this.onClose(id);
@@ -45,8 +48,17 @@ class EditContactContainer extends Component {
   render() {
     const { match, resources } = this.props;
     const isNew = !match.params.id;
-    const loadedContact = get(resources, 'contact.records[0]', {});
-    const categories = get(resources, `${DICT_CATEGORIES}.records`, []);
+    const loadedContact = get(resources, 'contact.records[0]');
+    const categories = get(resources, `${DICT_CATEGORIES}.records`);
+
+    if (!categories || (!isNew && !loadedContact)) {
+      return (
+        <Icon
+          icon="spinner-ellipsis"
+          width="100px"
+        />
+      );
+    }
     const contact = isNew ? {} : loadedContact;
     const { firstName, lastName } = contact;
     const name = `${lastName}, ${firstName}`;

@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
 import { FieldArray } from 'redux-form';
 
 import {
@@ -8,84 +7,90 @@ import {
   Icon,
   Row,
 } from '@folio/stripes/components';
+import {
+  stripesConnect,
+  stripesShape,
+} from '@folio/stripes/core';
+import { batchFetch } from '@folio/stripes-acq-components';
 
-import { mutatorGet } from '../common/utils';
+import {
+  baseContactsResource,
+  categoriesResource,
+} from '../common/resources';
 import { DICT_CATEGORIES } from '../common/constants';
 import ContactPeopleList from './ContactPeopleList';
 
-class ContactPeopleForm extends Component {
-  static propTypes = {
-    parentMutator: PropTypes.object,
-    parentResources: PropTypes.object,
-    stripes: PropTypes.shape({
-      store: PropTypes.object,
-    }),
-    orgId: PropTypes.string,
-    storedContactIds: PropTypes.arrayOf(PropTypes.string),
-  };
+function ContactPeopleForm({ orgId, mutator, storedContactIds, stripes }) {
+  const [categoriesDict, setCategoriesDict] = useState();
+  const [contacts, setContacts] = useState();
 
-  componentDidMount() {
-    const { storedContactIds } = this.props;
+  const fetchContacts = useCallback(ids => {
+    batchFetch(mutator.contactsManualFetch, ids || [])
+      .then(setContacts);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    this.fetchContacts(storedContactIds);
-  }
+  useEffect(() => {
+    mutator[DICT_CATEGORIES].GET().then(setCategoriesDict);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  getContactsUrl = (contactId) => {
-    const { orgId } = this.props;
-    const ending = contactId ? `/contacts/${contactId}/view` : '/contacts/add-contact';
-    const starting = orgId ? `/organizations/${orgId}` : '/organizations';
+  useEffect(() => fetchContacts(storedContactIds), [fetchContacts, storedContactIds]);
 
-    return `${starting}${ending}`;
-  }
+  const isLoading = !(categoriesDict && contacts);
 
-  fetchContacts = (contactIds = []) => {
-    const { parentMutator } = this.props;
-
-    mutatorGet(parentMutator.contactsManualFetch, contactIds);
-  }
-
-  render() {
-    const { orgId, parentResources, stripes } = this.props;
-    const categoriesDict = get(parentResources, `${DICT_CATEGORIES}.records`, []);
-    const contactsMap = get(parentResources, 'contactsManualFetch.records', []).reduce((acc, contact) => {
-      acc[contact.id] = contact;
-
-      return acc;
-    }, {});
-    const isLoading = !(
-      get(parentResources, `${DICT_CATEGORIES}.hasLoaded`) &&
-      get(parentResources, 'contactsManualFetch.hasLoaded')
-    );
-
-    if (isLoading) {
-      return (
-        <div>
-          <Icon
-            icon="spinner-ellipsis"
-            width="100px"
-          />
-        </div>
-      );
-    }
-
+  if (isLoading) {
     return (
-      <Row>
-        <Col xs={12}>
-          <FieldArray
-            name="contacts"
-            component={ContactPeopleList}
-            props={{
-              fetchContacts: this.fetchContacts,
-              categoriesDict,
-              contactsMap,
-              orgId,
-              stripes,
-            }}
-          />
-        </Col>
-      </Row>
+      <Icon
+        icon="spinner-ellipsis"
+        width="100px"
+      />
     );
   }
+
+  const contactsMap = contacts.reduce((acc, contact) => {
+    acc[contact.id] = contact;
+
+    return acc;
+  }, {});
+
+  return (
+    <Row>
+      <Col xs={12}>
+        <FieldArray
+          name="contacts"
+          component={ContactPeopleList}
+          props={{
+            fetchContacts,
+            categoriesDict,
+            contactsMap,
+            orgId,
+            stripes,
+          }}
+        />
+      </Col>
+    </Row>
+  );
 }
 
-export default ContactPeopleForm;
+ContactPeopleForm.manifest = Object.freeze({
+  [DICT_CATEGORIES]: {
+    ...categoriesResource,
+    accumulate: true,
+    fetch: false,
+  },
+  contactsManualFetch: {
+    ...baseContactsResource,
+    accumulate: true,
+    fetch: false,
+  },
+});
+
+ContactPeopleForm.propTypes = {
+  mutator: PropTypes.object.isRequired,
+  orgId: PropTypes.string,
+  storedContactIds: PropTypes.arrayOf(PropTypes.string),
+  stripes: stripesShape.isRequired,
+};
+
+export default stripesConnect(ContactPeopleForm);

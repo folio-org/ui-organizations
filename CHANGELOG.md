@@ -6,6 +6,9 @@
 ### Stories
 * [UIORGS-89](https://issues.folio.org/browse/UIORGS-89) Assign a newly created interface to an Organization record
 
+### Bug Fixes
+* [UIORGS-137](https://issues.folio.org/browse/UIORGS-137) Create/assign Contact for Organization record takes additional step to complete
+
 ## [1.6.1](https://github.com/folio-org/ui-organizations/tree/v1.6.1) (2019-12-18)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.6.0...v1.6.1)
 
