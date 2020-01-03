@@ -11,6 +11,7 @@ import {
   RepeatableField,
   Row,
   TextField,
+  Label,
 } from '@folio/stripes/components';
 import {
   validateRequired,
@@ -24,6 +25,58 @@ import {
 import { createAddNewItem } from '../../../common/utils';
 import CategoryDropdown from '../../../Utils/CategoryDropdown';
 
+const headLabels = (
+  <Row>
+    <Col
+      data-test-contact-phone-label-value
+      xs={3}
+    >
+      <Label
+        id="phoneFormValueLabel"
+        required
+      >
+        <FormattedMessage id="ui-organizations.contactPeople.phoneNumbers.phoneNumber" />
+      </Label>
+    </Col>
+
+    <Col
+      data-test-contact-phone-label-description
+      xs={3}
+    >
+      <Label id="phoneFormTypeLabel">
+        <FormattedMessage id="ui-organizations.contactPeople.phoneNumbers.type" />
+      </Label>
+    </Col>
+
+    <Col
+      data-test-contact-phone-label-language
+      xs={2}
+    >
+      <Label id="phoneFormLanguageLabel">
+        <FormattedMessage id="ui-organizations.contactInfo.language" />
+      </Label>
+    </Col>
+
+    <Col
+      data-test-contact-phone-label-category
+      xs={3}
+    >
+      <Label id="phoneFormCategoriesLabel">
+        <FormattedMessage id="ui-organizations.data.contactTypes.categories" />
+      </Label>
+    </Col>
+
+    <Col
+      data-test-contact-phone-label-primary
+      xs={1}
+    >
+      <Label>
+        <FormattedMessage id="ui-organizations.primaryItem" />
+      </Label>
+    </Col>
+  </Row>
+);
+
 const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList }) => {
   const addNewPhone = useCallback((fields) => createAddNewItem()(fields), []);
 
@@ -36,10 +89,10 @@ const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList })
         >
           <Field
             component={TextField}
-            label={<FormattedMessage id="ui-organizations.contactPeople.phoneNumbers.phoneNumber" />}
             name={`${elem}.phoneNumber`}
             required
             validate={validateRequired}
+            ariaLabelledBy="phoneFormValueLabel"
           />
         </Col>
 
@@ -48,9 +101,9 @@ const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList })
           xs={3}
         >
           <FieldSelect
-            label={<FormattedMessage id="ui-organizations.contactPeople.phoneNumbers.type" />}
             name={`${elem}.type`}
             dataOptions={phoneTypesList}
+            ariaLabelledBy="phoneFormTypeLabel"
           />
         </Col>
 
@@ -61,6 +114,8 @@ const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList })
           <FieldLanguage
             namePrefix={elem}
             dropdownLanguages={languageList}
+            withLabel={false}
+            ariaLabelledBy="phoneFormLanguageLabel"
           />
         </Col>
 
@@ -71,6 +126,8 @@ const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList })
           <CategoryDropdown
             dropdownVendorCategories={categories}
             name={elem}
+            withLabel={false}
+            ariaLabelledBy="phoneFormCategoriesLabel"
           />
         </Col>
 
@@ -93,6 +150,7 @@ const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList })
     <FieldArray
       addLabel={<FormattedMessage id="ui-organizations.contactPeople.addPhoneNumber" />}
       component={RepeatableField}
+      headLabels={headLabels}
       id="phoneNumbers"
       name="phoneNumbers"
       onAdd={addNewPhone}

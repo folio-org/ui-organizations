@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 import { Button } from '@folio/stripes/components';
 
-import css from './ButtonIsPrimary.css';
-
 const ButtonIsPrimary = ({ dispatchChange, fields, fieldIndex, labelId }) => {
   const isPrimary = fields.get(fieldIndex).isPrimary;
   const changeIsPrimary = () => {
@@ -25,7 +23,6 @@ const ButtonIsPrimary = ({ dispatchChange, fields, fieldIndex, labelId }) => {
     <Button
       onClick={changeIsPrimary}
       buttonStyle={isPrimary ? 'primary' : 'default'}
-      buttonClass={css.buttonIsPrimary}
     >
       <FormattedMessage id={labelId} />
     </Button>

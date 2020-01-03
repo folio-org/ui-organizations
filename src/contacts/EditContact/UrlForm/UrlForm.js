@@ -11,6 +11,7 @@ import {
   RepeatableField,
   Row,
   TextField,
+  Label,
 } from '@folio/stripes/components';
 import {
   validateRequired,
@@ -22,6 +23,58 @@ import {
 } from '../../../common/components';
 import { createAddNewItem } from '../../../common/utils';
 import CategoryDropdown from '../../../Utils/CategoryDropdown';
+
+const headLabels = (
+  <Row>
+    <Col
+      data-test-contact-url-label-value
+      xs={3}
+    >
+      <Label
+        id="urlFormValueLabel"
+        required
+      >
+        <FormattedMessage id="ui-organizations.contactPeople.urls.value" />
+      </Label>
+    </Col>
+
+    <Col
+      data-test-contact-url-label-description
+      xs={3}
+    >
+      <Label id="urlFormDescriptionLabel">
+        <FormattedMessage id="ui-organizations.contactPeople.urls.description" />
+      </Label>
+    </Col>
+
+    <Col
+      data-test-contact-url-label-language
+      xs={2}
+    >
+      <Label id="urlFormLanguageLabel">
+        <FormattedMessage id="ui-organizations.contactInfo.language" />
+      </Label>
+    </Col>
+
+    <Col
+      data-test-contact-url-label-category
+      xs={3}
+    >
+      <Label id="urlFormCategoriesLabel">
+        <FormattedMessage id="ui-organizations.data.contactTypes.categories" />
+      </Label>
+    </Col>
+
+    <Col
+      data-test-contact-url-label-primary
+      xs={1}
+    >
+      <Label>
+        <FormattedMessage id="ui-organizations.primaryItem" />
+      </Label>
+    </Col>
+  </Row>
+);
 
 const UrlForm = ({ languageList, categories, dispatchChange }) => {
   const addNewUrl = useCallback((fields) => createAddNewItem()(fields), []);
@@ -35,10 +88,10 @@ const UrlForm = ({ languageList, categories, dispatchChange }) => {
         >
           <Field
             component={TextField}
-            label={<FormattedMessage id="ui-organizations.contactPeople.urls.value" />}
             name={`${elem}.value`}
             required
             validate={validateRequired}
+            ariaLabelledBy="urlFormValueLabel"
           />
         </Col>
 
@@ -48,8 +101,8 @@ const UrlForm = ({ languageList, categories, dispatchChange }) => {
         >
           <Field
             component={TextField}
-            label={<FormattedMessage id="ui-organizations.contactPeople.urls.description" />}
             name={`${elem}.description`}
+            ariaLabelledBy="urlFormDescriptionLabel"
           />
         </Col>
 
@@ -60,6 +113,8 @@ const UrlForm = ({ languageList, categories, dispatchChange }) => {
           <FieldLanguage
             namePrefix={elem}
             dropdownLanguages={languageList}
+            ariaLabelledBy="urlFormLanguageLabel"
+            withLabel={false}
           />
         </Col>
 
@@ -70,6 +125,8 @@ const UrlForm = ({ languageList, categories, dispatchChange }) => {
           <CategoryDropdown
             dropdownVendorCategories={categories}
             name={elem}
+            ariaLabelledBy="urlFormCategoriesLabel"
+            withLabel={false}
           />
         </Col>
 
@@ -90,8 +147,10 @@ const UrlForm = ({ languageList, categories, dispatchChange }) => {
 
   return (
     <FieldArray
+      headLabels={headLabels}
       addLabel={<FormattedMessage id="ui-organizations.contactPeople.addUrl" />}
       component={RepeatableField}
+      headLabel={headLabels}
       id="urls"
       name="urls"
       onAdd={addNewUrl}

@@ -8,7 +8,7 @@ import { MultiSelection } from '@folio/stripes/components';
 
 const toString = (option) => option;
 
-function CategoryDropdown({ dropdownVendorCategories, name }) {
+function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabelledBy }) {
   const formatter = useCallback(({ option }) => {
     const item = find(dropdownVendorCategories, { id: option }) || option;
 
@@ -33,7 +33,8 @@ function CategoryDropdown({ dropdownVendorCategories, name }) {
   return (
     <Field
       component={MultiSelection}
-      label={<FormattedMessage id="ui-organizations.data.contactTypes.categories" />}
+      label={withLabel ? <FormattedMessage id="ui-organizations.data.contactTypes.categories" /> : undefined}
+      ariaLabelledBy={ariaLabelledBy}
       name={name ? `${name}.categories` : 'categories'}
       style={{ height: '80px' }}
       onBlur={(e) => { e.preventDefault(); }}
@@ -48,6 +49,12 @@ function CategoryDropdown({ dropdownVendorCategories, name }) {
 CategoryDropdown.propTypes = {
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
   name: PropTypes.string,
+  withLabel: PropTypes.bool,
+  ariaLabelledBy: PropTypes.string,
+};
+
+CategoryDropdown.defaultProps = {
+  withLabel: true,
 };
 
 export default CategoryDropdown;
