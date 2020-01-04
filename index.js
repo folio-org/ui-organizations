@@ -9,6 +9,7 @@ import {
   ToastContext,
 } from '@folio/stripes-acq-components';
 
+import { Organizations as Organization } from './src/Organizations';
 import { ContactsContainer } from './src/contacts';
 import InterfaceContainer from './src/interfaces';
 import Main from './src/Main';
@@ -71,6 +72,10 @@ class Organizations extends Component {
             <Route
               path="/organizations/:orgId/interface/"
               render={this.goToInterface}
+            />
+            <Route
+              path="/organizations/new_view"
+              component={Organization}
             />
             <Route
               path={`${this.props.match.path}`}
