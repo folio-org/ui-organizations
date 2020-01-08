@@ -34,6 +34,7 @@ const OrganizationInterfacesContainer = ({ mutator, interfaceIds }) => {
         .then(interfacesResponse => setInterfaces(interfacesResponse))
         .finally(() => setIsLoading(false));
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [interfaceIds],
   );
 

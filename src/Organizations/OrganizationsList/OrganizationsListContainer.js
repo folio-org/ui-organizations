@@ -28,12 +28,12 @@ const buildTitlesQuery = makeQueryBuilder(
 const resetData = () => {};
 
 const OrganizationsListContainer = ({ mutator, location }) => {
-  const [titles, setTitles] = useState([]);
-  const [titlesCount, setTitlesCount] = useState(0);
-  const [titlesOffset, setTitlesOffset] = useState(0);
+  const [organizations, setOrganizations] = useState([]);
+  const [organizationsCount, setOrganizationsCount] = useState(0);
+  const [organizationsOffset, setOrganizationsOffset] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadTitles = (offset) => {
+  const loadOrganizations = (offset) => {
     setIsLoading(true);
 
     return mutator.organizationsListOrgs.GET({
@@ -43,32 +43,32 @@ const OrganizationsListContainer = ({ mutator, location }) => {
         query: buildTitlesQuery(queryString.parse(location.search)),
       },
     })
-      .then(response => {
-        if (!offset) setTitlesCount(response.totalRecords);
+      .then(organizationsResponse => {
+        if (!offset) setOrganizationsCount(organizationsResponse.totalRecords);
 
-        setTitles((prev) => [...prev, ...response.organizations]);
+        setOrganizations((prev) => [...prev, ...organizationsResponse.organizations]);
       })
       .finally(() => setIsLoading(false));
   };
 
   const onNeedMoreData = useCallback(
     () => {
-      const newOffset = titlesOffset + RESULT_COUNT_INCREMENT;
+      const newOffset = organizationsOffset + RESULT_COUNT_INCREMENT;
 
-      loadTitles(newOffset)
+      loadOrganizations(newOffset)
         .then(() => {
-          setTitlesOffset(newOffset);
+          setOrganizationsOffset(newOffset);
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [titlesOffset],
+    [organizationsOffset],
   );
 
   useEffect(
     () => {
-      setTitles([]);
-      setTitlesOffset(0);
-      loadTitles(0);
+      setOrganizations([]);
+      setOrganizationsOffset(0);
+      loadOrganizations(0);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [location.search],
@@ -78,9 +78,9 @@ const OrganizationsListContainer = ({ mutator, location }) => {
     <OrganizationsList
       onNeedMoreData={onNeedMoreData}
       resetData={resetData}
-      titlesCount={titlesCount}
+      organizationsCount={organizationsCount}
       isLoading={isLoading}
-      titles={titles}
+      organizations={organizations}
     />
   );
 };

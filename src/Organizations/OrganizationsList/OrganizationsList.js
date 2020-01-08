@@ -45,8 +45,8 @@ const OrganizationsList = ({
   location,
   onNeedMoreData,
   resetData,
-  titles,
-  titlesCount,
+  organizations,
+  organizationsCount,
 }) => {
   const [
     filters,
@@ -69,6 +69,7 @@ const OrganizationsList = ({
         search: location.search,
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [match.path, location.search],
   );
 
@@ -97,12 +98,12 @@ const OrganizationsList = ({
 
       <ResultsPane
         title={resultsPaneTitle}
-        count={titlesCount}
+        count={organizationsCount}
       >
         <MultiColumnList
           id="organizations-list"
-          totalCount={titlesCount}
-          contentData={titles}
+          totalCount={organizationsCount}
+          contentData={organizations}
           visibleColumns={visibleColumns}
           columnMapping={columnMapping}
           formatter={resultsFormatter}
@@ -128,18 +129,18 @@ const OrganizationsList = ({
 OrganizationsList.propTypes = {
   onNeedMoreData: PropTypes.func.isRequired,
   resetData: PropTypes.func.isRequired,
-  titlesCount: PropTypes.number,
+  organizationsCount: PropTypes.number,
   isLoading: PropTypes.bool,
-  titles: PropTypes.arrayOf(PropTypes.object),
+  organizations: PropTypes.arrayOf(PropTypes.object),
   match: ReactRouterPropTypes.match.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
 };
 
 OrganizationsList.defaultProps = {
-  titlesCount: 0,
+  organizationsCount: 0,
   isLoading: false,
-  titles: [],
+  organizations: [],
 };
 
 export default withRouter(OrganizationsList);
