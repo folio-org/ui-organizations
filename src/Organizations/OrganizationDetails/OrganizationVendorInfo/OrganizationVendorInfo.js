@@ -7,31 +7,24 @@ import {
   Col,
   currenciesByCode,
   KeyValue,
+  Checkbox,
 } from '@folio/stripes/components';
 import { PAYMENT_METHOD_LABELS } from '@folio/stripes-acq-components';
 
-import { PrintKeyValue, PrintBoolToCheckbox } from '../../../Utils/PrintKeyValue';
-import css from './OrganizationVendorInfo.css';
-
-const OrganizationVendorInfo = ({ organization }) => {
-  if (!organization) {
-    return null;
-  }
-
-  const {
-    paymentMethod = '',
-    vendorCurrencies = [],
-    claimingInterval = '',
-    discountPercent = '',
-    expectedActivationInterval = '',
-    expectedInvoiceInterval = '',
-    expectedReceiptInterval = '',
-    renewalActivationInterval = '',
-    subscriptionInterval = '',
-    taxId = '',
-    taxPercentage = '',
-    liableForVat,
-  } = organization;
+const OrganizationVendorInfo = ({
+  paymentMethod,
+  vendorCurrencies,
+  claimingInterval,
+  discountPercent,
+  expectedActivationInterval,
+  expectedInvoiceInterval,
+  expectedReceiptInterval,
+  renewalActivationInterval,
+  subscriptionInterval,
+  taxId,
+  taxPercentage,
+  isLiableForVat,
+}) => {
   const vendorCurrenciesString = vendorCurrencies
     .map(currency => {
       const currencyInfo = currenciesByCode[currency];
@@ -41,38 +34,122 @@ const OrganizationVendorInfo = ({ organization }) => {
     .join(', ');
 
   return (
-    <Row className={css.horizontalLine}>
+    <Row>
       <Col xs={3}>
         <KeyValue label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />}>
           {PAYMENT_METHOD_LABELS[paymentMethod]}
         </KeyValue>
       </Col>
-      {PrintKeyValue('ui-organizations.vendorInfo.vendorCurrencies', vendorCurrenciesString, 3, false)}
+
+      <Col xs={3}>
+        <KeyValue
+          label={<FormattedMessage id="ui-organizations.vendorInfo.vendorCurrencies" />}
+          value={vendorCurrenciesString}
+        />
+      </Col>
+
       <Col xs={12}>
         <hr />
       </Col>
-      {PrintKeyValue('ui-organizations.vendorInfo.claimingInterval', claimingInterval, 3, false)}
-      {PrintKeyValue('ui-organizations.vendorInfo.discountPercent', discountPercent, 3, false)}
-      {PrintKeyValue('ui-organizations.vendorInfo.expectedActivationInterval', expectedActivationInterval, 3, false)}
-      {PrintKeyValue('ui-organizations.vendorInfo.expectedInvoiceInterval', expectedInvoiceInterval, 3, false)}
-      {PrintKeyValue('ui-organizations.vendorInfo.expectedReceiptInterval', expectedReceiptInterval, 3, false)}
-      {PrintKeyValue('ui-organizations.vendorInfo.renewalActivationInterval', renewalActivationInterval, 3, false)}
-      {PrintKeyValue('ui-organizations.vendorInfo.subscriptionInterval', subscriptionInterval, 3, false)}
+
+      <Col xs={3}>
+        <KeyValue
+          label={<FormattedMessage id="ui-organizations.vendorInfo.claimingInterval" />}
+          value={claimingInterval}
+        />
+      </Col>
+
+      <Col xs={3}>
+        <KeyValue
+          label={<FormattedMessage id="ui-organizations.vendorInfo.discountPercent" />}
+          value={discountPercent}
+        />
+      </Col>
+
+      <Col xs={3}>
+        <KeyValue
+          label={<FormattedMessage id="ui-organizations.vendorInfo.expectedActivationInterval" />}
+          value={expectedActivationInterval}
+        />
+      </Col>
+
+      <Col xs={3}>
+        <KeyValue
+          label={<FormattedMessage id="ui-organizations.vendorInfo.expectedInvoiceInterval" />}
+          value={expectedInvoiceInterval}
+        />
+      </Col>
+
+      <Col xs={3}>
+        <KeyValue
+          label={<FormattedMessage id="ui-organizations.vendorInfo.expectedReceiptInterval" />}
+          value={expectedReceiptInterval}
+        />
+      </Col>
+
+      <Col xs={3}>
+        <KeyValue
+          label={<FormattedMessage id="ui-organizations.vendorInfo.renewalActivationInterval" />}
+          value={renewalActivationInterval}
+        />
+      </Col>
+
+      <Col xs={3}>
+        <KeyValue
+          label={<FormattedMessage id="ui-organizations.vendorInfo.subscriptionInterval" />}
+          value={subscriptionInterval}
+        />
+      </Col>
+
       <Col xs={12}>
         <hr />
       </Col>
-      <Col xs={12}>
-        <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.vendorInfo.tax" />}</div>
+
+      <Col xs={3}>
+        <KeyValue
+          label={<FormattedMessage id="ui-organizations.vendorInfo.taxID" />}
+          value={taxId}
+        />
       </Col>
-      {PrintKeyValue('ui-organizations.vendorInfo.taxID', taxId, 3, false)}
-      {PrintKeyValue('ui-organizations.vendorInfo.taxPercentage', taxPercentage, 3, false)}
-      {PrintBoolToCheckbox('ui-organizations.vendorInfo.liableForVAT', !!liableForVat, 3)}
+
+      <Col xs={3}>
+        <KeyValue
+          label={<FormattedMessage id="ui-organizations.vendorInfo.taxPercentage" />}
+          value={taxPercentage}
+        />
+      </Col>
+
+      <Col xs={4}>
+        <KeyValue
+          label={<FormattedMessage id="ui-organizations.vendorInfo.liableForVAT" />}
+        >
+          <Checkbox
+            checked={isLiableForVat}
+            disabled
+          />
+        </KeyValue>
+      </Col>
     </Row>
   );
 };
 
 OrganizationVendorInfo.propTypes = {
-  organization: PropTypes.object,
+  paymentMethod: PropTypes.string,
+  vendorCurrencies: PropTypes.arrayOf(PropTypes.string),
+  claimingInterval: PropTypes.string,
+  discountPercent: PropTypes.string,
+  expectedActivationInterval: PropTypes.string,
+  expectedInvoiceInterval: PropTypes.string,
+  expectedReceiptInterval: PropTypes.string,
+  renewalActivationInterval: PropTypes.string,
+  subscriptionInterval: PropTypes.string,
+  taxId: PropTypes.string,
+  taxPercentage: PropTypes.string,
+  isLiableForVat: PropTypes.bool,
+};
+
+OrganizationVendorInfo.defaultProps = {
+  vendorCurrencies: [],
 };
 
 export default OrganizationVendorInfo;

@@ -1,127 +1,363 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { get, find, isNull, toString } from 'lodash';
-import { Row, Col } from '@folio/stripes/components';
+import { FormattedMessage } from 'react-intl';
 
-import { PrintKeyValue, PrintBoolToCheckbox } from '../../../Utils/PrintKeyValue';
+import {
+  Row,
+  Col,
+  Headline,
+  Checkbox,
+  KeyValue,
+} from '@folio/stripes/components';
 
-import css from './OrganizationEDIInfo.css';
+import { getEDITypeLabel } from './utils';
 
-const ediCodeTypeDD = [
-  { label: '31B (US-SAN)', value: '31B/US-SAN' },
-  { label: '014 (EAN)', value: '014/EAN' },
-  { label: '091 (Supplier-assigned ID)', value: '091/Vendor-assigned' },
-  { label: '092 (Library-assigned ID)', value: '092/Customer-assigned' },
-];
+const OrganizationEDIInfo = ({ edi }) => {
+  return (
+    <Fragment>
+      <Row>
+        <Col xs={12}>
+          <Headline weight="regular">
+            <FormattedMessage id="ui-organizations.edi.ediBasic" />
+          </Headline>
+        </Col>
 
-class OrganizationEDIInfo extends React.Component {
-  static propTypes = {
-    organization: PropTypes.object,
-  };
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.edi.vendorEDICode" />}
+            value={edi.vendorEdiCode}
+          />
+        </Col>
 
-  constructor(props) {
-    super(props);
-    this.getVendorCodeTypeItem = this.getVendorCodeTypeItem.bind(this);
-    this.getLibraryEdiCodeTypeDD = this.getLibraryEdiCodeTypeDD.bind(this);
-  }
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.edi.vendorEDIType" />}
+            value={edi.vendorEdiType}
+          />
+        </Col>
 
-  getVendorCodeTypeItem(item) {
-    if (isNull(item)) return '';
-    const obj = find(ediCodeTypeDD, { value: item });
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.edi.libraryEDICode" />}
+            value={edi.libEdiCode}
+          />
+        </Col>
 
-    if (!obj) return '';
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.edi.libraryEDIType" />}
+            value={getEDITypeLabel(edi.libEdiType)}
+          />
+        </Col>
 
-    return obj.label;
-  }
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.edi.prorateTax" />}
+          >
+            <Checkbox
+              checked={edi.prorateTax}
+              disabled
+            />
+          </KeyValue>
+        </Col>
 
-  getLibraryEdiCodeTypeDD(item) {
-    if (isNull(item)) return '';
-    const obj = find(ediCodeTypeDD, { value: item });
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.edi.prorateFees" />}
+          >
+            <Checkbox
+              checked={edi.prorateFees}
+              disabled
+            />
+          </KeyValue>
+        </Col>
 
-    if (!obj) return '';
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.edi.ediNamingConvention" />}
+            value={edi.ediNamingConvention}
+          />
+        </Col>
 
-    return obj.label;
-  }
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.edi.sendAccountNumber" />}
+          >
+            <Checkbox
+              checked={edi.sendAcctNum}
+              disabled
+            />
+          </KeyValue>
+        </Col>
 
-  render() {
-    const { organization } = this.props;
-    const ediFtp = organization.edi ? organization.edi.ediFtp : null;
-    const ediScheduling = organization.edi ? organization.edi.ediJob : null;
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.edi.orders" />}
+          >
+            <Checkbox
+              checked={edi.supportOrder}
+              disabled
+            />
+          </KeyValue>
+        </Col>
 
-    if (organization) {
-      return (
-        <div className={css.horizontalLine}>
-          <Row>
-            <Col xs={12}>
-              <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.edi.ediBasic" />}</div>
-            </Col>
-            {PrintKeyValue('ui-organizations.edi.vendorEDICode', get(organization, 'edi.vendorEdiCode', ''), 3, false)}
-            {PrintKeyValue('ui-organizations.edi.vendorEDIType', get(organization, 'edi.vendorEdiType', ''), 3, false)}
-            {PrintKeyValue('ui-organizations.edi.libraryEDICode', get(organization, 'edi.libEdiCode', ''), 3, false)}
-            {PrintKeyValue('ui-organizations.edi.libraryEDIType', this.getLibraryEdiCodeTypeDD(get(organization, 'edi.libEdiType', '')), 3, false)}
-            {PrintBoolToCheckbox('ui-organizations.edi.prorateTax', get(organization, 'edi.prorateTax'), 3, false)}
-            {PrintBoolToCheckbox('ui-organizations.edi.prorateFees', get(organization, 'edi.prorateFees'), 3, false)}
-            {PrintKeyValue('ui-organizations.edi.ediNamingConvention', get(organization, 'edi.ediNamingConvention'), 3)}
-            {PrintBoolToCheckbox('ui-organizations.edi.sendAccountNumber', get(organization, 'edi.sendAcctNum'), 3, false)}
-            {PrintBoolToCheckbox('ui-organizations.edi.orders', get(organization, 'edi.supportOrder'), 3, false)}
-            {PrintBoolToCheckbox('ui-organizations.edi.invoices', get(organization, 'edi.supportInvoice'), 3, false)}
-            {PrintKeyValue('ui-organizations.edi.notes', get(organization, 'edi.notes', ''), 3, false)}
-            <Col xs={12}>
-              <hr />
-            </Col>
-          </Row>
-          {ediFtp &&
-            <Row>
-              <Col xs={12}>
-                <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.edi.ftpDetails" />}</div>
-              </Col>
-              {PrintKeyValue('ui-organizations.edi.editFTP', get(ediFtp, ['ftpFormat']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.serverAddress', get(ediFtp, ['serverAddress']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.username', get(ediFtp, ['username']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.password', get(ediFtp, ['password']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.ftpMode', get(ediFtp, ['ftpMode']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.ftpPort', get(ediFtp, ['ftpPort']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.orderDirectory', get(ediFtp, ['orderDirectory']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.invoiceDirectory', get(ediFtp, ['invoiceDirectory']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.notes', get(ediFtp, ['notes']), 3, false)}
-              <Col xs={12}>
-                <hr />
-              </Col>
-            </Row>
-          }
-          {ediScheduling &&
-            <Row>
-              <Col xs={12}>
-                <div className={css.subHeadings}>{<FormattedMessage id="ui-organizations.edi.scheduling" />}</div>
-              </Col>
-              {PrintBoolToCheckbox('ui-organizations.edi.scheduleEDI', toString(get(ediScheduling, ['scheduleEdi'])), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.date', get(ediScheduling, ['date']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.time', get(ediScheduling, ['time']), 3, false)}
-              {PrintKeyValue('ui-organizations.edi.sendToEmails', get(ediScheduling, ['sendToEmails']), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.notifyAllEDI', !!get(ediScheduling, 'notifyAllEdi'), 3)}
-              {PrintBoolToCheckbox('ui-organizations.edi.notifyInvoiceOnly', toString(get(ediScheduling, ['notifyInvoiceOnly'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.notifyErrorOnly', toString(get(ediScheduling, ['notifyErrorOnly'])), 6, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.monday', toString(get(ediScheduling, ['isMonday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.tuesday', toString(get(ediScheduling, ['isTuesday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.wednesday', toString(get(ediScheduling, ['isWednesday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.thursday', toString(get(ediScheduling, ['isThursday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.friday', toString(get(ediScheduling, ['isFriday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.saturday', toString(get(ediScheduling, ['isSaturday'])), 3, false)}
-              {PrintBoolToCheckbox('ui-organizations.edi.sunday', toString(get(ediScheduling, ['isSunday'])), 3, false)}
-            </Row>
-          }
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <p>{<FormattedMessage id="ui-organizations.edi.noEdiInfo" />}</p>
-          <br />
-        </div>
-      );
-    }
-  }
-}
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.edi.invoices" />}
+          >
+            <Checkbox
+              checked={edi.supportInvoice}
+              disabled
+            />
+          </KeyValue>
+        </Col>
+
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.edi.notes" />}
+            value={edi.notes}
+          />
+        </Col>
+      </Row>
+
+      {edi.ediFtp && (
+        <Row>
+          <Col xs={12}>
+            <hr />
+
+            <Headline weight="regular">
+              <FormattedMessage id="ui-organizations.edi.ftpDetails" />
+            </Headline>
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.editFTP" />}
+              value={edi.ediFtp.ftpFormat}
+            />
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.serverAddress" />}
+              value={edi.ediFtp.serverAddress}
+            />
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.username" />}
+              value={edi.ediFtp.username}
+            />
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.password" />}
+              value={edi.ediFtp.password}
+            />
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.ftpMode" />}
+              value={edi.ediFtp.ftpMode}
+            />
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.ftpPort" />}
+              value={edi.ediFtp.ftpPort}
+            />
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.orderDirectory" />}
+              value={edi.ediFtp.orderDirectory}
+            />
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.invoiceDirectory" />}
+              value={edi.ediFtp.invoiceDirectory}
+            />
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.notes" />}
+              value={edi.ediFtp.notes}
+            />
+          </Col>
+        </Row>
+      )}
+
+      {edi.ediJob && (
+        <Row>
+          <Col xs={12}>
+            <hr />
+
+            <Headline weight="regular">
+              <FormattedMessage id="ui-organizations.edi.scheduling" />
+            </Headline>
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.scheduleEDI" />}
+            >
+              <Checkbox
+                checked={edi.ediJob.scheduleEdi}
+                disabled
+              />
+            </KeyValue>
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.date" />}
+              value={edi.ediJob.date}
+            />
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.time" />}
+              value={edi.ediJob.time}
+            />
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.sendToEmails" />}
+              value={edi.ediJob.sendToEmails}
+            />
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.notifyAllEDI" />}
+            >
+              <Checkbox
+                checked={edi.ediJob.notifyAllEdi}
+                disabled
+              />
+            </KeyValue>
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.notifyInvoiceOnly" />}
+            >
+              <Checkbox
+                checked={edi.ediJob.notifyInvoiceOnly}
+                disabled
+              />
+            </KeyValue>
+          </Col>
+
+          <Col xs={6}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.notifyErrorOnly" />}
+            >
+              <Checkbox
+                checked={edi.ediJob.notifyErrorOnly}
+                disabled
+              />
+            </KeyValue>
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.monday" />}
+            >
+              <Checkbox
+                checked={edi.ediJob.isMonday}
+                disabled
+              />
+            </KeyValue>
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.tuesday" />}
+            >
+              <Checkbox
+                checked={edi.ediJob.isTuesday}
+                disabled
+              />
+            </KeyValue>
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.wednesday" />}
+            >
+              <Checkbox
+                checked={edi.ediJob.isWednesday}
+                disabled
+              />
+            </KeyValue>
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.thursday" />}
+            >
+              <Checkbox
+                checked={edi.ediJob.isThursday}
+                disabled
+              />
+            </KeyValue>
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.friday" />}
+            >
+              <Checkbox
+                checked={edi.ediJob.isFriday}
+                disabled
+              />
+            </KeyValue>
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.saturday" />}
+            >
+              <Checkbox
+                checked={edi.ediJob.isSaturday}
+                disabled
+              />
+            </KeyValue>
+          </Col>
+
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-organizations.edi.sunday" />}
+            >
+              <Checkbox
+                checked={edi.ediJob.isSunday}
+                disabled
+              />
+            </KeyValue>
+          </Col>
+        </Row>
+      )}
+    </Fragment>
+  );
+};
+
+OrganizationEDIInfo.propTypes = {
+  edi: PropTypes.object,
+};
+
+OrganizationEDIInfo.defaultProps = {
+  edi: {},
+};
 
 export default OrganizationEDIInfo;
