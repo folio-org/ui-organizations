@@ -1,16 +1,26 @@
-import React, { Fragment } from 'react';
+import React, {
+  Fragment,
+  useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
+import { IfPermission } from '@folio/stripes/core';
 import {
+  Accordion,
+  AccordionSet,
+  Button,
+  Col,
+  ConfirmationModal,
+  ExpandAllButton,
+  Icon,
+  MenuSection,
   Pane,
   Row,
-  Col,
-  ExpandAllButton,
-  AccordionSet,
-  Accordion,
 } from '@folio/stripes/components';
 import {
   useAccordionToggle,
+  useModalToggle,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -28,9 +38,12 @@ import { OrganizationAccounts } from './OrganizationAccounts';
 
 const OrganizationDetails = ({
   onClose,
+  onEdit,
+  onDelete,
   organization,
   organizationCategories,
 }) => {
+  const [isRemoveModalOpened, toggleRemoveModal] = useModalToggle();
   const [expandAll, sections, toggleSection] = useAccordionToggle({
     [ORGANIZATION_SECTIONS.summarySection]: true,
     [ORGANIZATION_SECTIONS.contactInformationSection]: false,
@@ -42,6 +55,44 @@ const OrganizationDetails = ({
     [ORGANIZATION_SECTIONS.accountsSection]: false,
   });
 
+  const getActionMenu = useCallback(
+    ({ onToggle }) => {
+      return (
+        <MenuSection id="data-test-organizations-details-actions">
+          <IfPermission perm="ui-organizations.delete">
+            <Button
+              buttonStyle="dropdownItem"
+              data-test-button-delete-organization
+              onClick={() => {
+                onToggle();
+                toggleRemoveModal();
+              }}
+            >
+              <Icon size="small" icon="trash">
+                <FormattedMessage id="ui-organizations.view.delete" />
+              </Icon>
+            </Button>
+          </IfPermission>
+          <IfPermission perm="ui-organizations.edit">
+            <Button
+              buttonStyle="dropdownItem"
+              data-test-button-edit-organization
+              onClick={() => {
+                onToggle();
+                onEdit();
+              }}
+            >
+              <Icon size="small" icon="edit">
+                <FormattedMessage id="ui-organizations.view.edit" />
+              </Icon>
+            </Button>
+          </IfPermission>
+        </MenuSection>
+      );
+    },
+    [onEdit, toggleRemoveModal],
+  );
+
   return (
     <Pane
       id="pane-organization-details"
@@ -49,6 +100,7 @@ const OrganizationDetails = ({
       dismissible
       paneTitle={organization.name}
       onClose={onClose}
+      actionMenu={getActionMenu}
     >
       <Row end="xs">
         <Col xs={12}>
@@ -117,7 +169,18 @@ const OrganizationDetails = ({
                 label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
               >
                 <OrganizationVendorInfo
-                  organization={organization}
+                  paymentMethod={organization.paymentMethod}
+                  vendorCurrencies={organization.vendorCurrencies}
+                  claimingInterval={organization.claimingInterval}
+                  discountPercent={organization.discountPercent}
+                  expectedActivationInterval={organization.expectedActivationInterval}
+                  expectedInvoiceInterval={organization.expectedInvoiceInterval}
+                  expectedReceiptInterval={organization.expectedReceiptInterval}
+                  renewalActivationInterval={organization.renewalActivationInterval}
+                  subscriptionInterval={organization.subscriptionInterval}
+                  taxId={organization.taxId}
+                  taxPercentage={organization.taxPercentage}
+                  isLiableForVat={!!organization.liableForVat}
                 />
               </Accordion>
 
@@ -135,7 +198,7 @@ const OrganizationDetails = ({
                 label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.ediInformationSection]}
               >
                 <OrganizationEDIInfo
-                  organization={organization}
+                  edi={organization.edi}
                 />
               </Accordion>
 
@@ -152,12 +215,25 @@ const OrganizationDetails = ({
         }
       </AccordionSet>
 
+      {isRemoveModalOpened && (
+        <ConfirmationModal
+          id="delete-organization-confirmation"
+          confirmLabel={<FormattedMessage id="ui-organizations.organization.delete.confirmLabel" />}
+          heading={<FormattedMessage id="ui-organizations.organization.delete.heading" values={{ organizationName: `${organization.name}` }} />}
+          message={<FormattedMessage id="ui-organizations.view.delete.message" />}
+          onCancel={toggleRemoveModal}
+          onConfirm={onDelete}
+          open
+        />
+      )}
     </Pane>
   );
 };
 
 OrganizationDetails.propTypes = {
   onClose: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
   organization: PropTypes.object.isRequired,
   organizationCategories: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
