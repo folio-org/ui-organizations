@@ -393,8 +393,8 @@
     "edi.ediNamingConvention": "EDI命名约定",
     "edi.sendAccountNumber": "发送帐号",
     "edi.whatMssgs": "预计此供应商会收到哪些消息？",
-    "edi.supportOrder": "",
-    "edi.supportInvoice": "",
+    "edi.supportOrder": "空",
+    "edi.supportInvoice": "空",
     "edi.notes": "附注",
     "edi.ftpDetails": "FTP详情",
     "edi.editFTP": "EDI FTP",
@@ -564,7 +564,7 @@
     "interface.confirmUnassign.message1": "确定要由此组织取消分配此界面吗？",
     "interface.confirmDelete.confirmLabel": "确认",
     "interface.confirmDelete.heading": "删除用户界面",
-    "interface.confirmDelete.message": "您确定要删除此用户界面吗？",
+    "interface.confirmDelete.message": "确定要删除此用户界面吗？",
     "interface.message.unassigned.fail": "该界面未被取消分配",
     "interface.message.delete.fail": "用户界面未被删除",
     "filterConfig.isVendor": "是供应商",
@@ -598,6 +598,6 @@
     "interface.url": "URL",
     "interface.type": "类型",
     "edit.hideCredentials": "隐藏凭证",
-    "contactInfo.vendorCategory.uncategorized": "Uncategorized",
-    "contacts.actions.load.error": "Failed to load contacts data"
+    "contactInfo.vendorCategory.uncategorized": "未分类",
+    "contacts.actions.load.error": "无法加载联系人数据"
 }

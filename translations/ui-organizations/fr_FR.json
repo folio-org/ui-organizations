@@ -472,7 +472,7 @@
     "contactInfo.actions.addAddress": "Ajouter une adresse",
     "contactInfo.actions.addPhoneNumber": "Ajouter un numéro de téléphone",
     "contactInfo.actions.addEmail": "Ajouter un email",
-    "edi.receiveNotifications": "What messages are expected for this vendor?",
+    "edi.receiveNotifications": "Quels messages sont attendus pour ce fournisseur?",
     "accounts.account.contactInfo": "Informations de contact",
     "organizationStatus.active": "Actif",
     "organizationStatus.inactive": "Inactif",
