@@ -5,11 +5,26 @@ import {
 } from 'react-router-dom';
 
 import { OrganizationsListContainer } from './OrganizationsList';
+import { OrganizationCreate } from './OrganizationCreate';
+import { OrganizationEdit } from './OrganizationEdit';
 
 const Organizations = () => {
   return (
     <Switch>
-      <Route component={OrganizationsListContainer} />
+      <Route
+        path="/organizations/new_view/create"
+        component={OrganizationCreate}
+      />
+
+      <Route
+        path="/organizations/new_view/:id/edit"
+        component={OrganizationEdit}
+      />
+
+      <Route
+        path="/organizations/new_view"
+        component={OrganizationsListContainer}
+      />
     </Switch>
   );
 };

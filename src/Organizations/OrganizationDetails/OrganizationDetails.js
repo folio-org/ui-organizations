@@ -144,7 +144,7 @@ const OrganizationDetails = ({
 
         <Accordion
           id={ORGANIZATION_SECTIONS.contactPeopleSection}
-          label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactInformationSection]}
+          label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactPeopleSection]}
         >
           <OrganizationContactPeopleContainer
             contactsIds={organization.contacts}
