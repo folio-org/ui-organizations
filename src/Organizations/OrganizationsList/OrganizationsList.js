@@ -22,6 +22,7 @@ import {
 
 import { OrganizationDetailsContainer } from '../OrganizationDetails';
 import OrganizationsListFilter from './OrganizationsListFilter';
+import OrganizationsListLastMenu from './OrganizationsListLastMenu';
 
 const resultsPaneTitle = <FormattedMessage id="ui-organizations.meta.title" />;
 const visibleColumns = ['name', 'code', 'description', 'status', 'isVendor'];
@@ -73,6 +74,8 @@ const OrganizationsList = ({
     [match.path, location.search],
   );
 
+  const renderLastMenu = useCallback(() => <OrganizationsListLastMenu />, []);
+
   return (
     <Paneset>
       <FiltersPane>
@@ -99,6 +102,7 @@ const OrganizationsList = ({
       <ResultsPane
         title={resultsPaneTitle}
         count={organizationsCount}
+        renderLastMenu={renderLastMenu}
       >
         <MultiColumnList
           id="organizations-list"
