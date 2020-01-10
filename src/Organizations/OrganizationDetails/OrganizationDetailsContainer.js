@@ -70,6 +70,17 @@ const OrganizationDetailsContainer = ({
     [location.search],
   );
 
+  const editOrganization = useCallback(
+    () => {
+      history.push({
+        pathname: `/organizations/new_view/${organizationId}/edit`,
+        search: location.search,
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [organizationId, location.search],
+  );
+
   const deleteOrganization = useCallback(
     () => {
       const { id, name } = organization;
@@ -94,6 +105,7 @@ const OrganizationDetailsContainer = ({
   return (
     <OrganizationDetails
       onClose={closePane}
+      onEdit={editOrganization}
       onDelete={deleteOrganization}
       organization={organization}
       organizationCategories={organizationCategories}
