@@ -42,10 +42,10 @@ const OrganizationContactInfo = ({ organization, vendorCategories }) => {
 
   const data = cats.reduce((acc, { id }) => {
     const filterCb = filterByCatId(id);
-    const addresses = organization.addresses.filter(filterCb);
-    const emails = organization.emails.filter(filterCb);
-    const phoneNumbers = organization.phoneNumbers.filter(filterCb);
-    const urls = organization.urls.filter(filterCb);
+    const addresses = (organization.addresses || []).filter(filterCb);
+    const emails = (organization.emails || []).filter(filterCb);
+    const phoneNumbers = (organization.phoneNumbers || []).filter(filterCb);
+    const urls = (organization.urls || []).filter(filterCb);
 
     if (addresses.length || emails.length || phoneNumbers.length || urls.length) {
       acc[id] = {

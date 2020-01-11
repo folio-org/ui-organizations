@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { getFormValues } from 'redux-form';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
@@ -10,7 +11,10 @@ import {
 
 import FormatTime from '../../Utils/FormatTime';
 import { organizationsResource } from '../../common/resources';
-import { OrganizationForm } from '../OrganizationForm';
+import {
+  OrganizationForm,
+  ORG_FORM_NAME,
+} from '../OrganizationForm';
 
 const INITIAL_VALUES = {
   interfaces: [],
@@ -22,7 +26,7 @@ const OrganizationCreate = ({ history, location, mutator, stripes }) => {
   const cancelForm = useCallback(
     (id) => {
       history.push({
-        pathname: id ? `/organizations/new_view/${id}/view` : '/organizations/new_view',
+        pathname: id ? `/organizations/${id}/view` : '/organizations',
         search: location.search,
       });
     },
@@ -45,12 +49,15 @@ const OrganizationCreate = ({ history, location, mutator, stripes }) => {
     [cancelForm],
   );
 
+  const { isVendor, language } = getFormValues(ORG_FORM_NAME)(stripes.store.getState()) || {};
+
   return (
     <OrganizationForm
-      store={stripes.store}
       initialValues={INITIAL_VALUES}
       onSubmit={createOrganization}
       cancelForm={cancelForm}
+      isVendorForm={isVendor}
+      formDefaultLanguage={language}
     />
   );
 };

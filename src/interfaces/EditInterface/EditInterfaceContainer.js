@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { get } from 'lodash';
 
@@ -15,14 +16,13 @@ import {
   deliveryMethodDD,
   formatDD,
 } from './const';
-import { getBackQuery } from '../../common/utils/createItem';
+import { getBackPath } from '../../common/utils/createItem';
 
 class EditInterfaceContainer extends Component {
   static manifest = Object.freeze({
     interfaceCredentials: interfaceCredentialsResource,
     interfaceId: {},
     interfaceOrg: organizationResource,
-    query: {},
     vendorInterface: interfaceResource,
   });
 
@@ -33,10 +33,9 @@ class EditInterfaceContainer extends Component {
   }
 
   onClose = (interfaceId = this.props.match.params.id) => {
-    const { orgId, mutator } = this.props;
-    const query = getBackQuery(orgId, interfaceId, 'interface');
+    const { orgId, history } = this.props;
 
-    mutator.query.replace(query);
+    history.push(getBackPath(orgId, interfaceId, 'interface'));
   };
 
   onSubmit = (formValues) => {
@@ -81,12 +80,13 @@ class EditInterfaceContainer extends Component {
 }
 
 EditInterfaceContainer.propTypes = {
-  match: PropTypes.object,
   mutator: PropTypes.object,
   orgId: PropTypes.string,
   resources: PropTypes.object,
   showMessage: PropTypes.func,
   stripes: PropTypes.object,
+  match: ReactRouterPropTypes.match.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
 };
 
 export default EditInterfaceContainer;

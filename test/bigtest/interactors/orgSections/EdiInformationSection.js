@@ -2,10 +2,10 @@ import {
   interactor,
 } from '@bigtest/interactor';
 
-import { SECTIONS } from '../../../../src/common/constants';
+import { ORGANIZATION_SECTIONS } from '../../../../src/Organizations/constants';
 
 class EdiInformationSection {
-  static defaultScope = `#${SECTIONS.ediInformationSection}`;
+  static defaultScope = `#${ORGANIZATION_SECTIONS.ediInformationSection}`;
 }
 
 export default interactor(EdiInformationSection);

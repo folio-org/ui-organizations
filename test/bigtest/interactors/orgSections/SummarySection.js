@@ -5,13 +5,13 @@ import {
 
 import Metadata from '../Metadata';
 
-import { SECTIONS } from '../../../../src/common/constants';
+import { ORGANIZATION_SECTIONS } from '../../../../src/Organizations/constants';
 import Button from '../Button';
 
 class SummarySection {
-  static defaultScope = `#${SECTIONS.summarySection}`;
+  static defaultScope = `#${ORGANIZATION_SECTIONS.summarySection}`;
   metadata = new Metadata();
-  headerButton = new Button(`#accordion-toggle-button-${SECTIONS.summarySection}`);
+  headerButton = new Button(`#accordion-toggle-button-${ORGANIZATION_SECTIONS.summarySection}`);
   isExpanded = isVisible('[class*=content---]');
 }
 

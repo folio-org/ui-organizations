@@ -2,12 +2,12 @@ import {
   interactor,
 } from '@bigtest/interactor';
 
-import { SECTIONS } from '../../../../src/common/constants';
+import { ORGANIZATION_SECTIONS } from '../../../../src/Organizations/constants';
 import Button from '../Button';
 
 class InterfacesSection {
-  static defaultScope = `#${SECTIONS.interfacesSection}`;
-  headerButton = new Button(`#accordion-toggle-button-${SECTIONS.interfacesSection}`);
+  static defaultScope = `#${ORGANIZATION_SECTIONS.interfacesSection}`;
+  headerButton = new Button(`#accordion-toggle-button-${ORGANIZATION_SECTIONS.interfacesSection}`);
 }
 
 export default interactor(InterfacesSection);

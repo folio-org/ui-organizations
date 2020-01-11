@@ -12,7 +12,7 @@ import {
 import { AppIcon } from '@folio/stripes/core';
 
 import { EDIT_INTERFACE_URL } from '../constants';
-import InterfaceView from '../../Interface/InterfaceView/InterfaceView';
+import { OrganizationInterface } from '../../Organizations';
 
 const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getCreds }) => {
   // eslint-disable-next-line react/prop-types
@@ -86,7 +86,7 @@ const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getC
           md={8}
           mdOffset={2}
         >
-          <InterfaceView
+          <OrganizationInterface
             getCreds={getCreds}
             item={item}
           />

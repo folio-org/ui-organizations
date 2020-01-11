@@ -12,17 +12,17 @@ const Organizations = () => {
   return (
     <Switch>
       <Route
-        path="/organizations/new_view/create"
+        path="/organizations/create"
         component={OrganizationCreate}
       />
 
       <Route
-        path="/organizations/new_view/:id/edit"
+        path="/organizations/:id/edit"
         component={OrganizationEdit}
       />
 
       <Route
-        path="/organizations/new_view"
+        path="/organizations"
         component={OrganizationsListContainer}
       />
     </Switch>

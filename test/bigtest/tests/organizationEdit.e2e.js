@@ -19,7 +19,7 @@ describe('Organization edit', () => {
     interfaces = this.server.createList('interface', 2);
     const org = this.server.create('organization', { contacts: map(contacts, 'id'), interfaces: map(interfaces, 'id') });
 
-    this.visit(`/organizations/view/${org.id}?layer=edit`);
+    this.visit(`/organizations/${org.id}/edit`);
     await orgEdit.whenLoaded();
   });
 

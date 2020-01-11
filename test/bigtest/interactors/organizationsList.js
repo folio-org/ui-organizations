@@ -9,5 +9,5 @@ export default interactor(class OrganizationsListInteractor {
 
   hasCreateOrganizationButton = isPresent('#clickable-neworganization');
 
-  organizationRows = collection('[role=row] a');
+  organizationRows = collection('[role=group] [role=row]');
 });

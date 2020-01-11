@@ -9,8 +9,6 @@ import {
   ConfirmationModalInteractor,
 } from '../interactors';
 
-const ORGANIZATIONS_COUNT = 13;
-
 describe('Organization details', () => {
   setupApplication();
 
@@ -25,28 +23,22 @@ describe('Organization details', () => {
     category = this.server.create('category');
     const vendorInterface = this.server.create('interface');
 
-    this.server.createList(
-      'organization',
-      ORGANIZATIONS_COUNT,
-      {
-        interfaces: [vendorInterface.id],
-        addresses: [
-          {
-            addressLine1: '3212 Duke Street',
-            categories: [category.id],
-          },
-        ],
-        urls: [{ value: 'https://www.amazon.com' }],
-        emails: [{}],
-        phoneNumbers: [{}],
-      },
-    );
     contact = this.server.create('contact');
     organization = this.server.create('organization', {
       contacts: [contact.id],
+      interfaces: [vendorInterface.id],
+      addresses: [
+        {
+          addressLine1: '3212 Duke Street',
+          categories: [category.id],
+        },
+      ],
+      urls: [{ value: 'https://www.amazon.com' }],
+      emails: [{}],
+      phoneNumbers: [{}],
     });
 
-    this.visit(`/organizations/view/${organization.id}`);
+    this.visit(`/organizations/${organization.id}/view`);
     await orgDetails.whenLoaded();
   });
 
@@ -258,7 +250,7 @@ describe('Organization details', () => {
     });
 
     it('click on contact to view contact details screen', function () {
-      expect(this.location.pathname).to.equal(`/organizations/${organization.id}/contacts/${contact.id}/view`);
+      expect(this.location.pathname).to.equal(`/organizations/${organization.id}/contacts/details/${contact.id}/view`);
     });
   });
 });

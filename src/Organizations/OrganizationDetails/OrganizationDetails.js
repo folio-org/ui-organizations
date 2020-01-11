@@ -47,7 +47,7 @@ const OrganizationDetails = ({
   const [expandAll, sections, toggleSection] = useAccordionToggle({
     [ORGANIZATION_SECTIONS.summarySection]: true,
     [ORGANIZATION_SECTIONS.contactInformationSection]: false,
-    [ORGANIZATION_SECTIONS.contactPeopleSection]: false,
+    [ORGANIZATION_SECTIONS.contactPeopleSection]: true,
     [ORGANIZATION_SECTIONS.interfacesSection]: false,
     [ORGANIZATION_SECTIONS.vendorInformationSection]: false,
     [ORGANIZATION_SECTIONS.vendorTermsSection]: false,

@@ -1,2 +1,2 @@
-export { default as OrganizationAccount } from './OrganizationAccount';
+export * from './OrganizationAccount';
 export { default as OrganizationAccounts } from './OrganizationAccounts';

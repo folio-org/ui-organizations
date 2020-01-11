@@ -14,9 +14,9 @@ const OrganizationsListLastMenu = () => {
         <FormattedMessage id="stripes-smart-components.addNew">
           {ariaLabel => (
             <Button
-              id="clickable-new-title"
+              id="clickable-neworganization"
               aria-label={ariaLabel}
-              to="/organizations/new_view/create"
+              to="/organizations/create"
               buttonStyle="primary"
               marginBottom0
             >

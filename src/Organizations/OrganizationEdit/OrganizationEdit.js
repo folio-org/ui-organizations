@@ -4,6 +4,7 @@ import React, {
   useState,
 } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { getFormValues } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
@@ -21,7 +22,10 @@ import {
 
 import FormatTime from '../../Utils/FormatTime';
 import { organizationResourceByUrl } from '../../common/resources';
-import { OrganizationForm } from '../OrganizationForm';
+import {
+  OrganizationForm,
+  ORG_FORM_NAME,
+} from '../OrganizationForm';
 
 const OrganizationEdit = ({ match, history, location, mutator, stripes }) => {
   const organizationId = match.params.id;
@@ -42,7 +46,7 @@ const OrganizationEdit = ({ match, history, location, mutator, stripes }) => {
   const cancelForm = useCallback(
     () => {
       history.push({
-        pathname: `/organizations/new_view/${organizationId}/view`,
+        pathname: `/organizations/${organizationId}/view`,
         search: location.search,
       });
     },
@@ -71,13 +75,16 @@ const OrganizationEdit = ({ match, history, location, mutator, stripes }) => {
     );
   }
 
+  const { isVendor, language } = getFormValues(ORG_FORM_NAME)(stripes.store.getState()) || {};
+
   return (
     <OrganizationForm
-      store={stripes.store}
       initialValues={organization}
       onSubmit={updateOrganization}
       cancelForm={cancelForm}
       paneTitle={<FormattedMessage id="ui-organizations.editOrg.title" values={{ name: organization.name }} />}
+      isVendorForm={isVendor}
+      formDefaultLanguage={language}
     />
   );
 };
