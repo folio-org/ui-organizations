@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { ConfirmationModal, Icon } from '@folio/stripes/components';
 
@@ -12,6 +13,8 @@ import {
   organizationResource,
 } from '../../common/resources';
 import { getResourceDataItem } from '../../common/utils';
+import { getBackPath } from '../../common/utils/createItem';
+
 import { deleteInterface, unassignInterface } from './util';
 
 export class ViewInterfaceContainer extends Component {
@@ -20,14 +23,14 @@ export class ViewInterfaceContainer extends Component {
     baseUrl: PropTypes.string.isRequired,
     orgId: PropTypes.string,
     mutator: PropTypes.object,
-    match: PropTypes.object,
+    history: ReactRouterPropTypes.history.isRequired,
+    match: ReactRouterPropTypes.match.isRequired,
     showMessage: PropTypes.func.isRequired,
   };
 
   static manifest = Object.freeze({
     interfaceCredentials: interfaceCredentialsResource,
     organization: organizationResource,
-    query: {},
     vendorInterface: interfaceResource,
   });
 
@@ -37,12 +40,9 @@ export class ViewInterfaceContainer extends Component {
   };
 
   onClose = () => {
-    const { orgId, mutator } = this.props;
+    const { orgId, history } = this.props;
 
-    mutator.query.replace({
-      _path: orgId ? `/organizations/view/${orgId}` : '/organizations',
-      layer: orgId ? 'edit' : 'create',
-    });
+    history.push(getBackPath(orgId, undefined, 'interface'));
   };
 
   showConfirmUnassign = () => this.setState({ showConfirmUnassign: true });

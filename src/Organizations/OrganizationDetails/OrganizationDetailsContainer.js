@@ -62,7 +62,7 @@ const OrganizationDetailsContainer = ({
   const closePane = useCallback(
     () => {
       history.push({
-        pathname: '/organizations/new_view',
+        pathname: '/organizations',
         search: location.search,
       });
     },
@@ -73,7 +73,7 @@ const OrganizationDetailsContainer = ({
   const editOrganization = useCallback(
     () => {
       history.push({
-        pathname: `/organizations/new_view/${organizationId}/edit`,
+        pathname: `/organizations/${organizationId}/edit`,
         search: location.search,
       });
     },

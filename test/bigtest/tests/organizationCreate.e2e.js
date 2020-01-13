@@ -16,7 +16,7 @@ describe('Create organization', () => {
   const orgEdit = new OrganizationEditInteractor();
 
   beforeEach(async function () {
-    this.visit('/organizations/view?layer=create');
+    this.visit('/organizations/create');
     await orgEdit.whenLoaded();
   });
 

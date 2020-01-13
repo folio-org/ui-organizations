@@ -14,24 +14,24 @@ import {
 } from '../../common/resources';
 import { saveContact } from './util';
 import EditContact from './EditContact';
-import { getBackQuery } from '../../common/utils/createItem';
+import { getBackPath } from '../../common/utils/createItem';
 import { DICT_CATEGORIES } from '../../common/constants';
 
 class EditContactContainer extends Component {
   static manifest = Object.freeze({
     contact: contactResource,
     [DICT_CATEGORIES]: categoriesResource,
-    query: {},
     contactsOrg: organizationResource,
   });
 
   onClose = (contactId = this.props.match.params.id) => {
-    const { orgId, mutator, onClose } = this.props;
-    const query = getBackQuery(orgId, contactId, 'contacts');
+    const { orgId, history, onClose } = this.props;
 
     if (onClose) {
       onClose(orgId, contactId);
-    } else mutator.query.replace(query);
+    } else {
+      history.push(getBackPath(orgId, contactId, 'contacts'));
+    }
   };
 
   onSubmit = (contact) => {
@@ -80,6 +80,7 @@ class EditContactContainer extends Component {
 
 EditContactContainer.propTypes = {
   match: ReactRouterPropTypes.match.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
   mutator: PropTypes.object,
   orgId: PropTypes.string,
   resources: PropTypes.object,

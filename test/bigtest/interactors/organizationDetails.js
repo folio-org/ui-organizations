@@ -24,10 +24,10 @@ import {
 }
 
 export default interactor(class OrganizationDetailsInteractor {
-  static defaultScope = '#pane-vendordetails';
+  static defaultScope = '#pane-organization-details';
 
   closePaneButton = new Button('[class*=paneHeaderButtonsArea---] [icon=times]');
-  editOrganizationButton = new Button('#clickable-editvendor');
+  editOrganizationButton = new Button('[data-test-button-edit-organization]');
 
   summarySection = new SummarySection();
   contactInformationSection = new ContactInformationSection();

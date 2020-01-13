@@ -3,7 +3,6 @@ import React, {
   useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
-import { getFormValues } from 'redux-form';
 import { FormattedMessage } from 'react-intl';
 
 import stripesForm from '@folio/stripes/form';
@@ -36,7 +35,7 @@ import {
 } from '../constants';
 import OrganizationFormFooter from './OrganizationFormFooter';
 
-const ORG_FORM_NAME = 'FormOrganization';
+export const ORG_FORM_NAME = 'FormOrganization';
 
 const OrganizationForm = ({
   pristine,
@@ -44,10 +43,11 @@ const OrganizationForm = ({
   handleSubmit,
   dispatch,
   change,
-  store,
+  initialValues,
   paneTitle,
   cancelForm,
-  initialValues,
+  isVendorForm,
+  formDefaultLanguage,
 }) => {
   const [expandAll, sections, toggleSection] = useAccordionToggle({
     [ORGANIZATION_SECTIONS.summarySection]: true,
@@ -68,7 +68,6 @@ const OrganizationForm = ({
   );
 
   const { id, interfaces, contacts, metadata } = initialValues;
-  const { isVendor, language } = getFormValues(ORG_FORM_NAME)(store.getState()) || {};
 
   const paneFooter = (
     <OrganizationFormFooter
@@ -89,18 +88,20 @@ const OrganizationForm = ({
           paneTitle={paneTitle}
           onClose={cancelForm}
         >
-          <Row
-            center="xs"
-          >
+          <Row>
             <Col
               xs={12}
               md={8}
               mdOffset={2}
             >
-              <ExpandAllButton
-                accordionStatus={sections}
-                onToggle={expandAll}
-              />
+              <Row end="xs">
+                <Col xs={12}>
+                  <ExpandAllButton
+                    accordionStatus={sections}
+                    onToggle={expandAll}
+                  />
+                </Col>
+              </Row>
             </Col>
           </Row>
 
@@ -130,7 +131,7 @@ const OrganizationForm = ({
                   label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactInformationSection]}
                 >
                   <OrganizationContactInfoFormContainer
-                    defaultLanguage={language}
+                    defaultLanguage={formDefaultLanguage}
                     dispatchChange={dispatchChange}
                   />
                 </Accordion>
@@ -153,7 +154,7 @@ const OrganizationForm = ({
                   />
                 </Accordion>
                 {
-                  isVendor && (
+                  isVendorForm && (
                     <Fragment>
                       <Accordion
                         id={ORGANIZATION_SECTIONS.vendorInformationSection}
@@ -195,7 +196,6 @@ const OrganizationForm = ({
 };
 
 OrganizationForm.propTypes = {
-  store: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   change: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
@@ -204,6 +204,8 @@ OrganizationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   cancelForm: PropTypes.object.isRequired,
   paneTitle: PropTypes.node,
+  isVendorForm: PropTypes.bool,
+  formDefaultLanguage: PropTypes.string,
 };
 
 OrganizationForm.defaultProps = {

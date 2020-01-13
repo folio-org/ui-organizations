@@ -18,6 +18,7 @@ function OrganizationInterfacesForm({ orgId, mutator, storedInterfaces }) {
   const refreshInterfaces = useCallback(interfaceIds => {
     batchFetch(mutator.interfacesManualFetch, interfaceIds || [])
       .then(setInterfaces);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => refreshInterfaces(storedInterfaces), [refreshInterfaces, storedInterfaces]);

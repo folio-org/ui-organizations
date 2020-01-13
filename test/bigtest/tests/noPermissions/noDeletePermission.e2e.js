@@ -31,7 +31,7 @@ describe('No delete permission', () => {
     );
     const orgId = organizations[0].id;
 
-    this.visit(`/organizations/view/${orgId}`);
+    this.visit(`/organizations/${orgId}/view`);
   });
 
   describe('click on header', () => {

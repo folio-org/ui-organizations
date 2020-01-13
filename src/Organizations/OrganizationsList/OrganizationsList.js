@@ -40,7 +40,6 @@ const resultsFormatter = {
 };
 
 const OrganizationsList = ({
-  match,
   history,
   isLoading,
   location,
@@ -66,18 +65,18 @@ const OrganizationsList = ({
   const openOrganizationDetails = useCallback(
     (e, meta) => {
       history.push({
-        pathname: `${match.path}/${meta.id}/view`,
+        pathname: `/organizations/${meta.id}/view`,
         search: location.search,
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [match.path, location.search],
+    [location.search],
   );
 
   const renderLastMenu = useCallback(() => <OrganizationsListLastMenu />, []);
 
   return (
-    <Paneset>
+    <Paneset data-test-organizations-list>
       <FiltersPane>
         <SingleSearchForm
           applySearch={applySearch}
@@ -123,7 +122,7 @@ const OrganizationsList = ({
       </ResultsPane>
 
       <Route
-        path={`${match.path}/:id/view`}
+        path="/organizations/:id/view"
         component={OrganizationDetailsContainer}
       />
     </Paneset>
@@ -136,7 +135,6 @@ OrganizationsList.propTypes = {
   organizationsCount: PropTypes.number,
   isLoading: PropTypes.bool,
   organizations: PropTypes.arrayOf(PropTypes.object),
-  match: ReactRouterPropTypes.match.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
 };

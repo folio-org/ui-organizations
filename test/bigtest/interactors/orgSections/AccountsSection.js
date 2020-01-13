@@ -3,7 +3,7 @@ import {
   text,
 } from '@bigtest/interactor';
 
-import { SECTIONS } from '../../../../src/common/constants';
+import { ORGANIZATION_SECTIONS } from '../../../../src/Organizations/constants';
 
 @interactor class PaymentMethod {
   static defaultScope = '[data-test-payment-method]';
@@ -11,7 +11,7 @@ import { SECTIONS } from '../../../../src/common/constants';
 }
 
 class AccountsSection {
-  static defaultScope = `#${SECTIONS.accountsSection}`;
+  static defaultScope = `#${ORGANIZATION_SECTIONS.accountsSection}`;
 
   paymentMethod = new PaymentMethod();
 }

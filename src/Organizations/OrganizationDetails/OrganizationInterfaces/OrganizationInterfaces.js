@@ -19,7 +19,7 @@ const OrganizationInterfaces = ({ interfaces }) => {
   }
 
   return (
-    <Row>
+    <Row data-test-interfaces-view>
       <Col xs={12}>
         {
           interfaces.map((item, index) => (

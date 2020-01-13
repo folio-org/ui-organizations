@@ -64,10 +64,10 @@ class VendorTermsForm extends VendorTermsSection {
 }
 
 export default interactor(class OrganizationEditInteractor {
-  static defaultScope = '#form-vendor';
+  static defaultScope = '#form-organization';
 
-  updateVendorButton = new Button('#clickable-update-organization');
-  createOrgButton = new Button('#clickable-create-organization');
+  updateVendorButton = new Button('#organization-form-save');
+  createOrgButton = new Button('#organization-form-save');
   closePaneButton = new Button('[class*=paneHeaderButtonsArea---] [icon=times]');
 
   summarySectionForm = new SummarySectionForm();
