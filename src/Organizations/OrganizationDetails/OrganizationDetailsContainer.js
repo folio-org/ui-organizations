@@ -98,6 +98,16 @@ const OrganizationDetailsContainer = ({
     [organization, closePane],
   );
 
+  const updateOrganization = useCallback(
+    (data) => {
+      mutator.organizationDetailsOrg.PUT(data)
+        .then(() => mutator.organizationDetailsOrg.GET())
+        .then(setOrganization);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+
   if (isLoading) {
     return <LoadingPane onClose={closePane} />;
   }
@@ -107,6 +117,7 @@ const OrganizationDetailsContainer = ({
       onClose={closePane}
       onEdit={editOrganization}
       onDelete={deleteOrganization}
+      onUpdate={updateOrganization}
       organization={organization}
       organizationCategories={organizationCategories}
     />
