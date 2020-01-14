@@ -10,6 +10,7 @@ import {
   KeyValue,
 } from '@folio/stripes/components';
 
+import FormatTime from '../../../Utils/FormatTime';
 import { getEDITypeLabel } from './utils';
 
 const OrganizationEDIInfo = ({ edi }) => {
@@ -226,7 +227,7 @@ const OrganizationEDIInfo = ({ edi }) => {
           <Col xs={3}>
             <KeyValue
               label={<FormattedMessage id="ui-organizations.edi.time" />}
-              value={edi.ediJob.time}
+              value={FormatTime({ edi }, 'get')}
             />
           </Col>
 
