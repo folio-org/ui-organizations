@@ -16,7 +16,7 @@
     "displayName": "ui-organizations.meta.title",
     "moduleName": "Organizations",
     "route": "/organizations",
-    "home": "/organizations?sort=Name",
+    "home": "/organizations",
     "okapiInterfaces": {
       "configuration": "2.0",
       "organizations-storage.addresses": "1.1",

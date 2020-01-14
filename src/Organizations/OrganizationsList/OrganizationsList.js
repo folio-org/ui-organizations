@@ -18,10 +18,14 @@ import {
   SingleSearchForm,
   useLocationFilters,
   useLocationSorting,
+  useToggle,
 } from '@folio/stripes-acq-components';
 
 import { OrganizationDetailsContainer } from '../OrganizationDetails';
 import OrganizationsListFilter from './OrganizationsListFilter';
+import {
+  searchableIndexes,
+} from './OrganizationsListSearchConfig';
 import OrganizationsListLastMenu from './OrganizationsListLastMenu';
 
 const resultsPaneTitle = <FormattedMessage id="ui-organizations.meta.title" />;
@@ -55,12 +59,16 @@ const OrganizationsList = ({
     applySearch,
     changeSearch,
     resetFilters,
+    changeIndex,
+    searchIndex,
   ] = useLocationFilters(location, history, resetData);
   const [
     sortingField,
     sortingDirection,
     changeSorting,
   ] = useLocationSorting(location, history, resetData, sortableFields);
+
+  const [isFiltersOpened, toggleFilters] = useToggle(true);
 
   const openOrganizationDetails = useCallback(
     (e, meta) => {
@@ -77,31 +85,38 @@ const OrganizationsList = ({
 
   return (
     <Paneset data-test-organizations-list>
-      <FiltersPane>
-        <SingleSearchForm
-          applySearch={applySearch}
-          changeSearch={changeSearch}
-          searchQuery={searchQuery}
-          isLoading={isLoading}
-          ariaLabelId="ui-receiving.titles.search"
-        />
+      {isFiltersOpened && (
+        <FiltersPane>
+          <SingleSearchForm
+            applySearch={applySearch}
+            changeSearch={changeSearch}
+            searchQuery={searchQuery}
+            searchableIndexes={searchableIndexes}
+            changeSearchIndex={changeIndex}
+            selectedIndex={searchIndex}
+            isLoading={isLoading}
+            ariaLabelId="ui-organizations.search"
+          />
 
-        <ResetButton
-          id="reset-organizations-filters"
-          reset={resetFilters}
-          disabled={!location.search}
-        />
+          <ResetButton
+            id="reset-organizations-filters"
+            reset={resetFilters}
+            disabled={!location.search}
+          />
 
-        <OrganizationsListFilter
-          activeFilters={filters}
-          applyFilters={applyFilters}
-        />
-      </FiltersPane>
+          <OrganizationsListFilter
+            activeFilters={filters}
+            applyFilters={applyFilters}
+          />
+        </FiltersPane>
+      )}
 
       <ResultsPane
         title={resultsPaneTitle}
         count={organizationsCount}
         renderLastMenu={renderLastMenu}
+        toggleFiltersPane={toggleFilters}
+        filters={!isFiltersOpened && filters}
       >
         <MultiColumnList
           id="organizations-list"
