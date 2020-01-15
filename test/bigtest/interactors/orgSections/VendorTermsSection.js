@@ -2,10 +2,10 @@ import {
   interactor,
 } from '@bigtest/interactor';
 
-import { SECTIONS } from '../../../../src/common/constants';
+import { ORGANIZATION_SECTIONS } from '../../../../src/Organizations/constants';
 
 class VendorTermsSection {
-  static defaultScope = `#${SECTIONS.vendorTermsSection}`;
+  static defaultScope = `#${ORGANIZATION_SECTIONS.vendorTermsSection}`;
 }
 
 export default interactor(VendorTermsSection);

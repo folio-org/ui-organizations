@@ -9,9 +9,9 @@ import {
   ToastContext,
 } from '@folio/stripes-acq-components';
 
+import { Organizations as Organization } from './src/Organizations';
 import { ContactsContainer } from './src/contacts';
 import InterfaceContainer from './src/interfaces';
-import Main from './src/Main';
 import Settings from './src/Settings';
 
 class Organizations extends Component {
@@ -26,7 +26,6 @@ class Organizations extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.connectedApp = props.stripes.connect(Main);
     this.connectedContactsContainer = props.stripes.connect(ContactsContainer);
     this.connectedInterfaceContainer = props.stripes.connect(InterfaceContainer);
 
@@ -73,8 +72,8 @@ class Organizations extends Component {
               render={this.goToInterface}
             />
             <Route
-              path={`${this.props.match.path}`}
-              render={() => <this.connectedApp {...this.props} />}
+              path="/organizations"
+              component={Organization}
             />
           </Switch>
         </ToastContext.Provider>

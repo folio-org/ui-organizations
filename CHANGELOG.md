@@ -6,6 +6,7 @@
 ### Stories
 * [UIORGS-89](https://issues.folio.org/browse/UIORGS-89) Assign a newly created interface to an Organization record
 * [UIORGS-131](https://issues.folio.org/browse/UIORGS-131) Update table layouts in edit forms to remove redundant headings
+* [UIORGS-130](https://issues.folio.org/browse/UIORGS-130) TECH-DEBT refactor Organizations list to not use SearchAndSort
 
 ### Bug Fixes
 * [UIORGS-137](https://issues.folio.org/browse/UIORGS-137) Create/assign Contact for Organization record takes additional step to complete

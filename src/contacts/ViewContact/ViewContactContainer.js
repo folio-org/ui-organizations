@@ -16,6 +16,8 @@ import {
   organizationResource,
 } from '../../common/resources';
 import { DICT_CATEGORIES } from '../../common/constants';
+import { getBackPath } from '../../common/utils/createItem';
+
 import ViewContact from './ViewContact';
 import {
   deleteContact,
@@ -29,6 +31,7 @@ class ViewContactContainer extends Component {
     mutator: PropTypes.object,
     orgId: PropTypes.string,
     showMessage: PropTypes.func.isRequired,
+    history: ReactRouterPropTypes.history.isRequired,
     match: ReactRouterPropTypes.match.isRequired,
     onClose: PropTypes.func,
   };
@@ -37,7 +40,6 @@ class ViewContactContainer extends Component {
     contact: contactResource,
     [DICT_CATEGORIES]: categoriesResource,
     organization: organizationResource,
-    query: {},
   });
 
   state = {
@@ -46,15 +48,12 @@ class ViewContactContainer extends Component {
   };
 
   onClose = () => {
-    const { orgId, mutator, onClose } = this.props;
+    const { orgId, history, onClose } = this.props;
 
     if (onClose) {
       onClose(orgId);
     } else {
-      mutator.query.replace({
-        _path: orgId ? `/organizations/view/${orgId}` : '/organizations',
-        layer: orgId ? 'edit' : 'create',
-      });
+      history.push(getBackPath(orgId, undefined, 'interface'));
     }
   };
 
