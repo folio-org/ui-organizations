@@ -23,7 +23,7 @@ describe('Create organization', () => {
   it('should render form, Add Contact button', () => {
     expect(orgEdit.isPresent).to.be.true;
     expect(orgEdit.contactPeopleSection.isPresent).to.be.true;
-    expect(orgEdit.contactPeopleSection.addContactButton.isPresent).to.be.true;
+    expect(orgEdit.contactPeopleSection.addContactButton.isPresent).to.be.false;
   });
 
   describe('submit button', () => {

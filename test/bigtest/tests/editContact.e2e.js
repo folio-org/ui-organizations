@@ -12,15 +12,14 @@ describe('Edit contact', () => {
 
   const editContact = new CreateContactInteractor();
 
-  beforeEach(function () {
+  beforeEach(async function () {
     const contact = this.server.create('contact', { notes: TEST_NOTE });
     const organization = this.server.create('organization', {
       contacts: [contact.id],
     });
 
-    return this.visit(`/organizations/${organization.id}/contacts/${contact.id}/edit`, () => {
-      expect(editContact.$root).to.exist;
-    });
+    this.visit(`/organizations/${organization.id}/contacts/${contact.id}/edit`);
+    await editContact.whenLoaded();
   });
 
   describe('Edit contact form', () => {

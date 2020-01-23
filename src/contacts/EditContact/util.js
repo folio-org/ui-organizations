@@ -12,6 +12,6 @@ export const saveContact = (mutator, contact, org) => {
         });
       }
 
-      return savedContact;
+      return savedContact || contact;
     });
 };
