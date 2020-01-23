@@ -108,7 +108,6 @@ class OrganizationEDIInfoForm extends Component {
                 <Field
                   label={<FormattedMessage id="ui-organizations.edi.prorateTax" />}
                   name="edi.prorateTax"
-                  id="prorateTax"
                   component={Checkbox}
                   type="checkbox"
                   vertical
@@ -122,7 +121,6 @@ class OrganizationEDIInfoForm extends Component {
                 <Field
                   label={<FormattedMessage id="ui-organizations.edi.prorateFees" />}
                   name="edi.prorateFees"
-                  id="prorateFees"
                   component={Checkbox}
                   vertical
                   type="checkbox"
@@ -144,7 +142,6 @@ class OrganizationEDIInfoForm extends Component {
                   label={<FormattedMessage id="ui-organizations.edi.sendAccountNumber" />}
                   name="edi.sendAcctNum"
                   type="checkbox"
-                  id="sendAcctNum"
                   component={Checkbox}
                   vertical
                 />
@@ -158,14 +155,12 @@ class OrganizationEDIInfoForm extends Component {
                 <Field
                   label={<FormattedMessage id="ui-organizations.edi.orders" />}
                   name="edi.supportOrder"
-                  id="supportOrder"
                   component={Checkbox}
                   type="checkbox"
                 />
                 <Field
                   label={<FormattedMessage id="ui-organizations.edi.invoices" />}
                   name="edi.supportInvoice"
-                  id="supportInvoice"
                   component={Checkbox}
                   type="checkbox"
                 />
@@ -324,7 +319,6 @@ class OrganizationEDIInfoForm extends Component {
                 <Field
                   label={<FormattedMessage id="ui-organizations.edi.scheduleEDI" />}
                   name="edi.ediJob.scheduleEdi"
-                  id="scheduleEdi"
                   component={Checkbox}
                   type="checkbox"
                   vertical
@@ -366,7 +360,6 @@ class OrganizationEDIInfoForm extends Component {
                   >
                     <Field
                       component={Checkbox}
-                      id="isMonday"
                       type="checkbox"
                       label={<FormattedMessage id="ui-organizations.edi.monday" />}
                       name="edi.ediJob.isMonday"
@@ -379,7 +372,6 @@ class OrganizationEDIInfoForm extends Component {
                   >
                     <Field
                       component={Checkbox}
-                      id="isFriday"
                       type="checkbox"
                       label={<FormattedMessage id="ui-organizations.edi.friday" />}
                       name="edi.ediJob.isFriday"
@@ -392,7 +384,6 @@ class OrganizationEDIInfoForm extends Component {
                   >
                     <Field
                       component={Checkbox}
-                      id="isTuesday"
                       type="checkbox"
                       label={<FormattedMessage id="ui-organizations.edi.tuesday" />}
                       name="edi.ediJob.isTuesday"
@@ -405,7 +396,6 @@ class OrganizationEDIInfoForm extends Component {
                   >
                     <Field
                       component={Checkbox}
-                      id="isSaturday"
                       type="checkbox"
                       label={<FormattedMessage id="ui-organizations.edi.saturday" />}
                       name="edi.ediJob.isSaturday"
@@ -418,7 +408,6 @@ class OrganizationEDIInfoForm extends Component {
                   >
                     <Field
                       component={Checkbox}
-                      id="isWednesday"
                       type="checkbox"
                       label={<FormattedMessage id="ui-organizations.edi.wednesday" />}
                       name="edi.ediJob.isWednesday"
@@ -431,7 +420,6 @@ class OrganizationEDIInfoForm extends Component {
                   >
                     <Field
                       component={Checkbox}
-                      id="isSunday"
                       type="checkbox"
                       label={<FormattedMessage id="ui-organizations.edi.sunday" />}
                       name="edi.ediJob.isSunday"
@@ -444,7 +432,6 @@ class OrganizationEDIInfoForm extends Component {
                   >
                     <Field
                       component={Checkbox}
-                      id="isThursday"
                       type="checkbox"
                       label={<FormattedMessage id="ui-organizations.edi.thursday" />}
                       name="edi.ediJob.isThursday"
@@ -465,7 +452,6 @@ class OrganizationEDIInfoForm extends Component {
                 <Field
                   component={TextField}
                   fullWidth
-                  id="sendToEmails"
                   label={<FormattedMessage id="ui-organizations.edi.sendToEmails" />}
                   name="edi.ediJob.sendToEmails"
                   placeholder="Enter e-mail address(es)"
@@ -480,7 +466,6 @@ class OrganizationEDIInfoForm extends Component {
                 <Field
                   component={Checkbox}
                   type="checkbox"
-                  id="notifyAllEdi"
                   label={<FormattedMessage id="ui-organizations.edi.notifyAllEDI" />}
                   name="edi.ediJob.notifyAllEdi"
                   vertical
@@ -494,7 +479,6 @@ class OrganizationEDIInfoForm extends Component {
                 <Field
                   component={Checkbox}
                   type="checkbox"
-                  id="notifyInvoiceOnly"
                   label={<FormattedMessage id="ui-organizations.edi.notifyInvoiceOnly" />}
                   name="edi.ediJob.notifyInvoiceOnly"
                   vertical
@@ -508,7 +492,6 @@ class OrganizationEDIInfoForm extends Component {
                 <Field
                   component={Checkbox}
                   type="checkbox"
-                  id="notifyErrorOnly"
                   label={<FormattedMessage id="ui-organizations.edi.notifyErrorOnly" />}
                   name="edi.ediJob.notifyErrorOnly"
                   vertical
