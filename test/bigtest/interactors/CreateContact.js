@@ -2,6 +2,7 @@ import {
   clickable,
   collection,
   interactor,
+  isPresent,
   text,
 } from '@bigtest/interactor';
 
@@ -45,4 +46,9 @@ export default interactor(class CreateContactInteractor {
   urlForm = new UrlForm();
   paneTitle = text('[class*="paneTitleLabel---"]');
   noteField = text('[name="notes"]');
+  isLoaded = isPresent('[data-test-address-form]');
+
+  whenLoaded() {
+    return this.timeout(5000).when(() => this.isLoaded);
+  }
 });

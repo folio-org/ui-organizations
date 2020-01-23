@@ -1,4 +1,5 @@
-import { Factory, faker } from '@bigtest/mirage';
+import { Factory } from 'miragejs';
+import faker from 'faker';
 
 import { ORGANIZATION_STATUS } from '../../../../src/common/constants';
 
