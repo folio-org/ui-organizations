@@ -42,9 +42,10 @@ class TogglePassword extends Component {
         </Col>
         <Col xs={2} style={{ paddingTop: '20px', marginBottom: '0' }}>
           <Button id={buttonID} onClick={() => this.togglePassword()}>
-            {this.state.showPassword
-              ? <FormattedMessage id="ui-organizations.edit.hide" />
-              : <FormattedMessage id="ui-organizations.edit.show" />
+            {
+              this.state.showPassword
+                ? <FormattedMessage id="ui-organizations.edit.hide" />
+                : <FormattedMessage id="ui-organizations.edit.show" />
             }
           </Button>
         </Col>

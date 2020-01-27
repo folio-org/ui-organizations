@@ -28,13 +28,13 @@ class OrganizationAccountsForm extends Component {
     return (
       <Row>
         <Col xs={12}>
-          {fields.length === 0 &&
+          {fields.length === 0 && (
             <div>
               <em>
-                {<FormattedMessage id="ui-organizations.accounts.pleaseAddAccount" />}
+                <FormattedMessage id="ui-organizations.accounts.pleaseAddAccount" />
               </em>
             </div>
-          }
+          )}
           {fields.map(this.renderSubForm)}
         </Col>
         <Col
@@ -45,7 +45,7 @@ class OrganizationAccountsForm extends Component {
             data-test-add-account-button
             onClick={() => fields.push({})}
           >
-            {<FormattedMessage id="ui-organizations.accounts.add" />}
+            <FormattedMessage id="ui-organizations.accounts.add" />
           </Button>
         </Col>
       </Row>
@@ -200,7 +200,7 @@ class OrganizationAccountsForm extends Component {
               icon="trash"
               onClick={() => fields.remove(index)}
             >
-              {<FormattedMessage id="ui-organizations.accounts.remove" />}
+              <FormattedMessage id="ui-organizations.accounts.remove" />
             </IconButton>
           </Col>
         </Row>

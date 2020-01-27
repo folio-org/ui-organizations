@@ -113,7 +113,9 @@ const OrganizationInterface = ({ getCreds, item = {}, isNarrow = false }) => {
       <Row>
         <Col xs={12}>
           <div className={css.subHeadings}>
-            <b>{<FormattedMessage id="ui-organizations.interface.statistics" />}</b>
+            <b>
+              <FormattedMessage id="ui-organizations.interface.statistics" />
+            </b>
           </div>
         </Col>
       </Row>

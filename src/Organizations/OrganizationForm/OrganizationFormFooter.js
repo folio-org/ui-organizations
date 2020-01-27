@@ -32,7 +32,7 @@ const OrganizationFormFooter = ({ isSaveDisabled, saveOrganization, cancelForm }
       disabled={isSaveDisabled}
       onClick={saveOrganization}
     >
-      {<FormattedMessage id="ui-organizations.button.saveAndClose" />}
+      <FormattedMessage id="ui-organizations.button.saveAndClose" />
     </Button>
   );
 

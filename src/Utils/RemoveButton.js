@@ -6,7 +6,7 @@ const RemoveButton = (fields, index, id, label) => {
   return (
     <Col xs={12} md={3} mdOffset={9} style={{ textAlign: 'right' }}>
       <Button onClick={() => fields.remove(index)} buttonStyle="danger">
-        {<FormattedMessage id={label} />}
+        <FormattedMessage id={label} />
       </Button>
     </Col>
   );

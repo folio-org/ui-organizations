@@ -13,7 +13,9 @@ const OrganizationInterfaces = ({ interfaces }) => {
   if (!interfaces.length) {
     return (
       <div>
-        <p>{<FormattedMessage id="ui-organizations.interface.noInterfaceAvail" />}</p>
+        <p>
+          <FormattedMessage id="ui-organizations.interface.noInterfaceAvail" />
+        </p>
       </div>
     );
   }
