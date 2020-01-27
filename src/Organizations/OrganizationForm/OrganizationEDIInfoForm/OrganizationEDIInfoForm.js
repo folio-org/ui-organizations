@@ -151,7 +151,7 @@ class OrganizationEDIInfoForm extends Component {
                 xs={6}
                 md={3}
               >
-                {<FormattedMessage id="ui-organizations.edi.receiveNotifications" />}
+                <FormattedMessage id="ui-organizations.edi.receiveNotifications" />
                 <Field
                   label={<FormattedMessage id="ui-organizations.edi.orders" />}
                   name="edi.supportOrder"
@@ -351,7 +351,9 @@ class OrganizationEDIInfoForm extends Component {
             </Row>
             <Row>
               <Col xs={6}>
-                <p className={css.fontSizeSmall}>{<FormattedMessage id="ui-organizations.edi.weekly" />}</p>
+                <p className={css.fontSizeSmall}>
+                  <FormattedMessage id="ui-organizations.edi.weekly" />
+                </p>
                 <Row>
                   <Col
                     data-test-monday
@@ -442,7 +444,9 @@ class OrganizationEDIInfoForm extends Component {
             </Row>
             <Row>
               <Col xs={12}>
-                <p className={css.fontSizeSmall}>{<FormattedMessage id="ui-organizations.edi.notificationOptions" />}</p>
+                <p className={css.fontSizeSmall}>
+                  <FormattedMessage id="ui-organizations.edi.notificationOptions" />
+                </p>
               </Col>
               <Col
                 data-test-email
@@ -500,7 +504,9 @@ class OrganizationEDIInfoForm extends Component {
             </Row>
             <Row>
               <Col xs={12}>
-                <Button>{<FormattedMessage id="ui-organizations.edi.checkNow" />}</Button>
+                <Button>
+                  <FormattedMessage id="ui-organizations.edi.checkNow" />
+                </Button>
               </Col>
             </Row>
             <Row>

@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+
+import { stripesShape } from '@folio/stripes/core';
 import { ControlledVocab } from '@folio/stripes/smart-components';
 
 class CategorySettings extends Component {
-  static propTypes = {
-    stripes: PropTypes.shape({
-      connect: PropTypes.func.isRequired,
-    }).isRequired,
-  };
-
   constructor(props) {
     super(props);
     this.connectedControlledVocab = props.stripes.connect(ControlledVocab);
@@ -49,5 +44,9 @@ class CategorySettings extends Component {
     );
   }
 }
+
+CategorySettings.propTypes = {
+  stripes: stripesShape.isRequired,
+};
 
 export default CategorySettings;

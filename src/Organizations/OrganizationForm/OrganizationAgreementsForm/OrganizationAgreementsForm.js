@@ -25,11 +25,15 @@ class OrganizationAgreementsForm extends Component {
     return (
       <Row>
         <Col xs={12}>
-          {fields.length === 0 &&
+          {fields.length === 0 && (
             <Col xs={6}>
-              <div><em>{<FormattedMessage id="ui-organizations.agreement.pleaseAddAgreements" />}</em></div>
+              <div>
+                <em>
+                  <FormattedMessage id="ui-organizations.agreement.pleaseAddAgreements" />
+                </em>
+              </div>
             </Col>
-          }
+          )}
           {fields.map(this.renderSubForm)}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
@@ -110,7 +114,7 @@ class OrganizationAgreementsForm extends Component {
               icon="trash"
               onClick={() => fields.remove(index)}
             >
-              {<FormattedMessage id="ui-organizations.agreement.remove" />}
+              <FormattedMessage id="ui-organizations.agreement.remove" />
             </IconButton>
           </Col>
         </Row>
