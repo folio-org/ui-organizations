@@ -6,8 +6,9 @@ import { ORGANIZATIONS_API } from '../constants';
 
 export const organizationsResource = {
   ...baseManifest,
-  path: ORGANIZATIONS_API,
   accumulate: true,
+  fetch: false,
+  path: ORGANIZATIONS_API,
 };
 
 export const organizationResource = {
