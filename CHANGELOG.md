@@ -1,9 +1,10 @@
 # Change history for ui-organizations
 
-## [1.7.0](https://github.com/folio-org/ui-organizations/tree/v1.7.0) (In progress)
-[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.6.1...v1.7.0)
+## (IN PROGRESS)
 
 ### Stories
+* [UIORGS-143](https://issues.folio.org/browse/UIORGS-143) Update settings permission label
+* [UIORGS-144](https://issues.folio.org/browse/UIORGS-144) Security update eslint to >= 6.2.1 or eslint-util >= 1.4.1
 * [UIORGS-89](https://issues.folio.org/browse/UIORGS-89) Assign a newly created interface to an Organization record
 * [UIORGS-131](https://issues.folio.org/browse/UIORGS-131) Update table layouts in edit forms to remove redundant headings
 * [UIORGS-130](https://issues.folio.org/browse/UIORGS-130) TECH-DEBT refactor Organizations list to not use SearchAndSort
