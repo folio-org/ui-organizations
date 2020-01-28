@@ -169,7 +169,7 @@
       },
       {
         "permissionName": "ui-organizations.settings",
-        "displayName": "Settings (Organizations): view, edit, create, delete",
+        "displayName": "Settings (Organizations): Can view and edit settings",
         "visible": true,
         "subPermissions": [
           "configuration.all",
