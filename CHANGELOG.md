@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UIORGS-110](https://issues.folio.org/browse/UIORGS-143) Change the Organizations default filters to be empty
 * [UIORGS-143](https://issues.folio.org/browse/UIORGS-143) Update settings permission label
 * [UIORGS-144](https://issues.folio.org/browse/UIORGS-144) Security update eslint to >= 6.2.1 or eslint-util >= 1.4.1
 * [UIORGS-89](https://issues.folio.org/browse/UIORGS-89) Assign a newly created interface to an Organization record

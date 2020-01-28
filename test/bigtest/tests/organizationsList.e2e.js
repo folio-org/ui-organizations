@@ -27,21 +27,32 @@ describe('Organizations list', () => {
     expect(orgsList.isPresent).to.equal(true);
   });
 
-  it('renders row for each organization from response', () => {
-    expect(orgsList.organizationRows().length).to.be.equal(ORGANIZATIONS_COUNT);
+  it('is no results message label present', () => {
+    expect(orgsList.isNoResultsMessageLabelPresent).to.equal(true);
   });
 
   it('displays create new organization button', () => {
     expect(orgsList.hasCreateOrganizationButton).to.be.true;
   });
 
-  describe('clicking on the first organization', function () {
+  describe('search by poNumber', function () {
     beforeEach(async function () {
-      await orgsList.organizationRows(0).click();
+      await orgsList.filters.searchInput('TEST');
+      await orgsList.filters.searchButton.click();
     });
 
-    it('loads the organization\'s details', function () {
-      expect(orgDetails.$root).to.exist;
+    it('renders row for each organization from response', () => {
+      expect(orgsList.organizationRows().length).to.be.equal(ORGANIZATIONS_COUNT);
+    });
+
+    describe('clicking on the first organization', function () {
+      beforeEach(async function () {
+        await orgsList.organizationRows(0).click();
+      });
+
+      it('loads the organization\'s details', function () {
+        expect(orgDetails.$root).to.exist;
+      });
     });
   });
 });
