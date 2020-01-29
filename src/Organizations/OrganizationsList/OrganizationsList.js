@@ -116,7 +116,7 @@ const OrganizationsList = ({
         count={organizationsCount}
         renderLastMenu={renderLastMenu}
         toggleFiltersPane={toggleFilters}
-        filters={!isFiltersOpened && filters}
+        filters={!isFiltersOpened ? filters : undefined}
       >
         <MultiColumnList
           id="organizations-list"

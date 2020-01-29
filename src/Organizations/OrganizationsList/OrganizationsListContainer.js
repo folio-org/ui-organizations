@@ -37,7 +37,7 @@ const buildTitlesQuery = makeQueryBuilder(
 
 const resetData = () => {};
 
-const OrganizationsListContainer = ({ mutator, location }) => {
+const OrganizationsListContainer = ({ mutator, location: { search } }) => {
   const [organizations, setOrganizations] = useState([]);
   const [organizationsCount, setOrganizationsCount] = useState(0);
   const [organizationsOffset, setOrganizationsOffset] = useState(0);
@@ -46,19 +46,21 @@ const OrganizationsListContainer = ({ mutator, location }) => {
   const loadOrganizations = (offset) => {
     setIsLoading(true);
 
-    return mutator.organizationsListOrgs.GET({
-      params: {
-        limit: RESULT_COUNT_INCREMENT,
-        offset,
-        query: buildTitlesQuery(queryString.parse(location.search)),
-      },
-    })
-      .then(organizationsResponse => {
-        if (!offset) setOrganizationsCount(organizationsResponse.totalRecords);
-
-        setOrganizations((prev) => [...prev, ...organizationsResponse.organizations]);
+    return !search
+      ? Promise.resolve()
+      : mutator.organizationsListOrgs.GET({
+        params: {
+          limit: RESULT_COUNT_INCREMENT,
+          offset,
+          query: buildTitlesQuery(queryString.parse(search)),
+        },
       })
-      .finally(() => setIsLoading(false));
+        .then(organizationsResponse => {
+          if (!offset) setOrganizationsCount(organizationsResponse.totalRecords);
+
+          setOrganizations((prev) => [...prev, ...organizationsResponse.organizations]);
+        })
+        .finally(() => setIsLoading(false));
   };
 
   const onNeedMoreData = useCallback(
@@ -81,7 +83,7 @@ const OrganizationsListContainer = ({ mutator, location }) => {
       loadOrganizations(0);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [location.search],
+    [search],
   );
 
   return (
