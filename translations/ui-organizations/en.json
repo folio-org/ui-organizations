@@ -366,6 +366,9 @@
   "accounts.pleaseAddAccount": "Please add account",
   "accounts.remove": "Remove",
 
+  "save.error.genericError": "Organization could not be saved",
+  "save.error.-1": "Cannot duplicate code",
+
   "settings.categories": "Categories",
   "settings.name": "name",
   "settings.action": "actions",

@@ -34,6 +34,7 @@ import {
   ORGANIZATION_SECTION_LABELS,
 } from '../constants';
 import OrganizationFormFooter from './OrganizationFormFooter';
+import { asyncValidate } from './asyncValidate';
 
 export const ORG_FORM_NAME = 'FormOrganization';
 
@@ -202,10 +203,12 @@ OrganizationForm.propTypes = {
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  cancelForm: PropTypes.object.isRequired,
+  cancelForm: PropTypes.func.isRequired,
   paneTitle: PropTypes.node,
   isVendorForm: PropTypes.bool,
   formDefaultLanguage: PropTypes.string,
+  // eslint-disable-next-line react/no-unused-prop-types
+  fetchOrgByCode: PropTypes.object.isRequired,
 };
 
 OrganizationForm.defaultProps = {
@@ -216,4 +219,6 @@ export default stripesForm({
   form: ORG_FORM_NAME,
   navigationCheck: true,
   enableReinitialize: true,
+  asyncValidate,
+  asyncBlurFields: ['code'],
 })(OrganizationForm);

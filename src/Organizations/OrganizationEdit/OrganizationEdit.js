@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { getFormValues } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -18,20 +18,26 @@ import {
 } from '@folio/stripes/components';
 import {
   LoadingPane,
+  useShowCallout,
 } from '@folio/stripes-acq-components';
 
 import FormatTime from '../../Utils/FormatTime';
-import { organizationResourceByUrl } from '../../common/resources';
+import {
+  fetchOrgsByParam,
+  organizationResourceByUrl,
+} from '../../common/resources';
 import {
   OrganizationForm,
   ORG_FORM_NAME,
 } from '../OrganizationForm';
+import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 
-const OrganizationEdit = ({ match, history, location, mutator, stripes }) => {
+const OrganizationEdit = ({ match, history, location, mutator, stripes, intl }) => {
   const organizationId = match.params.id;
 
   const [organization, setOrganization] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const showCallout = useShowCallout();
 
   useEffect(
     () => {
@@ -60,8 +66,13 @@ const OrganizationEdit = ({ match, history, location, mutator, stripes }) => {
 
       if (time) data.edi.ediJob.time = time;
 
-      mutator.editOrganizationOrg.PUT(data)
-        .then(() => cancelForm());
+      return mutator.editOrganizationOrg.PUT(data)
+        .then(() => {
+          setTimeout(cancelForm);
+        })
+        .catch(async e => {
+          await handleSaveErrorResponse(intl, showCallout, e);
+        });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [cancelForm],
@@ -85,6 +96,7 @@ const OrganizationEdit = ({ match, history, location, mutator, stripes }) => {
       paneTitle={<FormattedMessage id="ui-organizations.editOrg.title" values={{ name: organization.name }} />}
       isVendorForm={isVendor}
       formDefaultLanguage={language}
+      fetchOrgByCode={mutator.fetchOrgByCode}
     />
   );
 };
@@ -94,6 +106,7 @@ OrganizationEdit.manifest = Object.freeze({
     ...organizationResourceByUrl,
     accumulate: true,
   },
+  fetchOrgByCode: fetchOrgsByParam,
 });
 
 OrganizationEdit.propTypes = {
@@ -102,6 +115,7 @@ OrganizationEdit.propTypes = {
   location: ReactRouterPropTypes.location.isRequired,
   stripes: stripesShape.isRequired,
   mutator: PropTypes.object.isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default withRouter(stripesConnect(OrganizationEdit));
+export default withRouter(stripesConnect(injectIntl(OrganizationEdit)));
