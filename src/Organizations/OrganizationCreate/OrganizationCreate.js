@@ -50,7 +50,7 @@ const OrganizationCreate = ({ history, location, mutator, stripes, intl }) => {
 
       return mutator.createOrganizationOrg.POST(data)
         .then(organization => {
-          cancelForm(organization.id);
+          setTimeout(() => cancelForm(organization.id));
         })
         .catch(async e => {
           await handleSaveErrorResponse(intl, showCallout, e);
