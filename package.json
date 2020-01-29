@@ -24,7 +24,7 @@
       "organizations-storage.contacts": "2.0",
       "organizations-storage.emails": "1.1",
       "organizations-storage.interfaces": "2.0",
-      "organizations-storage.organizations": "2.1",
+      "organizations-storage.organizations": "3.0",
       "organizations-storage.phone-numbers": "2.0",
       "organizations-storage.urls": "1.1",
       "tags": "1.0",
