@@ -3,18 +3,24 @@ import { getFormValues } from 'redux-form';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
+import { injectIntl, intlShape } from 'react-intl';
 
 import {
   stripesConnect,
   stripesShape,
 } from '@folio/stripes/core';
+import { useShowCallout } from '@folio/stripes-acq-components';
 
 import FormatTime from '../../Utils/FormatTime';
-import { organizationsResource } from '../../common/resources';
+import {
+  fetchOrgsByParam,
+  organizationsResource,
+} from '../../common/resources';
 import {
   OrganizationForm,
   ORG_FORM_NAME,
 } from '../OrganizationForm';
+import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 
 const INITIAL_VALUES = {
   interfaces: [],
@@ -22,7 +28,7 @@ const INITIAL_VALUES = {
   isVendor: false,
 };
 
-const OrganizationCreate = ({ history, location, mutator, stripes }) => {
+const OrganizationCreate = ({ history, location, mutator, stripes, intl }) => {
   const cancelForm = useCallback(
     (id) => {
       history.push({
@@ -34,15 +40,20 @@ const OrganizationCreate = ({ history, location, mutator, stripes }) => {
     [location.search],
   );
 
+  const showCallout = useShowCallout();
+
   const createOrganization = useCallback(
     (data) => {
       const time = FormatTime(data, 'post');
 
       if (time) data.edi.ediJob.time = time;
 
-      mutator.createOrganizationOrg.POST(data)
+      return mutator.createOrganizationOrg.POST(data)
         .then(organization => {
-          cancelForm(organization.id);
+          setTimeout(() => cancelForm(organization.id));
+        })
+        .catch(async e => {
+          await handleSaveErrorResponse(intl, showCallout, e);
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -58,12 +69,14 @@ const OrganizationCreate = ({ history, location, mutator, stripes }) => {
       cancelForm={cancelForm}
       isVendorForm={isVendor}
       formDefaultLanguage={language}
+      fetchOrgByCode={mutator.fetchOrgByCode}
     />
   );
 };
 
 OrganizationCreate.manifest = Object.freeze({
   createOrganizationOrg: organizationsResource,
+  fetchOrgByCode: fetchOrgsByParam,
 });
 
 OrganizationCreate.propTypes = {
@@ -71,6 +84,7 @@ OrganizationCreate.propTypes = {
   location: ReactRouterPropTypes.location.isRequired,
   stripes: stripesShape.isRequired,
   mutator: PropTypes.object.isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default withRouter(stripesConnect(OrganizationCreate));
+export default withRouter(stripesConnect(injectIntl(OrganizationCreate)));

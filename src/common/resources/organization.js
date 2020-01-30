@@ -21,3 +21,8 @@ export const organizationResourceByUrl = {
   ...baseManifest,
   path: `${ORGANIZATIONS_API}/:{id}`,
 };
+
+export const fetchOrgsByParam = {
+  ...organizationsResource,
+  records: 'organizations',
+};
