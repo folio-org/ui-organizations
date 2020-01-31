@@ -27,7 +27,6 @@ import css from './ContactInfoCard.css';
 const PhoneNumbers = ({
   defaultLanguage,
   dispatchChange,
-  dropdownLanguages,
   dropdownPhoneType,
   dropdownVendorCategories,
 }) => {
@@ -88,7 +87,6 @@ const PhoneNumbers = ({
           >
             <FieldLanguage
               namePrefix={name}
-              dropdownLanguages={dropdownLanguages}
             />
           </Col>
           <Col
@@ -123,7 +121,6 @@ PhoneNumbers.propTypes = {
   defaultLanguage: PropTypes.string,
   dispatchChange: PropTypes.func.isRequired,
   dropdownPhoneType: PropTypes.arrayOf(PropTypes.object),
-  dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
 

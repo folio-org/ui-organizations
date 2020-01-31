@@ -3,6 +3,8 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UIORGS-93](https://issues.folio.org/browse/UIORGS-93) Update the country and language lists in the create/edit Contacts screen
+* [UIORGS-92](https://issues.folio.org/browse/UIORGS-92) Update the country and language lists in the create/edit Organizations screen
 * [UIORGS-110](https://issues.folio.org/browse/UIORGS-143) Change the Organizations default filters to be empty
 * [UIORGS-143](https://issues.folio.org/browse/UIORGS-143) Update settings permission label
 * [UIORGS-144](https://issues.folio.org/browse/UIORGS-144) Security update eslint to >= 6.2.1 or eslint-util >= 1.4.1

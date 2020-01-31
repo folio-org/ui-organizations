@@ -76,7 +76,7 @@ const headLabels = (
   </Row>
 );
 
-const UrlForm = ({ languageList, categories, dispatchChange }) => {
+const UrlForm = ({ categories, dispatchChange }) => {
   const addNewUrl = useCallback((fields) => createAddNewItem()(fields), []);
 
   const renderEmailFields = (elem, index, fields) => {
@@ -112,7 +112,6 @@ const UrlForm = ({ languageList, categories, dispatchChange }) => {
         >
           <FieldLanguage
             namePrefix={elem}
-            dropdownLanguages={languageList}
             ariaLabelledBy="urlFormLanguageLabel"
             withLabel={false}
           />
@@ -161,7 +160,6 @@ const UrlForm = ({ languageList, categories, dispatchChange }) => {
 
 UrlForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
-  languageList: PropTypes.arrayOf(PropTypes.object),
   dispatchChange: PropTypes.func.isRequired,
 };
 

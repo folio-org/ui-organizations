@@ -33,7 +33,6 @@ import css from './AddressInfo.css';
 const AddressInfo = ({
   defaultLanguage,
   dispatchChange,
-  dropdownLanguages,
   dropdownVendorCategories,
   intl,
 }) => {
@@ -148,7 +147,6 @@ const AddressInfo = ({
           >
             <FieldLanguage
               namePrefix={name}
-              dropdownLanguages={dropdownLanguages}
             />
           </Col>
           <Col
@@ -182,7 +180,6 @@ const AddressInfo = ({
 AddressInfo.propTypes = {
   defaultLanguage: PropTypes.string,
   dispatchChange: PropTypes.func.isRequired,
-  dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
   intl: intlShape.isRequired,
 };

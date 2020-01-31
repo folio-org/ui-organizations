@@ -7,7 +7,6 @@ import {
 } from '@folio/stripes/components';
 
 import { AddressInfo } from '../../../common/components';
-import languageList from '../../../Utils/Languages';
 import phoneTypesList from '../../../Utils/PhoneTypes';
 
 import {
@@ -27,7 +26,6 @@ const OrganizationContactInfoForm = ({
         <AddressInfo
           defaultLanguage={defaultLanguage}
           dispatchChange={dispatchChange}
-          dropdownLanguages={languageList}
           dropdownVendorCategories={vendorCategories}
         />
       </Col>
@@ -35,7 +33,6 @@ const OrganizationContactInfoForm = ({
         <PhoneNumbers
           defaultLanguage={defaultLanguage}
           dispatchChange={dispatchChange}
-          dropdownLanguages={languageList}
           dropdownVendorCategories={vendorCategories}
           dropdownPhoneType={phoneTypesList}
         />
@@ -44,7 +41,6 @@ const OrganizationContactInfoForm = ({
         <EmailAddresses
           defaultLanguage={defaultLanguage}
           dispatchChange={dispatchChange}
-          dropdownLanguages={languageList}
           dropdownVendorCategories={vendorCategories}
         />
       </Col>
@@ -52,7 +48,6 @@ const OrganizationContactInfoForm = ({
         <Urls
           defaultLanguage={defaultLanguage}
           dispatchChange={dispatchChange}
-          dropdownLanguages={languageList}
           dropdownVendorCategories={vendorCategories}
         />
       </Col>

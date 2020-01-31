@@ -23,16 +23,17 @@ import {
 } from '@folio/stripes/components';
 
 import {
-  FieldSelect,
   validateRequired,
   useAccordionToggle,
 } from '@folio/stripes-acq-components';
 
 import CategoryDropdown from '../../Utils/CategoryDropdown';
-import { AddressInfo } from '../../common/components';
+import {
+  AddressInfo,
+  FieldLanguage,
+} from '../../common/components';
 
 import { EMPTY_DROPDOWN_ITEM } from '../../common/utils/dropdown';
-import languageList from '../../Utils/Languages';
 import phoneTypesList from '../../Utils/PhoneTypes';
 import {
   CONTACT_PERSON_ACCORDIONS,
@@ -186,9 +187,8 @@ const EditContact = ({
               </Row>
               <Row>
                 <Col xs={3}>
-                  <FieldSelect
-                    dataOptions={languageList}
-                    label={<FormattedMessage id="ui-organizations.contactPeople.language" />}
+                  <FieldLanguage
+                    labelId="ui-organizations.contactPeople.language"
                     name="language"
                   />
                 </Col>
@@ -220,7 +220,6 @@ const EditContact = ({
                   <EmailForm
                     categories={categories}
                     dispatchChange={dispatchChange}
-                    languageList={languageList}
                   />
                 </Col>
               </Row>
@@ -238,7 +237,6 @@ const EditContact = ({
                   <PhoneForm
                     categories={categories}
                     dispatchChange={dispatchChange}
-                    languageList={languageList}
                     phoneTypesList={phoneTypesList}
                   />
                 </Col>
@@ -257,7 +255,6 @@ const EditContact = ({
                   <UrlForm
                     categories={categories}
                     dispatchChange={dispatchChange}
-                    languageList={languageList}
                   />
                 </Col>
               </Row>
@@ -275,7 +272,6 @@ const EditContact = ({
                   <AddressInfo
                     dropdownVendorCategories={categories}
                     dispatchChange={dispatchChange}
-                    dropdownLanguages={languageList}
                   />
                 </Col>
               </Row>
