@@ -12,7 +12,7 @@ export default interactor(class InterfacePaneInteractor {
 
   actions = new Interactor('[data-test-view-interface-actions]');
   orgInterface = new Interactor('[data-test-interface-pane-view]');
-  paneHeaderCenterButton = new Button('[class*=paneHeaderCenterButton---]');
+  paneHeaderCenterButton = new Button('[data-test-pane-header-actions-button]');
   unassignButton = new Button('[data-test-interface-action-unassign]');
   deleteButton = new Button('[data-test-interface-action-delete]');
   unassignConfirmation = new ConfirmationModal('#unassign-interface-modal');
