@@ -599,5 +599,7 @@
     "interface.type": "Type",
     "edit.hideCredentials": "Masquer les informations d'identification",
     "contactInfo.vendorCategory.uncategorized": "Non classé",
-    "contacts.actions.load.error": "Echec du chargement des données des contacts"
+    "contacts.actions.load.error": "Echec du chargement des données des contacts",
+    "save.error.genericError": "L'organisation n'a pas pu être enregistrée",
+    "save.error.-1": "Impossible de dupliquer le code"
 }
