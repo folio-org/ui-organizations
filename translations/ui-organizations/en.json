@@ -367,7 +367,7 @@
   "accounts.remove": "Remove",
 
   "save.error.genericError": "Organization could not be saved",
-  "save.error.-1": "Cannot duplicate code",
+  "save.error.-1": "Code is already in use",
 
   "settings.categories": "Categories",
   "settings.name": "name",
