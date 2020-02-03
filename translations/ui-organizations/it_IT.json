@@ -599,5 +599,7 @@
     "interface.type": "Tipo",
     "edit.hideCredentials": "Nascondi credenziali",
     "contactInfo.vendorCategory.uncategorized": "Non categorizzato",
-    "contacts.actions.load.error": "Failed to load contacts data"
+    "contacts.actions.load.error": "Failed to load contacts data",
+    "save.error.genericError": "L'organizzazione non è stata salvata",
+    "save.error.-1": "Impossibile duplicare il codice"
 }
