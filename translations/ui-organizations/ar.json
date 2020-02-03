@@ -599,5 +599,7 @@
     "interface.type": "النوع",
     "edit.hideCredentials": "إخفاء البيانات",
     "contactInfo.vendorCategory.uncategorized": "غير مصنف",
-    "contacts.actions.load.error": "فشل تحميل بيانات جهات الاتصال"
+    "contacts.actions.load.error": "فشل تحميل بيانات جهات الاتصال",
+    "save.error.genericError": "تعذر حفظ المؤسسة",
+    "save.error.-1": "لا يمكن نسخ الكود"
 }

@@ -599,5 +599,7 @@
     "interface.type": "类型",
     "edit.hideCredentials": "隐藏凭证",
     "contactInfo.vendorCategory.uncategorized": "未分类",
-    "contacts.actions.load.error": "无法加载联系人数据"
+    "contacts.actions.load.error": "无法加载联系人数据",
+    "save.error.genericError": "Organization could not be saved",
+    "save.error.-1": "Code is already in use"
 }
