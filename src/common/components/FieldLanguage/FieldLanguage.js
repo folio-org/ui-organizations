@@ -1,14 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import {
+  intlShape,
+  injectIntl,
+} from 'react-intl';
 
-import { FieldSelect } from '@folio/stripes-acq-components';
+import {
+  FieldSelection,
+  LANGUAGES,
+} from '@folio/stripes-acq-components';
 
-const FieldLanguage = ({ dropdownLanguages, namePrefix, withLabel, ...rest }) => {
+const FieldLanguage = ({ namePrefix, intl, withLabel, ...rest }) => {
+  const languagesOptions = LANGUAGES.map(l => ({
+    label: intl.formatMessage({ id: `stripes-acq-components.data.languages.${l.code}` }),
+    value: l.code,
+  }));
+
   return (
-    <FieldSelect
-      label={withLabel ? <FormattedMessage id="ui-organizations.contactInfo.language" /> : undefined}
-      dataOptions={dropdownLanguages}
+    <FieldSelection
+      dataOptions={languagesOptions}
+      labelId={withLabel ? 'ui-organizations.contactInfo.language' : undefined}
       name={`${namePrefix}.language`}
       {...rest}
     />
@@ -16,7 +27,7 @@ const FieldLanguage = ({ dropdownLanguages, namePrefix, withLabel, ...rest }) =>
 };
 
 FieldLanguage.propTypes = {
-  dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
+  intl: intlShape,
   namePrefix: PropTypes.string,
   withLabel: PropTypes.bool,
 };
@@ -25,4 +36,4 @@ FieldLanguage.defaultProps = {
   withLabel: true,
 };
 
-export default FieldLanguage;
+export default injectIntl(FieldLanguage);

@@ -25,7 +25,7 @@ import { Required } from '../../../../Utils/Validate';
 
 import css from './ContactInfoCard.css';
 
-const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownLanguages, dropdownVendorCategories }) => {
+const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownVendorCategories }) => {
   const EmailsMF = (name, index, fields) => {
     const valueKey = 'value';
     const emails = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
@@ -83,7 +83,6 @@ const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownLanguages, dr
           >
             <FieldLanguage
               namePrefix={name}
-              dropdownLanguages={dropdownLanguages}
             />
           </Col>
           <Col
@@ -117,7 +116,6 @@ const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownLanguages, dr
 EmailAddresses.propTypes = {
   defaultLanguage: PropTypes.string,
   dispatchChange: PropTypes.func.isRequired,
-  dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
 

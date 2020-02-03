@@ -18,7 +18,7 @@ import {
 @interactor class OrganizationDetailsActions {
   static defaultScope = '#data-test-organizations-details-actions';
 
-  toggle = new Button('[class*=paneHeaderCenterButton---]');
+  toggle = new Button('[data-test-pane-header-actions-button]');
   delete = new Button('[data-test-button-delete-organization]');
   edit = new Button('[data-test-button-edit-organization]');
 }

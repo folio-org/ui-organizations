@@ -16,10 +16,9 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
-import { FieldSelect } from '@folio/stripes-acq-components';
 
 import { ORGANIZATION_STATUS } from '../../../common/constants';
-import languageList from '../../../Utils/Languages';
+import { FieldLanguage } from '../../../common/components';
 import { Required } from '../../../Utils/Validate';
 import resetVendorFields from './resetVendorFields';
 
@@ -150,9 +149,8 @@ class OrganizationSummaryForm extends Component {
           xs={6}
           md={3}
         >
-          <FieldSelect
-            dataOptions={languageList}
-            label={<FormattedMessage id="ui-organizations.summary.defaultLanguage" />}
+          <FieldLanguage
+            labelId="ui-organizations.summary.defaultLanguage"
             name="language"
           />
         </Col>

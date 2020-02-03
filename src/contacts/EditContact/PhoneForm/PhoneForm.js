@@ -77,7 +77,7 @@ const headLabels = (
   </Row>
 );
 
-const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList }) => {
+const PhoneForm = ({ categories, dispatchChange, phoneTypesList }) => {
   const addNewPhone = useCallback((fields) => createAddNewItem()(fields), []);
 
   const renderEmailFields = (elem, index, fields) => {
@@ -113,7 +113,6 @@ const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList })
         >
           <FieldLanguage
             namePrefix={elem}
-            dropdownLanguages={languageList}
             withLabel={false}
             ariaLabelledBy="phoneFormLanguageLabel"
           />
@@ -161,13 +160,11 @@ const PhoneForm = ({ languageList, categories, dispatchChange, phoneTypesList })
 
 PhoneForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
-  languageList: PropTypes.arrayOf(PropTypes.object),
   dispatchChange: PropTypes.func.isRequired,
   phoneTypesList: PropTypes.arrayOf(PropTypes.object),
 };
 
 PhoneForm.defaultProps = {
-  languageList: [],
   phoneTypesList: [],
 };
 

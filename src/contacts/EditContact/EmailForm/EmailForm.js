@@ -76,7 +76,7 @@ const headLabels = (
   </Row>
 );
 
-const EmailForm = ({ languageList, categories, dispatchChange }) => {
+const EmailForm = ({ categories, dispatchChange }) => {
   const addNewEmail = useCallback((fields) => createAddNewItem()(fields), []);
 
   const renderEmailFields = (elem, index, fields) => {
@@ -112,7 +112,6 @@ const EmailForm = ({ languageList, categories, dispatchChange }) => {
         >
           <FieldLanguage
             namePrefix={elem}
-            dropdownLanguages={languageList}
             withLabel={false}
             ariaLabelledBy="emailFormLanguageLabel"
           />
@@ -160,7 +159,6 @@ const EmailForm = ({ languageList, categories, dispatchChange }) => {
 
 EmailForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
-  languageList: PropTypes.arrayOf(PropTypes.object),
   dispatchChange: PropTypes.func.isRequired,
 };
 

@@ -25,7 +25,7 @@ import { isURLValid, Required } from '../../../../Utils/Validate';
 
 import css from './ContactInfoCard.css';
 
-const Urls = ({ defaultLanguage, dispatchChange, dropdownLanguages, dropdownVendorCategories }) => {
+const Urls = ({ defaultLanguage, dispatchChange, dropdownVendorCategories }) => {
   const UrlsMF = (name, index, fields) => {
     const valueKey = 'value';
     const urls = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
@@ -84,7 +84,6 @@ const Urls = ({ defaultLanguage, dispatchChange, dropdownLanguages, dropdownVend
           >
             <FieldLanguage
               namePrefix={name}
-              dropdownLanguages={dropdownLanguages}
             />
           </Col>
           <Col
@@ -118,7 +117,6 @@ const Urls = ({ defaultLanguage, dispatchChange, dropdownLanguages, dropdownVend
 Urls.propTypes = {
   defaultLanguage: PropTypes.string,
   dispatchChange: PropTypes.func.isRequired,
-  dropdownLanguages: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
 
