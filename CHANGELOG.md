@@ -13,6 +13,7 @@
 * [UIORGS-130](https://issues.folio.org/browse/UIORGS-130) TECH-DEBT refactor Organizations list to not use SearchAndSort
 
 ### Bug Fixes
+* [UIORGS-147](https://issues.folio.org/browse/UIORGS-147) Country filter not working
 * [UIORGS-129](https://issues.folio.org/browse/UIORGS-129) Organization codes should be unique
 * [UIORGS-137](https://issues.folio.org/browse/UIORGS-137) Create/assign Contact for Organization record takes additional step to complete
 

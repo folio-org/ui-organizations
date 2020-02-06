@@ -21,6 +21,9 @@ import OrganizationsList from './OrganizationsList';
 import {
   getKeywordQuery,
 } from './OrganizationsListSearchConfig';
+import {
+  customFilterMap,
+} from './OrganizationsListFilter/OrganizationsListFilterConfig';
 
 const RESULT_COUNT_INCREMENT = 30;
 const buildTitlesQuery = makeQueryBuilder(
@@ -33,6 +36,7 @@ const buildTitlesQuery = makeQueryBuilder(
     return getKeywordQuery(query);
   },
   'sortby name/sort.ascending',
+  customFilterMap,
 );
 
 const resetData = () => {};
