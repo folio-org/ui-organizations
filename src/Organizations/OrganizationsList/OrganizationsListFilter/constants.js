@@ -9,10 +9,9 @@ import {
 export const FILTERS = {
   STATUS: 'status',
   TAGS: 'tags',
-  ADDRESS_COUNTRY: 'address_country',
+  ADDRESS_COUNTRY: 'addresses',
   LANGUAGE: 'language',
   PAYMENT_METHOD: 'paymentMethod',
-  STATS_AVAILABLE: 'statsAvailable',
   IS_VENDOR: 'isVendor',
 };
 
