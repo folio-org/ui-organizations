@@ -12,6 +12,7 @@ import {
 import { useShowCallout } from '@folio/stripes-acq-components';
 
 import FormatTime from '../../Utils/FormatTime';
+import { VIEW_ORG_DETAILS } from '../../common/constants';
 import {
   fetchOrgsByParam,
   organizationsResource,
@@ -32,7 +33,7 @@ const OrganizationCreate = ({ history, location, mutator, stripes, intl }) => {
   const cancelForm = useCallback(
     (id) => {
       history.push({
-        pathname: id ? `/organizations/${id}/view` : '/organizations',
+        pathname: id ? `${VIEW_ORG_DETAILS}${id}` : '/organizations',
         search: location.search,
       });
     },

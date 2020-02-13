@@ -1,6 +1,7 @@
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
+import { VIEW_ORG_DETAILS } from '../../../src/common/constants';
 import setupApplication from '../helpers/setup-application';
 import {
   OrganizationDetailsInteractor,
@@ -14,7 +15,7 @@ describe('Vendor organization details', () => {
   beforeEach(function () {
     const vendorOrg = this.server.create('organization', { isVendor: true });
 
-    this.visit(`/organizations/${vendorOrg.id}/view`);
+    this.visit(`${VIEW_ORG_DETAILS}${vendorOrg.id}`);
   });
 
   it('renders Organization details', () => {

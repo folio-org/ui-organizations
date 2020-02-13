@@ -21,6 +21,7 @@ import {
   useToggle,
 } from '@folio/stripes-acq-components';
 
+import { VIEW_ORG_DETAILS } from '../../common/constants';
 import { OrganizationDetailsContainer } from '../OrganizationDetails';
 import OrganizationsListFilter from './OrganizationsListFilter';
 import {
@@ -73,7 +74,7 @@ const OrganizationsList = ({
   const openOrganizationDetails = useCallback(
     (e, meta) => {
       history.push({
-        pathname: `/organizations/${meta.id}/view`,
+        pathname: `${VIEW_ORG_DETAILS}${meta.id}`,
         search: location.search,
       });
     },
@@ -137,7 +138,7 @@ const OrganizationsList = ({
       </ResultsPane>
 
       <Route
-        path="/organizations/:id/view"
+        path={`${VIEW_ORG_DETAILS}:id`}
         component={OrganizationDetailsContainer}
       />
     </Paneset>

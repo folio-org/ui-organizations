@@ -22,6 +22,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import FormatTime from '../../Utils/FormatTime';
+import { VIEW_ORG_DETAILS } from '../../common/constants';
 import {
   fetchOrgsByParam,
   organizationResourceByUrl,
@@ -52,7 +53,7 @@ const OrganizationEdit = ({ match, history, location, mutator, stripes, intl }) 
   const cancelForm = useCallback(
     () => {
       history.push({
-        pathname: `/organizations/${organizationId}/view`,
+        pathname: `${VIEW_ORG_DETAILS}${organizationId}`,
         search: location.search,
       });
     },

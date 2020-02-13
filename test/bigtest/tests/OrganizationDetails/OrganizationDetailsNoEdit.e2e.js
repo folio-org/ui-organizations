@@ -1,6 +1,7 @@
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
+import { VIEW_ORG_DETAILS } from '../../../../src/common/constants';
 import setupApplication from '../../helpers/setup-application';
 import { OrganizationDetailsInteractor } from '../../interactors';
 
@@ -30,7 +31,7 @@ describe('Organization details - edit permission disabled', () => {
 
     this.server.create('contact', { notes: TEST_NOTE });
 
-    this.visit(`/organizations/${orgId}/view`);
+    this.visit(`${VIEW_ORG_DETAILS}${orgId}`);
   });
 
   it('should not display edit button', () => {

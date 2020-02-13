@@ -1,6 +1,7 @@
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
+import { VIEW_ORG_DETAILS } from '../../../../src/common/constants';
 import setupApplication from '../../helpers/setup-application';
 import { OrganizationDetailsInteractor } from '../../interactors';
 
@@ -31,7 +32,7 @@ describe('No edit permission', () => {
     );
     const orgId = organizations[0].id;
 
-    this.visit(`/organizations/${orgId}/view`);
+    this.visit(`${VIEW_ORG_DETAILS}${orgId}`);
   });
 
   describe('click on header', () => {
