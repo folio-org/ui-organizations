@@ -26,7 +26,7 @@ class ContactsContainer extends Component {
 
   onClose = (orgId, contactId) => {
     if (!contactId) {
-      this.props.history.push(`/organizations/${orgId}/view`);
+      this.props.history.push(`/organizations/view/${orgId}`);
     } else {
       this.props.history.push(`/organizations/${orgId}/contacts/details/${contactId}/view`);
     }

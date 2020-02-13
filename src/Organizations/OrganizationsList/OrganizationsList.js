@@ -73,7 +73,7 @@ const OrganizationsList = ({
   const openOrganizationDetails = useCallback(
     (e, meta) => {
       history.push({
-        pathname: `/organizations/${meta.id}/view`,
+        pathname: `/organizations/view/${meta.id}`,
         search: location.search,
       });
     },
@@ -137,7 +137,7 @@ const OrganizationsList = ({
       </ResultsPane>
 
       <Route
-        path="/organizations/:id/view"
+        path="/organizations/view/:id"
         component={OrganizationDetailsContainer}
       />
     </Paneset>

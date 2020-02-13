@@ -14,7 +14,7 @@ describe('Vendor organization details', () => {
   beforeEach(function () {
     const vendorOrg = this.server.create('organization', { isVendor: true });
 
-    this.visit(`/organizations/${vendorOrg.id}/view`);
+    this.visit(`/organizations/view/${vendorOrg.id}`);
   });
 
   it('renders Organization details', () => {

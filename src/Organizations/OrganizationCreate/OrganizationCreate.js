@@ -32,7 +32,7 @@ const OrganizationCreate = ({ history, location, mutator, stripes, intl }) => {
   const cancelForm = useCallback(
     (id) => {
       history.push({
-        pathname: id ? `/organizations/${id}/view` : '/organizations',
+        pathname: id ? `/organizations/view/${id}` : '/organizations',
         search: location.search,
       });
     },

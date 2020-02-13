@@ -52,7 +52,7 @@ const OrganizationEdit = ({ match, history, location, mutator, stripes, intl }) 
   const cancelForm = useCallback(
     () => {
       history.push({
-        pathname: `/organizations/${organizationId}/view`,
+        pathname: `/organizations/view/${organizationId}`,
         search: location.search,
       });
     },

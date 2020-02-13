@@ -31,7 +31,7 @@ describe('No edit permission', () => {
     );
     const orgId = organizations[0].id;
 
-    this.visit(`/organizations/${orgId}/view`);
+    this.visit(`/organizations/view/${orgId}`);
   });
 
   describe('click on header', () => {

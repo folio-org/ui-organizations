@@ -38,7 +38,7 @@ describe('Organization details', () => {
       phoneNumbers: [{}],
     });
 
-    this.visit(`/organizations/${organization.id}/view`);
+    this.visit(`/organizations/view/${organization.id}`);
     await orgDetails.whenLoaded();
   });
 

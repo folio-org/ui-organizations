@@ -30,7 +30,7 @@ describe('Organization details - edit permission disabled', () => {
 
     this.server.create('contact', { notes: TEST_NOTE });
 
-    this.visit(`/organizations/${orgId}/view`);
+    this.visit(`/organizations/view/${orgId}`);
   });
 
   it('should not display edit button', () => {
