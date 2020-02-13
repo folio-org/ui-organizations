@@ -9,6 +9,7 @@ import {
   Paneset,
 } from '@folio/stripes/components';
 
+import { VIEW_ORG_DETAILS } from '../common/constants';
 import ViewContact from './ViewContact';
 import EditContact from './EditContact';
 
@@ -26,7 +27,7 @@ class ContactsContainer extends Component {
 
   onClose = (orgId, contactId) => {
     if (!contactId) {
-      this.props.history.push(`/organizations/view/${orgId}`);
+      this.props.history.push(`${VIEW_ORG_DETAILS}${orgId}`);
     } else {
       this.props.history.push(`/organizations/${orgId}/contacts/details/${contactId}/view`);
     }

@@ -1,6 +1,7 @@
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
+import { VIEW_ORG_DETAILS } from '../../../src/common/constants';
 import setupApplication from '../helpers/setup-application';
 import {
   OrganizationDetailsInteractor,
@@ -38,7 +39,7 @@ describe('Organization details', () => {
       phoneNumbers: [{}],
     });
 
-    this.visit(`/organizations/view/${organization.id}`);
+    this.visit(`${VIEW_ORG_DETAILS}${organization.id}`);
     await orgDetails.whenLoaded();
   });
 
@@ -140,7 +141,7 @@ describe('Organization details', () => {
 
   describe('open details url without org id', function () {
     beforeEach(function () {
-      this.visit('/organizations/view/');
+      this.visit(VIEW_ORG_DETAILS);
     });
 
     it('details pane has not being render without id', function () {
