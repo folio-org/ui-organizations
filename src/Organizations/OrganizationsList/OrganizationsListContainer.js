@@ -50,7 +50,7 @@ const OrganizationsListContainer = ({ mutator, location: { search } }) => {
   const loadOrganizations = (offset) => {
     setIsLoading(true);
 
-    return !search
+    const loadOrgsPromise = !search
       ? Promise.resolve()
       : mutator.organizationsListOrgs.GET({
         params: {
@@ -63,8 +63,10 @@ const OrganizationsListContainer = ({ mutator, location: { search } }) => {
           if (!offset) setOrganizationsCount(organizationsResponse.totalRecords);
 
           setOrganizations((prev) => [...prev, ...organizationsResponse.organizations]);
-        })
-        .finally(() => setIsLoading(false));
+        });
+
+    return loadOrgsPromise
+      .finally(() => setIsLoading(false));
   };
 
   const onNeedMoreData = useCallback(

@@ -1,5 +1,6 @@
 // Since we use `async` / `await` we need babel-polyfill
-import 'babel-polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 // require all modules ending in "-test" from the current directory and
 // all subdirectories
