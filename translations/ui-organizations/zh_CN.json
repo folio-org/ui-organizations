@@ -392,7 +392,7 @@
     "edi.prorateFees": "按比例费用",
     "edi.ediNamingConvention": "EDI命名约定",
     "edi.sendAccountNumber": "发送帐号",
-    "edi.whatMssgs": "预计此供应商会收到哪些消息？",
+    "edi.whatMssgs": "此供应商期望收到什么消息？",
     "edi.supportOrder": "空",
     "edi.supportInvoice": "空",
     "edi.notes": "附注",
@@ -472,7 +472,7 @@
     "contactInfo.actions.addAddress": "添加地址",
     "contactInfo.actions.addPhoneNumber": "添加电话号码",
     "contactInfo.actions.addEmail": "添加电子邮件",
-    "edi.receiveNotifications": "此供应商需要哪些消息？",
+    "edi.receiveNotifications": "此供应商期望收到什么消息？",
     "accounts.account.contactInfo": "联系信息",
     "organizationStatus.active": "激活",
     "organizationStatus.inactive": "未激活",
@@ -600,6 +600,6 @@
     "edit.hideCredentials": "隐藏凭证",
     "contactInfo.vendorCategory.uncategorized": "未分类",
     "contacts.actions.load.error": "无法加载联系人数据",
-    "save.error.genericError": "Organization could not be saved",
-    "save.error.-1": "Code is already in use"
+    "save.error.genericError": "无法保存组织",
+    "save.error.-1": "代码已在使用中"
 }
