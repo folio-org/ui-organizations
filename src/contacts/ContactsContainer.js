@@ -7,12 +7,16 @@ import { FormattedMessage } from 'react-intl';
 import {
   Paneset,
 } from '@folio/stripes/components';
+import {
+  CalloutContext,
+} from '@folio/stripes/core';
 
 import { VIEW_ORG_DETAILS } from '../common/constants';
 import ViewContact from './ViewContact';
 import EditContact from './EditContact';
 
 class ContactsContainer extends Component {
+  static contextType = CalloutContext;
   static propTypes = {
     match: ReactRouterPropTypes.match.isRequired,
     history: ReactRouterPropTypes.history.isRequired,
@@ -44,7 +48,7 @@ class ContactsContainer extends Component {
   );
 
   showMessage = (messageKey, messageType = 'success') => {
-    this.callout.current.sendCallout({
+    this.context.sendCallout({
       type: messageType,
       message: <FormattedMessage id={messageKey} />,
     });
