@@ -1,13 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Switch from 'react-router-dom/Switch';
 import Route from 'react-router-dom/Route';
 import { hot } from 'react-hot-loader';
-
-import { Callout } from '@folio/stripes/components';
-import {
-  ToastContext,
-} from '@folio/stripes-acq-components';
 
 import { Organizations as Organization } from './src/Organizations';
 import { ContactsContainer } from './src/contacts';
@@ -28,8 +23,6 @@ class Organizations extends Component {
     super(props, context);
     this.connectedContactsContainer = props.stripes.connect(ContactsContainer);
     this.connectedInterfaceContainer = props.stripes.connect(InterfaceContainer);
-
-    this.callout = React.createRef();
   }
 
   goToContacts = (props) => (
@@ -52,33 +45,28 @@ class Organizations extends Component {
     }
 
     return (
-      <Fragment>
-        <ToastContext.Provider value={this.callout}>
-          <Switch>
-            <Route
-              path="/organizations/contacts/"
-              render={this.goToContacts}
-            />
-            <Route
-              path="/organizations/interface/"
-              render={this.goToInterface}
-            />
-            <Route
-              path="/organizations/:orgId/contacts/"
-              render={this.goToContacts}
-            />
-            <Route
-              path="/organizations/:orgId/interface/"
-              render={this.goToInterface}
-            />
-            <Route
-              path="/organizations"
-              component={Organization}
-            />
-          </Switch>
-        </ToastContext.Provider>
-        <Callout ref={this.callout} />
-      </Fragment>
+      <Switch>
+        <Route
+          path="/organizations/contacts/"
+          render={this.goToContacts}
+        />
+        <Route
+          path="/organizations/interface/"
+          render={this.goToInterface}
+        />
+        <Route
+          path="/organizations/:orgId/contacts/"
+          render={this.goToContacts}
+        />
+        <Route
+          path="/organizations/:orgId/interface/"
+          render={this.goToInterface}
+        />
+        <Route
+          path="/organizations"
+          component={Organization}
+        />
+      </Switch>
     );
   }
 }

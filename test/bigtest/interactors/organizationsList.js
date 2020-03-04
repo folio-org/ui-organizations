@@ -18,7 +18,13 @@ export default interactor(class OrganizationsListInteractor {
   static defaultScope = '[data-test-organizations-list]';
 
   hasCreateOrganizationButton = isPresent('#clickable-neworganization');
+  newOrgButton = new ButtonInteractor('#clickable-neworganization');
   isNoResultsMessageLabelPresent = isPresent('[class*=mclEmptyMessage---]');
   organizationRows = collection('[role=group] [role=row]');
   filters = new FiltersInteractor();
+  isLoaded = isPresent('#organizations-list');
+
+  whenLoaded() {
+    return this.timeout(2000).when(() => this.isLoaded);
+  }
 });

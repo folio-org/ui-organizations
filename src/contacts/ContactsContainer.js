@@ -5,7 +5,6 @@ import Route from 'react-router-dom/Route';
 import { FormattedMessage } from 'react-intl';
 
 import {
-  Callout,
   Paneset,
 } from '@folio/stripes/components';
 
@@ -18,12 +17,6 @@ class ContactsContainer extends Component {
     match: ReactRouterPropTypes.match.isRequired,
     history: ReactRouterPropTypes.history.isRequired,
   };
-
-  constructor(props, context) {
-    super(props, context);
-
-    this.callout = React.createRef();
-  }
 
   onClose = (orgId, contactId) => {
     if (!contactId) {
@@ -100,7 +93,6 @@ class ContactsContainer extends Component {
             render={this.goToEdit}
           />
         </Switch>
-        <Callout ref={this.callout} />
       </Paneset>
     );
   }
