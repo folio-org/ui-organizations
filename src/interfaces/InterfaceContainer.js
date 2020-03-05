@@ -5,9 +5,11 @@ import Route from 'react-router-dom/Route';
 import { FormattedMessage } from 'react-intl';
 
 import {
-  Callout,
   Paneset,
 } from '@folio/stripes/components';
+import {
+  CalloutContext,
+} from '@folio/stripes/core';
 
 import { ViewInterfaceContainer } from './ViewInterface/ViewInterfaceContainer';
 import EditInterfaceContainer from './EditInterface';
@@ -18,6 +20,7 @@ import {
 } from './constants';
 
 class InterfaceContainer extends Component {
+  static contextType = CalloutContext;
   static propTypes = {
     match: PropTypes.object.isRequired,
     stripes: PropTypes.object.isRequired,
@@ -27,7 +30,6 @@ class InterfaceContainer extends Component {
     super(props, context);
     this.connectedViewInterface = props.stripes.connect(ViewInterfaceContainer);
     this.connectedEditInterface = props.stripes.connect(EditInterfaceContainer);
-    this.callout = React.createRef();
   }
 
   goToEdit = (props) => (
@@ -50,7 +52,7 @@ class InterfaceContainer extends Component {
   );
 
   showMessage = (messageKey, messageType = 'success') => {
-    this.callout.current.sendCallout({
+    this.context.sendCallout({
       type: messageType,
       message: <FormattedMessage id={messageKey} />,
     });
@@ -76,7 +78,6 @@ class InterfaceContainer extends Component {
             render={this.goToEdit}
           />
         </Switch>
-        <Callout ref={this.callout} />
       </Paneset>
     );
   }

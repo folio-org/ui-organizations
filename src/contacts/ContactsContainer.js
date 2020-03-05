@@ -5,25 +5,22 @@ import Route from 'react-router-dom/Route';
 import { FormattedMessage } from 'react-intl';
 
 import {
-  Callout,
   Paneset,
 } from '@folio/stripes/components';
+import {
+  CalloutContext,
+} from '@folio/stripes/core';
 
 import { VIEW_ORG_DETAILS } from '../common/constants';
 import ViewContact from './ViewContact';
 import EditContact from './EditContact';
 
 class ContactsContainer extends Component {
+  static contextType = CalloutContext;
   static propTypes = {
     match: ReactRouterPropTypes.match.isRequired,
     history: ReactRouterPropTypes.history.isRequired,
   };
-
-  constructor(props, context) {
-    super(props, context);
-
-    this.callout = React.createRef();
-  }
 
   onClose = (orgId, contactId) => {
     if (!contactId) {
@@ -51,7 +48,7 @@ class ContactsContainer extends Component {
   );
 
   showMessage = (messageKey, messageType = 'success') => {
-    this.callout.current.sendCallout({
+    this.context.sendCallout({
       type: messageType,
       message: <FormattedMessage id={messageKey} />,
     });
@@ -100,7 +97,6 @@ class ContactsContainer extends Component {
             render={this.goToEdit}
           />
         </Switch>
-        <Callout ref={this.callout} />
       </Paneset>
     );
   }
