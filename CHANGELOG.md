@@ -1,13 +1,16 @@
 # Change history for ui-organizations
 
-## (IN PROGRESS)
+## [2.0.0](https://github.com/folio-org/ui-organizations/tree/v2.0.0) (2020-03-13)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.6.1...v2.0.0)
+
+* bump the @folio/stripes peer to v3.0.0
 
 ### Stories
 * [UIORGS-93](https://issues.folio.org/browse/UIORGS-93) Update the country and language lists in the create/edit Contacts screen
 * [UIORGS-92](https://issues.folio.org/browse/UIORGS-92) Update the country and language lists in the create/edit Organizations screen
 * [UIORGS-110](https://issues.folio.org/browse/UIORGS-143) Change the Organizations default filters to be empty
 * [UIORGS-143](https://issues.folio.org/browse/UIORGS-143) Update settings permission label
-* [UIORGS-144](https://issues.folio.org/browse/UIORGS-144) Security update eslint to >= 6.2.1 or eslint-util >= 1.4.1
+* [FOLIO-2436](https://issues.folio.org/browse/FOLIO-2436) organizations-storage.organizations version
 * [UIORGS-89](https://issues.folio.org/browse/UIORGS-89) Assign a newly created interface to an Organization record
 * [UIORGS-131](https://issues.folio.org/browse/UIORGS-131) Update table layouts in edit forms to remove redundant headings
 * [UIORGS-130](https://issues.folio.org/browse/UIORGS-130) TECH-DEBT refactor Organizations list to not use SearchAndSort
@@ -15,6 +18,8 @@
 ### Bug Fixes
 * [ERM-722](https://issues.folio.org/browse/ERM-722) Agreements and Licenses: Preview: Links to Organizations have stopped working
 * [UIORGS-147](https://issues.folio.org/browse/UIORGS-147) Country filter not working
+* [UIORGS-144](https://issues.folio.org/browse/UIORGS-144) Security update eslint to >= 6.2.1 or eslint-util >= 1.4.1
+* [UIORGS-127](https://issues.folio.org/browse/UIORGS-127) EDI schedule days shown incorrectly
 * [UIORGS-129](https://issues.folio.org/browse/UIORGS-129) Organization codes should be unique
 * [UIORGS-137](https://issues.folio.org/browse/UIORGS-137) Create/assign Contact for Organization record takes additional step to complete
 

@@ -13,6 +13,7 @@ import queryString from 'query-string';
 import { stripesConnect } from '@folio/stripes/core';
 import {
   makeQueryBuilder,
+  useLocationReset,
 } from '@folio/stripes-acq-components';
 
 import { organizationsResource } from '../../common/resources';
@@ -41,7 +42,7 @@ const buildTitlesQuery = makeQueryBuilder(
 
 const resetData = () => {};
 
-const OrganizationsListContainer = ({ mutator, location: { search } }) => {
+const OrganizationsListContainer = ({ mutator, location, history }) => {
   const [organizations, setOrganizations] = useState([]);
   const [organizationsCount, setOrganizationsCount] = useState(0);
   const [organizationsOffset, setOrganizationsOffset] = useState(0);
@@ -50,13 +51,13 @@ const OrganizationsListContainer = ({ mutator, location: { search } }) => {
   const loadOrganizations = (offset) => {
     setIsLoading(true);
 
-    const loadOrgsPromise = !search
+    const loadOrgsPromise = !location.search
       ? Promise.resolve()
       : mutator.organizationsListOrgs.GET({
         params: {
           limit: RESULT_COUNT_INCREMENT,
           offset,
-          query: buildTitlesQuery(queryString.parse(search)),
+          query: buildTitlesQuery(queryString.parse(location.search)),
         },
       })
         .then(organizationsResponse => {
@@ -82,15 +83,20 @@ const OrganizationsListContainer = ({ mutator, location: { search } }) => {
     [organizationsOffset],
   );
 
+  const refreshList = () => {
+    setOrganizations([]);
+    setOrganizationsOffset(0);
+    loadOrganizations(0);
+  };
+
   useEffect(
     () => {
-      setOrganizations([]);
-      setOrganizationsOffset(0);
-      loadOrganizations(0);
+      refreshList();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [search],
+    [location.search],
   );
+  useLocationReset(history, location, '/organizations', refreshList);
 
   return (
     <OrganizationsList
@@ -109,6 +115,7 @@ OrganizationsListContainer.manifest = Object.freeze({
 
 OrganizationsListContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
 };
 
