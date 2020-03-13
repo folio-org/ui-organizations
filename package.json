@@ -1,6 +1,6 @@
 {
   "name": "@folio/organizations",
-  "version": "1.6.1",
+  "version": "2.0.0",
   "description": "Organizations",
   "main": "index.js",
   "repository": "folio-org/ui-organizations",
@@ -213,7 +213,7 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "^1.0.0",
+    "@folio/stripes-acq-components": "^2.0.0",
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.20",
     "prop-types": "^15.5.10",
@@ -229,7 +229,7 @@
     "react-router-dom": "^4.3.1"
   },
   "optionalDependencies": {
-    "@folio/plugin-find-contact": "^1.1.0",
-    "@folio/plugin-find-interface": "^1.0.0"
+    "@folio/plugin-find-contact": "^2.0.0",
+    "@folio/plugin-find-interface": "^2.0.0"
   }
 }

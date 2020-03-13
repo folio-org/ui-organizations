@@ -91,11 +91,14 @@ const OrganizationDetailsContainer = ({
           type: 'success',
           values: { organizationName: name },
         });
-        closePane();
+        history.replace({
+          pathname: '/organizations',
+          search: location.search,
+        });
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [organization, closePane],
+    [organization, location.search],
   );
 
   const updateOrganization = useCallback(
