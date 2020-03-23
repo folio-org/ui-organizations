@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Switch from 'react-router-dom/Switch';
-import Route from 'react-router-dom/Route';
+import {
+  Route,
+  Switch,
+} from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 
 import { Organizations as Organization } from './src/Organizations';
 import { ContactsContainer } from './src/contacts';
-import InterfaceContainer from './src/interfaces';
+import { InterfaceContainer } from './src/interfaces';
 import Settings from './src/Settings';
 
 class Organizations extends Component {
@@ -19,21 +21,15 @@ class Organizations extends Component {
     showSettings: PropTypes.bool,
   }
 
-  constructor(props, context) {
-    super(props, context);
-    this.connectedContactsContainer = props.stripes.connect(ContactsContainer);
-    this.connectedInterfaceContainer = props.stripes.connect(InterfaceContainer);
-  }
-
   goToContacts = (props) => (
-    <this.connectedContactsContainer
+    <ContactsContainer
       {...props}
       stripes={this.props.stripes}
     />
   );
 
   goToInterface = (props) => (
-    <this.connectedInterfaceContainer
+    <InterfaceContainer
       {...props}
       stripes={this.props.stripes}
     />
@@ -52,7 +48,12 @@ class Organizations extends Component {
         />
         <Route
           path="/organizations/interface/"
-          render={this.goToInterface}
+          render={(props) => (
+            <InterfaceContainer
+              {...props}
+              stripes={this.props.stripes}
+            />
+          )}
         />
         <Route
           path="/organizations/:orgId/contacts/"
