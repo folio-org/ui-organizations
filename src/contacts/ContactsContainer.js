@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import Switch from 'react-router-dom/Switch';
-import Route from 'react-router-dom/Route';
+import {
+  Route,
+  Switch,
+} from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import {

@@ -1,1 +1,1 @@
-export { default } from './InterfaceContainer';
+export { default as InterfaceContainer } from './InterfaceContainer';

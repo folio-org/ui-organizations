@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Switch from 'react-router-dom/Switch';
-import Route from 'react-router-dom/Route';
+import {
+  Route,
+  Switch,
+} from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -32,25 +34,6 @@ class InterfaceContainer extends Component {
     this.connectedEditInterface = props.stripes.connect(EditInterfaceContainer);
   }
 
-  goToEdit = (props) => (
-    <this.connectedEditInterface
-      {...props}
-      orgId={this.props.match.params.orgId}
-      showMessage={this.showMessage}
-      stripes={this.props.stripes}
-    />
-  );
-
-  goToView = (props) => (
-    <this.connectedViewInterface
-      {...props}
-      baseUrl={this.props.match.url}
-      orgId={this.props.match.params.orgId}
-      showMessage={this.showMessage}
-      stripes={this.props.stripes}
-    />
-  );
-
   showMessage = (messageKey, messageType = 'success') => {
     this.context.sendCallout({
       type: messageType,
@@ -67,15 +50,35 @@ class InterfaceContainer extends Component {
         <Switch>
           <Route
             path={`${url}/:id/${VIEW_INTERFACE_URL}`}
-            render={this.goToView}
+            render={(props) => (
+              <this.connectedViewInterface
+                {...props}
+                baseUrl={this.props.match.url}
+                orgId={this.props.match.params.orgId}
+                showMessage={this.showMessage}
+              />
+            )}
           />
           <Route
             path={`${url}/:id/${EDIT_INTERFACE_URL}`}
-            render={this.goToEdit}
+            render={(props) => (
+              <this.connectedEditInterface
+                {...props}
+                orgId={this.props.match.params.orgId}
+                showMessage={this.showMessage}
+              />
+            )}
           />
           <Route
+            exact
             path={`${url}/${ADD_INTERFACE_URL}`}
-            render={this.goToEdit}
+            render={(props) => (
+              <this.connectedEditInterface
+                {...props}
+                orgId={this.props.match.params.orgId}
+                showMessage={this.showMessage}
+              />
+            )}
           />
         </Switch>
       </Paneset>
