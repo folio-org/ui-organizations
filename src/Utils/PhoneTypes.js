@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   { label: 'Office', value: 'Office' },
   { label: 'Mobile', value: 'Mobile' },
   { label: 'Fax', value: 'Fax' },
