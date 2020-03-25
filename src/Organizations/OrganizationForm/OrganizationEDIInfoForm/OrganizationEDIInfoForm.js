@@ -459,7 +459,6 @@ class OrganizationEDIInfoForm extends Component {
                   label={<FormattedMessage id="ui-organizations.edi.sendToEmails" />}
                   name="edi.ediJob.sendToEmails"
                   placeholder="Enter e-mail address(es)"
-                  vertical
                 />
               </Col>
               <Col

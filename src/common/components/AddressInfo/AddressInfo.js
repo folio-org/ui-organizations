@@ -58,7 +58,6 @@ const AddressInfo = ({
     return (
       <Card
         cardClass={css.contactInfoCard}
-        hasMargin
         headerStart={nodeIsPrimary}
       >
         <Row>

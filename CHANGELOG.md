@@ -1,5 +1,10 @@
 # Change history for ui-organizations
 
+## (IN PROGRESS)
+
+### Bug Fixes
+* [UIORGS-155](https://issues.folio.org/browse/UIORGS-155) Country codes are handled inconsistently in organization vs. contact addresses
+
 ## [2.0.0](https://github.com/folio-org/ui-organizations/tree/v2.0.0) (2020-03-13)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v1.6.1...v2.0.0)
 
