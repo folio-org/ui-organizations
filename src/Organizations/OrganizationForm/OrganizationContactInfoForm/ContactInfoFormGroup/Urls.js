@@ -42,7 +42,6 @@ const Urls = ({ defaultLanguage, dispatchChange, dropdownVendorCategories }) => 
     return (
       <Card
         cardClass={css.contactInfoCard}
-        hasMargin
         headerStart={nodeIsPrimary}
       >
         <Row>

@@ -46,7 +46,6 @@ const PhoneNumbers = ({
     return (
       <Card
         cardClass={css.contactInfoCard}
-        hasMargin
         headerStart={nodeIsPrimary}
       >
         <Row>

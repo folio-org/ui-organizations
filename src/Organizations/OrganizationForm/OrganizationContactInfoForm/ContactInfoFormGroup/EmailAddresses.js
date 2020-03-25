@@ -42,7 +42,6 @@ const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownVendorCategor
     return (
       <Card
         cardClass={css.contactInfoCard}
-        hasMargin
         headerStart={nodeIsPrimary}
       >
         <Row>
