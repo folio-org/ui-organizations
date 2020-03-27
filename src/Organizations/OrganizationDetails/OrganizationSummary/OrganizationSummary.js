@@ -10,6 +10,7 @@ import {
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
+import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
 
 const aliasesColumnMapping = {
   value: <FormattedMessage id="ui-organizations.summary.alias" />,
@@ -68,7 +69,7 @@ const OrganizationSummary = ({
         <Col xs={4}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.summary.defaultLanguage" />}
-            value={language}
+            value={LANG_LABEL_BY_CODE[language] || language}
           />
         </Col>
 

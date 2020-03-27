@@ -7,6 +7,7 @@ import {
   Col,
   KeyValue,
 } from '@folio/stripes/components';
+import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
 
 const ContactDetails = ({
   categories,
@@ -50,7 +51,7 @@ const ContactDetails = ({
     <Col xs={3}>
       <KeyValue
         label={<FormattedMessage id="ui-organizations.contactPeople.language" />}
-        value={language}
+        value={LANG_LABEL_BY_CODE[language] || language}
       />
     </Col>
 

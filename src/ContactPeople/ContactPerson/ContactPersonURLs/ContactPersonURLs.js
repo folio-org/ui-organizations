@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { Row, Col, KeyValue } from '@folio/stripes/components';
+import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
 
 import { EntitiesWithCollapsing } from '../../../common/components';
 import ContactPersonSection from '../ContactPersonSection';
@@ -26,7 +27,7 @@ const renderURL = url => (
       </Col>
       <Col xs={3}>
         <KeyValue label={<FormattedMessage id="ui-organizations.contactPeople.language" />}>
-          {url.language}
+          {LANG_LABEL_BY_CODE[url.language] || url.language}
         </KeyValue>
       </Col>
       <Col xs={3}>
