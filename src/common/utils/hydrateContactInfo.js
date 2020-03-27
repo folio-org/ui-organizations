@@ -1,4 +1,7 @@
-import { COUNTRY_LABEL_BY_CODE } from '@folio/stripes-acq-components';
+import {
+  COUNTRY_LABEL_BY_CODE,
+  LANG_LABEL_BY_CODE,
+} from '@folio/stripes-acq-components';
 
 import { transformCategoryIdsToLables } from './category';
 
@@ -15,5 +18,6 @@ export const hydrateAddresses = (categories = [], addresses = []) => mixCategori
   .map(address => ({
     ...address,
     country: COUNTRY_LABEL_BY_CODE[address.country] || address.country,
+    language: LANG_LABEL_BY_CODE[address.language] || address.language,
     primaryAddress: address.isPrimary,
   }));

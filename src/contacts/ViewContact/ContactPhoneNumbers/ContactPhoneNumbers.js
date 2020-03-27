@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { MultiColumnList } from '@folio/stripes/components';
+import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
 
 import { transformCategoryIdsToLables } from '../../../common/utils';
 
@@ -19,7 +20,7 @@ const ContactPhoneNumbers = ({ categories, phoneNumbers }) => {
   const resultsFormatter = {
     phoneNumber: ({ phoneNumber }) => phoneNumber,
     type: ({ type }) => type,
-    language: ({ language }) => language,
+    language: ({ language }) => LANG_LABEL_BY_CODE[language] || language,
     categories: phoneNumber => transformCategoryIdsToLables(categories, phoneNumber.categories),
     primary: phoneNumber => (phoneNumber.isPrimary ? <FormattedMessage id="ui-organizations.primaryItem" /> : ''),
   };
