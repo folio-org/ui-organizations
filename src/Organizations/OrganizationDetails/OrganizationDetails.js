@@ -65,20 +65,6 @@ const OrganizationDetails = ({
     ({ onToggle }) => {
       return (
         <MenuSection id="data-test-organizations-details-actions">
-          <IfPermission perm="ui-organizations.delete">
-            <Button
-              buttonStyle="dropdownItem"
-              data-test-button-delete-organization
-              onClick={() => {
-                onToggle();
-                toggleRemoveModal();
-              }}
-            >
-              <Icon size="small" icon="trash">
-                <FormattedMessage id="ui-organizations.view.delete" />
-              </Icon>
-            </Button>
-          </IfPermission>
           <IfPermission perm="ui-organizations.edit">
             <Button
               buttonStyle="dropdownItem"
@@ -90,6 +76,20 @@ const OrganizationDetails = ({
             >
               <Icon size="small" icon="edit">
                 <FormattedMessage id="ui-organizations.view.edit" />
+              </Icon>
+            </Button>
+          </IfPermission>
+          <IfPermission perm="ui-organizations.delete">
+            <Button
+              buttonStyle="dropdownItem"
+              data-test-button-delete-organization
+              onClick={() => {
+                onToggle();
+                toggleRemoveModal();
+              }}
+            >
+              <Icon size="small" icon="trash">
+                <FormattedMessage id="ui-organizations.view.delete" />
               </Icon>
             </Button>
           </IfPermission>
