@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 ### Stories
 ### Bug fixes
+* [UIORGS-154](https://issues.folio.org/browse/UIORGS-154) Delete action at top of action menu
 
 ## [2.0.1](https://github.com/folio-org/ui-organizations/tree/v2.0.1) (2020-03-27)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.0.0...v2.0.1)
