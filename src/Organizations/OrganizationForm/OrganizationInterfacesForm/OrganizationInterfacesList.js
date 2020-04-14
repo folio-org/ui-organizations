@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
 
 import {
   Button,
@@ -10,6 +9,7 @@ import {
   MultiColumnList,
 } from '@folio/stripes/components';
 import { Pluggable } from '@folio/stripes/core';
+import { acqRowFormatter } from '@folio/stripes-acq-components';
 
 import {
   ADD_INTERFACE_URL,
@@ -78,24 +78,22 @@ AddInterfaceButton.propTypes = {
   orgId: PropTypes.string,
 };
 
+const alignRowProps = { alignLastColToEnd: true };
+
 const OrganizationInterfacesList = ({ fetchInterfaces, fields, interfaces, orgId }) => {
   const contentData = fields.getAll().map((interfaceId, _index) => ({
     ...get(interfaces, interfaceId, {}),
     _index,
   }));
 
-  const anchoredRowFormatter = (row) => {
-    return (
-      <div role="listitem" key={`row-${row.rowIndex}`}>
-        <Link
-          to={getInterfaceUrl(orgId, row.rowData.id)}
-          className={row.rowClass}
-          {...row.rowProps}
-        >
-          {row.cells}
-        </Link>
-      </div>
-    );
+  const anchoredRowFormatter = ({ rowProps, ...rest }) => {
+    return acqRowFormatter({
+      ...rest,
+      rowProps: {
+        ...rowProps,
+        to: getInterfaceUrl(orgId, rest.rowData.id),
+      },
+    });
   };
 
   const resultsFormatter = {
@@ -125,6 +123,7 @@ const OrganizationInterfacesList = ({ fetchInterfaces, fields, interfaces, orgId
         contentData={contentData}
         formatter={resultsFormatter}
         rowFormatter={anchoredRowFormatter}
+        rowProps={alignRowProps}
         visibleColumns={visibleColumns}
       />
       <br />
