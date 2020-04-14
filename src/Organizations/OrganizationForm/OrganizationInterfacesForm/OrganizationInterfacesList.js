@@ -116,7 +116,7 @@ const OrganizationInterfacesList = ({ fetchInterfaces, fields, interfaces, orgId
   };
 
   return (
-    <React.Fragment>
+    <>
       <MultiColumnList
         id="interface-list"
         columnMapping={columnMapping}
@@ -132,7 +132,7 @@ const OrganizationInterfacesList = ({ fetchInterfaces, fields, interfaces, orgId
         fields={fields}
         orgId={orgId}
       />
-    </React.Fragment>
+    </>
   );
 };
 
