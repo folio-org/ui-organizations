@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 ### Stories
+* [UINV-138](https://issues.folio.org/browse/UINV-138) Align actions icons in table to right hand side of view pane(s)
+
 ### Bug fixes
 * [UIORGS-154](https://issues.folio.org/browse/UIORGS-154) Delete action at top of action menu
 

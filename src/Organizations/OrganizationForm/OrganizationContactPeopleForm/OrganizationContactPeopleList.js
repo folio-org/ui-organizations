@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { get, map } from 'lodash';
 import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
 
 import {
   Button,
@@ -10,6 +9,7 @@ import {
   MultiColumnList,
 } from '@folio/stripes/components';
 import { Pluggable } from '@folio/stripes/core';
+import { acqRowFormatter } from '@folio/stripes-acq-components';
 
 import { transformCategoryIdsToLables } from '../../../common/utils/category';
 
@@ -80,23 +80,23 @@ AddContactButton.propTypes = {
   orgId: PropTypes.string,
 };
 
+const alignRowProps = { alignLastColToEnd: true };
+
 const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, orgId, categoriesDict, stripes }) => {
   const contentData = fields.getAll().map((contactId, _index) => ({
     ...get(contactsMap, contactId, {}),
     _index,
   }));
 
-  const anchoredRowFormatter = (row) => (
-    <div role="listitem" key={`row-${row.rowIndex}`}>
-      <Link
-        to={getContactsUrl(orgId, row.rowData.id)}
-        className={row.rowClass}
-        {...row.rowProps}
-      >
-        {row.cells}
-      </Link>
-    </div>
-  );
+  const anchoredRowFormatter = ({ rowProps, ...rest }) => {
+    return acqRowFormatter({
+      ...rest,
+      rowProps: {
+        ...rowProps,
+        to: getContactsUrl(orgId, rest.rowData.id),
+      },
+    });
+  };
 
   const resultsFormatter = {
     categories: ({ categories = [] }) => transformCategoryIdsToLables(categoriesDict, categories),
@@ -119,13 +119,14 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
   };
 
   return (
-    <React.Fragment>
+    <>
       <MultiColumnList
         id="contact-list"
         columnMapping={columnMapping}
         contentData={contentData}
         formatter={resultsFormatter}
         rowFormatter={anchoredRowFormatter}
+        rowProps={alignRowProps}
         visibleColumns={visibleColumns}
       />
       <br />
@@ -135,7 +136,7 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
         stripes={stripes}
         orgId={orgId}
       />
-    </React.Fragment>
+    </>
   );
 };
 
