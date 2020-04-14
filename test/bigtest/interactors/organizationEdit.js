@@ -4,29 +4,36 @@ import {
   interactor,
   Interactor,
   isVisible,
+  isPresent,
+  scoped,
 } from '@bigtest/interactor';
+
+import { TextFieldInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 import { SECTIONS } from '../../../src/common/constants';
 import Button from './Button';
 import {
-  SummarySection,
   InterfacesSection,
   VendorInformationSection,
   VendorTermsSection,
   EdiInformationSection,
   AccountsSection,
 } from './orgSections';
-
+import Metadata from './Metadata';
 import ContactList from './ContactList';
 import InterfaceList from './Interfaces/InterfaceList';
 import CheckboxInteractor from './CheckboxInteractor';
-import TextFieldInteractor from './TextFieldInteractor';
 import ConfirmationModal from './ConfirmationModal';
 
-class SummarySectionForm extends SummarySection {
-  name = new Interactor('input[name="name"]');
+@interactor class SummarySectionForm {
+  static defaultScope = `#${SECTIONS.summarySection}`;
+  headerButton = new Button(`#accordion-toggle-button-${SECTIONS.summarySection}`);
+  metadata = new Metadata();
+  isExpanded = isVisible('[class*=content---]');
+  name = new TextFieldInteractor('input[name="name"]');
   isVendor = new CheckboxInteractor('input[name="isVendor"]');
-  code = new Interactor('input[name="code"]');
+  code = new TextFieldInteractor('input[name="code"]');
+  codeError = isPresent('#icon-org.code-validation-error');
   status = new Interactor('select[name="status"]');
 }
 
@@ -34,7 +41,7 @@ class SummarySectionForm extends SummarySection {
   static defaultScope = `#${SECTIONS.contactPeopleSection}`;
   headerButton = new Button(`#accordion-toggle-button-${SECTIONS.contactPeopleSection}`);
   addContactButton = new Button('[data-test-add-contact]');
-  isExpanded = isVisible('#contact-list');
+  isExpanded = isPresent('#contact-list');
 }
 
 class VendorTermsForm extends VendorTermsSection {
@@ -70,9 +77,9 @@ export default interactor(class OrganizationEditInteractor {
   createOrgButton = new Button('#organization-form-save');
   closePaneButton = new Button('[class*=paneHeaderButtonsArea---] [icon=times]');
 
-  summarySectionForm = new SummarySectionForm();
+  summarySectionForm = scoped(`#${SECTIONS.summarySection}`, SummarySectionForm);
   contactInformationSection = new ContactInformationForm();
-  contactPeopleSection = new ContactPeopleForm();
+  contactPeopleSection = scoped(`#${SECTIONS.contactPeopleSection}`, ContactPeopleForm);
   interfacesSection = new InterfacesSection();
   vendorInformationSection = new VendorInformationSection();
   vendorTermsSection = new VendorTermsForm();

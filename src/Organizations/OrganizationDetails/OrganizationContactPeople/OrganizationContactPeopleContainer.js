@@ -4,10 +4,10 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
 
 import { stripesConnect } from '@folio/stripes/core';
-import { Icon } from '@folio/stripes/components';
+import { Loading } from '@folio/stripes/components';
 import {
   batchFetch,
-  useShowToast,
+  useShowCallout,
 } from '@folio/stripes-acq-components';
 
 import { baseContactsResource } from '../../../common/resources';
@@ -23,23 +23,23 @@ const OrganizationContactPeopleContainer = ({
 }) => {
   const organizationId = match.params.id;
   const [contacts, setContacts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const showToast = useShowToast();
+  const [isLoading, setIsLoading] = useState(true);
+  const showToast = useShowCallout();
 
-  useEffect(() => {
-    setContacts([]);
-    if (contactsIds.length) {
+  useEffect(
+    () => {
       setIsLoading(true);
       batchFetch(mutator.organizationDetailsContacts, contactsIds)
-        .then(response => setContacts(response))
+        .then(setContacts)
         .catch(() => {
-          showToast('ui-organizations.contacts.actions.load.error', 'error');
+          setContacts([]);
+          showToast({ messageId: 'ui-organizations.contacts.actions.load.error', type: 'error' });
         })
         .finally(() => setIsLoading(false));
-    }
-  },
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  [contactsIds]);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [contactsIds, showToast],
+  );
 
   const openContact = useCallback(
     (e, { id }) => {
@@ -51,7 +51,7 @@ const OrganizationContactPeopleContainer = ({
   );
 
   if (isLoading) {
-    return (<Icon icon="spinner-ellipsis" />);
+    return (<Loading />);
   }
 
   return (
@@ -80,7 +80,6 @@ OrganizationContactPeopleContainer.propTypes = {
 };
 
 OrganizationContactPeopleContainer.defaultProps = {
-  contactsIds: [],
   vendorCategories: [],
 };
 

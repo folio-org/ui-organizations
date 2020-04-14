@@ -4,7 +4,7 @@ import { FieldArray } from 'redux-form';
 
 import {
   Col,
-  Icon,
+  Loading,
   Row,
 } from '@folio/stripes/components';
 import {
@@ -20,13 +20,19 @@ import {
 import { DICT_CATEGORIES } from '../../../common/constants';
 import OrganizationContactPeopleList from './OrganizationContactPeopleList';
 
-function OrganizationContactPeopleForm({ orgId, mutator, storedContactIds, stripes }) {
+function OrganizationContactPeopleForm({ open, orgId, mutator, storedContactIds, stripes }) {
   const [categoriesDict, setCategoriesDict] = useState();
   const [contacts, setContacts] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchContacts = useCallback(ids => {
-    batchFetch(mutator.contactsManualFetch, ids || [])
-      .then(setContacts);
+    setIsLoading(true);
+    batchFetch(mutator.contactsManualFetch, ids)
+      .then(setContacts)
+      .catch(() => {
+        setContacts([]);
+      })
+      .finally(() => setIsLoading(false));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -37,14 +43,9 @@ function OrganizationContactPeopleForm({ orgId, mutator, storedContactIds, strip
 
   useEffect(() => fetchContacts(storedContactIds), [fetchContacts, storedContactIds]);
 
-  const isLoading = !(categoriesDict && contacts);
-
-  if (isLoading) {
+  if (isLoading || !categoriesDict || !open) {
     return (
-      <Icon
-        icon="spinner-ellipsis"
-        width="100px"
-      />
+      <Loading />
     );
   }
 
@@ -88,6 +89,7 @@ OrganizationContactPeopleForm.manifest = Object.freeze({
 
 OrganizationContactPeopleForm.propTypes = {
   mutator: PropTypes.object.isRequired,
+  open: PropTypes.bool,
   orgId: PropTypes.string,
   storedContactIds: PropTypes.arrayOf(PropTypes.string),
   stripes: stripesShape.isRequired,

@@ -104,8 +104,8 @@ describe('Organization edit', () => {
     expect(orgEdit.isPresent).to.be.true;
   });
 
-  it('contact people section is expanded', function () {
-    expect(orgEdit.contactPeopleSection.isExpanded).to.be.true;
+  it('contact people section is not expanded', function () {
+    expect(orgEdit.contactPeopleSection.isExpanded).to.be.false;
   });
 
   it('update Vendor Button is disabled', function () {
@@ -135,31 +135,41 @@ describe('Organization edit', () => {
     });
   });
 
-  it('displays Contact List', function () {
-    expect(orgEdit.contactList.contacts().length).to.equal(contacts.length);
-  });
-
-  describe('click unassign contact button', function () {
+  describe('expand contacts accordion', function () {
     beforeEach(async function () {
-      await orgEdit.contactList.contacts(0).unassign.click();
+      await orgEdit.contactPeopleSection.headerButton.click();
     });
 
-    it('contact is unassigned', function () {
-      expect(orgEdit.contactList.contacts().length).to.equal(contacts.length - 1);
-    });
-  });
-
-  describe('click on contact row', function () {
-    beforeEach(async function () {
-      await orgEdit.contactList.contacts(0).click();
+    it('displays Contact List', function () {
+      expect(orgEdit.contactList.contacts().length).to.equal(contacts.length);
     });
 
-    it('closes org edit form', function () {
-      expect(orgEdit.isPresent).to.be.false;
+    describe('click unassign contact button', function () {
+      beforeEach(async function () {
+        await orgEdit.contactList.contacts(0).unassign.click();
+      });
+
+      it('contact is unassigned', function () {
+        expect(orgEdit.contactList.contacts().length).to.equal(contacts.length - 1);
+      });
+    });
+
+    describe('click on contact row', function () {
+      beforeEach(async function () {
+        await orgEdit.contactList.contacts(0).click();
+      });
+
+      it('closes org edit form', function () {
+        expect(orgEdit.isPresent).to.be.false;
+      });
     });
   });
 
   describe('interfaces list section', () => {
+    beforeEach(async function () {
+      await orgEdit.interfacesSection.headerButton.click();
+    });
+
     it('display expected list length', () => {
       expect(orgEdit.interfaceList.interfaces().length).to.equal(interfaces.length);
     });

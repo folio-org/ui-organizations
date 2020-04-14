@@ -140,19 +140,25 @@ const OrganizationForm = ({
                   id={ORGANIZATION_SECTIONS.contactPeopleSection}
                   label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactPeopleSection]}
                 >
-                  <OrganizationContactPeopleForm
-                    orgId={id}
-                    storedContactIds={contacts}
-                  />
+                  {open => (
+                    <OrganizationContactPeopleForm
+                      open={open}
+                      orgId={id}
+                      storedContactIds={contacts}
+                    />
+                  )}
                 </Accordion>
                 <Accordion
                   id={ORGANIZATION_SECTIONS.interfacesSection}
                   label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.interfacesSection]}
                 >
-                  <OrganizationInterfacesForm
-                    orgId={id}
-                    storedInterfaces={interfaces}
-                  />
+                  {open => (
+                    <OrganizationInterfacesForm
+                      open={open}
+                      orgId={id}
+                      storedInterfaces={interfaces}
+                    />
+                  )}
                 </Accordion>
                 {
                   isVendorForm && (

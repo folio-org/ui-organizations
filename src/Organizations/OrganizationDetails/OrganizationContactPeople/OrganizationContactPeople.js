@@ -10,6 +10,7 @@ import {
   Icon,
   MultiColumnList,
 } from '@folio/stripes/components';
+import { acqRowFormatter } from '@folio/stripes-acq-components';
 
 import { transformCategoryIdsToLables } from '../../../common/utils';
 
@@ -21,6 +22,7 @@ const columnMapping = {
   phone: <FormattedMessage id="ui-organizations.contactPeople.phone" />,
   icon: null,
 };
+const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationContactPeople = ({ vendorCategories, contacts, openContact }) => {
   const resultsFormatter = {
@@ -37,6 +39,8 @@ const OrganizationContactPeople = ({ vendorCategories, contacts, openContact }) 
       contentData={contacts}
       formatter={resultsFormatter}
       onRowClick={openContact}
+      rowFormatter={acqRowFormatter}
+      rowProps={alignRowProps}
       visibleColumns={visibleColumns}
     />
   );

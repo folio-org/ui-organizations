@@ -5,6 +5,7 @@
 * [UINV-138](https://issues.folio.org/browse/UINV-138) Align actions icons in table to right hand side of view pane(s)
 
 ### Bug fixes
+* [UIORGS-128](https://issues.folio.org/browse/UIORGS-128) Edit Organizations: Interface table does not look right
 * [UIORGS-154](https://issues.folio.org/browse/UIORGS-154) Delete action at top of action menu
 
 ## [2.0.1](https://github.com/folio-org/ui-organizations/tree/v2.0.1) (2020-03-27)

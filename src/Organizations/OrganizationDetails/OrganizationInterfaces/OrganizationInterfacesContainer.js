@@ -5,7 +5,8 @@ import React, {
 import PropTypes from 'prop-types';
 
 import { stripesConnect } from '@folio/stripes/core';
-import { Icon } from '@folio/stripes/components';
+import { Loading } from '@folio/stripes/components';
+import { batchFetch } from '@folio/stripes-acq-components';
 
 import {
   interfacesResource,
@@ -20,18 +21,11 @@ const OrganizationInterfacesContainer = ({ mutator, interfaceIds }) => {
   useEffect(
     () => {
       setIsLoading(true);
-      setInterfaces([]);
-
-      const interfacesPromise = interfaceIds.length === 0
-        ? Promise.resolve([])
-        : mutator.organizationDetailsInfaces.GET({
-          params: {
-            query: interfaceIds.map(interfaceId => `id==${interfaceId}`).join(' or '),
-          },
-        });
-
-      interfacesPromise
-        .then(interfacesResponse => setInterfaces(interfacesResponse))
+      batchFetch(mutator.organizationDetailsInfaces, interfaceIds)
+        .then(setInterfaces)
+        .catch(() => {
+          setInterfaces([]);
+        })
         .finally(() => setIsLoading(false));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,7 +33,7 @@ const OrganizationInterfacesContainer = ({ mutator, interfaceIds }) => {
   );
 
   if (isLoading) {
-    return <Icon icon="spinner-ellipsis" />;
+    return <Loading />;
   }
 
   return (
@@ -53,16 +47,13 @@ OrganizationInterfacesContainer.manifest = Object.freeze({
   organizationDetailsInfaces: {
     ...interfacesResource,
     accumulate: true,
+    fetch: false,
   },
 });
 
 OrganizationInterfacesContainer.propTypes = {
   interfaceIds: PropTypes.arrayOf(PropTypes.string),
   mutator: PropTypes.object.isRequired,
-};
-
-OrganizationInterfacesContainer.defaultProps = {
-  interfaceIds: [],
 };
 
 export default stripesConnect(OrganizationInterfacesContainer);
