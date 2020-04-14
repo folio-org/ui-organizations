@@ -141,11 +141,11 @@ const OrganizationForm = ({
                   label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactPeopleSection]}
                 >
                   {open => (
-                  <OrganizationContactPeopleForm
+                    <OrganizationContactPeopleForm
                       open={open}
-                    orgId={id}
-                    storedContactIds={contacts}
-                  />
+                      orgId={id}
+                      storedContactIds={contacts}
+                    />
                   )}
                 </Accordion>
                 <Accordion
@@ -153,11 +153,11 @@ const OrganizationForm = ({
                   label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.interfacesSection]}
                 >
                   {open => (
-                  <OrganizationInterfacesForm
+                    <OrganizationInterfacesForm
                       open={open}
-                    orgId={id}
-                    storedInterfaces={interfaces}
-                  />
+                      orgId={id}
+                      storedInterfaces={interfaces}
+                    />
                   )}
                 </Accordion>
                 {
