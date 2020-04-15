@@ -371,7 +371,7 @@
     "vendorInfo.licensor": "许可方",
     "vendorInfo.materialSupplier": "资料供应商",
     "vendorInfo.vendorCurrencies": "供应商货币",
-    "vendorInfo.claimingInterval": "索赔间隔",
+    "vendorInfo.claimingInterval": "催缺间隔",
     "vendorInfo.discountPercent": "折扣百分比",
     "vendorInfo.expectedActivationInterval": "预期激活间隔",
     "vendorInfo.expectedInvoiceInterval": "预期发票间隔",
