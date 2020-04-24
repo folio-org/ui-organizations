@@ -70,18 +70,14 @@ const OrganizationsListContainer = ({ mutator, location, history }) => {
       .finally(() => setIsLoading(false));
   };
 
-  const onNeedMoreData = useCallback(
-    () => {
-      const newOffset = organizationsOffset + RESULT_COUNT_INCREMENT;
+  const onNeedMoreData = () => {
+    const newOffset = organizationsOffset + RESULT_COUNT_INCREMENT;
 
-      loadOrganizations(newOffset)
-        .then(() => {
-          setOrganizationsOffset(newOffset);
-        });
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [organizationsOffset],
-  );
+    loadOrganizations(newOffset)
+      .then(() => {
+        setOrganizationsOffset(newOffset);
+      });
+  };
 
   const refreshList = () => {
     setOrganizations([]);

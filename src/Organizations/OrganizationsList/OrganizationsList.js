@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Route,
@@ -11,10 +11,12 @@ import {
   Paneset,
   MultiColumnList,
 } from '@folio/stripes/components';
+import { SearchAndSortNoResultsMessage } from '@folio/stripes/smart-components';
 import {
   FiltersPane,
-  ResultsPane,
   ResetButton,
+  ResultsPane,
+  SEARCH_PARAMETER,
   SingleSearchForm,
   useLocationFilters,
   useLocationSorting,
@@ -83,11 +85,29 @@ const OrganizationsList = ({
   );
 
   const renderLastMenu = useCallback(() => <OrganizationsListLastMenu />, []);
+  const hasFilters = filters && Object.values(filters).some(Boolean);
+  const source = useMemo(
+    () => ({
+      loaded: () => hasFilters && !isLoading,
+      pending: () => isLoading,
+      failure: () => {},
+    }),
+    [isLoading, hasFilters],
+  );
+
+  const resultsStatusMessage = (
+    <SearchAndSortNoResultsMessage
+      filterPaneIsVisible={isFiltersOpened}
+      searchTerm={filters[SEARCH_PARAMETER] || ''}
+      source={source}
+      toggleFilterPane={toggleFilters}
+    />
+  );
 
   return (
     <Paneset data-test-organizations-list>
       {isFiltersOpened && (
-        <FiltersPane>
+        <FiltersPane toggleFilters={toggleFilters}>
           <SingleSearchForm
             applySearch={applySearch}
             changeSearch={changeSearch}
@@ -117,7 +137,8 @@ const OrganizationsList = ({
         count={organizationsCount}
         renderLastMenu={renderLastMenu}
         toggleFiltersPane={toggleFilters}
-        filters={!isFiltersOpened ? filters : undefined}
+        filters={filters}
+        isFiltersOpened={isFiltersOpened}
       >
         <MultiColumnList
           id="organizations-list"
@@ -134,6 +155,9 @@ const OrganizationsList = ({
           sortDirection={sortingDirection}
           onHeaderClick={changeSorting}
           onRowClick={openOrganizationDetails}
+          isEmptyMessage={resultsStatusMessage}
+          pagingType="click"
+          hasMargin
         />
       </ResultsPane>
 
