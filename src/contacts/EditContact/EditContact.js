@@ -17,12 +17,12 @@ import {
   Pane,
   PaneFooter,
   Row,
-  Select,
   TextArea,
   TextField,
 } from '@folio/stripes/components';
 
 import {
+  FieldSelect,
   validateRequired,
   useAccordionToggle,
 } from '@folio/stripes-acq-components';
@@ -33,7 +33,6 @@ import {
   FieldLanguage,
 } from '../../common/components';
 
-import { EMPTY_DROPDOWN_ITEM } from '../../common/utils/dropdown';
 import phoneTypesList from '../../Utils/PhoneTypes';
 import {
   CONTACT_PERSON_ACCORDIONS,
@@ -167,22 +166,11 @@ const EditContact = ({
                   />
                 </Col>
                 <Col xs={3}>
-                  <Field
-                    component={Select}
-                    dataOptions={[EMPTY_DROPDOWN_ITEM]}
-                    fullWidth
+                  <FieldSelect
+                    dataOptions={CONTACT_STATUSES}
                     label={<FormattedMessage id="ui-organizations.contactPeople.status" />}
                     name="inactive"
-                  >
-                    {Object.keys(CONTACT_STATUSES).map((key) => (
-                      <FormattedMessage
-                        id={`ui-organizations.contactPeople.status.${key}`}
-                        key={key}
-                      >
-                        {(message) => <option value={CONTACT_STATUSES[key]}>{message}</option>}
-                      </FormattedMessage>
-                    ))}
-                  </Field>
+                  />
                 </Col>
               </Row>
               <Row>

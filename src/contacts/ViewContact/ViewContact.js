@@ -59,9 +59,6 @@ const ViewContact = ({
         <Button
           data-test-contacts-action-copy
           buttonStyle="dropdownItem"
-          onClick={() => {
-            onToggle();
-          }}
         >
           <Icon icon="duplicate">
             <FormattedMessage id="ui-organizations.contacts.button.copy" />

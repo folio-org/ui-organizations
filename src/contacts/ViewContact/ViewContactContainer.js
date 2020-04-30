@@ -101,7 +101,7 @@ class ViewContactContainer extends Component {
     }
 
     return (
-      <React.Fragment>
+      <>
         <ViewContact
           editUrl={editUrl}
           categories={contactCategories}
@@ -132,7 +132,7 @@ class ViewContactContainer extends Component {
             open
           />
         )}
-      </React.Fragment>
+      </>
 
     );
   }

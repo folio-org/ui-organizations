@@ -44,6 +44,7 @@ export default interactor(class CreateContactInteractor {
   phoneForm = new PhoneForm();
   emailForm = new EmailForm();
   urlForm = new UrlForm();
+  closeButton = new Button('[icon=times]');
   paneTitle = text('[class*="paneTitleLabel---"]');
   noteField = text('[name="notes"]');
   isLoaded = isPresent('[data-test-address-form]');

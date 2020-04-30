@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
@@ -29,7 +29,7 @@ const OrganizationSummary = ({
   status,
 }) => {
   return (
-    <Fragment>
+    <>
       <Row>
         <Col xs={12}>
           {metadata && <ViewMetaData metadata={metadata} />}
@@ -104,7 +104,7 @@ const OrganizationSummary = ({
           </KeyValue>
         </Col>
       </Row>
-    </Fragment>
+    </>
   );
 };
 

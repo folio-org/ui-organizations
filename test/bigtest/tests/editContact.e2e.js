@@ -3,7 +3,10 @@ import { expect } from 'chai';
 
 import setupApplication from '../helpers/setup-application';
 
-import { CreateContactInteractor } from '../interactors';
+import {
+  CreateContactInteractor,
+  ViewContactInteractor,
+} from '../interactors';
 
 const TEST_NOTE = 'Test note';
 
@@ -11,6 +14,7 @@ describe('Edit contact', () => {
   setupApplication();
 
   const editContact = new CreateContactInteractor();
+  const viewContact = new ViewContactInteractor();
 
   beforeEach(async function () {
     const contact = this.server.create('contact', { notes: TEST_NOTE });
@@ -35,10 +39,23 @@ describe('Edit contact', () => {
     beforeEach(async function () {
       await editContact.urlForm.removeUrlButton();
       await editContact.saveButton.click();
+      await viewContact.whenLoaded();
     });
 
     it('Save and close contact form', () => {
       expect(editContact.isPresent).to.be.false;
+      expect(viewContact.isPresent).to.be.true;
+    });
+  });
+
+  describe('click close button', () => {
+    beforeEach(async function () {
+      await editContact.closeButton.click();
+      await viewContact.whenLoaded();
+    });
+
+    it('contact view pane should be presented', () => {
+      expect(viewContact.isPresent).to.be.true;
     });
   });
 });

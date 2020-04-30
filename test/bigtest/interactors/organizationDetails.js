@@ -1,6 +1,7 @@
 import {
   interactor,
   isPresent,
+  text,
 } from '@bigtest/interactor';
 
 import Button from './Button';
@@ -23,6 +24,11 @@ import {
   edit = new Button('[data-test-button-edit-organization]');
 }
 
+@interactor class VendorCurrencies {
+  static defaultScope = '[data-test-vendor-currencies]';
+  value = text('[class*=kvRoot---]');
+}
+
 export default interactor(class OrganizationDetailsInteractor {
   static defaultScope = '#pane-organization-details';
 
@@ -38,6 +44,7 @@ export default interactor(class OrganizationDetailsInteractor {
   ediInformationSection = new EdiInformationSection();
   accountsSection = new AccountsSection();
   actions = new OrganizationDetailsActions();
+  vendorCurrencies = new VendorCurrencies();
 
   expandAllButton = new Button('[class*=paneContent---] div[class*=row---] [class*=button---]');
 

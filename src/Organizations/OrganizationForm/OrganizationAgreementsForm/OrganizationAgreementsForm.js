@@ -11,7 +11,11 @@ import {
   TextField,
 } from '@folio/stripes/components';
 
-import { Required, isURLValid } from '../../../Utils/Validate';
+import {
+  validateRequired,
+} from '@folio/stripes-acq-components';
+
+import { isURLValid } from '../../../Utils/Validate';
 import css from './OrganizationAgreementsForm.css';
 
 class OrganizationAgreementsForm extends Component {
@@ -63,7 +67,7 @@ class OrganizationAgreementsForm extends Component {
               label={<FormattedMessage id="ui-organizations.agreement.name" />}
               name={`${elem}.name`}
               required
-              validate={[Required]}
+              validate={[validateRequired]}
             />
           </Col>
           <Col

@@ -12,6 +12,7 @@ import {
 import {
   FieldAutoSuggest,
   FieldSelect,
+  validateRequired,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -20,7 +21,6 @@ import {
 } from '../../../../common/components';
 import { createAddNewItem } from '../../../../common/utils';
 import CategoryDropdown from '../../../../Utils/CategoryDropdown';
-import { Required } from '../../../../Utils/Validate';
 
 import css from './ContactInfoCard.css';
 
@@ -59,7 +59,7 @@ const PhoneNumbers = ({
               labelId="ui-organizations.contactPeople.phoneNumber"
               name={`${name}.phoneNumber`}
               required
-              validate={[Required]}
+              validate={[validateRequired]}
               valueKey={valueKey}
               onSelect={(item) => {
                 fields.remove(index);

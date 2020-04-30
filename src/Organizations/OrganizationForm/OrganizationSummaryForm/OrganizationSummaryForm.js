@@ -16,10 +16,12 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
+import {
+  validateRequired,
+} from '@folio/stripes-acq-components';
 
 import { ORGANIZATION_STATUS } from '../../../common/constants';
 import { FieldLanguage } from '../../../common/components';
-import { Required } from '../../../Utils/Validate';
 import resetVendorFields from './resetVendorFields';
 
 class OrganizationSummaryForm extends Component {
@@ -42,7 +44,7 @@ class OrganizationSummaryForm extends Component {
             label={<FormattedMessage id="ui-organizations.summary.alias" />}
             name={`${elem}.value`}
             required
-            validate={[Required]}
+            validate={[validateRequired]}
           />
         </Col>
         <Col xs>
@@ -95,7 +97,7 @@ class OrganizationSummaryForm extends Component {
             label={<FormattedMessage id="ui-organizations.summary.name" />}
             name="name"
             required
-            validate={[Required]}
+            validate={[validateRequired]}
           />
         </Col>
         <Col
@@ -108,7 +110,7 @@ class OrganizationSummaryForm extends Component {
             label={<FormattedMessage id="ui-organizations.summary.code" />}
             name="code"
             required
-            validate={[Required]}
+            validate={[validateRequired]}
           />
         </Col>
         <Col
@@ -133,7 +135,7 @@ class OrganizationSummaryForm extends Component {
             name="status"
             placeholder=" "
             required
-            validate={[Required]}
+            validate={[validateRequired]}
           >
             {Object.keys(ORGANIZATION_STATUS).map((key) => (
               <FormattedMessage

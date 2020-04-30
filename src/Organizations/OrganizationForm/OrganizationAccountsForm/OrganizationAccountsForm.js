@@ -17,10 +17,10 @@ import {
 import {
   FieldSelect,
   PAYMENT_METHOD_OPTIONS,
+  validateRequired,
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATION_STATUS } from '../../../common/constants';
-import { Required } from '../../../Utils/Validate';
 import css from './OrganizationAccountsForm.css';
 
 class OrganizationAccountsForm extends Component {
@@ -69,7 +69,7 @@ class OrganizationAccountsForm extends Component {
               label={<FormattedMessage id="ui-organizations.accounts.name" />}
               name={`${elem}.name`}
               required
-              validate={[Required]}
+              validate={[validateRequired]}
             />
           </Col>
           <Col
@@ -79,7 +79,7 @@ class OrganizationAccountsForm extends Component {
             <Field
               label={<FormattedMessage id="ui-organizations.accounts.accountNumber" />}
               name={`${elem}.accountNo`}
-              validate={[Required]}
+              validate={[validateRequired]}
               required
               component={TextField}
               fullWidth
@@ -129,7 +129,7 @@ class OrganizationAccountsForm extends Component {
               name={`${elem}.accountStatus`}
               placeholder=" "
               required
-              validate={[Required]}
+              validate={[validateRequired]}
             >
               {Object.keys(ORGANIZATION_STATUS).map((key) => (
                 <FormattedMessage
@@ -163,7 +163,7 @@ class OrganizationAccountsForm extends Component {
               label={<FormattedMessage id="ui-organizations.accounts.libraryCode" />}
               name={`${elem}.libraryCode`}
               required
-              validate={[Required]}
+              validate={[validateRequired]}
             />
           </Col>
           <Col
@@ -176,7 +176,7 @@ class OrganizationAccountsForm extends Component {
               label={<FormattedMessage id="ui-organizations.accounts.libraryEDICode" />}
               name={`${elem}.libraryEdiCode`}
               required
-              validate={[Required]}
+              validate={[validateRequired]}
             />
           </Col>
           <Col

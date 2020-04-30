@@ -14,7 +14,7 @@ const OrganizationAccounts = ({ accounts }) => {
   }
 
   return (
-    <div>
+    <div data-test-accounts>
       {
         accounts.map((account, idx) => (
           <OrganizationAccount

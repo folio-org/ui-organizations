@@ -13,7 +13,10 @@ import {
   Row,
   TextField,
 } from '@folio/stripes/components';
-import { FieldAutoSuggest } from '@folio/stripes-acq-components';
+import {
+  FieldAutoSuggest,
+  validateRequired,
+} from '@folio/stripes-acq-components';
 
 import {
   FieldLanguage,
@@ -21,7 +24,6 @@ import {
 } from '../../../../common/components';
 import { createAddNewItem } from '../../../../common/utils';
 import CategoryDropdown from '../../../../Utils/CategoryDropdown';
-import { Required } from '../../../../Utils/Validate';
 
 import css from './ContactInfoCard.css';
 
@@ -55,7 +57,7 @@ const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownVendorCategor
               labelId="ui-organizations.contactInfo.emailAddress"
               name={`${name}.${valueKey}`}
               required
-              validate={[Required]}
+              validate={[validateRequired]}
               valueKey={valueKey}
               onSelect={(item) => {
                 fields.remove(index);

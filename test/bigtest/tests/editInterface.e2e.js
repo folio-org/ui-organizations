@@ -6,18 +6,21 @@ import setupApplication from '../helpers/setup-application';
 import { INTERFACE_TYPES } from '../../../src/common/constants';
 import { InterfaceEditInteractor } from '../interactors';
 
+const validationURLMessage = 'Invalid URL';
+
 describe('Edit interface', () => {
   setupApplication();
 
   const page = new InterfaceEditInteractor();
 
-  beforeEach(function () {
+  beforeEach(async function () {
     const interfaceMock = this.server.create('interface');
     const organization = this.server.create('organization', {
       interfaces: [interfaceMock.id],
     });
 
     this.visit(`/organizations/${organization.id}/interface/${interfaceMock.id}/edit`);
+    await page.whenLoaded();
   });
 
   it('displays edit interface form', () => {
@@ -36,6 +39,18 @@ describe('Edit interface', () => {
 
     it('interface form is closed', () => {
       expect(page.isPresent).to.be.false;
+    });
+  });
+
+  describe('validate interface URL', () => {
+    beforeEach(async function () {
+      await page.name.fill('name');
+      await page.url('invalid URL');
+      await page.saveButton.click();
+    });
+
+    it('displays error message', function () {
+      expect(page.validationMessage).to.include(validationURLMessage);
     });
   });
 });
