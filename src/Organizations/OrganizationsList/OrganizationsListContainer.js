@@ -11,6 +11,7 @@ import queryString from 'query-string';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
+  getFilterParams,
   makeQueryBuilder,
   useLocationReset,
 } from '@folio/stripes-acq-components';
@@ -49,8 +50,11 @@ const OrganizationsListContainer = ({ mutator, location, history }) => {
 
   const loadOrganizations = (offset) => {
     setIsLoading(true);
+    const queryParams = queryString.parse(location.search);
+    const filterParams = getFilterParams(queryParams);
+    const dontCallAPI = Object.keys(filterParams).length === 0;
 
-    const loadOrgsPromise = !location.search
+    const loadOrgsPromise = dontCallAPI
       ? Promise.resolve()
       : mutator.organizationsListOrgs.GET({
         params: {
