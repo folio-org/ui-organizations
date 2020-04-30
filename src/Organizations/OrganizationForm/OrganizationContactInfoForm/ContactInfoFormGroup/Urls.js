@@ -13,7 +13,10 @@ import {
   Row,
   TextField,
 } from '@folio/stripes/components';
-import { FieldAutoSuggest } from '@folio/stripes-acq-components';
+import {
+  FieldAutoSuggest,
+  validateRequired,
+} from '@folio/stripes-acq-components';
 
 import {
   FieldLanguage,
@@ -21,7 +24,7 @@ import {
 } from '../../../../common/components';
 import { createAddNewItem } from '../../../../common/utils';
 import CategoryDropdown from '../../../../Utils/CategoryDropdown';
-import { isURLValid, Required } from '../../../../Utils/Validate';
+import { isURLValid } from '../../../../Utils/Validate';
 
 import css from './ContactInfoCard.css';
 
@@ -55,7 +58,7 @@ const Urls = ({ defaultLanguage, dispatchChange, dropdownVendorCategories }) => 
               labelId="ui-organizations.contactInfo.url"
               name={`${name}.${valueKey}`}
               required
-              validate={[Required, isURLValid]}
+              validate={[validateRequired, isURLValid]}
               placeholder="http(s):// or ftp(s)://"
               valueKey={valueKey}
               onSelect={(item) => {

@@ -26,7 +26,6 @@
   "data.contactTypes.noAddressInfo": "Please add address info",
   "data.contactTypes.language": "Language",
 
-  "valid.required": "Required!",
   "valid.isURLValid": "Invalid URL",
 
   "filterConfig.addressCategory": "Address category",

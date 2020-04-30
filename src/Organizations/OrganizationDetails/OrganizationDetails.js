@@ -1,7 +1,4 @@
-import React, {
-  Fragment,
-  useCallback,
-} from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
@@ -109,7 +106,7 @@ const OrganizationDetails = ({
   );
 
   return (
-    <Fragment>
+    <>
       <Pane
         id="pane-organization-details"
         defaultWidth="fill"
@@ -180,7 +177,7 @@ const OrganizationDetails = ({
 
           {
             organization.isVendor && (
-              <Fragment>
+              <>
                 <Accordion
                   id={ORGANIZATION_SECTIONS.vendorInformationSection}
                   label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
@@ -227,7 +224,7 @@ const OrganizationDetails = ({
                     accounts={organization.accounts}
                   />
                 </Accordion>
-              </Fragment>
+              </>
             )
           }
         </AccordionSet>
@@ -254,7 +251,7 @@ const OrganizationDetails = ({
           />
         )
       }
-    </Fragment>
+    </>
   );
 };
 

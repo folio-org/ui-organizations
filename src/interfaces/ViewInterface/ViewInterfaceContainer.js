@@ -89,7 +89,7 @@ export class ViewInterfaceContainer extends Component {
     const { showConfirmDelete, showConfirmUnassign } = this.state;
 
     return (
-      <React.Fragment>
+      <>
         <ViewInterface
           baseUrl={baseUrl}
           item={currentInterface}
@@ -120,7 +120,7 @@ export class ViewInterfaceContainer extends Component {
             open
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

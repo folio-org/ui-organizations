@@ -13,7 +13,12 @@ describe('Vendor organization details', () => {
   const orgDetails = new OrganizationDetailsInteractor();
 
   beforeEach(function () {
-    const vendorOrg = this.server.create('organization', { isVendor: true });
+    const vendorOrg = this.server.create('organization', {
+      isVendor: true,
+      vendorCurrencies: ['USD'],
+      accounts: [{ accountNo: '001' }],
+      agreements: [{ name: 'library access' }],
+    });
 
     this.visit(`${VIEW_ORG_DETAILS}${vendorOrg.id}`);
   });
@@ -40,6 +45,7 @@ describe('Vendor organization details', () => {
 
   it('vendorInformationSection is displayed', function () {
     expect(orgDetails.vendorInformationSection.isPresent).to.be.true;
+    expect(orgDetails.vendorCurrencies.value).to.contain('US Dollar (USD)');
   });
 
   it('vendorTermsSection is displayed', function () {
@@ -52,5 +58,25 @@ describe('Vendor organization details', () => {
 
   it('accountsSection is displayed', function () {
     expect(orgDetails.accountsSection.isPresent).to.be.true;
+  });
+
+  describe('open accounts sections', function () {
+    beforeEach(async function () {
+      await orgDetails.accountsSection.headerButton.click();
+    });
+
+    it('accounts section is opened and account is presented', function () {
+      expect(orgDetails.accountsSection.accounts).to.be.true;
+    });
+  });
+
+  describe('open vendor terms sections', function () {
+    beforeEach(async function () {
+      await orgDetails.vendorTermsSection.headerButton.click();
+    });
+
+    it('vendor terms section is opened and agreement is presented', function () {
+      expect(orgDetails.vendorTermsSection.agreements).to.be.true;
+    });
   });
 });

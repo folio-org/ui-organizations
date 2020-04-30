@@ -1,7 +1,4 @@
-import React, {
-  Fragment,
-  useCallback,
-} from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -162,7 +159,7 @@ const OrganizationForm = ({
                 </Accordion>
                 {
                   isVendorForm && (
-                    <Fragment>
+                    <>
                       <Accordion
                         id={ORGANIZATION_SECTIONS.vendorInformationSection}
                         label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
@@ -190,7 +187,7 @@ const OrganizationForm = ({
                       >
                         <OrganizationAccountsForm />
                       </Accordion>
-                    </Fragment>
+                    </>
                   )
                 }
               </AccordionSet>

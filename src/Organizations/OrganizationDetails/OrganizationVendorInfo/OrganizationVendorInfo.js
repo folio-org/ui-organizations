@@ -41,7 +41,10 @@ const OrganizationVendorInfo = ({
         </KeyValue>
       </Col>
 
-      <Col xs={3}>
+      <Col
+        xs={3}
+        data-test-vendor-currencies
+      >
         <KeyValue
           label={<FormattedMessage id="ui-organizations.vendorInfo.vendorCurrencies" />}
           value={vendorCurrenciesString}

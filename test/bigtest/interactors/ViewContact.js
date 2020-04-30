@@ -19,6 +19,7 @@ export default interactor(class ViewContactInteractor {
   unassignConfirmation = new ConfirmationModal('#unassign-contact-modal');
   deleteConfirmation = new ConfirmationModal('#delete-contact-modal');
   pageIsVisible = isVisible('[data-test-contact-person]');
+  closeButton = new Button('[icon=times]');
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.pageIsVisible);

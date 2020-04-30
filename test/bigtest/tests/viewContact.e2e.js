@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import setupApplication from '../helpers/setup-application';
 
 import {
+  OrganizationEditInteractor,
   ViewContactInteractor,
 } from '../interactors';
 
@@ -11,6 +12,7 @@ describe('View contact', () => {
   setupApplication();
 
   const viewContact = new ViewContactInteractor();
+  const orgEdit = new OrganizationEditInteractor();
 
   beforeEach(async function () {
     const contact = this.server.create('contact');
@@ -77,6 +79,17 @@ describe('View contact', () => {
       it('confirmation modal for delete should disappear', () => {
         expect(viewContact.deleteConfirmation.isPresent).to.be.false;
       });
+    });
+  });
+
+  describe('click close button', () => {
+    beforeEach(async function () {
+      await viewContact.closeButton.click();
+      await orgEdit.whenLoaded();
+    });
+
+    it('organization edit pane should be presented', () => {
+      expect(orgEdit.isPresent).to.be.true;
     });
   });
 });

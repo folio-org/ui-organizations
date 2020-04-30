@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 ### Stories
+* [UIORGS-15](https://issues.folio.org/browse/UIORGS-15) Increase unit testing code coverage
 * [UINV-138](https://issues.folio.org/browse/UINV-138) Align actions icons in table to right hand side of view pane(s)
 
 ### Bug fixes

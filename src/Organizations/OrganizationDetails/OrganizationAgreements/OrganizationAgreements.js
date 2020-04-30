@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
@@ -14,10 +14,10 @@ const OrganizationAgreements = ({ agreements }) => {
   }
 
   return (
-    <div>
+    <div data-test-agreements>
       {
         agreements.map((agreement, idx) => (
-          <Fragment>
+          <>
             <OrganizationAgreement
               key={idx}
               name={agreement.name}
@@ -27,7 +27,7 @@ const OrganizationAgreements = ({ agreements }) => {
             />
 
             {idx !== agreements.length && <hr />}
-          </Fragment>
+          </>
         ))
       }
     </div>

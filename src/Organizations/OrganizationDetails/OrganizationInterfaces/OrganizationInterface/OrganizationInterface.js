@@ -68,7 +68,7 @@ const OrganizationInterface = ({ getCreds, item = {}, isNarrow = false }) => {
           </KeyValue>
         </Col>
         {!hasShowButton && (
-          <React.Fragment>
+          <>
             <Col xs={columnsAmount}>
               <KeyValue label={<FormattedMessage id="ui-organizations.interface.username" />}>
                 <span className={css.wrapValue}>
@@ -86,7 +86,7 @@ const OrganizationInterface = ({ getCreds, item = {}, isNarrow = false }) => {
                 </span>
               </KeyValue>
             </Col>
-          </React.Fragment>
+          </>
         )}
       </Row>
       <IfPermission perm="organizations-storage.interfaces.credentials.item.get">

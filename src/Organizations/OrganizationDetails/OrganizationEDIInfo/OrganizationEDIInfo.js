@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -15,7 +15,7 @@ import { getEDITypeLabel } from './utils';
 
 const OrganizationEDIInfo = ({ edi }) => {
   return (
-    <Fragment>
+    <>
       <Row>
         <Col xs={12}>
           <Headline weight="regular">
@@ -349,7 +349,7 @@ const OrganizationEDIInfo = ({ edi }) => {
           </Col>
         </Row>
       )}
-    </Fragment>
+    </>
   );
 };
 
