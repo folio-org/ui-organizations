@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  intlShape,
   injectIntl,
 } from 'react-intl';
 
@@ -27,7 +26,7 @@ const FieldLanguage = ({ namePrefix, intl, withLabel, ...rest }) => {
 };
 
 FieldLanguage.propTypes = {
-  intl: intlShape,
+  intl: PropTypes.object.isRequired,
   namePrefix: PropTypes.string,
   withLabel: PropTypes.bool,
 };
