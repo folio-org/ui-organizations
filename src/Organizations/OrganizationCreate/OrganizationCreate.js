@@ -3,7 +3,7 @@ import { getFormValues } from 'redux-form';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 import {
   stripesConnect,
@@ -85,7 +85,7 @@ OrganizationCreate.propTypes = {
   location: ReactRouterPropTypes.location.isRequired,
   stripes: stripesShape.isRequired,
   mutator: PropTypes.object.isRequired,
-  intl: intlShape.isRequired,
+  intl: PropTypes.object.isRequired,
 };
 
 export default withRouter(stripesConnect(injectIntl(OrganizationCreate)));
