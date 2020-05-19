@@ -1,25 +1,24 @@
 import {
   baseManifest,
+  VENDORS_API,
 } from '@folio/stripes-acq-components';
-
-import { ORGANIZATIONS_API } from '../constants';
 
 export const organizationsResource = {
   ...baseManifest,
   accumulate: true,
   fetch: false,
-  path: ORGANIZATIONS_API,
+  path: VENDORS_API,
 };
 
 export const organizationResource = {
   throwErrors: false,
   type: 'okapi',
-  path: `${ORGANIZATIONS_API}/!{orgId}`,
+  path: `${VENDORS_API}/!{orgId}`,
 };
 
 export const organizationResourceByUrl = {
   ...baseManifest,
-  path: `${ORGANIZATIONS_API}/:{id}`,
+  path: `${VENDORS_API}/:{id}`,
 };
 
 export const fetchOrgsByParam = {
