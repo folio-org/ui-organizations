@@ -19,12 +19,12 @@
     "home": "/organizations",
     "okapiInterfaces": {
       "configuration": "2.0",
+      "organizations.organizations": "1.0",
       "organizations-storage.addresses": "1.1",
       "organizations-storage.categories": "1.1",
       "organizations-storage.contacts": "2.0",
       "organizations-storage.emails": "1.1",
       "organizations-storage.interfaces": "2.0",
-      "organizations-storage.organizations": "3.0",
       "organizations-storage.phone-numbers": "2.0",
       "organizations-storage.urls": "1.1",
       "tags": "1.0",
@@ -67,6 +67,8 @@
         "visible": false,
         "subPermissions": [
           "module.organizations.enabled",
+          "organizations.organizations.collection.get",
+          "organizations.organizations.item.get",
           "organizations-storage.accounts.collection.get",
           "organizations-storage.accounts.item.get",
           "organizations-storage.addresses.collection.get",
@@ -81,8 +83,6 @@
           "organizations-storage.emails.collection.get",
           "organizations-storage.emails.item.get",
           "organizations-storage.interfaces.all",
-          "organizations-storage.organizations.collection.get",
-          "organizations-storage.organizations.item.get",
           "organizations-storage.phone-numbers.collection.get",
           "organizations-storage.phone-numbers.item.get",
           "organizations-storage.urls.collection.get",
@@ -104,6 +104,7 @@
         "displayName": "Organizations: View, edit",
         "visible": true,
         "subPermissions": [
+          "organizations.organizations.item.put",
           "organizations-storage.accounts.item.put",
           "organizations-storage.addresses.item.put",
           "organizations-storage.agreements.item.put",
@@ -111,7 +112,6 @@
           "organizations-storage.emails.item.put",
           "organizations-storage.phone-numbers.item.put",
           "organizations-storage.urls.item.put",
-          "organizations-storage.organizations.item.put",
           "ui-organizations.view"
         ]
       },
@@ -120,6 +120,7 @@
         "displayName": "Organizations: View, edit, create",
         "visible": true,
         "subPermissions": [
+          "organizations.organizations.item.post",
           "organizations-storage.accounts.item.post",
           "organizations-storage.addresses.item.post",
           "organizations-storage.agreements.item.post",
@@ -127,7 +128,6 @@
           "organizations-storage.emails.item.post",
           "organizations-storage.phone-numbers.item.post",
           "organizations-storage.urls.item.post",
-          "organizations-storage.organizations.item.post",
           "ui-organizations.edit"
         ]
       },
@@ -136,6 +136,7 @@
         "displayName": "Organizations: View, edit, delete",
         "visible": true,
         "subPermissions": [
+          "organizations.organizations.item.delete",
           "organizations-storage.accounts.item.delete",
           "organizations-storage.addresses.item.delete",
           "organizations-storage.agreements.item.delete",
@@ -143,7 +144,6 @@
           "organizations-storage.emails.item.delete",
           "organizations-storage.phone-numbers.item.delete",
           "organizations-storage.urls.item.delete",
-          "organizations-storage.organizations.item.delete",
           "ui-organizations.edit"
         ]
       },

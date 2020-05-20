@@ -13,8 +13,8 @@ describe('Organization details - edit permission disabled', () => {
     hasAllPerms: false,
     permissions: {
       'module.organizations.enabled': true,
-      'organizations-storage.organizations.item.get': true,
-      'organizations-storage.organizations.item.put': false,
+      'organizations.organizations.item.get': true,
+      'organizations.organizations.item.put': false,
     },
   });
 
