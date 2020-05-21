@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 ### Stories
+* [UIORGS-176](https://issues.folio.org/browse/UIORGS-176) Add search filter for Acquisition units to Organization search
 * [UIORGS-178](https://issues.folio.org/browse/UIORGS-178) Redirect API calls from mod-organizations-storage to mod-organzations
 * [UIORGS-180](https://issues.folio.org/browse/UIORGS-180) Organizations app: Update to Stripes v4
 * [UIORGS-15](https://issues.folio.org/browse/UIORGS-15) Increase unit testing code coverage

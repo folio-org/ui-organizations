@@ -18,13 +18,7 @@ describe('Organizations list', () => {
   beforeEach(function () {
     this.server.createList('organization', ORGANIZATIONS_COUNT);
 
-    return this.visit('/organizations', () => {
-      expect(orgsList.$root).to.exist;
-    });
-  });
-
-  it('shows the list of organization items', () => {
-    expect(orgsList.isPresent).to.equal(true);
+    this.visit('/organizations');
   });
 
   it('is no results message label present', () => {
@@ -42,6 +36,7 @@ describe('Organizations list', () => {
     });
 
     it('renders row for each organization from response', () => {
+      expect(orgsList.isPresent).to.equal(true);
       expect(orgsList.organizationRows().length).to.be.equal(ORGANIZATIONS_COUNT);
     });
 

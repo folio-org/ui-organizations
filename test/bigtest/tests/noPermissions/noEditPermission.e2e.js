@@ -37,6 +37,7 @@ describe('No edit permission', () => {
 
   describe('click on header', () => {
     beforeEach(async function () {
+      await orgDetails.whenLoaded();
       await orgDetails.actions.toggle.click();
     });
 

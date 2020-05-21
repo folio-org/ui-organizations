@@ -21,20 +21,6 @@ class Organizations extends Component {
     showSettings: PropTypes.bool,
   }
 
-  goToContacts = (props) => (
-    <ContactsContainer
-      {...props}
-      stripes={this.props.stripes}
-    />
-  );
-
-  goToInterface = (props) => (
-    <InterfaceContainer
-      {...props}
-      stripes={this.props.stripes}
-    />
-  );
-
   render() {
     if (this.props.showSettings) {
       return <Settings {...this.props} />;
@@ -43,25 +29,20 @@ class Organizations extends Component {
     return (
       <Switch>
         <Route
+          component={ContactsContainer}
           path="/organizations/contacts/"
-          render={this.goToContacts}
         />
         <Route
+          component={InterfaceContainer}
           path="/organizations/interface/"
-          render={(props) => (
-            <InterfaceContainer
-              {...props}
-              stripes={this.props.stripes}
-            />
-          )}
         />
         <Route
+          component={ContactsContainer}
           path="/organizations/:orgId/contacts/"
-          render={this.goToContacts}
         />
         <Route
+          component={InterfaceContainer}
           path="/organizations/:orgId/interface/"
-          render={this.goToInterface}
         />
         <Route
           path="/organizations"

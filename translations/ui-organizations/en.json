@@ -28,6 +28,7 @@
 
   "valid.isURLValid": "Invalid URL",
 
+  "filterConfig.acqUnits": "Acquisitions unit",
   "filterConfig.addressCategory": "Address category",
   "filterConfig.contactPeopleCategory": "Contact people category",
   "filterConfig.country": "Country",

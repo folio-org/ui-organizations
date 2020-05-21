@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { ConfirmationModal, Icon } from '@folio/stripes/components';
+import { stripesConnect } from '@folio/stripes/core';
 
 import ViewInterface from './ViewInterface';
 import {
@@ -17,112 +18,106 @@ import { getBackPath } from '../../common/utils/createItem';
 
 import { deleteInterface, unassignInterface } from './util';
 
-export class ViewInterfaceContainer extends Component {
-  static propTypes = {
-    resources: PropTypes.object,
-    baseUrl: PropTypes.string.isRequired,
-    orgId: PropTypes.string,
-    mutator: PropTypes.object,
-    history: ReactRouterPropTypes.history.isRequired,
-    match: ReactRouterPropTypes.match.isRequired,
-    showMessage: PropTypes.func.isRequired,
-  };
+function ViewInterfaceContainer({
+  baseUrl,
+  history,
+  match,
+  mutator,
+  orgId,
+  resources,
+  showMessage,
+}) {
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [confirmUnassign, setConfirmUnassign] = useState(false);
 
-  static manifest = Object.freeze({
-    interfaceCredentials: interfaceCredentialsResource,
-    organization: organizationResource,
-    vendorInterface: interfaceResource,
-  });
-
-  state = {
-    showConfirmDelete: false,
-    showConfirmUnassign: false,
-  };
-
-  onClose = () => {
-    const { orgId, history } = this.props;
-
+  const onClose = useCallback(() => {
     history.push(getBackPath(orgId, undefined, 'interface'));
-  };
+  }, [history, orgId]);
 
-  showConfirmUnassign = () => this.setState({ showConfirmUnassign: true });
+  const showConfirmUnassign = useCallback(() => setConfirmUnassign(true), []);
 
-  hideConfirmUnassign = () => this.setState({ showConfirmUnassign: false });
+  const hideConfirmUnassign = useCallback(() => setConfirmUnassign(false), []);
 
-  showConfirmDelete = () => this.setState({ showConfirmDelete: true });
+  const showConfirmDelete = useCallback(() => setConfirmDelete(true), []);
 
-  hideConfirmDelete = () => this.setState({ showConfirmDelete: false });
+  const hideConfirmDelete = useCallback(() => setConfirmDelete(false), []);
 
-  onUnassign = () => {
-    const { match, mutator, resources, showMessage } = this.props;
-    const org = get(resources, 'organization.records.0');
-    const interfaceId = get(match, 'params.id');
-
-    this.hideConfirmUnassign();
+  const org = get(resources, 'organization.records.0');
+  const interfaceId = get(match, 'params.id');
+  const onUnassign = useCallback(() => {
+    hideConfirmUnassign();
     unassignInterface(mutator.organization, interfaceId, org)
-      .then(() => this.onClose())
+      .then(() => onClose())
       .catch(() => showMessage('ui-organizations.interface.message.unassigned.fail', 'error'));
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hideConfirmUnassign, interfaceId, onClose, org, showMessage]);
 
-  onDelete = () => {
-    const { match, mutator, resources, showMessage } = this.props;
-    const org = get(resources, 'organization.records.0');
-    const interfaceId = get(match, 'params.id');
-
-    this.hideConfirmDelete();
+  const onDelete = useCallback(() => {
+    hideConfirmDelete();
     deleteInterface(mutator.organization, mutator.vendorInterface, interfaceId, org)
-      .then(() => this.onClose())
+      .then(() => onClose())
       .catch(() => showMessage('ui-organizations.interface.message.delete.fail', 'error'));
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hideConfirmDelete, interfaceId, onClose, org, showMessage]);
 
-  getCreds = () => getResourceDataItem(this.props.resources, 'interfaceCredentials');
+  const getCreds = useCallback(() => getResourceDataItem(resources, 'interfaceCredentials'), [resources]);
 
-  render() {
-    const { resources, baseUrl } = this.props;
+  const currentInterface = get(resources, 'vendorInterface.records[0]', {});
 
-    const currentInterface = get(resources, 'vendorInterface.records[0]', {});
-
-    if (get(resources, 'vendorInterface.isPending', true)) {
-      return <Icon icon="spinner-ellipsis" />;
-    }
-
-    const { showConfirmDelete, showConfirmUnassign } = this.state;
-
-    return (
-      <>
-        <ViewInterface
-          baseUrl={baseUrl}
-          item={currentInterface}
-          deleteInterface={this.showConfirmDelete}
-          onClose={this.onClose}
-          unassign={this.showConfirmUnassign}
-          getCreds={this.getCreds}
-        />
-        {showConfirmUnassign && (
-          <ConfirmationModal
-            id="unassign-interface-modal"
-            confirmLabel={<FormattedMessage id="ui-organizations.interface.confirmUnassign.confirmLabel" />}
-            heading={<FormattedMessage id="ui-organizations.interface.confirmUnassign.heading" />}
-            message={<FormattedMessage id="ui-organizations.interface.confirmUnassign.message1" />}
-            onCancel={this.hideConfirmUnassign}
-            onConfirm={this.onUnassign}
-            open
-          />
-        )}
-        {showConfirmDelete && (
-          <ConfirmationModal
-            id="delete-interface-modal"
-            confirmLabel={<FormattedMessage id="ui-organizations.interface.confirmDelete.confirmLabel" />}
-            heading={<FormattedMessage id="ui-organizations.interface.confirmDelete.heading" />}
-            message={<FormattedMessage id="ui-organizations.interface.confirmDelete.message" />}
-            onCancel={this.hideConfirmDelete}
-            onConfirm={this.onDelete}
-            open
-          />
-        )}
-      </>
-    );
+  if (get(resources, 'vendorInterface.isPending', true)) {
+    return <Icon icon="spinner-ellipsis" />;
   }
+
+  return (
+    <>
+      <ViewInterface
+        baseUrl={baseUrl}
+        item={currentInterface}
+        deleteInterface={showConfirmDelete}
+        onClose={onClose}
+        unassign={showConfirmUnassign}
+        getCreds={getCreds}
+      />
+      {confirmUnassign && (
+        <ConfirmationModal
+          id="unassign-interface-modal"
+          confirmLabel={<FormattedMessage id="ui-organizations.interface.confirmUnassign.confirmLabel" />}
+          heading={<FormattedMessage id="ui-organizations.interface.confirmUnassign.heading" />}
+          message={<FormattedMessage id="ui-organizations.interface.confirmUnassign.message1" />}
+          onCancel={hideConfirmUnassign}
+          onConfirm={onUnassign}
+          open
+        />
+      )}
+      {confirmDelete && (
+        <ConfirmationModal
+          id="delete-interface-modal"
+          confirmLabel={<FormattedMessage id="ui-organizations.interface.confirmDelete.confirmLabel" />}
+          heading={<FormattedMessage id="ui-organizations.interface.confirmDelete.heading" />}
+          message={<FormattedMessage id="ui-organizations.interface.confirmDelete.message" />}
+          onCancel={hideConfirmDelete}
+          onConfirm={onDelete}
+          open
+        />
+      )}
+    </>
+  );
 }
 
-export default ViewInterfaceContainer;
+ViewInterfaceContainer.manifest = Object.freeze({
+  interfaceCredentials: interfaceCredentialsResource,
+  organization: organizationResource,
+  vendorInterface: interfaceResource,
+});
+
+ViewInterfaceContainer.propTypes = {
+  baseUrl: PropTypes.string.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
+  mutator: PropTypes.object,
+  orgId: PropTypes.string,
+  resources: PropTypes.object,
+  showMessage: PropTypes.func.isRequired,
+};
+
+export default stripesConnect(ViewInterfaceContainer);

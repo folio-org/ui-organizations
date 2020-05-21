@@ -7,6 +7,7 @@ import {
 } from '../../../common/constants';
 
 export const FILTERS = {
+  ACQUISITIONS_UNIT: 'acqUnitIds',
   STATUS: 'status',
   TAGS: 'tags',
   ADDRESS_COUNTRY: 'addresses',
