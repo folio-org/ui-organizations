@@ -24,7 +24,7 @@ import { ORGANIZATION_STATUS } from '../../../common/constants';
 import { FieldLanguage } from '../../../common/components';
 import resetVendorFields from './resetVendorFields';
 
-function OrganizationSummaryForm({dispatchChange, initialValues}) {
+function OrganizationSummaryForm({ dispatchChange, initialValues }) {
   const [isVendorUncheckConfirm, setVendorUncheckConfirm] = useState(false);
 
   const renderAlias = useCallback((elem) => {
