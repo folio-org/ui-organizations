@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
@@ -24,118 +24,115 @@ import {
   unassign,
 } from './util';
 
-class ViewContactContainer extends Component {
-  static propTypes = {
-    resources: PropTypes.object,
-    baseUrl: PropTypes.string.isRequired,
-    mutator: PropTypes.object,
-    orgId: PropTypes.string,
-    showMessage: PropTypes.func.isRequired,
-    history: ReactRouterPropTypes.history.isRequired,
-    match: ReactRouterPropTypes.match.isRequired,
-    onClose: PropTypes.func,
-  };
+function ViewContactContainer({
+  baseUrl,
+  history,
+  match,
+  mutator,
+  onClose,
+  orgId,
+  resources,
+  showMessage,
+}) {
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [confirmUnassign, setConfirmUnassign] = useState(false);
 
-  static manifest = Object.freeze({
-    contact: contactResource,
-    [DICT_CATEGORIES]: categoriesResource,
-    organization: organizationResource,
-  });
-
-  state = {
-    showConfirmDelete: false,
-    showConfirmUnassign: false,
-  };
-
-  onClose = () => {
-    const { orgId, history, onClose } = this.props;
-
+  const _onClose = useCallback(() => {
     if (onClose) {
       onClose(orgId);
     } else {
       history.push(getBackPath(orgId, undefined, 'interface'));
     }
-  };
+  }, [history, onClose, orgId]);
 
-  showConfirmUnassign = () => this.setState({ showConfirmUnassign: true });
+  const showConfirmUnassign = useCallback(() => setConfirmUnassign(true), []);
 
-  hideConfirmUnassign = () => this.setState({ showConfirmUnassign: false });
+  const hideConfirmUnassign = useCallback(() => setConfirmUnassign(false), []);
 
-  showConfirmDelete = () => this.setState({ showConfirmDelete: true });
+  const showConfirmDelete = useCallback(() => setConfirmDelete(true), []);
 
-  hideConfirmDelete = () => this.setState({ showConfirmDelete: false });
+  const hideConfirmDelete = useCallback(() => setConfirmDelete(false), []);
 
-  onUnassign = () => {
-    const { match, mutator, resources, showMessage } = this.props;
-    const org = get(resources, 'organization.records.0');
-    const contactId = get(match, 'params.id');
+  const org = get(resources, 'organization.records.0');
+  const contactId = get(match, 'params.id');
 
-    this.hideConfirmUnassign();
+  const onUnassign = useCallback(() => {
+    hideConfirmUnassign();
     unassign(mutator.organization, contactId, org)
       .then(() => showMessage('ui-organizations.contacts.message.unassigned.success'))
-      .then(() => this.onClose())
+      .then(() => _onClose())
       .catch(() => showMessage('ui-organizations.contacts.message.unassigned.fail', 'error'));
-  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [_onClose, contactId, hideConfirmUnassign, org, showMessage]);
 
-  onDeleteContact = () => {
-    const { match, mutator, resources, showMessage } = this.props;
-    const org = get(resources, 'organization.records.0');
-    const contactId = get(match, 'params.id');
-
-    this.hideConfirmDelete();
+  const onDeleteContact = useCallback(() => {
+    hideConfirmDelete();
     deleteContact(mutator.organization, mutator.contact, contactId, org)
-      .then(() => this.onClose())
+      .then(() => _onClose())
       .catch(() => showMessage('ui-organizations.contacts.message.deleted.fail', 'error'));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [_onClose, contactId, hideConfirmDelete, org, showMessage]);
+
+  const contact = get(resources, 'contact.records[0]', {});
+  const contactCategories = get(resources, `${DICT_CATEGORIES}.records`);
+  const editUrl = `${baseUrl}/${contact.id}/edit`;
+
+  if (get(resources, 'contact.isPending', true) || !contactCategories) {
+    return <Icon icon="spinner-ellipsis" />;
   }
 
-  render() {
-    const { resources, baseUrl } = this.props;
-    const { showConfirmDelete, showConfirmUnassign } = this.state;
-
-    const contact = get(resources, 'contact.records[0]', {});
-    const contactCategories = get(resources, `${DICT_CATEGORIES}.records`);
-    const editUrl = `${baseUrl}/${contact.id}/edit`;
-
-    if (get(resources, 'contact.isPending', true) || !contactCategories) {
-      return <Icon icon="spinner-ellipsis" />;
-    }
-
-    return (
-      <>
-        <ViewContact
-          editUrl={editUrl}
-          categories={contactCategories}
-          contact={contact}
-          deleteContact={this.showConfirmDelete}
-          onClose={this.onClose}
-          unassign={this.showConfirmUnassign}
+  return (
+    <>
+      <ViewContact
+        editUrl={editUrl}
+        categories={contactCategories}
+        contact={contact}
+        deleteContact={showConfirmDelete}
+        onClose={_onClose}
+        unassign={showConfirmUnassign}
+      />
+      {confirmUnassign && (
+        <ConfirmationModal
+          id="unassign-contact-modal"
+          confirmLabel={<FormattedMessage id="ui-organizations.contacts.confirmUnassign.confirmLabel" />}
+          heading={<FormattedMessage id="ui-organizations.contacts.confirmUnassign.heading" />}
+          message={<FormattedMessage id="ui-organizations.contacts.confirmUnassign.message1" />}
+          onCancel={hideConfirmUnassign}
+          onConfirm={onUnassign}
+          open
         />
-        {showConfirmUnassign && (
-          <ConfirmationModal
-            id="unassign-contact-modal"
-            confirmLabel={<FormattedMessage id="ui-organizations.contacts.confirmUnassign.confirmLabel" />}
-            heading={<FormattedMessage id="ui-organizations.contacts.confirmUnassign.heading" />}
-            message={<FormattedMessage id="ui-organizations.contacts.confirmUnassign.message1" />}
-            onCancel={this.hideConfirmUnassign}
-            onConfirm={this.onUnassign}
-            open
-          />
-        )}
-        {showConfirmDelete && (
-          <ConfirmationModal
-            id="delete-contact-modal"
-            confirmLabel={<FormattedMessage id="ui-organizations.contacts.confirmDelete.confirmLabel" />}
-            heading={<FormattedMessage id="ui-organizations.contacts.confirmDelete.heading" />}
-            message={<FormattedMessage id="ui-organizations.contacts.confirmDelete.message" />}
-            onCancel={this.hideConfirmDelete}
-            onConfirm={this.onDeleteContact}
-            open
-          />
-        )}
-      </>
+      )}
+      {confirmDelete && (
+        <ConfirmationModal
+          id="delete-contact-modal"
+          confirmLabel={<FormattedMessage id="ui-organizations.contacts.confirmDelete.confirmLabel" />}
+          heading={<FormattedMessage id="ui-organizations.contacts.confirmDelete.heading" />}
+          message={<FormattedMessage id="ui-organizations.contacts.confirmDelete.message" />}
+          onCancel={hideConfirmDelete}
+          onConfirm={onDeleteContact}
+          open
+        />
+      )}
+    </>
 
-    );
-  }
+  );
 }
+
+ViewContactContainer.manifest = Object.freeze({
+  contact: contactResource,
+  [DICT_CATEGORIES]: categoriesResource,
+  organization: organizationResource,
+});
+
+ViewContactContainer.propTypes = {
+  resources: PropTypes.object,
+  baseUrl: PropTypes.string.isRequired,
+  mutator: PropTypes.object,
+  orgId: PropTypes.string,
+  showMessage: PropTypes.func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
+  onClose: PropTypes.func,
+};
 
 export default stripesConnect(ViewContactContainer);
