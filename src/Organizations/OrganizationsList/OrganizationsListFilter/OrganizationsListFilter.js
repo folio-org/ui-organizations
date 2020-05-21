@@ -8,6 +8,7 @@ import {
 import {
   AcqCheckboxFilter,
   AcqTagsFilter,
+  AcqUnitFilter,
   CountryFilter,
   LanguageFilter,
   PAYMENT_METHOD_OPTIONS,
@@ -76,6 +77,14 @@ const OrganizationsListFilter = ({
         name={FILTERS.PAYMENT_METHOD}
         onChange={adaptedApplyFilters}
         options={PAYMENT_METHOD_OPTIONS}
+      />
+
+      <AcqUnitFilter
+        id={`org-filter-${FILTERS.ACQUISITIONS_UNIT}`}
+        activeFilters={activeFilters[FILTERS.ACQUISITIONS_UNIT]}
+        labelId="ui-organizations.filterConfig.acqUnits"
+        name={FILTERS.ACQUISITIONS_UNIT}
+        onChange={adaptedApplyFilters}
       />
 
     </AccordionSet>
