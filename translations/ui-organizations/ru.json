@@ -601,5 +601,6 @@
     "contactInfo.vendorCategory.uncategorized": "Uncategorized",
     "contacts.actions.load.error": "Failed to load contacts data",
     "save.error.genericError": "Organization could not be saved",
-    "save.error.-1": "Code is already in use"
+    "save.error.-1": "Code is already in use",
+    "filterConfig.acqUnits": "Устройство поиска"
 }

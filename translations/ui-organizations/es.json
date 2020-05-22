@@ -601,5 +601,6 @@
     "contactInfo.vendorCategory.uncategorized": "Sin categorizar",
     "contacts.actions.load.error": "No se cargaron los datos de los contactos",
     "save.error.genericError": "Organization could not be saved",
-    "save.error.-1": "Code is already in use"
+    "save.error.-1": "Code is already in use",
+    "filterConfig.acqUnits": "Acquisitions unit"
 }

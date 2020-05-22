@@ -601,5 +601,6 @@
     "contactInfo.vendorCategory.uncategorized": "未分类",
     "contacts.actions.load.error": "无法加载联系人数据",
     "save.error.genericError": "无法保存组织",
-    "save.error.-1": "代码已在使用中"
+    "save.error.-1": "代码已在使用中",
+    "filterConfig.acqUnits": "Acquisitions unit"
 }
