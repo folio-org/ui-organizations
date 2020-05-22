@@ -7,11 +7,15 @@ import {
   Col,
   KeyValue,
 } from '@folio/stripes/components';
-import { PAYMENT_METHOD_LABELS } from '@folio/stripes-acq-components';
+import {
+  AcqUnitsView,
+  PAYMENT_METHOD_LABELS,
+} from '@folio/stripes-acq-components';
 
 import css from './OrganizationAccount.css';
 
 const OrganizationAccount = ({
+  acqUnitIds,
   name,
   accountNo,
   description,
@@ -86,6 +90,10 @@ const OrganizationAccount = ({
             value={notes}
           />
         </Col>
+        <Col data-test-account-acq-units xs={3}>
+          <AcqUnitsView units={acqUnitIds} />
+        </Col>
+
       </Row>
     </div>
   );
@@ -101,6 +109,7 @@ OrganizationAccount.propTypes = {
   libraryCode: PropTypes.string,
   libraryEdiCode: PropTypes.string,
   notes: PropTypes.string,
+  acqUnitIds: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default OrganizationAccount;

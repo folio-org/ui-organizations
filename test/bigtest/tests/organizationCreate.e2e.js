@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import setupApplication from '../helpers/setup-application';
 import {
   AutoSuggestListInteractor,
+  OrganizationDetailsInteractor,
   OrganizationEditInteractor,
 } from '../interactors';
 import { ORGANIZATION_STATUS } from '../../../src/common/constants';
@@ -14,6 +15,7 @@ describe('Create organization', () => {
   setupApplication();
 
   const orgEdit = new OrganizationEditInteractor();
+  const orgDetails = new OrganizationDetailsInteractor();
 
   beforeEach(async function () {
     this.visit('/organizations/create');
@@ -74,8 +76,9 @@ describe('Create organization', () => {
     });
 
     describe('add account', () => {
-      beforeEach(async () => {
-        await orgEdit.accountsSection.click();
+      beforeEach(async function () {
+        this.server.create('unit', { name: 'Test' });
+        await orgEdit.accountsSection.headerButton.click();
         await orgEdit.addAccountButton.click();
       });
 
@@ -92,6 +95,30 @@ describe('Create organization', () => {
         it('should remove fiedls for account', () => {
           expect(orgEdit.removeNameButton.isPresent).to.be.false;
           expect(orgEdit.accounts().length).to.be.equal(0);
+        });
+      });
+
+      describe('submit action', () => {
+        beforeEach(async () => {
+          await orgEdit.accountsSection.name.fill('test acc');
+          await orgEdit.accountsSection.accNumber.fill('2323');
+          await orgEdit.accountsSection.paymentMethod.select('EFT');
+          await orgEdit.accountsSection.accountStatus.select('Active');
+          await orgEdit.accountsSection.libraryCode.fill('2323s');
+          await orgEdit.accountsSection.libraryEDIcode.fill('323ss');
+          await orgEdit.accountsSection.acquisitionUnits.clickControl();
+          await orgEdit.accountsSection.firstAcqUnitOption.click();
+          await orgEdit.summarySectionForm.name.fill('Test organization create');
+          await orgEdit.summarySectionForm.status.select(ORGANIZATION_STATUS.active);
+          await orgEdit.summarySectionForm.code.fill('Test code');
+          await orgEdit.createOrgButton.click();
+          await orgDetails.whenLoaded();
+          await orgDetails.accountsSection.headerButton.click();
+        });
+
+        it('should close form', () => {
+          expect(orgEdit.isPresent).to.be.false;
+          expect(orgDetails.accountsSection.acqUnitsView).to.contain('Test');
         });
       });
     });

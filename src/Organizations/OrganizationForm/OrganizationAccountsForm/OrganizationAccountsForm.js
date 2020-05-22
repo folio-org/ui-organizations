@@ -4,6 +4,7 @@ import {
   Field,
   FieldArray,
 } from 'redux-form';
+import PropTypes from 'prop-types';
 
 import {
   Button,
@@ -15,6 +16,7 @@ import {
   TextField,
 } from '@folio/stripes/components';
 import {
+  AcqUnitsField,
   FieldSelect,
   PAYMENT_METHOD_OPTIONS,
   validateRequired,
@@ -53,6 +55,8 @@ class OrganizationAccountsForm extends Component {
   };
 
   renderSubForm = (elem, index, fields) => {
+    const isEditMode = Boolean(fields.get(index).id);
+
     return (
       <div
         className={css.panels}
@@ -192,6 +196,17 @@ class OrganizationAccountsForm extends Component {
             />
           </Col>
           <Col
+            xs={6}
+            md={3}
+          >
+            <AcqUnitsField
+              id={`account-acq-units-${index}`}
+              name={`${elem}.acqUnitIds`}
+              isEdit={isEditMode}
+              preselectedUnits={this.props.initialAccounts?.[index].acqUnitIds || undefined}
+            />
+          </Col>
+          <Col
             xs={12}
             style={{ textAlign: 'right' }}
           >
@@ -217,5 +232,9 @@ class OrganizationAccountsForm extends Component {
     );
   }
 }
+
+OrganizationAccountsForm.propTypes = {
+  initialAccounts: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default OrganizationAccountsForm;
