@@ -374,6 +374,6 @@
   "settings.action": "actions",
   "settings.vendorSettings": "Organizations settings",
 
-  "permission.acq.unit.assignment.assign": "Organizations: Assign acquisition units to new organization",
-  "permission.acq.unit.assignment.manage": "Organizations: Manage acquisition units"
+  "permission.ui-organizations.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
+  "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units"
 }

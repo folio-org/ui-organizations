@@ -170,7 +170,7 @@
         ]
       },
       {
-        "permissionName": "ui-organizations.acq.unit.assignment.assign",
+        "permissionName": "ui-organizations.acqUnits.assign",
         "displayName": "Organizations: Assign acquisition units to new organization",
         "description": "",
         "visible": true,
@@ -179,7 +179,7 @@
         ]
       },
       {
-        "permissionName": "ui-organizations.acq.unit.assignment.manage",
+        "permissionName": "ui-organizations.acqUnits.manage",
         "displayName": "Organizations: Manage acquisition units",
         "description": "",
         "visible": true,
