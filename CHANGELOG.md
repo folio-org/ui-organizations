@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 ### Stories
 * [UIORGS-121](https://issues.folio.org/browse/UIORGS-121) Ability to assign acquisition unit(s) to organization records
+* [UIORGS-78](https://issues.folio.org/browse/UIORGS-78) Ability to add acquisition unit(s) to organization account(s)
 * [UIORGS-176](https://issues.folio.org/browse/UIORGS-176) Add search filter for Acquisition units to Organization search
 * [UIORGS-178](https://issues.folio.org/browse/UIORGS-178) Redirect API calls from mod-organizations-storage to mod-organzations
 * [UIORGS-180](https://issues.folio.org/browse/UIORGS-180) Organizations app: Update to Stripes v4
