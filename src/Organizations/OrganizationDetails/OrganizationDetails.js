@@ -134,6 +134,7 @@ const OrganizationDetails = ({
             label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.summarySection]}
           >
             <OrganizationSummary
+              acqUnitIds={organization.acqUnitIds}
               aliases={organization.aliases}
               code={organization.code}
               description={organization.description}

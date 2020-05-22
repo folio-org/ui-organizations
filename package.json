@@ -56,6 +56,8 @@
         "displayName": "Organizations: Permissions required to call services apart from mod-organizations-storage",
         "visible": false,
         "subPermissions": [
+          "acquisitions-units.memberships.collection.get",
+          "acquisitions-units.units.collection.get",
           "configuration.entries.collection.get",
           "tags.collection.get",
           "users.collection.get"
@@ -165,6 +167,24 @@
           "organizations-storage.interfaces.credentials.item.post",
           "organizations-storage.interfaces.credentials.item.delete",
           "ui-organizations.creds.view"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.acq.unit.assignment.assign",
+        "displayName": "Organizations: Assign acquisition units to new organization",
+        "description": "",
+        "visible": true,
+        "subPermissions": [
+          "organizations.acquisitions-units-assignments.assign"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.acq.unit.assignment.manage",
+        "displayName": "Organizations: Manage acquisition units",
+        "description": "",
+        "visible": true,
+        "subPermissions": [
+          "organizations.acquisitions-units-assignments.manage"
         ]
       },
       {

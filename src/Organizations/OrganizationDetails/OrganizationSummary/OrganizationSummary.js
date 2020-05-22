@@ -10,7 +10,10 @@ import {
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
-import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
+import {
+  AcqUnitsView,
+  LANG_LABEL_BY_CODE,
+} from '@folio/stripes-acq-components';
 
 const aliasesColumnMapping = {
   value: <FormattedMessage id="ui-organizations.summary.alias" />,
@@ -18,6 +21,7 @@ const aliasesColumnMapping = {
 };
 
 const OrganizationSummary = ({
+  acqUnitIds,
   aliases,
   code,
   description,
@@ -84,6 +88,10 @@ const OrganizationSummary = ({
           </KeyValue>
         </Col>
 
+        <Col xs={4}>
+          <AcqUnitsView units={acqUnitIds} />
+        </Col>
+
         <Col xs={12}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.summary.description" />}
@@ -109,6 +117,7 @@ const OrganizationSummary = ({
 };
 
 OrganizationSummary.propTypes = {
+  acqUnitIds: PropTypes.arrayOf(PropTypes.string),
   aliases: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.string,
     description: PropTypes.string,
