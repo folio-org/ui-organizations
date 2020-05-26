@@ -602,5 +602,5 @@
     "contacts.actions.load.error": "Falha ao carregar os dados dos contatos",
     "save.error.genericError": "Não foi possível salvar a organização",
     "save.error.-1": "O código já está em uso",
-    "filterConfig.acqUnits": "Acquisitions unit"
+    "filterConfig.acqUnits": "Unidade de aquisição"
 }
