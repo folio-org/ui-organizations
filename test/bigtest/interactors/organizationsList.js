@@ -20,7 +20,7 @@ export default interactor(class OrganizationsListInteractor {
   hasCreateOrganizationButton = isPresent('#clickable-neworganization');
   newOrgButton = new ButtonInteractor('#clickable-neworganization');
   isNoResultsMessageLabelPresent = isPresent('[class*=mclEmptyMessage---]');
-  organizationRows = collection('[role=group] [role=row]');
+  organizationRows = collection('[data-row-inner]');
   filters = new FiltersInteractor();
   isLoaded = isPresent('#organizations-list');
 
