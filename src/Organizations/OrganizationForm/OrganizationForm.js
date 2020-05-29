@@ -185,7 +185,7 @@ const OrganizationForm = ({
                         id={ORGANIZATION_SECTIONS.accountsSection}
                         label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.accountsSection]}
                       >
-                        <OrganizationAccountsForm />
+                        <OrganizationAccountsForm initialAccounts={initialValues.accounts} />
                       </Accordion>
                     </>
                   )

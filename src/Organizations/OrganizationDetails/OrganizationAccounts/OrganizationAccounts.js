@@ -28,6 +28,7 @@ const OrganizationAccounts = ({ accounts }) => {
             libraryCode={account.libraryCode}
             libraryEdiCode={account.libraryEdiCode}
             notes={account.notes}
+            acqUnitIds={account.acqUnitIds}
           />
         ))
       }
