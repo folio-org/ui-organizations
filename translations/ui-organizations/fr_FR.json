@@ -601,5 +601,6 @@
     "contactInfo.vendorCategory.uncategorized": "Non classé",
     "contacts.actions.load.error": "Échec du chargement des données des contacts",
     "save.error.genericError": "L'organisation n'a pas pu être enregistrée",
-    "save.error.-1": "Impossible de dupliquer le code"
+    "save.error.-1": "Impossible de dupliquer le code",
+    "filterConfig.acqUnits": "Unité d'acquisitions"
 }
