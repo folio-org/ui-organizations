@@ -372,5 +372,8 @@
   "settings.categories": "Categories",
   "settings.name": "name",
   "settings.action": "actions",
-  "settings.vendorSettings": "Organizations settings"
+  "settings.vendorSettings": "Organizations settings",
+
+  "permission.ui-organizations.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
+  "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units"
 }

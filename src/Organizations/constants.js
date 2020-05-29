@@ -44,3 +44,6 @@ export const CONNECTION_MODES = [
   { label: 'Active', value: 'Active' },
   { label: 'Passive', value: 'Passive' },
 ];
+
+export const CREATE_UNITS_PERM = 'organizations.acquisitions-units-assignments.assign';
+export const MANAGE_UNITS_PERM = 'organizations.acquisitions-units-assignments.manage';

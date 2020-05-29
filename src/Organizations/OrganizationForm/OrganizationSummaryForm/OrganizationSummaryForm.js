@@ -17,11 +17,16 @@ import {
   TextField,
 } from '@folio/stripes/components';
 import {
+  AcqUnitsField,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATION_STATUS } from '../../../common/constants';
 import { FieldLanguage } from '../../../common/components';
+import {
+  CREATE_UNITS_PERM,
+  MANAGE_UNITS_PERM,
+} from '../../constants';
 import resetVendorFields from './resetVendorFields';
 
 function OrganizationSummaryForm({ dispatchChange, initialValues }) {
@@ -69,6 +74,8 @@ function OrganizationSummaryForm({ dispatchChange, initialValues }) {
   const onChangeIsVendor = useCallback((e, value) => {
     if (initialValues.id && !value) setVendorUncheckConfirm(true);
   }, [initialValues.id]);
+
+  const isEditMode = Boolean(initialValues.id);
 
   return (
     <Row>
@@ -153,6 +160,17 @@ function OrganizationSummaryForm({ dispatchChange, initialValues }) {
           type="checkbox"
           onChange={onChangeIsVendor}
           vertical
+        />
+      </Col>
+      <Col
+        xs={6}
+        md={3}
+      >
+        <AcqUnitsField
+          name="acqUnitIds"
+          perm={isEditMode ? MANAGE_UNITS_PERM : CREATE_UNITS_PERM}
+          isEdit={isEditMode}
+          preselectedUnits={initialValues.acqUnitIds}
         />
       </Col>
       <Col
