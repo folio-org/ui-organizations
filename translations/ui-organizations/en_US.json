@@ -456,7 +456,7 @@
     "accounts.pleaseAddAccount": "Please add account",
     "settings.categories": "Categories",
     "settings.name": "name",
-    "settings.action": "Actions",
+    "settings.action": "actions",
     "settings.vendorSettings": "Organizations settings",
     "summary.organizationStatus": "Organization status",
     "summary.isVendor": "Vendor",
@@ -602,5 +602,7 @@
     "contacts.actions.load.error": "Failed to load contacts data",
     "save.error.genericError": "Organization could not be saved",
     "save.error.-1": "Code is already in use",
-    "filterConfig.acqUnits": "Acquisitions unit"
+    "filterConfig.acqUnits": "Acquisitions unit",
+    "permission.ui-organizations.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
+    "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units"
 }
