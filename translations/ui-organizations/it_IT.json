@@ -602,5 +602,7 @@
     "contacts.actions.load.error": "Failed to load contacts data",
     "save.error.genericError": "L'organizzazione non è stata salvata",
     "save.error.-1": "Impossibile duplicare il codice",
-    "filterConfig.acqUnits": "Acquisitions unit"
+    "filterConfig.acqUnits": "Acquisitions unit",
+    "permission.ui-organizations.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
+    "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units"
 }

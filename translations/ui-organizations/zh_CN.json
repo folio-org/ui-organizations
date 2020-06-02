@@ -602,5 +602,7 @@
     "contacts.actions.load.error": "无法加载联系人数据",
     "save.error.genericError": "无法保存组织",
     "save.error.-1": "代码已在使用中",
-    "filterConfig.acqUnits": "Acquisitions unit"
+    "filterConfig.acqUnits": "Acquisitions unit",
+    "permission.ui-organizations.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
+    "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units"
 }

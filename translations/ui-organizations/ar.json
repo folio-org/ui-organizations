@@ -602,5 +602,7 @@
     "contacts.actions.load.error": "فشل تحميل بيانات جهات الاتصال",
     "save.error.genericError": "تعذر حفظ المؤسسة",
     "save.error.-1": "لا يمكن نسخ الكود",
-    "filterConfig.acqUnits": "وحدة التزويد"
+    "filterConfig.acqUnits": "وحدة التزويد",
+    "permission.ui-organizations.acqUnits.assign": "المؤسسات: عيّن وحدات تزويد إلى مؤسسة جديدة",
+    "permission.ui-organizations.acqUnits.manage": "المؤسسات: أدر وحدات التزويد"
 }
