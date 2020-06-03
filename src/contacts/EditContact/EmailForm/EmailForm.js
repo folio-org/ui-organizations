@@ -97,7 +97,7 @@ const EmailForm = ({ categories, dispatchChange }) => {
 
         <Col
           data-test-contact-email-description
-          xs={3}
+          xs={2}
         >
           <Field
             component={TextField}
@@ -119,7 +119,7 @@ const EmailForm = ({ categories, dispatchChange }) => {
 
         <Col
           data-test-contact-email-category
-          xs={2}
+          xs={3}
         >
           <CategoryDropdown
             dropdownVendorCategories={categories}
