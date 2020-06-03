@@ -1,23 +1,21 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
 import { SubmissionError } from 'redux-form';
 
 import { ERROR_CODE_GENERIC } from '@folio/stripes-acq-components';
 
-const ERROR_CODE_DUP_CODE = '-1';
-
 export const handleSaveErrorResponse = async (intl, showCallout, response) => {
-  let errorCode = null;
+  let responseJson = null;
 
   try {
-    const responseJson = await response.json();
-
-    errorCode = get(responseJson, 'errors.0.code', ERROR_CODE_GENERIC);
+    responseJson = await response.json();
   } catch (e) {
-    errorCode = ERROR_CODE_GENERIC;
+    responseJson = {};
   }
 
+  const errorCode = responseJson.errors?.[0]?.code || ERROR_CODE_GENERIC;
+  const errorMsg = responseJson.errors?.[0]?.message;
+  const errorKey = responseJson.errors?.[0]?.parameters?.[0]?.key;
   const message = (
     <FormattedMessage
       id={`ui-organizations.save.error.${errorCode}`}
@@ -30,9 +28,16 @@ export const handleSaveErrorResponse = async (intl, showCallout, response) => {
     type: 'error',
   });
 
-  if (errorCode === ERROR_CODE_DUP_CODE) {
+  if (errorMsg) {
+    showCallout({
+      message: errorMsg,
+      type: 'error',
+    });
+  }
+
+  if (errorKey) {
     throw new SubmissionError({
-      code: <FormattedMessage id={`ui-organizations.save.error.${ERROR_CODE_DUP_CODE}`} />,
+      [errorKey]: ' ',
     });
   }
 };
