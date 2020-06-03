@@ -22,7 +22,7 @@ const ButtonIsPrimary = ({ dispatchChange, fields, fieldIndex, labelId }) => {
   return (
     <Button
       onClick={changeIsPrimary}
-      buttonStyle={isPrimary ? 'primary' : 'default'}
+      buttonStyle={`${isPrimary ? 'primary' : 'default'} slim`}
     >
       <FormattedMessage id={labelId} />
     </Button>
