@@ -50,7 +50,8 @@ describe('Create organization', () => {
       beforeEach(async () => {
         await orgEdit.summarySectionForm.name.fill('Test organization create');
         await orgEdit.summarySectionForm.status.select(ORGANIZATION_STATUS.active);
-        await orgEdit.summarySectionForm.code.fill('Test code');
+        await orgEdit.summarySectionForm.code.fill('Test_code');
+        await orgEdit.createOrgButton.focus();
         await orgEdit.createOrgButton.click();
       });
 
@@ -110,7 +111,8 @@ describe('Create organization', () => {
           await orgEdit.accountsSection.firstAcqUnitOption.click();
           await orgEdit.summarySectionForm.name.fill('Test organization create');
           await orgEdit.summarySectionForm.status.select(ORGANIZATION_STATUS.active);
-          await orgEdit.summarySectionForm.code.fill('Test code');
+          await orgEdit.summarySectionForm.code.fill('Test_code');
+          await orgEdit.createOrgButton.focus();
           await orgEdit.createOrgButton.click();
           await orgDetails.whenLoaded();
           await orgDetails.accountsSection.headerButton.click();
@@ -119,6 +121,29 @@ describe('Create organization', () => {
         it('should close form', () => {
           expect(orgEdit.isPresent).to.be.false;
           expect(orgDetails.accountsSection.acqUnitsView).to.contain('Test');
+        });
+      });
+
+      describe('no submit action since code contains spaces', () => {
+        beforeEach(async () => {
+          await orgEdit.accountsSection.name.fill('test acc');
+          await orgEdit.accountsSection.accNumber.fill('2323');
+          await orgEdit.accountsSection.paymentMethod.select('EFT');
+          await orgEdit.accountsSection.accountStatus.select('Active');
+          await orgEdit.accountsSection.libraryCode.fill('2323s');
+          await orgEdit.accountsSection.libraryEDIcode.fill('323ss');
+          await orgEdit.accountsSection.acquisitionUnits.clickControl();
+          await orgEdit.accountsSection.firstAcqUnitOption.click();
+          await orgEdit.summarySectionForm.name.fill('Test organization create');
+          await orgEdit.summarySectionForm.status.select(ORGANIZATION_STATUS.active);
+          await orgEdit.summarySectionForm.code.fill('Testsdcode');
+          await orgEdit.summarySectionForm.code.blur();
+          await orgEdit.createOrgButton.focus();
+          await orgEdit.createOrgButton.click();
+        });
+
+        it('should stay at form', () => {
+          expect(orgEdit.isPresent).to.be.true;
         });
       });
     });
