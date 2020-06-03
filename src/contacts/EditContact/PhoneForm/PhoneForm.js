@@ -41,7 +41,7 @@ const headLabels = (
 
     <Col
       data-test-contact-phone-label-description
-      xs={3}
+      xs={2}
     >
       <Label id="phoneFormTypeLabel">
         <FormattedMessage id="ui-organizations.contactPeople.phoneNumbers.type" />
@@ -68,7 +68,7 @@ const headLabels = (
 
     <Col
       data-test-contact-phone-label-primary
-      xs={1}
+      xs={2}
     >
       <Label>
         <FormattedMessage id="ui-organizations.primaryItem" />
@@ -98,7 +98,7 @@ const PhoneForm = ({ categories, dispatchChange, phoneTypesList }) => {
 
         <Col
           data-test-contact-phone-type
-          xs={3}
+          xs={2}
         >
           <FieldSelect
             name={`${elem}.type`}
@@ -131,7 +131,7 @@ const PhoneForm = ({ categories, dispatchChange, phoneTypesList }) => {
         </Col>
 
         <Col
-          xs={1}
+          xs={2}
           data-test-contact-phone-primary
         >
           <ButtonIsPrimary

@@ -58,7 +58,7 @@ const headLabels = (
 
     <Col
       data-test-contact-email-label-category
-      xs={3}
+      xs={2}
     >
       <Label id="emailFormCategoriesLabel">
         <FormattedMessage id="ui-organizations.data.contactTypes.categories" />
@@ -67,7 +67,7 @@ const headLabels = (
 
     <Col
       data-test-contact-email-label-primary
-      xs={1}
+      xs={2}
     >
       <Label>
         <FormattedMessage id="ui-organizations.primaryItem" />
@@ -119,7 +119,7 @@ const EmailForm = ({ categories, dispatchChange }) => {
 
         <Col
           data-test-contact-email-category
-          xs={3}
+          xs={2}
         >
           <CategoryDropdown
             dropdownVendorCategories={categories}
@@ -131,7 +131,7 @@ const EmailForm = ({ categories, dispatchChange }) => {
 
         <Col
           data-test-contact-email-primary
-          xs={1}
+          xs={2}
         >
           <ButtonIsPrimary
             dispatchChange={dispatchChange}
