@@ -11,6 +11,7 @@
 * [UINV-138](https://issues.folio.org/browse/UINV-138) Align actions icons in table to right hand side of view pane(s)
 
 ### Bug fixes
+* [UIORGS-135](https://issues.folio.org/browse/UIORGS-135) Contact people create and Edit form object overlap
 * [UIORGS-151](https://issues.folio.org/browse/UIORGS-151) Organizations is not using the same Expand/Collapse as implemented in Q4 2019
 * [UIORGS-128](https://issues.folio.org/browse/UIORGS-128) Edit Organizations: Interface table does not look right
 * [UIORGS-154](https://issues.folio.org/browse/UIORGS-154) Delete action at top of action menu
