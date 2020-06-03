@@ -97,7 +97,7 @@ const UrlForm = ({ categories, dispatchChange }) => {
 
         <Col
           data-test-contact-url-description
-          xs={3}
+          xs={2}
         >
           <Field
             component={TextField}
@@ -119,7 +119,7 @@ const UrlForm = ({ categories, dispatchChange }) => {
 
         <Col
           data-test-contact-url-category
-          xs={2}
+          xs={3}
         >
           <CategoryDropdown
             dropdownVendorCategories={categories}
