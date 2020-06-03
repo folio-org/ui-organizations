@@ -19,7 +19,7 @@ export function asyncValidate(values, dispatch, props, blurredField) {
       return fetchOrgByCode.GET({ params: { query } }).then(existingOrgs => {
         if (existingOrgs.length) {
           const errors = {
-            [FIELD_CODE]: <FormattedMessage id="ui-organizations.save.error.-1" />,
+            [FIELD_CODE]: <FormattedMessage id="ui-organizations.save.error.codeInUse" />,
           };
 
           throw errors;
