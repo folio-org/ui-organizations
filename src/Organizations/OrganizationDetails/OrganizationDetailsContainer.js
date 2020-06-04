@@ -83,13 +83,11 @@ const OrganizationDetailsContainer = ({
 
   const deleteOrganization = useCallback(
     () => {
-      const { id, name } = organization;
-
-      mutator.organizationDetailsOrg.DELETE({ id }).then(() => {
+      mutator.organizationDetailsOrg.DELETE({ id: organization.id }, { silent: true }).then(() => {
         showCallout({
           messageId: 'ui-organizations.organization.delete.success',
           type: 'success',
-          values: { organizationName: name },
+          values: { organizationName: organization.name },
         });
         history.replace({
           pathname: '/organizations',
@@ -98,7 +96,7 @@ const OrganizationDetailsContainer = ({
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [organization, location.search],
+    [organization.id, organization.name, showCallout, history, location.search],
   );
 
   const updateOrganization = useCallback(

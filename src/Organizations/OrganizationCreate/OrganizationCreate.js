@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react';
 import { getFormValues } from 'redux-form';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
-import { injectIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import {
   stripesConnect,
@@ -29,7 +28,7 @@ const INITIAL_VALUES = {
   isVendor: false,
 };
 
-const OrganizationCreate = ({ history, location, mutator, stripes, intl }) => {
+const OrganizationCreate = ({ history, location, mutator, stripes }) => {
   const cancelForm = useCallback(
     (id) => {
       history.push({
@@ -37,12 +36,11 @@ const OrganizationCreate = ({ history, location, mutator, stripes, intl }) => {
         search: location.search,
       });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [location.search],
+    [history, location.search],
   );
 
   const showCallout = useShowCallout();
-
+  const intl = useIntl();
   const createOrganization = useCallback(
     (data) => {
       const time = FormatTime(data, 'post');
@@ -58,7 +56,7 @@ const OrganizationCreate = ({ history, location, mutator, stripes, intl }) => {
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [cancelForm],
+    [cancelForm, intl, showCallout],
   );
 
   const { isVendor, language } = getFormValues(ORG_FORM_NAME)(stripes.store.getState()) || {};
@@ -81,11 +79,10 @@ OrganizationCreate.manifest = Object.freeze({
 });
 
 OrganizationCreate.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
-  location: ReactRouterPropTypes.location.isRequired,
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   stripes: stripesShape.isRequired,
   mutator: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
 };
 
-export default withRouter(stripesConnect(injectIntl(OrganizationCreate)));
+export default withRouter(stripesConnect(OrganizationCreate));
