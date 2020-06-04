@@ -601,8 +601,8 @@
     "contactInfo.vendorCategory.uncategorized": "Non classé",
     "contacts.actions.load.error": "Échec du chargement des données des contacts",
     "save.error.genericError": "L'organisation n'a pas pu être enregistrée",
-    "save.error.-1": "Impossible de dupliquer le code",
     "filterConfig.acqUnits": "Unité d'acquisitions",
-    "permission.ui-organizations.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
-    "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units"
+    "permission.ui-organizations.acqUnits.assign": "Organisations: affectez des unités d'acquisition à la nouvelle organisation",
+    "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units",
+    "save.error.codeInUse": "Le code est déjà utilisé"
 }

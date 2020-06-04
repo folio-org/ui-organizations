@@ -601,8 +601,8 @@
     "contactInfo.vendorCategory.uncategorized": "Sin categorizar",
     "contacts.actions.load.error": "No se cargaron los datos de los contactos",
     "save.error.genericError": "Organization could not be saved",
-    "save.error.-1": "Code is already in use",
     "filterConfig.acqUnits": "Acquisitions unit",
     "permission.ui-organizations.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
-    "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units"
+    "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units",
+    "save.error.codeInUse": "Code is already in use"
 }
