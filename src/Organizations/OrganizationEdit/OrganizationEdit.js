@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { getFormValues } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -33,12 +33,13 @@ import {
 } from '../OrganizationForm';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 
-const OrganizationEdit = ({ match, history, location, mutator, stripes, intl }) => {
+const OrganizationEdit = ({ match, history, location, mutator, stripes }) => {
   const organizationId = match.params.id;
 
   const [organization, setOrganization] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const showCallout = useShowCallout();
+  const intl = useIntl();
 
   useEffect(
     () => {
@@ -76,7 +77,7 @@ const OrganizationEdit = ({ match, history, location, mutator, stripes, intl }) 
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [cancelForm],
+    [cancelForm, intl, showCallout],
   );
 
   if (isLoading) {
@@ -116,7 +117,6 @@ OrganizationEdit.propTypes = {
   location: ReactRouterPropTypes.location.isRequired,
   stripes: stripesShape.isRequired,
   mutator: PropTypes.object.isRequired,
-  intl: PropTypes.object.isRequired,
 };
 
-export default withRouter(stripesConnect(injectIntl(OrganizationEdit)));
+export default withRouter(stripesConnect(OrganizationEdit));
