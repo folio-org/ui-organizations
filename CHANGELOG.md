@@ -1,6 +1,10 @@
 # Change history for ui-organizations
 
 ## (IN PROGRESS)
+
+## [2.1.0](https://github.com/folio-org/ui-organizations/tree/v2.1.0) (2020-06-12)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.0.1...v2.1.0)
+
 ### Stories
 * [UIORGS-121](https://issues.folio.org/browse/UIORGS-121) Ability to assign acquisition unit(s) to organization records
 * [UIORGS-78](https://issues.folio.org/browse/UIORGS-78) Ability to add acquisition unit(s) to organization account(s)

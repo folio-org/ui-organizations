@@ -1,6 +1,6 @@
 {
   "name": "@folio/organizations",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Organizations",
   "main": "index.js",
   "repository": "folio-org/ui-organizations",
@@ -9,7 +9,7 @@
   },
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=8.9.4"
+    "node": ">=10"
   },
   "stripes": {
     "actsAs": ["app", "settings"],
@@ -24,11 +24,11 @@
       "organizations-storage.categories": "1.1",
       "organizations-storage.contacts": "2.0",
       "organizations-storage.emails": "1.1",
-      "organizations-storage.interfaces": "2.0",
+      "organizations-storage.interfaces": "2.1",
       "organizations-storage.phone-numbers": "2.0",
       "organizations-storage.urls": "1.1",
       "tags": "1.0",
-      "users": "15.0"
+      "users": "15.1"
     },
     "queryResource": "query",
     "icons": [
@@ -233,7 +233,7 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "^2.0.0",
+    "@folio/stripes-acq-components": "^2.1.1",
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.20",
     "prop-types": "^15.5.10",
