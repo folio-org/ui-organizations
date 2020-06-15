@@ -601,8 +601,8 @@
     "contactInfo.vendorCategory.uncategorized": "未分类",
     "contacts.actions.load.error": "无法加载联系人数据",
     "save.error.genericError": "无法保存组织",
-    "filterConfig.acqUnits": "Acquisitions unit",
-    "permission.ui-organizations.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
-    "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units",
-    "save.error.codeInUse": "Code is already in use"
+    "filterConfig.acqUnits": "采购单元",
+    "permission.ui-organizations.acqUnits.assign": "组织：将采购单元分配给新组织",
+    "permission.ui-organizations.acqUnits.manage": "组织：管理采购单元",
+    "save.error.codeInUse": "代码已在使用中"
 }
