@@ -123,14 +123,12 @@ const OrganizationVendorInfo = ({
       </Col>
 
       <Col xs={4}>
-        <KeyValue
+        <Checkbox
+          checked={isLiableForVat}
+          disabled
           label={<FormattedMessage id="ui-organizations.vendorInfo.liableForVAT" />}
-        >
-          <Checkbox
-            checked={isLiableForVat}
-            disabled
-          />
-        </KeyValue>
+          vertical
+        />
       </Col>
     </Row>
   );

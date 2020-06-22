@@ -78,14 +78,12 @@ const OrganizationSummary = ({
         </Col>
 
         <Col xs={4}>
-          <KeyValue
+          <Checkbox
+            checked={isVendor}
+            disabled
             label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
-          >
-            <Checkbox
-              checked={isVendor}
-              disabled
-            />
-          </KeyValue>
+            vertical
+          />
         </Col>
 
         <Col xs={4}>

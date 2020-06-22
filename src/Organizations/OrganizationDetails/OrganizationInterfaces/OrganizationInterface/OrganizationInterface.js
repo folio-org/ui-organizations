@@ -121,13 +121,12 @@ const OrganizationInterface = ({ getCreds, item = {}, isNarrow = false }) => {
       </Row>
       <Row>
         <Col xs={columnsAmount}>
-          <KeyValue label={<FormattedMessage id="ui-organizations.interface.available" />}>
-            <Checkbox
-              type="checkbox"
-              checked={Boolean(available)}
-              disabled
-            />
-          </KeyValue>
+          <Checkbox
+            checked={Boolean(available)}
+            disabled
+            label={<FormattedMessage id="ui-organizations.interface.available" />}
+            vertical
+          />
         </Col>
         <Col xs={columnsAmount}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.deliveryMethod" />}>

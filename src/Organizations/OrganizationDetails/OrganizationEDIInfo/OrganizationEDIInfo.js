@@ -52,25 +52,21 @@ const OrganizationEDIInfo = ({ edi }) => {
         </Col>
 
         <Col xs={3}>
-          <KeyValue
+          <Checkbox
+            checked={edi.prorateTax}
+            disabled
             label={<FormattedMessage id="ui-organizations.edi.prorateTax" />}
-          >
-            <Checkbox
-              checked={edi.prorateTax}
-              disabled
-            />
-          </KeyValue>
+            vertical
+          />
         </Col>
 
         <Col xs={3}>
-          <KeyValue
+          <Checkbox
+            checked={edi.prorateFees}
+            disabled
             label={<FormattedMessage id="ui-organizations.edi.prorateFees" />}
-          >
-            <Checkbox
-              checked={edi.prorateFees}
-              disabled
-            />
-          </KeyValue>
+            vertical
+          />
         </Col>
 
         <Col xs={3}>
@@ -81,36 +77,30 @@ const OrganizationEDIInfo = ({ edi }) => {
         </Col>
 
         <Col xs={3}>
-          <KeyValue
+          <Checkbox
+            checked={edi.sendAcctNum}
+            disabled
             label={<FormattedMessage id="ui-organizations.edi.sendAccountNumber" />}
-          >
-            <Checkbox
-              checked={edi.sendAcctNum}
-              disabled
-            />
-          </KeyValue>
+            vertical
+          />
         </Col>
 
         <Col xs={3}>
-          <KeyValue
+          <Checkbox
+            checked={edi.supportOrder}
+            disabled
             label={<FormattedMessage id="ui-organizations.edi.orders" />}
-          >
-            <Checkbox
-              checked={edi.supportOrder}
-              disabled
-            />
-          </KeyValue>
+            vertical
+          />
         </Col>
 
         <Col xs={3}>
-          <KeyValue
+          <Checkbox
+            checked={edi.supportInvoice}
+            disabled
             label={<FormattedMessage id="ui-organizations.edi.invoices" />}
-          >
-            <Checkbox
-              checked={edi.supportInvoice}
-              disabled
-            />
-          </KeyValue>
+            vertical
+          />
         </Col>
 
         <Col xs={3}>
@@ -207,14 +197,12 @@ const OrganizationEDIInfo = ({ edi }) => {
           </Col>
 
           <Col xs={3}>
-            <KeyValue
+            <Checkbox
+              checked={edi.ediJob.scheduleEdi}
+              disabled
               label={<FormattedMessage id="ui-organizations.edi.scheduleEDI" />}
-            >
-              <Checkbox
-                checked={edi.ediJob.scheduleEdi}
-                disabled
-              />
-            </KeyValue>
+              vertical
+            />
           </Col>
 
           <Col xs={3}>
@@ -239,113 +227,93 @@ const OrganizationEDIInfo = ({ edi }) => {
           </Col>
 
           <Col xs={3}>
-            <KeyValue
+            <Checkbox
+              checked={edi.ediJob.notifyAllEdi}
+              disabled
               label={<FormattedMessage id="ui-organizations.edi.notifyAllEDI" />}
-            >
-              <Checkbox
-                checked={edi.ediJob.notifyAllEdi}
-                disabled
-              />
-            </KeyValue>
+              vertical
+            />
           </Col>
 
           <Col xs={3}>
-            <KeyValue
+            <Checkbox
+              checked={edi.ediJob.notifyInvoiceOnly}
+              disabled
               label={<FormattedMessage id="ui-organizations.edi.notifyInvoiceOnly" />}
-            >
-              <Checkbox
-                checked={edi.ediJob.notifyInvoiceOnly}
-                disabled
-              />
-            </KeyValue>
+              vertical
+            />
           </Col>
 
           <Col xs={6}>
-            <KeyValue
+            <Checkbox
+              checked={edi.ediJob.notifyErrorOnly}
+              disabled
               label={<FormattedMessage id="ui-organizations.edi.notifyErrorOnly" />}
-            >
-              <Checkbox
-                checked={edi.ediJob.notifyErrorOnly}
-                disabled
-              />
-            </KeyValue>
+              vertical
+            />
           </Col>
 
           <Col xs={3}>
-            <KeyValue
+            <Checkbox
+              checked={edi.ediJob.isMonday}
+              disabled
               label={<FormattedMessage id="ui-organizations.edi.monday" />}
-            >
-              <Checkbox
-                checked={edi.ediJob.isMonday}
-                disabled
-              />
-            </KeyValue>
+              vertical
+            />
           </Col>
 
           <Col xs={3}>
-            <KeyValue
+            <Checkbox
+              checked={edi.ediJob.isTuesday}
+              disabled
               label={<FormattedMessage id="ui-organizations.edi.tuesday" />}
-            >
-              <Checkbox
-                checked={edi.ediJob.isTuesday}
-                disabled
-              />
-            </KeyValue>
+              vertical
+            />
           </Col>
 
           <Col xs={3}>
-            <KeyValue
+            <Checkbox
+              checked={edi.ediJob.isWednesday}
+              disabled
               label={<FormattedMessage id="ui-organizations.edi.wednesday" />}
-            >
-              <Checkbox
-                checked={edi.ediJob.isWednesday}
-                disabled
-              />
-            </KeyValue>
+              vertical
+            />
           </Col>
 
           <Col xs={3}>
-            <KeyValue
+            <Checkbox
+              checked={edi.ediJob.isThursday}
+              disabled
               label={<FormattedMessage id="ui-organizations.edi.thursday" />}
-            >
-              <Checkbox
-                checked={edi.ediJob.isThursday}
-                disabled
-              />
-            </KeyValue>
+              vertical
+            />
           </Col>
 
           <Col xs={3}>
-            <KeyValue
+            <Checkbox
+              checked={edi.ediJob.isFriday}
+              disabled
               label={<FormattedMessage id="ui-organizations.edi.friday" />}
-            >
-              <Checkbox
-                checked={edi.ediJob.isFriday}
-                disabled
-              />
-            </KeyValue>
+              vertical
+            />
           </Col>
 
           <Col xs={3}>
-            <KeyValue
+            <Checkbox
+              checked={edi.ediJob.isSaturday}
+              disabled
               label={<FormattedMessage id="ui-organizations.edi.saturday" />}
-            >
-              <Checkbox
-                checked={edi.ediJob.isSaturday}
-                disabled
-              />
-            </KeyValue>
+              vertical
+            />
           </Col>
 
           <Col xs={3}>
-            <KeyValue
+            <Checkbox
+              checked={edi.ediJob.isSunday}
+              disabled
               label={<FormattedMessage id="ui-organizations.edi.sunday" />}
-            >
-              <Checkbox
-                checked={edi.ediJob.isSunday}
-                disabled
-              />
-            </KeyValue>
+              vertical
+            />
           </Col>
         </Row>
       )}
