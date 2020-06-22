@@ -5,6 +5,7 @@
 ### Stories
 
 ### Bug fixes
+* [UIORGS-159](https://issues.folio.org/browse/UIORGS-159) Accessibility Error: Form elements must have labels
 * [UIORGS-157](https://issues.folio.org/browse/UIORGS-157) Accessibility error: IDs of active elements must be unique
 
 ## [2.1.0](https://github.com/folio-org/ui-organizations/tree/v2.1.0) (2020-06-12)
