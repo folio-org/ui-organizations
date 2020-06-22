@@ -35,6 +35,7 @@ const OrganizationsListFilter = ({
     <AccordionSet>
       <AcqCheckboxFilter
         activeFilters={activeFilters[FILTERS.STATUS]}
+        id={`org-filter-${FILTERS.STATUS}`}
         labelId="ui-organizations.filterConfig.vendorStatus"
         name={FILTERS.STATUS}
         onChange={adaptedApplyFilters}
@@ -44,13 +45,14 @@ const OrganizationsListFilter = ({
 
       <AcqTagsFilter
         activeFilters={activeFilters[FILTERS.TAGS]}
-        id={FILTERS.TAGS}
+        id={`org-filter-${FILTERS.TAGS}`}
         name={FILTERS.TAGS}
         onChange={adaptedApplyFilters}
       />
 
       <AcqCheckboxFilter
         activeFilters={activeFilters[FILTERS.IS_VENDOR]}
+        id={`org-filter-${FILTERS.IS_VENDOR}`}
         labelId="ui-organizations.filterConfig.isVendor"
         name={FILTERS.IS_VENDOR}
         onChange={adaptedApplyFilters}
@@ -59,6 +61,7 @@ const OrganizationsListFilter = ({
 
       <CountryFilter
         activeFilters={activeFilters[FILTERS.ADDRESS_COUNTRY]}
+        id={`org-filter-${FILTERS.ADDRESS_COUNTRY}`}
         labelId="ui-organizations.filterConfig.country"
         name={FILTERS.ADDRESS_COUNTRY}
         onChange={adaptedApplyFilters}
@@ -66,6 +69,7 @@ const OrganizationsListFilter = ({
 
       <LanguageFilter
         activeFilters={activeFilters[FILTERS.LANGUAGE]}
+        id={`org-filter-${FILTERS.LANGUAGE}`}
         labelId="ui-organizations.filterConfig.languages"
         name={FILTERS.LANGUAGE}
         onChange={adaptedApplyFilters}
@@ -73,6 +77,7 @@ const OrganizationsListFilter = ({
 
       <AcqCheckboxFilter
         activeFilters={activeFilters[FILTERS.PAYMENT_METHOD]}
+        id={`org-filter-${FILTERS.PAYMENT_METHOD}`}
         labelId="ui-organizations.filterConfig.paymentMethod"
         name={FILTERS.PAYMENT_METHOD}
         onChange={adaptedApplyFilters}

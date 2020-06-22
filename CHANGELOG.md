@@ -2,6 +2,11 @@
 
 ## (IN PROGRESS)
 
+### Stories
+
+### Bug fixes
+* [UIORGS-157](https://issues.folio.org/browse/UIORGS-157) Accessibility error: IDs of active elements must be unique
+
 ## [2.1.0](https://github.com/folio-org/ui-organizations/tree/v2.1.0) (2020-06-12)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.0.1...v2.1.0)
 

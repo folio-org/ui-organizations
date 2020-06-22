@@ -31,17 +31,20 @@ import {
 import OrganizationsListLastMenu from './OrganizationsListLastMenu';
 
 const resultsPaneTitle = <FormattedMessage id="ui-organizations.meta.title" />;
-const visibleColumns = ['name', 'code', 'description', 'status', 'isVendor'];
-const sortableFields = ['name', 'code', 'description', 'status', 'isVendor'];
+const visibleColumns = ['orgName', 'orgCode', 'orgDescription', 'orgStatus', 'isVendor'];
+const sortableFields = ['orgName', 'orgCode', 'orgDescription', 'orgStatus', 'isVendor'];
 const columnMapping = {
-  name: <FormattedMessage id="ui-organizations.main.name" />,
-  code: <FormattedMessage id="ui-organizations.main.code" />,
-  description: <FormattedMessage id="ui-organizations.main.description" />,
-  status: <FormattedMessage id="ui-organizations.main.vendorStatus" />,
+  orgName: <FormattedMessage id="ui-organizations.main.name" />,
+  orgCode: <FormattedMessage id="ui-organizations.main.code" />,
+  orgDescription: <FormattedMessage id="ui-organizations.main.description" />,
+  orgStatus: <FormattedMessage id="ui-organizations.main.vendorStatus" />,
   isVendor: <FormattedMessage id="ui-organizations.main.isVendor" />,
 };
 const resultsFormatter = {
-  status: data => <FormattedMessage id={`ui-organizations.organizationStatus.${data.status.toLowerCase()}`} />,
+  orgName: ({ name }) => name,
+  orgCode: ({ code }) => code,
+  orgDescription: ({ description }) => description,
+  orgStatus: data => <FormattedMessage id={`ui-organizations.organizationStatus.${data.status.toLowerCase()}`} />,
   isVendor: data => <FormattedMessage id={`ui-organizations.main.isVendor.${data.isVendor ? 'yes' : 'no'}`} />,
 };
 
