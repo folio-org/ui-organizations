@@ -5,6 +5,7 @@
 ### Stories
 
 ### Bug fixes
+* [UIORGS-187](https://issues.folio.org/browse/UIORGS-187) User not aware you need to search Language using language code
 * [UIORGS-159](https://issues.folio.org/browse/UIORGS-159) Accessibility Error: Form elements must have labels
 * [UIORGS-157](https://issues.folio.org/browse/UIORGS-157) Accessibility error: IDs of active elements must be unique
 
