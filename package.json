@@ -248,6 +248,9 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1"
   },
+  "stripesDeps": [
+    "@folio/stripes-acq-components"
+  ],
   "optionalDependencies": {
     "@folio/plugin-find-contact": "*",
     "@folio/plugin-find-interface": "*"
