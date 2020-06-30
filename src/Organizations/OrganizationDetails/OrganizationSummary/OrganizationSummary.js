@@ -19,6 +19,7 @@ const aliasesColumnMapping = {
   value: <FormattedMessage id="ui-organizations.summary.alias" />,
   description: <FormattedMessage id="ui-organizations.summary.description" />,
 };
+const aliasesVisibleColumns = ['value', 'description'];
 
 const OrganizationSummary = ({
   acqUnitIds,
@@ -108,6 +109,8 @@ const OrganizationSummary = ({
             <MultiColumnList
               contentData={aliases}
               columnMapping={aliasesColumnMapping}
+              interactive={false}
+              visibleColumns={aliasesVisibleColumns}
             />
           </KeyValue>
         </Col>
