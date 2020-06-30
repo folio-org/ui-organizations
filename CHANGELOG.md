@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UISACQCOMP-3](https://issues.folio.org/browse/UISACQCOMP-3) Handle import of stripes-acq-components to modules and platform
 
 ### Bug fixes
 * [UIORGS-187](https://issues.folio.org/browse/UIORGS-187) User not aware you need to search Language using language code
