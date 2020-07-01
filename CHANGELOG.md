@@ -6,10 +6,15 @@
 * [UISACQCOMP-3](https://issues.folio.org/browse/UISACQCOMP-3) Handle import of stripes-acq-components to modules and platform
 
 ### Bug fixes
-* [UIORGS-189](https://issues.folio.org/browse/UIORGS-189) Alias descriptions not displayed if Alias 1 has no description
-* [UIORGS-187](https://issues.folio.org/browse/UIORGS-187) User not aware you need to search Language using language code
 * [UIORGS-159](https://issues.folio.org/browse/UIORGS-159) Accessibility Error: Form elements must have labels
 * [UIORGS-157](https://issues.folio.org/browse/UIORGS-157) Accessibility error: IDs of active elements must be unique
+
+## [2.1.1](https://github.com/folio-org/ui-organizations/tree/v2.1.1) (2020-07-01)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.1.0...v2.1.1)
+
+### Bug fixes
+* [UIORGS-189](https://issues.folio.org/browse/UIORGS-189) Alias descriptions not displayed if Alias 1 has no description
+* [UIORGS-187](https://issues.folio.org/browse/UIORGS-187) User not aware you need to search Language using language code
 
 ## [2.1.0](https://github.com/folio-org/ui-organizations/tree/v2.1.0) (2020-06-12)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.0.1...v2.1.0)
