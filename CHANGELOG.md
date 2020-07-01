@@ -4,6 +4,9 @@
 
 ### Stories
 
+## [2.1.1](https://github.com/folio-org/ui-organizations/tree/v2.1.1) (2020-07-01)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.1.0...v2.1.1)
+
 ### Bug fixes
 * [UIORGS-189](https://issues.folio.org/browse/UIORGS-189) Alias descriptions not displayed if Alias 1 has no description
 * [UIORGS-187](https://issues.folio.org/browse/UIORGS-187) User not aware you need to search Language using language code
