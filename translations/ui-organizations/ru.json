@@ -604,5 +604,6 @@
     "filterConfig.acqUnits": "Устройство поиска",
     "permission.ui-organizations.acqUnits.assign": "Организации: Присвоить единицы комплектования новой организации",
     "permission.ui-organizations.acqUnits.manage": "Организации: Управление единицами комплектования",
-    "save.error.codeInUse": "Код уже используется"
+    "save.error.codeInUse": "Код уже используется",
+    "search.placeholder.language": "Поиск с использованием кода языка"
 }
