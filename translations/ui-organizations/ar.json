@@ -604,5 +604,6 @@
     "filterConfig.acqUnits": "وحدة التزويد",
     "permission.ui-organizations.acqUnits.assign": "المؤسسات: عيّن وحدات تزويد إلى مؤسسة جديدة",
     "permission.ui-organizations.acqUnits.manage": "المؤسسات: أدر وحدات التزويد",
-    "save.error.codeInUse": "الكود قيد الاستخدام بالفعل"
+    "save.error.codeInUse": "الكود قيد الاستخدام بالفعل",
+    "search.placeholder.language": "ابحث برمز اللغة"
 }

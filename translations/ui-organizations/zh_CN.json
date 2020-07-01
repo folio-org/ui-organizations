@@ -604,5 +604,6 @@
     "filterConfig.acqUnits": "采购单元",
     "permission.ui-organizations.acqUnits.assign": "组织：将采购单元分配给新组织",
     "permission.ui-organizations.acqUnits.manage": "组织：管理采购单元",
-    "save.error.codeInUse": "代码已在使用中"
+    "save.error.codeInUse": "代码已在使用中",
+    "search.placeholder.language": "Search with language code"
 }

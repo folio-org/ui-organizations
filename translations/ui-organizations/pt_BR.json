@@ -604,5 +604,6 @@
     "filterConfig.acqUnits": "Unidade de aquisição",
     "permission.ui-organizations.acqUnits.assign": "Organizações: Atribuir unidades de aquisição a nova organização",
     "permission.ui-organizations.acqUnits.manage": "Organizações: Gerenciar unidades de aquisição",
-    "save.error.codeInUse": "O código já está em uso"
+    "save.error.codeInUse": "O código já está em uso",
+    "search.placeholder.language": "Pesquise com código de idioma"
 }
