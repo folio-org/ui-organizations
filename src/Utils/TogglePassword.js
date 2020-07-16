@@ -7,7 +7,6 @@ import { Button, TextField, Row, Col } from '@folio/stripes/components';
 class TogglePassword extends Component {
   static propTypes = {
     name: PropTypes.string,
-    id: PropTypes.string,
     buttonID: PropTypes.string,
   }
 
@@ -25,7 +24,7 @@ class TogglePassword extends Component {
   }
 
   render() {
-    const { name, id, buttonID } = this.props;
+    const { name, buttonID } = this.props;
 
     return (
       <Row>
@@ -34,7 +33,6 @@ class TogglePassword extends Component {
             autoComplete="new-password"
             component={TextField}
             fullWidth
-            id={id}
             label={<FormattedMessage id="ui-organizations.edit.password" />}
             name={name}
             type={this.state.showPassword ? 'text' : 'password'}
