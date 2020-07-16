@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { get, map } from 'lodash';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
 import {
   Button,
@@ -83,6 +86,7 @@ AddContactButton.propTypes = {
 const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, orgId, categoriesDict, stripes }) => {
+  const intl = useIntl();
   const contentData = fields.getAll().map((contactId, _index) => ({
     ...get(contactsMap, contactId, {}),
     _index,
@@ -105,6 +109,7 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
     unassign: (contact) => (
       <Button
         align="end"
+        aria-label={intl.formatMessage({ id: 'ui-organizations.contacts.button.unassign' })}
         buttonStyle="fieldControl"
         data-test-unassign-contact
         type="button"
