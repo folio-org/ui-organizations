@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
 import {
   Button,
@@ -81,6 +84,7 @@ AddInterfaceButton.propTypes = {
 const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationInterfacesList = ({ fetchInterfaces, fields, interfaces, orgId }) => {
+  const intl = useIntl();
   const contentData = fields.getAll().map((interfaceId, _index) => ({
     ...get(interfaces, interfaceId, {}),
     _index,
@@ -102,6 +106,7 @@ const OrganizationInterfacesList = ({ fetchInterfaces, fields, interfaces, orgId
     unassign: (item) => (
       <Button
         align="end"
+        aria-label={intl.formatMessage({ id: 'ui-organizations.interface.button.unassign' })}
         buttonStyle="fieldControl"
         data-test-unassign-interface
         type="button"
