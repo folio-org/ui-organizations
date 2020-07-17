@@ -101,9 +101,9 @@ const OrganizationInterfacesList = ({ fetchInterfaces, fields, interfaces, orgId
   };
 
   const resultsFormatter = {
-    name: ({ name }) => name,
-    url: ({ uri }) => uri,
-    unassign: (item) => (
+    interfaceName: ({ name }) => name,
+    interfaceUrl: ({ uri }) => uri,
+    unassignInterface: (item) => (
       <Button
         align="end"
         aria-label={intl.formatMessage({ id: 'ui-organizations.interface.button.unassign' })}

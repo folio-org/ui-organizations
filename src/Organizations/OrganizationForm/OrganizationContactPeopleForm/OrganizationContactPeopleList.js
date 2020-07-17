@@ -17,13 +17,13 @@ import { acqRowFormatter } from '@folio/stripes-acq-components';
 import { transformCategoryIdsToLables } from '../../../common/utils/category';
 
 const columnMapping = {
-  categories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
-  emails: <FormattedMessage id="ui-organizations.contactPeople.emails" />,
-  name: <FormattedMessage id="ui-organizations.contactPeople.name" />,
-  unassign: null,
+  contactCategories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
+  contactEmails: <FormattedMessage id="ui-organizations.contactPeople.emails" />,
+  contactName: <FormattedMessage id="ui-organizations.contactPeople.name" />,
+  unassignContact: null,
 };
 
-const visibleColumns = ['name', 'categories', 'emails', 'unassign'];
+const visibleColumns = ['contactName', 'contactCategories', 'contactEmails', 'unassignContact'];
 
 const getContactsUrl = (orgId, contactId) => {
   const ending = contactId ? `/contacts/${contactId}/view` : '/contacts/add-contact';
@@ -103,10 +103,10 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
   };
 
   const resultsFormatter = {
-    categories: ({ categories = [] }) => transformCategoryIdsToLables(categoriesDict, categories),
-    emails: ({ emails }) => map(emails, 'value').join(', '),
-    name: contact => `${contact.firstName} ${contact.lastName}`,
-    unassign: (contact) => (
+    contactCategories: ({ categories = [] }) => transformCategoryIdsToLables(categoriesDict, categories),
+    contactEmails: ({ emails }) => map(emails, 'value').join(', '),
+    contactName: contact => `${contact.firstName} ${contact.lastName}`,
+    unassignContact: (contact) => (
       <Button
         align="end"
         aria-label={intl.formatMessage({ id: 'ui-organizations.contacts.button.unassign' })}

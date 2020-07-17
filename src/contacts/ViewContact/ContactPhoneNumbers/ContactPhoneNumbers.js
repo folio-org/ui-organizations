@@ -7,22 +7,22 @@ import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
 
 import { transformCategoryIdsToLables } from '../../../common/utils';
 
-const visibleColumns = ['phoneNumber', 'type', 'language', 'categories', 'primary'];
+const visibleColumns = ['phoneNumber', 'phoneType', 'phoneLanguage', 'phoneCategories', 'phonePrimary'];
 const columnMapping = {
   phoneNumber: <FormattedMessage id="ui-organizations.contactPeople.phoneNumber" />,
-  type: <FormattedMessage id="ui-organizations.contactPeople.type" />,
-  language: <FormattedMessage id="ui-organizations.contactPeople.language" />,
-  categories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
-  primary: <FormattedMessage id="ui-organizations.primaryItem" />,
+  phoneType: <FormattedMessage id="ui-organizations.contactPeople.type" />,
+  phoneLanguage: <FormattedMessage id="ui-organizations.contactPeople.language" />,
+  phoneCategories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
+  phonePrimary: <FormattedMessage id="ui-organizations.primaryItem" />,
 };
 
 const ContactPhoneNumbers = ({ categories, phoneNumbers }) => {
   const resultsFormatter = {
     phoneNumber: ({ phoneNumber }) => phoneNumber,
-    type: ({ type }) => type,
-    language: ({ language }) => LANG_LABEL_BY_CODE[language] || language,
-    categories: phoneNumber => transformCategoryIdsToLables(categories, phoneNumber.categories),
-    primary: phoneNumber => (phoneNumber.isPrimary ? <FormattedMessage id="ui-organizations.primaryItem" /> : ''),
+    phoneType: ({ type }) => type,
+    phoneLanguage: ({ language }) => LANG_LABEL_BY_CODE[language] || language,
+    phoneCategories: phoneNumber => transformCategoryIdsToLables(categories, phoneNumber.categories),
+    phonePrimary: phoneNumber => (phoneNumber.isPrimary ? <FormattedMessage id="ui-organizations.primaryItem" /> : ''),
   };
 
   return (

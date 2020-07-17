@@ -7,22 +7,22 @@ import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
 
 import { transformCategoryIdsToLables } from '../../../common/utils';
 
-const visibleColumns = ['url', 'description', 'language', 'categories', 'primary'];
+const visibleColumns = ['url', 'urlDescription', 'urlLanguage', 'urlCategories', 'urlPrimary'];
 const columnMapping = {
   url: <FormattedMessage id="ui-organizations.contactPeople.name" />,
-  description: <FormattedMessage id="ui-organizations.contactPeople.description" />,
-  language: <FormattedMessage id="ui-organizations.contactPeople.language" />,
-  categories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
-  primary: <FormattedMessage id="ui-organizations.primaryItem" />,
+  urlDescription: <FormattedMessage id="ui-organizations.contactPeople.description" />,
+  urlLanguage: <FormattedMessage id="ui-organizations.contactPeople.language" />,
+  urlCategories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
+  urlPrimary: <FormattedMessage id="ui-organizations.primaryItem" />,
 };
 
 const ContactUrls = ({ categories, urls }) => {
   const resultsFormatter = {
     url: ({ value }) => value,
-    description: ({ description }) => description,
-    language: ({ language }) => LANG_LABEL_BY_CODE[language] || language,
-    categories: url => transformCategoryIdsToLables(categories, url.categories),
-    primary: url => (url.isPrimary ? <FormattedMessage id="ui-organizations.primaryItem" /> : ''),
+    urlDescription: ({ description }) => description,
+    urlLanguage: ({ language }) => LANG_LABEL_BY_CODE[language] || language,
+    urlCategories: url => transformCategoryIdsToLables(categories, url.categories),
+    urlPrimary: url => (url.isPrimary ? <FormattedMessage id="ui-organizations.primaryItem" /> : ''),
   };
 
   return (
