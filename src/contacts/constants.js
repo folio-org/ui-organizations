@@ -2,11 +2,11 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 export const CONTACT_PERSON_ACCORDIONS = {
-  NAME: 'name',
-  EMAILS: 'emails',
-  PHONES: 'phones',
-  URLS: 'urls',
-  ADDRESSES: 'addresses',
+  NAME: 'contact-name',
+  EMAILS: 'contact-emails',
+  PHONES: 'contact-phones',
+  URLS: 'contact-urls',
+  ADDRESSES: 'contact-addresses',
 };
 
 export const CONTACT_PERSON_ACCORDION_LABELS = {

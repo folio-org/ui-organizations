@@ -7,22 +7,22 @@ import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
 
 import { transformCategoryIdsToLables } from '../../../common/utils';
 
-const visibleColumns = ['email', 'description', 'language', 'categories', 'primary'];
+const visibleColumns = ['email', 'emailDescription', 'emailLanguage', 'emailCategories', 'emailPrimary'];
 const columnMapping = {
   email: <FormattedMessage id="ui-organizations.contactPeople.email" />,
-  description: <FormattedMessage id="ui-organizations.contactPeople.description" />,
-  language: <FormattedMessage id="ui-organizations.contactPeople.language" />,
-  categories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
-  primary: <FormattedMessage id="ui-organizations.primaryItem" />,
+  emailDescription: <FormattedMessage id="ui-organizations.contactPeople.description" />,
+  emailLanguage: <FormattedMessage id="ui-organizations.contactPeople.language" />,
+  emailCategories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
+  emailPrimary: <FormattedMessage id="ui-organizations.primaryItem" />,
 };
 
 const ContactEmails = ({ categories, emails }) => {
   const resultsFormatter = {
     email: ({ value }) => value,
-    description: ({ description }) => description,
-    language: ({ language }) => LANG_LABEL_BY_CODE[language] || language,
-    categories: email => transformCategoryIdsToLables(categories, email.categories),
-    primary: email => (email.isPrimary ? <FormattedMessage id="ui-organizations.primaryItem" /> : ''),
+    emailDescription: ({ description }) => description,
+    emailLanguage: ({ language }) => LANG_LABEL_BY_CODE[language] || language,
+    emailCategories: email => transformCategoryIdsToLables(categories, email.categories),
+    emailPrimary: email => (email.isPrimary ? <FormattedMessage id="ui-organizations.primaryItem" /> : ''),
   };
 
   return (

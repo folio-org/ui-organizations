@@ -1,7 +1,10 @@
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+
 export const columnMapping = {
-  name: 'Name',
-  url: 'URL',
-  unassign: null,
+  interfaceName: <FormattedMessage id="ui-organizations.interface.name" />,
+  interfaceUrl: <FormattedMessage id="ui-organizations.interface.url" />,
+  unassignInterface: null,
 };
 
-export const visibleColumns = ['name', 'url', 'unassign'];
+export const visibleColumns = ['interfaceName', 'interfaceUrl', 'unassignInterface'];
