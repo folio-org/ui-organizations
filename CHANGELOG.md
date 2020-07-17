@@ -6,6 +6,7 @@
 * [UISACQCOMP-3](https://issues.folio.org/browse/UISACQCOMP-3) Handle import of stripes-acq-components to modules and platform
 
 ### Bug fixes
+* [UIORGS-166](https://issues.folio.org/browse/UIORGS-166) Accessibility Error: Heading levels should only increase by one
 * [UIORGS-162](https://issues.folio.org/browse/UIORGS-162) Accessibility Error: Buttons must have discernible text
 * [UISACQCOMP-2](https://issues.folio.org/browse/UISACQCOMP-2) ACQ - CurrencySelect values are not translated
 * [UIORGS-172](https://issues.folio.org/browse/UIORGS-172) a11y error: Form elements must have labels

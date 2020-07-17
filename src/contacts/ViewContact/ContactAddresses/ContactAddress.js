@@ -37,6 +37,7 @@ const ContactAddress = ({ address }) => (
         addressObject={address}
         visibleFields={visibleFields}
         labelMap={labelMap}
+        headingLevel={4}
       />
     </Col>
   </Row>
