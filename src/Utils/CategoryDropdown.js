@@ -1,10 +1,9 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { find } from 'lodash';
-import { Field } from 'redux-form';
 import { FormattedMessage } from 'react-intl';
 
-import { MultiSelection } from '@folio/stripes/components';
+import { FieldMultiSelection } from '@folio/stripes-acq-components';
 
 const toString = (option) => option;
 
@@ -31,13 +30,10 @@ function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabel
   }, [dropdownVendorCategories]);
 
   return (
-    <Field
-      component={MultiSelection}
+    <FieldMultiSelection
       label={withLabel ? <FormattedMessage id="ui-organizations.data.contactTypes.categories" /> : undefined}
       ariaLabelledBy={ariaLabelledBy}
       name={name ? `${name}.categories` : 'categories'}
-      style={{ height: '80px' }}
-      onBlur={(e) => { e.preventDefault(); }}
       dataOptions={dataOptions}
       itemToString={toString}
       formatter={formatter}

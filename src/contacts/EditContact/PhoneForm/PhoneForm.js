@@ -103,7 +103,7 @@ const PhoneForm = ({ categories, dispatchChange, phoneTypesList }) => {
           <FieldSelect
             name={`${elem}.type`}
             dataOptions={phoneTypesList}
-            ariaLabelledBy="phoneFormTypeLabel"
+            aria-labelledby="phoneFormTypeLabel"
           />
         </Col>
 

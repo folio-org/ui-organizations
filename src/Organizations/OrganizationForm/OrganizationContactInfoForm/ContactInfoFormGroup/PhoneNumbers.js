@@ -94,6 +94,7 @@ const PhoneNumbers = ({
             md={3}
           >
             <CategoryDropdown
+              ariaLabelledBy="phoneFormCategoriesLabel"
               dropdownVendorCategories={dropdownVendorCategories}
               name={name}
             />

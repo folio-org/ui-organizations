@@ -71,6 +71,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
             md={3}
           >
             <FieldMultiSelection
+              ariaLabelledBy="vendorFormCurrenciesLabel"
               label={<FormattedMessage id="ui-organizations.vendorInfo.vendorCurrencies" />}
               name="vendorCurrencies"
               dataOptions={currencyValueOptions}

@@ -153,6 +153,7 @@ const AddressInfo = ({
             md={3}
           >
             <CategoryDropdown
+              ariaLabelledBy="addressFormCategoriesLabel"
               dropdownVendorCategories={dropdownVendorCategories}
               name={name}
             />
