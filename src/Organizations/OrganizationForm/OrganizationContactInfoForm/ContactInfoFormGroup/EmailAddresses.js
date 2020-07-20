@@ -92,6 +92,7 @@ const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownVendorCategor
             md={3}
           >
             <CategoryDropdown
+              ariaLabelledBy="emailFormCategoriesLabel"
               dropdownVendorCategories={dropdownVendorCategories}
               name={name}
             />

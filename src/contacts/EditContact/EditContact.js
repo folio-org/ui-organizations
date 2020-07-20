@@ -182,6 +182,7 @@ const EditContact = ({
                 </Col>
                 <Col xs={3}>
                   <CategoryDropdown
+                    ariaLabelledBy="nameFormCategoriesLabel"
                     dropdownVendorCategories={categories}
                   />
                 </Col>

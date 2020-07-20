@@ -6,6 +6,7 @@
 * [UISACQCOMP-3](https://issues.folio.org/browse/UISACQCOMP-3) Handle import of stripes-acq-components to modules and platform
 
 ### Bug fixes
+* [UIORGS-170](https://issues.folio.org/browse/UIORGS-170) Accessibility Error: Form elements must have labels
 * [UIORGS-169](https://issues.folio.org/browse/UIORGS-169) Accessibility Error: id attribute value must be unique
 * [UIORGS-166](https://issues.folio.org/browse/UIORGS-166) Accessibility Error: Heading levels should only increase by one
 * [UIORGS-162](https://issues.folio.org/browse/UIORGS-162) Accessibility Error: Buttons must have discernible text
