@@ -168,6 +168,7 @@ function OrganizationSummaryForm({ dispatchChange, initialValues }) {
         md={3}
       >
         <AcqUnitsField
+          id="org-acq-units"
           name="acqUnitIds"
           perm={isEditMode ? MANAGE_UNITS_PERM : CREATE_UNITS_PERM}
           isEdit={isEditMode}
