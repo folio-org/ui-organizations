@@ -25,6 +25,7 @@ const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters
 const OrganizationsListFilter = ({
   activeFilters,
   applyFilters,
+  disabled,
 }) => {
   const adaptedApplyFilters = useCallback(
     applyFiltersAdapter(applyFilters),
@@ -35,6 +36,7 @@ const OrganizationsListFilter = ({
     <AccordionSet>
       <AcqCheckboxFilter
         activeFilters={activeFilters[FILTERS.STATUS]}
+        disabled={disabled}
         id={`org-filter-${FILTERS.STATUS}`}
         labelId="ui-organizations.filterConfig.vendorStatus"
         name={FILTERS.STATUS}
@@ -45,6 +47,7 @@ const OrganizationsListFilter = ({
 
       <AcqTagsFilter
         activeFilters={activeFilters[FILTERS.TAGS]}
+        disabled={disabled}
         id={`org-filter-${FILTERS.TAGS}`}
         name={FILTERS.TAGS}
         onChange={adaptedApplyFilters}
@@ -52,6 +55,7 @@ const OrganizationsListFilter = ({
 
       <AcqCheckboxFilter
         activeFilters={activeFilters[FILTERS.IS_VENDOR]}
+        disabled={disabled}
         id={`org-filter-${FILTERS.IS_VENDOR}`}
         labelId="ui-organizations.filterConfig.isVendor"
         name={FILTERS.IS_VENDOR}
@@ -61,6 +65,7 @@ const OrganizationsListFilter = ({
 
       <CountryFilter
         activeFilters={activeFilters[FILTERS.ADDRESS_COUNTRY]}
+        disabled={disabled}
         id={`org-filter-${FILTERS.ADDRESS_COUNTRY}`}
         labelId="ui-organizations.filterConfig.country"
         name={FILTERS.ADDRESS_COUNTRY}
@@ -69,6 +74,7 @@ const OrganizationsListFilter = ({
 
       <LanguageFilter
         activeFilters={activeFilters[FILTERS.LANGUAGE]}
+        disabled={disabled}
         id={`org-filter-${FILTERS.LANGUAGE}`}
         labelId="ui-organizations.filterConfig.languages"
         name={FILTERS.LANGUAGE}
@@ -77,6 +83,7 @@ const OrganizationsListFilter = ({
 
       <AcqCheckboxFilter
         activeFilters={activeFilters[FILTERS.PAYMENT_METHOD]}
+        disabled={disabled}
         id={`org-filter-${FILTERS.PAYMENT_METHOD}`}
         labelId="ui-organizations.filterConfig.paymentMethod"
         name={FILTERS.PAYMENT_METHOD}
@@ -87,6 +94,7 @@ const OrganizationsListFilter = ({
       <AcqUnitFilter
         id={`org-filter-${FILTERS.ACQUISITIONS_UNIT}`}
         activeFilters={activeFilters[FILTERS.ACQUISITIONS_UNIT]}
+        disabled={disabled}
         labelId="ui-organizations.filterConfig.acqUnits"
         name={FILTERS.ACQUISITIONS_UNIT}
         onChange={adaptedApplyFilters}
@@ -99,6 +107,7 @@ const OrganizationsListFilter = ({
 OrganizationsListFilter.propTypes = {
   activeFilters: PropTypes.object.isRequired,
   applyFilters: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default OrganizationsListFilter;

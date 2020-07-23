@@ -114,12 +114,13 @@ const OrganizationsList = ({
           <ResetButton
             id="reset-organizations-filters"
             reset={resetFilters}
-            disabled={!location.search}
+            disabled={!location.search || isLoading}
           />
 
           <OrganizationsListFilter
             activeFilters={filters}
             applyFilters={applyFilters}
+            disabled={isLoading}
           />
         </FiltersPane>
       )}

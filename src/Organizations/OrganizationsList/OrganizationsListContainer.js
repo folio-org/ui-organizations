@@ -14,6 +14,7 @@ import {
   getFilterParams,
   makeQueryBuilder,
   useLocationReset,
+  useList,
 } from '@folio/stripes-acq-components';
 
 import { organizationsResource } from '../../common/resources';
@@ -43,58 +44,26 @@ const buildTitlesQuery = makeQueryBuilder(
 const resetData = () => {};
 
 const OrganizationsListContainer = ({ mutator, location, history }) => {
-  const [organizations, setOrganizations] = useState([]);
-  const [organizationsCount, setOrganizationsCount] = useState(0);
-  const [organizationsOffset, setOrganizationsOffset] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const loadOrganizations = (offset) => {
-    setIsLoading(true);
-    const queryParams = queryString.parse(location.search);
-    const filterParams = getFilterParams(queryParams);
-    const dontCallAPI = Object.keys(filterParams).length === 0;
-
-    const loadOrgsPromise = dontCallAPI
-      ? Promise.resolve()
-      : mutator.organizationsListOrgs.GET({
-        params: {
-          limit: RESULT_COUNT_INCREMENT,
-          offset,
-          query: buildTitlesQuery(queryString.parse(location.search)),
-        },
-      })
-        .then(organizationsResponse => {
-          if (!offset) setOrganizationsCount(organizationsResponse.totalRecords);
-
-          setOrganizations((prev) => [...prev, ...organizationsResponse.organizations]);
-        });
-
-    return loadOrgsPromise
-      .finally(() => setIsLoading(false));
-  };
-
-  const onNeedMoreData = () => {
-    const newOffset = organizationsOffset + RESULT_COUNT_INCREMENT;
-
-    loadOrganizations(newOffset)
-      .then(() => {
-        setOrganizationsOffset(newOffset);
-      });
-  };
-
-  const refreshList = () => {
-    setOrganizations([]);
-    setOrganizationsOffset(0);
-    loadOrganizations(0);
-  };
-
-  useEffect(
-    () => {
-      refreshList();
+  const loadOrganizations = (offset) => mutator.organizationsListOrgs.GET({
+    params: {
+      limit: RESULT_COUNT_INCREMENT,
+      offset,
+      query: buildTitlesQuery(queryString.parse(location.search)),
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [location.search],
-  );
+  });
+
+  const loadOrganizationsCB = (setOrganizations, organizationsResponse) => {
+    setOrganizations((prev) => [...prev, ...organizationsResponse.organizations]);
+  };
+
+  const {
+    records: organizations,
+    recordsCount: organizationsCount,
+    isLoading,
+    onNeedMoreData,
+    refreshList,
+  } = useList(false, loadOrganizations, loadOrganizationsCB, RESULT_COUNT_INCREMENT);
+
   useLocationReset(history, location, '/organizations', refreshList);
 
   return (

@@ -14,7 +14,7 @@ export const searchableIndexes = [
   },
   ...indexes.map(index => ({
     labelId: `ui-organizations.search.${index}`,
-    placeholderId: index === 'language' && 'ui-organizations.search.placeholder.language',
+    placeholderId: index === 'language' ? 'ui-organizations.search.placeholder.language' : undefined,
     value: index,
   })),
 ];

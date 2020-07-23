@@ -40,7 +40,7 @@ const headLabels = (
 
     <Col
       data-test-contact-email-label-description
-      xs={3}
+      xs={2}
     >
       <Label id="emailFormDescriptionLabel">
         <FormattedMessage id="ui-organizations.contactPeople.emails.description" />
@@ -58,7 +58,7 @@ const headLabels = (
 
     <Col
       data-test-contact-email-label-category
-      xs={2}
+      xs={3}
     >
       <Label id="emailFormCategoriesLabel">
         <FormattedMessage id="ui-organizations.data.contactTypes.categories" />
