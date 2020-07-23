@@ -601,8 +601,8 @@
     "contactInfo.vendorCategory.uncategorized": "Uncategorized",
     "contacts.actions.load.error": "Failed to load contacts data",
     "save.error.genericError": "Organization could not be saved",
-    "filterConfig.acqUnits": "Устройство поиска",
-    "permission.ui-organizations.acqUnits.assign": "Организации: Присвоить единицы комплектования новой организации",
+    "filterConfig.acqUnits": "Единица комплектования",
+    "permission.ui-organizations.acqUnits.assign": "Организации: Присваивать единицы комплектования новой организации",
     "permission.ui-organizations.acqUnits.manage": "Организации: Управление единицами комплектования",
     "save.error.codeInUse": "Код уже используется",
     "search.placeholder.language": "Поиск с использованием кода языка"
