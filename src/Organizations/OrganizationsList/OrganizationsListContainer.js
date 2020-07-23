@@ -1,7 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   withRouter,
@@ -11,7 +8,6 @@ import queryString from 'query-string';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
-  getFilterParams,
   makeQueryBuilder,
   useLocationReset,
   useList,
