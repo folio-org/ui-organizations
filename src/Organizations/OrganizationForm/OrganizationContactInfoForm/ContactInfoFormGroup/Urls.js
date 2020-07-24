@@ -97,6 +97,7 @@ const Urls = ({ defaultLanguage, dispatchChange, dropdownVendorCategories }) => 
               ariaLabelledBy="urlFormCategoriesLabel"
               dropdownVendorCategories={dropdownVendorCategories}
               name={name}
+              id="organization-form-url-categories"
             />
           </Col>
         </Row>

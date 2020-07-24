@@ -97,6 +97,7 @@ const PhoneNumbers = ({
               ariaLabelledBy="phoneFormCategoriesLabel"
               dropdownVendorCategories={dropdownVendorCategories}
               name={name}
+              id="organization-form-phone-categories"
             />
           </Col>
         </Row>

@@ -184,6 +184,7 @@ const EditContact = ({
                   <CategoryDropdown
                     ariaLabelledBy="nameFormCategoriesLabel"
                     dropdownVendorCategories={categories}
+                    id="contact-form-categories"
                   />
                 </Col>
                 <Col xs={6}>
