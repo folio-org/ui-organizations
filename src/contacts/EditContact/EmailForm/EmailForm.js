@@ -126,7 +126,7 @@ const EmailForm = ({ categories, dispatchChange }) => {
             name={elem}
             withLabel={false}
             ariaLabelledBy="emailFormCategoriesLabel"
-            id="contact-form-email-categories"
+            id={`contact-form-email-categories-${index}`}
           />
         </Col>
 
