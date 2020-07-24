@@ -156,7 +156,6 @@ const AddressInfo = ({
               ariaLabelledBy="addressFormCategoriesLabel"
               dropdownVendorCategories={dropdownVendorCategories}
               name={name}
-              id={`organization-form-address-categories-${index}`}
             />
           </Col>
         </Row>

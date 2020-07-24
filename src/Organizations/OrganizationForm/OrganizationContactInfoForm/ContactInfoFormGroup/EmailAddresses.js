@@ -95,7 +95,6 @@ const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownVendorCategor
               ariaLabelledBy="emailFormCategoriesLabel"
               dropdownVendorCategories={dropdownVendorCategories}
               name={name}
-              id={`organization-form-email-categories-${index}`}
             />
           </Col>
         </Row>

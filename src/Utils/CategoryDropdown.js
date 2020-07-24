@@ -5,10 +5,11 @@ import { FormattedMessage } from 'react-intl';
 
 import { FieldMultiSelection } from '@folio/stripes-acq-components';
 
-function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabelledBy, id }) {
+function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabelledBy }) {
+  const fieldName = name ? `${name}.categories` : 'categories';
   const toString = useCallback((option) => (
-    option ? `${id}-${option}` : null
-  ), [id]);
+    option ? `${fieldName}-${option}` : option
+  ), [fieldName]);
   const formatter = useCallback(({ option }) => {
     const item = find(dropdownVendorCategories, { id: option }) || option;
 
@@ -34,12 +35,11 @@ function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabel
     <FieldMultiSelection
       label={withLabel ? <FormattedMessage id="ui-organizations.data.contactTypes.categories" /> : undefined}
       ariaLabelledBy={ariaLabelledBy}
-      name={name ? `${name}.categories` : 'categories'}
+      name={fieldName}
       dataOptions={dataOptions}
       itemToString={toString}
       formatter={formatter}
       filter={filterItems}
-      id={id}
     />
   );
 }
@@ -49,7 +49,6 @@ CategoryDropdown.propTypes = {
   name: PropTypes.string,
   withLabel: PropTypes.bool,
   ariaLabelledBy: PropTypes.string,
-  id: PropTypes.string.isRequired,
 };
 
 CategoryDropdown.defaultProps = {

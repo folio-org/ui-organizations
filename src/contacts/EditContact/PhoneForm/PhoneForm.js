@@ -127,7 +127,6 @@ const PhoneForm = ({ categories, dispatchChange, phoneTypesList }) => {
             name={elem}
             withLabel={false}
             ariaLabelledBy="phoneFormCategoriesLabel"
-            id={`contact-form-phone-categories-${index}`}
           />
         </Col>
 

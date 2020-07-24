@@ -126,7 +126,6 @@ const UrlForm = ({ categories, dispatchChange }) => {
             name={elem}
             ariaLabelledBy="urlFormCategoriesLabel"
             withLabel={false}
-            id={`contact-form-url-categories-${index}`}
           />
         </Col>
 
