@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Fix Can not add add accounts to organization from edit form. Refs UIORGS-193
+
 ### Stories
 * [UISACQCOMP-3](https://issues.folio.org/browse/UISACQCOMP-3) Handle import of stripes-acq-components to modules and platform
 

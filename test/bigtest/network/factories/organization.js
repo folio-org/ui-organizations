@@ -9,6 +9,7 @@ export default Factory.extend({
   code: faker.random.uuid,
   description: faker.lorem.text,
   status: ORGANIZATION_STATUS.active,
+  accounts: [],
   addresses: [],
   agreements: [],
   contacts: [faker.random.uuid],
