@@ -31,6 +31,7 @@ class AccountsSection {
   libraryCode = new TextFieldInteractor('[name="accounts[0].libraryCode"]');
   libraryEDIcode = new TextFieldInteractor('[name="accounts[0].libraryEdiCode"]');
   acquisitionUnits = new MultiSelectionInteractor('#account-acq-units-0');
+  acquisitionUnitsIsPresent = isPresent('#account-acq-units-0');
   acqUnitsView = text('[data-test-account-acq-units] [data-test-kv-value]');
   firstAcqUnitOption = new Interactor('#account-acq-units-0-main-item-0');
 }
