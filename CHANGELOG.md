@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Fix Can not add add accounts to organization from edit form. Refs UIORGS-193
+
 ### Stories
 
 ## [2.1.1](https://github.com/folio-org/ui-organizations/tree/v2.1.1) (2020-07-01)

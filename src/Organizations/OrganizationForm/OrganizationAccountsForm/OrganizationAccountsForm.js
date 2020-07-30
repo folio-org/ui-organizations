@@ -203,7 +203,7 @@ class OrganizationAccountsForm extends Component {
               id={`account-acq-units-${index}`}
               name={`${elem}.acqUnitIds`}
               isEdit={isEditMode}
-              preselectedUnits={this.props.initialAccounts?.[index].acqUnitIds || undefined}
+              preselectedUnits={this.props.initialAccounts?.[index]?.acqUnitIds || undefined}
             />
           </Col>
           <Col
