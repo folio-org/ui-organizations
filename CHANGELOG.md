@@ -1,10 +1,9 @@
 # Change history for ui-organizations
 
-## (IN PROGRESS)
+## [2.1.2](https://github.com/folio-org/ui-organizations/tree/v2.1.2) (2020-07-31)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.1.1...v2.1.2)
 
 * Fix Can not add add accounts to organization from edit form. Refs UIORGS-193
-
-### Stories
 
 ## [2.1.1](https://github.com/folio-org/ui-organizations/tree/v2.1.1) (2020-07-01)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.1.0...v2.1.1)
