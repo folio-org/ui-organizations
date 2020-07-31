@@ -2,8 +2,6 @@
 
 ## (IN PROGRESS)
 
-* Fix Can not add add accounts to organization from edit form. Refs UIORGS-193
-
 ### Stories
 * [UISACQCOMP-3](https://issues.folio.org/browse/UISACQCOMP-3) Handle import of stripes-acq-components to modules and platform
 
@@ -16,6 +14,11 @@
 * [UIORGS-172](https://issues.folio.org/browse/UIORGS-172) a11y error: Form elements must have labels
 * [UIORGS-159](https://issues.folio.org/browse/UIORGS-159) Accessibility Error: Form elements must have labels
 * [UIORGS-157](https://issues.folio.org/browse/UIORGS-157) Accessibility error: IDs of active elements must be unique
+
+## [2.1.2](https://github.com/folio-org/ui-organizations/tree/v2.1.2) (2020-07-31)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.1.1...v2.1.2)
+
+* Fix Can not add add accounts to organization from edit form. Refs UIORGS-193
 
 ## [2.1.1](https://github.com/folio-org/ui-organizations/tree/v2.1.1) (2020-07-01)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.1.0...v2.1.1)
