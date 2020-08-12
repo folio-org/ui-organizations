@@ -2,6 +2,7 @@ import React, { useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
+import { sortBy } from 'lodash';
 
 import { stripesConnect } from '@folio/stripes/core';
 import { Loading } from '@folio/stripes/components';
@@ -30,7 +31,7 @@ const OrganizationContactPeopleContainer = ({
     () => {
       setIsLoading(true);
       batchFetch(mutator.organizationDetailsContacts, contactsIds)
-        .then(setContacts)
+        .then(contactsResponse => setContacts(sortBy(contactsResponse, 'firstName')))
         .catch(() => {
           setContacts([]);
           showToast({ messageId: 'ui-organizations.contacts.actions.load.error', type: 'error' });

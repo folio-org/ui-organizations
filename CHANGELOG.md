@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Display contact people in alphabetical order. Refs UIORGS-192
+
 ### Stories
 * [UISACQCOMP-3](https://issues.folio.org/browse/UISACQCOMP-3) Handle import of stripes-acq-components to modules and platform
 
