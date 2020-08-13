@@ -94,7 +94,7 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
   const contentData = sortBy(fields.getAll().map((contactId, _index) => ({
     ...get(contactsMap, contactId, {}),
     _index,
-  })), [({ firstName }) => firstName.toLowerCase()]);
+  })), [({ lastName }) => lastName.toLowerCase()]);
 
   const anchoredRowFormatter = ({ rowProps, ...rest }) => {
     return acqRowFormatter({
@@ -109,7 +109,7 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
   const resultsFormatter = {
     contactCategories: ({ categories = [] }) => transformCategoryIdsToLables(categoriesDict, categories),
     contactEmails: ({ emails }) => map(emails, 'value').join(', '),
-    contactName: contact => `${contact.firstName} ${contact.lastName}`,
+    contactName: contact => `${contact.lastName}, ${contact.firstName}`,
     unassignContact: (contact) => (
       <Button
         align="end"

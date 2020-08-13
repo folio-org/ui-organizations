@@ -26,7 +26,7 @@ const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationContactPeople = ({ vendorCategories, contacts, openContact }) => {
   const resultsFormatter = {
-    name: ({ firstName, lastName }) => `${firstName} ${lastName}`,
+    name: ({ firstName, lastName }) => `${lastName}, ${firstName}`,
     categories: ({ categories = [] }) => transformCategoryIdsToLables(vendorCategories, categories),
     email: ({ emails }) => get(find(emails, 'isPrimary'), 'value', ''),
     phone: ({ phoneNumbers }) => get(find(phoneNumbers, 'isPrimary'), 'phoneNumber', ''),
