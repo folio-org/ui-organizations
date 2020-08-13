@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { get, map } from 'lodash';
+import {
+  get,
+  map,
+  sortBy,
+} from 'lodash';
 import {
   FormattedMessage,
   useIntl,
@@ -87,10 +91,10 @@ const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, orgId, categoriesDict, stripes }) => {
   const intl = useIntl();
-  const contentData = fields.getAll().map((contactId, _index) => ({
+  const contentData = sortBy(fields.getAll().map((contactId, _index) => ({
     ...get(contactsMap, contactId, {}),
     _index,
-  }));
+  })), [({ firstName }) => firstName.toLowerCase()]);
 
   const anchoredRowFormatter = ({ rowProps, ...rest }) => {
     return acqRowFormatter({
