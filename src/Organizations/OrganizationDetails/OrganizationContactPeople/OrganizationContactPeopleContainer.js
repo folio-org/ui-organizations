@@ -31,7 +31,7 @@ const OrganizationContactPeopleContainer = ({
     () => {
       setIsLoading(true);
       batchFetch(mutator.organizationDetailsContacts, contactsIds)
-        .then(contactsResponse => setContacts(sortBy(contactsResponse, 'firstName')))
+        .then(contactsResponse => setContacts(sortBy(contactsResponse, [({ firstName }) => firstName.toLowerCase()])))
         .catch(() => {
           setContacts([]);
           showToast({ messageId: 'ui-organizations.contacts.actions.load.error', type: 'error' });
