@@ -25,6 +25,7 @@ const OrganizationDetailsContainer = ({
   location,
   match,
   mutator,
+  refreshList,
 }) => {
   const organizationId = match.params.id;
 
@@ -89,6 +90,7 @@ const OrganizationDetailsContainer = ({
           type: 'success',
           values: { organizationName: organization.name },
         });
+        refreshList();
         history.replace({
           pathname: '/organizations',
           search: location.search,
@@ -141,6 +143,7 @@ OrganizationDetailsContainer.propTypes = {
   match: ReactRouterPropTypes.match.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
   mutator: PropTypes.object.isRequired,
+  refreshList: PropTypes.func.isRequired,
 };
 
 export default withRouter(stripesConnect(OrganizationDetailsContainer));

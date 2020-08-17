@@ -9,11 +9,13 @@ import queryString from 'query-string';
 import { stripesConnect } from '@folio/stripes/core';
 import {
   makeQueryBuilder,
-  useLocationReset,
   useList,
 } from '@folio/stripes-acq-components';
 
-import { organizationsResource } from '../../common/resources';
+import {
+  RESULT_COUNT_INCREMENT,
+  organizationsResource,
+} from '../../common/resources';
 
 import OrganizationsList from './OrganizationsList';
 import {
@@ -21,9 +23,9 @@ import {
 } from './OrganizationsListSearchConfig';
 import {
   customFilterMap,
+  CUSTOM_SORT_MAP,
 } from './OrganizationsListFilter/OrganizationsListFilterConfig';
 
-const RESULT_COUNT_INCREMENT = 30;
 const buildTitlesQuery = makeQueryBuilder(
   'cql.allRecords=1',
   (query, qindex) => {
@@ -35,11 +37,12 @@ const buildTitlesQuery = makeQueryBuilder(
   },
   'sortby name/sort.ascending',
   customFilterMap,
+  CUSTOM_SORT_MAP,
 );
 
 const resetData = () => {};
 
-const OrganizationsListContainer = ({ mutator, location, history }) => {
+const OrganizationsListContainer = ({ mutator, location }) => {
   const loadOrganizations = (offset) => mutator.organizationsListOrgs.GET({
     params: {
       limit: RESULT_COUNT_INCREMENT,
@@ -60,8 +63,6 @@ const OrganizationsListContainer = ({ mutator, location, history }) => {
     refreshList,
   } = useList(false, loadOrganizations, loadOrganizationsCB, RESULT_COUNT_INCREMENT);
 
-  useLocationReset(history, location, '/organizations', refreshList);
-
   return (
     <OrganizationsList
       onNeedMoreData={onNeedMoreData}
@@ -69,6 +70,7 @@ const OrganizationsListContainer = ({ mutator, location, history }) => {
       organizationsCount={organizationsCount}
       isLoading={isLoading}
       organizations={organizations}
+      refreshList={refreshList}
     />
   );
 };
@@ -79,7 +81,6 @@ OrganizationsListContainer.manifest = Object.freeze({
 
 OrganizationsListContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
-  history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
 };
 
