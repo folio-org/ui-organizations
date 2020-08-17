@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* End of list displays for search results before all records are loaded. Refs UIORGS-197
 * Display contact people in alphabetical order. Refs UIORGS-192
 
 ### Stories

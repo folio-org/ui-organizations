@@ -22,6 +22,7 @@ import {
   useToggle,
 } from '@folio/stripes-acq-components';
 
+import { RESULT_COUNT_INCREMENT } from '../../common/resources';
 import { VIEW_ORG_DETAILS } from '../../common/constants';
 import { OrganizationDetailsContainer } from '../OrganizationDetails';
 import OrganizationsListFilter from './OrganizationsListFilter';
@@ -56,6 +57,7 @@ const OrganizationsList = ({
   resetData,
   organizations,
   organizationsCount,
+  refreshList,
 }) => {
   const [
     filters,
@@ -151,12 +153,18 @@ const OrganizationsList = ({
           isEmptyMessage={resultsStatusMessage}
           pagingType="click"
           hasMargin
+          pageAmount={RESULT_COUNT_INCREMENT}
         />
       </ResultsPane>
 
       <Route
         path={`${VIEW_ORG_DETAILS}:id`}
-        component={OrganizationDetailsContainer}
+        render={props => (
+          <OrganizationDetailsContainer
+            {...props}
+            refreshList={refreshList}
+          />
+        )}
       />
     </Paneset>
   );
@@ -170,6 +178,7 @@ OrganizationsList.propTypes = {
   organizations: PropTypes.arrayOf(PropTypes.object),
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
+  refreshList: PropTypes.func.isRequired,
 };
 
 OrganizationsList.defaultProps = {
