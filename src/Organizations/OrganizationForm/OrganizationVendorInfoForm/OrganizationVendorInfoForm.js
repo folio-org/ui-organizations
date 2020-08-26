@@ -176,6 +176,20 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
               type="number"
             />
           </Col>
+          <Col
+            data-test-export-to-accounting
+            xs={6}
+            md={3}
+          >
+            <Field
+              component={Checkbox}
+              id="exportToAccounting"
+              label={<FormattedMessage id="ui-organizations.vendorInfo.exportToAccounting" />}
+              name="exportToAccounting"
+              type="checkbox"
+              vertical
+            />
+          </Col>
         </Row>
       </Col>
 
