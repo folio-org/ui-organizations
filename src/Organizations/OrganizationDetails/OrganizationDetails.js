@@ -196,6 +196,7 @@ const OrganizationDetails = ({
                     taxId={organization.taxId}
                     taxPercentage={organization.taxPercentage}
                     isLiableForVat={!!organization.liableForVat}
+                    isExportToAccounting={organization.exportToAccounting}
                   />
                 </Accordion>
 

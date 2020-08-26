@@ -239,6 +239,7 @@
   "vendorInfo.expectedActivationInterval": "Expected activation interval",
   "vendorInfo.expectedInvoiceInterval": "Expected invoice interval",
   "vendorInfo.expectedReceiptInterval": "Expected receipt interval",
+  "vendorInfo.exportToAccounting": "Export to accounting",
   "vendorInfo.renewalActivationInterval": "Renewal activation interval",
   "vendorInfo.subscriptionInterval": "Subscription interval",
   "vendorInfo.tax": "Tax",

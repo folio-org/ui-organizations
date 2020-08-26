@@ -24,6 +24,7 @@ const OrganizationVendorInfo = ({
   taxId,
   taxPercentage,
   isLiableForVat,
+  isExportToAccounting,
 }) => {
   const vendorCurrenciesString = vendorCurrencies
     .map(currency => {
@@ -104,6 +105,15 @@ const OrganizationVendorInfo = ({
         />
       </Col>
 
+      <Col xs={3}>
+        <Checkbox
+          checked={isExportToAccounting}
+          disabled
+          label={<FormattedMessage id="ui-organizations.vendorInfo.exportToAccounting" />}
+          vertical
+        />
+      </Col>
+
       <Col xs={12}>
         <hr />
       </Col>
@@ -147,10 +157,12 @@ OrganizationVendorInfo.propTypes = {
   taxId: PropTypes.string,
   taxPercentage: PropTypes.string,
   isLiableForVat: PropTypes.bool,
+  isExportToAccounting: PropTypes.bool,
 };
 
 OrganizationVendorInfo.defaultProps = {
   vendorCurrencies: [],
+  isExportToAccounting: false,
 };
 
 export default OrganizationVendorInfo;
