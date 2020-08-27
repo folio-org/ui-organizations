@@ -605,5 +605,6 @@
     "permission.ui-organizations.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
     "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units",
     "save.error.codeInUse": "Code is already in use",
-    "search.placeholder.language": "Search with language code"
+    "search.placeholder.language": "Search with language code",
+    "vendorInfo.exportToAccounting": "Export to accounting"
 }

@@ -605,5 +605,6 @@
     "permission.ui-organizations.acqUnits.assign": "Организации: Присваивать единицы комплектования новой организации",
     "permission.ui-organizations.acqUnits.manage": "Организации: Управление единицами комплектования",
     "save.error.codeInUse": "Код уже используется",
-    "search.placeholder.language": "Поиск с использованием кода языка"
+    "search.placeholder.language": "Поиск с использованием кода языка",
+    "vendorInfo.exportToAccounting": "Export to accounting"
 }
