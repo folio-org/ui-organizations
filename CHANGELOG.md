@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Ability to use notes with organization record. Refs UIORGS-184
 * Add "Export to accounting" toggle and logic to organization/invoice record. Refs UIORGS-186
 * End of list displays for search results before all records are loaded. Refs UIORGS-197
 * Display contact people in alphabetical order. Refs UIORGS-192

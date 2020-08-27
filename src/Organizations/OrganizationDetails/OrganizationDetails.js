@@ -17,6 +17,7 @@ import {
   PaneMenu,
   Row,
 } from '@folio/stripes/components';
+import { NotesSmartAccordion } from '@folio/stripes/smart-components';
 import {
   TagsBadge,
   TagsPane,
@@ -24,6 +25,11 @@ import {
   useModalToggle,
 } from '@folio/stripes-acq-components';
 
+import { NOTES_ROUTE } from '../../common/constants';
+import {
+  ORG_DOMAIN,
+  ORG_NOTE_TYPE,
+} from '../Notes/const';
 import {
   ORGANIZATION_SECTIONS,
   ORGANIZATION_SECTION_LABELS,
@@ -55,6 +61,7 @@ const OrganizationDetails = ({
     [ORGANIZATION_SECTIONS.vendorTermsSection]: false,
     [ORGANIZATION_SECTIONS.ediInformationSection]: false,
     [ORGANIZATION_SECTIONS.accountsSection]: false,
+    [ORGANIZATION_SECTIONS.notesSection]: false,
   });
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
 
@@ -229,6 +236,16 @@ const OrganizationDetails = ({
               </>
             )
           }
+          <NotesSmartAccordion
+            domainName={ORG_DOMAIN}
+            entityId={organization.id}
+            entityName={organization.name}
+            entityType={ORG_NOTE_TYPE}
+            hideAssignButton
+            id={ORGANIZATION_SECTIONS.notesSection}
+            pathToNoteCreate={`${NOTES_ROUTE}/new`}
+            pathToNoteDetails={NOTES_ROUTE}
+          />
         </AccordionSet>
 
         {isRemoveModalOpened && (
