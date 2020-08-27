@@ -605,5 +605,6 @@
     "permission.ui-organizations.acqUnits.assign": "组织：将采购单元分配给新组织",
     "permission.ui-organizations.acqUnits.manage": "组织：管理采购单元",
     "save.error.codeInUse": "代码已在使用中",
-    "search.placeholder.language": "用语言代码搜索"
+    "search.placeholder.language": "用语言代码搜索",
+    "vendorInfo.exportToAccounting": "Export to accounting"
 }
