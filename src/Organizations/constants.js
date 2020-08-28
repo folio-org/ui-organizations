@@ -10,6 +10,7 @@ export const ORGANIZATION_SECTIONS = {
   vendorTermsSection: 'agreementsSection',
   ediInformationSection: 'EDIInformationSection',
   accountsSection: 'accountsSection',
+  notesSection: 'notesSection',
 };
 
 export const ORGANIZATION_SECTION_LABELS = {

@@ -4,6 +4,11 @@ import {
   Route,
 } from 'react-router-dom';
 
+import {
+  NOTES_ROUTE,
+  ORGANIZATIONS_ROUTE,
+} from '../common/constants';
+import { Notes } from './Notes';
 import { OrganizationsListContainer } from './OrganizationsList';
 import { OrganizationCreate } from './OrganizationCreate';
 import { OrganizationEdit } from './OrganizationEdit';
@@ -11,6 +16,11 @@ import { OrganizationEdit } from './OrganizationEdit';
 const Organizations = () => {
   return (
     <Switch>
+      <Route
+        path={NOTES_ROUTE}
+        component={Notes}
+      />
+
       <Route
         path="/organizations/create"
         component={OrganizationCreate}
@@ -22,7 +32,7 @@ const Organizations = () => {
       />
 
       <Route
-        path="/organizations"
+        path={ORGANIZATIONS_ROUTE}
         component={OrganizationsListContainer}
       />
     </Switch>

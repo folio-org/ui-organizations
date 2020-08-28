@@ -6,6 +6,8 @@
   "primaryItem": "Primary",
   "alternateItem": "Alternate",
   "showTags": "Show tags",
+  "notes.entity": "Organization",
+  "notes.entityPlural": "Organizations",
 
   "data.contactTypes.address": "Address",
   "data.contactTypes.addressLine1": "Address 1",
