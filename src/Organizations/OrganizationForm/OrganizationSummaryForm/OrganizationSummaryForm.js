@@ -18,7 +18,6 @@ import {
 } from '@folio/stripes/components';
 import {
   AcqUnitsField,
-  validateNoSpaces,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
@@ -104,7 +103,7 @@ function OrganizationSummaryForm({ dispatchChange, initialValues }) {
           label={<FormattedMessage id="ui-organizations.summary.code" />}
           name="code"
           required
-          validate={[validateRequired, validateNoSpaces]}
+          validate={validateRequired}
         />
       </Col>
       <Col
