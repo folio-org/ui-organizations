@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Allow use of spaces in organization code. Refs UIORGS-190
 * Ability to use notes with organization record. Refs UIORGS-184
 * Add "Export to accounting" toggle and logic to organization/invoice record. Refs UIORGS-186
 * End of list displays for search results before all records are loaded. Refs UIORGS-197
