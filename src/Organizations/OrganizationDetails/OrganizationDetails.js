@@ -154,6 +154,17 @@ const OrganizationDetails = ({
             />
           </Accordion>
 
+          <NotesSmartAccordion
+            domainName={ORG_DOMAIN}
+            entityId={organization.id}
+            entityName={organization.name}
+            entityType={ORG_NOTE_TYPE}
+            hideAssignButton
+            id={ORGANIZATION_SECTIONS.notesSection}
+            pathToNoteCreate={`${NOTES_ROUTE}/new`}
+            pathToNoteDetails={NOTES_ROUTE}
+          />
+
           <Accordion
             id={ORGANIZATION_SECTIONS.contactInformationSection}
             label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactInformationSection]}
@@ -236,16 +247,6 @@ const OrganizationDetails = ({
               </>
             )
           }
-          <NotesSmartAccordion
-            domainName={ORG_DOMAIN}
-            entityId={organization.id}
-            entityName={organization.name}
-            entityType={ORG_NOTE_TYPE}
-            hideAssignButton
-            id={ORGANIZATION_SECTIONS.notesSection}
-            pathToNoteCreate={`${NOTES_ROUTE}/new`}
-            pathToNoteDetails={NOTES_ROUTE}
-          />
         </AccordionSet>
 
         {isRemoveModalOpened && (
