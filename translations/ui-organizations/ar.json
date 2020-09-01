@@ -606,5 +606,7 @@
     "permission.ui-organizations.acqUnits.manage": "المؤسسات: أدر وحدات التزويد",
     "save.error.codeInUse": "الكود قيد الاستخدام بالفعل",
     "search.placeholder.language": "ابحث برمز اللغة",
-    "vendorInfo.exportToAccounting": "تصدير إلى المحاسبة"
+    "vendorInfo.exportToAccounting": "تصدير إلى المحاسبة",
+    "notes.entity": "المؤسسة",
+    "notes.entityPlural": "المؤسسات"
 }
