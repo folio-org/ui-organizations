@@ -606,5 +606,7 @@
     "permission.ui-organizations.acqUnits.manage": "Организации: Управление единицами комплектования",
     "save.error.codeInUse": "Код уже используется",
     "search.placeholder.language": "Поиск с использованием кода языка",
-    "vendorInfo.exportToAccounting": "Export to accounting"
+    "vendorInfo.exportToAccounting": "Export to accounting",
+    "notes.entity": "Organization",
+    "notes.entityPlural": "Organizations"
 }

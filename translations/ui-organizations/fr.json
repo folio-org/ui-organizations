@@ -606,5 +606,7 @@
     "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units",
     "save.error.codeInUse": "Code is already in use",
     "search.placeholder.language": "Search with language code",
-    "vendorInfo.exportToAccounting": "Export to accounting"
+    "vendorInfo.exportToAccounting": "Export to accounting",
+    "notes.entity": "Organization",
+    "notes.entityPlural": "Organizations"
 }
