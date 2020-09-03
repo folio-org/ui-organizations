@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
+import { Field as ReduxField } from 'redux-form';
+import { Field as FinalFormField } from 'react-final-form';
 import { Button, TextField, Row, Col } from '@folio/stripes/components';
 
 class TogglePassword extends Component {
   static propTypes = {
     name: PropTypes.string,
     buttonID: PropTypes.string,
+    Field: PropTypes.element,
   }
 
   constructor(props) {
@@ -24,7 +26,7 @@ class TogglePassword extends Component {
   }
 
   render() {
-    const { name, buttonID } = this.props;
+    const { name, buttonID, Field } = this.props;
 
     return (
       <Row>
@@ -51,5 +53,16 @@ class TogglePassword extends Component {
     );
   }
 }
+
+TogglePassword.defaultProps = {
+  Field: ReduxField,
+};
+
+export const TogglePasswordFinal = (props) => (
+  <TogglePassword
+    {...props}
+    Field={FinalFormField}
+  />
+);
 
 export default TogglePassword;

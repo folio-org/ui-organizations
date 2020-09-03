@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 export const formatDD = [
   { label: '', value: '' },
   { label: 'Counter', value: 'Counter' },
@@ -18,8 +16,3 @@ export const deliveryMethodDD = [
   { label: 'Email', value: 'Email' },
   { label: 'Other', value: 'Other' },
 ];
-
-export const shapeOptions = PropTypes.arrayOf(PropTypes.shape({
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string,
-}));
