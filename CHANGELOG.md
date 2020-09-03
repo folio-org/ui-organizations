@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Fix Typing into drop down box, does not pull the type ahead pick-list. Refs UIORGS-198
 * Fix Can NOT remove delivery method from interface. Refs UIORGS-199
 * Allow use of spaces in organization code. Refs UIORGS-190
 * Ability to use notes with organization record. Refs UIORGS-184

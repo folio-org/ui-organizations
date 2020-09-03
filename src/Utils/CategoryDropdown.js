@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { find } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
+import { OptionSegment } from '@folio/stripes/components';
 import { FieldMultiSelection } from '@folio/stripes-acq-components';
 
 function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabelledBy }) {
@@ -10,20 +11,25 @@ function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabel
   const toString = useCallback((option) => (
     option ? `${fieldName}-${option}` : option
   ), [fieldName]);
-  const formatter = useCallback(({ option }) => {
+  const formatter = useCallback(({ option, searchTerm }) => {
     const item = find(dropdownVendorCategories, { id: option }) || option;
 
     if (!item) return option;
 
-    return <div key={item.id}>{item.value}</div>;
+    return <OptionSegment searchTerm={searchTerm}>{item.value}</OptionSegment>;
   }, [dropdownVendorCategories]);
 
   const filterItems = useCallback((filterText, list) => {
     const filterRegExp = new RegExp(`^${filterText}`, 'i');
-    const renderedItems = filterText ? list.filter(item => item.search(filterRegExp) !== -1) : list;
 
-    return { renderedItems };
-  }, []);
+    const matchedCats = dropdownVendorCategories?.filter(({ value }) => value.search(filterRegExp) !== -1);
+    const matchedCatsExact = matchedCats?.filter(({ value }) => value === filterText);
+    const matchedCatIds = matchedCats.map(({ id }) => id);
+    const renderedItems = filterText ? list.filter(catId => matchedCatIds.includes(catId)) : list;
+    const exactMatch = filterText ? (matchedCatsExact?.length === 1) : false;
+
+    return { renderedItems, exactMatch };
+  }, [dropdownVendorCategories]);
 
   const dataOptions = useMemo(() => {
     if (!dropdownVendorCategories) return [];
