@@ -241,6 +241,7 @@
     "moment-timezone": "^0.5.20",
     "prop-types": "^15.5.10",
     "query-string": "^6.1.0",
+    "react-final-form": "^6.5.1",
     "react-tether": "^1.0.1",
     "redux-form": "^7.3.0"
   },

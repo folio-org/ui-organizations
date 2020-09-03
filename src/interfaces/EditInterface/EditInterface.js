@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Field } from 'redux-form';
+import { Field } from 'react-final-form';
 
-import stripesForm from '@folio/stripes/form';
+import stripesForm from '@folio/stripes/final-form';
 import {
   AppIcon,
   IfPermission,
@@ -22,8 +22,7 @@ import {
 
 import { validateRequired } from '@folio/stripes-acq-components';
 import { isURLValid } from '../../Utils/Validate';
-import TogglePassword from '../../Utils/TogglePassword';
-import { shapeOptions } from './const';
+import { TogglePasswordFinal } from '../../Utils/TogglePassword';
 import { INTERFACE_OPTIONS } from './util';
 
 import css from './EditInterface.css';
@@ -35,8 +34,8 @@ class EditInterface extends Component {
     paneTitle: PropTypes.node.isRequired,
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
-    formatDD: shapeOptions,
-    deliveryMethodDD: shapeOptions,
+    formatDD: PropTypes.arrayOf(PropTypes.object),
+    deliveryMethodDD: PropTypes.arrayOf(PropTypes.object),
   };
 
   getLastMenu = () => {
@@ -100,6 +99,7 @@ class EditInterface extends Component {
                   label={<FormattedMessage id="ui-organizations.interface.type" />}
                   multiple
                   name="type"
+                  type="select"
                 />
               </Col>
             </Row>
@@ -122,7 +122,7 @@ class EditInterface extends Component {
                   label={<FormattedMessage id="ui-organizations.interface.uri" />}
                   name="uri"
                   type="url"
-                  validate={[isURLValid]}
+                  validate={isURLValid}
                   component={TextField}
                   fullWidth
                 />
@@ -137,7 +137,7 @@ class EditInterface extends Component {
                   />
                 </Col>
                 <Col xs={12} md={6}>
-                  <TogglePassword
+                  <TogglePasswordFinal
                     name="password"
                     buttonID="button"
                   />
@@ -216,6 +216,6 @@ class EditInterface extends Component {
 
 export default stripesForm({
   enableReinitialize: true,
-  form: 'EditInterface',
+  keepDirtyOnReinitialize: true,
   navigationCheck: true,
 })(EditInterface);
