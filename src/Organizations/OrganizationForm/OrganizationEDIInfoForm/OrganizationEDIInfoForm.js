@@ -11,11 +11,11 @@ import {
   Timepicker,
   Select,
   Checkbox,
-  Datepicker,
   AccordionSet,
   Accordion,
   AccordionStatus,
 } from '@folio/stripes/components';
+import { FieldDatepicker } from '@folio/stripes-acq-components';
 
 import { isURLValid } from '../../../Utils/Validate';
 import TogglePassword from '../../../Utils/TogglePassword';
@@ -311,7 +311,7 @@ class OrganizationEDIInfoForm extends Component {
                   <Field
                     label={<FormattedMessage id="ui-organizations.edi.date" />}
                     name="edi.ediJob.date"
-                    component={Datepicker}
+                    component={FieldDatepicker}
                   />
                 </Col>
                 <Col
