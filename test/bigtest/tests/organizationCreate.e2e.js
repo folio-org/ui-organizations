@@ -17,6 +17,8 @@ describe('Create organization', () => {
   const orgEdit = new OrganizationEditInteractor();
   const orgDetails = new OrganizationDetailsInteractor();
 
+  this.timeout(10000);
+
   beforeEach(async function () {
     this.visit('/organizations/create');
     await orgEdit.whenLoaded();
