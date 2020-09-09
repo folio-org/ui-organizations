@@ -8,6 +8,7 @@ import {
   currenciesByCode,
   KeyValue,
   Checkbox,
+  NoValue,
 } from '@folio/stripes/components';
 import { PAYMENT_METHOD_LABELS } from '@folio/stripes-acq-components';
 
@@ -38,7 +39,7 @@ const OrganizationVendorInfo = ({
     <Row>
       <Col xs={3}>
         <KeyValue label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />}>
-          {PAYMENT_METHOD_LABELS[paymentMethod]}
+          {PAYMENT_METHOD_LABELS[paymentMethod] || <NoValue />}
         </KeyValue>
       </Col>
 
@@ -48,7 +49,7 @@ const OrganizationVendorInfo = ({
       >
         <KeyValue
           label={<FormattedMessage id="ui-organizations.vendorInfo.vendorCurrencies" />}
-          value={vendorCurrenciesString}
+          value={vendorCurrenciesString || <NoValue />}
         />
       </Col>
 
@@ -59,49 +60,49 @@ const OrganizationVendorInfo = ({
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.vendorInfo.claimingInterval" />}
-          value={claimingInterval}
+          value={claimingInterval ?? <NoValue />}
         />
       </Col>
 
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.vendorInfo.discountPercent" />}
-          value={discountPercent}
+          value={discountPercent ?? <NoValue />}
         />
       </Col>
 
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.vendorInfo.expectedActivationInterval" />}
-          value={expectedActivationInterval}
+          value={expectedActivationInterval ?? <NoValue />}
         />
       </Col>
 
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.vendorInfo.expectedInvoiceInterval" />}
-          value={expectedInvoiceInterval}
+          value={expectedInvoiceInterval ?? <NoValue />}
         />
       </Col>
 
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.vendorInfo.expectedReceiptInterval" />}
-          value={expectedReceiptInterval}
+          value={expectedReceiptInterval ?? <NoValue />}
         />
       </Col>
 
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.vendorInfo.renewalActivationInterval" />}
-          value={renewalActivationInterval}
+          value={renewalActivationInterval ?? <NoValue />}
         />
       </Col>
 
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.vendorInfo.subscriptionInterval" />}
-          value={subscriptionInterval}
+          value={subscriptionInterval ?? <NoValue />}
         />
       </Col>
 
@@ -121,14 +122,14 @@ const OrganizationVendorInfo = ({
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.vendorInfo.taxID" />}
-          value={taxId}
+          value={taxId || <NoValue />}
         />
       </Col>
 
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.vendorInfo.taxPercentage" />}
-          value={taxPercentage}
+          value={taxPercentage ?? <NoValue />}
         />
       </Col>
 

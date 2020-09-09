@@ -8,6 +8,7 @@ import {
   Headline,
   Checkbox,
   KeyValue,
+  NoValue,
 } from '@folio/stripes/components';
 
 import FormatTime from '../../../Utils/FormatTime';
@@ -26,7 +27,7 @@ const OrganizationEDIInfo = ({ edi }) => {
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.edi.vendorEDICode" />}
-            value={edi.vendorEdiCode}
+            value={edi.vendorEdiCode || <NoValue />}
           />
         </Col>
 
@@ -40,7 +41,7 @@ const OrganizationEDIInfo = ({ edi }) => {
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.edi.libraryEDICode" />}
-            value={edi.libEdiCode}
+            value={edi.libEdiCode || <NoValue />}
           />
         </Col>
 
@@ -72,7 +73,7 @@ const OrganizationEDIInfo = ({ edi }) => {
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.edi.ediNamingConvention" />}
-            value={edi.ediNamingConvention}
+            value={edi.ediNamingConvention || <NoValue />}
           />
         </Col>
 
@@ -106,7 +107,7 @@ const OrganizationEDIInfo = ({ edi }) => {
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.edi.notes" />}
-            value={edi.notes}
+            value={edi.notes || <NoValue />}
           />
         </Col>
       </Row>
@@ -131,21 +132,21 @@ const OrganizationEDIInfo = ({ edi }) => {
           <Col xs={3}>
             <KeyValue
               label={<FormattedMessage id="ui-organizations.edi.serverAddress" />}
-              value={edi.ediFtp.serverAddress}
+              value={edi?.ediFtp?.serverAddress || <NoValue />}
             />
           </Col>
 
           <Col xs={3}>
             <KeyValue
               label={<FormattedMessage id="ui-organizations.edi.username" />}
-              value={edi.ediFtp.username}
+              value={edi?.ediFtp?.username || <NoValue />}
             />
           </Col>
 
           <Col xs={3}>
             <KeyValue
               label={<FormattedMessage id="ui-organizations.edi.password" />}
-              value={edi.ediFtp.password}
+              value={edi?.ediFtp?.password || <NoValue />}
             />
           </Col>
 
@@ -159,28 +160,28 @@ const OrganizationEDIInfo = ({ edi }) => {
           <Col xs={3}>
             <KeyValue
               label={<FormattedMessage id="ui-organizations.edi.ftpPort" />}
-              value={edi.ediFtp.ftpPort}
+              value={edi?.ediFtp?.ftpPort || <NoValue />}
             />
           </Col>
 
           <Col xs={3}>
             <KeyValue
               label={<FormattedMessage id="ui-organizations.edi.orderDirectory" />}
-              value={edi.ediFtp.orderDirectory}
+              value={edi?.ediFtp?.orderDirectory || <NoValue />}
             />
           </Col>
 
           <Col xs={3}>
             <KeyValue
               label={<FormattedMessage id="ui-organizations.edi.invoiceDirectory" />}
-              value={edi.ediFtp.invoiceDirectory}
+              value={edi?.ediFtp?.invoiceDirectory || <NoValue />}
             />
           </Col>
 
           <Col xs={3}>
             <KeyValue
               label={<FormattedMessage id="ui-organizations.edi.notes" />}
-              value={edi.ediFtp.notes}
+              value={edi?.ediFtp?.notes || <NoValue />}
             />
           </Col>
         </Row>
@@ -208,21 +209,21 @@ const OrganizationEDIInfo = ({ edi }) => {
           <Col xs={3}>
             <KeyValue
               label={<FormattedMessage id="ui-organizations.edi.date" />}
-              value={edi.ediJob.date}
+              value={edi?.ediJob?.date || <NoValue />}
             />
           </Col>
 
           <Col xs={3}>
             <KeyValue
               label={<FormattedMessage id="ui-organizations.edi.time" />}
-              value={FormatTime({ edi }, 'get')}
+              value={FormatTime({ edi }, 'get') || <NoValue />}
             />
           </Col>
 
           <Col xs={3}>
             <KeyValue
               label={<FormattedMessage id="ui-organizations.edi.sendToEmails" />}
-              value={edi.ediJob.sendToEmails}
+              value={edi.ediJob.sendToEmails || <NoValue />}
             />
           </Col>
 

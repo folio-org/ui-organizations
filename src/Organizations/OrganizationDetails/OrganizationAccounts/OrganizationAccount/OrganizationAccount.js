@@ -6,6 +6,7 @@ import {
   Row,
   Col,
   KeyValue,
+  NoValue,
 } from '@folio/stripes/components';
 import {
   AcqUnitsView,
@@ -46,14 +47,14 @@ const OrganizationAccount = ({
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.accounts.description" />}
-            value={description}
+            value={description || <NoValue />}
           />
         </Col>
 
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.accounts.payable" />}
-            value={appSystemNo}
+            value={appSystemNo || <NoValue />}
           />
         </Col>
 
@@ -66,7 +67,7 @@ const OrganizationAccount = ({
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.accounts.account.contactInfo" />}
-            value={contactInfo}
+            value={contactInfo || <NoValue />}
           />
         </Col>
 
@@ -87,7 +88,7 @@ const OrganizationAccount = ({
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.accounts.notes" />}
-            value={notes}
+            value={notes || <NoValue />}
           />
         </Col>
         <Col data-test-account-acq-units xs={3}>

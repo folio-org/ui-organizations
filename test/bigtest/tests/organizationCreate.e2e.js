@@ -11,11 +11,13 @@ import { ORGANIZATION_STATUS } from '../../../src/common/constants';
 
 const TEST_ADDRESS = 'test address';
 
-describe('Create organization', () => {
+describe('Create organization', function () {
   setupApplication();
 
   const orgEdit = new OrganizationEditInteractor();
   const orgDetails = new OrganizationDetailsInteractor();
+
+  this.timeout(10000);
 
   beforeEach(async function () {
     this.visit('/organizations/create');

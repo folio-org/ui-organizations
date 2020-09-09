@@ -6,6 +6,7 @@
 # testing
 /coverage
 /artifacts
+junit.xml
 
 # production
 /build

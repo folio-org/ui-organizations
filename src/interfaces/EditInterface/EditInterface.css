@@ -1,5 +1,0 @@
-@import '../../common/styles/subHeadings';
-
-select[multiple] + span {
-  display:none;
-}

@@ -6,6 +6,7 @@ import {
   Row,
   Col,
   KeyValue,
+  NoValue,
 } from '@folio/stripes/components';
 
 const OrganizationAgreement = ({ name, discount, referenceUrl, notes }) => {
@@ -20,19 +21,19 @@ const OrganizationAgreement = ({ name, discount, referenceUrl, notes }) => {
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.agreement.discount" />}
-          value={discount !== undefined ? `${discount}%` : ''}
+          value={discount !== undefined ? `${discount}%` : <NoValue />}
         />
       </Col>
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.agreement.referenceUrl" />}
-          value={referenceUrl}
+          value={referenceUrl || <NoValue />}
         />
       </Col>
       <Col xs={12}>
         <KeyValue
           label={<FormattedMessage id="ui-organizations.agreement.notes" />}
-          value={notes}
+          value={notes || <NoValue />}
         />
       </Col>
     </Row>
