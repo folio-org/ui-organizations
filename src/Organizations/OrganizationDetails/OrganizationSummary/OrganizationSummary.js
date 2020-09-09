@@ -7,6 +7,7 @@ import {
   Col,
   KeyValue,
   MultiColumnList,
+  NoValue,
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
@@ -33,6 +34,8 @@ const OrganizationSummary = ({
   name,
   status,
 }) => {
+  const defaultLanguageValue = LANG_LABEL_BY_CODE[language] || language;
+
   return (
     <>
       <Row>
@@ -44,6 +47,7 @@ const OrganizationSummary = ({
       <Row>
         <Col xs={4}>
           <KeyValue
+            data-testid="name"
             label={<FormattedMessage id="ui-organizations.summary.name" />}
             value={name}
           />
@@ -58,8 +62,9 @@ const OrganizationSummary = ({
 
         <Col xs={4}>
           <KeyValue
+            data-testid="accountingCode"
             label={<FormattedMessage id="ui-organizations.summary.accountingCode" />}
-            value={erpCode}
+            value={erpCode || <NoValue />}
           />
         </Col>
 
@@ -73,8 +78,9 @@ const OrganizationSummary = ({
 
         <Col xs={4}>
           <KeyValue
+            data-testid="defaultLanguage"
             label={<FormattedMessage id="ui-organizations.summary.defaultLanguage" />}
-            value={LANG_LABEL_BY_CODE[language] || language}
+            value={defaultLanguageValue || <NoValue />}
           />
         </Col>
 
@@ -93,8 +99,9 @@ const OrganizationSummary = ({
 
         <Col xs={12}>
           <KeyValue
+            data-testid="description"
             label={<FormattedMessage id="ui-organizations.summary.description" />}
-            value={description}
+            value={description || <NoValue />}
           />
         </Col>
       </Row>

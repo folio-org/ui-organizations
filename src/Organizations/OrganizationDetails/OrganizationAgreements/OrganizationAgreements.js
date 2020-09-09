@@ -17,9 +17,8 @@ const OrganizationAgreements = ({ agreements }) => {
     <div data-test-agreements>
       {
         agreements.map((agreement, idx) => (
-          <>
+          <React.Fragment key={idx}>
             <OrganizationAgreement
-              key={idx}
               name={agreement.name}
               discount={agreement.discount}
               referenceUrl={agreement.referenceUrl}
@@ -27,7 +26,7 @@ const OrganizationAgreements = ({ agreements }) => {
             />
 
             {idx !== agreements.length && <hr />}
-          </>
+          </React.Fragment>
         ))
       }
     </div>

@@ -8,6 +8,8 @@ import {
   Row,
   Checkbox,
   Button,
+  NoValue,
+  Headline,
 } from '@folio/stripes/components';
 import {
   IfPermission,
@@ -49,21 +51,21 @@ const OrganizationInterface = ({ getCreds, item = {}, isNarrow = false }) => {
         <Col xs={12}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.type" />}>
             <span className={css.wrapValue}>
-              {type.join(', ')}
+              {type?.length ? type.join(', ') : <NoValue />}
             </span>
           </KeyValue>
         </Col>
         <Col xs={columnsAmount}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.name" />}>
             <span className={css.wrapValue}>
-              {name}
+              {name || <NoValue />}
             </span>
           </KeyValue>
         </Col>
         <Col xs={columnsAmount}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.uri" />}>
             <span className={css.wrapValue}>
-              {uri}
+              {uri || <NoValue />}
             </span>
           </KeyValue>
         </Col>
@@ -72,7 +74,7 @@ const OrganizationInterface = ({ getCreds, item = {}, isNarrow = false }) => {
             <Col xs={columnsAmount}>
               <KeyValue label={<FormattedMessage id="ui-organizations.interface.username" />}>
                 <span className={css.wrapValue}>
-                  {username}
+                  {username || <NoValue />}
                 </span>
               </KeyValue>
             </Col>
@@ -82,7 +84,7 @@ const OrganizationInterface = ({ getCreds, item = {}, isNarrow = false }) => {
             >
               <KeyValue label={<FormattedMessage id="ui-organizations.interface.password" />}>
                 <span className={css.wrapValue}>
-                  {password}
+                  {password || <NoValue />}
                 </span>
               </KeyValue>
             </Col>
@@ -105,18 +107,19 @@ const OrganizationInterface = ({ getCreds, item = {}, isNarrow = false }) => {
         <Col xs={12}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.notes" />}>
             <span className={css.wrapValue}>
-              {notes}
+              {notes || <NoValue />}
             </span>
           </KeyValue>
         </Col>
       </Row>
       <Row>
         <Col xs={12}>
-          <div className={css.subHeadings}>
-            <b>
-              <FormattedMessage id="ui-organizations.interface.statistics" />
-            </b>
-          </div>
+          <Headline
+            margin="none"
+            size="large"
+          >
+            <FormattedMessage id="ui-organizations.interface.statistics" />
+          </Headline>
         </Col>
       </Row>
       <Row>
@@ -131,35 +134,35 @@ const OrganizationInterface = ({ getCreds, item = {}, isNarrow = false }) => {
         <Col xs={columnsAmount}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.deliveryMethod" />}>
             <span className={css.wrapValue}>
-              {deliveryMethod}
+              {deliveryMethod || <NoValue />}
             </span>
           </KeyValue>
         </Col>
         <Col xs={columnsAmount}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.statisticsFormat" />}>
             <span className={css.wrapValue}>
-              {statisticsFormat}
+              {statisticsFormat || <NoValue />}
             </span>
           </KeyValue>
         </Col>
         <Col xs={columnsAmount}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.locallyStored" />}>
             <span className={css.wrapValue}>
-              {locallyStored}
+              {locallyStored || <NoValue />}
             </span>
           </KeyValue>
         </Col>
         <Col xs={columnsAmount}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.onlineLocation" />}>
             <span className={css.wrapValue}>
-              {onlineLocation}
+              {onlineLocation || <NoValue />}
             </span>
           </KeyValue>
         </Col>
         <Col xs={columnsAmount}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.statisticsNotes" />}>
             <span className={css.wrapValue}>
-              {statisticsNotes}
+              {statisticsNotes || <NoValue />}
             </span>
           </KeyValue>
         </Col>

@@ -9,6 +9,7 @@ import {
 import {
   Icon,
   MultiColumnList,
+  NoValue,
 } from '@folio/stripes/components';
 import { acqRowFormatter } from '@folio/stripes-acq-components';
 
@@ -27,9 +28,9 @@ const alignRowProps = { alignLastColToEnd: true };
 const OrganizationContactPeople = ({ vendorCategories, contacts, openContact }) => {
   const resultsFormatter = {
     name: ({ firstName, lastName }) => `${lastName}, ${firstName}`,
-    categories: ({ categories = [] }) => transformCategoryIdsToLables(vendorCategories, categories),
-    email: ({ emails }) => get(find(emails, 'isPrimary'), 'value', ''),
-    phone: ({ phoneNumbers }) => get(find(phoneNumbers, 'isPrimary'), 'phoneNumber', ''),
+    categories: ({ categories = [] }) => transformCategoryIdsToLables(vendorCategories, categories) || <NoValue />,
+    email: ({ emails }) => get(find(emails, 'isPrimary'), 'value', '') || <NoValue />,
+    phone: ({ phoneNumbers }) => get(find(phoneNumbers, 'isPrimary'), 'phoneNumber', '') || <NoValue />,
     icon: () => <Icon icon="caret-right" />,
   };
 

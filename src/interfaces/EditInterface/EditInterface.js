@@ -12,6 +12,7 @@ import {
   Button,
   Checkbox,
   Col,
+  Headline,
   Pane,
   PaneMenu,
   Row,
@@ -24,8 +25,6 @@ import { validateRequired } from '@folio/stripes-acq-components';
 import { isURLValid } from '../../Utils/Validate';
 import { TogglePasswordFinal } from '../../Utils/TogglePassword';
 import { INTERFACE_OPTIONS } from './util';
-
-import css from './EditInterface.css';
 
 class EditInterface extends Component {
   static propTypes = {
@@ -152,9 +151,12 @@ class EditInterface extends Component {
                 />
               </Col>
               <Col xs={12}>
-                <div className={css.subHeadings}>
+                <Headline
+                  margin="none"
+                  size="large"
+                >
                   <FormattedMessage id="ui-organizations.interface.statistics" />
-                </div>
+                </Headline>
               </Col>
               <Col xs={12} md={6}>
                 <Field
