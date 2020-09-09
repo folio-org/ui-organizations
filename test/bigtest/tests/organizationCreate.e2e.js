@@ -11,7 +11,7 @@ import { ORGANIZATION_STATUS } from '../../../src/common/constants';
 
 const TEST_ADDRESS = 'test address';
 
-describe('Create organization', () => {
+describe('Create organization', function () {
   setupApplication();
 
   const orgEdit = new OrganizationEditInteractor();
