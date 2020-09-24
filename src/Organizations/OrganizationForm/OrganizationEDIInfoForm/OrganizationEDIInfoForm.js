@@ -15,9 +15,11 @@ import {
   Accordion,
   AccordionStatus,
 } from '@folio/stripes/components';
-import { FieldDatepicker } from '@folio/stripes-acq-components';
+import {
+  FieldDatepicker,
+  validateURL,
+} from '@folio/stripes-acq-components';
 
-import { isURLValid } from '../../../Utils/Validate';
 import TogglePassword from '../../../Utils/TogglePassword';
 import {
   EDI_CODE_TYPES,
@@ -190,7 +192,7 @@ class OrganizationEDIInfoForm extends Component {
                     label={<FormattedMessage id="ui-organizations.edi.serverAddress" />}
                     name="edi.ediFtp.serverAddress"
                     type="text"
-                    validate={[isURLValid]}
+                    validate={[validateURL]}
                     component={TextField}
                     fullWidth
                   />

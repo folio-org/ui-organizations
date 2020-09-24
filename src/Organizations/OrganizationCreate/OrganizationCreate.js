@@ -26,6 +26,15 @@ const INITIAL_VALUES = {
   interfaces: [],
   contacts: [],
   isVendor: false,
+  edi: {
+    vendorEdiType: '31B/US-SAN',
+    libEdiType: '31B/US-SAN',
+    ediFtp: {
+      ftpFormat: 'SFTP',
+      ftpMode: 'ASCII',
+      ftpConnMode: 'Active',
+    },
+  },
 };
 
 const OrganizationCreate = ({ history, location, mutator, stripes }) => {
