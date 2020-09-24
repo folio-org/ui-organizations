@@ -192,7 +192,7 @@ class OrganizationEDIInfoForm extends Component {
                     label={<FormattedMessage id="ui-organizations.edi.serverAddress" />}
                     name="edi.ediFtp.serverAddress"
                     type="text"
-                    validate={[validateURL]}
+                    validate={validateURL}
                     component={TextField}
                     fullWidth
                   />
