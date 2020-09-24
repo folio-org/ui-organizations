@@ -583,7 +583,7 @@
     "search.interfaces": "واجهات",
     "organization.delete.heading": "حذف {organizationName}؟",
     "organization.delete.confirmLabel": "حذف",
-    "organization.delete.success": "تم حذف المؤسسة {organizationName} بنجاح",
+    "organization.delete.success": "تم <b>حذف</b> المؤسسة <b>{organizationName}</b> بنجاح",
     "view.delete": "حذف",
     "view.delete.message": "حذف المؤسسة؟",
     "vendor.confirmation.heading": "تأكيد حذف بيانات المورّد",
