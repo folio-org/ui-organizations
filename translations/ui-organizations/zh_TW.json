@@ -583,7 +583,7 @@
     "search.interfaces": "界面",
     "organization.delete.heading": "删除{organizationName} ？",
     "organization.delete.confirmLabel": "删除",
-    "organization.delete.success": "已成功删除組織 {organizationName}",
+    "organization.delete.success": "The organization <b>{organizationName}</b> was successfully <b>deleted</b>",
     "view.delete": "删除",
     "view.delete.message": "刪除組織機構 ？",
     "vendor.confirmation.heading": "确认删除供应商数据",

@@ -583,7 +583,7 @@
     "search.interfaces": "인터페이스",
     "organization.delete.heading": "{organizationName} 삭제 하시겠습니까?",
     "organization.delete.confirmLabel": "삭제",
-    "organization.delete.success": "<b> {organizationName} </b> {organizationName} 이 성공적으로 <b> 삭제되었습니다 </b>",
+    "organization.delete.success": "<b> {organizationName} </b>  이 성공적으로 <b> 삭제되었습니다 </b>",
     "view.delete": "삭제",
     "view.delete.message": "공급사를 삭제 하시겠습니까?",
     "vendor.confirmation.heading": "공급업체 데이터 삭제 확인",
