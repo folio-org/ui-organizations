@@ -608,5 +608,7 @@
     "search.placeholder.language": "ابحث برمز اللغة",
     "vendorInfo.exportToAccounting": "تصدير إلى المحاسبة",
     "notes.entity": "المؤسسة",
-    "notes.entityPlural": "المؤسسات"
+    "notes.entityPlural": "المؤسسات",
+    "edi.ftpConnectionMode.Active": "نشط",
+    "edi.ftpConnectionMode.Passive": "سلبي"
 }

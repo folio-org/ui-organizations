@@ -608,5 +608,7 @@
     "search.placeholder.language": "Pesquise com código de idioma",
     "vendorInfo.exportToAccounting": "Exportar para contabilidade",
     "notes.entity": "Organização",
-    "notes.entityPlural": "Organizações"
+    "notes.entityPlural": "Organizações",
+    "edi.ftpConnectionMode.Active": "Ativo",
+    "edi.ftpConnectionMode.Passive": "Passivo"
 }

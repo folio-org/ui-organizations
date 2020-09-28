@@ -608,5 +608,7 @@
     "search.placeholder.language": "언어 코드로 검색",
     "vendorInfo.exportToAccounting": "회계로 내보내기",
     "notes.entity": "공급사(벤더)",
-    "notes.entityPlural": "공급사"
+    "notes.entityPlural": "공급사",
+    "edi.ftpConnectionMode.Active": "Active",
+    "edi.ftpConnectionMode.Passive": "Passive"
 }
