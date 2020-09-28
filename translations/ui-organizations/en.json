@@ -271,6 +271,8 @@
   "edi.password": "Password",
   "edi.ftpMode": "FTP mode",
   "edi.ftpConnectionMode": "FTP connection mode",
+  "edi.ftpConnectionMode.Active": "Active",
+  "edi.ftpConnectionMode.Passive": "Passive",
   "edi.ftpPort": "FTP port",
   "edi.orderDirectory": "Order directory",
   "edi.invoiceDirectory": "Invoice directory",
