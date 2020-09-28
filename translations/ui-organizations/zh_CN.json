@@ -606,7 +606,9 @@
     "permission.ui-organizations.acqUnits.manage": "组织：管理采购单元",
     "save.error.codeInUse": "代码已在使用中",
     "search.placeholder.language": "用语言代码搜索",
-    "vendorInfo.exportToAccounting": "Export to accounting",
-    "notes.entity": "Organization",
-    "notes.entityPlural": "Organizations"
+    "vendorInfo.exportToAccounting": "导出到账户",
+    "notes.entity": "组织",
+    "notes.entityPlural": "组织",
+    "edi.ftpConnectionMode.Active": "Active",
+    "edi.ftpConnectionMode.Passive": "Passive"
 }
