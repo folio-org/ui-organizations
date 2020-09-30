@@ -609,6 +609,6 @@
     "vendorInfo.exportToAccounting": "Transmettre en comptabilité",
     "notes.entity": "Organisation",
     "notes.entityPlural": "Organisations",
-    "edi.ftpConnectionMode.Active": "Active",
-    "edi.ftpConnectionMode.Passive": "Passive"
+    "edi.ftpConnectionMode.Active": "Actif",
+    "edi.ftpConnectionMode.Passive": "Passif"
 }
