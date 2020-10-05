@@ -381,7 +381,7 @@
     "vendorInfo.tax": "الضريبة",
     "vendorInfo.taxID": "معرف الضريبة",
     "vendorInfo.taxPercentage": "النسبة المئوية للضريبة",
-    "vendorInfo.liableForVAT": "مسؤول عن ضريبة القيمة المضافة",
+    "vendorInfo.liableForVAT": "عرضة لضريبة القيمة المضافة",
     "vendorInfo.noInformationAvailable": "لا توجد معلومات متاحة",
     "edi.ediBasic": "أساسيات التبادل الإلكتروني للبيانات EDI",
     "edi.vendorEDICode": "رمز EDI للمورّد",
