@@ -43,6 +43,7 @@ const OrganizationCreate = ({ history, location, mutator, stripes }) => {
       history.push({
         pathname: id ? `${VIEW_ORG_DETAILS}${id}` : '/organizations',
         search: location.search,
+        state: id ? { isDetailsPaneInFocus: true } : undefined,
       });
     },
     [history, location.search],

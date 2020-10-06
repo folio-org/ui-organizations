@@ -2,9 +2,9 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   Route,
-  withRouter,
+  useHistory,
+  useLocation,
 } from 'react-router-dom';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -50,15 +50,16 @@ const resultsFormatter = {
 };
 
 const OrganizationsList = ({
-  history,
   isLoading,
-  location,
   onNeedMoreData,
   resetData,
   organizations,
   organizationsCount,
   refreshList,
 }) => {
+  const history = useHistory();
+  const location = useLocation();
+  const isDetailsPaneInFocus = location.state?.isDetailsPaneInFocus;
   const [
     filters,
     searchQuery,
@@ -104,6 +105,7 @@ const OrganizationsList = ({
         <FiltersPane toggleFilters={toggleFilters}>
           <SingleSearchForm
             applySearch={applySearch}
+            autoFocus={!isDetailsPaneInFocus}
             changeSearch={changeSearch}
             searchQuery={searchQuery}
             searchableIndexes={searchableIndexes}
@@ -176,8 +178,6 @@ OrganizationsList.propTypes = {
   organizationsCount: PropTypes.number,
   isLoading: PropTypes.bool,
   organizations: PropTypes.arrayOf(PropTypes.object),
-  history: ReactRouterPropTypes.history.isRequired,
-  location: ReactRouterPropTypes.location.isRequired,
   refreshList: PropTypes.func.isRequired,
 };
 
@@ -187,4 +187,4 @@ OrganizationsList.defaultProps = {
   organizations: [],
 };
 
-export default withRouter(OrganizationsList);
+export default OrganizationsList;

@@ -56,6 +56,7 @@ const OrganizationEdit = ({ match, history, location, mutator, stripes }) => {
       history.push({
         pathname: `${VIEW_ORG_DETAILS}${organizationId}`,
         search: location.search,
+        state: { isDetailsPaneInFocus: true },
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
