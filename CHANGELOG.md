@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Focus details pane after user redirected from organization form. Refs UIORGS-206
 * Add "add alternative names" button label. Refs UIORGS-205
 * Select list default values not saving in form. Refs UIORGS-203
 * Update view pane to display null as hyphen. Refs UIORGS-201

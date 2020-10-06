@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
+import { useLocation } from 'react-router-dom';
 
 import { IfPermission } from '@folio/stripes/core';
 import {
@@ -64,6 +65,13 @@ const OrganizationDetails = ({
     [ORGANIZATION_SECTIONS.notesSection]: false,
   });
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
+  const paneTitleRef = useRef();
+  const location = useLocation();
+  const isDetailsPaneInFocus = location.state?.isDetailsPaneInFocus;
+
+  useEffect(() => {
+    if (isDetailsPaneInFocus) paneTitleRef.current.focus();
+  }, [isDetailsPaneInFocus]);
 
   const getActionMenu = useCallback(
     ({ onToggle }) => {
@@ -119,6 +127,7 @@ const OrganizationDetails = ({
         defaultWidth="fill"
         dismissible
         paneTitle={organization.name}
+        paneTitleRef={paneTitleRef}
         onClose={onClose}
         actionMenu={getActionMenu}
         lastMenu={detailsLastMenu}
