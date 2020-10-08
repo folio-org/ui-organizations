@@ -83,6 +83,7 @@ const OrganizationsList = ({
       history.push({
         pathname: `${VIEW_ORG_DETAILS}${meta.id}`,
         search: location.search,
+        state: { isDetailsPaneInFocus: true },
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
