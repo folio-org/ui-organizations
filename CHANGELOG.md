@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [2.2.0](https://github.com/folio-org/ui-organizations/tree/v2.2.0) (2020-10-09)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.1.2...v2.2.0)
+
 * Focus details pane after user clicks on org in the search results. Refs UIORGS-207
 * Focus details pane after user redirected from organization form. Refs UIORGS-206
 * Add "add alternative names" button label. Refs UIORGS-205
