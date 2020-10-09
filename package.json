@@ -1,6 +1,6 @@
 {
   "name": "@folio/organizations",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "Organizations",
   "main": "index.js",
   "repository": "folio-org/ui-organizations",
@@ -252,7 +252,7 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "^2.1.1",
+    "@folio/stripes-acq-components": "^2.2.0",
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.20",
     "prop-types": "^15.5.10",
