@@ -1,10 +1,8 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import {
-  Field,
-  FieldArray,
-} from 'redux-form';
+import { Field } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Col,
@@ -13,15 +11,13 @@ import {
   TextField,
   Label,
 } from '@folio/stripes/components';
-import {
-  validateRequired,
-} from '@folio/stripes-acq-components';
 
 import {
   FieldLanguage,
   ButtonIsPrimary,
 } from '../../../common/components';
 import { createAddNewItem } from '../../../common/utils';
+import { isURLValid } from '../../../Utils/Validate';
 import CategoryDropdown from '../../../Utils/CategoryDropdown';
 
 const headLabels = (
@@ -76,7 +72,7 @@ const headLabels = (
   </Row>
 );
 
-const UrlForm = ({ categories, dispatchChange }) => {
+const UrlForm = ({ categories, change }) => {
   const addNewUrl = useCallback((fields) => createAddNewItem()(fields), []);
 
   const renderEmailFields = (elem, index, fields) => {
@@ -90,8 +86,9 @@ const UrlForm = ({ categories, dispatchChange }) => {
             component={TextField}
             name={`${elem}.value`}
             required
-            validate={validateRequired}
+            validate={isURLValid}
             ariaLabelledBy="urlFormValueLabel"
+            validateFields={[]}
           />
         </Col>
 
@@ -103,6 +100,7 @@ const UrlForm = ({ categories, dispatchChange }) => {
             component={TextField}
             name={`${elem}.description`}
             ariaLabelledBy="urlFormDescriptionLabel"
+            validateFields={[]}
           />
         </Col>
 
@@ -134,7 +132,7 @@ const UrlForm = ({ categories, dispatchChange }) => {
           xs={2}
         >
           <ButtonIsPrimary
-            dispatchChange={dispatchChange}
+            change={change}
             fields={fields}
             fieldIndex={index}
             labelId="ui-organizations.primaryItem"
@@ -160,7 +158,7 @@ const UrlForm = ({ categories, dispatchChange }) => {
 
 UrlForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
-  dispatchChange: PropTypes.func.isRequired,
+  change: PropTypes.func.isRequired,
 };
 
 export default UrlForm;

@@ -5,7 +5,7 @@ import {
 } from 'react-intl';
 
 import {
-  FieldSelection,
+  FieldSelectionFinal,
   LANGUAGES,
 } from '@folio/stripes-acq-components';
 
@@ -16,7 +16,7 @@ const FieldLanguage = ({ namePrefix, intl, withLabel, ...rest }) => {
   }));
 
   return (
-    <FieldSelection
+    <FieldSelectionFinal
       dataOptions={languagesOptions}
       labelId={withLabel ? 'ui-organizations.contactInfo.language' : undefined}
       name={`${namePrefix}.language`}

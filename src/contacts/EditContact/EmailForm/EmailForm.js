@@ -1,10 +1,8 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import {
-  Field,
-  FieldArray,
-} from 'redux-form';
+import { Field } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Col,
@@ -76,7 +74,7 @@ const headLabels = (
   </Row>
 );
 
-const EmailForm = ({ categories, dispatchChange }) => {
+const EmailForm = ({ categories, change }) => {
   const addNewEmail = useCallback((fields) => createAddNewItem()(fields), []);
 
   const renderEmailFields = (elem, index, fields) => {
@@ -92,6 +90,7 @@ const EmailForm = ({ categories, dispatchChange }) => {
             required
             validate={validateRequired}
             ariaLabelledBy="emailFormValueLabel"
+            validateFields={[]}
           />
         </Col>
 
@@ -103,6 +102,7 @@ const EmailForm = ({ categories, dispatchChange }) => {
             component={TextField}
             name={`${elem}.description`}
             ariaLabelledBy="emailFormDescriptionLabel"
+            validateFields={[]}
           />
         </Col>
 
@@ -134,7 +134,7 @@ const EmailForm = ({ categories, dispatchChange }) => {
           xs={2}
         >
           <ButtonIsPrimary
-            dispatchChange={dispatchChange}
+            change={change}
             fields={fields}
             fieldIndex={index}
             labelId="ui-organizations.primaryItem"
@@ -159,7 +159,7 @@ const EmailForm = ({ categories, dispatchChange }) => {
 
 EmailForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
-  dispatchChange: PropTypes.func.isRequired,
+  change: PropTypes.func.isRequired,
 };
 
 export default EmailForm;

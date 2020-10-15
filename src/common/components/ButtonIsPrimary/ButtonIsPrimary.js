@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { Button } from '@folio/stripes/components';
 
-const ButtonIsPrimary = ({ dispatchChange, fields, fieldIndex, labelId }) => {
-  const isPrimary = fields.get(fieldIndex).isPrimary;
-  const changeIsPrimary = () => {
-    if (isPrimary) return;
+const ButtonIsPrimary = ({ change, fields, fieldIndex, labelId }) => {
+  const isPrimary = fields.value[fieldIndex].isPrimary;
 
-    fields.forEach((fieldName, i) => {
-      if (
-        (i !== fieldIndex && fields.get(i).isPrimary)
-        || i === fieldIndex
-      ) {
-        dispatchChange(`${fieldName}.isPrimary`, !fields.get(i).isPrimary);
-      }
-    });
-  };
+  const changeIsPrimary = useCallback(
+    () => {
+      if (isPrimary) return;
+
+      fields.forEach((fieldName, i) => {
+        if (
+          (i !== fieldIndex && fields.value[i].isPrimary)
+          || i === fieldIndex
+        ) {
+          change(`${fieldName}.isPrimary`, !fields.value[i].isPrimary);
+        }
+      });
+    },
+    [fields, fieldIndex, change, isPrimary],
+  );
 
   return (
     <Button
@@ -30,7 +34,7 @@ const ButtonIsPrimary = ({ dispatchChange, fields, fieldIndex, labelId }) => {
 };
 
 ButtonIsPrimary.propTypes = {
-  dispatchChange: PropTypes.func.isRequired,
+  change: PropTypes.func.isRequired,
   fieldIndex: PropTypes.number.isRequired,
   fields: PropTypes.object.isRequired,
   labelId: PropTypes.string,

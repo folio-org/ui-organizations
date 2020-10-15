@@ -17,7 +17,7 @@ import {
 
 const OrganizationContactInfoForm = ({
   defaultLanguage,
-  dispatchChange,
+  change,
   vendorCategories,
 }) => {
   return (
@@ -25,14 +25,14 @@ const OrganizationContactInfoForm = ({
       <Col xs={12}>
         <AddressInfo
           defaultLanguage={defaultLanguage}
-          dispatchChange={dispatchChange}
+          change={change}
           dropdownVendorCategories={vendorCategories}
         />
       </Col>
       <Col xs={12}>
         <PhoneNumbers
           defaultLanguage={defaultLanguage}
-          dispatchChange={dispatchChange}
+          change={change}
           dropdownVendorCategories={vendorCategories}
           dropdownPhoneType={phoneTypesList}
         />
@@ -40,14 +40,14 @@ const OrganizationContactInfoForm = ({
       <Col xs={12}>
         <EmailAddresses
           defaultLanguage={defaultLanguage}
-          dispatchChange={dispatchChange}
+          change={change}
           dropdownVendorCategories={vendorCategories}
         />
       </Col>
       <Col xs={12}>
         <Urls
           defaultLanguage={defaultLanguage}
-          dispatchChange={dispatchChange}
+          change={change}
           dropdownVendorCategories={vendorCategories}
         />
       </Col>
@@ -57,7 +57,7 @@ const OrganizationContactInfoForm = ({
 
 OrganizationContactInfoForm.propTypes = {
   defaultLanguage: PropTypes.string,
-  dispatchChange: PropTypes.func,
+  change: PropTypes.func.isRequired,
   vendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
 

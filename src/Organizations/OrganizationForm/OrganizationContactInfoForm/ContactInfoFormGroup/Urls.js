@@ -1,10 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import {
-  Field,
-  FieldArray,
-} from 'redux-form';
+import { Field } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Card,
@@ -15,7 +13,6 @@ import {
 } from '@folio/stripes/components';
 import {
   FieldAutoSuggest,
-  validateRequired,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -28,13 +25,13 @@ import { isURLValid } from '../../../../Utils/Validate';
 
 import css from './ContactInfoCard.css';
 
-const Urls = ({ defaultLanguage, dispatchChange, dropdownVendorCategories }) => {
+const Urls = ({ defaultLanguage, change, dropdownVendorCategories }) => {
   const UrlsMF = (name, index, fields) => {
     const valueKey = 'value';
-    const urls = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
+    const urls = fields.value.filter((item, i) => item[valueKey] && i !== index);
     const nodeIsPrimary = (
       <FieldIsPrimary
-        dispatchChange={dispatchChange}
+        change={change}
         fields={fields}
         fieldIndex={index}
         fieldPrefix={name}
@@ -58,13 +55,13 @@ const Urls = ({ defaultLanguage, dispatchChange, dropdownVendorCategories }) => 
               labelId="ui-organizations.contactInfo.url"
               name={`${name}.${valueKey}`}
               required
-              validate={[validateRequired, isURLValid]}
+              validate={isURLValid}
               placeholder="http(s):// or ftp(s)://"
               valueKey={valueKey}
-              onSelect={(item) => {
-                fields.remove(index);
-                fields.insert(index, item);
-              }}
+              // eslint-disable-next-line no-unused-vars
+              onSelect={({ isPrimary, ...restItem }) => fields.update(index, restItem)}
+              validateFields={[]}
+              withFinalForm
             />
           </Col>
           <Col
@@ -77,6 +74,8 @@ const Urls = ({ defaultLanguage, dispatchChange, dropdownVendorCategories }) => 
               name={`${name}.description`}
               component={TextField}
               fullWidth
+              validateFields={[]}
+              validate={isURLValid}
             />
           </Col>
           <Col
@@ -119,7 +118,7 @@ const Urls = ({ defaultLanguage, dispatchChange, dropdownVendorCategories }) => 
 
 Urls.propTypes = {
   defaultLanguage: PropTypes.string,
-  dispatchChange: PropTypes.func.isRequired,
+  change: PropTypes.func.isRequired,
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
 

@@ -1,17 +1,17 @@
 import React from 'react';
-import { Field } from 'redux-form';
+import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { Checkbox } from '@folio/stripes/components';
 
-function FieldIsPrimary({ dispatchChange, fields, fieldIndex, fieldPrefix, labelId, vertical }) {
-  const changeIsPrimary = (e, newValue) => {
-    if (newValue) {
+function FieldIsPrimary({ change, fields, fieldIndex, fieldPrefix, labelId, vertical }) {
+  const changeIsPrimary = ({ target: { checked } }) => {
+    if (checked) {
       fields.forEach((fieldName, i) => {
-        if (i !== fieldIndex && fields.get(i).isPrimary === newValue) {
-          dispatchChange(`${fieldName}.isPrimary`, !newValue);
-        }
+        if (i !== fieldIndex && fields.value[i].isPrimary === checked) {
+          change(`${fieldName}.isPrimary`, !checked);
+        } else change(`${fieldPrefix}.isPrimary`, checked);
       });
     }
   };
@@ -31,7 +31,7 @@ function FieldIsPrimary({ dispatchChange, fields, fieldIndex, fieldPrefix, label
 }
 
 FieldIsPrimary.propTypes = {
-  dispatchChange: PropTypes.func.isRequired,
+  change: PropTypes.func.isRequired,
   fieldIndex: PropTypes.number.isRequired,
   fieldPrefix: PropTypes.string.isRequired,
   fields: PropTypes.object.isRequired,

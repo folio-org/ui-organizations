@@ -4,14 +4,12 @@ import React, {
   useState,
 } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { getFormValues } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
   stripesConnect,
-  stripesShape,
 } from '@folio/stripes/core';
 import {
   Paneset,
@@ -29,11 +27,10 @@ import {
 } from '../../common/resources';
 import {
   OrganizationForm,
-  ORG_FORM_NAME,
 } from '../OrganizationForm';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 
-const OrganizationEdit = ({ match, history, location, mutator, stripes }) => {
+const OrganizationEdit = ({ match, history, location, mutator }) => {
   const organizationId = match.params.id;
 
   const [organization, setOrganization] = useState({});
@@ -89,16 +86,12 @@ const OrganizationEdit = ({ match, history, location, mutator, stripes }) => {
     );
   }
 
-  const { isVendor, language } = getFormValues(ORG_FORM_NAME)(stripes.store.getState()) || {};
-
   return (
     <OrganizationForm
       initialValues={organization}
       onSubmit={updateOrganization}
       cancelForm={cancelForm}
       paneTitle={<FormattedMessage id="ui-organizations.editOrg.title" values={{ name: organization.name }} />}
-      isVendorForm={isVendor}
-      formDefaultLanguage={language}
       fetchOrgByCode={mutator.fetchOrgByCode}
     />
   );
@@ -116,7 +109,6 @@ OrganizationEdit.propTypes = {
   match: ReactRouterPropTypes.match.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
-  stripes: stripesShape.isRequired,
   mutator: PropTypes.object.isRequired,
 };
 

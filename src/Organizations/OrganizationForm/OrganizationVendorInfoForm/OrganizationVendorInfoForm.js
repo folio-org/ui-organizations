@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
+import { Field } from 'react-final-form';
 import { find } from 'lodash';
 
 import {
@@ -14,8 +14,8 @@ import {
   useCurrencyOptions,
 } from '@folio/stripes/components';
 import {
-  FieldMultiSelection,
-  FieldSelect,
+  FieldMultiSelectionFinal,
+  FieldSelectFinal,
   PAYMENT_METHOD_OPTIONS,
 } from '@folio/stripes-acq-components';
 
@@ -23,7 +23,7 @@ import css from './OrganizationVendorInfoForm.css';
 
 const subSections = { taxSection: true };
 
-const OrganizationVendorInfoForm = ({ dispatchChange }) => {
+const OrganizationVendorInfoForm = ({ change }) => {
   const currenciesOptions = useCurrencyOptions();
   const currencyValueOptions = currenciesOptions.map(({ value }) => value);
   const currencyToString = useCallback(item => item, []);
@@ -47,8 +47,8 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
   }, [currenciesOptions, currencyValueOptions]);
 
   const onChangeSelect = useCallback((e) => {
-    dispatchChange('vendorCurrencies', e);
-  }, [dispatchChange]);
+    change('vendorCurrencies', e);
+  }, [change]);
 
   return (
     <Row className={css.vendorInfo}>
@@ -59,10 +59,11 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
             xs={6}
             md={3}
           >
-            <FieldSelect
+            <FieldSelectFinal
               dataOptions={PAYMENT_METHOD_OPTIONS}
               label={<FormattedMessage id="ui-organizations.vendorInfo.paymentMethod" />}
               name="paymentMethod"
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -70,7 +71,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
             xs={6}
             md={3}
           >
-            <FieldMultiSelection
+            <FieldMultiSelectionFinal
               ariaLabelledBy="vendorFormCurrenciesLabel"
               label={<FormattedMessage id="ui-organizations.vendorInfo.vendorCurrencies" />}
               name="vendorCurrencies"
@@ -79,6 +80,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
               itemToString={currencyToString}
               filter={currencyFilter}
               onChange={onChangeSelect}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -93,6 +95,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
               label={<FormattedMessage id="ui-organizations.vendorInfo.expectedActivationInterval" />}
               name="expectedActivationInterval"
               type="number"
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -107,6 +110,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
               label={<FormattedMessage id="ui-organizations.vendorInfo.expectedInvoiceInterval" />}
               name="expectedInvoiceInterval"
               type="number"
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -120,6 +124,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
               label={<FormattedMessage id="ui-organizations.vendorInfo.claimingInterval" />}
               name="claimingInterval"
               type="number"
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -134,6 +139,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
               label={<FormattedMessage id="ui-organizations.vendorInfo.expectedReceiptInterval" />}
               name="expectedReceiptInterval"
               type="number"
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -146,6 +152,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
               name="discountPercent"
               component={TextField}
               fullWidth
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -160,6 +167,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
               label={<FormattedMessage id="ui-organizations.vendorInfo.renewalActivationInterval" />}
               name="renewalActivationInterval"
               type="number"
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -174,6 +182,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
               label={<FormattedMessage id="ui-organizations.vendorInfo.subscriptionInterval" />}
               name="subscriptionInterval"
               type="number"
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -188,6 +197,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
               name="exportToAccounting"
               type="checkbox"
               vertical
+              validateFields={[]}
             />
           </Col>
         </Row>
@@ -208,6 +218,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
                   id="taxId"
                   label={<FormattedMessage id="ui-organizations.vendorInfo.taxID" />}
                   name="taxId"
+                  validateFields={[]}
                 />
               </Col>
               <Col
@@ -222,6 +233,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
                   type="number"
                   component={TextField}
                   fullWidth
+                  validateFields={[]}
                 />
               </Col>
               <Col
@@ -235,6 +247,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
                   id="liableForVat"
                   component={Checkbox}
                   vertical
+                  validateFields={[]}
                 />
               </Col>
             </Row>
@@ -246,7 +259,7 @@ const OrganizationVendorInfoForm = ({ dispatchChange }) => {
 };
 
 OrganizationVendorInfoForm.propTypes = {
-  dispatchChange: PropTypes.func,
+  change: PropTypes.func,
 };
 
 export default OrganizationVendorInfoForm;

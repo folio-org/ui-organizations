@@ -21,9 +21,12 @@ import {
   TextField,
 } from '@folio/stripes/components';
 
-import { validateRequired } from '@folio/stripes-acq-components';
-import { isURLValid } from '../../Utils/Validate';
-import { TogglePasswordFinal } from '../../Utils/TogglePassword';
+import {
+  validateRequired,
+  validateURL,
+} from '@folio/stripes-acq-components';
+
+import TogglePassword from '../../Utils/TogglePassword';
 import { INTERFACE_OPTIONS } from './util';
 
 class EditInterface extends Component {
@@ -121,7 +124,7 @@ class EditInterface extends Component {
                   label={<FormattedMessage id="ui-organizations.interface.uri" />}
                   name="uri"
                   type="url"
-                  validate={isURLValid}
+                  validate={validateURL}
                   component={TextField}
                   fullWidth
                 />
@@ -136,7 +139,7 @@ class EditInterface extends Component {
                   />
                 </Col>
                 <Col xs={12} md={6}>
-                  <TogglePasswordFinal
+                  <TogglePassword
                     name="password"
                     buttonID="button"
                   />

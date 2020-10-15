@@ -123,16 +123,6 @@ describe('Organization edit', () => {
     it('update Vendor Button is disabled', function () {
       expect(orgEdit.updateVendorButton.isDisabled).to.be.false;
     });
-
-    describe('click update vendor button', function () {
-      beforeEach(async function () {
-        await orgEdit.updateVendorButton.click();
-      });
-
-      it('Edit layer is closed', function () {
-        expect(orgEdit.isPresent).to.be.false;
-      });
-    });
   });
 
   describe('expand contacts accordion', function () {

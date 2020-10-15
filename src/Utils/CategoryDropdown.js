@@ -4,7 +4,7 @@ import { find } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
 import { OptionSegment } from '@folio/stripes/components';
-import { FieldMultiSelection } from '@folio/stripes-acq-components';
+import { FieldMultiSelectionFinal } from '@folio/stripes-acq-components';
 
 function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabelledBy }) {
   const fieldName = name ? `${name}.categories` : 'categories';
@@ -38,7 +38,7 @@ function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabel
   }, [dropdownVendorCategories]);
 
   return (
-    <FieldMultiSelection
+    <FieldMultiSelectionFinal
       label={withLabel ? <FormattedMessage id="ui-organizations.data.contactTypes.categories" /> : undefined}
       ariaLabelledBy={ariaLabelledBy}
       name={fieldName}

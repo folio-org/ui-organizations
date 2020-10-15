@@ -1,10 +1,8 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import {
-  Field,
-  FieldArray,
-} from 'redux-form';
+import { Field } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Col,
@@ -15,7 +13,7 @@ import {
 } from '@folio/stripes/components';
 import {
   validateRequired,
-  FieldSelect,
+  FieldSelectFinal,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -77,7 +75,7 @@ const headLabels = (
   </Row>
 );
 
-const PhoneForm = ({ categories, dispatchChange, phoneTypesList }) => {
+const PhoneForm = ({ categories, change, phoneTypesList }) => {
   const addNewPhone = useCallback((fields) => createAddNewItem()(fields), []);
 
   const renderEmailFields = (elem, index, fields) => {
@@ -93,6 +91,7 @@ const PhoneForm = ({ categories, dispatchChange, phoneTypesList }) => {
             required
             validate={validateRequired}
             ariaLabelledBy="phoneFormValueLabel"
+            validateFields={[]}
           />
         </Col>
 
@@ -100,10 +99,11 @@ const PhoneForm = ({ categories, dispatchChange, phoneTypesList }) => {
           data-test-contact-phone-type
           xs={2}
         >
-          <FieldSelect
+          <FieldSelectFinal
             name={`${elem}.type`}
             dataOptions={phoneTypesList}
             aria-labelledby="phoneFormTypeLabel"
+            validateFields={[]}
           />
         </Col>
 
@@ -135,7 +135,7 @@ const PhoneForm = ({ categories, dispatchChange, phoneTypesList }) => {
           data-test-contact-phone-primary
         >
           <ButtonIsPrimary
-            dispatchChange={dispatchChange}
+            change={change}
             fields={fields}
             fieldIndex={index}
             labelId="ui-organizations.primaryItem"
@@ -160,7 +160,7 @@ const PhoneForm = ({ categories, dispatchChange, phoneTypesList }) => {
 
 PhoneForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
-  dispatchChange: PropTypes.func.isRequired,
+  change: PropTypes.func.isRequired,
   phoneTypesList: PropTypes.arrayOf(PropTypes.object),
 };
 

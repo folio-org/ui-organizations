@@ -70,6 +70,12 @@ class VendorTermsForm extends VendorTermsSection {
   phoneRemoveButton = new Button('#phone-numbers [data-test-repeatable-field-remove-item-button]');
 }
 
+@interactor class Aliases {
+  static defaultScope = '#aliases';
+  aliasAddButton = new Button('#aliases-add-button');
+  aliasInputs = collection('[data-test-alias] input', TextFieldInteractor);
+}
+
 export default interactor(class OrganizationEditInteractor {
   static defaultScope = '#form-organization';
 
@@ -87,7 +93,7 @@ export default interactor(class OrganizationEditInteractor {
   accountsSection = new AccountsSection();
   addNameButton = new Button('#aliases-add-button');
   removeNameButton = new Button('#aliases [data-test-repeatable-field-remove-item-button]');
-  aliases = collection('input[name*=value]');
+  aliases = new Aliases();
   addAccountButton = new Button('[data-test-add-account-button]');
   removeAccountButton = new Button('[data-test-remove-account-button]');
   accounts = collection('input[name*=accountNo]');

@@ -1,13 +1,14 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import {
+  validateRequired,
+  validateURL,
+} from '@folio/stripes-acq-components';
 
 const isURLValid = (value) => {
-  const REGEXP_URL = new RegExp('^$|([Hh][Tt][Tt][Pp]|[Ff][Tt][Pp])([Ss])?://.+$');
-  const isTrue = REGEXP_URL.test(value);
+  const validateRequiredMessage = validateRequired(value);
 
-  if (value === undefined || isTrue) return undefined;
+  if (validateRequiredMessage) return validateRequiredMessage;
 
-  return <FormattedMessage id="ui-organizations.valid.isURLValid" />;
+  return validateURL(value);
 };
 
 export { isURLValid };

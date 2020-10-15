@@ -10,8 +10,9 @@ describe('Create interface without organization', () => {
 
   const page = new InterfaceEditInteractor();
 
-  beforeEach(function () {
+  beforeEach(async function () {
     this.visit('/organizations/interface/add');
+    await page.whenLoaded();
   });
 
   it('displays Create interface form', () => {

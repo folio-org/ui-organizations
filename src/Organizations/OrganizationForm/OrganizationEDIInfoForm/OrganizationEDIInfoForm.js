@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Field } from 'redux-form';
+import { Field } from 'react-final-form';
 
 import {
   Row,
@@ -16,7 +16,7 @@ import {
   AccordionStatus,
 } from '@folio/stripes/components';
 import {
-  FieldDatepicker,
+  FieldDatepickerFinal,
   validateURL,
 } from '@folio/stripes-acq-components';
 
@@ -46,7 +46,14 @@ class OrganizationEDIInfoForm extends Component {
                   xs={6}
                   md={3}
                 >
-                  <Field label={<FormattedMessage id="ui-organizations.edi.vendorEDICode" />} name="edi.vendorEdiCode" id="vendorEdiCode" component={TextField} fullWidth />
+                  <Field
+                    component={TextField}
+                    fullWidth
+                    id="vendorEdiCode"
+                    label={<FormattedMessage id="ui-organizations.edi.vendorEDICode" />}
+                    name="edi.vendorEdiCode"
+                    validateFields={[]}
+                  />
                 </Col>
                 <Col
                   data-test-vendor-edi-type
@@ -59,6 +66,7 @@ class OrganizationEDIInfoForm extends Component {
                     component={Select}
                     dataOptions={EDI_CODE_TYPES}
                     fullWidth
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -66,7 +74,14 @@ class OrganizationEDIInfoForm extends Component {
                   xs={6}
                   md={3}
                 >
-                  <Field label={<FormattedMessage id="ui-organizations.edi.libraryEDICode" />} name="edi.libEdiCode" id="libEdiCode" component={TextField} fullWidth />
+                  <Field
+                    component={TextField}
+                    fullWidth
+                    id="libEdiCode"
+                    label={<FormattedMessage id="ui-organizations.edi.libraryEDICode" />}
+                    name="edi.libEdiCode"
+                    validateFields={[]}
+                  />
                 </Col>
                 <Col
                   data-test-library-edi-type
@@ -74,11 +89,12 @@ class OrganizationEDIInfoForm extends Component {
                   md={3}
                 >
                   <Field
-                    label={<FormattedMessage id="ui-organizations.edi.libraryEDIType" />}
-                    name="edi.libEdiType"
                     component={Select}
                     dataOptions={EDI_CODE_TYPES}
                     fullWidth
+                    label={<FormattedMessage id="ui-organizations.edi.libraryEDIType" />}
+                    name="edi.libEdiType"
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -92,6 +108,7 @@ class OrganizationEDIInfoForm extends Component {
                     component={Checkbox}
                     type="checkbox"
                     vertical
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -105,6 +122,7 @@ class OrganizationEDIInfoForm extends Component {
                     component={Checkbox}
                     vertical
                     type="checkbox"
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -112,7 +130,14 @@ class OrganizationEDIInfoForm extends Component {
                   xs={6}
                   md={3}
                 >
-                  <Field label={<FormattedMessage id="ui-organizations.edi.ediNamingConvention" />} name="edi.ediNamingConvention" id="ediNamingConvention" component={TextField} fullWidth />
+                  <Field
+                    component={TextField}
+                    fullWidth
+                    id="ediNamingConvention"
+                    label={<FormattedMessage id="ui-organizations.edi.ediNamingConvention" />}
+                    name="edi.ediNamingConvention"
+                    validateFields={[]}
+                  />
                 </Col>
                 <Col
                   data-test-send-acc-number
@@ -125,6 +150,7 @@ class OrganizationEDIInfoForm extends Component {
                     type="checkbox"
                     component={Checkbox}
                     vertical
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -138,12 +164,14 @@ class OrganizationEDIInfoForm extends Component {
                     name="edi.supportOrder"
                     component={Checkbox}
                     type="checkbox"
+                    validateFields={[]}
                   />
                   <Field
                     label={<FormattedMessage id="ui-organizations.edi.invoices" />}
                     name="edi.supportInvoice"
                     component={Checkbox}
                     type="checkbox"
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -151,7 +179,13 @@ class OrganizationEDIInfoForm extends Component {
                   xs={6}
                   md={3}
                 >
-                  <Field label={<FormattedMessage id="ui-organizations.edi.notes" />} name="edi.notes" component={TextArea} fullWidth />
+                  <Field
+                    label={<FormattedMessage id="ui-organizations.edi.notes" />}
+                    name="edi.notes"
+                    component={TextArea}
+                    fullWidth
+                    validateFields={[]}
+                  />
                 </Col>
               </Row>
             </Accordion>
@@ -168,6 +202,7 @@ class OrganizationEDIInfoForm extends Component {
                     component={Select}
                     dataOptions={FTP_TYPES}
                     fullWidth
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -181,6 +216,7 @@ class OrganizationEDIInfoForm extends Component {
                     component={Select}
                     dataOptions={TRANSMISSION_MODES}
                     fullWidth
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -195,6 +231,7 @@ class OrganizationEDIInfoForm extends Component {
                     validate={validateURL}
                     component={TextField}
                     fullWidth
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -208,6 +245,7 @@ class OrganizationEDIInfoForm extends Component {
                     component={Select}
                     dataOptions={CONNECTION_MODES}
                     fullWidth
+                    validateFields={[]}
                   />
                 </Col>
               </Row>
@@ -223,6 +261,7 @@ class OrganizationEDIInfoForm extends Component {
                     type="text"
                     component={TextField}
                     fullWidth
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -248,6 +287,7 @@ class OrganizationEDIInfoForm extends Component {
                     type="text"
                     component={TextField}
                     fullWidth
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -261,6 +301,7 @@ class OrganizationEDIInfoForm extends Component {
                     type="text"
                     component={TextField}
                     fullWidth
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -274,6 +315,7 @@ class OrganizationEDIInfoForm extends Component {
                     type="text"
                     component={TextField}
                     fullWidth
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -286,6 +328,7 @@ class OrganizationEDIInfoForm extends Component {
                     name="edi.ediFtp.notes"
                     component={TextArea}
                     fullWidth
+                    validateFields={[]}
                   />
                 </Col>
               </Row>
@@ -303,6 +346,7 @@ class OrganizationEDIInfoForm extends Component {
                     component={Checkbox}
                     type="checkbox"
                     vertical
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -310,10 +354,10 @@ class OrganizationEDIInfoForm extends Component {
                   xs={6}
                   md={3}
                 >
-                  <Field
-                    label={<FormattedMessage id="ui-organizations.edi.date" />}
+                  <FieldDatepickerFinal
+                    labelId="ui-organizations.edi.date"
                     name="edi.ediJob.date"
-                    component={FieldDatepicker}
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -327,6 +371,7 @@ class OrganizationEDIInfoForm extends Component {
                     placeholder="Select Time"
                     component={Timepicker}
                     timeZone="UTC"
+                    validateFields={[]}
                   />
                 </Col>
               </Row>
@@ -346,6 +391,7 @@ class OrganizationEDIInfoForm extends Component {
                         type="checkbox"
                         label={<FormattedMessage id="ui-organizations.edi.monday" />}
                         name="edi.ediJob.isMonday"
+                        validateFields={[]}
                       />
                     </Col>
                     <Col
@@ -358,6 +404,7 @@ class OrganizationEDIInfoForm extends Component {
                         type="checkbox"
                         label={<FormattedMessage id="ui-organizations.edi.friday" />}
                         name="edi.ediJob.isFriday"
+                        validateFields={[]}
                       />
                     </Col>
                     <Col
@@ -370,6 +417,7 @@ class OrganizationEDIInfoForm extends Component {
                         type="checkbox"
                         label={<FormattedMessage id="ui-organizations.edi.tuesday" />}
                         name="edi.ediJob.isTuesday"
+                        validateFields={[]}
                       />
                     </Col>
                     <Col
@@ -382,6 +430,7 @@ class OrganizationEDIInfoForm extends Component {
                         type="checkbox"
                         label={<FormattedMessage id="ui-organizations.edi.saturday" />}
                         name="edi.ediJob.isSaturday"
+                        validateFields={[]}
                       />
                     </Col>
                     <Col
@@ -394,6 +443,7 @@ class OrganizationEDIInfoForm extends Component {
                         type="checkbox"
                         label={<FormattedMessage id="ui-organizations.edi.wednesday" />}
                         name="edi.ediJob.isWednesday"
+                        validateFields={[]}
                       />
                     </Col>
                     <Col
@@ -406,6 +456,7 @@ class OrganizationEDIInfoForm extends Component {
                         type="checkbox"
                         label={<FormattedMessage id="ui-organizations.edi.sunday" />}
                         name="edi.ediJob.isSunday"
+                        validateFields={[]}
                       />
                     </Col>
                     <Col
@@ -418,6 +469,7 @@ class OrganizationEDIInfoForm extends Component {
                         type="checkbox"
                         label={<FormattedMessage id="ui-organizations.edi.thursday" />}
                         name="edi.ediJob.isThursday"
+                        validateFields={[]}
                       />
                     </Col>
                   </Row>
@@ -440,6 +492,7 @@ class OrganizationEDIInfoForm extends Component {
                     label={<FormattedMessage id="ui-organizations.edi.sendToEmails" />}
                     name="edi.ediJob.sendToEmails"
                     placeholder="Enter e-mail address(es)"
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -453,6 +506,7 @@ class OrganizationEDIInfoForm extends Component {
                     label={<FormattedMessage id="ui-organizations.edi.notifyAllEDI" />}
                     name="edi.ediJob.notifyAllEdi"
                     vertical
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -466,6 +520,7 @@ class OrganizationEDIInfoForm extends Component {
                     label={<FormattedMessage id="ui-organizations.edi.notifyInvoiceOnly" />}
                     name="edi.ediJob.notifyInvoiceOnly"
                     vertical
+                    validateFields={[]}
                   />
                 </Col>
                 <Col
@@ -479,6 +534,7 @@ class OrganizationEDIInfoForm extends Component {
                     label={<FormattedMessage id="ui-organizations.edi.notifyErrorOnly" />}
                     name="edi.ediJob.notifyErrorOnly"
                     vertical
+                    validateFields={[]}
                   />
                 </Col>
               </Row>
@@ -500,6 +556,7 @@ class OrganizationEDIInfoForm extends Component {
                     fullWidth
                     label={<FormattedMessage id="ui-organizations.edi.notes" />}
                     name="edi.ediJob.schedulingNotes"
+                    validateFields={[]}
                   />
                 </Col>
               </Row>

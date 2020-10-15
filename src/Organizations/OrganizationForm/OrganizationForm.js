@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import stripesForm from '@folio/stripes/form';
+import stripesForm from '@folio/stripes/final-form';
 import {
   Accordion,
   AccordionSet,
@@ -31,21 +31,17 @@ import {
   ORGANIZATION_SECTION_LABELS,
 } from '../constants';
 import OrganizationFormFooter from './OrganizationFormFooter';
-import { asyncValidate } from './asyncValidate';
-
-export const ORG_FORM_NAME = 'FormOrganization';
 
 const OrganizationForm = ({
   pristine,
   submitting,
   handleSubmit,
-  dispatch,
-  change,
   initialValues,
   paneTitle,
   cancelForm,
-  isVendorForm,
-  formDefaultLanguage,
+  values: formValues,
+  form,
+  fetchOrgByCode,
 }) => {
   const [expandAll, sections, toggleSection] = useAccordionToggle({
     [ORGANIZATION_SECTIONS.summarySection]: true,
@@ -57,13 +53,6 @@ const OrganizationForm = ({
     [ORGANIZATION_SECTIONS.ediInformationSection]: false,
     [ORGANIZATION_SECTIONS.accountsSection]: false,
   });
-
-  const dispatchChange = useCallback(
-    (fieldName, value) => {
-      dispatch(change(fieldName, value));
-    },
-    [dispatch, change],
-  );
 
   const { id, interfaces, contacts, metadata } = initialValues;
 
@@ -120,8 +109,10 @@ const OrganizationForm = ({
                   {metadata && <ViewMetaData metadata={metadata} />}
 
                   <OrganizationSummaryForm
-                    dispatchChange={dispatchChange}
+                    change={form.change}
                     initialValues={initialValues}
+                    fetchOrgByCode={fetchOrgByCode}
+                    formValues={formValues}
                   />
                 </Accordion>
                 <Accordion
@@ -129,8 +120,8 @@ const OrganizationForm = ({
                   label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactInformationSection]}
                 >
                   <OrganizationContactInfoFormContainer
-                    defaultLanguage={formDefaultLanguage}
-                    dispatchChange={dispatchChange}
+                    defaultLanguage={formValues.language}
+                    change={form.change}
                   />
                 </Accordion>
                 <Accordion
@@ -158,13 +149,13 @@ const OrganizationForm = ({
                   )}
                 </Accordion>
                 {
-                  isVendorForm && (
+                  formValues.isVendor && (
                     <>
                       <Accordion
                         id={ORGANIZATION_SECTIONS.vendorInformationSection}
                         label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
                       >
-                        <OrganizationVendorInfoForm dispatchChange={dispatchChange} />
+                        <OrganizationVendorInfoForm change={form.change} />
                       </Accordion>
 
                       <Accordion
@@ -185,7 +176,10 @@ const OrganizationForm = ({
                         id={ORGANIZATION_SECTIONS.accountsSection}
                         label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.accountsSection]}
                       >
-                        <OrganizationAccountsForm initialAccounts={initialValues.accounts} />
+                        <OrganizationAccountsForm
+                          initialAccounts={initialValues.accounts}
+                          accountFormValues={formValues.accounts}
+                        />
                       </Accordion>
                     </>
                   )
@@ -200,18 +194,15 @@ const OrganizationForm = ({
 };
 
 OrganizationForm.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  change: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   cancelForm: PropTypes.func.isRequired,
   paneTitle: PropTypes.node,
-  isVendorForm: PropTypes.bool,
-  formDefaultLanguage: PropTypes.string,
-  // eslint-disable-next-line react/no-unused-prop-types
   fetchOrgByCode: PropTypes.object.isRequired,
+  values: PropTypes.object,
+  form: PropTypes.object.isRequired,
 };
 
 OrganizationForm.defaultProps = {
@@ -219,9 +210,9 @@ OrganizationForm.defaultProps = {
 };
 
 export default stripesForm({
-  form: ORG_FORM_NAME,
-  navigationCheck: true,
   enableReinitialize: true,
-  asyncValidate,
-  asyncBlurFields: ['code'],
+  keepDirtyOnReinitialize: true,
+  navigationCheck: true,
+  subscription: { values: true },
+  validateOnBlur: true,
 })(OrganizationForm);
