@@ -609,6 +609,6 @@
     "vendorInfo.exportToAccounting": "Exportar a contabilidad",
     "notes.entity": "Organización",
     "notes.entityPlural": "Organizaciones",
-    "edi.ftpConnectionMode.Active": "Active",
-    "edi.ftpConnectionMode.Passive": "Passive"
+    "edi.ftpConnectionMode.Active": "Activos",
+    "edi.ftpConnectionMode.Passive": "Pasivo"
 }
