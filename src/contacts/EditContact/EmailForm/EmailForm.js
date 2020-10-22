@@ -113,7 +113,7 @@ const EmailForm = ({ categories, dispatchChange }) => {
           <FieldLanguage
             namePrefix={elem}
             withLabel={false}
-            ariaLabelledBy="emailFormLanguageLabel"
+            aria-labelledby="emailFormLanguageLabel"
           />
         </Col>
 
