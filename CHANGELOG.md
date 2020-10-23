@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Accessibility Error: Buttons must have discernible text. Refs-UIORGS-210.
+
 ## [2.2.0](https://github.com/folio-org/ui-organizations/tree/v2.2.0) (2020-10-09)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.1.2...v2.2.0)
 

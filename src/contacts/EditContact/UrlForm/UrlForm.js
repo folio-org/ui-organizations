@@ -112,7 +112,7 @@ const UrlForm = ({ categories, dispatchChange }) => {
         >
           <FieldLanguage
             namePrefix={elem}
-            ariaLabelledBy="urlFormLanguageLabel"
+            aria-labelledby="urlFormLanguageLabel"
             withLabel={false}
           />
         </Col>

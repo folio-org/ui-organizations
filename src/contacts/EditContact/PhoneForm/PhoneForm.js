@@ -114,7 +114,7 @@ const PhoneForm = ({ categories, dispatchChange, phoneTypesList }) => {
           <FieldLanguage
             namePrefix={elem}
             withLabel={false}
-            ariaLabelledBy="phoneFormLanguageLabel"
+            aria-labelledby="phoneFormLanguageLabel"
           />
         </Col>
 
