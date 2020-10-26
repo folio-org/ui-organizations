@@ -61,6 +61,7 @@ const OrganizationsListContainer = ({ mutator, location }) => {
     isLoading,
     onNeedMoreData,
     refreshList,
+    resultsPaneTitleRef,
   } = useList(false, loadOrganizations, loadOrganizationsCB, RESULT_COUNT_INCREMENT);
 
   return (
@@ -71,6 +72,7 @@ const OrganizationsListContainer = ({ mutator, location }) => {
       isLoading={isLoading}
       organizations={organizations}
       refreshList={refreshList}
+      resultsPaneTitleRef={resultsPaneTitleRef}
     />
   );
 };
