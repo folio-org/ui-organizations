@@ -56,6 +56,7 @@ const OrganizationsList = ({
   organizations,
   organizationsCount,
   refreshList,
+  resultsPaneTitleRef,
 }) => {
   const history = useHistory();
   const location = useLocation();
@@ -137,6 +138,7 @@ const OrganizationsList = ({
         toggleFiltersPane={toggleFilters}
         filters={filters}
         isFiltersOpened={isFiltersOpened}
+        resultsPaneTitleRef={resultsPaneTitleRef}
       >
         <MultiColumnList
           id="organizations-list"
@@ -180,6 +182,7 @@ OrganizationsList.propTypes = {
   isLoading: PropTypes.bool,
   organizations: PropTypes.arrayOf(PropTypes.object),
   refreshList: PropTypes.func.isRequired,
+  resultsPaneTitleRef: PropTypes.object,
 };
 
 OrganizationsList.defaultProps = {
