@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+import { useForm } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 
 import {
@@ -26,10 +27,10 @@ import css from './ContactInfoCard.css';
 
 const PhoneNumbers = ({
   defaultLanguage,
-  change,
   dropdownPhoneType,
   dropdownVendorCategories,
 }) => {
+  const { change } = useForm();
   const PhoneNumbersMF = (name, index, fields) => {
     const valueKey = 'phoneNumber';
     const phones = fields.value.filter((item, i) => item[valueKey] && i !== index);
@@ -120,7 +121,6 @@ const PhoneNumbers = ({
 
 PhoneNumbers.propTypes = {
   defaultLanguage: PropTypes.string,
-  change: PropTypes.func.isRequired,
   dropdownPhoneType: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };

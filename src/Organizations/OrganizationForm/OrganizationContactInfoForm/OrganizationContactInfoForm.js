@@ -17,7 +17,6 @@ import {
 
 const OrganizationContactInfoForm = ({
   defaultLanguage,
-  change,
   vendorCategories,
 }) => {
   return (
@@ -25,14 +24,12 @@ const OrganizationContactInfoForm = ({
       <Col xs={12}>
         <AddressInfo
           defaultLanguage={defaultLanguage}
-          change={change}
           dropdownVendorCategories={vendorCategories}
         />
       </Col>
       <Col xs={12}>
         <PhoneNumbers
           defaultLanguage={defaultLanguage}
-          change={change}
           dropdownVendorCategories={vendorCategories}
           dropdownPhoneType={phoneTypesList}
         />
@@ -40,14 +37,12 @@ const OrganizationContactInfoForm = ({
       <Col xs={12}>
         <EmailAddresses
           defaultLanguage={defaultLanguage}
-          change={change}
           dropdownVendorCategories={vendorCategories}
         />
       </Col>
       <Col xs={12}>
         <Urls
           defaultLanguage={defaultLanguage}
-          change={change}
           dropdownVendorCategories={vendorCategories}
         />
       </Col>
@@ -57,7 +52,6 @@ const OrganizationContactInfoForm = ({
 
 OrganizationContactInfoForm.propTypes = {
   defaultLanguage: PropTypes.string,
-  change: PropTypes.func.isRequired,
   vendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
 

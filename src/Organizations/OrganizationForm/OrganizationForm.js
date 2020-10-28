@@ -40,7 +40,6 @@ const OrganizationForm = ({
   paneTitle,
   cancelForm,
   values: formValues,
-  form,
   fetchOrgByCode,
 }) => {
   const [expandAll, sections, toggleSection] = useAccordionToggle({
@@ -109,10 +108,8 @@ const OrganizationForm = ({
                   {metadata && <ViewMetaData metadata={metadata} />}
 
                   <OrganizationSummaryForm
-                    change={form.change}
                     initialValues={initialValues}
                     fetchOrgByCode={fetchOrgByCode}
-                    formValues={formValues}
                   />
                 </Accordion>
                 <Accordion
@@ -121,7 +118,6 @@ const OrganizationForm = ({
                 >
                   <OrganizationContactInfoFormContainer
                     defaultLanguage={formValues.language}
-                    change={form.change}
                   />
                 </Accordion>
                 <Accordion
@@ -155,7 +151,7 @@ const OrganizationForm = ({
                         id={ORGANIZATION_SECTIONS.vendorInformationSection}
                         label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
                       >
-                        <OrganizationVendorInfoForm change={form.change} />
+                        <OrganizationVendorInfoForm />
                       </Accordion>
 
                       <Accordion
@@ -202,7 +198,6 @@ OrganizationForm.propTypes = {
   paneTitle: PropTypes.node,
   fetchOrgByCode: PropTypes.object.isRequired,
   values: PropTypes.object,
-  form: PropTypes.object.isRequired,
 };
 
 OrganizationForm.defaultProps = {
@@ -210,7 +205,6 @@ OrganizationForm.defaultProps = {
 };
 
 export default stripesForm({
-  enableReinitialize: true,
   keepDirtyOnReinitialize: true,
   navigationCheck: true,
   subscription: { values: true },

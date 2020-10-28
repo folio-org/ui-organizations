@@ -29,7 +29,6 @@ import css from './AddressInfo.css';
 
 const AddressInfo = ({
   defaultLanguage,
-  change,
   dropdownVendorCategories,
   intl,
 }) => {
@@ -44,7 +43,6 @@ const AddressInfo = ({
     const addresses = fields.value.filter((address, i) => address[valueKey] && i !== index);
     const nodeIsPrimary = (
       <FieldIsPrimary
-        change={change}
         fields={fields}
         fieldIndex={index}
         fieldPrefix={name}
@@ -181,7 +179,6 @@ const AddressInfo = ({
 
 AddressInfo.propTypes = {
   defaultLanguage: PropTypes.string,
-  change: PropTypes.func.isRequired,
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
   intl: PropTypes.object.isRequired,
 };

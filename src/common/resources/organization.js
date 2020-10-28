@@ -24,6 +24,8 @@ export const organizationResourceByUrl = {
 export const fetchOrgsByParam = {
   ...organizationsResource,
   records: 'organizations',
+  accumulate: true,
+  fetch: false,
 };
 
 export const RESULT_COUNT_INCREMENT = 30;

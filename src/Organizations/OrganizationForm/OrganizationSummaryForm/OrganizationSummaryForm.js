@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Field } from 'react-final-form';
+import { Field, useForm } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 
 import {
@@ -28,8 +28,9 @@ import {
 import resetVendorFields from './resetVendorFields';
 import { asyncValidate } from '../asyncValidate';
 
-function OrganizationSummaryForm({ change, initialValues, fetchOrgByCode, formValues }) {
+function OrganizationSummaryForm({ initialValues, fetchOrgByCode }) {
   const [isVendorUncheckConfirm, setVendorUncheckConfirm] = useState(false);
+  const { change } = useForm();
 
   const renderAlias = useCallback((elem) => {
     return (
@@ -88,12 +89,12 @@ function OrganizationSummaryForm({ change, initialValues, fetchOrgByCode, formVa
       return errorRequired;
     }
 
-    const existingCodes = await asyncValidate(fetchOrgByCode, formValues);
+    const existingCodes = await asyncValidate(fetchOrgByCode, initialValues.id, value);
 
     if (existingCodes.length) return <FormattedMessage id="ui-organizations.save.error.codeInUse" />;
 
     return undefined;
-  }, [fetchOrgByCode, formValues]);
+  }, [fetchOrgByCode, initialValues.id]);
 
   const isEditMode = Boolean(initialValues.id);
 
@@ -237,10 +238,8 @@ function OrganizationSummaryForm({ change, initialValues, fetchOrgByCode, formVa
 }
 
 OrganizationSummaryForm.propTypes = {
-  change: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
   fetchOrgByCode: PropTypes.object.isRequired,
-  formValues: PropTypes.object.isRequired,
 };
 
 export default OrganizationSummaryForm;

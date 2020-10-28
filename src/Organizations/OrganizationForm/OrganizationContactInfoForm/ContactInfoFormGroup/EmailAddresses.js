@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Field } from 'react-final-form';
+import { Field, useForm } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 
 import {
@@ -25,7 +25,8 @@ import CategoryDropdown from '../../../../Utils/CategoryDropdown';
 
 import css from './ContactInfoCard.css';
 
-const EmailAddresses = ({ defaultLanguage, change, dropdownVendorCategories }) => {
+const EmailAddresses = ({ defaultLanguage, dropdownVendorCategories }) => {
+  const { change } = useForm();
   const EmailsMF = (name, index, fields) => {
     const valueKey = 'value';
     const emails = fields.value.filter((item, i) => item[valueKey] && i !== index);
@@ -116,7 +117,6 @@ const EmailAddresses = ({ defaultLanguage, change, dropdownVendorCategories }) =
 
 EmailAddresses.propTypes = {
   defaultLanguage: PropTypes.string,
-  change: PropTypes.func.isRequired,
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
 

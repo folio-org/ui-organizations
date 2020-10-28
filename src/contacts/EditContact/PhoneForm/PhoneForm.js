@@ -75,7 +75,7 @@ const headLabels = (
   </Row>
 );
 
-const PhoneForm = ({ categories, change, phoneTypesList }) => {
+const PhoneForm = ({ categories, phoneTypesList }) => {
   const addNewPhone = useCallback((fields) => createAddNewItem()(fields), []);
 
   const renderEmailFields = (elem, index, fields) => {
@@ -135,7 +135,6 @@ const PhoneForm = ({ categories, change, phoneTypesList }) => {
           data-test-contact-phone-primary
         >
           <ButtonIsPrimary
-            change={change}
             fields={fields}
             fieldIndex={index}
             labelId="ui-organizations.primaryItem"
@@ -160,7 +159,6 @@ const PhoneForm = ({ categories, change, phoneTypesList }) => {
 
 PhoneForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
-  change: PropTypes.func.isRequired,
   phoneTypesList: PropTypes.arrayOf(PropTypes.object),
 };
 

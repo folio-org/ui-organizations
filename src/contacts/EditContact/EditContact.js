@@ -47,7 +47,6 @@ const EditContact = ({
   categories,
   onClose,
   paneTitle,
-  form: { change },
   handleSubmit,
   pristine,
   submitting,
@@ -201,7 +200,6 @@ const EditContact = ({
                 >
                   <EmailForm
                     categories={categories}
-                    change={change}
                   />
                 </Col>
               </Row>
@@ -218,7 +216,6 @@ const EditContact = ({
                 >
                   <PhoneForm
                     categories={categories}
-                    change={change}
                     phoneTypesList={phoneTypesList}
                   />
                 </Col>
@@ -236,7 +233,6 @@ const EditContact = ({
                 >
                   <UrlForm
                     categories={categories}
-                    change={change}
                   />
                 </Col>
               </Row>
@@ -253,7 +249,6 @@ const EditContact = ({
                 >
                   <AddressInfo
                     dropdownVendorCategories={categories}
-                    change={change}
                   />
                 </Col>
               </Row>
@@ -267,7 +262,6 @@ const EditContact = ({
 
 EditContact.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
-  form: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   paneTitle: PropTypes.node.isRequired,

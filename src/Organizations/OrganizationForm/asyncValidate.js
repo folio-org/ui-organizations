@@ -1,9 +1,9 @@
-export function asyncValidate(fetchOrgByCode, values) {
-  if (!values.code) return Promise.resolve([]);
+export function asyncValidate(fetchOrgByCode, orgId, code) {
+  if (!code) return Promise.resolve([]);
 
-  let query = `code == ${values.code}`;
+  let query = `code == ${code}`;
 
-  if (values.id) query += ` and id<>"${values.id}"`;
+  if (orgId) query += ` and id<>"${orgId}"`;
 
   return fetchOrgByCode.GET({ params: { query } });
 }

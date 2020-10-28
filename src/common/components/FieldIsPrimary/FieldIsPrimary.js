@@ -1,11 +1,12 @@
 import React from 'react';
-import { Field } from 'react-final-form';
+import { Field, useForm } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { Checkbox } from '@folio/stripes/components';
 
-function FieldIsPrimary({ change, fields, fieldIndex, fieldPrefix, labelId, vertical }) {
+function FieldIsPrimary({ fields, fieldIndex, fieldPrefix, labelId, vertical }) {
+  const { change } = useForm();
   const changeIsPrimary = ({ target: { checked } }) => {
     if (checked) {
       fields.forEach((fieldName, i) => {
@@ -31,7 +32,6 @@ function FieldIsPrimary({ change, fields, fieldIndex, fieldPrefix, labelId, vert
 }
 
 FieldIsPrimary.propTypes = {
-  change: PropTypes.func.isRequired,
   fieldIndex: PropTypes.number.isRequired,
   fieldPrefix: PropTypes.string.isRequired,
   fields: PropTypes.object.isRequired,

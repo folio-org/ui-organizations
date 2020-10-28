@@ -72,7 +72,7 @@ const headLabels = (
   </Row>
 );
 
-const UrlForm = ({ categories, change }) => {
+const UrlForm = ({ categories }) => {
   const addNewUrl = useCallback((fields) => createAddNewItem()(fields), []);
 
   const renderEmailFields = (elem, index, fields) => {
@@ -132,7 +132,6 @@ const UrlForm = ({ categories, change }) => {
           xs={2}
         >
           <ButtonIsPrimary
-            change={change}
             fields={fields}
             fieldIndex={index}
             labelId="ui-organizations.primaryItem"
@@ -158,7 +157,6 @@ const UrlForm = ({ categories, change }) => {
 
 UrlForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
-  change: PropTypes.func.isRequired,
 };
 
 export default UrlForm;

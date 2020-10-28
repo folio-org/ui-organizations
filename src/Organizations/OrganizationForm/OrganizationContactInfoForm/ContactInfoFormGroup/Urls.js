@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Field } from 'react-final-form';
+import { Field, useForm } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 
 import {
@@ -25,7 +25,8 @@ import { isURLValid } from '../../../../Utils/Validate';
 
 import css from './ContactInfoCard.css';
 
-const Urls = ({ defaultLanguage, change, dropdownVendorCategories }) => {
+const Urls = ({ defaultLanguage, dropdownVendorCategories }) => {
+  const { change } = useForm();
   const UrlsMF = (name, index, fields) => {
     const valueKey = 'value';
     const urls = fields.value.filter((item, i) => item[valueKey] && i !== index);
@@ -118,7 +119,6 @@ const Urls = ({ defaultLanguage, change, dropdownVendorCategories }) => {
 
 Urls.propTypes = {
   defaultLanguage: PropTypes.string,
-  change: PropTypes.func.isRequired,
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
 

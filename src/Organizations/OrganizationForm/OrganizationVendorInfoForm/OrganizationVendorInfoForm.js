@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
-import { Field } from 'react-final-form';
+import { Field, useForm } from 'react-final-form';
 import { find } from 'lodash';
 
 import {
@@ -23,7 +22,8 @@ import css from './OrganizationVendorInfoForm.css';
 
 const subSections = { taxSection: true };
 
-const OrganizationVendorInfoForm = ({ change }) => {
+const OrganizationVendorInfoForm = () => {
+  const { change } = useForm();
   const currenciesOptions = useCurrencyOptions();
   const currencyValueOptions = currenciesOptions.map(({ value }) => value);
   const currencyToString = useCallback(item => item, []);
@@ -246,6 +246,7 @@ const OrganizationVendorInfoForm = ({ change }) => {
                   name="liableForVat"
                   id="liableForVat"
                   component={Checkbox}
+                  type="checkbox"
                   vertical
                   validateFields={[]}
                 />
@@ -256,10 +257,6 @@ const OrganizationVendorInfoForm = ({ change }) => {
       </Col>
     </Row>
   );
-};
-
-OrganizationVendorInfoForm.propTypes = {
-  change: PropTypes.func,
 };
 
 export default OrganizationVendorInfoForm;
