@@ -8,13 +8,11 @@ import { Checkbox } from '@folio/stripes/components';
 function FieldIsPrimary({ fields, fieldIndex, fieldPrefix, labelId, vertical }) {
   const { change } = useForm();
   const changeIsPrimary = ({ target: { checked } }) => {
-    if (checked) {
-      fields.forEach((fieldName, i) => {
-        if (i !== fieldIndex && fields.value[i].isPrimary === checked) {
-          change(`${fieldName}.isPrimary`, !checked);
-        } else change(`${fieldPrefix}.isPrimary`, checked);
-      });
-    }
+    fields.forEach((fieldName, i) => (
+      i === fieldIndex
+        ? change(`${fieldName}.isPrimary`, checked)
+        : change(`${fieldName}.isPrimary`, false)
+    ));
   };
 
   return (
