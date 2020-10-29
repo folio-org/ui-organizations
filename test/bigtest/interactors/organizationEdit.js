@@ -102,6 +102,12 @@ export default interactor(class OrganizationEditInteractor {
 
   vendorConfirmationModal = new ConfirmationModal('#uncheck-is-vendor-confirmation');
   formIsVisible = isVisible('[data-test-form-vendor-pane]');
+  acqUnitsOptions = isPresent('#account-acq-units-0-main-item-0');
+
+  whenAcqUnitsLoaded() {
+    return this.timeout(5000).when(() => this.acqUnitsOptions);
+  }
+
   whenLoaded() {
     return this.timeout(5000).when(() => this.formIsVisible);
   }

@@ -12,7 +12,7 @@ import {
   TextField,
 } from '@folio/stripes/components';
 import {
-  FieldAutoSuggest,
+  FieldAutoSuggestFinal,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
@@ -51,7 +51,7 @@ const EmailAddresses = ({ defaultLanguage, dropdownVendorCategories }) => {
             xs={12}
             md={3}
           >
-            <FieldAutoSuggest
+            <FieldAutoSuggestFinal
               items={emails}
               labelId="ui-organizations.contactInfo.emailAddress"
               name={`${name}.${valueKey}`}

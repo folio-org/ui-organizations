@@ -1,10 +1,12 @@
 import React, { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+import { useForm } from 'react-final-form';
 
 import { Button } from '@folio/stripes/components';
 
-const ButtonIsPrimary = ({ change, fields, fieldIndex, labelId }) => {
+const ButtonIsPrimary = ({ fields, fieldIndex, labelId }) => {
+  const { change } = useForm();
   const isPrimary = fields.value[fieldIndex].isPrimary;
 
   const changeIsPrimary = useCallback(
@@ -34,7 +36,6 @@ const ButtonIsPrimary = ({ change, fields, fieldIndex, labelId }) => {
 };
 
 ButtonIsPrimary.propTypes = {
-  change: PropTypes.func.isRequired,
   fieldIndex: PropTypes.number.isRequired,
   fields: PropTypes.object.isRequired,
   labelId: PropTypes.string,

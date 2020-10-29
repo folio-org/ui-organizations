@@ -16,7 +16,7 @@ import {
 } from '@folio/stripes/components';
 import {
   COUNTRIES,
-  FieldAutoSuggest,
+  FieldAutoSuggestFinal,
   FieldSelectionFinal,
 } from '@folio/stripes-acq-components';
 
@@ -61,7 +61,7 @@ const AddressInfo = ({
             xs={12}
             md={3}
           >
-            <FieldAutoSuggest
+            <FieldAutoSuggestFinal
               id={`${name}.addressLine1`}
               items={addresses}
               labelId="ui-organizations.data.contactTypes.addressLine1"

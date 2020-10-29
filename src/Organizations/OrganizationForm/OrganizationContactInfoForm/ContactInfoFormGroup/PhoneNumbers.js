@@ -11,7 +11,7 @@ import {
   Row,
 } from '@folio/stripes/components';
 import {
-  FieldAutoSuggest,
+  FieldAutoSuggestFinal,
   FieldSelectFinal,
   validateRequired,
 } from '@folio/stripes-acq-components';
@@ -55,7 +55,7 @@ const PhoneNumbers = ({
             xs={12}
             md={3}
           >
-            <FieldAutoSuggest
+            <FieldAutoSuggestFinal
               items={phones}
               labelId="ui-organizations.contactPeople.phoneNumber"
               name={`${name}.phoneNumber`}

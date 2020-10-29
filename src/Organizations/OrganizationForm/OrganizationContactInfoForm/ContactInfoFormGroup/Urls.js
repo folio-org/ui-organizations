@@ -12,7 +12,7 @@ import {
   TextField,
 } from '@folio/stripes/components';
 import {
-  FieldAutoSuggest,
+  FieldAutoSuggestFinal,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -51,7 +51,7 @@ const Urls = ({ defaultLanguage, dropdownVendorCategories }) => {
             xs={12}
             md={3}
           >
-            <FieldAutoSuggest
+            <FieldAutoSuggestFinal
               items={urls}
               labelId="ui-organizations.contactInfo.url"
               name={`${name}.${valueKey}`}
