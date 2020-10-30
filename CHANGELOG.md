@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Migrate Organization and Contact Forms to React-final-form. Refs UIORGS-200.
 * Org list - Move focus to results pane when response has come. Refs UIORGS-208
 * Accessibility Error: Buttons must have discernible text. Refs-UIORGS-210.
 

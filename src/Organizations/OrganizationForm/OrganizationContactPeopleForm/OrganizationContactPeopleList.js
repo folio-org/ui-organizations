@@ -38,7 +38,7 @@ const getContactsUrl = (orgId, contactId) => {
 
 const AddContactButton = ({ fetchContacts, fields, stripes, orgId }) => {
   const addContacts = (contacts = []) => {
-    const addedContactIds = new Set(fields.getAll());
+    const addedContactIds = new Set(fields.value);
     const newContactsIds = map(contacts.filter(({ id }) => !addedContactIds.has(id)), 'id');
 
     if (newContactsIds.length) {
@@ -91,7 +91,7 @@ const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, orgId, categoriesDict, stripes }) => {
   const intl = useIntl();
-  const contentData = sortBy(fields.getAll().map((contactId, _index) => ({
+  const contentData = sortBy(fields.value.map((contactId, _index) => ({
     ...get(contactsMap, contactId, {}),
     _index,
   })), [({ lastName }) => lastName.toLowerCase()]);

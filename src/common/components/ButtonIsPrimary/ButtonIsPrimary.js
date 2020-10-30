@@ -1,20 +1,23 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+import { useForm } from 'react-final-form';
 
 import { Button } from '@folio/stripes/components';
 
-const ButtonIsPrimary = ({ dispatchChange, fields, fieldIndex, labelId }) => {
-  const isPrimary = fields.get(fieldIndex).isPrimary;
+const ButtonIsPrimary = ({ fields, fieldIndex, labelId }) => {
+  const { change } = useForm();
+  const isPrimary = fields.value[fieldIndex].isPrimary;
+
   const changeIsPrimary = () => {
     if (isPrimary) return;
 
     fields.forEach((fieldName, i) => {
       if (
-        (i !== fieldIndex && fields.get(i).isPrimary)
+        (i !== fieldIndex && fields.value[i].isPrimary)
         || i === fieldIndex
       ) {
-        dispatchChange(`${fieldName}.isPrimary`, !fields.get(i).isPrimary);
+        change(`${fieldName}.isPrimary`, !fields.value[i].isPrimary);
       }
     });
   };
@@ -30,7 +33,6 @@ const ButtonIsPrimary = ({ dispatchChange, fields, fieldIndex, labelId }) => {
 };
 
 ButtonIsPrimary.propTypes = {
-  dispatchChange: PropTypes.func.isRequired,
   fieldIndex: PropTypes.number.isRequired,
   fields: PropTypes.object.isRequired,
   labelId: PropTypes.string,

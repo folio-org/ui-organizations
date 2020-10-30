@@ -4,10 +4,8 @@ import {
   injectIntl,
 } from 'react-intl';
 import PropTypes from 'prop-types';
-import {
-  Field,
-  FieldArray,
-} from 'redux-form';
+import { Field } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Card,
@@ -18,8 +16,8 @@ import {
 } from '@folio/stripes/components';
 import {
   COUNTRIES,
-  FieldAutoSuggest,
-  FieldSelection,
+  FieldAutoSuggestFinal,
+  FieldSelectionFinal,
 } from '@folio/stripes-acq-components';
 
 import CategoryDropdown from '../../../Utils/CategoryDropdown';
@@ -31,7 +29,6 @@ import css from './AddressInfo.css';
 
 const AddressInfo = ({
   defaultLanguage,
-  dispatchChange,
   dropdownVendorCategories,
   intl,
 }) => {
@@ -43,10 +40,9 @@ const AddressInfo = ({
   // eslint-disable-next-line react/prop-types
   const Address = (name, index, fields) => {
     const valueKey = 'addressLine1';
-    const addresses = fields.getAll().filter((address, i) => address[valueKey] && i !== index);
+    const addresses = fields.value.filter((address, i) => address[valueKey] && i !== index);
     const nodeIsPrimary = (
       <FieldIsPrimary
-        dispatchChange={dispatchChange}
         fields={fields}
         fieldIndex={index}
         fieldPrefix={name}
@@ -65,16 +61,16 @@ const AddressInfo = ({
             xs={12}
             md={3}
           >
-            <FieldAutoSuggest
+            <FieldAutoSuggestFinal
               id={`${name}.addressLine1`}
               items={addresses}
               labelId="ui-organizations.data.contactTypes.addressLine1"
               name={`${name}.addressLine1`}
               valueKey={valueKey}
-              onSelect={(item) => {
-                fields.remove(index);
-                fields.insert(index, item);
-              }}
+              // eslint-disable-next-line no-unused-vars
+              onSelect={({ isPrimary, ...restItem }) => fields.update(index, restItem)}
+              validateFields={[]}
+              withFinalForm
             />
           </Col>
           <Col
@@ -87,6 +83,7 @@ const AddressInfo = ({
               name={`${name}.addressLine2`}
               component={TextField}
               fullWidth
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -99,6 +96,7 @@ const AddressInfo = ({
               name={`${name}.city`}
               component={TextField}
               fullWidth
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -112,6 +110,7 @@ const AddressInfo = ({
               id={`${name}.stateRegion`}
               component={TextField}
               fullWidth
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -125,6 +124,7 @@ const AddressInfo = ({
               id={`${name}.zipCode`}
               component={TextField}
               fullWidth
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -132,10 +132,11 @@ const AddressInfo = ({
             xs={12}
             md={3}
           >
-            <FieldSelection
+            <FieldSelectionFinal
               label={<FormattedMessage id="ui-organizations.data.contactTypes.country" />}
               name={`${name}.country`}
               dataOptions={countriesOptions}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -178,7 +179,6 @@ const AddressInfo = ({
 
 AddressInfo.propTypes = {
   defaultLanguage: PropTypes.string,
-  dispatchChange: PropTypes.func.isRequired,
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
   intl: PropTypes.object.isRequired,
 };

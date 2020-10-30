@@ -10,12 +10,13 @@ describe('Create interface', () => {
 
   const page = new InterfaceEditInteractor();
 
-  beforeEach(function () {
+  beforeEach(async function () {
     const organization = this.server.create('organization', {
       interfaces: [],
     });
 
     this.visit(`/organizations/${organization.id}/interface/add`);
+    await page.whenLoaded();
   });
 
   it('displays Create interface form', () => {

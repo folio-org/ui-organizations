@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { FieldArray } from 'redux-form';
+import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Col,
@@ -61,13 +61,11 @@ function OrganizationContactPeopleForm({ open, orgId, mutator, storedContactIds,
         <FieldArray
           name="contacts"
           component={OrganizationContactPeopleList}
-          props={{
-            fetchContacts,
-            categoriesDict,
-            contactsMap,
-            orgId,
-            stripes,
-          }}
+          fetchContacts={fetchContacts}
+          categoriesDict={categoriesDict}
+          contactsMap={contactsMap}
+          orgId={orgId}
+          stripes={stripes}
         />
       </Col>
     </Row>

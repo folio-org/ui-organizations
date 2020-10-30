@@ -18,7 +18,7 @@ import { DICT_CATEGORIES } from '../../../common/constants';
 
 import OrganizationContactInfoForm from './OrganizationContactInfoForm';
 
-const OrganizationContactInfoFormContainer = ({ mutator, defaultLanguage, dispatchChange }) => {
+const OrganizationContactInfoFormContainer = ({ mutator, defaultLanguage }) => {
   const [categoriesDict, setCategoriesDict] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -41,7 +41,6 @@ const OrganizationContactInfoFormContainer = ({ mutator, defaultLanguage, dispat
   return (
     <OrganizationContactInfoForm
       defaultLanguage={defaultLanguage}
-      dispatchChange={dispatchChange}
       vendorCategories={categoriesDict}
     />
   );
@@ -58,7 +57,6 @@ OrganizationContactInfoFormContainer.manifest = Object.freeze({
 OrganizationContactInfoFormContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
   defaultLanguage: PropTypes.string,
-  dispatchChange: PropTypes.func,
 };
 
 export default stripesConnect(OrganizationContactInfoFormContainer);

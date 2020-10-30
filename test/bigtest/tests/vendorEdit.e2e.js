@@ -62,6 +62,7 @@ describe('Vendor org edit', () => {
       beforeEach(async function () {
         await orgEdit.addAccountButton.click();
         await orgEdit.accountsSection.acquisitionUnits.clickControl();
+        await orgEdit.whenAcqUnitsLoaded();
         await orgEdit.accountsSection.firstAcqUnitOption.click();
       });
 

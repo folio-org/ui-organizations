@@ -1,10 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import {
-  Field,
-  FieldArray,
-} from 'redux-form';
+import { Field, useForm } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Card,
@@ -14,7 +12,7 @@ import {
   TextField,
 } from '@folio/stripes/components';
 import {
-  FieldAutoSuggest,
+  FieldAutoSuggestFinal,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
@@ -27,13 +25,14 @@ import CategoryDropdown from '../../../../Utils/CategoryDropdown';
 
 import css from './ContactInfoCard.css';
 
-const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownVendorCategories }) => {
+const EmailAddresses = ({ defaultLanguage, dropdownVendorCategories }) => {
+  const { change } = useForm();
   const EmailsMF = (name, index, fields) => {
     const valueKey = 'value';
-    const emails = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
+    const emails = fields.value.filter((item, i) => item[valueKey] && i !== index);
     const nodeIsPrimary = (
       <FieldIsPrimary
-        dispatchChange={dispatchChange}
+        change={change}
         fields={fields}
         fieldIndex={index}
         fieldPrefix={name}
@@ -52,17 +51,16 @@ const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownVendorCategor
             xs={12}
             md={3}
           >
-            <FieldAutoSuggest
+            <FieldAutoSuggestFinal
               items={emails}
               labelId="ui-organizations.contactInfo.emailAddress"
               name={`${name}.${valueKey}`}
               required
-              validate={[validateRequired]}
+              validate={validateRequired}
               valueKey={valueKey}
-              onSelect={(item) => {
-                fields.remove(index);
-                fields.insert(index, item);
-              }}
+              // eslint-disable-next-line no-unused-vars
+              onSelect={({ isPrimary, ...restItem }) => fields.update(index, restItem)}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -75,6 +73,7 @@ const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownVendorCategor
               name={`${name}.description`}
               component={TextField}
               fullWidth
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -117,7 +116,6 @@ const EmailAddresses = ({ defaultLanguage, dispatchChange, dropdownVendorCategor
 
 EmailAddresses.propTypes = {
   defaultLanguage: PropTypes.string,
-  dispatchChange: PropTypes.func.isRequired,
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };
 

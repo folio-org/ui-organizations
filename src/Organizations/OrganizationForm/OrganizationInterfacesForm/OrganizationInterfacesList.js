@@ -33,7 +33,7 @@ const getInterfaceUrl = (orgId, interfaceId) => {
 
 const AddInterfaceButton = ({ fetchInterfaces, fields, orgId }) => {
   const addInterfaces = (interfaces = []) => {
-    const addedInterfacesIds = new Set(fields.getAll());
+    const addedInterfacesIds = new Set(fields.value);
     const newInterface = interfaces.filter(({ id }) => !addedInterfacesIds.has(id));
 
     if (newInterface.length) {
@@ -85,7 +85,7 @@ const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationInterfacesList = ({ fetchInterfaces, fields, interfaces, orgId }) => {
   const intl = useIntl();
-  const contentData = fields.getAll().map((interfaceId, _index) => ({
+  const contentData = fields.value.map((interfaceId, _index) => ({
     ...get(interfaces, interfaceId, {}),
     _index,
   }));

@@ -7,6 +7,8 @@ import {
   OrganizationEditInteractor,
 } from '../interactors';
 
+const TEST_CODE = 'test_code';
+
 describe('Organization edit', () => {
   setupApplication();
 
@@ -18,6 +20,8 @@ describe('Organization edit', () => {
     contacts = this.server.createList('contact', 2);
     interfaces = this.server.createList('interface', 2);
     const org = this.server.create('organization', { contacts: map(contacts, 'id'), interfaces: map(interfaces, 'id') });
+
+    this.server.create('organization', { code: TEST_CODE });
 
     this.visit(`/organizations/${org.id}/edit`);
     await orgEdit.whenLoaded();
@@ -123,15 +127,17 @@ describe('Organization edit', () => {
     it('update Vendor Button is disabled', function () {
       expect(orgEdit.updateVendorButton.isDisabled).to.be.false;
     });
+  });
 
-    describe('click update vendor button', function () {
-      beforeEach(async function () {
-        await orgEdit.updateVendorButton.click();
-      });
+  describe('click save but no submit action since code is already in use', () => {
+    beforeEach(async () => {
+      await orgEdit.summarySectionForm.code.fillAndBlur(TEST_CODE);
+      await orgEdit.createOrgButton.focus();
+      await orgEdit.createOrgButton.click();
+    });
 
-      it('Edit layer is closed', function () {
-        expect(orgEdit.isPresent).to.be.false;
-      });
+    it('should stay at form', () => {
+      expect(orgEdit.isPresent).to.be.true;
     });
   });
 

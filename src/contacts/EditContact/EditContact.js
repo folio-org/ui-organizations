@@ -1,12 +1,11 @@
 import React, {
-  useCallback,
   useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Field } from 'redux-form';
+import { Field } from 'react-final-form';
 
-import stripesForm from '@folio/stripes/form';
+import stripesForm from '@folio/stripes/final-form';
 import { AppIcon } from '@folio/stripes/core';
 import {
   Accordion,
@@ -22,7 +21,7 @@ import {
 } from '@folio/stripes/components';
 
 import {
-  FieldSelect,
+  FieldSelectFinal,
   validateRequired,
   useAccordionToggle,
 } from '@folio/stripes-acq-components';
@@ -48,18 +47,11 @@ const EditContact = ({
   categories,
   onClose,
   paneTitle,
-  dispatch,
-  change,
   handleSubmit,
   pristine,
   submitting,
 }) => {
   const [expandAll, sections, toggleSection] = useAccordionToggle();
-
-  const dispatchChange = useCallback(
-    (fieldName, value) => dispatch(change(fieldName, value)),
-    [dispatch, change],
-  );
 
   const paneFooter = useMemo(
     () => {
@@ -152,7 +144,7 @@ const EditContact = ({
                     label={<FormattedMessage id="ui-organizations.contactPeople.details.lastName" />}
                     name="lastName"
                     required
-                    validate={[validateRequired]}
+                    validate={validateRequired}
                   />
                 </Col>
                 <Col xs={3}>
@@ -162,11 +154,11 @@ const EditContact = ({
                     label={<FormattedMessage id="ui-organizations.contactPeople.details.firstName" />}
                     name="firstName"
                     required
-                    validate={[validateRequired]}
+                    validate={validateRequired}
                   />
                 </Col>
                 <Col xs={3}>
-                  <FieldSelect
+                  <FieldSelectFinal
                     dataOptions={CONTACT_STATUSES}
                     label={<FormattedMessage id="ui-organizations.contactPeople.status" />}
                     name="inactive"
@@ -208,7 +200,6 @@ const EditContact = ({
                 >
                   <EmailForm
                     categories={categories}
-                    dispatchChange={dispatchChange}
                   />
                 </Col>
               </Row>
@@ -225,7 +216,6 @@ const EditContact = ({
                 >
                   <PhoneForm
                     categories={categories}
-                    dispatchChange={dispatchChange}
                     phoneTypesList={phoneTypesList}
                   />
                 </Col>
@@ -243,7 +233,6 @@ const EditContact = ({
                 >
                   <UrlForm
                     categories={categories}
-                    dispatchChange={dispatchChange}
                   />
                 </Col>
               </Row>
@@ -260,7 +249,6 @@ const EditContact = ({
                 >
                   <AddressInfo
                     dropdownVendorCategories={categories}
-                    dispatchChange={dispatchChange}
                   />
                 </Col>
               </Row>
@@ -274,8 +262,6 @@ const EditContact = ({
 
 EditContact.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
-  change: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   paneTitle: PropTypes.node.isRequired,
@@ -285,6 +271,5 @@ EditContact.propTypes = {
 
 export default stripesForm({
   enableReinitialize: true,
-  form: 'EditContact',
   navigationCheck: true,
 })(EditContact);

@@ -6,7 +6,7 @@ import setupApplication from '../helpers/setup-application';
 import { INTERFACE_TYPES } from '../../../src/common/constants';
 import { InterfaceEditInteractor } from '../interactors';
 
-const validationURLMessage = 'Invalid URL';
+const validationURLMessage = 'URL is not valid';
 
 describe('Edit interface', () => {
   setupApplication();
