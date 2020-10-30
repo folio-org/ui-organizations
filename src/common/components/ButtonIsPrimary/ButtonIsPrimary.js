@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-final-form';
@@ -9,21 +9,18 @@ const ButtonIsPrimary = ({ fields, fieldIndex, labelId }) => {
   const { change } = useForm();
   const isPrimary = fields.value[fieldIndex].isPrimary;
 
-  const changeIsPrimary = useCallback(
-    () => {
-      if (isPrimary) return;
+  const changeIsPrimary = () => {
+    if (isPrimary) return;
 
-      fields.forEach((fieldName, i) => {
-        if (
-          (i !== fieldIndex && fields.value[i].isPrimary)
-          || i === fieldIndex
-        ) {
-          change(`${fieldName}.isPrimary`, !fields.value[i].isPrimary);
-        }
-      });
-    },
-    [fields, fieldIndex, change, isPrimary],
-  );
+    fields.forEach((fieldName, i) => {
+      if (
+        (i !== fieldIndex && fields.value[i].isPrimary)
+        || i === fieldIndex
+      ) {
+        change(`${fieldName}.isPrimary`, !fields.value[i].isPrimary);
+      }
+    });
+  };
 
   return (
     <Button

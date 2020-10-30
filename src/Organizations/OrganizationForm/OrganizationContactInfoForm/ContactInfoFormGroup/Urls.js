@@ -62,7 +62,6 @@ const Urls = ({ defaultLanguage, dropdownVendorCategories }) => {
               // eslint-disable-next-line no-unused-vars
               onSelect={({ isPrimary, ...restItem }) => fields.update(index, restItem)}
               validateFields={[]}
-              withFinalForm
             />
           </Col>
           <Col

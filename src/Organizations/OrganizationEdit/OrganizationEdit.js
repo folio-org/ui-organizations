@@ -22,7 +22,6 @@ import {
 import FormatTime from '../../Utils/FormatTime';
 import { VIEW_ORG_DETAILS } from '../../common/constants';
 import {
-  fetchOrgsByParam,
   organizationResourceByUrl,
 } from '../../common/resources';
 import {
@@ -92,7 +91,6 @@ const OrganizationEdit = ({ match, history, location, mutator }) => {
       onSubmit={updateOrganization}
       cancelForm={cancelForm}
       paneTitle={<FormattedMessage id="ui-organizations.editOrg.title" values={{ name: organization.name }} />}
-      fetchOrgByCode={mutator.fetchOrgByCode}
     />
   );
 };
@@ -102,7 +100,6 @@ OrganizationEdit.manifest = Object.freeze({
     ...organizationResourceByUrl,
     accumulate: true,
   },
-  fetchOrgByCode: fetchOrgsByParam,
 });
 
 OrganizationEdit.propTypes = {

@@ -26,9 +26,9 @@ import {
   MANAGE_UNITS_PERM,
 } from '../../constants';
 import resetVendorFields from './resetVendorFields';
-import { asyncValidate } from '../asyncValidate';
+import FieldCode from './FieldCode';
 
-function OrganizationSummaryForm({ initialValues, fetchOrgByCode }) {
+function OrganizationSummaryForm({ initialValues }) {
   const [isVendorUncheckConfirm, setVendorUncheckConfirm] = useState(false);
   const { change } = useForm();
 
@@ -82,20 +82,6 @@ function OrganizationSummaryForm({ initialValues, fetchOrgByCode }) {
     if (initialValues.id && !checked) setVendorUncheckConfirm(true);
   }, [initialValues.id, change]);
 
-  const validateOrgCode = useCallback(async value => {
-    const errorRequired = validateRequired(value);
-
-    if (errorRequired) {
-      return errorRequired;
-    }
-
-    const existingCodes = await asyncValidate(fetchOrgByCode, initialValues.id, value);
-
-    if (existingCodes.length) return <FormattedMessage id="ui-organizations.save.error.codeInUse" />;
-
-    return undefined;
-  }, [fetchOrgByCode, initialValues.id]);
-
   const isEditMode = Boolean(initialValues.id);
 
   return (
@@ -119,14 +105,7 @@ function OrganizationSummaryForm({ initialValues, fetchOrgByCode }) {
         xs={6}
         md={3}
       >
-        <Field
-          component={TextField}
-          fullWidth
-          label={<FormattedMessage id="ui-organizations.summary.code" />}
-          name="code"
-          required
-          validate={validateOrgCode}
-        />
+        <FieldCode orgId={initialValues.id} />
       </Col>
       <Col
         xs={6}
@@ -239,7 +218,6 @@ function OrganizationSummaryForm({ initialValues, fetchOrgByCode }) {
 
 OrganizationSummaryForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
-  fetchOrgByCode: PropTypes.object.isRequired,
 };
 
 export default OrganizationSummaryForm;

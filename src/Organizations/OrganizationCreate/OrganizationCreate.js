@@ -11,7 +11,6 @@ import { useShowCallout } from '@folio/stripes-acq-components';
 import FormatTime from '../../Utils/FormatTime';
 import { VIEW_ORG_DETAILS } from '../../common/constants';
 import {
-  fetchOrgsByParam,
   organizationsResource,
 } from '../../common/resources';
 import {
@@ -71,14 +70,12 @@ const OrganizationCreate = ({ history, location, mutator }) => {
       initialValues={INITIAL_VALUES}
       onSubmit={createOrganization}
       cancelForm={cancelForm}
-      fetchOrgByCode={mutator.fetchOrgByCode}
     />
   );
 };
 
 OrganizationCreate.manifest = Object.freeze({
   createOrganizationOrg: organizationsResource,
-  fetchOrgByCode: fetchOrgsByParam,
 });
 
 OrganizationCreate.propTypes = {
