@@ -306,7 +306,7 @@
     "summary.alternativeNames": "交替名称",
     "summary.alias": "别名",
     "summary.remove": "移除",
-    "summary.add": "添加",
+    "summary.add": "添加交替名称",
     "summary.pleaseAddAltNames": "请添加交替名称",
     "contactInfo.phoneNumbers": "电话号码",
     "contactInfo.phoneNumber": "电话号码",
@@ -609,6 +609,6 @@
     "vendorInfo.exportToAccounting": "导出到账户",
     "notes.entity": "组织",
     "notes.entityPlural": "组织",
-    "edi.ftpConnectionMode.Active": "Active",
-    "edi.ftpConnectionMode.Passive": "Passive"
+    "edi.ftpConnectionMode.Active": "激活",
+    "edi.ftpConnectionMode.Passive": "被动"
 }
