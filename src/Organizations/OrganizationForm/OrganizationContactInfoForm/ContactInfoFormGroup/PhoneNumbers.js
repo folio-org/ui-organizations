@@ -1,7 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { FieldArray } from 'redux-form';
+import { useForm } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Card,
@@ -10,8 +11,8 @@ import {
   Row,
 } from '@folio/stripes/components';
 import {
-  FieldAutoSuggest,
-  FieldSelect,
+  FieldAutoSuggestFinal,
+  FieldSelectFinal,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
@@ -26,16 +27,16 @@ import css from './ContactInfoCard.css';
 
 const PhoneNumbers = ({
   defaultLanguage,
-  dispatchChange,
   dropdownPhoneType,
   dropdownVendorCategories,
 }) => {
+  const { change } = useForm();
   const PhoneNumbersMF = (name, index, fields) => {
     const valueKey = 'phoneNumber';
-    const phones = fields.getAll().filter((item, i) => item[valueKey] && i !== index);
+    const phones = fields.value.filter((item, i) => item[valueKey] && i !== index);
     const nodeIsPrimary = (
       <FieldIsPrimary
-        dispatchChange={dispatchChange}
+        change={change}
         fields={fields}
         fieldIndex={index}
         fieldPrefix={name}
@@ -54,17 +55,16 @@ const PhoneNumbers = ({
             xs={12}
             md={3}
           >
-            <FieldAutoSuggest
+            <FieldAutoSuggestFinal
               items={phones}
               labelId="ui-organizations.contactPeople.phoneNumber"
               name={`${name}.phoneNumber`}
               required
-              validate={[validateRequired]}
+              validate={validateRequired}
               valueKey={valueKey}
-              onSelect={(item) => {
-                fields.remove(index);
-                fields.insert(index, item);
-              }}
+              // eslint-disable-next-line no-unused-vars
+              onSelect={({ isPrimary, ...restItem }) => fields.update(index, restItem)}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -72,11 +72,12 @@ const PhoneNumbers = ({
             xs={12}
             md={3}
           >
-            <FieldSelect
+            <FieldSelectFinal
               label={<FormattedMessage id="ui-organizations.contactPeople.type" />}
               name={`${name}.type`}
               id={`${name}.type`}
               dataOptions={dropdownPhoneType}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -119,7 +120,6 @@ const PhoneNumbers = ({
 
 PhoneNumbers.propTypes = {
   defaultLanguage: PropTypes.string,
-  dispatchChange: PropTypes.func.isRequired,
   dropdownPhoneType: PropTypes.arrayOf(PropTypes.object),
   dropdownVendorCategories: PropTypes.arrayOf(PropTypes.object),
 };

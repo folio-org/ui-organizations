@@ -50,9 +50,9 @@ describe('Create organization', function () {
 
     describe('submit action', () => {
       beforeEach(async () => {
-        await orgEdit.summarySectionForm.name.fill('Test organization create');
+        await orgEdit.summarySectionForm.name.fillAndBlur('Test organization create');
         await orgEdit.summarySectionForm.status.select(ORGANIZATION_STATUS.active);
-        await orgEdit.summarySectionForm.code.fill('Test_code');
+        await orgEdit.summarySectionForm.code.fillAndBlur('Test_code');
         await orgEdit.createOrgButton.focus();
         await orgEdit.createOrgButton.click();
       });
@@ -103,17 +103,19 @@ describe('Create organization', function () {
 
       describe('submit action', () => {
         beforeEach(async () => {
-          await orgEdit.accountsSection.name.fill('test acc');
-          await orgEdit.accountsSection.accNumber.fill('2323');
+          await orgEdit.accountsSection.name.fillAndBlur('test acc');
+          await orgEdit.accountsSection.accNumber.fillAndBlur('2323');
           await orgEdit.accountsSection.paymentMethod.select('EFT');
           await orgEdit.accountsSection.accountStatus.select('Active');
-          await orgEdit.accountsSection.libraryCode.fill('2323s');
-          await orgEdit.accountsSection.libraryEDIcode.fill('323ss');
+          await orgEdit.accountsSection.libraryCode.fillAndBlur('2323s');
+          await orgEdit.accountsSection.libraryEDIcode.fillAndBlur('323ss');
           await orgEdit.accountsSection.acquisitionUnits.clickControl();
           await orgEdit.accountsSection.firstAcqUnitOption.click();
-          await orgEdit.summarySectionForm.name.fill('Test organization create');
+          await orgEdit.summarySectionForm.name.fillAndBlur('Test organization create');
           await orgEdit.summarySectionForm.status.select(ORGANIZATION_STATUS.active);
-          await orgEdit.summarySectionForm.code.fill('Test_code');
+          await orgEdit.summarySectionForm.code.fillAndBlur('code');
+          await orgEdit.aliases.aliasAddButton.click();
+          await orgEdit.aliases.aliasInputs(0).fillAndBlur('test name');
           await orgEdit.createOrgButton.focus();
           await orgEdit.createOrgButton.click();
           await orgDetails.whenLoaded();
@@ -123,29 +125,6 @@ describe('Create organization', function () {
         it('should close form', () => {
           expect(orgEdit.isPresent).to.be.false;
           expect(orgDetails.accountsSection.acqUnitsView).to.contain('Test');
-        });
-      });
-
-      describe('no submit action since code contains spaces', () => {
-        beforeEach(async () => {
-          await orgEdit.accountsSection.name.fill('test acc');
-          await orgEdit.accountsSection.accNumber.fill('2323');
-          await orgEdit.accountsSection.paymentMethod.select('EFT');
-          await orgEdit.accountsSection.accountStatus.select('Active');
-          await orgEdit.accountsSection.libraryCode.fill('2323s');
-          await orgEdit.accountsSection.libraryEDIcode.fill('323ss');
-          await orgEdit.accountsSection.acquisitionUnits.clickControl();
-          await orgEdit.accountsSection.firstAcqUnitOption.click();
-          await orgEdit.summarySectionForm.name.fill('Test organization create');
-          await orgEdit.summarySectionForm.status.select(ORGANIZATION_STATUS.active);
-          await orgEdit.summarySectionForm.code.fill('Testsdcode');
-          await orgEdit.summarySectionForm.code.blur();
-          await orgEdit.createOrgButton.focus();
-          await orgEdit.createOrgButton.click();
-        });
-
-        it('should stay at form', () => {
-          expect(orgEdit.isPresent).to.be.true;
         });
       });
     });
@@ -158,7 +137,7 @@ describe('Create organization', function () {
 
     it('should add fiedls for alternative name', () => {
       expect(orgEdit.removeNameButton.isPresent).to.be.true;
-      expect(orgEdit.aliases().length).to.be.equal(1);
+      expect(orgEdit.aliases.aliasInputs().length).to.be.equal(1);
     });
 
     describe('remove alternative name', () => {
@@ -168,7 +147,7 @@ describe('Create organization', function () {
 
       it('should remove fiedls for alternative name', () => {
         expect(orgEdit.removeNameButton.isPresent).to.be.false;
-        expect(orgEdit.aliases().length).to.be.equal(0);
+        expect(orgEdit.aliases.aliasInputs().length).to.be.equal(0);
       });
     });
   });

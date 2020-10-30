@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import {
-  Field,
-  FieldArray,
-} from 'redux-form';
+import { Field } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 import PropTypes from 'prop-types';
 
 import {
@@ -17,7 +15,7 @@ import {
 } from '@folio/stripes/components';
 import {
   AcqUnitsField,
-  FieldSelect,
+  FieldSelectFinal,
   PAYMENT_METHOD_OPTIONS,
   validateRequired,
 } from '@folio/stripes-acq-components';
@@ -37,7 +35,7 @@ class OrganizationAccountsForm extends Component {
               </em>
             </div>
           )}
-          {fields.map(this.renderSubForm)}
+          {fields.map((elem, index) => this.renderSubForm(elem, index, fields))}
         </Col>
         <Col
           xs={12}
@@ -55,7 +53,7 @@ class OrganizationAccountsForm extends Component {
   };
 
   renderSubForm = (elem, index, fields) => {
-    const isEditMode = Boolean(fields.get(index).id);
+    const isEditMode = Boolean(this.props.initialAccounts?.[index]?.name);
 
     return (
       <div
@@ -73,7 +71,8 @@ class OrganizationAccountsForm extends Component {
               label={<FormattedMessage id="ui-organizations.accounts.name" />}
               name={`${elem}.name`}
               required
-              validate={[validateRequired]}
+              validate={validateRequired}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -83,10 +82,11 @@ class OrganizationAccountsForm extends Component {
             <Field
               label={<FormattedMessage id="ui-organizations.accounts.accountNumber" />}
               name={`${elem}.accountNo`}
-              validate={[validateRequired]}
+              validate={validateRequired}
               required
               component={TextField}
               fullWidth
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -98,6 +98,7 @@ class OrganizationAccountsForm extends Component {
               fullWidth
               label={<FormattedMessage id="ui-organizations.accounts.description" />}
               name={`${elem}.description`}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -109,17 +110,20 @@ class OrganizationAccountsForm extends Component {
               fullWidth
               label={<FormattedMessage id="ui-organizations.accounts.payable" />}
               name={`${elem}.appSystemNo`}
+              validateFields={[]}
             />
           </Col>
           <Col
             xs={6}
             md={3}
           >
-            <FieldSelect
+            <FieldSelectFinal
               dataOptions={PAYMENT_METHOD_OPTIONS}
               label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />}
               name={`${elem}.paymentMethod`}
               required
+              validate={validateRequired}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -133,7 +137,8 @@ class OrganizationAccountsForm extends Component {
               name={`${elem}.accountStatus`}
               placeholder=" "
               required
-              validate={[validateRequired]}
+              validate={validateRequired}
+              validateFields={[]}
             >
               {Object.keys(ORGANIZATION_STATUS).map((key) => (
                 <FormattedMessage
@@ -155,6 +160,7 @@ class OrganizationAccountsForm extends Component {
               id={`${elem}.contactInfo`}
               label={<FormattedMessage id="ui-organizations.accounts.account.contactInfo" />}
               name={`${elem}.contactInfo`}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -167,7 +173,8 @@ class OrganizationAccountsForm extends Component {
               label={<FormattedMessage id="ui-organizations.accounts.libraryCode" />}
               name={`${elem}.libraryCode`}
               required
-              validate={[validateRequired]}
+              validate={validateRequired}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -180,7 +187,8 @@ class OrganizationAccountsForm extends Component {
               label={<FormattedMessage id="ui-organizations.accounts.libraryEDICode" />}
               name={`${elem}.libraryEdiCode`}
               required
-              validate={[validateRequired]}
+              validate={validateRequired}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -193,6 +201,7 @@ class OrganizationAccountsForm extends Component {
               id={`${elem}.notes`}
               label={<FormattedMessage id="ui-organizations.accounts.notes" />}
               name={`${elem}.notes`}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -204,6 +213,7 @@ class OrganizationAccountsForm extends Component {
               name={`${elem}.acqUnitIds`}
               isEdit={isEditMode}
               preselectedUnits={this.props.initialAccounts?.[index]?.acqUnitIds || undefined}
+              isFinal
             />
           </Col>
           <Col
@@ -228,6 +238,7 @@ class OrganizationAccountsForm extends Component {
       <FieldArray
         name="accounts"
         component={this.renderForm}
+        validateFields={[]}
       />
     );
   }

@@ -1,24 +1,20 @@
 import React, { useCallback } from 'react';
-import { getFormValues } from 'redux-form';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 
 import {
   stripesConnect,
-  stripesShape,
 } from '@folio/stripes/core';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
 import FormatTime from '../../Utils/FormatTime';
 import { VIEW_ORG_DETAILS } from '../../common/constants';
 import {
-  fetchOrgsByParam,
   organizationsResource,
 } from '../../common/resources';
 import {
   OrganizationForm,
-  ORG_FORM_NAME,
 } from '../OrganizationForm';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 
@@ -37,7 +33,7 @@ const INITIAL_VALUES = {
   },
 };
 
-const OrganizationCreate = ({ history, location, mutator, stripes }) => {
+const OrganizationCreate = ({ history, location, mutator }) => {
   const cancelForm = useCallback(
     (id) => {
       history.push({
@@ -69,29 +65,22 @@ const OrganizationCreate = ({ history, location, mutator, stripes }) => {
     [cancelForm, intl, showCallout],
   );
 
-  const { isVendor, language } = getFormValues(ORG_FORM_NAME)(stripes.store.getState()) || {};
-
   return (
     <OrganizationForm
       initialValues={INITIAL_VALUES}
       onSubmit={createOrganization}
       cancelForm={cancelForm}
-      isVendorForm={isVendor}
-      formDefaultLanguage={language}
-      fetchOrgByCode={mutator.fetchOrgByCode}
     />
   );
 };
 
 OrganizationCreate.manifest = Object.freeze({
   createOrganizationOrg: organizationsResource,
-  fetchOrgByCode: fetchOrgsByParam,
 });
 
 OrganizationCreate.propTypes = {
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  stripes: stripesShape.isRequired,
   mutator: PropTypes.object.isRequired,
 };
 

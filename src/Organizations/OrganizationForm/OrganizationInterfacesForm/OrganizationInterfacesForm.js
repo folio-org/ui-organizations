@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { FieldArray } from 'redux-form';
+import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Col,
@@ -48,11 +48,9 @@ function OrganizationInterfacesForm({ open, orgId, mutator, storedInterfaces }) 
         <FieldArray
           name="interfaces"
           component={OrganizationInterfacesList}
-          props={{
-            interfaces: interfacesMap,
-            fetchInterfaces: refreshInterfaces,
-            orgId,
-          }}
+          interfaces={interfacesMap}
+          fetchInterfaces={refreshInterfaces}
+          orgId={orgId}
         />
       </Col>
     </Row>

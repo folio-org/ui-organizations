@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Field, FieldArray } from 'redux-form';
+import { Field } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Button,
@@ -13,9 +14,9 @@ import {
 
 import {
   validateRequired,
+  validateURL,
 } from '@folio/stripes-acq-components';
 
-import { isURLValid } from '../../../Utils/Validate';
 import css from './OrganizationAgreementsForm.css';
 
 class OrganizationAgreementsForm extends Component {
@@ -38,7 +39,7 @@ class OrganizationAgreementsForm extends Component {
               </div>
             </Col>
           )}
-          {fields.map(this.renderSubForm)}
+          {fields.map((elem, index) => this.renderSubForm(elem, index, fields))}
         </Col>
         <Col xs={12} style={{ paddingTop: '10px' }}>
           <Button
@@ -67,7 +68,8 @@ class OrganizationAgreementsForm extends Component {
               label={<FormattedMessage id="ui-organizations.agreement.name" />}
               name={`${elem}.name`}
               required
-              validate={[validateRequired]}
+              validate={validateRequired}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -81,6 +83,7 @@ class OrganizationAgreementsForm extends Component {
               label={<FormattedMessage id="ui-organizations.agreement.discountSym" />}
               name={`${elem}.discount`}
               type="number"
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -94,7 +97,8 @@ class OrganizationAgreementsForm extends Component {
               label={<FormattedMessage id="ui-organizations.agreement.referenceUrl" />}
               name={`${elem}.referenceUrl`}
               type="text"
-              validate={[isURLValid]}
+              validate={validateURL}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -107,6 +111,7 @@ class OrganizationAgreementsForm extends Component {
               id={`${elem}.notes`}
               label={<FormattedMessage id="ui-organizations.agreement.notes" />}
               name={`${elem}.notes`}
+              validateFields={[]}
             />
           </Col>
           <Col
@@ -132,6 +137,7 @@ class OrganizationAgreementsForm extends Component {
         component={this.renderForm}
         id="agreements"
         name="agreements"
+        validateFields={[]}
       />
 
     );

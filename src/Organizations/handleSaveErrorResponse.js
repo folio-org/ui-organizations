@@ -1,6 +1,5 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { SubmissionError } from 'redux-form';
 
 import { ERROR_CODE_GENERIC } from '@folio/stripes-acq-components';
 
@@ -15,7 +14,6 @@ export const handleSaveErrorResponse = async (intl, showCallout, response) => {
 
   const errorCode = responseJson.errors?.[0]?.code || ERROR_CODE_GENERIC;
   const errorMsg = responseJson.errors?.[0]?.message;
-  const errorKey = responseJson.errors?.[0]?.parameters?.[0]?.key;
   const message = (
     <FormattedMessage
       id={`ui-organizations.save.error.${errorCode}`}
@@ -32,12 +30,6 @@ export const handleSaveErrorResponse = async (intl, showCallout, response) => {
     showCallout({
       message: errorMsg,
       type: 'error',
-    });
-  }
-
-  if (errorKey) {
-    throw new SubmissionError({
-      [errorKey]: ' ',
     });
   }
 };
