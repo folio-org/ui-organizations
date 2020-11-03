@@ -28,8 +28,6 @@
   "data.contactTypes.noAddressInfo": "Please add address info",
   "data.contactTypes.language": "Language",
 
-  "valid.isURLValid": "Invalid URL",
-
   "filterConfig.acqUnits": "Acquisitions unit",
   "filterConfig.addressCategory": "Address category",
   "filterConfig.contactPeopleCategory": "Contact people category",

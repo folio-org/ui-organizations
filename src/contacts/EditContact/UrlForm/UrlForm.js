@@ -11,13 +11,13 @@ import {
   TextField,
   Label,
 } from '@folio/stripes/components';
+import { validateURLRequired } from '@folio/stripes-acq-components';
 
 import {
   FieldLanguage,
   ButtonIsPrimary,
 } from '../../../common/components';
 import { createAddNewItem } from '../../../common/utils';
-import { isURLValid } from '../../../Utils/Validate';
 import CategoryDropdown from '../../../Utils/CategoryDropdown';
 
 const headLabels = (
@@ -86,7 +86,7 @@ const UrlForm = ({ categories }) => {
             component={TextField}
             name={`${elem}.value`}
             required
-            validate={isURLValid}
+            validate={validateURLRequired}
             ariaLabelledBy="urlFormValueLabel"
             validateFields={[]}
           />
