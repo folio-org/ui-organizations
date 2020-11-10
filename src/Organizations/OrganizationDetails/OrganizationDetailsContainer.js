@@ -6,6 +6,7 @@ import React, {
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
@@ -17,7 +18,7 @@ import {
   organizationResourceByUrl,
   categoriesResource,
 } from '../../common/resources';
-
+import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 import OrganizationDetails from './OrganizationDetails';
 
 const OrganizationDetailsContainer = ({
@@ -33,6 +34,7 @@ const OrganizationDetailsContainer = ({
   const [organization, setOrganization] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [organizationCategories, setOrganizationCategories] = useState([]);
+  const intl = useIntl();
 
   useEffect(
     () => {
@@ -105,10 +107,11 @@ const OrganizationDetailsContainer = ({
     (data) => {
       mutator.organizationDetailsOrg.PUT(data)
         .then(() => mutator.organizationDetailsOrg.GET())
-        .then(setOrganization);
+        .then(setOrganization)
+        .catch((e) => handleSaveErrorResponse(intl, showCallout, e));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [intl, showCallout],
   );
 
   if (isLoading) {
