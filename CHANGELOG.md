@@ -3,6 +3,10 @@
 ## (IN PROGRESS)
 
 * Migrate Organization and Contact Forms to React-final-form. Refs UIORGS-200.
+
+## [2.2.1](https://github.com/folio-org/ui-organizations/tree/v2.2.1) (2020-11-10)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.2.0...v2.2.1)
+
 * Org list - Move focus to results pane when response has come. Refs UIORGS-208
 * Accessibility Error: Buttons must have discernible text. Refs-UIORGS-210.
 
