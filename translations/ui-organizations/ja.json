@@ -591,7 +591,7 @@
     "vendor.confirmation.message": "警告。すべてのベンダー情報、ベンダー条件、EDI情報、およびアカウントがこのレコードから削除されます。",
     "edit.showCredentials": "資格情報を表示",
     "showMore": "Show more",
-    "showTags": "Show tags",
+    "showTags": "タグを表示",
     "search.keyword": "全部",
     "button.cancel": "キャンセル",
     "button.saveAndClose": "保存して閉じる",
