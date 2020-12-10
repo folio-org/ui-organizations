@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useIntl } from 'react-intl';
 
 import {
   hydrateAddresses,
@@ -14,11 +15,12 @@ import ContactPersonEmails from './ContactPersonEmails';
 import ContactPersonURLs from './ContactPersonURLs';
 
 const ContactPerson = ({ contact, categories, withCollapsing }) => {
-  const addresses = hydrateAddresses(categories, contact.addresses);
-  const emails = mixCategories(categories, contact.emails);
-  const phoneNumbers = mixCategories(categories, contact.phoneNumbers);
-  const urls = mixCategories(categories, contact.urls);
-  const contactCategories = transformCategoryIdsToLables(categories, contact.categories);
+  const intl = useIntl();
+  const addresses = hydrateAddresses(intl, categories, contact.addresses);
+  const emails = mixCategories(intl, categories, contact.emails);
+  const phoneNumbers = mixCategories(intl, categories, contact.phoneNumbers);
+  const urls = mixCategories(intl, categories, contact.urls);
+  const contactCategories = transformCategoryIdsToLables(intl, categories, contact.categories);
 
   return (
     <div data-test-contact-person>

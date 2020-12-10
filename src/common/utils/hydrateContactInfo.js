@@ -9,12 +9,12 @@ function sortPrimaryOnTop({ isPrimary }) {
   return isPrimary === true && -1;
 }
 
-export const mixCategories = (categories, items = []) => items.map((item) => ({
+export const mixCategories = (intl, categories, items = []) => items.map((item) => ({
   ...item,
-  categories: transformCategoryIdsToLables(categories, item.categories),
+  categories: transformCategoryIdsToLables(intl, categories, item.categories),
 })).sort(sortPrimaryOnTop);
 
-export const hydrateAddresses = (categories = [], addresses = []) => mixCategories(categories, addresses)
+export const hydrateAddresses = (intl, categories = [], addresses = []) => mixCategories(intl, categories, addresses)
   .map(address => ({
     ...address,
     country: COUNTRY_LABEL_BY_CODE[address.country] || address.country,

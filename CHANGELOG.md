@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Contact information categories are not translated. Refs UIORGS-219.
 * Migrate Organization and Contact Forms to React-final-form. Refs UIORGS-200.
 
 ## [2.2.1](https://github.com/folio-org/ui-organizations/tree/v2.2.1) (2020-11-10)

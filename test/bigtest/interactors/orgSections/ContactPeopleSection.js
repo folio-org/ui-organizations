@@ -1,8 +1,8 @@
 import {
   interactor,
-  attribute,
   clickable,
   collection,
+  isPresent,
 } from '@bigtest/interactor';
 
 import { ORGANIZATION_SECTIONS } from '../../../../src/Organizations/constants';
@@ -12,8 +12,7 @@ class ContactPeopleSection {
   static defaultScope = `#${ORGANIZATION_SECTIONS.contactPeopleSection}`;
   headerButton = new Button(`#accordion-toggle-button-${ORGANIZATION_SECTIONS.contactPeopleSection}`);
 
-  contentStyles = attribute('[class*=content---]', 'style');
-  isExpanded = styles => styles.includes('visible');
+  isExpanded = isPresent('[class*=expanded---]')
   contacts = collection('[class*=mclRow---]', {
     click: clickable(),
   });

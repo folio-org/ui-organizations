@@ -1,7 +1,15 @@
-// eslint-disable-next-line import/prefer-default-export
-export const transformCategoryIdsToLables = (categories, categoryIds = []) => {
+import { VENDOR_CATEGORIES } from '../constants';
+
+export const transformCategoryIdsToLables = (intl, categories, categoryIds = []) => {
   const categoriesMap = (categories || []).reduce((acc, category) => {
-    acc[category.id] = category.value;
+    const translationKey = VENDOR_CATEGORIES[category.value];
+
+    acc[category.id] = translationKey
+      ? intl.formatMessage({
+        id: `ui-organizations.contactInfo.vendorCategory.${translationKey}`,
+        defaultMessage: category.value,
+      })
+      : category.value;
 
     return acc;
   }, {});

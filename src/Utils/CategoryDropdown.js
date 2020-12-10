@@ -1,12 +1,15 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { find } from 'lodash';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { OptionSegment } from '@folio/stripes/components';
 import { FieldMultiSelectionFinal } from '@folio/stripes-acq-components';
 
+import { VENDOR_CATEGORIES } from '../common/constants';
+
 function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabelledBy }) {
+  const intl = useIntl();
   const fieldName = name ? `${name}.categories` : 'categories';
   const toString = useCallback((option) => (
     option ? `${fieldName}-${option}` : option
@@ -16,20 +19,53 @@ function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabel
 
     if (!item) return option;
 
-    return <OptionSegment searchTerm={searchTerm}>{item.value}</OptionSegment>;
-  }, [dropdownVendorCategories]);
+    const translationKey = VENDOR_CATEGORIES[item.value];
+
+    return (
+      <OptionSegment searchTerm={searchTerm}>
+        {translationKey
+          ? intl.formatMessage({
+            id: `ui-organizations.contactInfo.vendorCategory.${translationKey}`,
+            defaultMessage: item.value,
+          })
+          : item.value
+        }
+      </OptionSegment>
+    );
+  }, [dropdownVendorCategories, intl]);
 
   const filterItems = useCallback((filterText, list) => {
     const filterRegExp = new RegExp(`^${filterText}`, 'i');
 
-    const matchedCats = dropdownVendorCategories?.filter(({ value }) => value.search(filterRegExp) !== -1);
-    const matchedCatsExact = matchedCats?.filter(({ value }) => value === filterText);
+    const matchedCats = dropdownVendorCategories?.filter(({ value }) => {
+      const translationKey = VENDOR_CATEGORIES[value];
+      const categoryValue = translationKey
+        ? intl.formatMessage({
+          id: `ui-organizations.contactInfo.vendorCategory.${translationKey}`,
+          defaultMessage: value,
+        })
+        : value;
+
+      return categoryValue.search(filterRegExp) !== -1;
+    });
+
+    const matchedCatsExact = matchedCats?.filter(({ value }) => {
+      const translationKey = VENDOR_CATEGORIES[value];
+      const categoryValue = translationKey
+        ? intl.formatMessage({
+          id: `ui-organizations.contactInfo.vendorCategory.${translationKey}`,
+          defaultMessage: value,
+        })
+        : value;
+
+      return categoryValue === filterText;
+    });
     const matchedCatIds = matchedCats.map(({ id }) => id);
     const renderedItems = filterText ? list.filter(catId => matchedCatIds.includes(catId)) : list;
     const exactMatch = filterText ? (matchedCatsExact?.length === 1) : false;
 
     return { renderedItems, exactMatch };
-  }, [dropdownVendorCategories]);
+  }, [dropdownVendorCategories, intl]);
 
   const dataOptions = useMemo(() => {
     if (!dropdownVendorCategories) return [];
