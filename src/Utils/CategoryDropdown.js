@@ -6,7 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { OptionSegment } from '@folio/stripes/components';
 import { FieldMultiSelectionFinal } from '@folio/stripes-acq-components';
 
-import { VENDOR_CATEGORIES } from '../common/constants';
+import { VENDOR_DEFAULT_CATEGORIES } from '../common/constants';
 
 function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabelledBy }) {
   const intl = useIntl();
@@ -19,7 +19,7 @@ function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabel
 
     if (!item) return option;
 
-    const translationKey = VENDOR_CATEGORIES[item.value];
+    const translationKey = VENDOR_DEFAULT_CATEGORIES[item.value];
 
     return (
       <OptionSegment searchTerm={searchTerm}>
@@ -38,7 +38,7 @@ function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabel
     const filterRegExp = new RegExp(`^${filterText}`, 'i');
 
     const matchedCats = dropdownVendorCategories?.filter(({ value }) => {
-      const translationKey = VENDOR_CATEGORIES[value];
+      const translationKey = VENDOR_DEFAULT_CATEGORIES[value];
       const categoryValue = translationKey
         ? intl.formatMessage({
           id: `ui-organizations.contactInfo.vendorCategory.${translationKey}`,
@@ -50,7 +50,7 @@ function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabel
     });
 
     const matchedCatsExact = matchedCats?.filter(({ value }) => {
-      const translationKey = VENDOR_CATEGORIES[value];
+      const translationKey = VENDOR_DEFAULT_CATEGORIES[value];
       const categoryValue = translationKey
         ? intl.formatMessage({
           id: `ui-organizations.contactInfo.vendorCategory.${translationKey}`,

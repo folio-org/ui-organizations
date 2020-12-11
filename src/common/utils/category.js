@@ -1,8 +1,8 @@
-import { VENDOR_CATEGORIES } from '../constants';
+import { VENDOR_DEFAULT_CATEGORIES } from '../constants';
 
 export const transformCategoryIdsToLables = (intl, categories, categoryIds = []) => {
   const categoriesMap = (categories || []).reduce((acc, category) => {
-    const translationKey = VENDOR_CATEGORIES[category.value];
+    const translationKey = VENDOR_DEFAULT_CATEGORIES[category.value];
 
     acc[category.id] = translationKey
       ? intl.formatMessage({

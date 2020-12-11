@@ -13,7 +13,7 @@ import {
   hydrateAddresses,
   mixCategories,
 } from '../../../common/utils';
-import { VENDOR_CATEGORIES } from '../../../common/constants';
+import { VENDOR_DEFAULT_CATEGORIES } from '../../../common/constants';
 
 import ContactAddresses from '../../../contacts/ViewContact/ContactAddresses';
 import ContactPersonPhones from '../../../ContactPeople/ContactPerson/ContactPersonPhones';
@@ -67,9 +67,9 @@ const OrganizationContactInfo = ({ organization, vendorCategories }) => {
       <AccordionSet id="vendorCats">
         {cats.map((category, index) => data[category.id] && (
           <Accordion
-            label={VENDOR_CATEGORIES[category.value]
+            label={VENDOR_DEFAULT_CATEGORIES[category.value]
               ? intl.formatMessage({
-                id: `ui-organizations.contactInfo.vendorCategory.${VENDOR_CATEGORIES[category.value]}`,
+                id: `ui-organizations.contactInfo.vendorCategory.${VENDOR_DEFAULT_CATEGORIES[category.value]}`,
                 defaultMessage: category.value,
               })
               : category.value
