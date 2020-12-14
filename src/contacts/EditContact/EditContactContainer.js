@@ -44,7 +44,7 @@ const EditContactContainer = ({
       .catch(() => showMessage('ui-organizations.contacts.message.saved.fail', 'error'));
   },
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  [resources, onCloseForm, showMessage]);
+  [onCloseForm, showMessage]);
 
   const isNew = !match.params.id;
   const loadedContact = get(resources, 'contact.records[0]');
