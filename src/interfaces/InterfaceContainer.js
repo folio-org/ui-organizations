@@ -50,7 +50,6 @@ function InterfaceContainer({ match: { params, url } }) {
             <EditInterfaceContainer
               {...props}
               orgId={params.orgId}
-              showMessage={showMessage}
             />
           )}
         />
@@ -61,7 +60,6 @@ function InterfaceContainer({ match: { params, url } }) {
             <EditInterfaceContainer
               {...props}
               orgId={params.orgId}
-              showMessage={showMessage}
             />
           )}
         />

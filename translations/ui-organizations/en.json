@@ -376,6 +376,8 @@
 
   "save.error.genericError": "Organization could not be saved",
   "save.error.codeInUse": "Code is already in use",
+  "save.error.creds": "Error while saving credentials",
+  "save.error.assignInterface": "Error while assigning interface to the organization",
 
   "settings.categories": "Categories",
   "settings.name": "name",
