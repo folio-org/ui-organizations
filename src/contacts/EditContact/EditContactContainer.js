@@ -35,16 +35,14 @@ const EditContactContainer = ({
     }
   }, [match.params.id, onClose, history, orgId]);
 
-  const onSubmit = useCallback(contactValues => {
+  const onSubmit = contactValues => {
     saveContact(mutator, contactValues, get(resources, 'contactsOrg.records.0'))
       .then(({ id }) => {
         showMessage('ui-organizations.contacts.message.saved.success', 'success');
         onCloseForm(id);
       })
       .catch(() => showMessage('ui-organizations.contacts.message.saved.fail', 'error'));
-  },
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  [onCloseForm, showMessage]);
+  };
 
   const isNew = !match.params.id;
   const loadedContact = get(resources, 'contact.records[0]');
