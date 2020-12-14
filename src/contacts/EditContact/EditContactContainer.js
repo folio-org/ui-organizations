@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { get } from 'lodash';
 
 import { Icon } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
@@ -27,6 +26,12 @@ const EditContactContainer = ({
   resources,
   showMessage,
 }) => {
+  const isNew = !match.params.id;
+  const loadedContact = resources?.contact?.records?.[0];
+  const categories = resources?.[DICT_CATEGORIES]?.records;
+  const [translatedCategories] = useTranslatedCategories(categories);
+  const contactsOrganization = resources?.contactsOrg?.records?.[0];
+
   const onCloseForm = useCallback((contactId = match.params.id) => {
     if (onClose) {
       onClose(orgId, contactId);
@@ -35,19 +40,16 @@ const EditContactContainer = ({
     }
   }, [match.params.id, onClose, history, orgId]);
 
-  const onSubmit = contactValues => {
-    saveContact(mutator, contactValues, get(resources, 'contactsOrg.records.0'))
+  const onSubmit = useCallback(contactValues => {
+    saveContact(mutator, contactValues, contactsOrganization)
       .then(({ id }) => {
         showMessage('ui-organizations.contacts.message.saved.success', 'success');
         onCloseForm(id);
       })
       .catch(() => showMessage('ui-organizations.contacts.message.saved.fail', 'error'));
-  };
-
-  const isNew = !match.params.id;
-  const loadedContact = get(resources, 'contact.records[0]');
-  const categories = get(resources, `${DICT_CATEGORIES}.records`);
-  const [translatedCategories] = useTranslatedCategories(categories);
+  },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [showMessage, onCloseForm, contactsOrganization]);
 
   if (!categories || (!isNew && !loadedContact)) {
     return (
