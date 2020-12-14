@@ -17,6 +17,7 @@ import {
 } from '../../common/resources';
 import { DICT_CATEGORIES } from '../../common/constants';
 import { getBackPath } from '../../common/utils/createItem';
+import { useTranslatedCategories } from '../../common/hooks';
 
 import ViewContact from './ViewContact';
 import {
@@ -75,6 +76,7 @@ function ViewContactContainer({
 
   const contact = get(resources, 'contact.records[0]', {});
   const contactCategories = get(resources, `${DICT_CATEGORIES}.records`);
+  const [translatedCategories] = useTranslatedCategories(contactCategories);
   const editUrl = `${baseUrl}/${contact.id}/edit`;
 
   if (get(resources, 'contact.isPending', true) || !contactCategories) {
@@ -85,7 +87,7 @@ function ViewContactContainer({
     <>
       <ViewContact
         editUrl={editUrl}
-        categories={contactCategories}
+        categories={translatedCategories}
         contact={contact}
         deleteContact={showConfirmDelete}
         onClose={_onClose}

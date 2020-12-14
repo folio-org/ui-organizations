@@ -18,12 +18,14 @@ import {
   categoriesResource,
 } from '../../../common/resources';
 import { DICT_CATEGORIES } from '../../../common/constants';
+import { useTranslatedCategories } from '../../../common/hooks';
 import OrganizationContactPeopleList from './OrganizationContactPeopleList';
 
 function OrganizationContactPeopleForm({ open, orgId, mutator, storedContactIds, stripes }) {
   const [categoriesDict, setCategoriesDict] = useState();
   const [contacts, setContacts] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [translatedCategories] = useTranslatedCategories(categoriesDict);
 
   const fetchContacts = useCallback(ids => {
     setIsLoading(true);
@@ -62,7 +64,7 @@ function OrganizationContactPeopleForm({ open, orgId, mutator, storedContactIds,
           name="contacts"
           component={OrganizationContactPeopleList}
           fetchContacts={fetchContacts}
-          categoriesDict={categoriesDict}
+          categoriesDict={translatedCategories}
           contactsMap={contactsMap}
           orgId={orgId}
           stripes={stripes}

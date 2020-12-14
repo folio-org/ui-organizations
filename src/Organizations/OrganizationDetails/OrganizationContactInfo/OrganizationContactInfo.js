@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 
 import {
   Accordion,
@@ -13,6 +12,7 @@ import {
   hydrateAddresses,
   mixCategories,
 } from '../../../common/utils';
+import { UNCATEGORIZED_VALUE } from '../../../common/constants';
 
 import ContactAddresses from '../../../contacts/ViewContact/ContactAddresses';
 import ContactPersonPhones from '../../../ContactPeople/ContactPerson/ContactPersonPhones';
@@ -36,7 +36,7 @@ const OrganizationContactInfo = ({ organization, vendorCategories }) => {
     ...vendorCategories,
     {
       id: UNCATEGORIZED_ID,
-      value: <FormattedMessage id="ui-organizations.contactInfo.vendorCategory.uncategorized" />,
+      value: UNCATEGORIZED_VALUE,
     },
   ];
 

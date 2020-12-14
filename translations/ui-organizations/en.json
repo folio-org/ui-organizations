@@ -131,6 +131,10 @@
   "contactInfo.pleaseAddEmail": "Please add email",
   "contactInfo.pleaseAddPhoneNumber": "Please add phone number",
   "contactInfo.pleaseAddURL": "Please add URL",
+  "contactInfo.vendorCategory.customerService": "Customer Service",
+  "contactInfo.vendorCategory.payments": "Payment",
+  "contactInfo.vendorCategory.returns": "Returns",
+  "contactInfo.vendorCategory.shipments": "Shipments",
   "contactInfo.vendorCategory.uncategorized": "Uncategorized",
 
   "contactInfo.actions.addAddress": "Add address",

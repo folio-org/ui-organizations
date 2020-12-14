@@ -15,11 +15,12 @@ import {
   categoriesResource,
 } from '../../../common/resources';
 import { DICT_CATEGORIES } from '../../../common/constants';
-
+import { useTranslatedCategories } from '../../../common/hooks';
 import OrganizationContactInfoForm from './OrganizationContactInfoForm';
 
 const OrganizationContactInfoFormContainer = ({ mutator, defaultLanguage }) => {
   const [categoriesDict, setCategoriesDict] = useState([]);
+  const [translatedCategories] = useTranslatedCategories(categoriesDict);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const OrganizationContactInfoFormContainer = ({ mutator, defaultLanguage }) => {
   return (
     <OrganizationContactInfoForm
       defaultLanguage={defaultLanguage}
-      vendorCategories={categoriesDict}
+      vendorCategories={translatedCategories}
     />
   );
 };
