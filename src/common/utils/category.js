@@ -1,15 +1,6 @@
-import { VENDOR_DEFAULT_CATEGORIES } from '../constants';
-
-export const transformCategoryIdsToLables = (intl, categories, categoryIds = []) => {
+export const transformCategoryIdsToLables = (categories, categoryIds = []) => {
   const categoriesMap = (categories || []).reduce((acc, category) => {
-    const translationKey = VENDOR_DEFAULT_CATEGORIES[category.value];
-
-    acc[category.id] = translationKey
-      ? intl.formatMessage({
-        id: `ui-organizations.contactInfo.vendorCategory.${translationKey}`,
-        defaultMessage: category.value,
-      })
-      : category.value;
+    acc[category.id] = category.value;
 
     return acc;
   }, {});

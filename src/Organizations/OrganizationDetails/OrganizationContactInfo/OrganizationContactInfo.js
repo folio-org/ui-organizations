@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
 
 import {
   Accordion,
@@ -13,7 +12,7 @@ import {
   hydrateAddresses,
   mixCategories,
 } from '../../../common/utils';
-import { VENDOR_DEFAULT_CATEGORIES } from '../../../common/constants';
+import { UNCATEGORIZED_VALUE } from '../../../common/constants';
 
 import ContactAddresses from '../../../contacts/ViewContact/ContactAddresses';
 import ContactPersonPhones from '../../../ContactPeople/ContactPerson/ContactPersonPhones';
@@ -28,8 +27,6 @@ const filterByCatId = (catId) => ({ categories = [] }) => {
 };
 
 const OrganizationContactInfo = ({ organization, vendorCategories }) => {
-  const intl = useIntl();
-
   if (!organization) {
     return (
       <div style={{ paddingTop: '1rem' }}><Icon icon="spinner-ellipsis" width="100px" /></div>
@@ -39,7 +36,7 @@ const OrganizationContactInfo = ({ organization, vendorCategories }) => {
     ...vendorCategories,
     {
       id: UNCATEGORIZED_ID,
-      value: 'Uncategorized',
+      value: UNCATEGORIZED_VALUE,
     },
   ];
 
@@ -52,10 +49,10 @@ const OrganizationContactInfo = ({ organization, vendorCategories }) => {
 
     if (addresses.length || emails.length || phoneNumbers.length || urls.length) {
       acc[id] = {
-        addresses: hydrateAddresses(intl, vendorCategories, addresses),
-        emails: mixCategories(intl, vendorCategories, emails),
-        phoneNumbers: mixCategories(intl, vendorCategories, phoneNumbers),
-        urls: mixCategories(intl, vendorCategories, urls),
+        addresses: hydrateAddresses(vendorCategories, addresses),
+        emails: mixCategories(vendorCategories, emails),
+        phoneNumbers: mixCategories(vendorCategories, phoneNumbers),
+        urls: mixCategories(vendorCategories, urls),
       };
     }
 
@@ -67,13 +64,7 @@ const OrganizationContactInfo = ({ organization, vendorCategories }) => {
       <AccordionSet id="vendorCats">
         {cats.map((category, index) => data[category.id] && (
           <Accordion
-            label={VENDOR_DEFAULT_CATEGORIES[category.value]
-              ? intl.formatMessage({
-                id: `ui-organizations.contactInfo.vendorCategory.${VENDOR_DEFAULT_CATEGORIES[category.value]}`,
-                defaultMessage: category.value,
-              })
-              : category.value
-            }
+            label={category.value}
             id={category.id}
             closedByDefault
             key={category.id || index}

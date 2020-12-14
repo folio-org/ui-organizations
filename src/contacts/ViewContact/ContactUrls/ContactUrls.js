@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  FormattedMessage,
-  useIntl,
-} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import { MultiColumnList } from '@folio/stripes/components';
 import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
@@ -20,12 +17,11 @@ const columnMapping = {
 };
 
 const ContactUrls = ({ categories, urls }) => {
-  const intl = useIntl();
   const resultsFormatter = {
     url: ({ value }) => value,
     urlDescription: ({ description }) => description,
     urlLanguage: ({ language }) => LANG_LABEL_BY_CODE[language] || language,
-    urlCategories: url => transformCategoryIdsToLables(intl, categories, url.categories),
+    urlCategories: url => transformCategoryIdsToLables(categories, url.categories),
     urlPrimary: url => (url.isPrimary ? <FormattedMessage id="ui-organizations.primaryItem" /> : ''),
   };
 

@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  FormattedMessage,
-  useIntl,
-} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import {
@@ -41,9 +38,8 @@ const ViewContact = ({
   deleteContact,
 }) => {
   const [expandAll, sections, toggleSection] = useAccordionToggle();
-  const intl = useIntl();
-  const contactCategories = transformCategoryIdsToLables(intl, categories, contact.categories);
-  const addresses = hydrateAddresses(intl, categories, contact.addresses);
+  const contactCategories = transformCategoryIdsToLables(categories, contact.categories);
+  const addresses = hydrateAddresses(categories, contact.addresses);
 
   // eslint-disable-next-line react/prop-types
   const getActionMenu = ({ onToggle }) => {

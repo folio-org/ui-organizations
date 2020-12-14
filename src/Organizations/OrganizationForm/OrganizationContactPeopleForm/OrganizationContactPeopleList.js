@@ -107,7 +107,7 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
   };
 
   const resultsFormatter = {
-    contactCategories: ({ categories = [] }) => transformCategoryIdsToLables(intl, categoriesDict, categories),
+    contactCategories: ({ categories = [] }) => transformCategoryIdsToLables(categoriesDict, categories),
     contactEmails: ({ emails }) => map(emails, 'value').join(', '),
     contactName: contact => `${contact.lastName}, ${contact.firstName}`,
     unassignContact: (contact) => (

@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  FormattedMessage,
-  useIntl,
-} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import { MultiColumnList } from '@folio/stripes/components';
 import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
@@ -20,12 +17,11 @@ const columnMapping = {
 };
 
 const ContactPhoneNumbers = ({ categories, phoneNumbers }) => {
-  const intl = useIntl();
   const resultsFormatter = {
     phoneNumber: ({ phoneNumber }) => phoneNumber,
     phoneType: ({ type }) => type,
     phoneLanguage: ({ language }) => LANG_LABEL_BY_CODE[language] || language,
-    phoneCategories: phoneNumber => transformCategoryIdsToLables(intl, categories, phoneNumber.categories),
+    phoneCategories: phoneNumber => transformCategoryIdsToLables(categories, phoneNumber.categories),
     phonePrimary: phoneNumber => (phoneNumber.isPrimary ? <FormattedMessage id="ui-organizations.primaryItem" /> : ''),
   };
 

@@ -1,7 +1,9 @@
+export const UNCATEGORIZED_VALUE = 'Uncategorized';
+
 export const VENDOR_DEFAULT_CATEGORIES = {
-  'Customer service': 'customerService',
+  'Customer Service': 'customerService',
   'Payments': 'payments',
   'Returns': 'returns',
   'Shipments': 'shipments',
-  'Uncategorized': 'uncategorized',
+  [UNCATEGORIZED_VALUE]: 'uncategorized',
 };

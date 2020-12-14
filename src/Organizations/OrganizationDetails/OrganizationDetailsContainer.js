@@ -18,6 +18,7 @@ import {
   organizationResourceByUrl,
   categoriesResource,
 } from '../../common/resources';
+import { useTranslatedCategories } from '../../common/hooks';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 import OrganizationDetails from './OrganizationDetails';
 
@@ -34,6 +35,7 @@ const OrganizationDetailsContainer = ({
   const [organization, setOrganization] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [organizationCategories, setOrganizationCategories] = useState([]);
+  const [translatedCategories] = useTranslatedCategories(organizationCategories);
   const intl = useIntl();
 
   useEffect(
@@ -125,7 +127,7 @@ const OrganizationDetailsContainer = ({
       onDelete={deleteOrganization}
       onUpdate={updateOrganization}
       organization={organization}
-      organizationCategories={organizationCategories}
+      organizationCategories={translatedCategories}
     />
   );
 };
