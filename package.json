@@ -226,6 +226,7 @@
     "@folio/stripes-cli": "^1.13.0",
     "@testing-library/jest-dom": "^5.11.1",
     "@testing-library/react": "^11.0.2",
+    "@testing-library/react-hooks": "^3.7.0",
     "babel-eslint": "^10.0.0",
     "babel-jest": "^26.3.0",
     "chai": "^4.2.0",
@@ -249,6 +250,7 @@
     "react-hot-loader": "^4.3.12",
     "react-redux": "^5.0.7",
     "react-router-prop-types": "^1.0.4",
+    "react-test-renderer": "^16.5.1",
     "redux": "^3.7.2",
     "regenerator-runtime": "^0.13.3"
   },

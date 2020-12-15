@@ -35,7 +35,13 @@ export default function useSaveInterface() {
         showCallout({ messageId: 'ui-organizations.save.error.assignInterface', type: 'error' });
       })
       .then(() => {
-        if ((!creds.id && (username || password)) || creds.username !== username || creds.password !== password) {
+        if (
+          savedInterfaceId && (
+            (!creds.id && (username || password)) ||
+            creds.username !== username ||
+            creds.password !== password
+          )
+        ) {
           interfaceId.replace(savedInterfaceId);
 
           return interfaceCredentials[creds.id ? 'PUT' : 'POST']({
