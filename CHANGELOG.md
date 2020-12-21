@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Add personal data disclosure form. Refs UIORGS-222.
 * Contact information categories are not translated. Refs UIORGS-219.
 * Migrate Organization and Contact Forms to React-final-form. Refs UIORGS-200.
 
