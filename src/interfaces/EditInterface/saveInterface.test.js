@@ -37,9 +37,9 @@ describe('test saveInterface', () => {
       await saveInterface(
         { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
         { username, password, ...values },
-        creds,
         org,
         showCallout,
+        creds,
       );
 
       expect(vendorInterface.POST).toHaveBeenCalled();
@@ -55,9 +55,9 @@ describe('test saveInterface', () => {
       await saveInterface(
         { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
         { username, password, ...values },
-        creds,
         org,
         showCallout,
+        creds,
       );
 
       expect(vendorInterface.POST).toHaveBeenCalled();
@@ -72,9 +72,9 @@ describe('test saveInterface', () => {
       await saveInterface(
         { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
         { username, password, ...values },
-        creds,
         org,
         showCallout,
+        creds,
       );
 
       expect(vendorInterface.POST).toHaveBeenCalled();
@@ -89,9 +89,9 @@ describe('test saveInterface', () => {
       await saveInterface(
         { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
         { username, password, id: 'interfaceId', ...values },
-        { id: 'credsId' },
         org,
         showCallout,
+        { id: 'credsId' },
       );
 
       expect(vendorInterface.PUT).toHaveBeenCalled();

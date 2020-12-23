@@ -42,7 +42,7 @@ function EditInterfaceContainer({ orgId, history, match: { params }, mutator, re
   }, [onClose]);
 
   const onSubmit = useCallback((formValues) => {
-    saveInterface(mutator, formValues, creds, interfaceOrg, showMessage)
+    saveInterface(mutator, formValues, interfaceOrg, showMessage, creds)
       .then(onInterfaceSaved);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [creds, interfaceOrg, onClose, showMessage]);

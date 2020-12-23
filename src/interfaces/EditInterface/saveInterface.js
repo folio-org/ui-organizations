@@ -1,9 +1,9 @@
 export default function saveInterface(
   { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
   { username, password, ...values },
-  creds = {},
   org,
   showCallout,
+  creds = {},
 ) {
   const isNew = !values.id;
   const httpMethod = isNew ? 'POST' : 'PUT';
