@@ -40,7 +40,6 @@ const OrganizationForm = ({
   paneTitle,
   cancelForm,
   values: formValues,
-  fetchOrgByCode,
 }) => {
   const [expandAll, sections, toggleSection] = useAccordionToggle({
     [ORGANIZATION_SECTIONS.summarySection]: true,
@@ -109,7 +108,6 @@ const OrganizationForm = ({
 
                   <OrganizationSummaryForm
                     initialValues={initialValues}
-                    fetchOrgByCode={fetchOrgByCode}
                   />
                 </Accordion>
                 <Accordion
@@ -196,7 +194,6 @@ OrganizationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   cancelForm: PropTypes.func.isRequired,
   paneTitle: PropTypes.node,
-  fetchOrgByCode: PropTypes.object.isRequired,
   values: PropTypes.object,
 };
 

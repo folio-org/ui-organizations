@@ -1,17 +1,18 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { get } from 'lodash';
 
 import { stripesConnect } from '@folio/stripes/core';
+import { useShowCallout } from '@folio/stripes-acq-components';
 
 import {
   interfaceCredentialsResource,
   interfaceResource,
   organizationResource,
 } from '../../common/resources';
-import { saveInterface } from './util';
+import saveInterface from './saveInterface';
 import EditInterface from './EditInterface';
 import {
   deliveryMethodDD,
@@ -19,33 +20,35 @@ import {
 } from './const';
 import { getBackPath } from '../../common/utils/createItem';
 
-function EditInterfaceContainer({ orgId, history, match: { params }, mutator, resources, showMessage, stripes }) {
-  const { interfaceCredentials } = resources || {};
-  const interfaceOrg = get(resources, 'interfaceOrg.records.0');
+function EditInterfaceContainer({ orgId, history, match: { params }, mutator, resources, stripes }) {
+  const isNew = !params.id;
+  const [creds, setCreds] = useState();
 
-  const getCreds = useCallback(() => {
-    return (!get(interfaceCredentials, 'failed') && get(interfaceCredentials, 'records.0')) || {};
-  }, [interfaceCredentials]);
+  useEffect(() => {
+    if (!isNew) mutator.interfaceCredentials.GET().then(setCreds).catch(() => setCreds());
+  }, []);
+
+  const interfaceOrg = resources?.interfaceOrg?.records?.[0];
+  const showMessage = useShowCallout();
 
   const onClose = useCallback((interfaceId) => {
     history.push(getBackPath(orgId, interfaceId || params.id, 'interface'));
   }, [history, orgId, params.id]);
 
+  const onInterfaceSaved = useCallback((interfaceId) => {
+    if (interfaceId) {
+      onClose(interfaceId);
+    }
+  }, [onClose]);
+
   const onSubmit = useCallback((formValues) => {
-    const creds = getCreds();
-
-    saveInterface(mutator, formValues, creds, interfaceOrg)
-      .then((id) => {
-        showMessage('ui-organizations.interface.message.saved.success', 'success');
-        onClose(id);
-      })
-      .catch(() => showMessage('ui-organizations.interface.message.saved.fail', 'error'));
+    saveInterface(mutator, formValues, interfaceOrg, showMessage, creds)
+      .then(onInterfaceSaved);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getCreds, interfaceOrg, onClose, showMessage]);
+  }, [creds, interfaceOrg, onClose, showMessage]);
 
-  const isNew = !params.id;
   const loadedInterface = get(resources, 'vendorInterface.records[0]', {});
-  const { username, password } = getCreds();
+  const { username, password } = creds || {};
   const initialValues = isNew ? {} : {
     ...loadedInterface,
     username,
@@ -70,7 +73,11 @@ function EditInterfaceContainer({ orgId, history, match: { params }, mutator, re
 }
 
 EditInterfaceContainer.manifest = Object.freeze({
-  interfaceCredentials: interfaceCredentialsResource,
+  interfaceCredentials: {
+    ...interfaceCredentialsResource,
+    accumulate: true,
+    fetch: false,
+  },
   interfaceId: {},
   interfaceOrg: organizationResource,
   vendorInterface: interfaceResource,
@@ -80,7 +87,6 @@ EditInterfaceContainer.propTypes = {
   mutator: PropTypes.object,
   orgId: PropTypes.string,
   resources: PropTypes.object,
-  showMessage: PropTypes.func,
   stripes: PropTypes.object,
   match: ReactRouterPropTypes.match.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
