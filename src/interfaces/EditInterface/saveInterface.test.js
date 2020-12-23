@@ -1,5 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
-import useSaveInterface from './useSaveInterface';
+import saveInterface from './saveInterface';
 
 const username = 'test';
 const password = 'test';
@@ -7,7 +6,9 @@ const values = { name: 'new interface' };
 const org = { id: 'orgId', interfaces: [] };
 const creds = {};
 
-describe('test useSaveInterface', () => {
+function showCallout() { }
+
+describe('test saveInterface', () => {
   let vendorInterface;
   let interfaceCredentials;
   let interfaceOrg;
@@ -30,19 +31,16 @@ describe('test useSaveInterface', () => {
     };
   });
 
-  const { result } = renderHook(() => useSaveInterface());
-
   describe('new interface, error while saving org', () => {
     it('save creds should be called', async () => {
       interfaceOrg = { PUT: jest.fn(() => Promise.reject()) };
-      await act(async () => {
-        return result.current(
-          { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
-          { username, password, ...values },
-          creds,
-          org,
-        );
-      });
+      await saveInterface(
+        { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
+        { username, password, ...values },
+        creds,
+        org,
+        showCallout,
+      );
 
       expect(vendorInterface.POST).toHaveBeenCalled();
       expect(interfaceOrg.PUT).toHaveBeenCalled();
@@ -54,14 +52,13 @@ describe('test useSaveInterface', () => {
   describe('new interface, error while saving interface', () => {
     it('save creds should NOT be called', async () => {
       vendorInterface = { POST: jest.fn(() => Promise.reject()) };
-      await act(async () => {
-        return result.current(
-          { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
-          { username, password, ...values },
-          creds,
-          org,
-        );
-      });
+      await saveInterface(
+        { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
+        { username, password, ...values },
+        creds,
+        org,
+        showCallout,
+      );
 
       expect(vendorInterface.POST).toHaveBeenCalled();
       expect(interfaceOrg.PUT).not.toHaveBeenCalled();
@@ -72,14 +69,13 @@ describe('test useSaveInterface', () => {
 
   describe('happy path of create interface', () => {
     it('all mutators are called', async () => {
-      await act(async () => {
-        return result.current(
-          { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
-          { username, password, ...values },
-          creds,
-          org,
-        );
-      });
+      await saveInterface(
+        { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
+        { username, password, ...values },
+        creds,
+        org,
+        showCallout,
+      );
 
       expect(vendorInterface.POST).toHaveBeenCalled();
       expect(interfaceOrg.PUT).toHaveBeenCalled();
@@ -90,14 +86,13 @@ describe('test useSaveInterface', () => {
 
   describe('happy path of edit interface with existent creds', () => {
     it('all mutators are called', async () => {
-      await act(async () => {
-        return result.current(
-          { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
-          { username, password, id: 'interfaceId', ...values },
-          { id: 'credsId' },
-          org,
-        );
-      });
+      await saveInterface(
+        { vendorInterface, interfaceCredentials, interfaceId, interfaceOrg },
+        { username, password, id: 'interfaceId', ...values },
+        { id: 'credsId' },
+        org,
+        showCallout,
+      );
 
       expect(vendorInterface.PUT).toHaveBeenCalled();
       expect(interfaceOrg.PUT).not.toHaveBeenCalled();  // it's already assigned to some org
