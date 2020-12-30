@@ -610,5 +610,11 @@
     "notes.entity": "Organisation",
     "notes.entityPlural": "Organisations",
     "edi.ftpConnectionMode.Active": "Actif",
-    "edi.ftpConnectionMode.Passive": "Passif"
+    "edi.ftpConnectionMode.Passive": "Passif",
+    "contactInfo.vendorCategory.customerService": "Service Clients",
+    "contactInfo.vendorCategory.payments": "Paiement",
+    "contactInfo.vendorCategory.returns": "Returns",
+    "contactInfo.vendorCategory.shipments": "Expéditions",
+    "save.error.creds": "Erreur lors de l'enregistrement des informations d'identification",
+    "save.error.assignInterface": "Error while assigning interface to the organization"
 }

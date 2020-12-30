@@ -610,5 +610,11 @@
     "notes.entity": "组织",
     "notes.entityPlural": "组织",
     "edi.ftpConnectionMode.Active": "激活",
-    "edi.ftpConnectionMode.Passive": "被动"
+    "edi.ftpConnectionMode.Passive": "被动",
+    "contactInfo.vendorCategory.customerService": "客户服务",
+    "contactInfo.vendorCategory.payments": "支付",
+    "contactInfo.vendorCategory.returns": "退货",
+    "contactInfo.vendorCategory.shipments": "发货",
+    "save.error.creds": "保存凭证时出错",
+    "save.error.assignInterface": "将接口分配给组织时出错"
 }
