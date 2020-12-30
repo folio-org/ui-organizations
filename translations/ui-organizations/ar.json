@@ -610,5 +610,11 @@
     "notes.entity": "المؤسسة",
     "notes.entityPlural": "المؤسسات",
     "edi.ftpConnectionMode.Active": "نشط",
-    "edi.ftpConnectionMode.Passive": "سلبي"
+    "edi.ftpConnectionMode.Passive": "سلبي",
+    "contactInfo.vendorCategory.customerService": "خدمة العملاء",
+    "contactInfo.vendorCategory.payments": "السداد",
+    "contactInfo.vendorCategory.returns": "الإعادات",
+    "contactInfo.vendorCategory.shipments": "الشحنات",
+    "save.error.creds": "خطأ أثناء حفظ بيانات الاعتماد",
+    "save.error.assignInterface": "خطأ أثناء تعيين الواجهة للمؤسسة"
 }

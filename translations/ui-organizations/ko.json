@@ -610,5 +610,11 @@
     "notes.entity": "공급사(벤더)",
     "notes.entityPlural": "공급사",
     "edi.ftpConnectionMode.Active": "활성",
-    "edi.ftpConnectionMode.Passive": "수동"
+    "edi.ftpConnectionMode.Passive": "수동",
+    "contactInfo.vendorCategory.customerService": "Customer Service",
+    "contactInfo.vendorCategory.payments": "Payment",
+    "contactInfo.vendorCategory.returns": "Returns",
+    "contactInfo.vendorCategory.shipments": "Shipments",
+    "save.error.creds": "Error while saving credentials",
+    "save.error.assignInterface": "Error while assigning interface to the organization"
 }

@@ -610,5 +610,11 @@
     "notes.entity": "Organização",
     "notes.entityPlural": "Organizações",
     "edi.ftpConnectionMode.Active": "Ativo",
-    "edi.ftpConnectionMode.Passive": "Passivo"
+    "edi.ftpConnectionMode.Passive": "Passivo",
+    "contactInfo.vendorCategory.customerService": "Atendimento ao Cliente",
+    "contactInfo.vendorCategory.payments": "Pagamento",
+    "contactInfo.vendorCategory.returns": "Devoluções",
+    "contactInfo.vendorCategory.shipments": "Envios",
+    "save.error.creds": "Erro ao salvar credenciais",
+    "save.error.assignInterface": "Erro ao atribuir interface à organização"
 }
