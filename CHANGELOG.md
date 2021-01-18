@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Remove unused locale keys in `en.json`. Refs UIORGS-215.
 * Add personal data disclosure form. Refs UIORGS-222.
 * Interface credentials not saving when create interface. Refs UIORGS-224
 * Contact information categories are not translated. Refs UIORGS-219.
