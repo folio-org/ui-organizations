@@ -233,10 +233,6 @@
   "agreement.pleaseAddAgreements": "Please add agreements",
 
   "vendorInfo.paymentMethod": "Payment method",
-  "vendorInfo.accessProvider": "Access provider",
-  "vendorInfo.governmental": "Governmental",
-  "vendorInfo.licensor": "Licensor",
-  "vendorInfo.materialSupplier": "Material supplier",
   "vendorInfo.vendorCurrencies": "Vendor currencies",
   "vendorInfo.claimingInterval": "Claiming interval",
   "vendorInfo.discountPercent": "Discount percent",
