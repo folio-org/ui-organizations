@@ -342,9 +342,9 @@
     "notes.entityPlural": "Organisationen",
     "edi.ftpConnectionMode.Active": "Aktiv",
     "edi.ftpConnectionMode.Passive": "Passiv",
-    "contactInfo.vendorCategory.customerService": "Customer Service",
-    "contactInfo.vendorCategory.payments": "Payment",
-    "contactInfo.vendorCategory.returns": "Returns",
+    "contactInfo.vendorCategory.customerService": "Kundendienst",
+    "contactInfo.vendorCategory.payments": "Zahlung",
+    "contactInfo.vendorCategory.returns": "Rücksendungen",
     "contactInfo.vendorCategory.shipments": "Shipments",
     "save.error.creds": "Error while saving credentials",
     "save.error.assignInterface": "Error while assigning interface to the organization"
