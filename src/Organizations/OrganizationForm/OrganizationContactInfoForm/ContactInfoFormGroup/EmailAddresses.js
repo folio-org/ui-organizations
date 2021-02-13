@@ -106,7 +106,7 @@ const EmailAddresses = ({ defaultLanguage, dropdownVendorCategories }) => {
       addLabel={<FormattedMessage id="ui-organizations.contactInfo.actions.addEmail" />}
       component={RepeatableField}
       id="emails"
-      legend={<FormattedMessage id="ui-organizations.contactInfo.emailAddress" />}
+      legend={<FormattedMessage id="ui-organizations.contactPeople.emails" />}
       name="emails"
       onAdd={createAddNewItem(defaultLanguage)}
       renderField={EmailsMF}
