@@ -333,7 +333,10 @@ class OrganizationEDIInfoForm extends Component {
                 </Col>
               </Row>
             </Accordion>
-            <Accordion label="Scheduling" id="schedulingSection">
+            <Accordion
+              label={<FormattedMessage id="ui-organizations.edi.scheduling" />}
+              id="schedulingSection"
+            >
               <Row>
                 <Col
                   data-test-schedule-edi

@@ -205,7 +205,10 @@ const OrganizationVendorInfoForm = () => {
 
       <Col xs={12}>
         <AccordionSet accordionStatus={subSections}>
-          <Accordion label="Tax" id="taxSection">
+          <Accordion
+            label={<FormattedMessage id="ui-organizations.vendorInfo.tax" />}
+            id="taxSection"
+          >
             <Row>
               <Col
                 data-test-tax-id
