@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Translate "Tax" in OrganizationVendorInfoForm. Refs UIORGS-218.
+* Translate "Scheduling" in OrganizationEDIInfoForm. Refs UIORGS-216.
 * Fix inconsistent use of singular/plural for email addresses. Refs UIORGS-217.
 * Remove unused locale keys in `en.json`. Refs UIORGS-215.
 * Add personal data disclosure form. Refs UIORGS-222.
