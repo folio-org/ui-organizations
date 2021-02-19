@@ -38,7 +38,7 @@
     "summary": "Übersicht",
     "contactInformation": "Kontaktinformationen",
     "contactPeople": "Kontaktpersonen",
-    "agreements": "Agreements",
+    "agreements": "Vereinbarungen",
     "vendorInformation": "Lieferanteninformationen",
     "ediInformation": "EDI-Informationen",
     "interface": "Interfaces",
@@ -345,7 +345,7 @@
     "contactInfo.vendorCategory.customerService": "Kundendienst",
     "contactInfo.vendorCategory.payments": "Zahlung",
     "contactInfo.vendorCategory.returns": "Rücksendungen",
-    "contactInfo.vendorCategory.shipments": "Shipments",
-    "save.error.creds": "Error while saving credentials",
-    "save.error.assignInterface": "Error while assigning interface to the organization"
+    "contactInfo.vendorCategory.shipments": "Sendungen",
+    "save.error.creds": "Fehler beim Speichern von Anmeldedaten",
+    "save.error.assignInterface": "Fehler beim Zuweisen vom Interface zu der Organisation"
 }
