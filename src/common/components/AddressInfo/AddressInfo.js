@@ -10,12 +10,12 @@ import { FieldArray } from 'react-final-form-arrays';
 import {
   Card,
   Col,
+  countries,
   RepeatableField,
   Row,
   TextField,
 } from '@folio/stripes/components';
 import {
-  COUNTRIES,
   FieldAutoSuggestFinal,
   FieldSelectionFinal,
 } from '@folio/stripes-acq-components';
@@ -32,8 +32,8 @@ const AddressInfo = ({
   dropdownVendorCategories,
   intl,
 }) => {
-  const countriesOptions = COUNTRIES.map(c => ({
-    label: intl.formatMessage({ id: `stripes-acq-components.data.countries.${c.alpha3}` }),
+  const countriesOptions = countries.map(c => ({
+    label: intl.formatMessage({ id: `stripes-components.countries.${c.alpha2}` }),
     value: c.alpha3,
   }));
 

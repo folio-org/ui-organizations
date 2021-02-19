@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   injectIntl,
@@ -6,18 +6,15 @@ import {
 
 import {
   FieldSelectionFinal,
-  LANGUAGES,
 } from '@folio/stripes-acq-components';
+import { languageOptions } from '@folio/stripes/components';
 
 const FieldLanguage = ({ namePrefix, intl, withLabel, ...rest }) => {
-  const languagesOptions = LANGUAGES.map(l => ({
-    label: intl.formatMessage({ id: `stripes-acq-components.data.languages.${l.code}` }),
-    value: l.code,
-  }));
+  const langOptions = useMemo(() => languageOptions(intl), [intl]);
 
   return (
     <FieldSelectionFinal
-      dataOptions={languagesOptions}
+      dataOptions={langOptions}
       labelId={withLabel ? 'ui-organizations.contactInfo.language' : undefined}
       name={`${namePrefix}.language`}
       {...rest}

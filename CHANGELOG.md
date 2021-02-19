@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Centralizing country and language data in stripes components. Refs UIORGS-227.
 * Translate "Tax" in OrganizationVendorInfoForm. Refs UIORGS-218.
 * Translate "Scheduling" in OrganizationEDIInfoForm. Refs UIORGS-216.
 * Fix inconsistent use of singular/plural for email addresses. Refs UIORGS-217.
