@@ -337,7 +337,7 @@
     "permission.ui-organizations.acqUnits.manage": "Organisations: gérer les unités d'acquisition",
     "save.error.codeInUse": "Le code est déjà utilisé",
     "search.placeholder.language": "Search with language code",
-    "vendorInfo.exportToAccounting": "Transmettre en comptabilité",
+    "vendorInfo.exportToAccounting": "Transmettre/transmis en comptabilité",
     "notes.entity": "Organisation",
     "notes.entityPlural": "Organisations",
     "edi.ftpConnectionMode.Active": "Actif",
