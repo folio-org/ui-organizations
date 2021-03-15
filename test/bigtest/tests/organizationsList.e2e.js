@@ -9,8 +9,10 @@ import {
 
 const ORGANIZATIONS_COUNT = 13;
 
-describe('Organizations list', () => {
+describe('Organizations list', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const orgsList = new OrganizationsListInteractor();
   const orgDetails = new OrganizationDetailsInteractor();

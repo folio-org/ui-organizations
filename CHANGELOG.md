@@ -2,6 +2,10 @@
 
 ## (IN PROGRESS)
 
+## [2.3.0](https://github.com/folio-org/ui-organizations/tree/v2.3.0) (2021-03-15)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.2.1...v2.3.0)
+
+* Upgrade to stripes v6.
 * Centralizing country and language data in stripes components. Refs UIORGS-227.
 * Translate "Tax" in OrganizationVendorInfoForm. Refs UIORGS-218.
 * Translate "Scheduling" in OrganizationEDIInfoForm. Refs UIORGS-216.
