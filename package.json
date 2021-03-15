@@ -1,6 +1,6 @@
 {
   "name": "@folio/organizations",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "Organizations",
   "main": "index.js",
   "repository": "folio-org/ui-organizations",
@@ -239,7 +239,7 @@
     "eslint-plugin-testing-library": "3.8.0",
     "faker": "^5.1.0",
     "jest": "^26.4.2",
-    "jest-css-modules": "^2.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest-junit": "^12.0.0",
     "miragejs": "^0.1.32",
     "react": "^16.13.0",
@@ -255,7 +255,7 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "^2.2.2",
+    "@folio/stripes-acq-components": "~2.3.0",
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.20",
     "prop-types": "^15.5.10",
