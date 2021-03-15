@@ -7,8 +7,9 @@ import {
   OrganizationDetailsInteractor,
 } from '../interactors';
 
-describe('Vendor organization details', () => {
+describe('Vendor organization details', function () {
   setupApplication();
+  this.timeout(10000);
 
   const orgDetails = new OrganizationDetailsInteractor();
 
