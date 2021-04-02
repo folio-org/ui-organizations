@@ -3,3 +3,4 @@ export * from './createItem';
 export * from './getResourceData';
 export * from './hydrateContactInfo';
 export * from './createAddNewItem';
+export * from './removeItem';

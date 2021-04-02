@@ -6,12 +6,12 @@ import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Col,
-  RepeatableField,
   Row,
   TextField,
   Label,
 } from '@folio/stripes/components';
 import {
+  RepeatableFieldWithValidation,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
@@ -19,7 +19,11 @@ import {
   FieldLanguage,
   ButtonIsPrimary,
 } from '../../../common/components';
-import { createAddNewItem } from '../../../common/utils';
+import {
+  createAddNewItem,
+  removeItem,
+} from '../../../common/utils';
+import { validatePrimary } from '../../../common/validation';
 import CategoryDropdown from '../../../Utils/CategoryDropdown';
 
 const headLabels = (
@@ -147,11 +151,13 @@ const EmailForm = ({ categories }) => {
     <FieldArray
       headLabels={headLabels}
       addLabel={<FormattedMessage id="ui-organizations.contactPeople.addEmail" />}
-      component={RepeatableField}
+      component={RepeatableFieldWithValidation}
       id="emails"
       name="emails"
       renderField={renderEmailFields}
       onAdd={addNewEmail}
+      onRemove={removeItem}
+      validate={validatePrimary}
     />
   );
 };

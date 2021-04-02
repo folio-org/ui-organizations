@@ -11,17 +11,21 @@ import {
   Card,
   Col,
   countries,
-  RepeatableField,
   Row,
   TextField,
 } from '@folio/stripes/components';
 import {
   FieldAutoSuggestFinal,
   FieldSelectionFinal,
+  RepeatableFieldWithValidation,
 } from '@folio/stripes-acq-components';
 
 import CategoryDropdown from '../../../Utils/CategoryDropdown';
-import { createAddNewItem } from '../../utils';
+import {
+  createAddNewItem,
+  removeItem,
+} from '../../utils';
+import { validatePrimary } from '../../validation';
 import FieldLanguage from '../FieldLanguage';
 import FieldIsPrimary from '../FieldIsPrimary';
 
@@ -167,12 +171,14 @@ const AddressInfo = ({
   return (
     <FieldArray
       addLabel={<FormattedMessage id="ui-organizations.contactInfo.actions.addAddress" />}
-      component={RepeatableField}
+      component={RepeatableFieldWithValidation}
       id="addresses"
       legend={<FormattedMessage id="ui-organizations.data.contactTypes.address" />}
       name="addresses"
       onAdd={createAddNewItem(defaultLanguage)}
+      onRemove={removeItem}
       renderField={Address}
+      validate={validatePrimary}
     />
   );
 };
