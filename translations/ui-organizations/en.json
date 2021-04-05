@@ -221,6 +221,7 @@
   "contactPeople.addContact": "Add contact",
   "contactPeople.newContact": "New",
   "contactPeople.noFindContactPlugin": "no find-contact plugin",
+  "contactPeople.remove": "Removed contact",
 
   "contactPeople.errors.noPrimaryRecord": "No primary record selected",
 

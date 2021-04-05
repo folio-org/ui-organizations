@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import {
   find,
   get,
@@ -26,8 +26,14 @@ const columnMapping = {
 const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationContactPeople = ({ vendorCategories, contacts, openContact }) => {
+  const intl = useIntl();
+
   const resultsFormatter = {
-    name: ({ firstName, lastName }) => `${lastName}, ${firstName}`,
+    name: ({ isDeleted, firstName, lastName }) => (
+      isDeleted
+        ? intl.formatMessage({ id: 'ui-organizations.contactPeople.remove' })
+        : `${lastName}, ${firstName}`
+    ),
     categories: ({ categories = [] }) => transformCategoryIdsToLables(vendorCategories, categories) || <NoValue />,
     email: ({ emails }) => get(find(emails, 'isPrimary'), 'value', '') || <NoValue />,
     phone: ({ phoneNumbers }) => get(find(phoneNumbers, 'isPrimary'), 'phoneNumber', '') || <NoValue />,
