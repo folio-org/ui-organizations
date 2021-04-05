@@ -118,7 +118,7 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
     contactEmails: ({ emails }) => map(emails, 'value').join(', '),
     contactName: contact => (
       contact.isDeleted
-        ? intl.formatMessage({ id: 'ui-organizations.contactPeople.remove' })
+        ? intl.formatMessage({ id: 'ui-organizations.contactPeople.removedContact' })
         : `${contact.lastName}, ${contact.firstName}`
     ),
     unassignContact: (contact) => (

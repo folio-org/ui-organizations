@@ -31,7 +31,7 @@ const OrganizationContactPeople = ({ vendorCategories, contacts, openContact }) 
   const resultsFormatter = {
     name: ({ isDeleted, firstName, lastName }) => (
       isDeleted
-        ? intl.formatMessage({ id: 'ui-organizations.contactPeople.remove' })
+        ? intl.formatMessage({ id: 'ui-organizations.contactPeople.removedContact' })
         : `${lastName}, ${firstName}`
     ),
     categories: ({ categories = [] }) => transformCategoryIdsToLables(vendorCategories, categories) || <NoValue />,
