@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  get,
   map,
   sortBy,
 } from 'lodash';
@@ -30,6 +29,8 @@ const columnMapping = {
 const visibleColumns = ['contactName', 'contactCategories', 'contactEmails', 'unassignContact'];
 
 const getContactsUrl = (orgId, contactId) => {
+  if (!contactId) return undefined;
+
   const ending = contactId ? `/contacts/${contactId}/view` : '/contacts/add-contact';
   const starting = orgId ? `/organizations/${orgId}` : '/organizations';
 
@@ -91,10 +92,16 @@ const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, orgId, categoriesDict, stripes }) => {
   const intl = useIntl();
-  const contentData = sortBy(fields.value.map((contactId, _index) => ({
-    ...get(contactsMap, contactId, {}),
-    _index,
-  })), [({ lastName }) => lastName.toLowerCase()]);
+  const contacts = fields.value
+    .map((contactId, _index) => {
+      const contact = contactsMap?.[contactId];
+
+      return {
+        ...(contact || { isDeleted: true }),
+        _index,
+      };
+    });
+  const contentData = sortBy(contacts, [({ lastName }) => lastName?.toLowerCase()]);
 
   const anchoredRowFormatter = ({ rowProps, ...rest }) => {
     return acqRowFormatter({
@@ -109,7 +116,11 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
   const resultsFormatter = {
     contactCategories: ({ categories = [] }) => transformCategoryIdsToLables(categoriesDict, categories),
     contactEmails: ({ emails }) => map(emails, 'value').join(', '),
-    contactName: contact => `${contact.lastName}, ${contact.firstName}`,
+    contactName: contact => (
+      contact.isDeleted
+        ? intl.formatMessage({ id: 'ui-organizations.contactPeople.removedContact' })
+        : `${contact.lastName}, ${contact.firstName}`
+    ),
     unassignContact: (contact) => (
       <Button
         align="end"

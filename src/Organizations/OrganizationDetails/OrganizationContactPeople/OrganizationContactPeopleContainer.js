@@ -31,7 +31,13 @@ const OrganizationContactPeopleContainer = ({
     () => {
       setIsLoading(true);
       batchFetch(mutator.organizationDetailsContacts, contactsIds)
-        .then(contactsResponse => setContacts(sortBy(contactsResponse, [({ lastName }) => lastName.toLowerCase()])))
+        .then(contactsResponse => {
+          const removedContacts = [...Array(contactsIds.length - contactsResponse.length)]
+            .map(() => ({ isDeleted: true }));
+          const orgContacts = [...removedContacts, ...contactsResponse];
+
+          setContacts(sortBy(orgContacts, [({ lastName }) => lastName?.toLowerCase()]));
+        })
         .catch(() => {
           setContacts([]);
           showToast({ messageId: 'ui-organizations.contacts.actions.load.error', type: 'error' });
@@ -44,6 +50,8 @@ const OrganizationContactPeopleContainer = ({
 
   const openContact = useCallback(
     (e, { id }) => {
+      if (!id) return;
+
       const path = `/organizations/${organizationId}/contacts/details/${id}/view`;
 
       history.push(path);
