@@ -5,6 +5,7 @@
 * "Collapse all" accordions on "contact person" view not working. Refs UIORGS-231.
 * Contact persons email does not appear in the view. Refs UIORGS-232.
 * Deleting a contact person assigned to multiple orgs creates UI error. UIORGS-234.
+* State-Region label runs off the chart. Refs UIORGS-233.
 
 ## [2.3.0](https://github.com/folio-org/ui-organizations/tree/v2.3.0) (2021-03-15)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.2.1...v2.3.0)
