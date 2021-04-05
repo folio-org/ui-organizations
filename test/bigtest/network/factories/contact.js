@@ -10,6 +10,6 @@ export default Factory.extend({
   categories: ['123'],
   addresses: [{ addressLine1: faker.address.streetAddress, isPrimary: true }],
   emails: [{ value: faker.internet.email, isPrimary: true }],
-  phoneNumbers: [{ phoneNumber: faker.phone.phoneNumber }, { phoneNumber: faker.phone.phoneNumber }],
+  phoneNumbers: [{ isPrimary: true, phoneNumber: faker.phone.phoneNumber }, { phoneNumber: faker.phone.phoneNumber }],
   urls: [{ value: faker.internet.url, isPrimary: true }],
 });

@@ -222,6 +222,8 @@
   "contactPeople.newContact": "New",
   "contactPeople.noFindContactPlugin": "no find-contact plugin",
 
+  "contactPeople.errors.noPrimaryRecord": "No primary record selected",
+
   "agreement.name": "Name",
   "agreement.discount": "Discount",
   "agreement.discountSym": "Discount %",
