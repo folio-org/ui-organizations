@@ -347,5 +347,7 @@
     "contactInfo.vendorCategory.returns": "Retours",
     "contactInfo.vendorCategory.shipments": "Expéditions",
     "save.error.creds": "Erreur lors de l'enregistrement des informations d'identification",
-    "save.error.assignInterface": "Erreur lors de l'attribution de l'interface à l'organisation"
+    "save.error.assignInterface": "Erreur lors de l'attribution de l'interface à l'organisation",
+    "contactPeople.errors.noPrimaryRecord": "No primary record selected",
+    "contactPeople.removedContact": "Removed contact"
 }

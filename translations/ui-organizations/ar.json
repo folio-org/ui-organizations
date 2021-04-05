@@ -347,5 +347,7 @@
     "contactInfo.vendorCategory.returns": "الإعادات",
     "contactInfo.vendorCategory.shipments": "الشحنات",
     "save.error.creds": "خطأ أثناء حفظ بيانات الاعتماد",
-    "save.error.assignInterface": "خطأ أثناء تعيين الواجهة للمؤسسة"
+    "save.error.assignInterface": "خطأ أثناء تعيين الواجهة للمؤسسة",
+    "contactPeople.errors.noPrimaryRecord": "No primary record selected",
+    "contactPeople.removedContact": "Removed contact"
 }

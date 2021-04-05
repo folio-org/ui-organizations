@@ -347,5 +347,7 @@
     "contactInfo.vendorCategory.returns": "Returns",
     "contactInfo.vendorCategory.shipments": "Shipments",
     "save.error.creds": "Error while saving credentials",
-    "save.error.assignInterface": "Error while assigning interface to the organization"
+    "save.error.assignInterface": "Error while assigning interface to the organization",
+    "contactPeople.errors.noPrimaryRecord": "No primary record selected",
+    "contactPeople.removedContact": "Removed contact"
 }

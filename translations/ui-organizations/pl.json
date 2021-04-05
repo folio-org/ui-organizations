@@ -347,5 +347,7 @@
     "contactInfo.vendorCategory.returns": "Zwroty",
     "contactInfo.vendorCategory.shipments": "Przesyłki",
     "save.error.creds": "Błąd podczas zapisywania poświadczeń",
-    "save.error.assignInterface": "Błąd podczas przypisywania interfejsu do organizacji"
+    "save.error.assignInterface": "Błąd podczas przypisywania interfejsu do organizacji",
+    "contactPeople.errors.noPrimaryRecord": "No primary record selected",
+    "contactPeople.removedContact": "Removed contact"
 }

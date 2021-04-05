@@ -347,5 +347,7 @@
     "contactInfo.vendorCategory.returns": "退货",
     "contactInfo.vendorCategory.shipments": "发货",
     "save.error.creds": "保存凭证时出错",
-    "save.error.assignInterface": "将接口分配给组织时出错"
+    "save.error.assignInterface": "将接口分配给组织时出错",
+    "contactPeople.errors.noPrimaryRecord": "No primary record selected",
+    "contactPeople.removedContact": "Removed contact"
 }

@@ -347,5 +347,7 @@
     "contactInfo.vendorCategory.returns": "Rücksendungen",
     "contactInfo.vendorCategory.shipments": "Sendungen",
     "save.error.creds": "Fehler beim Speichern von Anmeldedaten",
-    "save.error.assignInterface": "Fehler beim Zuweisen vom Interface zu der Organisation"
+    "save.error.assignInterface": "Fehler beim Zuweisen vom Interface zu der Organisation",
+    "contactPeople.errors.noPrimaryRecord": "No primary record selected",
+    "contactPeople.removedContact": "Removed contact"
 }
