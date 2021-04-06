@@ -236,7 +236,7 @@
     "contacts.button.delete": "Eliminar",
     "contactPeople.noFindContactPlugin": "no find-contact plugin",
     "contactPeople.address": "Address",
-    "contactPeople.stateRegion": "State/Prov./Region",
+    "contactPeople.stateRegion": "State / Prov. / Region",
     "contactPeople.primaryAddress": "Use as primary address",
     "contactPeople.addresses.address": "Address",
     "contactPeople.addresses.addressLine1": "Address 1",
@@ -347,5 +347,7 @@
     "contactInfo.vendorCategory.returns": "Returns",
     "contactInfo.vendorCategory.shipments": "Shipments",
     "save.error.creds": "Error while saving credentials",
-    "save.error.assignInterface": "Error while assigning interface to the organization"
+    "save.error.assignInterface": "Error while assigning interface to the organization",
+    "contactPeople.errors.noPrimaryRecord": "No primary record selected",
+    "contactPeople.removedContact": "Removed contact"
 }
