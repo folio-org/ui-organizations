@@ -236,7 +236,7 @@
     "contacts.button.delete": "Supprimer",
     "contactPeople.noFindContactPlugin": "Pas de plugin de recherche de contact",
     "contactPeople.address": "Adresse",
-    "contactPeople.stateRegion": "État/Province/Région",
+    "contactPeople.stateRegion": "État / Prov. / Région",
     "contactPeople.primaryAddress": "Utiliser comme adresse principale",
     "contactPeople.addresses.address": "Adresse",
     "contactPeople.addresses.addressLine1": "Adresse 1",
@@ -348,6 +348,6 @@
     "contactInfo.vendorCategory.shipments": "Expéditions",
     "save.error.creds": "Erreur lors de l'enregistrement des informations d'identification",
     "save.error.assignInterface": "Erreur lors de l'attribution de l'interface à l'organisation",
-    "contactPeople.errors.noPrimaryRecord": "No primary record selected",
-    "contactPeople.removedContact": "Removed contact"
+    "contactPeople.errors.noPrimaryRecord": "Aucun enregistrement principal sélectionné",
+    "contactPeople.removedContact": "Contact supprimé"
 }
