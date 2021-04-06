@@ -42,6 +42,7 @@ const OrganizationEdit = ({ match, history, location, mutator }) => {
     () => {
       mutator.editOrganizationOrg.GET()
         .then(organizationsResponse => {
+          // TODO: change time to UTC-0
           if (organizationsResponse?.edi?.ediJob?.time) {
             organizationsResponse.edi.ediJob.time = moment(
               organizationsResponse.edi.ediJob.time,
