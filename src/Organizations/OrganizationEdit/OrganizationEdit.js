@@ -7,6 +7,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import moment from 'moment-timezone';
 
 import {
   stripesConnect,
@@ -40,7 +41,16 @@ const OrganizationEdit = ({ match, history, location, mutator }) => {
   useEffect(
     () => {
       mutator.editOrganizationOrg.GET()
-        .then(organizationsResponse => setOrganization(organizationsResponse))
+        .then(organizationsResponse => {
+          // TODO: change time to UTC-0
+          if (organizationsResponse?.edi?.ediJob?.time) {
+            organizationsResponse.edi.ediJob.time = moment(
+              organizationsResponse.edi.ediJob.time,
+            ).format('hh:mm:ss');
+          }
+
+          setOrganization(organizationsResponse);
+        })
         .finally(() => setIsLoading(false));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
