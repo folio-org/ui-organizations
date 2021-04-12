@@ -312,7 +312,7 @@
     "search.erpCode": "Código contable",
     "search.taxId": "Impuesto no.",
     "search.interfaces": "Interfaces",
-    "organization.delete.heading": "¿Borrar {nombre de la organización}?",
+    "organization.delete.heading": "¿Borrar {organizationName}?",
     "organization.delete.confirmLabel": "Borrar",
     "organization.delete.success": "La organización <b> {organizationName} </b> se <b> eliminó con éxito </b>",
     "view.delete": "Borrar",
