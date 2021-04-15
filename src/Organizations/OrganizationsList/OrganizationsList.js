@@ -7,19 +7,17 @@ import {
 } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import {
-  Paneset,
-  MultiColumnList,
-} from '@folio/stripes/components';
+import { MultiColumnList } from '@folio/stripes/components';
+import { PersistedPaneset } from '@folio/stripes/smart-components';
 import {
   FiltersPane,
   NoResultsMessage,
   ResetButton,
   ResultsPane,
   SingleSearchForm,
+  useFiltersToogle,
   useLocationFilters,
   useLocationSorting,
-  useToggle,
 } from '@folio/stripes-acq-components';
 
 import { RESULT_COUNT_INCREMENT } from '../../common/resources';
@@ -77,7 +75,7 @@ const OrganizationsList = ({
     changeSorting,
   ] = useLocationSorting(location, history, resetData, sortableFields);
 
-  const [isFiltersOpened, toggleFilters] = useToggle(true);
+  const { isFiltersOpened, toggleFilters } = useFiltersToogle('ui-organizations/filters');
 
   const openOrganizationDetails = useCallback(
     (e, meta) => {
@@ -102,9 +100,16 @@ const OrganizationsList = ({
   );
 
   return (
-    <Paneset data-test-organizations-list>
+    <PersistedPaneset
+      appId="ui-organizations"
+      id="organizations-paneset"
+      data-test-organizations-list
+    >
       {isFiltersOpened && (
-        <FiltersPane toggleFilters={toggleFilters}>
+        <FiltersPane
+          id="organizations-filters-pane"
+          toggleFilters={toggleFilters}
+        >
           <SingleSearchForm
             applySearch={applySearch}
             autoFocus={!isDetailsPaneInFocus}
@@ -132,6 +137,7 @@ const OrganizationsList = ({
       )}
 
       <ResultsPane
+        id="organizations-results-pane"
         title={resultsPaneTitle}
         count={organizationsCount}
         renderLastMenu={renderLastMenu}
@@ -171,7 +177,7 @@ const OrganizationsList = ({
           />
         )}
       />
-    </Paneset>
+    </PersistedPaneset>
   );
 };
 

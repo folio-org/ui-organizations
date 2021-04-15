@@ -117,7 +117,12 @@ const OrganizationDetailsContainer = ({
   );
 
   if (isLoading) {
-    return <LoadingPane onClose={closePane} />;
+    return (
+      <LoadingPane
+        id="pane-organization-details"
+        onClose={closePane}
+      />
+    );
   }
 
   return (
