@@ -46,7 +46,7 @@ const OrganizationEdit = ({ match, history, location, mutator }) => {
           if (organizationsResponse?.edi?.ediJob?.time) {
             organizationsResponse.edi.ediJob.time = moment(
               organizationsResponse.edi.ediJob.time,
-            ).format('hh:mm:ss');
+            ).format('HH:mm:ss');
           }
 
           setOrganization(organizationsResponse);
