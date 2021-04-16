@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* EDI scheduling time incorrectly formatted on edit form. Refs UIORGS-236.
+
 ## [2.3.1](https://github.com/folio-org/ui-organizations/tree/v2.3.1) (2021-04-13)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.3.0...v2.3.1)
 
