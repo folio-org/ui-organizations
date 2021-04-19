@@ -55,14 +55,14 @@ const ViewContact = ({
             <FormattedMessage id="ui-organizations.contacts.button.edit" />
           </Icon>
         </Button>
-        <Button
+        {/* <Button
           data-test-contacts-action-copy
           buttonStyle="dropdownItem"
         >
           <Icon icon="duplicate">
             <FormattedMessage id="ui-organizations.contacts.button.copy" />
           </Icon>
-        </Button>
+        </Button> */}
         {contactId && (
           <Button
             data-test-contacts-action-unassign
