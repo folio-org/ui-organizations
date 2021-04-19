@@ -31,7 +31,7 @@ const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getC
             <FormattedMessage id="ui-organizations.interface.button.edit" />
           </Icon>
         </Button>
-        <Button
+        {/* <Button
           data-test-interface-action-copy
           buttonStyle="dropdownItem"
           onClick={onToggle}
@@ -39,7 +39,7 @@ const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getC
           <Icon icon="duplicate">
             <FormattedMessage id="ui-organizations.interface.button.copy" />
           </Icon>
-        </Button>
+        </Button> */}
         {interfaceId && (
           <Button
             data-test-interface-action-unassign
