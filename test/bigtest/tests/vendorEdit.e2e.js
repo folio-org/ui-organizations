@@ -60,6 +60,8 @@ describe('Vendor org edit', () => {
 
     describe('click add and select acq unit', () => {
       beforeEach(async function () {
+        this.timeout(10000);
+
         await orgEdit.addAccountButton.click();
         await orgEdit.accountsSection.acquisitionUnits.clickControl();
         await orgEdit.whenAcqUnitsLoaded();
