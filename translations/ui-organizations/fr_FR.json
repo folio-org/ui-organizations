@@ -130,7 +130,7 @@
     "edi.prorateFees": "Proratiser les frais",
     "edi.ediNamingConvention": "Convention d'appellation EDI",
     "edi.sendAccountNumber": "Envoyer le numéro de compte",
-    "edi.notes": "Commentaires",
+    "edi.notes": "Notes",
     "edi.ftpDetails": "Détails FTP",
     "edi.editFTP": "EDI FTP",
     "edi.serverAddress": "Adresse du serveur",
