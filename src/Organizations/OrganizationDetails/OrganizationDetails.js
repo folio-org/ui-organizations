@@ -23,6 +23,7 @@ import {
   TagsBadge,
   TagsPane,
   useAccordionToggle,
+  useAcqRestrictions,
   useModalToggle,
 } from '@folio/stripes-acq-components';
 
@@ -68,6 +69,9 @@ const OrganizationDetails = ({
   const paneTitleRef = useRef();
   const location = useLocation();
   const isDetailsPaneInFocus = location.state?.isDetailsPaneInFocus;
+  const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
+    organization.id, organization.acqUnitIds,
+  );
 
   useEffect(() => {
     if (isDetailsPaneInFocus) paneTitleRef.current.focus();
@@ -85,6 +89,7 @@ const OrganizationDetails = ({
                 onToggle();
                 onEdit();
               }}
+              disabled={isRestrictionsLoading || restrictions.protectUpdate}
             >
               <Icon size="small" icon="edit">
                 <FormattedMessage id="ui-organizations.view.edit" />
@@ -99,6 +104,7 @@ const OrganizationDetails = ({
                 onToggle();
                 toggleRemoveModal();
               }}
+              disabled={isRestrictionsLoading || restrictions.protectDelete}
             >
               <Icon size="small" icon="trash">
                 <FormattedMessage id="ui-organizations.view.delete" />
@@ -108,7 +114,7 @@ const OrganizationDetails = ({
         </MenuSection>
       );
     },
-    [onEdit, toggleRemoveModal],
+    [onEdit, toggleRemoveModal, isRestrictionsLoading, restrictions.protectDelete, restrictions.protectUpdate],
   );
 
   const detailsLastMenu = (

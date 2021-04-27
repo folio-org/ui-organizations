@@ -5,6 +5,7 @@ import setupApplication from '../helpers/setup-application';
 import {
   OrganizationEditInteractor,
 } from '../interactors';
+import { TIMEOUT } from '../interactors/const';
 
 describe('Vendor org edit', () => {
   setupApplication();
@@ -60,6 +61,8 @@ describe('Vendor org edit', () => {
 
     describe('click add and select acq unit', () => {
       beforeEach(async function () {
+        this.timeout(TIMEOUT);
+
         await orgEdit.addAccountButton.click();
         await orgEdit.accountsSection.acquisitionUnits.clickControl();
         await orgEdit.whenAcqUnitsLoaded();
