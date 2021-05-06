@@ -7,6 +7,8 @@ import {
 import { FormattedMessage } from 'react-intl';
 
 import {
+  CommandList,
+  defaultKeyboardShortcuts,
   Paneset,
 } from '@folio/stripes/components';
 import {
@@ -52,45 +54,47 @@ function ContactsContainer({ history, match: { params, url } }) {
   ), [params.orgId, showMessage, url]);
 
   return (
-    <Paneset isRoot>
-      <Switch>
-        <Route
-          path={`${url}/:id/view`}
-          render={goToView}
-        />
-        <Route
-          path={`${url}/details/:id/view`}
-          render={(props) => (
-            <ViewContact
-              {...props}
-              orgId={params.orgId}
-              showMessage={showMessage}
-              baseUrl={`${url}/details`}
-              onClose={onClose}
-            />
-          )}
-        />
-        <Route
-          path={`${url}/:id/edit`}
-          render={goToEdit}
-        />
-        <Route
-          path={`${url}/details/:id/edit`}
-          render={(props) => (
-            <EditContact
-              {...props}
-              orgId={params.orgId}
-              showMessage={showMessage}
-              onClose={onClose}
-            />
-          )}
-        />
-        <Route
-          path={`${url}/add-contact`}
-          render={goToEdit}
-        />
-      </Switch>
-    </Paneset>
+    <CommandList commands={defaultKeyboardShortcuts}>
+      <Paneset isRoot>
+        <Switch>
+          <Route
+            path={`${url}/:id/view`}
+            render={goToView}
+          />
+          <Route
+            path={`${url}/details/:id/view`}
+            render={(props) => (
+              <ViewContact
+                {...props}
+                orgId={params.orgId}
+                showMessage={showMessage}
+                baseUrl={`${url}/details`}
+                onClose={onClose}
+              />
+            )}
+          />
+          <Route
+            path={`${url}/:id/edit`}
+            render={goToEdit}
+          />
+          <Route
+            path={`${url}/details/:id/edit`}
+            render={(props) => (
+              <EditContact
+                {...props}
+                orgId={params.orgId}
+                showMessage={showMessage}
+                onClose={onClose}
+              />
+            )}
+          />
+          <Route
+            path={`${url}/add-contact`}
+            render={goToEdit}
+          />
+        </Switch>
+      </Paneset>
+    </CommandList>
   );
 }
 

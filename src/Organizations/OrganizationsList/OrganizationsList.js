@@ -7,7 +7,12 @@ import {
 } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import { MultiColumnList } from '@folio/stripes/components';
+import {
+  checkScope,
+  HasCommand,
+  MultiColumnList,
+} from '@folio/stripes/components';
+import { useStripes } from '@folio/stripes/core';
 import { PersistedPaneset } from '@folio/stripes/smart-components';
 import {
   FiltersPane,
@@ -21,7 +26,10 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { RESULT_COUNT_INCREMENT } from '../../common/resources';
-import { VIEW_ORG_DETAILS } from '../../common/constants';
+import {
+  ORGANIZATIONS_ROUTE,
+  VIEW_ORG_DETAILS,
+} from '../../common/constants';
 import { OrganizationDetailsContainer } from '../OrganizationDetails';
 import OrganizationsListFilter from './OrganizationsListFilter';
 import {
@@ -56,6 +64,7 @@ const OrganizationsList = ({
   refreshList,
   resultsPaneTitleRef,
 }) => {
+  const stripes = useStripes();
   const history = useHistory();
   const location = useLocation();
   const isDetailsPaneInFocus = location.state?.isDetailsPaneInFocus;
@@ -99,85 +108,102 @@ const OrganizationsList = ({
     />
   );
 
+  const shortcuts = [
+    {
+      name: 'new',
+      handler: () => {
+        if (stripes.hasPerm('ui-organizations.create')) {
+          history.push(`${ORGANIZATIONS_ROUTE}/create`);
+        }
+      },
+    },
+  ];
+
   return (
-    <PersistedPaneset
-      appId="ui-organizations"
-      id="organizations-paneset"
-      data-test-organizations-list
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
     >
-      {isFiltersOpened && (
-        <FiltersPane
-          id="organizations-filters-pane"
-          toggleFilters={toggleFilters}
-        >
-          <SingleSearchForm
-            applySearch={applySearch}
-            autoFocus={!isDetailsPaneInFocus}
-            changeSearch={changeSearch}
-            searchQuery={searchQuery}
-            searchableIndexes={searchableIndexes}
-            changeSearchIndex={changeIndex}
-            selectedIndex={searchIndex}
-            isLoading={isLoading}
-            ariaLabelId="ui-organizations.search"
-          />
-
-          <ResetButton
-            id="reset-organizations-filters"
-            reset={resetFilters}
-            disabled={!location.search || isLoading}
-          />
-
-          <OrganizationsListFilter
-            activeFilters={filters}
-            applyFilters={applyFilters}
-            disabled={isLoading}
-          />
-        </FiltersPane>
-      )}
-
-      <ResultsPane
-        id="organizations-results-pane"
-        title={resultsPaneTitle}
-        count={organizationsCount}
-        renderLastMenu={renderLastMenu}
-        toggleFiltersPane={toggleFilters}
-        filters={filters}
-        isFiltersOpened={isFiltersOpened}
-        resultsPaneTitleRef={resultsPaneTitleRef}
+      <PersistedPaneset
+        appId="ui-organizations"
+        id="organizations-paneset"
+        data-test-organizations-list
       >
-        <MultiColumnList
-          id="organizations-list"
-          totalCount={organizationsCount}
-          contentData={organizations}
-          visibleColumns={visibleColumns}
-          columnMapping={columnMapping}
-          formatter={resultsFormatter}
-          loading={isLoading}
-          autosize
-          virtualize
-          onNeedMoreData={onNeedMoreData}
-          sortOrder={sortingField}
-          sortDirection={sortingDirection}
-          onHeaderClick={changeSorting}
-          onRowClick={openOrganizationDetails}
-          isEmptyMessage={resultsStatusMessage}
-          pagingType="click"
-          hasMargin
-          pageAmount={RESULT_COUNT_INCREMENT}
-        />
-      </ResultsPane>
+        {isFiltersOpened && (
+          <FiltersPane
+            id="organizations-filters-pane"
+            toggleFilters={toggleFilters}
+          >
+            <SingleSearchForm
+              applySearch={applySearch}
+              autoFocus={!isDetailsPaneInFocus}
+              changeSearch={changeSearch}
+              searchQuery={searchQuery}
+              searchableIndexes={searchableIndexes}
+              changeSearchIndex={changeIndex}
+              selectedIndex={searchIndex}
+              isLoading={isLoading}
+              ariaLabelId="ui-organizations.search"
+            />
 
-      <Route
-        path={`${VIEW_ORG_DETAILS}:id`}
-        render={props => (
-          <OrganizationDetailsContainer
-            {...props}
-            refreshList={refreshList}
-          />
+            <ResetButton
+              id="reset-organizations-filters"
+              reset={resetFilters}
+              disabled={!location.search || isLoading}
+            />
+
+            <OrganizationsListFilter
+              activeFilters={filters}
+              applyFilters={applyFilters}
+              disabled={isLoading}
+            />
+          </FiltersPane>
         )}
-      />
-    </PersistedPaneset>
+
+        <ResultsPane
+          id="organizations-results-pane"
+          title={resultsPaneTitle}
+          count={organizationsCount}
+          renderLastMenu={renderLastMenu}
+          toggleFiltersPane={toggleFilters}
+          filters={filters}
+          isFiltersOpened={isFiltersOpened}
+          resultsPaneTitleRef={resultsPaneTitleRef}
+        >
+          <MultiColumnList
+            id="organizations-list"
+            totalCount={organizationsCount}
+            contentData={organizations}
+            visibleColumns={visibleColumns}
+            columnMapping={columnMapping}
+            formatter={resultsFormatter}
+            loading={isLoading}
+            autosize
+            virtualize
+            onNeedMoreData={onNeedMoreData}
+            sortOrder={sortingField}
+            sortDirection={sortingDirection}
+            onHeaderClick={changeSorting}
+            onRowClick={openOrganizationDetails}
+            isEmptyMessage={resultsStatusMessage}
+            pagingType="click"
+            hasMargin
+            pageAmount={RESULT_COUNT_INCREMENT}
+          />
+        </ResultsPane>
+
+        <Route
+          path={`${VIEW_ORG_DETAILS}:id`}
+          render={props => (
+            <OrganizationDetailsContainer
+              {...props}
+              refreshList={refreshList}
+            />
+          )}
+        />
+      </PersistedPaneset>
+    </HasCommand>
   );
 };
 

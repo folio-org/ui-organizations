@@ -7,6 +7,8 @@ import {
 import { FormattedMessage } from 'react-intl';
 
 import {
+  CommandList,
+  defaultKeyboardShortcuts,
   Paneset,
 } from '@folio/stripes/components';
 import {
@@ -31,40 +33,42 @@ function InterfaceContainer({ match: { params, url } }) {
   }, [sendCallout]);
 
   return (
-    <Paneset isRoot>
-      <Switch>
-        <Route
-          path={`${url}/:id/${VIEW_INTERFACE_URL}`}
-          render={(props) => (
-            <ViewInterfaceContainer
-              {...props}
-              baseUrl={url}
-              orgId={params.orgId}
-              showMessage={showMessage}
-            />
-          )}
-        />
-        <Route
-          path={`${url}/:id/${EDIT_INTERFACE_URL}`}
-          render={(props) => (
-            <EditInterfaceContainer
-              {...props}
-              orgId={params.orgId}
-            />
-          )}
-        />
-        <Route
-          exact
-          path={`${url}/${ADD_INTERFACE_URL}`}
-          render={(props) => (
-            <EditInterfaceContainer
-              {...props}
-              orgId={params.orgId}
-            />
-          )}
-        />
-      </Switch>
-    </Paneset>
+    <CommandList commands={defaultKeyboardShortcuts}>
+      <Paneset isRoot>
+        <Switch>
+          <Route
+            path={`${url}/:id/${VIEW_INTERFACE_URL}`}
+            render={(props) => (
+              <ViewInterfaceContainer
+                {...props}
+                baseUrl={url}
+                orgId={params.orgId}
+                showMessage={showMessage}
+              />
+            )}
+          />
+          <Route
+            path={`${url}/:id/${EDIT_INTERFACE_URL}`}
+            render={(props) => (
+              <EditInterfaceContainer
+                {...props}
+                orgId={params.orgId}
+              />
+            )}
+          />
+          <Route
+            exact
+            path={`${url}/${ADD_INTERFACE_URL}`}
+            render={(props) => (
+              <EditInterfaceContainer
+                {...props}
+                orgId={params.orgId}
+              />
+            )}
+          />
+        </Switch>
+      </Paneset>
+    </CommandList>
   );
 }
 
