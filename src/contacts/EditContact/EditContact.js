@@ -1,9 +1,11 @@
 import React, {
   useMemo,
+  useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field } from 'react-final-form';
+import { useHistory } from 'react-router';
 
 import stripesForm from '@folio/stripes/final-form';
 import { AppIcon } from '@folio/stripes/core';
@@ -12,8 +14,12 @@ import {
   AccordionSet,
   AccordionStatus,
   Button,
+  checkScope,
   Col,
+  collapseAllSections,
   ExpandAllButton,
+  expandAllSections,
+  HasCommand,
   Pane,
   PaneFooter,
   Row,
@@ -31,6 +37,7 @@ import {
   AddressInfo,
   FieldLanguage,
 } from '../../common/components';
+import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 
 import phoneTypesList from '../../Utils/PhoneTypes';
 import {
@@ -51,6 +58,8 @@ const EditContact = ({
   pristine,
   submitting,
 }) => {
+  const history = useHistory();
+  const accordionStatusRef = useRef();
   const paneFooter = useMemo(
     () => {
       const start = (
@@ -89,168 +98,198 @@ const EditContact = ({
     [submitting, pristine, handleSubmit, onClose],
   );
 
+  const shortcuts = [
+    {
+      name: 'cancel',
+      shortcut: 'esc',
+      handler: () => onClose(),
+    },
+    {
+      name: 'save',
+      handler: handleSubmit,
+    },
+    {
+      name: 'expandAllSections',
+      handler: (e) => expandAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'collapseAllSections',
+      handler: (e) => collapseAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'search',
+      handler: () => history.push(ORGANIZATIONS_ROUTE),
+    },
+  ];
+
   return (
-    <Pane
-      appIcon={
-        <AppIcon
-          app="organizations"
-          appIconKey="organizations"
-        />
-      }
-      defaultWidth="fill"
-      dismissible
-      id="edit-contact"
-      footer={paneFooter}
-      onClose={onClose}
-      paneTitle={paneTitle}
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
     >
-      <Row>
-        <Col
-          xs={12}
-          md={8}
-          mdOffset={2}
-        >
-          <AccordionStatus>
-            <Row end="xs">
-              <Col xs={12}>
-                <ExpandAllButton />
-              </Col>
-            </Row>
-            <AccordionSet>
-              <Accordion
-                id={CONTACT_PERSON_ACCORDIONS.NAME}
-                label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.NAME]}
-              >
-                <Row>
-                  <Col xs={3}>
-                    <Field
-                      component={TextField}
-                      fullWidth
-                      label={<FormattedMessage id="ui-organizations.contactPeople.prefix" />}
-                      name="prefix"
-                    />
-                  </Col>
-                  <Col xs={3}>
-                    <Field
-                      component={TextField}
-                      fullWidth
-                      label={<FormattedMessage id="ui-organizations.contactPeople.details.lastName" />}
-                      name="lastName"
-                      required
-                      validate={validateRequired}
-                    />
-                  </Col>
-                  <Col xs={3}>
-                    <Field
-                      component={TextField}
-                      fullWidth
-                      label={<FormattedMessage id="ui-organizations.contactPeople.details.firstName" />}
-                      name="firstName"
-                      required
-                      validate={validateRequired}
-                    />
-                  </Col>
-                  <Col xs={3}>
-                    <FieldSelectFinal
-                      dataOptions={CONTACT_STATUSES}
-                      label={<FormattedMessage id="ui-organizations.contactPeople.status" />}
-                      name="inactive"
-                    />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs={3}>
-                    <FieldLanguage
-                      labelId="ui-organizations.contactPeople.language"
-                      name="language"
-                    />
-                  </Col>
-                  <Col xs={3}>
-                    <CategoryDropdown
-                      ariaLabelledBy="nameFormCategoriesLabel"
-                      dropdownVendorCategories={categories}
-                    />
-                  </Col>
-                  <Col xs={6}>
-                    <Field
-                      component={TextArea}
-                      fullWidth
-                      label={<FormattedMessage id="ui-organizations.contactPeople.note" />}
-                      name="notes"
-                    />
-                  </Col>
-                </Row>
-              </Accordion>
+      <Pane
+        appIcon={
+          <AppIcon
+            app="organizations"
+            appIconKey="organizations"
+          />
+        }
+        defaultWidth="fill"
+        dismissible
+        id="edit-contact"
+        footer={paneFooter}
+        onClose={onClose}
+        paneTitle={paneTitle}
+      >
+        <Row>
+          <Col
+            xs={12}
+            md={8}
+            mdOffset={2}
+          >
+            <AccordionStatus ref={accordionStatusRef}>
+              <Row end="xs">
+                <Col xs={12}>
+                  <ExpandAllButton />
+                </Col>
+              </Row>
+              <AccordionSet>
+                <Accordion
+                  id={CONTACT_PERSON_ACCORDIONS.NAME}
+                  label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.NAME]}
+                >
+                  <Row>
+                    <Col xs={3}>
+                      <Field
+                        component={TextField}
+                        fullWidth
+                        label={<FormattedMessage id="ui-organizations.contactPeople.prefix" />}
+                        name="prefix"
+                      />
+                    </Col>
+                    <Col xs={3}>
+                      <Field
+                        component={TextField}
+                        fullWidth
+                        label={<FormattedMessage id="ui-organizations.contactPeople.details.lastName" />}
+                        name="lastName"
+                        required
+                        validate={validateRequired}
+                      />
+                    </Col>
+                    <Col xs={3}>
+                      <Field
+                        component={TextField}
+                        fullWidth
+                        label={<FormattedMessage id="ui-organizations.contactPeople.details.firstName" />}
+                        name="firstName"
+                        required
+                        validate={validateRequired}
+                      />
+                    </Col>
+                    <Col xs={3}>
+                      <FieldSelectFinal
+                        dataOptions={CONTACT_STATUSES}
+                        label={<FormattedMessage id="ui-organizations.contactPeople.status" />}
+                        name="inactive"
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={3}>
+                      <FieldLanguage
+                        labelId="ui-organizations.contactPeople.language"
+                        name="language"
+                      />
+                    </Col>
+                    <Col xs={3}>
+                      <CategoryDropdown
+                        ariaLabelledBy="nameFormCategoriesLabel"
+                        dropdownVendorCategories={categories}
+                      />
+                    </Col>
+                    <Col xs={6}>
+                      <Field
+                        component={TextArea}
+                        fullWidth
+                        label={<FormattedMessage id="ui-organizations.contactPeople.note" />}
+                        name="notes"
+                      />
+                    </Col>
+                  </Row>
+                </Accordion>
 
-              <Accordion
-                id={CONTACT_PERSON_ACCORDIONS.EMAILS}
-                label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.EMAILS]}
-              >
-                <Row>
-                  <Col
-                    data-test-email-form
-                    xs={12}
-                  >
-                    <EmailForm
-                      categories={categories}
-                    />
-                  </Col>
-                </Row>
-              </Accordion>
+                <Accordion
+                  id={CONTACT_PERSON_ACCORDIONS.EMAILS}
+                  label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.EMAILS]}
+                >
+                  <Row>
+                    <Col
+                      data-test-email-form
+                      xs={12}
+                    >
+                      <EmailForm
+                        categories={categories}
+                      />
+                    </Col>
+                  </Row>
+                </Accordion>
 
-              <Accordion
-                id={CONTACT_PERSON_ACCORDIONS.PHONES}
-                label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.PHONES]}
-              >
-                <Row>
-                  <Col
-                    data-test-phone-form
-                    xs={12}
-                  >
-                    <PhoneForm
-                      categories={categories}
-                      phoneTypesList={phoneTypesList}
-                    />
-                  </Col>
-                </Row>
-              </Accordion>
+                <Accordion
+                  id={CONTACT_PERSON_ACCORDIONS.PHONES}
+                  label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.PHONES]}
+                >
+                  <Row>
+                    <Col
+                      data-test-phone-form
+                      xs={12}
+                    >
+                      <PhoneForm
+                        categories={categories}
+                        phoneTypesList={phoneTypesList}
+                      />
+                    </Col>
+                  </Row>
+                </Accordion>
 
-              <Accordion
-                id={CONTACT_PERSON_ACCORDIONS.URLS}
-                label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.URLS]}
-              >
-                <Row>
-                  <Col
-                    data-test-url-form
-                    xs={12}
-                  >
-                    <UrlForm
-                      categories={categories}
-                    />
-                  </Col>
-                </Row>
-              </Accordion>
+                <Accordion
+                  id={CONTACT_PERSON_ACCORDIONS.URLS}
+                  label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.URLS]}
+                >
+                  <Row>
+                    <Col
+                      data-test-url-form
+                      xs={12}
+                    >
+                      <UrlForm
+                        categories={categories}
+                      />
+                    </Col>
+                  </Row>
+                </Accordion>
 
-              <Accordion
-                id={CONTACT_PERSON_ACCORDIONS.ADDRESSES}
-                label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.ADDRESSES]}
-              >
-                <Row>
-                  <Col
-                    data-test-address-form
-                    xs={12}
-                  >
-                    <AddressInfo
-                      dropdownVendorCategories={categories}
-                    />
-                  </Col>
-                </Row>
-              </Accordion>
-            </AccordionSet>
-          </AccordionStatus>
-        </Col>
-      </Row>
-    </Pane>
+                <Accordion
+                  id={CONTACT_PERSON_ACCORDIONS.ADDRESSES}
+                  label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.ADDRESSES]}
+                >
+                  <Row>
+                    <Col
+                      data-test-address-form
+                      xs={12}
+                    >
+                      <AddressInfo
+                        dropdownVendorCategories={categories}
+                      />
+                    </Col>
+                  </Row>
+                </Accordion>
+              </AccordionSet>
+            </AccordionStatus>
+          </Col>
+        </Row>
+      </Pane>
+    </HasCommand>
   );
 };
 

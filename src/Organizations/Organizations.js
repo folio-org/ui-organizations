@@ -5,6 +5,13 @@ import {
 } from 'react-router-dom';
 
 import {
+  checkScope,
+  CommandList,
+  defaultKeyboardShortcuts,
+  HasCommand,
+} from '@folio/stripes/components';
+
+import {
   NOTES_ROUTE,
   ORGANIZATIONS_ROUTE,
 } from '../common/constants';
@@ -14,28 +21,51 @@ import { OrganizationCreate } from './OrganizationCreate';
 import { OrganizationEdit } from './OrganizationEdit';
 
 const Organizations = () => {
+  const focusSearchField = () => {
+    const el = document.getElementById('input-record-search');
+
+    if (el) {
+      el.focus();
+    }
+  };
+
+  const shortcuts = [
+    {
+      name: 'search',
+      handler: focusSearchField,
+    },
+  ];
+
   return (
-    <Switch>
-      <Route
-        path={NOTES_ROUTE}
-        component={Notes}
-      />
+    <CommandList commands={defaultKeyboardShortcuts}>
+      <HasCommand
+        commands={shortcuts}
+        isWithinScope={checkScope}
+        scope={document.body}
+      >
+        <Switch>
+          <Route
+            path={NOTES_ROUTE}
+            component={Notes}
+          />
 
-      <Route
-        path="/organizations/create"
-        component={OrganizationCreate}
-      />
+          <Route
+            path="/organizations/create"
+            component={OrganizationCreate}
+          />
 
-      <Route
-        path="/organizations/:id/edit"
-        component={OrganizationEdit}
-      />
+          <Route
+            path="/organizations/:id/edit"
+            component={OrganizationEdit}
+          />
 
-      <Route
-        path={ORGANIZATIONS_ROUTE}
-        component={OrganizationsListContainer}
-      />
-    </Switch>
+          <Route
+            path={ORGANIZATIONS_ROUTE}
+            component={OrganizationsListContainer}
+          />
+        </Switch>
+      </HasCommand>
+    </CommandList>
   );
 };
 

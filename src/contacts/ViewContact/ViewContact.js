@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 
 import {
   Accordion,
   AccordionSet,
   AccordionStatus,
   Button,
+  checkScope,
   Col,
+  collapseAllSections,
   ExpandAllButton,
+  expandAllSections,
+  HasCommand,
   Icon,
   Pane,
   Row,
@@ -19,6 +24,7 @@ import {
   hydrateAddresses,
   transformCategoryIdsToLables,
 } from '../../common/utils';
+import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import {
   CONTACT_PERSON_ACCORDIONS,
   CONTACT_PERSON_ACCORDION_LABELS,
@@ -37,8 +43,29 @@ const ViewContact = ({
   unassign,
   deleteContact,
 }) => {
+  const history = useHistory();
+  const accordionStatusRef = useRef();
   const contactCategories = transformCategoryIdsToLables(categories, contact.categories);
   const addresses = hydrateAddresses(categories, contact.addresses);
+
+  const shortcuts = [
+    {
+      name: 'edit',
+      handler: () => history.push(editUrl),
+    },
+    {
+      name: 'expandAllSections',
+      handler: (e) => expandAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'collapseAllSections',
+      handler: (e) => collapseAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'search',
+      handler: () => history.push(ORGANIZATIONS_ROUTE),
+    },
+  ];
 
   // eslint-disable-next-line react/prop-types
   const getActionMenu = ({ onToggle }) => {
@@ -94,82 +121,88 @@ const ViewContact = ({
   };
 
   return (
-    <Pane
-      id="view-contact"
-      appIcon={<AppIcon app="organizations" appIconKey="organizations" />}
-      actionMenu={getActionMenu}
-      defaultWidth="fill"
-      dismissible
-      onClose={onClose}
-      paneTitle={`${contact.lastName}, ${contact.firstName}`}
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
     >
-      <Row data-test-contact-person>
-        <Col xs={12} md={8} mdOffset={2}>
-          <AccordionStatus>
-            <Row end="xs">
-              <Col xs={12}>
-                <ExpandAllButton />
-              </Col>
-            </Row>
-            <AccordionSet>
-              <Accordion
-                id={CONTACT_PERSON_ACCORDIONS.NAME}
-                label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.NAME]}
-              >
-                <ContactDetails
-                  firstName={contact.firstName}
-                  lastName={contact.lastName}
-                  prefix={contact.prefix}
-                  language={contact.language}
-                  isInactive={contact.inactive}
-                  categories={contactCategories}
-                  notes={contact.notes}
-                />
-              </Accordion>
+      <Pane
+        id="view-contact"
+        appIcon={<AppIcon app="organizations" appIconKey="organizations" />}
+        actionMenu={getActionMenu}
+        defaultWidth="fill"
+        dismissible
+        onClose={onClose}
+        paneTitle={`${contact.lastName}, ${contact.firstName}`}
+      >
+        <Row data-test-contact-person>
+          <Col xs={12} md={8} mdOffset={2}>
+            <AccordionStatus ref={accordionStatusRef}>
+              <Row end="xs">
+                <Col xs={12}>
+                  <ExpandAllButton />
+                </Col>
+              </Row>
+              <AccordionSet>
+                <Accordion
+                  id={CONTACT_PERSON_ACCORDIONS.NAME}
+                  label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.NAME]}
+                >
+                  <ContactDetails
+                    firstName={contact.firstName}
+                    lastName={contact.lastName}
+                    prefix={contact.prefix}
+                    language={contact.language}
+                    isInactive={contact.inactive}
+                    categories={contactCategories}
+                    notes={contact.notes}
+                  />
+                </Accordion>
 
-              <Accordion
-                id={CONTACT_PERSON_ACCORDIONS.EMAILS}
-                label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.EMAILS]}
-              >
-                <ContactEmails
-                  categories={categories}
-                  emails={contact.emails}
-                />
-              </Accordion>
+                <Accordion
+                  id={CONTACT_PERSON_ACCORDIONS.EMAILS}
+                  label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.EMAILS]}
+                >
+                  <ContactEmails
+                    categories={categories}
+                    emails={contact.emails}
+                  />
+                </Accordion>
 
-              <Accordion
-                id={CONTACT_PERSON_ACCORDIONS.PHONES}
-                label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.PHONES]}
-              >
-                <ContactPhoneNumbers
-                  categories={categories}
-                  phoneNumbers={contact.phoneNumbers}
-                />
-              </Accordion>
+                <Accordion
+                  id={CONTACT_PERSON_ACCORDIONS.PHONES}
+                  label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.PHONES]}
+                >
+                  <ContactPhoneNumbers
+                    categories={categories}
+                    phoneNumbers={contact.phoneNumbers}
+                  />
+                </Accordion>
 
-              <Accordion
-                id={CONTACT_PERSON_ACCORDIONS.URLS}
-                label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.URLS]}
-              >
-                <ContactUrls
-                  categories={categories}
-                  urls={contact.urls}
-                />
-              </Accordion>
+                <Accordion
+                  id={CONTACT_PERSON_ACCORDIONS.URLS}
+                  label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.URLS]}
+                >
+                  <ContactUrls
+                    categories={categories}
+                    urls={contact.urls}
+                  />
+                </Accordion>
 
-              <Accordion
-                id={CONTACT_PERSON_ACCORDIONS.ADDRESSES}
-                label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.ADDRESSES]}
-              >
-                <ContactAddresses
-                  addresses={addresses}
-                />
-              </Accordion>
-            </AccordionSet>
-          </AccordionStatus>
-        </Col>
-      </Row>
-    </Pane>
+                <Accordion
+                  id={CONTACT_PERSON_ACCORDIONS.ADDRESSES}
+                  label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.ADDRESSES]}
+                >
+                  <ContactAddresses
+                    addresses={addresses}
+                  />
+                </Accordion>
+              </AccordionSet>
+            </AccordionStatus>
+          </Col>
+        </Row>
+      </Pane>
+    </HasCommand>
   );
 };
 

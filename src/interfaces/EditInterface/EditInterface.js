@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field } from 'react-final-form';
+import { useHistory } from 'react-router';
 
 import stripesForm from '@folio/stripes/final-form';
 import {
@@ -11,7 +12,9 @@ import {
 import {
   Button,
   Checkbox,
+  checkScope,
   Col,
+  HasCommand,
   Headline,
   Pane,
   PaneMenu,
@@ -26,52 +29,61 @@ import {
   validateURL,
 } from '@folio/stripes-acq-components';
 
+import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import TogglePassword from '../../Utils/TogglePassword';
 import { INTERFACE_OPTIONS } from './util';
 
-class EditInterface extends Component {
-  static propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired,
-    paneTitle: PropTypes.node.isRequired,
-    pristine: PropTypes.bool.isRequired,
-    submitting: PropTypes.bool.isRequired,
-    formatDD: PropTypes.arrayOf(PropTypes.object),
-    deliveryMethodDD: PropTypes.arrayOf(PropTypes.object),
-  };
+const EditInterface = ({
+  handleSubmit,
+  onClose,
+  paneTitle,
+  pristine,
+  submitting,
+  formatDD,
+  deliveryMethodDD,
+}) => {
+  const history = useHistory();
+  const getLastMenu = () => (
+    <PaneMenu>
+      <FormattedMessage id="ui-organizations.interface.button.save">
+        {(title) => (
+          <Button
+            buttonStyle="primary"
+            disabled={pristine || submitting}
+            marginBottom0
+            onClick={handleSubmit}
+            title={title}
+            type="submit"
+          >
+            {title}
+          </Button>
+        )}
+      </FormattedMessage>
+    </PaneMenu>
+  );
 
-  getLastMenu = () => {
-    const { handleSubmit, pristine, submitting } = this.props;
+  const shortcuts = [
+    {
+      name: 'cancel',
+      shortcut: 'esc',
+      handler: () => onClose(),
+    },
+    {
+      name: 'save',
+      handler: handleSubmit,
+    },
+    {
+      name: 'search',
+      handler: () => history.push(ORGANIZATIONS_ROUTE),
+    },
+  ];
 
-    return (
-      <PaneMenu>
-        <FormattedMessage id="ui-organizations.interface.button.save">
-          {(title) => (
-            <Button
-              buttonStyle="primary"
-              disabled={pristine || submitting}
-              marginBottom0
-              onClick={handleSubmit}
-              title={title}
-              type="submit"
-            >
-              {title}
-            </Button>
-          )}
-        </FormattedMessage>
-      </PaneMenu>
-    );
-  }
-
-  render() {
-    const {
-      deliveryMethodDD,
-      formatDD,
-      onClose,
-      paneTitle,
-    } = this.props;
-
-    return (
+  return (
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
+    >
       <Pane
         appIcon={
           <AppIcon
@@ -82,7 +94,7 @@ class EditInterface extends Component {
         defaultWidth="fill"
         dismissible
         id="edit-interface"
-        lastMenu={this.getLastMenu()}
+        lastMenu={getLastMenu()}
         onClose={onClose}
         paneTitle={paneTitle}
       >
@@ -215,9 +227,19 @@ class EditInterface extends Component {
           </Col>
         </Row>
       </Pane>
-    );
-  }
-}
+    </HasCommand>
+  );
+};
+
+EditInterface.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  paneTitle: PropTypes.node.isRequired,
+  pristine: PropTypes.bool.isRequired,
+  submitting: PropTypes.bool.isRequired,
+  formatDD: PropTypes.arrayOf(PropTypes.object),
+  deliveryMethodDD: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default stripesForm({
   enableReinitialize: true,

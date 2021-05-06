@@ -2,16 +2,27 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
-import { useLocation } from 'react-router-dom';
+import {
+  useLocation,
+  useHistory,
+} from 'react-router-dom';
 
-import { IfPermission } from '@folio/stripes/core';
+import {
+  IfPermission,
+  useStripes,
+} from '@folio/stripes/core';
 import {
   Accordion,
   AccordionSet,
+  AccordionStatus,
   Button,
+  checkScope,
   Col,
+  collapseAllSections,
   ConfirmationModal,
   ExpandAllButton,
+  expandAllSections,
+  HasCommand,
   Icon,
   MenuSection,
   Pane,
@@ -22,12 +33,14 @@ import { NotesSmartAccordion } from '@folio/stripes/smart-components';
 import {
   TagsBadge,
   TagsPane,
-  useAccordionToggle,
   useAcqRestrictions,
   useModalToggle,
 } from '@folio/stripes-acq-components';
 
-import { NOTES_ROUTE } from '../../common/constants';
+import {
+  NOTES_ROUTE,
+  ORGANIZATIONS_ROUTE,
+} from '../../common/constants';
 import {
   ORG_DOMAIN,
   ORG_NOTE_TYPE,
@@ -53,8 +66,9 @@ const OrganizationDetails = ({
   organization,
   organizationCategories,
 }) => {
+  const stripes = useStripes();
   const [isRemoveModalOpened, toggleRemoveModal] = useModalToggle();
-  const [expandAll, sections, toggleSection] = useAccordionToggle({
+  const initialAccordionStatus = {
     [ORGANIZATION_SECTIONS.summarySection]: true,
     [ORGANIZATION_SECTIONS.contactInformationSection]: false,
     [ORGANIZATION_SECTIONS.contactPeopleSection]: true,
@@ -64,10 +78,12 @@ const OrganizationDetails = ({
     [ORGANIZATION_SECTIONS.ediInformationSection]: false,
     [ORGANIZATION_SECTIONS.accountsSection]: false,
     [ORGANIZATION_SECTIONS.notesSection]: false,
-  });
+  };
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
   const paneTitleRef = useRef();
   const location = useLocation();
+  const history = useHistory();
+  const accordionStatusRef = useRef();
   const isDetailsPaneInFocus = location.state?.isDetailsPaneInFocus;
   const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
     organization.id, organization.acqUnitIds,
@@ -126,8 +142,37 @@ const OrganizationDetails = ({
     </PaneMenu>
   );
 
+  const shortcuts = [
+    {
+      name: 'new',
+      handler: () => {
+        if (stripes.hasPerm('ui-organizations.create')) {
+          history.push(`${ORGANIZATIONS_ROUTE}/create`);
+        }
+      },
+    },
+    {
+      name: 'edit',
+      handler: () => {
+        if (stripes.hasPerm('ui-organizations.edit')) onEdit();
+      },
+    },
+    {
+      name: 'expandAllSections',
+      handler: (e) => expandAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'collapseAllSections',
+      handler: (e) => collapseAllSections(e, accordionStatusRef),
+    },
+  ];
+
   return (
-    <>
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
+    >
       <Pane
         id="pane-organization-details"
         defaultWidth="fill"
@@ -138,131 +183,127 @@ const OrganizationDetails = ({
         actionMenu={getActionMenu}
         lastMenu={detailsLastMenu}
       >
-        <Row end="xs">
-          <Col xs={12}>
-            <ExpandAllButton
-              accordionStatus={sections}
-              onToggle={expandAll}
+        <AccordionStatus ref={accordionStatusRef}>
+          <Row end="xs">
+            <Col xs={12}>
+              <ExpandAllButton />
+            </Col>
+          </Row>
+
+          <AccordionSet initialStatus={initialAccordionStatus}>
+            <Accordion
+              id={ORGANIZATION_SECTIONS.summarySection}
+              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.summarySection]}
+            >
+              <OrganizationSummary
+                acqUnitIds={organization.acqUnitIds}
+                aliases={organization.aliases}
+                code={organization.code}
+                description={organization.description}
+                erpCode={organization.erpCode}
+                isVendor={organization.isVendor}
+                language={organization.language}
+                metadata={organization.metadata}
+                name={organization.name}
+                status={organization.status}
+              />
+            </Accordion>
+
+            <NotesSmartAccordion
+              domainName={ORG_DOMAIN}
+              entityId={organization.id}
+              entityName={organization.name}
+              entityType={ORG_NOTE_TYPE}
+              hideAssignButton
+              id={ORGANIZATION_SECTIONS.notesSection}
+              pathToNoteCreate={`${NOTES_ROUTE}/new`}
+              pathToNoteDetails={NOTES_ROUTE}
             />
-          </Col>
-        </Row>
 
-        <AccordionSet
-          accordionStatus={sections}
-          onToggle={toggleSection}
-        >
-          <Accordion
-            id={ORGANIZATION_SECTIONS.summarySection}
-            label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.summarySection]}
-          >
-            <OrganizationSummary
-              acqUnitIds={organization.acqUnitIds}
-              aliases={organization.aliases}
-              code={organization.code}
-              description={organization.description}
-              erpCode={organization.erpCode}
-              isVendor={organization.isVendor}
-              language={organization.language}
-              metadata={organization.metadata}
-              name={organization.name}
-              status={organization.status}
-            />
-          </Accordion>
+            <Accordion
+              id={ORGANIZATION_SECTIONS.contactInformationSection}
+              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactInformationSection]}
+            >
+              <OrganizationContactInfo
+                organization={organization}
+                vendorCategories={organizationCategories}
+              />
+            </Accordion>
 
-          <NotesSmartAccordion
-            domainName={ORG_DOMAIN}
-            entityId={organization.id}
-            entityName={organization.name}
-            entityType={ORG_NOTE_TYPE}
-            hideAssignButton
-            id={ORGANIZATION_SECTIONS.notesSection}
-            pathToNoteCreate={`${NOTES_ROUTE}/new`}
-            pathToNoteDetails={NOTES_ROUTE}
-          />
+            <Accordion
+              id={ORGANIZATION_SECTIONS.contactPeopleSection}
+              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactPeopleSection]}
+            >
+              <OrganizationContactPeopleContainer
+                contactsIds={organization.contacts}
+                vendorCategories={organizationCategories}
+              />
+            </Accordion>
 
-          <Accordion
-            id={ORGANIZATION_SECTIONS.contactInformationSection}
-            label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactInformationSection]}
-          >
-            <OrganizationContactInfo
-              organization={organization}
-              vendorCategories={organizationCategories}
-            />
-          </Accordion>
+            <Accordion
+              id={ORGANIZATION_SECTIONS.interfacesSection}
+              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.interfacesSection]}
+            >
+              <OrganizationInterfacesContainer
+                interfaceIds={organization.interfaces}
+              />
+            </Accordion>
 
-          <Accordion
-            id={ORGANIZATION_SECTIONS.contactPeopleSection}
-            label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactPeopleSection]}
-          >
-            <OrganizationContactPeopleContainer
-              contactsIds={organization.contacts}
-              vendorCategories={organizationCategories}
-            />
-          </Accordion>
+            {
+              organization.isVendor && (
+                <>
+                  <Accordion
+                    id={ORGANIZATION_SECTIONS.vendorInformationSection}
+                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
+                  >
+                    <OrganizationVendorInfo
+                      paymentMethod={organization.paymentMethod}
+                      vendorCurrencies={organization.vendorCurrencies}
+                      claimingInterval={organization.claimingInterval}
+                      discountPercent={organization.discountPercent}
+                      expectedActivationInterval={organization.expectedActivationInterval}
+                      expectedInvoiceInterval={organization.expectedInvoiceInterval}
+                      expectedReceiptInterval={organization.expectedReceiptInterval}
+                      renewalActivationInterval={organization.renewalActivationInterval}
+                      subscriptionInterval={organization.subscriptionInterval}
+                      taxId={organization.taxId}
+                      taxPercentage={organization.taxPercentage}
+                      isLiableForVat={!!organization.liableForVat}
+                      isExportToAccounting={organization.exportToAccounting}
+                    />
+                  </Accordion>
 
-          <Accordion
-            id={ORGANIZATION_SECTIONS.interfacesSection}
-            label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.interfacesSection]}
-          >
-            <OrganizationInterfacesContainer
-              interfaceIds={organization.interfaces}
-            />
-          </Accordion>
+                  <Accordion
+                    id={ORGANIZATION_SECTIONS.vendorTermsSection}
+                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorTermsSection]}
+                  >
+                    <OrganizationAgreements
+                      agreements={organization.agreements}
+                    />
+                  </Accordion>
 
-          {
-            organization.isVendor && (
-              <>
-                <Accordion
-                  id={ORGANIZATION_SECTIONS.vendorInformationSection}
-                  label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
-                >
-                  <OrganizationVendorInfo
-                    paymentMethod={organization.paymentMethod}
-                    vendorCurrencies={organization.vendorCurrencies}
-                    claimingInterval={organization.claimingInterval}
-                    discountPercent={organization.discountPercent}
-                    expectedActivationInterval={organization.expectedActivationInterval}
-                    expectedInvoiceInterval={organization.expectedInvoiceInterval}
-                    expectedReceiptInterval={organization.expectedReceiptInterval}
-                    renewalActivationInterval={organization.renewalActivationInterval}
-                    subscriptionInterval={organization.subscriptionInterval}
-                    taxId={organization.taxId}
-                    taxPercentage={organization.taxPercentage}
-                    isLiableForVat={!!organization.liableForVat}
-                    isExportToAccounting={organization.exportToAccounting}
-                  />
-                </Accordion>
+                  <Accordion
+                    id={ORGANIZATION_SECTIONS.ediInformationSection}
+                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.ediInformationSection]}
+                  >
+                    <OrganizationEDIInfo
+                      edi={organization.edi}
+                    />
+                  </Accordion>
 
-                <Accordion
-                  id={ORGANIZATION_SECTIONS.vendorTermsSection}
-                  label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorTermsSection]}
-                >
-                  <OrganizationAgreements
-                    agreements={organization.agreements}
-                  />
-                </Accordion>
-
-                <Accordion
-                  id={ORGANIZATION_SECTIONS.ediInformationSection}
-                  label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.ediInformationSection]}
-                >
-                  <OrganizationEDIInfo
-                    edi={organization.edi}
-                  />
-                </Accordion>
-
-                <Accordion
-                  id={ORGANIZATION_SECTIONS.accountsSection}
-                  label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.accountsSection]}
-                >
-                  <OrganizationAccounts
-                    accounts={organization.accounts}
-                  />
-                </Accordion>
-              </>
-            )
-          }
-        </AccordionSet>
+                  <Accordion
+                    id={ORGANIZATION_SECTIONS.accountsSection}
+                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.accountsSection]}
+                  >
+                    <OrganizationAccounts
+                      accounts={organization.accounts}
+                    />
+                  </Accordion>
+                </>
+              )
+            }
+          </AccordionSet>
+        </AccordionStatus>
 
         {isRemoveModalOpened && (
           <ConfirmationModal
@@ -286,7 +327,7 @@ const OrganizationDetails = ({
           />
         )
       }
-    </>
+    </HasCommand>
   );
 };
 
