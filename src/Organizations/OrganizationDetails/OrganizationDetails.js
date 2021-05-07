@@ -154,7 +154,11 @@ const OrganizationDetails = ({
     {
       name: 'edit',
       handler: () => {
-        if (stripes.hasPerm('ui-organizations.edit')) onEdit();
+        if (
+          stripes.hasPerm('ui-organizations.edit') &&
+          !isRestrictionsLoading &&
+          !restrictions.protectUpdate
+        ) onEdit();
       },
     },
     {
