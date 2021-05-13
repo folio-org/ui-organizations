@@ -15,12 +15,13 @@ import { acqRowFormatter } from '@folio/stripes-acq-components';
 
 import { transformCategoryIdsToLables } from '../../../common/utils';
 
-const visibleColumns = ['name', 'categories', 'email', 'phone', 'icon'];
+const visibleColumns = ['name', 'categories', 'email', 'phone', 'status', 'icon'];
 const columnMapping = {
   name: <FormattedMessage id="ui-organizations.contactPeople.name" />,
   categories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
   email: <FormattedMessage id="ui-organizations.contactPeople.email" />,
   phone: <FormattedMessage id="ui-organizations.contactPeople.phone" />,
+  status: <FormattedMessage id="ui-organizations.contactPeople.status" />,
   icon: null,
 };
 const alignRowProps = { alignLastColToEnd: true };
@@ -37,6 +38,7 @@ const OrganizationContactPeople = ({ vendorCategories, contacts, openContact }) 
     categories: ({ categories = [] }) => transformCategoryIdsToLables(vendorCategories, categories) || <NoValue />,
     email: ({ emails }) => get(find(emails, 'isPrimary'), 'value', '') || <NoValue />,
     phone: ({ phoneNumbers }) => get(find(phoneNumbers, 'isPrimary'), 'phoneNumber', '') || <NoValue />,
+    status: (c) => <FormattedMessage id={`ui-organizations.contactPeople.status.${c.inactive ? 'inactive' : 'active'}`} />,
     icon: () => <Icon icon="caret-right" />,
   };
 
