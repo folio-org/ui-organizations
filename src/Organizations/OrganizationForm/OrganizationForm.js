@@ -19,6 +19,7 @@ import {
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
+import { FormFooter } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import { OrganizationSummaryForm } from './OrganizationSummaryForm';
@@ -34,7 +35,6 @@ import {
   ORGANIZATION_SECTIONS,
   ORGANIZATION_SECTION_LABELS,
 } from '../constants';
-import OrganizationFormFooter from './OrganizationFormFooter';
 
 const OrganizationForm = ({
   pristine,
@@ -62,7 +62,7 @@ const OrganizationForm = ({
     {
       name: 'cancel',
       shortcut: 'esc',
-      handler: cancelForm,
+      handler: () => cancelForm(),
     },
     {
       name: 'save',
@@ -83,10 +83,13 @@ const OrganizationForm = ({
   ];
 
   const paneFooter = (
-    <OrganizationFormFooter
-      isSaveDisabled={pristine || submitting}
-      saveOrganization={handleSubmit}
-      cancelForm={cancelForm}
+    <FormFooter
+      id="organization-form-save"
+      label={<FormattedMessage id="ui-organizations.button.saveAndClose" />}
+      pristine={pristine}
+      submitting={submitting}
+      handleSubmit={handleSubmit}
+      onCancel={cancelForm}
     />
   );
 

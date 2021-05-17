@@ -348,6 +348,6 @@
     "contactInfo.vendorCategory.shipments": "发货",
     "save.error.creds": "保存凭证时出错",
     "save.error.assignInterface": "将接口分配给组织时出错",
-    "contactPeople.errors.noPrimaryRecord": "No primary record selected",
-    "contactPeople.removedContact": "Removed contact"
+    "contactPeople.errors.noPrimaryRecord": "未选择主记录",
+    "contactPeople.removedContact": "已移除的联系人"
 }
