@@ -48,3 +48,16 @@ export const CONNECTION_MODES = [
 
 export const CREATE_UNITS_PERM = 'organizations.acquisitions-units-assignments.assign';
 export const MANAGE_UNITS_PERM = 'organizations.acquisitions-units-assignments.manage';
+
+// Mapping between attribute (field) in form and id of accordion
+export const MAP_FIELD_ACCORDION = {
+  name: ORGANIZATION_SECTIONS.summarySection,
+  code: ORGANIZATION_SECTIONS.summarySection,
+  status: ORGANIZATION_SECTIONS.summarySection,
+  aliases: ORGANIZATION_SECTIONS.summarySection,
+  addresses: ORGANIZATION_SECTIONS.contactInformationSection,
+  phoneNumbers: ORGANIZATION_SECTIONS.contactInformationSection,
+  urls: ORGANIZATION_SECTIONS.contactInformationSection,
+  agreements: ORGANIZATION_SECTIONS.vendorTermsSection,
+  accounts: ORGANIZATION_SECTIONS.accountsSection,
+};
