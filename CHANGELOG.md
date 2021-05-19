@@ -5,6 +5,7 @@
 * Acquisition units no longer restrict edit create or delete actions from action menu. Refs UIORGS-243.
 * Display contact people status in organization view. Refs UIORGS-248.
 * Implement Keyboard shortcuts modal. Refs UIORGS-246.
+* Force open accordion for required not filled fields. Refs UIORGS-244.
 
 ## [2.3.2](https://github.com/folio-org/ui-organizations/tree/v2.3.2) (2021-04-19)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.3.1...v2.3.2)
