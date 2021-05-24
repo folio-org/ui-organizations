@@ -16,6 +16,7 @@ import { useStripes } from '@folio/stripes/core';
 import { PersistedPaneset } from '@folio/stripes/smart-components';
 import {
   FiltersPane,
+  handleKeyCommand,
   NoResultsMessage,
   ResetButton,
   ResultsPane,
@@ -111,11 +112,11 @@ const OrganizationsList = ({
   const shortcuts = [
     {
       name: 'new',
-      handler: () => {
+      handler: handleKeyCommand(() => {
         if (stripes.hasPerm('ui-organizations.create')) {
           history.push(`${ORGANIZATIONS_ROUTE}/create`);
         }
-      },
+      }),
     },
   ];
 

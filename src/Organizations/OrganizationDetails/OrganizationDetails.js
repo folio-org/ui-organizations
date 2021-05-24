@@ -31,6 +31,7 @@ import {
 } from '@folio/stripes/components';
 import { NotesSmartAccordion } from '@folio/stripes/smart-components';
 import {
+  handleKeyCommand,
   TagsBadge,
   TagsPane,
   useAcqRestrictions,
@@ -145,21 +146,21 @@ const OrganizationDetails = ({
   const shortcuts = [
     {
       name: 'new',
-      handler: () => {
+      handler: handleKeyCommand(() => {
         if (stripes.hasPerm('ui-organizations.create')) {
           history.push(`${ORGANIZATIONS_ROUTE}/create`);
         }
-      },
+      }),
     },
     {
       name: 'edit',
-      handler: () => {
+      handler: handleKeyCommand(() => {
         if (
           stripes.hasPerm('ui-organizations.edit') &&
           !isRestrictionsLoading &&
           !restrictions.protectUpdate
         ) onEdit();
-      },
+      }),
     },
     {
       name: 'expandAllSections',

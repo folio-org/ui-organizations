@@ -25,6 +25,7 @@ import {
 } from '@folio/stripes/components';
 
 import {
+  handleKeyCommand,
   validateRequired,
   validateURL,
 } from '@folio/stripes-acq-components';
@@ -66,15 +67,15 @@ const EditInterface = ({
     {
       name: 'cancel',
       shortcut: 'esc',
-      handler: () => onClose(),
+      handler: handleKeyCommand(onClose),
     },
     {
       name: 'save',
-      handler: handleSubmit,
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
     },
     {
       name: 'search',
-      handler: () => history.push(ORGANIZATIONS_ROUTE),
+      handler: handleKeyCommand(() => history.push(ORGANIZATIONS_ROUTE)),
     },
   ];
 
