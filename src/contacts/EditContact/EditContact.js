@@ -29,6 +29,7 @@ import {
 
 import {
   FieldSelectFinal,
+  handleKeyCommand,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
@@ -102,11 +103,11 @@ const EditContact = ({
     {
       name: 'cancel',
       shortcut: 'esc',
-      handler: () => onClose(),
+      handler: handleKeyCommand(onClose),
     },
     {
       name: 'save',
-      handler: handleSubmit,
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
     },
     {
       name: 'expandAllSections',
@@ -118,7 +119,7 @@ const EditContact = ({
     },
     {
       name: 'search',
-      handler: () => history.push(ORGANIZATIONS_ROUTE),
+      handler: handleKeyCommand(() => history.push(ORGANIZATIONS_ROUTE)),
     },
   ];
 

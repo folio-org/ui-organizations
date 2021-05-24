@@ -19,6 +19,7 @@ import {
   Row,
 } from '@folio/stripes/components';
 import { AppIcon } from '@folio/stripes/core';
+import { handleKeyCommand } from '@folio/stripes-acq-components';
 
 import {
   hydrateAddresses,
@@ -51,7 +52,7 @@ const ViewContact = ({
   const shortcuts = [
     {
       name: 'edit',
-      handler: () => history.push(editUrl),
+      handler: handleKeyCommand(() => history.push(editUrl)),
     },
     {
       name: 'expandAllSections',
@@ -63,7 +64,7 @@ const ViewContact = ({
     },
     {
       name: 'search',
-      handler: () => history.push(ORGANIZATIONS_ROUTE),
+      handler: handleKeyCommand(() => history.push(ORGANIZATIONS_ROUTE)),
     },
   ];
 

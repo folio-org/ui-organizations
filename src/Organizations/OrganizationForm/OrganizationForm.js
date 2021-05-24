@@ -17,7 +17,11 @@ import {
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
-import { FormFooter, useAccordionToggle } from '@folio/stripes-acq-components';
+import {
+  FormFooter,
+  handleKeyCommand,
+  useAccordionToggle,
+} from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import { OrganizationSummaryForm } from './OrganizationSummaryForm';
@@ -71,11 +75,11 @@ const OrganizationForm = ({
     {
       name: 'cancel',
       shortcut: 'esc',
-      handler: () => cancelForm(),
+      handler: handleKeyCommand(cancelForm),
     },
     {
       name: 'save',
-      handler: handleSubmit,
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
     },
     {
       name: 'expandAllSections',
@@ -87,7 +91,7 @@ const OrganizationForm = ({
     },
     {
       name: 'search',
-      handler: () => history.push(ORGANIZATIONS_ROUTE),
+      handler: handleKeyCommand(() => history.push(ORGANIZATIONS_ROUTE)),
     },
   ];
 

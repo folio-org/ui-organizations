@@ -15,6 +15,7 @@ import {
   Row,
 } from '@folio/stripes/components';
 import { AppIcon } from '@folio/stripes/core';
+import { handleKeyCommand } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import { EDIT_INTERFACE_URL } from '../constants';
@@ -80,7 +81,7 @@ const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getC
   const shortcuts = [
     {
       name: 'edit',
-      handler: () => history.push(editUrl),
+      handler: handleKeyCommand(() => history.push(editUrl)),
     },
     {
       name: 'expandAllSections',
@@ -92,7 +93,7 @@ const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getC
     },
     {
       name: 'search',
-      handler: () => history.push(ORGANIZATIONS_ROUTE),
+      handler: handleKeyCommand(() => history.push(ORGANIZATIONS_ROUTE)),
     },
   ];
 
