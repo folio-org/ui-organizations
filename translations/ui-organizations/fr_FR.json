@@ -109,7 +109,7 @@
     "agreement.add": "Ajouter",
     "agreement.pleaseAddAgreements": "Merci d'ajouter des accords",
     "vendorInfo.paymentMethod": "Mode de paiement",
-    "vendorInfo.vendorCurrencies": "Devises du fournisseur",
+    "vendorInfo.vendorCurrencies": "Devise(s) du fournisseur",
     "vendorInfo.claimingInterval": "Intervalle de réclamation",
     "vendorInfo.discountPercent": "Pourcentage de remise",
     "vendorInfo.expectedActivationInterval": "Intervalle d'activation prévu",
