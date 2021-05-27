@@ -121,8 +121,6 @@ class OrganizationAccountsForm extends Component {
               dataOptions={PAYMENT_METHOD_OPTIONS}
               label={<FormattedMessage id="ui-organizations.accounts.paymentMethod" />}
               name={`${elem}.paymentMethod`}
-              required
-              validate={validateRequired}
               validateFields={[]}
             />
           </Col>
@@ -172,8 +170,6 @@ class OrganizationAccountsForm extends Component {
               fullWidth
               label={<FormattedMessage id="ui-organizations.accounts.libraryCode" />}
               name={`${elem}.libraryCode`}
-              required
-              validate={validateRequired}
               validateFields={[]}
             />
           </Col>
@@ -186,8 +182,6 @@ class OrganizationAccountsForm extends Component {
               fullWidth
               label={<FormattedMessage id="ui-organizations.accounts.libraryEDICode" />}
               name={`${elem}.libraryEdiCode`}
-              required
-              validate={validateRequired}
               validateFields={[]}
             />
           </Col>
