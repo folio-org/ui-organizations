@@ -7,6 +7,7 @@
 * Implement Keyboard shortcuts modal. Refs UIORGS-246.
 * Force open accordion for required not filled fields. Refs UIORGS-244.
 * Some fields in the "Account" accordion should not be required. Refs UIORGS-245.
+* Compile Translation Files into AST Format. Refs UIORGS-238.
 
 ## [2.3.2](https://github.com/folio-org/ui-organizations/tree/v2.3.2) (2021-04-19)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.3.1...v2.3.2)
