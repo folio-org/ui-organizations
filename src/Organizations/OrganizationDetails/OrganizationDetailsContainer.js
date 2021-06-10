@@ -22,7 +22,7 @@ import { useTranslatedCategories } from '../../common/hooks';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 import OrganizationDetails from './OrganizationDetails';
 
-const OrganizationDetailsContainer = ({
+export const OrganizationDetailsContainer = ({
   history,
   location,
   match,

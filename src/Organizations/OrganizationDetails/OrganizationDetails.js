@@ -101,6 +101,7 @@ const OrganizationDetails = ({
           <IfPermission perm="ui-organizations.edit">
             <Button
               buttonStyle="dropdownItem"
+              data-testid="edit-organization"
               data-test-button-edit-organization
               onClick={() => {
                 onToggle();
@@ -116,6 +117,7 @@ const OrganizationDetails = ({
           <IfPermission perm="ui-organizations.delete">
             <Button
               buttonStyle="dropdownItem"
+              data-testid="delete-organization"
               data-test-button-delete-organization
               onClick={() => {
                 onToggle();

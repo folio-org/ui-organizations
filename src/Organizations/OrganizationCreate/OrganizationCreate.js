@@ -33,7 +33,7 @@ const INITIAL_VALUES = {
   },
 };
 
-const OrganizationCreate = ({ history, location, mutator }) => {
+export const OrganizationCreate = ({ history, location, mutator }) => {
   const cancelForm = useCallback(
     (id) => {
       history.push({

@@ -30,7 +30,7 @@ import {
 } from '../OrganizationForm';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 
-const OrganizationEdit = ({ match, history, location, mutator }) => {
+export const OrganizationEdit = ({ match, history, location, mutator }) => {
   const organizationId = match.params.id;
 
   const [organization, setOrganization] = useState({});
@@ -113,9 +113,9 @@ OrganizationEdit.manifest = Object.freeze({
 });
 
 OrganizationEdit.propTypes = {
-  match: ReactRouterPropTypes.match.isRequired,
-  history: ReactRouterPropTypes.history.isRequired,
-  location: ReactRouterPropTypes.location.isRequired,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   mutator: PropTypes.object.isRequired,
 };
 
