@@ -20,7 +20,7 @@ const OrganizationContactInfoForm = ({
   vendorCategories,
 }) => {
   return (
-    <Row>
+    <Row data-testid="org-contacts-info-form">
       <Col xs={12}>
         <AddressInfo
           defaultLanguage={defaultLanguage}
