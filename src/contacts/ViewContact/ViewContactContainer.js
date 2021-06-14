@@ -25,7 +25,7 @@ import {
   unassign,
 } from './util';
 
-function ViewContactContainer({
+export function ViewContactContainer({
   baseUrl,
   history,
   match,

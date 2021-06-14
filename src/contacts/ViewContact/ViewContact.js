@@ -94,6 +94,7 @@ const ViewContact = ({
         {contactId && (
           <Button
             data-test-contacts-action-unassign
+            data-testid="unassign-contact"
             buttonStyle="dropdownItem"
             onClick={() => {
               onToggle();
@@ -107,6 +108,7 @@ const ViewContact = ({
         )}
         <Button
           data-test-contacts-action-delete
+          data-testid="delete-contact"
           buttonStyle="dropdownItem"
           onClick={() => {
             onToggle();

@@ -18,7 +18,7 @@ import { getBackPath } from '../../common/utils/createItem';
 
 import { deleteInterface, unassignInterface } from './util';
 
-function ViewInterfaceContainer({
+export function ViewInterfaceContainer({
   baseUrl,
   history,
   match,
