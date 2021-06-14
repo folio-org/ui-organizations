@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import { queryHelpers } from '@testing-library/dom';
 import user from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
@@ -153,23 +153,39 @@ describe('OrganizationForm', () => {
       collapseAllSections.mockClear();
     });
 
-    it('should call expandAllSections when expandAllSections shortcut is called', () => {
-      renderViewContact();
+    it('should call expandAllSections when expandAllSections shortcut is called', async () => {
+      const { container } = renderOrganizationForm();
 
-      HasCommand.mock.calls[0][0].commands.find(c => c.name === 'expandAllSections').handler();
+      act(() => {
+        HasCommand.mock.calls[0][0].commands.find(c => c.name === 'expandAllSections').handler();
+      });
 
-      expect(expandAllSections).toHaveBeenCalled();
+      const sections = queryAllByClass(container, 'defaultCollapseButton');
+
+      expect(
+        sections
+          .filter(collapseButton => collapseButton.getAttribute('aria-expanded') === 'true')
+          .length,
+      ).toBe(sections.length);
     });
 
     it('should call collapseAllSections when collapseAllSections shortcut is called', () => {
-      renderOrganizationForm();
+      const { container } = renderOrganizationForm();
 
-      HasCommand.mock.calls[0][0].commands.find(c => c.name === 'collapseAllSections').handler();
+      act(() => {
+        HasCommand.mock.calls[0][0].commands.find(c => c.name === 'collapseAllSections').handler();
+      });
 
-      expect(collapseAllSections).toHaveBeenCalled();
+      const sections = queryAllByClass(container, 'defaultCollapseButton');
+
+      expect(
+        sections
+          .filter(collapseButton => collapseButton.getAttribute('aria-expanded') === 'false')
+          .length,
+      ).toBe(sections.length);
     });
 
-    it('should navigate to edit view when edit shortcut is called', () => {
+    it('should cancel form when cancel shortcut is called', () => {
       const pushMock = jest.fn();
 
       useHistory.mockClear().mockReturnValue({
@@ -177,9 +193,9 @@ describe('OrganizationForm', () => {
       });
 
       renderOrganizationForm();
-      HasCommand.mock.calls[0][0].commands.find(c => c.name === 'edit').handler();
+      HasCommand.mock.calls[0][0].commands.find(c => c.name === 'cancel').handler();
 
-      expect(pushMock).toHaveBeenCalledWith(defaultProps.editUrl);
+      expect(defaultProps.cancelForm).toHaveBeenCalled();
     });
 
     it('should navigate to list view when search shortcut is called', () => {
