@@ -20,7 +20,7 @@ import {
 } from './const';
 import { getBackPath } from '../../common/utils/createItem';
 
-function EditInterfaceContainer({ orgId, history, match: { params }, mutator, resources, stripes }) {
+export function EditInterfaceContainer({ orgId, history, match: { params }, mutator, resources, stripes }) {
   const isNew = !params.id;
   const [creds, setCreds] = useState();
 
