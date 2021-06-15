@@ -26,7 +26,7 @@ import {
   CUSTOM_SORT_MAP,
 } from './OrganizationsListFilter/OrganizationsListFilterConfig';
 
-const buildTitlesQuery = makeQueryBuilder(
+export const buildOrgsQuery = makeQueryBuilder(
   'cql.allRecords=1',
   (query, qindex) => {
     if (qindex) {
@@ -47,7 +47,7 @@ export const OrganizationsListContainer = ({ mutator, location }) => {
     params: {
       limit: RESULT_COUNT_INCREMENT,
       offset,
-      query: buildTitlesQuery(queryString.parse(location.search)),
+      query: buildOrgsQuery(queryString.parse(location.search)),
     },
   });
 
