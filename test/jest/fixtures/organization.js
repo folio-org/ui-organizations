@@ -91,4 +91,10 @@ export const organization = {
     createdDate: '2021-06-15T01:53:07.899+00:00',
     updatedDate: '2021-06-15T01:53:07.899+00:00',
   },
+  edi: {
+    ediJob: {
+      time: '2021-06-16T11:59:00.000+04:00',
+      date: '2021-06-16',
+    },
+  },
 };
