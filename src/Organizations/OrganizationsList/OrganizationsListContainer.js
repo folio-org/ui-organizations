@@ -42,7 +42,7 @@ const buildTitlesQuery = makeQueryBuilder(
 
 const resetData = () => {};
 
-const OrganizationsListContainer = ({ mutator, location }) => {
+export const OrganizationsListContainer = ({ mutator, location }) => {
   const loadOrganizations = (offset) => mutator.organizationsListOrgs.GET({
     params: {
       limit: RESULT_COUNT_INCREMENT,
