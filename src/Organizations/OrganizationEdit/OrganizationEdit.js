@@ -6,7 +6,6 @@ import React, {
 import { FormattedMessage, useIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import moment from 'moment-timezone';
 
 import {
