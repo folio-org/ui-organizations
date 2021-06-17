@@ -227,7 +227,7 @@
     "contactPeople.details.lastName": "Nachname",
     "contactPeople.details.firstName": "Vorname",
     "contactPeople.addContact": "Kontakt hinzufügen",
-    "contacts.edit.paneTitle": "Kontakt bearbeiten",
+    "contacts.edit.paneTitle": "Kontakt bearbeiten - {name}",
     "contacts.create.paneTitle": "Kontakt erstellen",
     "contacts.view.paneTitle": "Kontakt - {name}",
     "contacts.button.edit": "Bearbeiten",
