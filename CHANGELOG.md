@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [2.4.0](https://github.com/folio-org/ui-organizations/tree/v2.4.0) (2021-06-17)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.3.2...v2.4.0)
+
 * Acquisition units no longer restrict edit create or delete actions from action menu. Refs UIORGS-243.
 * Display contact people status in organization view. Refs UIORGS-248.
 * Implement Keyboard shortcuts modal. Refs UIORGS-246.
@@ -9,6 +12,8 @@
 * Some fields in the "Account" accordion should not be required. Refs UIORGS-245.
 * Compile Translation Files into AST Format. Refs UIORGS-238.
 * eslint@"^7.7.0" causes peer-dep inconsistency. Refs UIORGS-249.
+* Resizable Panes - Persistence | Use PersistedPaneset smart component. Refs UIORGS-239.
+* Organizations app | Apply basic shortcut keys. Refs UIORGS-230.
 
 ## [2.3.2](https://github.com/folio-org/ui-organizations/tree/v2.3.2) (2021-04-19)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.3.1...v2.3.2)
