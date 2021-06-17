@@ -8,10 +8,10 @@ describe('FormatTime', () => {
   });
 
   it('should return formatted time for form', () => {
-    expect(FormatTime(organization, 'post')).toBe('2021-06-16T11:59:00.000+04:00');
+    expect(FormatTime(organization, 'post')).toBe('2021-06-16T11:59:00.000+00:00');
   });
 
   it('should return formatted time for details', () => {
-    expect(FormatTime(organization, 'get')).toBe('11:59 AM.+0400');
+    expect(FormatTime(organization, 'get')).toBe('7:59 AM.+0000');
   });
 });
