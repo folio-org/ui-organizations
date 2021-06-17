@@ -15,7 +15,7 @@ import {
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
-import ViewInterfaceContainer from './ViewInterface/ViewInterfaceContainer';
+import ViewInterfaceContainer from './ViewInterface';
 import EditInterfaceContainer from './EditInterface';
 import {
   ADD_INTERFACE_URL,

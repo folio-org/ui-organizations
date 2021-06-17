@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrganizationAgreementsForm should render correct structure with defined accounts 1`] = `
+<DocumentFragment>
+  <form>
+    <div
+      class="row"
+    >
+      <div
+        class="col-xs-12"
+      >
+        <div
+          class="panels"
+        >
+          <div
+            class="row"
+          >
+            <div
+              class="col-xs-6 col-md-3"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="agreements[0].name"
+                >
+                  ui-organizations.agreement.name
+                  <span
+                    aria-hidden="true"
+                    class="asterisk"
+                  >
+                    *
+                  </span>
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    aria-required="true"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    error=""
+                    id="agreements[0].name"
+                    name="agreements[0].name"
+                    required=""
+                    spellcheck="false"
+                    type="text"
+                    value="Full price"
+                    warning=""
+                  />
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+            </div>
+            <div
+              class="col-xs-6 col-md-3"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="agreements[0].discount"
+                >
+                  ui-organizations.agreement.discountSym
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    error=""
+                    id="agreements[0].discount"
+                    name="agreements[0].discount"
+                    spellcheck="false"
+                    type="number"
+                    value="0"
+                    warning=""
+                  />
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+            </div>
+            <div
+              class="col-xs-6 col-md-3"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="agreements[0].referenceUrl"
+                >
+                  ui-organizations.agreement.referenceUrl
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    error=""
+                    id="agreements[0].referenceUrl"
+                    name="agreements[0].referenceUrl"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                    warning=""
+                  />
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+            </div>
+            <div
+              class="col-xs-5 col-md-2"
+            >
+              <div
+                class="inputGroup textArea fullWidth"
+              >
+                <label
+                  class="label"
+                  for="agreements[0].notes"
+                >
+                  ui-organizations.agreement.notes
+                </label>
+                <textarea
+                  aria-invalid="false"
+                  class="formControl"
+                  id="agreements[0].notes"
+                  name="agreements[0].notes"
+                  type="text"
+                />
+                <div
+                  role="alert"
+                />
+              </div>
+            </div>
+            <div
+              class="col-xs-1"
+              style="padding-top: 20px;"
+            >
+              <button
+                aria-label="trash"
+                class="iconButton medium"
+                data-test-vendor-term-remove="true"
+                icon="trash"
+                type="button"
+              >
+                <span
+                  class="iconButtonInner mediumOffset"
+                  data-test-vendor-term-remove="true"
+                >
+                  <span>
+                    Icon
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-xs-12"
+        style="padding-top: 10px;"
+      >
+        <button
+          class="button default"
+          data-test-vendor-term-add="true"
+          type="button"
+        >
+          <span
+            class="inner"
+          >
+            ui-organizations.agreement.add
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`OrganizationAgreementsForm should render correct structure without accounts 1`] = `
+<DocumentFragment>
+  <form>
+    <div
+      class="row"
+    >
+      <div
+        class="col-xs-12"
+      >
+        <div
+          class="col-xs-6"
+        >
+          <div>
+            <em>
+              ui-organizations.agreement.pleaseAddAgreements
+            </em>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-xs-12"
+        style="padding-top: 10px;"
+      >
+        <button
+          class="button default"
+          data-test-vendor-term-add="true"
+          type="button"
+        >
+          <span
+            class="inner"
+          >
+            ui-organizations.agreement.add
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div />
+</DocumentFragment>
+`;

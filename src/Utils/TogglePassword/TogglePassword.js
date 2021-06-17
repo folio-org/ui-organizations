@@ -30,6 +30,7 @@ class TogglePassword extends Component {
       <Row>
         <Col xs={10}>
           <Field
+            data-testid="password-field"
             autoComplete="new-password"
             component={TextField}
             fullWidth

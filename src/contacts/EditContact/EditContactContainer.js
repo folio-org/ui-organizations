@@ -17,7 +17,7 @@ import { getBackPath } from '../../common/utils/createItem';
 import { DICT_CATEGORIES } from '../../common/constants';
 import { useTranslatedCategories } from '../../common/hooks';
 
-const EditContactContainer = ({
+export const EditContactContainer = ({
   history,
   match,
   mutator,

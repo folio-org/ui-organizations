@@ -51,6 +51,7 @@ const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getC
         {interfaceId && (
           <Button
             data-test-interface-action-unassign
+            data-testid="unassign-interface"
             buttonStyle="dropdownItem"
             onClick={() => {
               onToggle();
@@ -64,6 +65,7 @@ const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getC
         )}
         <Button
           data-test-interface-action-delete
+          data-testid="delete-interface"
           buttonStyle="dropdownItem"
           onClick={() => {
             onToggle();

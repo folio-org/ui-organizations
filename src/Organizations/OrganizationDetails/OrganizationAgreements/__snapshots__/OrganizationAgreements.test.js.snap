@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrganizationAgreements should render correct structure 1`] = `
+<DocumentFragment>
+  <div
+    data-test-agreements="true"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col-xs-3"
+      >
+        <div
+          class="kvRoot"
+        >
+          <div
+            class="kvLabel"
+          >
+            ui-organizations.agreement.name
+          </div>
+          <div
+            class="kvValue"
+            data-test-kv-value="true"
+          >
+            Amazon V
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-xs-3"
+      >
+        <div
+          class="kvRoot"
+        >
+          <div
+            class="kvLabel"
+          >
+            ui-organizations.agreement.discount
+          </div>
+          <div
+            class="kvValue"
+            data-test-kv-value="true"
+          >
+            10%
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-xs-3"
+      >
+        <div
+          class="kvRoot"
+        >
+          <div
+            class="kvLabel"
+          >
+            ui-organizations.agreement.referenceUrl
+          </div>
+          <div
+            class="kvValue"
+            data-test-kv-value="true"
+          >
+            test.com
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-xs-12"
+      >
+        <div
+          class="kvRoot"
+        >
+          <div
+            class="kvLabel"
+          >
+            ui-organizations.agreement.notes
+          </div>
+          <div
+            class="kvValue"
+            data-test-kv-value="true"
+          >
+            Default
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</DocumentFragment>
+`;

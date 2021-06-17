@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
 import { sortBy } from 'lodash';
 
@@ -15,7 +14,7 @@ import { baseContactsResource } from '../../../common/resources';
 
 import OrganizationContactPeople from './OrganizationContactPeople';
 
-const OrganizationContactPeopleContainer = ({
+export const OrganizationContactPeopleContainer = ({
   contactsIds,
   history,
   match,
@@ -81,8 +80,8 @@ OrganizationContactPeopleContainer.manifest = Object.freeze({
 });
 
 OrganizationContactPeopleContainer.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
-  match: ReactRouterPropTypes.match.isRequired,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
   mutator: PropTypes.object.isRequired,
   contactsIds: PropTypes.arrayOf(PropTypes.string),
   vendorCategories: PropTypes.arrayOf(PropTypes.object),

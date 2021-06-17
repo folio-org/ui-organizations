@@ -6,6 +6,8 @@ import { FormattedMessage } from 'react-intl';
 import { OptionSegment } from '@folio/stripes/components';
 import { FieldMultiSelectionFinal } from '@folio/stripes-acq-components';
 
+import { filterCategories } from './utils';
+
 function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabelledBy }) {
   const fieldName = name ? `${name}.categories` : 'categories';
   const toString = useCallback((option) => (
@@ -20,15 +22,11 @@ function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabel
   }, [dropdownVendorCategories]);
 
   const filterItems = useCallback((filterText, list) => {
-    const filterRegExp = new RegExp(`^${filterText}`, 'i');
-
-    const matchedCats = dropdownVendorCategories?.filter(({ value }) => value.search(filterRegExp) !== -1);
-    const matchedCatsExact = matchedCats?.filter(({ value }) => value === filterText);
-    const matchedCatIds = matchedCats.map(({ id }) => id);
-    const renderedItems = filterText ? list.filter(catId => matchedCatIds.includes(catId)) : list;
-    const exactMatch = filterText ? (matchedCatsExact?.length === 1) : false;
-
-    return { renderedItems, exactMatch };
+    return filterCategories({
+      filterText,
+      list,
+      categories: dropdownVendorCategories,
+    });
   }, [dropdownVendorCategories]);
 
   const dataOptions = useMemo(() => {
