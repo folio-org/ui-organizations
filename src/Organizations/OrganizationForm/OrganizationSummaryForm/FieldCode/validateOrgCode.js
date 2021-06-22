@@ -10,7 +10,7 @@ export const validateOrgCode = async (fetchOrgByCode, orgId, code) => {
     return errorRequired;
   }
 
-  let query = `code == ${code}`;
+  let query = `code=="${code}"`;
 
   if (orgId) query += ` and id<>"${orgId}"`;
 
