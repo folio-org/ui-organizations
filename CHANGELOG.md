@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Wrap Organization code in double quotes when validating. Refs UIORGS-252.
+
 ## [2.4.0](https://github.com/folio-org/ui-organizations/tree/v2.4.0) (2021-06-17)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.3.2...v2.4.0)
 
