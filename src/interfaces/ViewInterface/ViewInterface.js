@@ -14,7 +14,11 @@ import {
   Pane,
   Row,
 } from '@folio/stripes/components';
-import { AppIcon } from '@folio/stripes/core';
+import {
+  AppIcon,
+  IfPermission,
+  useStripes,
+} from '@folio/stripes/core';
 import { handleKeyCommand } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
@@ -24,30 +28,28 @@ import { OrganizationInterface } from '../../Organizations';
 const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getCreds }) => {
   const history = useHistory();
   const accordionStatusRef = useRef();
+
+  const stripes = useStripes();
+
   const interfaceId = item.id;
   const editUrl = `${baseUrl}/${interfaceId}/${EDIT_INTERFACE_URL}`;
+
   // eslint-disable-next-line react/prop-types
   const getActionMenu = ({ onToggle }) => {
     return (
       <div data-test-view-interface-actions>
-        <Button
-          data-test-interface-action-edit
-          buttonStyle="dropdownItem"
-          to={editUrl}
-        >
-          <Icon icon="edit">
-            <FormattedMessage id="ui-organizations.interface.button.edit" />
-          </Icon>
-        </Button>
-        {/* <Button
-          data-test-interface-action-copy
-          buttonStyle="dropdownItem"
-          onClick={onToggle}
-        >
-          <Icon icon="duplicate">
-            <FormattedMessage id="ui-organizations.interface.button.copy" />
-          </Icon>
-        </Button> */}
+        <IfPermission perm="organizations-storage.interfaces.item.put">
+          <Button
+            data-test-interface-action-edit
+            buttonStyle="dropdownItem"
+            to={editUrl}
+          >
+            <Icon icon="edit">
+              <FormattedMessage id="ui-organizations.interface.button.edit" />
+            </Icon>
+          </Button>
+        </IfPermission>
+
         {interfaceId && (
           <Button
             data-test-interface-action-unassign
@@ -63,19 +65,21 @@ const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getC
             </Icon>
           </Button>
         )}
-        <Button
-          data-test-interface-action-delete
-          data-testid="delete-interface"
-          buttonStyle="dropdownItem"
-          onClick={() => {
-            onToggle();
-            deleteInterface();
-          }}
-        >
-          <Icon icon="trash">
-            <FormattedMessage id="ui-organizations.interface.button.delete" />
-          </Icon>
-        </Button>
+        <IfPermission perm="organizations-storage.interfaces.item.delete">
+          <Button
+            data-test-interface-action-delete
+            data-testid="delete-interface"
+            buttonStyle="dropdownItem"
+            onClick={() => {
+              onToggle();
+              deleteInterface();
+            }}
+          >
+            <Icon icon="trash">
+              <FormattedMessage id="ui-organizations.interface.button.delete" />
+            </Icon>
+          </Button>
+        </IfPermission>
       </div>
     );
   };
@@ -83,7 +87,9 @@ const ViewInterface = ({ onClose, item, baseUrl, unassign, deleteInterface, getC
   const shortcuts = [
     {
       name: 'edit',
-      handler: handleKeyCommand(() => history.push(editUrl)),
+      handler: handleKeyCommand(() => {
+        if (stripes.hasPerm('organizations-storage.interfaces.item.put')) history.push(editUrl);
+      }),
     },
     {
       name: 'expandAllSections',
