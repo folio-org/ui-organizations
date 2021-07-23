@@ -18,7 +18,11 @@ import {
   Pane,
   Row,
 } from '@folio/stripes/components';
-import { AppIcon } from '@folio/stripes/core';
+import {
+  AppIcon,
+  IfPermission,
+  useStripes,
+} from '@folio/stripes/core';
 import { handleKeyCommand } from '@folio/stripes-acq-components';
 
 import {
@@ -46,13 +50,18 @@ const ViewContact = ({
 }) => {
   const history = useHistory();
   const accordionStatusRef = useRef();
+
+  const stripes = useStripes();
+
   const contactCategories = transformCategoryIdsToLables(categories, contact.categories);
   const addresses = hydrateAddresses(categories, contact.addresses);
 
   const shortcuts = [
     {
       name: 'edit',
-      handler: handleKeyCommand(() => history.push(editUrl)),
+      handler: handleKeyCommand(() => {
+        if (stripes.hasPerm('organizations-storage.contacts.item.put')) history.push(editUrl);
+      }),
     },
     {
       name: 'expandAllSections',
@@ -74,23 +83,17 @@ const ViewContact = ({
 
     return (
       <div data-test-view-contact-actions>
-        <Button
-          data-test-contacts-action-edit
-          buttonStyle="dropdownItem"
-          to={editUrl}
-        >
-          <Icon icon="edit">
-            <FormattedMessage id="ui-organizations.contacts.button.edit" />
-          </Icon>
-        </Button>
-        {/* <Button
-          data-test-contacts-action-copy
-          buttonStyle="dropdownItem"
-        >
-          <Icon icon="duplicate">
-            <FormattedMessage id="ui-organizations.contacts.button.copy" />
-          </Icon>
-        </Button> */}
+        <IfPermission perm="organizations-storage.contacts.item.put">
+          <Button
+            data-test-contacts-action-edit
+            buttonStyle="dropdownItem"
+            to={editUrl}
+          >
+            <Icon icon="edit">
+              <FormattedMessage id="ui-organizations.contacts.button.edit" />
+            </Icon>
+          </Button>
+        </IfPermission>
         {contactId && (
           <Button
             data-test-contacts-action-unassign
@@ -105,18 +108,21 @@ const ViewContact = ({
             </Icon>
           </Button>
         )}
-        <Button
-          data-test-contacts-action-delete
-          buttonStyle="dropdownItem"
-          onClick={() => {
-            onToggle();
-            deleteContact();
-          }}
-        >
-          <Icon icon="trash">
-            <FormattedMessage id="ui-organizations.contacts.button.delete" />
-          </Icon>
-        </Button>
+        <IfPermission perm="organizations-storage.contacts.item.delete">
+          <Button
+            data-test-contacts-action-delete
+            data-testid="delete-contact"
+            buttonStyle="dropdownItem"
+            onClick={() => {
+              onToggle();
+              deleteContact();
+            }}
+          >
+            <Icon icon="trash">
+              <FormattedMessage id="ui-organizations.contacts.button.delete" />
+            </Icon>
+          </Button>
+        </IfPermission>
       </div>
     );
   };
