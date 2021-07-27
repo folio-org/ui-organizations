@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [2.4.1](https://github.com/folio-org/ui-organizations/tree/v2.4.1) (2021-07-27)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.4.0...v2.4.1)
+
 * Wrap Organization code in double quotes when validating. Refs UIORGS-252.
 * permission sets should avoid .all permissions. Refs UIORGS-251.
 
