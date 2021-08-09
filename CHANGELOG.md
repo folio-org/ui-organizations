@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Expand sub accordions when user clicks "Expand all". Refs UIORGS-255.
+
 ## [2.4.1](https://github.com/folio-org/ui-organizations/tree/v2.4.1) (2021-07-27)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.4.0...v2.4.1)
 
