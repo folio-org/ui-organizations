@@ -61,21 +61,19 @@ const OrganizationContactInfo = ({ organization, vendorCategories }) => {
 
   return (
     <Layout className="margin-start-gutter">
-      <AccordionSet id="vendorCats">
-        {cats.map((category, index) => data[category.id] && (
-          <Accordion
-            label={category.value}
-            id={category.id}
-            closedByDefault
-            key={category.id || index}
-          >
-            <ContactAddresses addresses={data[category.id].addresses} />
-            <ContactPersonPhones phones={data[category.id].phoneNumbers} />
-            <ContactPersonEmails emails={data[category.id].emails} />
-            <ContactPersonURLs urls={data[category.id].urls} />
-          </Accordion>
-        ))}
-      </AccordionSet>
+      {cats.map((category, index) => data[category.id] && (
+        <Accordion
+          label={category.value}
+          id={category.id}
+          closedByDefault
+          key={category.id || index}
+        >
+          <ContactAddresses addresses={data[category.id].addresses} />
+          <ContactPersonPhones phones={data[category.id].phoneNumbers} />
+          <ContactPersonEmails emails={data[category.id].emails} />
+          <ContactPersonURLs urls={data[category.id].urls} />
+        </Accordion>
+      ))}
     </Layout>
   );
 };

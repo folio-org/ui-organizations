@@ -16,6 +16,8 @@ import {
   LANG_LABEL_BY_CODE,
 } from '@folio/stripes-acq-components';
 
+import { ORGANIZATION_SECTIONS } from '../../constants';
+
 const aliasesColumnMapping = {
   value: <FormattedMessage id="ui-organizations.summary.alias" />,
   description: <FormattedMessage id="ui-organizations.summary.description" />,
@@ -40,7 +42,12 @@ const OrganizationSummary = ({
     <>
       <Row>
         <Col xs={12}>
-          {metadata && <ViewMetaData metadata={metadata} />}
+          {metadata && (
+            <ViewMetaData
+              id={`${ORGANIZATION_SECTIONS.summarySection}.metadata`}
+              metadata={metadata}
+            />
+          )}
         </Col>
       </Row>
 
