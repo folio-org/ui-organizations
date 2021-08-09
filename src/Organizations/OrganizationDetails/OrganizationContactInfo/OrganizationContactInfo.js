@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import {
   Accordion,
-  AccordionSet,
   Icon,
   Layout,
 } from '@folio/stripes/components';
