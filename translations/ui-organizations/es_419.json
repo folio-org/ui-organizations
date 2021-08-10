@@ -348,6 +348,6 @@
     "contactInfo.vendorCategory.shipments": "Shipments",
     "save.error.creds": "Error while saving credentials",
     "save.error.assignInterface": "Error while assigning interface to the organization",
-    "contactPeople.errors.noPrimaryRecord": "No primary record selected",
+    "contactPeople.errors.noPrimaryRecord": "No se ha seleccionado ningún registro primario",
     "contactPeople.removedContact": "Contacto eliminado"
 }
