@@ -391,5 +391,7 @@
   "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
   "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
   "permission.acqUnits.manage": "Organizations: Manage acquisition units",
+  "permission.categories.settings.view": "Settings (Organizations): Can view categories settings",
+  "permission.categories.settings.all": "Settings (Organizations): Can view and edit categories settings",
   "permission.settings": "Settings (Organizations): Can view and edit settings"
 }

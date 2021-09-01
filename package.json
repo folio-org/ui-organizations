@@ -58,6 +58,26 @@
         ]
       },
       {
+        "permissionName": "ui-organizations.categories.settings.view",
+        "displayName": "Settings (Organizations): Can view settings",
+        "visible": true,
+        "subPermissions": [
+          "settings.organizations.enabled",
+          "organizations-storage.categories.collection.get",
+          "organizations-storage.categories.item.get"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.categories.settings.all",
+        "displayName": "Settings (Organizations): Can view and edit categories settings",
+        "visible": true,
+        "subPermissions": [
+          "ui-organizations.categories.settings.view",
+          "configuration.all",
+          "organizations-storage.categories.all"
+        ]
+      },
+      {
         "permissionName": "ui-organizations.third-party-services",
         "displayName": "Organizations: Permissions required to call services apart from mod-organizations-storage",
         "visible": false,
@@ -106,7 +126,7 @@
         "visible": true,
         "subPermissions": [
           "ui-organizations.basic.view",
-          "settings.organizations.enabled"
+          "ui-organizations.categories.settings.view"
         ]
       },
       {
@@ -206,8 +226,7 @@
         "displayName": "Settings (Organizations): Can view and edit settings",
         "visible": true,
         "subPermissions": [
-          "configuration.all",
-          "organizations-storage.categories.all",
+          "ui-organizations.categories.settings.all",
           "ui-organizations.view"
         ]
       }
