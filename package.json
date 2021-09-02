@@ -70,9 +70,9 @@
         ]
       },
       {
-        "permissionName": "ui-organizations.basic.view",
-        "displayName": "Organizations: Basic view",
-        "visible": false,
+        "permissionName": "ui-organizations.view",
+        "displayName": "Organizations: View",
+        "visible": true,
         "subPermissions": [
           "module.organizations.enabled",
           "organizations.organizations.collection.get",
@@ -98,15 +98,6 @@
           "organizations-storage.urls.collection.get",
           "organizations-storage.urls.item.get",
           "ui-organizations.third-party-services"
-        ]
-      },
-      {
-        "permissionName": "ui-organizations.view",
-        "displayName": "Organizations: View",
-        "visible": true,
-        "subPermissions": [
-          "ui-organizations.basic.view",
-          "settings.organizations.enabled"
         ]
       },
       {
@@ -169,7 +160,7 @@
         "visible": true,
         "subPermissions": [
           "organizations-storage.interfaces.credentials.item.get",
-          "ui-organizations.basic.view"
+          "ui-organizations.view"
         ]
       },
       {
@@ -206,9 +197,8 @@
         "displayName": "Settings (Organizations): Can view and edit settings",
         "visible": true,
         "subPermissions": [
-          "configuration.all",
-          "organizations-storage.categories.all",
-          "ui-organizations.view"
+          "settings.organizations.enabled",
+          "organizations-storage.categories.all"
         ]
       }
     ]

@@ -12,7 +12,6 @@ describe('No delete permission', () => {
     hasAllPerms: false,
     permissions: {
       'module.organizations.enabled': true,
-      'ui-organizations.basic.view': true,
       'ui-organizations.view': true,
       'ui-organizations.edit': true,
       'ui-organizations.create': true,

@@ -10,7 +10,6 @@ describe('No manage settings permission', () => {
     permissions: {
       'module.organizations.enabled': true,
       'settings.organizations.enabled': true,
-      'ui-organizations.basic.view': true,
       'ui-organizations.view': true,
       'ui-organizations.edit': true,
       'ui-organizations.create': true,

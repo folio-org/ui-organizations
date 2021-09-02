@@ -383,6 +383,13 @@
   "settings.action": "actions",
   "settings.vendorSettings": "Organizations settings",
 
-  "permission.ui-organizations.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
-  "permission.ui-organizations.acqUnits.manage": "Organizations: Manage acquisition units"
+  "permission.view": "Organizations: View",
+  "permission.edit": "Organizations: View, edit",
+  "permission.create": "Organizations: View, edit, create",
+  "permission.delete": "Organizations: View, edit, delete",
+  "permission.creds.view": "Organizations: Interface usernames and passwords: view",
+  "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
+  "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
+  "permission.acqUnits.manage": "Organizations: Manage acquisition units",
+  "permission.settings": "Settings (Organizations): Can view and edit settings"
 }
