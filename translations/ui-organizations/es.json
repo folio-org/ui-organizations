@@ -333,8 +333,6 @@
     "contacts.actions.load.error": "No se cargaron los datos de los contactos",
     "save.error.genericError": "No se pudo guardar la organización",
     "filterConfig.acqUnits": "Unidades de adquisición",
-    "permission.ui-organizations.acqUnits.assign": "Organizaciones: Asignar unidades de adquisición a nueva organización",
-    "permission.ui-organizations.acqUnits.manage": "Organizaciones: gestionar unidades de adquisición",
     "save.error.codeInUse": "El código ya está en uso",
     "search.placeholder.language": "Search with language code",
     "vendorInfo.exportToAccounting": "Exportar a contabilidad",
@@ -349,5 +347,14 @@
     "save.error.creds": "Error while saving credentials",
     "save.error.assignInterface": "Error while assigning interface to the organization",
     "contactPeople.errors.noPrimaryRecord": "No primary record selected",
-    "contactPeople.removedContact": "Removed contact"
+    "contactPeople.removedContact": "Removed contact",
+    "permission.view": "Organizations: View",
+    "permission.edit": "Organizations: View, edit",
+    "permission.create": "Organizations: View, edit, create",
+    "permission.delete": "Organizations: View, edit, delete",
+    "permission.creds.view": "Organizations: Interface usernames and passwords: view",
+    "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
+    "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
+    "permission.acqUnits.manage": "Organizations: Manage acquisition units",
+    "permission.settings": "Settings (Organizations): Can view and edit settings"
 }

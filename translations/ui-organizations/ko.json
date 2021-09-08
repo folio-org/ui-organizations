@@ -333,8 +333,6 @@
     "contacts.actions.load.error": "담당자 데이터를 로드하지 못했습니다.",
     "save.error.genericError": "공급사가 저장되지 않았습니다.",
     "filterConfig.acqUnits": "수서 단위",
-    "permission.ui-organizations.acqUnits.assign": "공급사 : 새 공급사에 수서 부서 할당",
-    "permission.ui-organizations.acqUnits.manage": "공급사 : 수서 부서 관리",
     "save.error.codeInUse": "코드가 이미 사용 중입니다.",
     "search.placeholder.language": "언어 코드로 검색",
     "vendorInfo.exportToAccounting": "회계로 내보내기",
@@ -349,5 +347,14 @@
     "save.error.creds": "자격 증명을 저장하는 동안 오류가 발생했습니다.",
     "save.error.assignInterface": "공급사에 인터페이스를 할당하는 동안 오류가 발생했습니다.",
     "contactPeople.errors.noPrimaryRecord": "기본 레코드가 선택되지 않았습니다.",
-    "contactPeople.removedContact": "연락처 삭제"
+    "contactPeople.removedContact": "연락처 삭제",
+    "permission.view": "Organizations: View",
+    "permission.edit": "Organizations: View, edit",
+    "permission.create": "Organizations: View, edit, create",
+    "permission.delete": "Organizations: View, edit, delete",
+    "permission.creds.view": "Organizations: Interface usernames and passwords: view",
+    "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
+    "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
+    "permission.acqUnits.manage": "Organizations: Manage acquisition units",
+    "permission.settings": "Settings (Organizations): Can view and edit settings"
 }
