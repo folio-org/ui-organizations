@@ -333,8 +333,6 @@
     "contacts.actions.load.error": "Laden von Kontaktdaten ist fehlgeschlagen",
     "save.error.genericError": "Organisation konnte nicht gespeichert werden",
     "filterConfig.acqUnits": "Erwerbungsteam",
-    "permission.ui-organizations.acqUnits.assign": "Organisationen: Erwerbungsteams einer neuen Organisation zuweisen",
-    "permission.ui-organizations.acqUnits.manage": "Organisationen: Erwerbungsteams verwalten",
     "save.error.codeInUse": "Code wird bereits verwendet",
     "search.placeholder.language": "Suche nach Sprachcode",
     "vendorInfo.exportToAccounting": "An Haushaltssystem exportieren",
@@ -349,5 +347,14 @@
     "save.error.creds": "Fehler beim Speichern von Anmeldedaten",
     "save.error.assignInterface": "Fehler beim Zuweisen vom Interface zu der Organisation",
     "contactPeople.errors.noPrimaryRecord": "No primary record selected",
-    "contactPeople.removedContact": "Removed contact"
+    "contactPeople.removedContact": "Removed contact",
+    "permission.view": "Organizations: View",
+    "permission.edit": "Organizations: View, edit",
+    "permission.create": "Organizations: View, edit, create",
+    "permission.delete": "Organizations: View, edit, delete",
+    "permission.creds.view": "Organizations: Interface usernames and passwords: view",
+    "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
+    "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
+    "permission.acqUnits.manage": "Organizations: Manage acquisition units",
+    "permission.settings": "Settings (Organizations): Can view and edit settings"
 }

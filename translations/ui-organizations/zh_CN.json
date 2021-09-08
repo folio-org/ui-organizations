@@ -333,8 +333,6 @@
     "contacts.actions.load.error": "无法加载联系人数据",
     "save.error.genericError": "无法保存组织",
     "filterConfig.acqUnits": "采购单元",
-    "permission.ui-organizations.acqUnits.assign": "组织：将采购单位分配给新组织",
-    "permission.ui-organizations.acqUnits.manage": "组织：管理采购单位",
     "save.error.codeInUse": "代码已在使用中",
     "search.placeholder.language": "用语言代码搜索",
     "vendorInfo.exportToAccounting": "导出到账户",
@@ -349,5 +347,14 @@
     "save.error.creds": "保存凭证时出错",
     "save.error.assignInterface": "将接口分配给组织时出错",
     "contactPeople.errors.noPrimaryRecord": "未选择主记录",
-    "contactPeople.removedContact": "已移除的联系人"
+    "contactPeople.removedContact": "已移除的联系人",
+    "permission.view": "Organizations: View",
+    "permission.edit": "Organizations: View, edit",
+    "permission.create": "Organizations: View, edit, create",
+    "permission.delete": "Organizations: View, edit, delete",
+    "permission.creds.view": "Organizations: Interface usernames and passwords: view",
+    "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
+    "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
+    "permission.acqUnits.manage": "Organizations: Manage acquisition units",
+    "permission.settings": "Settings (Organizations): Can view and edit settings"
 }
