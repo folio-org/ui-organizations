@@ -348,13 +348,13 @@
     "save.error.assignInterface": "خطأ أثناء تعيين الواجهة للمؤسسة",
     "contactPeople.errors.noPrimaryRecord": "لم يتم تحديد تسجيلة أولية",
     "contactPeople.removedContact": "جهة اتصال محذوفة",
-    "permission.view": "Organizations: View",
-    "permission.edit": "Organizations: View, edit",
-    "permission.create": "Organizations: View, edit, create",
-    "permission.delete": "Organizations: View, edit, delete",
-    "permission.creds.view": "Organizations: Interface usernames and passwords: view",
-    "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
-    "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
-    "permission.acqUnits.manage": "Organizations: Manage acquisition units",
-    "permission.settings": "Settings (Organizations): Can view and edit settings"
+    "permission.view": "المؤسسات: اعرض",
+    "permission.edit": "المؤسسات: اعرض، حرّر",
+    "permission.create": "المؤسسات: اعرض، حرّر، أنشئ",
+    "permission.delete": "المؤسسات: اعرض، حرّر، حذف",
+    "permission.creds.view": "المؤسسات: أسماء المستخدمين وكلمات المرور للواجهة: اعرض",
+    "permission.creds.manage": "المؤسسات: أسماء المستخدمين وكلمات المرور للواجهة: اعرض، حرّر، أنشئ، احذف",
+    "permission.acqUnits.assign": "المؤسسات: عيّن وحدات تزويد إلى مؤسسة جديدة",
+    "permission.acqUnits.manage": "المؤسسات: أدر وحدات التزويد",
+    "permission.settings": "الإعدادات (المؤسسات): إمكانية عرض وتحرير الإعدادات"
 }
