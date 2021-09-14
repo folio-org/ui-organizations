@@ -4,10 +4,8 @@ import { expect } from 'chai';
 import setupApplication from '../helpers/setup-application';
 import {
   AutoSuggestListInteractor,
-  OrganizationDetailsInteractor,
   OrganizationEditInteractor,
 } from '../interactors';
-import { ORGANIZATION_STATUS } from '../../../src/common/constants';
 
 const TEST_ADDRESS = 'test address';
 
@@ -15,7 +13,6 @@ describe('Create organization', function () {
   setupApplication();
 
   const orgEdit = new OrganizationEditInteractor();
-  const orgDetails = new OrganizationDetailsInteractor();
 
   this.timeout(10000);
 
@@ -46,20 +43,6 @@ describe('Create organization', function () {
       expect(orgEdit.vendorTermsSection.isPresent).not.to.be.true;
       expect(orgEdit.ediInformationSection.isPresent).not.to.be.true;
       expect(orgEdit.accountsSection.isPresent).not.to.be.true;
-    });
-
-    describe('submit action', () => {
-      beforeEach(async () => {
-        await orgEdit.summarySectionForm.name.fillAndBlur('Test organization create');
-        await orgEdit.summarySectionForm.status.select(ORGANIZATION_STATUS.active);
-        await orgEdit.summarySectionForm.code.fillAndBlur('Test_code');
-        await orgEdit.createOrgButton.focus();
-        await orgEdit.createOrgButton.click();
-      });
-
-      it('should close form', () => {
-        expect(orgEdit.isPresent).to.be.false;
-      });
     });
   });
 
@@ -98,33 +81,6 @@ describe('Create organization', function () {
         it('should remove fiedls for account', () => {
           expect(orgEdit.removeNameButton.isPresent).to.be.false;
           expect(orgEdit.accounts().length).to.be.equal(0);
-        });
-      });
-
-      describe('submit action', () => {
-        beforeEach(async () => {
-          await orgEdit.accountsSection.name.fillAndBlur('test acc');
-          await orgEdit.accountsSection.accNumber.fillAndBlur('2323');
-          await orgEdit.accountsSection.paymentMethod.select('EFT');
-          await orgEdit.accountsSection.accountStatus.select('Active');
-          await orgEdit.accountsSection.libraryCode.fillAndBlur('2323s');
-          await orgEdit.accountsSection.libraryEDIcode.fillAndBlur('323ss');
-          await orgEdit.accountsSection.acquisitionUnits.clickControl();
-          await orgEdit.accountsSection.firstAcqUnitOption.click();
-          await orgEdit.summarySectionForm.name.fillAndBlur('Test organization create');
-          await orgEdit.summarySectionForm.status.select(ORGANIZATION_STATUS.active);
-          await orgEdit.summarySectionForm.code.fillAndBlur('code');
-          await orgEdit.aliases.aliasAddButton.click();
-          await orgEdit.aliases.aliasInputs(0).fillAndBlur('test name');
-          await orgEdit.createOrgButton.focus();
-          await orgEdit.createOrgButton.click();
-          await orgDetails.whenLoaded();
-          await orgDetails.accountsSection.headerButton.click();
-        });
-
-        it('should close form', () => {
-          expect(orgEdit.isPresent).to.be.false;
-          expect(orgDetails.accountsSection.acqUnitsView).to.contain('Test');
         });
       });
     });
