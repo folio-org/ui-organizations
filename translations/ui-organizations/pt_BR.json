@@ -348,13 +348,13 @@
     "save.error.assignInterface": "Erro ao atribuir interface à organização",
     "contactPeople.errors.noPrimaryRecord": "Nenhum registro primário selecionado",
     "contactPeople.removedContact": "Contato removido",
-    "permission.view": "Organizations: View",
-    "permission.edit": "Organizations: View, edit",
-    "permission.create": "Organizations: View, edit, create",
-    "permission.delete": "Organizations: View, edit, delete",
-    "permission.creds.view": "Organizations: Interface usernames and passwords: view",
-    "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
-    "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
-    "permission.acqUnits.manage": "Organizations: Manage acquisition units",
-    "permission.settings": "Settings (Organizations): Can view and edit settings"
+    "permission.view": "Organizações: Ver",
+    "permission.edit": "Organizações: Ver, editar",
+    "permission.create": "Organizações: Ver, editar, criar",
+    "permission.delete": "Organizações: Ver, editar, excluir",
+    "permission.creds.view": "Organizações: Nomes de usuários e senhas da interface: ver",
+    "permission.creds.manage": "Organizações: Interface nomes de usuário e senhas: ver, editar, criar, excluir",
+    "permission.acqUnits.assign": "Organizações: Atribuir unidades de aquisição a uma nova organização",
+    "permission.acqUnits.manage": "Organizações: Gerenciar unidades de aquisição",
+    "permission.settings": "Configurações (Organizações): Pode visualizar e editar as configurações"
 }
