@@ -1,89 +1,43 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  withRouter,
-} from 'react-router-dom';
-import ReactRouterPropTypes from 'react-router-prop-types';
-import queryString from 'query-string';
 
-import { stripesConnect } from '@folio/stripes/core';
 import {
-  makeQueryBuilder,
-  useList,
+  usePagination,
 } from '@folio/stripes-acq-components';
 
 import {
   RESULT_COUNT_INCREMENT,
-  organizationsResource,
 } from '../../common/resources';
 
 import OrganizationsList from './OrganizationsList';
-import {
-  getKeywordQuery,
-} from './OrganizationsListSearchConfig';
-import {
-  customFilterMap,
-  CUSTOM_SORT_MAP,
-} from './OrganizationsListFilter/OrganizationsListFilterConfig';
-
-export const buildOrgsQuery = makeQueryBuilder(
-  'cql.allRecords=1',
-  (query, qindex) => {
-    if (qindex) {
-      return `(${qindex}=${query}*)`;
-    }
-
-    return getKeywordQuery(query);
-  },
-  'sortby name/sort.ascending',
-  customFilterMap,
-  CUSTOM_SORT_MAP,
-);
+import { useOrganizations } from './hooks';
 
 const resetData = () => {};
 
-export const OrganizationsListContainer = ({ mutator, location }) => {
-  const loadOrganizations = (offset) => mutator.organizationsListOrgs.GET({
-    params: {
-      limit: RESULT_COUNT_INCREMENT,
-      offset,
-      query: buildOrgsQuery(queryString.parse(location.search)),
-    },
-  });
-
-  const loadOrganizationsCB = (setOrganizations, organizationsResponse) => {
-    setOrganizations((prev) => [...prev, ...organizationsResponse.organizations]);
-  };
-
+export const OrganizationsListContainer = () => {
   const {
-    records: organizations,
-    recordsCount: organizationsCount,
-    isLoading,
-    onNeedMoreData,
-    refreshList,
+    pagination,
+    changePage,
+    refreshPage,
+  } = usePagination({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
+  const {
+    organizations,
+    totalRecords,
+    isFetching,
     resultsPaneTitleRef,
-  } = useList(false, loadOrganizations, loadOrganizationsCB, RESULT_COUNT_INCREMENT);
+  } = useOrganizations({ pagination });
 
   return (
     <OrganizationsList
-      onNeedMoreData={onNeedMoreData}
+      onNeedMoreData={changePage}
       resetData={resetData}
-      organizationsCount={organizationsCount}
-      isLoading={isLoading}
+      organizationsCount={totalRecords}
+      isLoading={isFetching}
       organizations={organizations}
-      refreshList={refreshList}
+      refreshList={refreshPage}
+      pagination={pagination}
       resultsPaneTitleRef={resultsPaneTitleRef}
     />
   );
 };
 
-OrganizationsListContainer.manifest = Object.freeze({
-  organizationsListOrgs: organizationsResource,
-});
-
-OrganizationsListContainer.propTypes = {
-  mutator: PropTypes.object.isRequired,
-  location: ReactRouterPropTypes.location.isRequired,
-};
-
-export default withRouter(stripesConnect(OrganizationsListContainer));
+export default OrganizationsListContainer;
