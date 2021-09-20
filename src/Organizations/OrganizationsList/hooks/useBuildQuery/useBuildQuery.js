@@ -13,7 +13,7 @@ import {
 } from '../../OrganizationsListFilter/OrganizationsListFilterConfig';
 
 export const useBuildQuery = () => {
-  const buildQuery = useCallback(makeQueryBuilder(
+  return useCallback(makeQueryBuilder(
     'cql.allRecords=1',
     (query, qindex) => {
       if (qindex) {
@@ -26,6 +26,4 @@ export const useBuildQuery = () => {
     customFilterMap,
     CUSTOM_SORT_MAP,
   ), []);
-
-  return buildQuery;
 };
