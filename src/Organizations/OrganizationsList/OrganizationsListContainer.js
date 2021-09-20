@@ -23,7 +23,6 @@ export const OrganizationsListContainer = () => {
     organizations,
     totalRecords,
     isFetching,
-    resultsPaneTitleRef,
   } = useOrganizations({ pagination });
 
   return (
@@ -35,7 +34,6 @@ export const OrganizationsListContainer = () => {
       organizations={organizations}
       refreshList={refreshPage}
       pagination={pagination}
-      resultsPaneTitleRef={resultsPaneTitleRef}
     />
   );
 };

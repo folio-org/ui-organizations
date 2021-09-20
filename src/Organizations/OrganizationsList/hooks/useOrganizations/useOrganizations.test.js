@@ -34,10 +34,8 @@ describe('useOrganizations', () => {
       .mockReturnValue({
         get: () => ({
           json: () => ({
-            then: () => ({
-              organizations,
-              totalRecords: organizations.length,
-            }),
+            organizations,
+            totalRecords: organizations.length,
           }),
         }),
       });
@@ -58,7 +56,6 @@ describe('useOrganizations', () => {
       organizations: [],
       totalRecords: 0,
       isFetching: false,
-      resultsPaneTitleRef: { current: undefined },
     });
   });
 
@@ -77,7 +74,6 @@ describe('useOrganizations', () => {
       organizations: [organization],
       totalRecords: 1,
       isFetching: false,
-      resultsPaneTitleRef: { current: undefined },
     });
   });
 });

@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
@@ -27,7 +26,6 @@ export const useOrganizations = ({
   const queryParams = queryString.parse(search);
   const query = buildQuery(queryParams);
   const filtersCount = getFiltersCount(queryParams);
-  const resultsPaneTitleRef = useRef();
 
   const defaultSearchParams = {
     query,
@@ -43,14 +41,7 @@ export const useOrganizations = ({
 
     return ky
       .get(VENDORS_API, { searchParams: { ...defaultSearchParams, ...searchParams } })
-      .json()
-      .then(res => {
-        if (res.totalRecords !== null) {
-          resultsPaneTitleRef?.current?.focus();
-        }
-
-        return res;
-      });
+      .json();
   };
   const defaultOptions = {
     enabled: Boolean(pagination.timestamp),
@@ -69,6 +60,5 @@ export const useOrganizations = ({
   return ({
     ...data,
     isFetching,
-    resultsPaneTitleRef,
   });
 };
