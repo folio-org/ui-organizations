@@ -28,4 +28,4 @@ export const fetchOrgsByParam = {
   fetch: false,
 };
 
-export const RESULT_COUNT_INCREMENT = 100;
+export const RESULT_COUNT_INCREMENT = 30;
