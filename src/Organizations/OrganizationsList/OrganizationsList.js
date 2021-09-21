@@ -21,9 +21,11 @@ import {
   ResetButton,
   ResultsPane,
   SingleSearchForm,
+  PrevNextPagination,
   useFiltersToogle,
   useLocationFilters,
   useLocationSorting,
+  useItemToView,
 } from '@folio/stripes-acq-components';
 
 import { RESULT_COUNT_INCREMENT } from '../../common/resources';
@@ -64,6 +66,7 @@ const OrganizationsList = ({
   organizationsCount,
   refreshList,
   resultsPaneTitleRef,
+  pagination,
 }) => {
   const stripes = useStripes();
   const history = useHistory();
@@ -120,6 +123,8 @@ const OrganizationsList = ({
     },
   ];
 
+  const { itemToView, setItemToView, deleteItemToView } = useItemToView('organizations-list');
+
   return (
     <HasCommand
       commands={shortcuts}
@@ -164,6 +169,7 @@ const OrganizationsList = ({
 
         <ResultsPane
           id="organizations-results-pane"
+          autosize
           title={resultsPaneTitle}
           count={organizationsCount}
           renderLastMenu={renderLastMenu}
@@ -172,26 +178,41 @@ const OrganizationsList = ({
           isFiltersOpened={isFiltersOpened}
           resultsPaneTitleRef={resultsPaneTitleRef}
         >
-          <MultiColumnList
-            id="organizations-list"
-            totalCount={organizationsCount}
-            contentData={organizations}
-            visibleColumns={visibleColumns}
-            columnMapping={columnMapping}
-            formatter={resultsFormatter}
-            loading={isLoading}
-            autosize
-            virtualize
-            onNeedMoreData={onNeedMoreData}
-            sortOrder={sortingField}
-            sortDirection={sortingDirection}
-            onHeaderClick={changeSorting}
-            onRowClick={openOrganizationDetails}
-            isEmptyMessage={resultsStatusMessage}
-            pagingType="click"
-            hasMargin
-            pageAmount={RESULT_COUNT_INCREMENT}
-          />
+          {({ height, width }) => (
+            <>
+              <MultiColumnList
+                id="organizations-list"
+                totalCount={organizationsCount}
+                contentData={organizations}
+                visibleColumns={visibleColumns}
+                columnMapping={columnMapping}
+                formatter={resultsFormatter}
+                loading={isLoading}
+                onNeedMoreData={onNeedMoreData}
+                sortOrder={sortingField}
+                sortDirection={sortingDirection}
+                onHeaderClick={changeSorting}
+                onRowClick={openOrganizationDetails}
+                isEmptyMessage={resultsStatusMessage}
+                pagingType="none"
+                hasMargin
+                pageAmount={RESULT_COUNT_INCREMENT}
+                height={height - PrevNextPagination.HEIGHT}
+                width={width}
+                itemToView={itemToView}
+                onMarkPosition={setItemToView}
+                onResetMark={deleteItemToView}
+              />
+              {organizations.length > 0 && (
+                <PrevNextPagination
+                  {...pagination}
+                  totalCount={organizationsCount}
+                  disabled={isLoading}
+                  onChange={onNeedMoreData}
+                />
+              )}
+            </>
+          )}
         </ResultsPane>
 
         <Route
@@ -216,6 +237,7 @@ OrganizationsList.propTypes = {
   organizations: PropTypes.arrayOf(PropTypes.object),
   refreshList: PropTypes.func.isRequired,
   resultsPaneTitleRef: PropTypes.object,
+  pagination: PropTypes.object,
 };
 
 OrganizationsList.defaultProps = {
