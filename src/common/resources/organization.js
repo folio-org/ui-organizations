@@ -27,5 +27,3 @@ export const fetchOrgsByParam = {
   accumulate: true,
   fetch: false,
 };
-
-export const RESULT_COUNT_INCREMENT = 50;

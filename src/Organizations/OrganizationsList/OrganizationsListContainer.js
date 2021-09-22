@@ -1,12 +1,9 @@
 import React from 'react';
 
 import {
+  RESULT_COUNT_INCREMENT,
   usePagination,
 } from '@folio/stripes-acq-components';
-
-import {
-  RESULT_COUNT_INCREMENT,
-} from '../../common/resources';
 
 import OrganizationsList from './OrganizationsList';
 import { useOrganizations } from './hooks';
