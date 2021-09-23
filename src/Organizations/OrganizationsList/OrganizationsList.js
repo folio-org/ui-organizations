@@ -15,6 +15,7 @@ import {
 import { useStripes } from '@folio/stripes/core';
 import { PersistedPaneset } from '@folio/stripes/smart-components';
 import {
+  RESULT_COUNT_INCREMENT,
   FiltersPane,
   handleKeyCommand,
   NoResultsMessage,
@@ -28,7 +29,6 @@ import {
   useItemToView,
 } from '@folio/stripes-acq-components';
 
-import { RESULT_COUNT_INCREMENT } from '../../common/resources';
 import {
   ORGANIZATIONS_ROUTE,
   VIEW_ORG_DETAILS,
