@@ -6,6 +6,7 @@
 * Add translations for permissions. Refs UIORGS-179.
 * increment stripes to v7. Refs UIORGS-256.
 * Organizations - Implement MCL Next/Previous pagination. Refs UIORGS-257.
+* Filter label contains extra 's'. Refs UIORGS-263.
 
 ## [2.4.1](https://github.com/folio-org/ui-organizations/tree/v2.4.1) (2021-07-27)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.4.0...v2.4.1)
