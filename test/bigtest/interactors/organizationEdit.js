@@ -29,7 +29,7 @@ import ConfirmationModal from './ConfirmationModal';
   static defaultScope = `#${SECTIONS.summarySection}`;
   headerButton = new Button(`#accordion-toggle-button-${SECTIONS.summarySection}`);
   metadata = new Metadata();
-  isExpanded = isVisible('[class*=content---]');
+  isExpanded = isVisible('[class^=content-region]');
   name = new TextFieldInteractor('input[name="name"]');
   isVendor = new CheckboxInteractor('input[name="isVendor"]');
   code = new TextFieldInteractor('input[name="code"]');

@@ -12,7 +12,7 @@ class SummarySection {
   static defaultScope = `#${ORGANIZATION_SECTIONS.summarySection}`;
   metadata = new Metadata();
   headerButton = new Button(`#accordion-toggle-button-${ORGANIZATION_SECTIONS.summarySection}`);
-  isExpanded = isVisible('[class*=content---]');
+  isExpanded = isVisible('[class^=content-region]');
 }
 
 export default interactor(SummarySection);
