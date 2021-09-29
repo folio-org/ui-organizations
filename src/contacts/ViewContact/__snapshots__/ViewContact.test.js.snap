@@ -230,7 +230,7 @@ exports[`ViewContact should render correct structure 1`] = `
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-name"
-                    class="content expanded"
+                    class="content-region expanded"
                     data-test-accordion-wrapper="true"
                     id="accordion1"
                     role="region"
@@ -430,7 +430,7 @@ exports[`ViewContact should render correct structure 1`] = `
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-emails"
-                    class="content expanded"
+                    class="content-region expanded"
                     data-test-accordion-wrapper="true"
                     id="accordion2"
                     role="region"
@@ -638,7 +638,7 @@ exports[`ViewContact should render correct structure 1`] = `
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-phones"
-                    class="content expanded"
+                    class="content-region expanded"
                     data-test-accordion-wrapper="true"
                     id="accordion4"
                     role="region"
@@ -844,7 +844,7 @@ exports[`ViewContact should render correct structure 1`] = `
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-urls"
-                    class="content expanded"
+                    class="content-region expanded"
                     data-test-accordion-wrapper="true"
                     id="accordion6"
                     role="region"
@@ -1052,7 +1052,7 @@ exports[`ViewContact should render correct structure 1`] = `
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-addresses"
-                    class="content expanded"
+                    class="content-region expanded"
                     data-test-accordion-wrapper="true"
                     id="accordion8"
                     role="region"

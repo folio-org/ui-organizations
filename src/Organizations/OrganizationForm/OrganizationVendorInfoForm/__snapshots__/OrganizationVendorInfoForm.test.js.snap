@@ -640,7 +640,7 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
             >
               <div
                 aria-labelledby="accordion-toggle-button-taxSection"
-                class="content expanded"
+                class="content-region expanded"
                 data-test-accordion-wrapper="true"
                 id="accordion2"
                 role="region"

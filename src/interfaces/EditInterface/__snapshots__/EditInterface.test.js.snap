@@ -323,7 +323,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 class="col-xs-12"
               >
                 <div
-                  class="inputGroup textArea fullWidth"
+                  class="textArea inputGroup fullWidth"
                 >
                   <label
                     class="label"
@@ -544,7 +544,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 class="col-xs-12 col-md-6"
               >
                 <div
-                  class="inputGroup textArea fullWidth"
+                  class="textArea inputGroup fullWidth"
                 >
                   <label
                     class="label"

@@ -157,7 +157,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-summarySection"
-                        class="content expanded"
+                        class="content-region expanded"
                         data-test-accordion-wrapper="true"
                         id="accordion40"
                         role="region"
@@ -218,7 +218,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-contactInformationSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion41"
                         role="region"
@@ -276,7 +276,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-contactPeopleSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion42"
                         role="region"
@@ -334,7 +334,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-interfacesSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion43"
                         role="region"
@@ -568,7 +568,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-summarySection"
-                        class="content expanded"
+                        class="content-region expanded"
                         data-test-accordion-wrapper="true"
                         id="accordion2"
                         role="region"
@@ -626,7 +626,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-contactInformationSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion3"
                         role="region"
@@ -684,7 +684,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-contactPeopleSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion4"
                         role="region"
@@ -742,7 +742,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-interfacesSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion5"
                         role="region"
@@ -976,7 +976,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-summarySection"
-                        class="content expanded"
+                        class="content-region expanded"
                         data-test-accordion-wrapper="true"
                         id="accordion15"
                         role="region"
@@ -1034,7 +1034,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-contactInformationSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion16"
                         role="region"
@@ -1092,7 +1092,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-contactPeopleSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion17"
                         role="region"
@@ -1150,7 +1150,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-interfacesSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion18"
                         role="region"
@@ -1208,7 +1208,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-vendorInformationSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion19"
                         role="region"
@@ -1266,7 +1266,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-agreementsSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion20"
                         role="region"
@@ -1324,7 +1324,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-EDIInformationSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion21"
                         role="region"
@@ -1382,7 +1382,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-accountsSection"
-                        class="content"
+                        class="content-region"
                         data-test-accordion-wrapper="true"
                         id="accordion22"
                         role="region"
