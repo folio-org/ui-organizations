@@ -129,7 +129,7 @@ exports[`OrganizationAgreementsForm should render correct structure with defined
               class="col-xs-5 col-md-2"
             >
               <div
-                class="inputGroup textArea fullWidth"
+                class="textArea inputGroup fullWidth"
               >
                 <label
                   class="label"

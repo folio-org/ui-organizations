@@ -28,7 +28,7 @@
   "data.contactTypes.noAddressInfo": "Please add address info",
   "data.contactTypes.language": "Language",
 
-  "filterConfig.acqUnits": "Acquisitions unit",
+  "filterConfig.acqUnits": "Acquisition unit",
   "filterConfig.addressCategory": "Address category",
   "filterConfig.contactPeopleCategory": "Contact people category",
   "filterConfig.country": "Country",

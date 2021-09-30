@@ -416,7 +416,7 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
         class="col-xs-6 col-md-3"
       >
         <div
-          class="inputGroup textArea"
+          class="textArea inputGroup"
         >
           <label
             class="label"

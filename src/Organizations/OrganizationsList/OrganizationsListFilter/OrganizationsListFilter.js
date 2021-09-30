@@ -95,7 +95,6 @@ const OrganizationsListFilter = ({
         id={`org-filter-${FILTERS.ACQUISITIONS_UNIT}`}
         activeFilters={activeFilters[FILTERS.ACQUISITIONS_UNIT]}
         disabled={disabled}
-        labelId="ui-organizations.filterConfig.acqUnits"
         name={FILTERS.ACQUISITIONS_UNIT}
         onChange={adaptedApplyFilters}
       />

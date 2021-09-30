@@ -2,7 +2,7 @@ import { Factory } from 'miragejs';
 import faker from 'faker';
 
 export default Factory.extend({
-  id: faker.random.uuid,
+  id: faker.datatype.uuid,
   prefix: faker.name.prefix,
   firstName: faker.name.firstName,
   lastName: faker.name.lastName,

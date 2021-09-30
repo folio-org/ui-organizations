@@ -150,7 +150,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-name"
-                    class="content expanded"
+                    class="content-region expanded"
                     data-test-accordion-wrapper="true"
                     id="accordion1"
                     role="region"
@@ -577,7 +577,7 @@ exports[`EditContact should render correct form structure 1`] = `
                         class="col-xs-6"
                       >
                         <div
-                          class="inputGroup textArea fullWidth"
+                          class="textArea inputGroup fullWidth"
                         >
                           <label
                             class="label"
@@ -650,7 +650,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-emails"
-                    class="content expanded"
+                    class="content-region expanded"
                     data-test-accordion-wrapper="true"
                     id="accordion3"
                     role="region"
@@ -1154,7 +1154,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-phones"
-                    class="content expanded"
+                    class="content-region expanded"
                     data-test-accordion-wrapper="true"
                     id="accordion5"
                     role="region"
@@ -1681,7 +1681,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-urls"
-                    class="content expanded"
+                    class="content-region expanded"
                     data-test-accordion-wrapper="true"
                     id="accordion7"
                     role="region"
@@ -2185,7 +2185,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-addresses"
-                    class="content expanded"
+                    class="content-region expanded"
                     data-test-accordion-wrapper="true"
                     id="accordion9"
                     role="region"

@@ -48,7 +48,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-status"
-          class="content expanded"
+          class="content-region expanded"
           data-test-accordion-wrapper="true"
           id="accordion1"
           role="region"
@@ -249,7 +249,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-tags"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion2"
           role="region"
@@ -406,7 +406,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-isVendor"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion3"
           role="region"
@@ -557,7 +557,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-addresses"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion4"
           role="region"
@@ -652,7 +652,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-language"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion5"
           role="region"
@@ -747,7 +747,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-paymentMethod"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion6"
           role="region"
@@ -1171,7 +1171,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           <button
             aria-controls="accordion7"
             aria-expanded="false"
-            aria-label="ui-organizations.filterConfig.acqUnits filter list"
+            aria-label="stripes-acq-components.filter.acqUnit filter list"
             class="filterSetHeader"
             id="accordion-toggle-button-org-filter-acqUnitIds"
             tabindex="0"
@@ -1186,7 +1186,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
               <div
                 class="filterSetLabel"
               >
-                ui-organizations.filterConfig.acqUnits
+                stripes-acq-components.filter.acqUnit
               </div>
             </div>
           </button>
@@ -1198,7 +1198,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-acqUnitIds"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion7"
           role="region"
@@ -1302,7 +1302,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-status"
-          class="content expanded"
+          class="content-region expanded"
           data-test-accordion-wrapper="true"
           id="accordion22"
           role="region"
@@ -1518,7 +1518,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-tags"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion23"
           role="region"
@@ -1677,7 +1677,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-isVendor"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion24"
           role="region"
@@ -1838,7 +1838,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-addresses"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion25"
           role="region"
@@ -1934,7 +1934,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-language"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion26"
           role="region"
@@ -2030,7 +2030,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-paymentMethod"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion27"
           role="region"
@@ -2494,7 +2494,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           <button
             aria-controls="accordion28"
             aria-expanded="false"
-            aria-label="ui-organizations.filterConfig.acqUnits filter list"
+            aria-label="stripes-acq-components.filter.acqUnit filter list"
             class="filterSetHeader"
             id="accordion-toggle-button-org-filter-acqUnitIds"
             tabindex="0"
@@ -2509,7 +2509,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
               <div
                 class="filterSetLabel"
               >
-                ui-organizations.filterConfig.acqUnits
+                stripes-acq-components.filter.acqUnit
               </div>
             </div>
           </button>
@@ -2521,7 +2521,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
       >
         <div
           aria-labelledby="accordion-toggle-button-org-filter-acqUnitIds"
-          class="content"
+          class="content-region"
           data-test-accordion-wrapper="true"
           id="accordion28"
           role="region"

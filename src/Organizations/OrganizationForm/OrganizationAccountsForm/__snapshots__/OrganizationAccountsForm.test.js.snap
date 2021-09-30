@@ -414,7 +414,7 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
               class="col-xs-6 col-md-3"
             >
               <div
-                class="inputGroup textArea fullWidth"
+                class="textArea inputGroup fullWidth"
               >
                 <label
                   class="label"
