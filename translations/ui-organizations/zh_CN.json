@@ -348,13 +348,13 @@
     "save.error.assignInterface": "将接口分配给组织时出错",
     "contactPeople.errors.noPrimaryRecord": "未选择主记录",
     "contactPeople.removedContact": "已移除的联系人",
-    "permission.view": "Organizations: View",
-    "permission.edit": "Organizations: View, edit",
-    "permission.create": "Organizations: View, edit, create",
-    "permission.delete": "Organizations: View, edit, delete",
-    "permission.creds.view": "Organizations: Interface usernames and passwords: view",
-    "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
-    "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
-    "permission.acqUnits.manage": "Organizations: Manage acquisition units",
-    "permission.settings": "Settings (Organizations): Can view and edit settings"
+    "permission.view": "组织：查看",
+    "permission.edit": "组织：查看、编辑",
+    "permission.create": "组织：查看、编辑、创建",
+    "permission.delete": "组织：查看、编辑、删除",
+    "permission.creds.view": "组织：界面用户名和密码：查看",
+    "permission.creds.manage": "组织：界面用户名和密码：查看、编辑、创建、删除",
+    "permission.acqUnits.assign": "组织：将采购单位分配给新组织",
+    "permission.acqUnits.manage": "组织：管理采购单位",
+    "permission.settings": "设置（组织）：可以查看和编辑设置"
 }
