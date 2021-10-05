@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.0.0](https://github.com/folio-org/ui-organizations/tree/v3.0.0) (2021-10-05)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.4.1...v3.0.0)
+
 * Expand sub accordions when user clicks "Expand all". Refs UIORGS-255.
 * Add translations for permissions. Refs UIORGS-179.
 * increment stripes to v7. Refs UIORGS-256.
