@@ -332,7 +332,7 @@
     "contactInfo.vendorCategory.uncategorized": "Uncategorized",
     "contacts.actions.load.error": "Failed to load contacts data",
     "save.error.genericError": "Organization could not be saved",
-    "filterConfig.acqUnits": "Acquisitions unit",
+    "filterConfig.acqUnits": "Acquisition unit",
     "save.error.codeInUse": "Code is already in use",
     "search.placeholder.language": "Search with language code",
     "vendorInfo.exportToAccounting": "Export to accounting",
