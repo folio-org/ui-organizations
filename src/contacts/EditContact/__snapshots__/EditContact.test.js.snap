@@ -2326,6 +2326,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                                   autocapitalize="off"
                                                   autocomplete="off"
                                                   autocorrect="off"
+                                                  data-test-autosuggest-input="true"
                                                   error=""
                                                   id="addresses[0].addressLine1"
                                                   name="addresses[0].addressLine1"
