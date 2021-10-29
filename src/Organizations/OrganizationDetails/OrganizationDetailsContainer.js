@@ -113,7 +113,7 @@ export const OrganizationDetailsContainer = ({
         .catch((e) => handleSaveErrorResponse(intl, showCallout, e));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [intl, showCallout],
+    [intl, showCallout, organizationId],
   );
 
   if (isLoading) {
