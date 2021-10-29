@@ -332,7 +332,7 @@
     "contactInfo.vendorCategory.uncategorized": "未分类",
     "contacts.actions.load.error": "无法加载联系人数据",
     "save.error.genericError": "无法保存组织",
-    "filterConfig.acqUnits": "采购单元",
+    "filterConfig.acqUnits": "采购单位",
     "save.error.codeInUse": "代码已在使用中",
     "search.placeholder.language": "用语言代码搜索",
     "vendorInfo.exportToAccounting": "导出到账户",
