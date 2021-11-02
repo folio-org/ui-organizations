@@ -7,6 +7,8 @@ import stripesFinalForm from '@folio/stripes/final-form';
 import { DICT_CATEGORIES } from '../../../common/constants';
 import OrganizationContactInfoFormContainer from './OrganizationContactInfoFormContainer';
 
+jest.mock('@folio/stripes-components/lib/AutoSuggest', () => ({ input }) => <input {...input} />);
+
 const mutatorMock = {
   [DICT_CATEGORIES]: {
     GET: jest.fn().mockReturnValue(Promise.resolve([

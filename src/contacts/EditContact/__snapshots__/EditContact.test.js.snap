@@ -2296,63 +2296,10 @@ exports[`EditContact should render correct form structure 1`] = `
                                         class="col-xs-12 col-md-3"
                                         data-test-address-1="true"
                                       >
-                                        <div
-                                          aria-expanded="false"
-                                          aria-haspopup="listbox"
-                                          class="downshift"
-                                          data-test-autosuggest="true"
-                                          role="combobox"
-                                        >
-                                          <div
-                                            aria-live="assertive"
-                                            aria-relevant="additions"
-                                            class="textFieldDiv"
-                                          >
-                                            <div
-                                              class="textField"
-                                            >
-                                              <label
-                                                class="label"
-                                                for="addresses[0].addressLine1"
-                                              >
-                                                ui-organizations.data.contactTypes.addressLine1
-                                              </label>
-                                              <div
-                                                class="formControl inputGroup"
-                                              >
-                                                <input
-                                                  aria-autocomplete="list"
-                                                  aria-invalid="false"
-                                                  autocapitalize="off"
-                                                  autocomplete="off"
-                                                  autocorrect="off"
-                                                  data-test-autosuggest-input="true"
-                                                  error=""
-                                                  id="addresses[0].addressLine1"
-                                                  name="addresses[0].addressLine1"
-                                                  spellcheck="false"
-                                                  type="text"
-                                                  value="1 Centerpiece Blvd."
-                                                />
-                                              </div>
-                                              <div
-                                                role="alert"
-                                              />
-                                            </div>
-                                          </div>
-                                          <div
-                                            class="overlay"
-                                            hidden=""
-                                          >
-                                            <ul
-                                              aria-labelledby="downshift-0-label"
-                                              class="autoSuggest"
-                                              id="list-dropdown-addresses[0].addressLine1"
-                                              role="listbox"
-                                              style="visibility: hidden;"
-                                            />
-                                          </div>
-                                        </div>
+                                        <input
+                                          name="addresses[0].addressLine1"
+                                          value="1 Centerpiece Blvd."
+                                        />
                                       </div>
                                       <div
                                         class="col-xs-12 col-md-3"
