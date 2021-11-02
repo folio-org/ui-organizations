@@ -109,63 +109,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                         class="col-xs-12 col-md-3"
                         data-test-address-1="true"
                       >
-                        <div
-                          aria-expanded="false"
-                          aria-haspopup="listbox"
-                          class="downshift"
-                          data-test-autosuggest="true"
-                          role="combobox"
-                        >
-                          <div
-                            aria-live="assertive"
-                            aria-relevant="additions"
-                            class="textFieldDiv"
-                          >
-                            <div
-                              class="textField"
-                            >
-                              <label
-                                class="label"
-                                for="addresses[0].addressLine1"
-                              >
-                                ui-organizations.data.contactTypes.addressLine1
-                              </label>
-                              <div
-                                class="formControl inputGroup"
-                              >
-                                <input
-                                  aria-autocomplete="list"
-                                  aria-invalid="false"
-                                  autocapitalize="off"
-                                  autocomplete="off"
-                                  autocorrect="off"
-                                  data-test-autosuggest-input="true"
-                                  error=""
-                                  id="addresses[0].addressLine1"
-                                  name="addresses[0].addressLine1"
-                                  spellcheck="false"
-                                  type="text"
-                                  value="1 Centerpiece Blvd."
-                                />
-                              </div>
-                              <div
-                                role="alert"
-                              />
-                            </div>
-                          </div>
-                          <div
-                            class="overlay"
-                            hidden=""
-                          >
-                            <ul
-                              aria-labelledby="downshift-0-label"
-                              class="autoSuggest"
-                              id="list-dropdown-addresses[0].addressLine1"
-                              role="listbox"
-                              style="visibility: hidden;"
-                            />
-                          </div>
-                        </div>
+                        <input
+                          name="addresses[0].addressLine1"
+                          value="1 Centerpiece Blvd."
+                        />
                       </div>
                       <div
                         class="col-xs-12 col-md-3"
@@ -774,71 +721,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                         class="col-xs-12 col-md-3"
                         data-test-phone-number="true"
                       >
-                        <div
-                          aria-expanded="false"
-                          aria-haspopup="listbox"
-                          class="downshift"
-                          data-test-autosuggest="true"
-                          role="combobox"
-                        >
-                          <div
-                            aria-live="assertive"
-                            aria-relevant="additions"
-                            class="textFieldDiv"
-                          >
-                            <div
-                              class="textField"
-                            >
-                              <label
-                                class="label"
-                                for="autoSuggest-7"
-                              >
-                                ui-organizations.contactPeople.phoneNumber
-                                <span
-                                  aria-hidden="true"
-                                  class="asterisk"
-                                >
-                                  *
-                                </span>
-                              </label>
-                              <div
-                                class="formControl inputGroup"
-                              >
-                                <input
-                                  aria-autocomplete="list"
-                                  aria-invalid="false"
-                                  aria-required="true"
-                                  autocapitalize="off"
-                                  autocomplete="off"
-                                  autocorrect="off"
-                                  data-test-autosuggest-input="true"
-                                  error=""
-                                  id="autoSuggest-7"
-                                  name="phoneNumbers[0].phoneNumber"
-                                  required=""
-                                  spellcheck="false"
-                                  type="text"
-                                  value="1-888-238-22090"
-                                />
-                              </div>
-                              <div
-                                role="alert"
-                              />
-                            </div>
-                          </div>
-                          <div
-                            class="overlay"
-                            hidden=""
-                          >
-                            <ul
-                              aria-labelledby="downshift-1-label"
-                              class="autoSuggest"
-                              id="list-dropdown-autoSuggest-7"
-                              role="listbox"
-                              style="visibility: hidden;"
-                            />
-                          </div>
-                        </div>
+                        <input
+                          name="phoneNumbers[0].phoneNumber"
+                          value="1-888-238-22090"
+                        />
                       </div>
                       <div
                         class="col-xs-12 col-md-3"
@@ -915,8 +801,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="stripes-selection-8"
-                            id="sl-label-stripes-selection-8"
+                            for="stripes-selection-7"
+                            id="sl-label-stripes-selection-7"
                           >
                             ui-organizations.contactInfo.language
                           </label>
@@ -927,16 +813,16 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               aria-expanded="false"
                               aria-haspopup="listbox"
                               aria-invalid="false"
-                              aria-labelledby="sl-label-stripes-selection-8 selected-stripes-selection-8-item"
+                              aria-labelledby="sl-label-stripes-selection-7 selected-stripes-selection-7-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
-                              id="stripes-selection-8"
+                              id="stripes-selection-7"
                               name="phoneNumbers[0].language"
                               type="button"
                             >
                               <div
                                 class="singleValue"
-                                id="selected-stripes-selection-8-item"
+                                id="selected-stripes-selection-7-item"
                               />
                             </button>
                             <div
@@ -1184,7 +1070,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                       >
                         <label
                           class="label label"
-                          for="checkbox-9"
+                          for="checkbox-8"
                         >
                           <span
                             class="inner disabledLabel"
@@ -1195,7 +1081,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               class="input"
                               data-test-checkbox-is-primary="true"
                               disabled=""
-                              id="checkbox-9"
+                              id="checkbox-8"
                               name="emails[0].isPrimary"
                               type="checkbox"
                               value=""
@@ -1243,71 +1129,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                         class="col-xs-12 col-md-3"
                         data-test-email-value="true"
                       >
-                        <div
-                          aria-expanded="false"
-                          aria-haspopup="listbox"
-                          class="downshift"
-                          data-test-autosuggest="true"
-                          role="combobox"
-                        >
-                          <div
-                            aria-live="assertive"
-                            aria-relevant="additions"
-                            class="textFieldDiv"
-                          >
-                            <div
-                              class="textField"
-                            >
-                              <label
-                                class="label"
-                                for="autoSuggest-10"
-                              >
-                                ui-organizations.contactInfo.emailAddress
-                                <span
-                                  aria-hidden="true"
-                                  class="asterisk"
-                                >
-                                  *
-                                </span>
-                              </label>
-                              <div
-                                class="formControl inputGroup"
-                              >
-                                <input
-                                  aria-autocomplete="list"
-                                  aria-invalid="false"
-                                  aria-required="true"
-                                  autocapitalize="off"
-                                  autocomplete="off"
-                                  autocorrect="off"
-                                  data-test-autosuggest-input="true"
-                                  error=""
-                                  id="autoSuggest-10"
-                                  name="emails[0].value"
-                                  required=""
-                                  spellcheck="false"
-                                  type="text"
-                                  value="cust.service03@amazon.com"
-                                />
-                              </div>
-                              <div
-                                role="alert"
-                              />
-                            </div>
-                          </div>
-                          <div
-                            class="overlay"
-                            hidden=""
-                          >
-                            <ul
-                              aria-labelledby="downshift-2-label"
-                              class="autoSuggest"
-                              id="list-dropdown-autoSuggest-10"
-                              role="listbox"
-                              style="visibility: hidden;"
-                            />
-                          </div>
-                        </div>
+                        <input
+                          name="emails[0].value"
+                          value="cust.service03@amazon.com"
+                        />
                       </div>
                       <div
                         class="col-xs-12 col-md-3"
@@ -1318,7 +1143,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                         >
                           <label
                             class="label"
-                            for="text-input-11"
+                            for="text-input-9"
                           >
                             ui-organizations.contactInfo.description
                           </label>
@@ -1331,7 +1156,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               autocomplete="off"
                               autocorrect="off"
                               error=""
-                              id="text-input-11"
+                              id="text-input-9"
                               name="emails[0].description"
                               spellcheck="false"
                               type="text"
@@ -1359,8 +1184,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="stripes-selection-12"
-                            id="sl-label-stripes-selection-12"
+                            for="stripes-selection-10"
+                            id="sl-label-stripes-selection-10"
                           >
                             ui-organizations.contactInfo.language
                           </label>
@@ -1371,16 +1196,16 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               aria-expanded="false"
                               aria-haspopup="listbox"
                               aria-invalid="false"
-                              aria-labelledby="sl-label-stripes-selection-12 selected-stripes-selection-12-item"
+                              aria-labelledby="sl-label-stripes-selection-10 selected-stripes-selection-10-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
-                              id="stripes-selection-12"
+                              id="stripes-selection-10"
                               name="emails[0].language"
                               type="button"
                             >
                               <div
                                 class="singleValue"
-                                id="selected-stripes-selection-12-item"
+                                id="selected-stripes-selection-10-item"
                               />
                             </button>
                             <div
@@ -1628,7 +1453,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                       >
                         <label
                           class="label label"
-                          for="checkbox-13"
+                          for="checkbox-11"
                         >
                           <span
                             class="inner disabledLabel"
@@ -1639,7 +1464,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               class="input"
                               data-test-checkbox-is-primary="true"
                               disabled=""
-                              id="checkbox-13"
+                              id="checkbox-11"
                               name="urls[0].isPrimary"
                               type="checkbox"
                               value=""
@@ -1687,72 +1512,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                         class="col-xs-12 col-md-3"
                         data-test-url-value="true"
                       >
-                        <div
-                          aria-expanded="false"
-                          aria-haspopup="listbox"
-                          class="downshift"
-                          data-test-autosuggest="true"
-                          role="combobox"
-                        >
-                          <div
-                            aria-live="assertive"
-                            aria-relevant="additions"
-                            class="textFieldDiv"
-                          >
-                            <div
-                              class="textField"
-                            >
-                              <label
-                                class="label"
-                                for="autoSuggest-14"
-                              >
-                                ui-organizations.contactInfo.url
-                                <span
-                                  aria-hidden="true"
-                                  class="asterisk"
-                                >
-                                  *
-                                </span>
-                              </label>
-                              <div
-                                class="formControl inputGroup"
-                              >
-                                <input
-                                  aria-autocomplete="list"
-                                  aria-invalid="false"
-                                  aria-required="true"
-                                  autocapitalize="off"
-                                  autocomplete="off"
-                                  autocorrect="off"
-                                  data-test-autosuggest-input="true"
-                                  error=""
-                                  id="autoSuggest-14"
-                                  name="urls[0].value"
-                                  placeholder="http(s):// or ftp(s)://"
-                                  required=""
-                                  spellcheck="false"
-                                  type="text"
-                                  value="https://www.amazon.com"
-                                />
-                              </div>
-                              <div
-                                role="alert"
-                              />
-                            </div>
-                          </div>
-                          <div
-                            class="overlay"
-                            hidden=""
-                          >
-                            <ul
-                              aria-labelledby="downshift-3-label"
-                              class="autoSuggest"
-                              id="list-dropdown-autoSuggest-14"
-                              role="listbox"
-                              style="visibility: hidden;"
-                            />
-                          </div>
-                        </div>
+                        <input
+                          name="urls[0].value"
+                          value="https://www.amazon.com"
+                        />
                       </div>
                       <div
                         class="col-xs-12 col-md-3"
@@ -1763,7 +1526,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                         >
                           <label
                             class="label"
-                            for="text-input-15"
+                            for="text-input-12"
                           >
                             ui-organizations.contactInfo.description
                           </label>
@@ -1776,7 +1539,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               autocomplete="off"
                               autocorrect="off"
                               error=""
-                              id="text-input-15"
+                              id="text-input-12"
                               name="urls[0].description"
                               spellcheck="false"
                               type="text"
@@ -1804,8 +1567,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="stripes-selection-16"
-                            id="sl-label-stripes-selection-16"
+                            for="stripes-selection-13"
+                            id="sl-label-stripes-selection-13"
                           >
                             ui-organizations.contactInfo.language
                           </label>
@@ -1816,16 +1579,16 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               aria-expanded="false"
                               aria-haspopup="listbox"
                               aria-invalid="false"
-                              aria-labelledby="sl-label-stripes-selection-16 selected-stripes-selection-16-item"
+                              aria-labelledby="sl-label-stripes-selection-13 selected-stripes-selection-13-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
-                              id="stripes-selection-16"
+                              id="stripes-selection-13"
                               name="urls[0].language"
                               type="button"
                             >
                               <div
                                 class="singleValue"
-                                id="selected-stripes-selection-16-item"
+                                id="selected-stripes-selection-13-item"
                               />
                             </button>
                             <div
