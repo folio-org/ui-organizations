@@ -332,7 +332,7 @@
     "contactInfo.vendorCategory.uncategorized": "Sonstiges",
     "contacts.actions.load.error": " Kontaktdaten konnten nicht geladen werden",
     "save.error.genericError": "Organisation konnte nicht gespeichert werden",
-    "filterConfig.acqUnits": "Erwerbungsteam",
+    "filterConfig.acqUnits": "Erwerbungsteams",
     "save.error.codeInUse": "Code wird bereits verwendet",
     "search.placeholder.language": "Suche nach Sprachcode",
     "vendorInfo.exportToAccounting": "An Haushaltssystem exportieren",
