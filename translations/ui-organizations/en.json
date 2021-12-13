@@ -58,6 +58,7 @@
 
   "view.edit": "Edit",
   "view.delete": "Delete",
+  "view.exportLog": "View export log",
   "view.editVendorDialog": "Edit vendor dialog",
   "view.details": "Details",
   "view.delete.message": "Delete organization?",

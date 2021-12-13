@@ -522,11 +522,8 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
                       </button>
                     </div>
                     <div
-                      aria-labelledby="account-acq-units-0-label"
                       class="multiSelectMenu"
                       hidden=""
-                      id="multiselect-option-list-account-acq-units-0"
-                      role="listbox"
                       style="width: 0px;"
                     >
                       <div
@@ -540,7 +537,10 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
                         </div>
                       </div>
                       <ul
+                        aria-labelledby="account-acq-units-0-label"
                         class="multiSelectOptionList"
+                        id="multiselect-option-list-account-acq-units-0"
+                        role="listbox"
                         style="max-height: 168px;"
                       />
                     </div>

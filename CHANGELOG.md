@@ -6,6 +6,7 @@
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.0.0...v3.0.1)
 
 * Organization tags can't be saved. Refs UIORGS-267.
+* View organization exports action. Refs UIORGS-270.
 
 ## [3.0.0](https://github.com/folio-org/ui-organizations/tree/v3.0.0) (2021-10-05)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v2.4.1...v3.0.0)

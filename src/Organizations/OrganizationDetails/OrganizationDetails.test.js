@@ -29,9 +29,11 @@ jest.mock(
 const defaultProps = {
   organization: { name: 'Amazon' },
   organizationCategories: [],
+  integrationConfigs: [],
   onClose: jest.fn(),
   onEdit: jest.fn(),
   onDelete: jest.fn(),
+  onViewExportLog: jest.fn(),
   onUpdate: jest.fn(),
 };
 const renderOrganizationDetails = (props = defaultProps) => render(
@@ -130,6 +132,31 @@ describe('OrganizationDetails', () => {
       user.click(screen.getByTestId('delete-organization'));
 
       expect(screen.getByText('ui-organizations.organization.delete.confirmLabel')).toBeDefined();
+    });
+
+    it('should not display view export log action when there are no integrations', () => {
+      renderOrganizationDetails({
+        ...defaultProps,
+        organization: { name: 'Amazon', isVendor: true },
+        integrationConfigs: [],
+      });
+
+      expect(screen.queryByTestId('view-organization-export-log')).toBeNull();
+    });
+
+    it('should call onViewExportLog when view log action is pressed', () => {
+      const onViewExportLog = jest.fn();
+
+      renderOrganizationDetails({
+        ...defaultProps,
+        organization: { name: 'Amazon', isVendor: true },
+        onViewExportLog,
+        integrationConfigs: [{ id: 'integrationConfigId' }],
+      });
+
+      user.click(screen.getByTestId('view-organization-export-log'));
+
+      expect(onViewExportLog).toHaveBeenCalled();
     });
   });
 

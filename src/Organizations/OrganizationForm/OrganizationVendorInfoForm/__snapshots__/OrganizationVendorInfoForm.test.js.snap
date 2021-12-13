@@ -186,7 +186,6 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
                               >
                                 <span
                                   aria-describedby="multi-describe-action-multiselect-1"
-                                  aria-labelledby="USD-0_multiselect_selected_label multi-value-multiselect-1"
                                   class="iconButtonInner smallOffset"
                                 >
                                   <span>
@@ -237,11 +236,8 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
                     </button>
                   </div>
                   <div
-                    aria-labelledby="vendorFormCurrenciesLabel"
                     class="multiSelectMenu"
                     hidden=""
-                    id="multiselect-option-list-multiselect-1"
-                    role="listbox"
                     style="width: 100px;"
                   >
                     <div
@@ -249,7 +245,10 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
                       role="alert"
                     />
                     <ul
+                      aria-labelledby="vendorFormCurrenciesLabel"
                       class="multiSelectOptionList"
+                      id="multiselect-option-list-multiselect-1"
+                      role="listbox"
                       style="max-height: 168px;"
                     >
                       <li
