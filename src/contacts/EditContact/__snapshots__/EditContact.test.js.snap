@@ -482,7 +482,6 @@ exports[`EditContact should render correct form structure 1`] = `
                                           >
                                             <span
                                               aria-describedby="multi-describe-action-multiselect-2"
-                                              aria-labelledby="categories-f52ceea4-8e35-0_multiselect_selected_label multi-value-multiselect-2"
                                               class="iconButtonInner smallOffset"
                                             >
                                               <span>
@@ -533,11 +532,8 @@ exports[`EditContact should render correct form structure 1`] = `
                                 </button>
                               </div>
                               <div
-                                aria-labelledby="nameFormCategoriesLabel"
                                 class="multiSelectMenu"
                                 hidden=""
-                                id="multiselect-option-list-multiselect-2"
-                                role="listbox"
                                 style="width: 100px;"
                               >
                                 <div
@@ -545,7 +541,10 @@ exports[`EditContact should render correct form structure 1`] = `
                                   role="alert"
                                 />
                                 <ul
+                                  aria-labelledby="nameFormCategoriesLabel"
                                   class="multiSelectOptionList"
+                                  id="multiselect-option-list-multiselect-2"
+                                  role="listbox"
                                   style="max-height: 168px;"
                                 >
                                   <li
@@ -957,7 +956,6 @@ exports[`EditContact should render correct form structure 1`] = `
                                                       >
                                                         <span
                                                           aria-describedby="multi-describe-action-multiselect-4"
-                                                          aria-labelledby="emails[0].categories-f52ceea4-8e35-0_multiselect_selected_label multi-value-multiselect-4"
                                                           class="iconButtonInner smallOffset"
                                                         >
                                                           <span>
@@ -1008,11 +1006,8 @@ exports[`EditContact should render correct form structure 1`] = `
                                             </button>
                                           </div>
                                           <div
-                                            aria-labelledby="emailFormCategoriesLabel"
                                             class="multiSelectMenu"
                                             hidden=""
-                                            id="multiselect-option-list-multiselect-4"
-                                            role="listbox"
                                             style="width: 100px;"
                                           >
                                             <div
@@ -1020,7 +1015,10 @@ exports[`EditContact should render correct form structure 1`] = `
                                               role="alert"
                                             />
                                             <ul
+                                              aria-labelledby="emailFormCategoriesLabel"
                                               class="multiSelectOptionList"
+                                              id="multiselect-option-list-multiselect-4"
+                                              role="listbox"
                                               style="max-height: 168px;"
                                             >
                                               <li
@@ -1484,7 +1482,6 @@ exports[`EditContact should render correct form structure 1`] = `
                                                       >
                                                         <span
                                                           aria-describedby="multi-describe-action-multiselect-6"
-                                                          aria-labelledby="phoneNumbers[0].categories-f52ceea4-8e35-0_multiselect_selected_label multi-value-multiselect-6"
                                                           class="iconButtonInner smallOffset"
                                                         >
                                                           <span>
@@ -1535,11 +1532,8 @@ exports[`EditContact should render correct form structure 1`] = `
                                             </button>
                                           </div>
                                           <div
-                                            aria-labelledby="phoneFormCategoriesLabel"
                                             class="multiSelectMenu"
                                             hidden=""
-                                            id="multiselect-option-list-multiselect-6"
-                                            role="listbox"
                                             style="width: 100px;"
                                           >
                                             <div
@@ -1547,7 +1541,10 @@ exports[`EditContact should render correct form structure 1`] = `
                                               role="alert"
                                             />
                                             <ul
+                                              aria-labelledby="phoneFormCategoriesLabel"
                                               class="multiSelectOptionList"
+                                              id="multiselect-option-list-multiselect-6"
+                                              role="listbox"
                                               style="max-height: 168px;"
                                             >
                                               <li
@@ -1988,7 +1985,6 @@ exports[`EditContact should render correct form structure 1`] = `
                                                       >
                                                         <span
                                                           aria-describedby="multi-describe-action-multiselect-8"
-                                                          aria-labelledby="urls[0].categories-f52ceea4-8e35-0_multiselect_selected_label multi-value-multiselect-8"
                                                           class="iconButtonInner smallOffset"
                                                         >
                                                           <span>
@@ -2039,11 +2035,8 @@ exports[`EditContact should render correct form structure 1`] = `
                                             </button>
                                           </div>
                                           <div
-                                            aria-labelledby="urlFormCategoriesLabel"
                                             class="multiSelectMenu"
                                             hidden=""
-                                            id="multiselect-option-list-multiselect-8"
-                                            role="listbox"
                                             style="width: 100px;"
                                           >
                                             <div
@@ -2051,7 +2044,10 @@ exports[`EditContact should render correct form structure 1`] = `
                                               role="alert"
                                             />
                                             <ul
+                                              aria-labelledby="urlFormCategoriesLabel"
                                               class="multiSelectOptionList"
+                                              id="multiselect-option-list-multiselect-8"
+                                              role="listbox"
                                               style="max-height: 168px;"
                                             >
                                               <li
@@ -2659,7 +2655,6 @@ exports[`EditContact should render correct form structure 1`] = `
                                                           >
                                                             <span
                                                               aria-describedby="multi-describe-action-multiselect-10"
-                                                              aria-labelledby="addresses[0].categories-f52ceea4-8e35-0_multiselect_selected_label multi-value-multiselect-10"
                                                               class="iconButtonInner smallOffset"
                                                             >
                                                               <span>
@@ -2710,11 +2705,8 @@ exports[`EditContact should render correct form structure 1`] = `
                                                 </button>
                                               </div>
                                               <div
-                                                aria-labelledby="addressFormCategoriesLabel"
                                                 class="multiSelectMenu"
                                                 hidden=""
-                                                id="multiselect-option-list-multiselect-10"
-                                                role="listbox"
                                                 style="width: 100px;"
                                               >
                                                 <div
@@ -2722,7 +2714,10 @@ exports[`EditContact should render correct form structure 1`] = `
                                                   role="alert"
                                                 />
                                                 <ul
+                                                  aria-labelledby="addressFormCategoriesLabel"
                                                   class="multiSelectOptionList"
+                                                  id="multiselect-option-list-multiselect-10"
+                                                  role="listbox"
                                                   style="max-height: 168px;"
                                                 >
                                                   <li

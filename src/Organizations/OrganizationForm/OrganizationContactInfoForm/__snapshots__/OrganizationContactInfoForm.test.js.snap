@@ -472,7 +472,6 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                           >
                                             <span
                                               aria-describedby="multi-describe-action-multiselect-1"
-                                              aria-labelledby="addresses[0].categories-category2-0_multiselect_selected_label multi-value-multiselect-1"
                                               class="iconButtonInner smallOffset"
                                             >
                                               <span>
@@ -523,11 +522,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                 </button>
                               </div>
                               <div
-                                aria-labelledby="addressFormCategoriesLabel"
                                 class="multiSelectMenu"
                                 hidden=""
-                                id="multiselect-option-list-multiselect-1"
-                                role="listbox"
                                 style="width: 100px;"
                               >
                                 <div
@@ -535,7 +531,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                   role="alert"
                                 />
                                 <ul
+                                  aria-labelledby="addressFormCategoriesLabel"
                                   class="multiSelectOptionList"
+                                  id="multiselect-option-list-multiselect-1"
+                                  role="listbox"
                                   style="max-height: 168px;"
                                 >
                                   <li
@@ -931,11 +930,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                 </button>
                               </div>
                               <div
-                                aria-labelledby="phoneFormCategoriesLabel"
                                 class="multiSelectMenu"
                                 hidden=""
-                                id="multiselect-option-list-multiselect-2"
-                                role="listbox"
                                 style="width: 100px;"
                               >
                                 <div
@@ -943,7 +939,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                   role="alert"
                                 />
                                 <ul
+                                  aria-labelledby="phoneFormCategoriesLabel"
                                   class="multiSelectOptionList"
+                                  id="multiselect-option-list-multiselect-2"
+                                  role="listbox"
                                   style="max-height: 168px;"
                                 >
                                   <li
@@ -1314,11 +1313,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                 </button>
                               </div>
                               <div
-                                aria-labelledby="emailFormCategoriesLabel"
                                 class="multiSelectMenu"
                                 hidden=""
-                                id="multiselect-option-list-multiselect-3"
-                                role="listbox"
                                 style="width: 100px;"
                               >
                                 <div
@@ -1326,7 +1322,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                   role="alert"
                                 />
                                 <ul
+                                  aria-labelledby="emailFormCategoriesLabel"
                                   class="multiSelectOptionList"
+                                  id="multiselect-option-list-multiselect-3"
+                                  role="listbox"
                                   style="max-height: 168px;"
                                 >
                                   <li
@@ -1707,7 +1706,6 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                           >
                                             <span
                                               aria-describedby="multi-describe-action-multiselect-4"
-                                              aria-labelledby="urls[0].categories-category1-0_multiselect_selected_label multi-value-multiselect-4"
                                               class="iconButtonInner smallOffset"
                                             >
                                               <span>
@@ -1758,11 +1756,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                 </button>
                               </div>
                               <div
-                                aria-labelledby="urlFormCategoriesLabel"
                                 class="multiSelectMenu"
                                 hidden=""
-                                id="multiselect-option-list-multiselect-4"
-                                role="listbox"
                                 style="width: 100px;"
                               >
                                 <div
@@ -1770,7 +1765,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                   role="alert"
                                 />
                                 <ul
+                                  aria-labelledby="urlFormCategoriesLabel"
                                   class="multiSelectOptionList"
+                                  id="multiselect-option-list-multiselect-4"
+                                  role="listbox"
                                   style="max-height: 168px;"
                                 >
                                   <li

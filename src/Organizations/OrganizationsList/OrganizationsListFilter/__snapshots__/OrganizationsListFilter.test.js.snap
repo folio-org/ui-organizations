@@ -332,11 +332,8 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
                   </button>
                 </div>
                 <div
-                  aria-labelledby="accordion-toggle-button-org-filter-tags"
                   class="multiSelectMenu"
                   hidden=""
-                  id="multiselect-option-list-acq-tags-filter"
-                  role="listbox"
                   style="width: 100px;"
                 >
                   <div
@@ -350,7 +347,10 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
                     </div>
                   </div>
                   <ul
+                    aria-labelledby="accordion-toggle-button-org-filter-tags"
                     class="multiSelectOptionList"
+                    id="multiselect-option-list-acq-tags-filter"
+                    role="listbox"
                     style="max-height: 168px;"
                   />
                 </div>
@@ -1603,11 +1603,8 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
                   </button>
                 </div>
                 <div
-                  aria-labelledby="accordion-toggle-button-org-filter-tags"
                   class="multiSelectMenu"
                   hidden=""
-                  id="multiselect-option-list-acq-tags-filter"
-                  role="listbox"
                   style="width: 100px;"
                 >
                   <div
@@ -1621,7 +1618,10 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
                     </div>
                   </div>
                   <ul
+                    aria-labelledby="accordion-toggle-button-org-filter-tags"
                     class="multiSelectOptionList"
+                    id="multiselect-option-list-acq-tags-filter"
+                    role="listbox"
                     style="max-height: 168px;"
                   />
                 </div>

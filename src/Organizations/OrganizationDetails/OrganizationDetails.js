@@ -63,9 +63,11 @@ const OrganizationDetails = ({
   onClose,
   onEdit,
   onDelete,
+  onViewExportLog,
   onUpdate,
   organization,
   organizationCategories,
+  integrationConfigs,
 }) => {
   const stripes = useStripes();
   const [isRemoveModalOpened, toggleRemoveModal] = useModalToggle();
@@ -130,10 +132,27 @@ const OrganizationDetails = ({
               </Icon>
             </Button>
           </IfPermission>
+          {integrationConfigs.length > 0 && (
+            <Button
+              buttonStyle="dropdownItem"
+              data-testid="view-organization-export-log"
+              onClick={() => {
+                onToggle();
+                onViewExportLog();
+              }}
+            >
+              <Icon size="small" icon="eye-open">
+                <FormattedMessage id="ui-organizations.view.exportLog" />
+              </Icon>
+            </Button>
+          )}
         </MenuSection>
       );
     },
-    [onEdit, toggleRemoveModal, isRestrictionsLoading, restrictions.protectDelete, restrictions.protectUpdate],
+    [
+      integrationConfigs, onEdit, onViewExportLog, toggleRemoveModal,
+      isRestrictionsLoading, restrictions.protectDelete, restrictions.protectUpdate,
+    ],
   );
 
   const detailsLastMenu = (
@@ -342,12 +361,14 @@ OrganizationDetails.propTypes = {
   onClose: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onViewExportLog: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
   organization: PropTypes.object.isRequired,
   organizationCategories: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
     value: PropTypes.string,
   })),
+  integrationConfigs: PropTypes.arrayOf(PropTypes.object),
 };
 
 OrganizationDetails.defaultProps = {

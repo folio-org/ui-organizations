@@ -18,7 +18,10 @@ import {
   organizationResourceByUrl,
   categoriesResource,
 } from '../../common/resources';
-import { useTranslatedCategories } from '../../common/hooks';
+import {
+  useIntegrationConfigs,
+  useTranslatedCategories,
+} from '../../common/hooks';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 import OrganizationDetails from './OrganizationDetails';
 
@@ -37,6 +40,8 @@ export const OrganizationDetailsContainer = ({
   const [organizationCategories, setOrganizationCategories] = useState([]);
   const [translatedCategories] = useTranslatedCategories(organizationCategories);
   const intl = useIntl();
+
+  const { integrationConfigs } = useIntegrationConfigs(organizationId);
 
   useEffect(
     () => {
@@ -86,6 +91,16 @@ export const OrganizationDetailsContainer = ({
     [organizationId, location.search],
   );
 
+  const viewExportLog = useCallback(
+    () => {
+      history.push({
+        pathname: `/organizations/${organizationId}/log`,
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [organizationId],
+  );
+
   const deleteOrganization = useCallback(
     () => {
       mutator.organizationDetailsOrg.DELETE({ id: organization.id }, { silent: true }).then(() => {
@@ -130,9 +145,11 @@ export const OrganizationDetailsContainer = ({
       onClose={closePane}
       onEdit={editOrganization}
       onDelete={deleteOrganization}
+      onViewExportLog={viewExportLog}
       onUpdate={updateOrganization}
       organization={organization}
       organizationCategories={translatedCategories}
+      integrationConfigs={integrationConfigs}
     />
   );
 };

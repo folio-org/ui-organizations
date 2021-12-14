@@ -383,11 +383,8 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
                 </button>
               </div>
               <div
-                aria-labelledby="org-acq-units-label"
                 class="multiSelectMenu"
                 hidden=""
-                id="multiselect-option-list-org-acq-units"
-                role="listbox"
                 style="width: 100px;"
               >
                 <div
@@ -401,7 +398,10 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
                   </div>
                 </div>
                 <ul
+                  aria-labelledby="org-acq-units-label"
                   class="multiSelectOptionList"
+                  id="multiselect-option-list-org-acq-units"
+                  role="listbox"
                   style="max-height: 168px;"
                 />
               </div>

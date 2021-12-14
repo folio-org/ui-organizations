@@ -7,6 +7,10 @@ import OrganizationDetails from './OrganizationDetails';
 import { OrganizationDetailsContainer } from './OrganizationDetailsContainer';
 
 jest.mock('./OrganizationDetails', () => jest.fn(() => 'OrganizationDetails'));
+jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
+  useIntegrationConfigs: jest.fn().mockReturnValue({ integrationConfigs: [] }),
+}));
 
 const organization = {
   id: 'orgUId',
@@ -68,5 +72,15 @@ describe('OrganizationDetailsContainer', () => {
     OrganizationDetails.mock.calls[0][0].onEdit();
 
     expect(historyMock.push.mock.calls[0][0].pathname).toBe('/organizations/id/edit');
+  });
+
+  it('should redirect to export log view when view log action is called', async () => {
+    renderOrganizationDetailsContainer();
+
+    await screen.findByText('OrganizationDetails');
+
+    OrganizationDetails.mock.calls[0][0].onViewExportLog();
+
+    expect(historyMock.push.mock.calls[0][0].pathname).toBe('/organizations/id/log');
   });
 });

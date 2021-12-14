@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 
+import { OrganizationExportLog } from './src/OrganizationExportLog';
 import { Organizations as Organization } from './src/Organizations';
 import { ContactsContainer } from './src/contacts';
 import { InterfaceContainer } from './src/interfaces';
@@ -43,6 +44,10 @@ class Organizations extends Component {
         <Route
           component={InterfaceContainer}
           path="/organizations/:orgId/interface/"
+        />
+        <Route
+          path="/organizations/:id/log"
+          component={OrganizationExportLog}
         />
         <Route
           path="/organizations"
