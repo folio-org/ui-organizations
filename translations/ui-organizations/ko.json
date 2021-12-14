@@ -348,13 +348,13 @@
     "save.error.assignInterface": "공급사에 인터페이스를 할당하는 동안 오류가 발생했습니다.",
     "contactPeople.errors.noPrimaryRecord": "기본 레코드가 선택되지 않았습니다.",
     "contactPeople.removedContact": "연락처 삭제",
-    "permission.view": "Organizations: View",
-    "permission.edit": "Organizations: View, edit",
-    "permission.create": "Organizations: View, edit, create",
-    "permission.delete": "Organizations: View, edit, delete",
-    "permission.creds.view": "Organizations: Interface usernames and passwords: view",
-    "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
-    "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
-    "permission.acqUnits.manage": "Organizations: Manage acquisition units",
-    "permission.settings": "Settings (Organizations): Can view and edit settings"
+    "permission.view": "공급사: 보기",
+    "permission.edit": "공급사: 보기, 편집",
+    "permission.create": "공급사: 보기, 편집, 생성",
+    "permission.delete": "공급사: 보기, 편집, 삭제",
+    "permission.creds.view": "공급사: 인터페이스 사용자 이름 및 암호: 보기",
+    "permission.creds.manage": "공급사: 인터페이스 사용자 이름 및 암호: 보기, 편집, 생성, 삭제",
+    "permission.acqUnits.assign": "공급사: 새 공급사에 수서 단위 할당",
+    "permission.acqUnits.manage": "공급사: 수서 단위 관리",
+    "permission.settings": "설정(공급사): 설정을 보고 편집할 수 있습니다."
 }
