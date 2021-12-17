@@ -6,7 +6,7 @@ import stripesFinalForm from '@folio/stripes/final-form';
 
 import { DICT_CATEGORIES } from '../../../common/constants';
 import OrganizationContactInfoFormContainer from './OrganizationContactInfoFormContainer';
-
+// eslint-disable-next-line react/prop-types
 jest.mock('@folio/stripes-components/lib/AutoSuggest', () => ({ input }) => <input {...input} />);
 
 const mutatorMock = {

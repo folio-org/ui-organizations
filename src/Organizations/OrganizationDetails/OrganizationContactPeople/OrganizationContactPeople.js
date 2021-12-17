@@ -35,10 +35,11 @@ const OrganizationContactPeople = ({ vendorCategories, contacts, openContact }) 
         ? intl.formatMessage({ id: 'ui-organizations.contactPeople.removedContact' })
         : `${lastName}, ${firstName}`
     ),
+    // eslint-disable-next-line react/prop-types
     categories: ({ categories = [] }) => transformCategoryIdsToLables(vendorCategories, categories) || <NoValue />,
-    email: ({ emails }) => get(find(emails, 'isPrimary'), 'value', '') || <NoValue />,
-    phone: ({ phoneNumbers }) => get(find(phoneNumbers, 'isPrimary'), 'phoneNumber', '') || <NoValue />,
-    status: (c) => <FormattedMessage id={`ui-organizations.contactPeople.status.${c.inactive ? 'inactive' : 'active'}`} />,
+    email: c => get(find(c.emails, 'isPrimary'), 'value', '') || <NoValue />,
+    phone: c => get(find(c.phoneNumbers, 'isPrimary'), 'phoneNumber', '') || <NoValue />,
+    status: c => <FormattedMessage id={`ui-organizations.contactPeople.status.${c.inactive ? 'inactive' : 'active'}`} />,
     icon: () => <Icon icon="caret-right" />,
   };
 

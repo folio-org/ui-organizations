@@ -41,7 +41,7 @@ export const OrganizationDetailsContainer = ({
   const [translatedCategories] = useTranslatedCategories(organizationCategories);
   const intl = useIntl();
 
-  const { integrationConfigs } = useIntegrationConfigs(organizationId);
+  const { integrationConfigs } = useIntegrationConfigs({ organizationId });
 
   useEffect(
     () => {
