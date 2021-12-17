@@ -25,7 +25,8 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
   expandAllSections: jest.fn(),
   collapseAllSections: jest.fn(),
 }));
-jest.mock('@folio/stripes-components/lib/AutoSuggest', () => ({ input }) => <input {...input} />);
+// eslint-disable-next-line react/prop-types
+jest.mock('@folio/stripes-components/lib/AutoSuggest', () => (props) => <input {...props.input} />);
 
 const queryAllByClass = queryHelpers.queryAllByAttribute.bind(null, 'class');
 
