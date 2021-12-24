@@ -2,7 +2,6 @@ export * from './OrganizationAccounts';
 export * from './OrganizationAgreements';
 export * from './OrganizationContactInfo';
 export * from './OrganizationContactPeople';
-export * from './OrganizationEDIInfo';
 export * from './OrganizationInterfaces';
 export * from './OrganizationSummary';
 export * from './OrganizationVendorInfo';

@@ -52,7 +52,7 @@ describe('useIntegrationConfigs', () => {
       'data-export-spring/configs',
       {
         searchParams: {
-          query: `configName==EDIFACT_ORDERS_EXPORT_${organizationId}`,
+          query: `configName==EDIFACT_ORDERS_EXPORT_${organizationId}*`,
           limit: 1,
         },
       },

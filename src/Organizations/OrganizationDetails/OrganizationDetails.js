@@ -56,8 +56,8 @@ import { OrganizationContactPeopleContainer } from './OrganizationContactPeople'
 import { OrganizationInterfacesContainer } from './OrganizationInterfaces';
 import { OrganizationVendorInfo } from './OrganizationVendorInfo';
 import { OrganizationAgreements } from './OrganizationAgreements';
-import { OrganizationEDIInfo } from './OrganizationEDIInfo';
 import { OrganizationAccounts } from './OrganizationAccounts';
+import { IntegrationDetails } from './IntegrationDetails';
 
 const OrganizationDetails = ({
   onClose,
@@ -78,7 +78,7 @@ const OrganizationDetails = ({
     [ORGANIZATION_SECTIONS.interfacesSection]: false,
     [ORGANIZATION_SECTIONS.vendorInformationSection]: false,
     [ORGANIZATION_SECTIONS.vendorTermsSection]: false,
-    [ORGANIZATION_SECTIONS.ediInformationSection]: false,
+    [ORGANIZATION_SECTIONS.integrationDetailsSection]: false,
     [ORGANIZATION_SECTIONS.accountsSection]: false,
     [ORGANIZATION_SECTIONS.notesSection]: false,
   };
@@ -309,12 +309,10 @@ const OrganizationDetails = ({
                   </Accordion>
 
                   <Accordion
-                    id={ORGANIZATION_SECTIONS.ediInformationSection}
-                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.ediInformationSection]}
+                    id={ORGANIZATION_SECTIONS.integrationDetailsSection}
+                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.integrationDetailsSection]}
                   >
-                    <OrganizationEDIInfo
-                      edi={organization.edi}
-                    />
+                    <IntegrationDetails integrationConfigs={integrationConfigs} />
                   </Accordion>
 
                   <Accordion

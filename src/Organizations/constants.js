@@ -11,6 +11,7 @@ export const ORGANIZATION_SECTIONS = {
   ediInformationSection: 'EDIInformationSection',
   accountsSection: 'accountsSection',
   notesSection: 'notesSection',
+  integrationDetailsSection: 'integrationDetailsSection',
 };
 
 export const ORGANIZATION_SECTION_LABELS = {
@@ -22,6 +23,7 @@ export const ORGANIZATION_SECTION_LABELS = {
   [ORGANIZATION_SECTIONS.vendorTermsSection]: <FormattedMessage id="ui-organizations.vendorTerms" />,
   [ORGANIZATION_SECTIONS.ediInformationSection]: <FormattedMessage id="ui-organizations.ediInformation" />,
   [ORGANIZATION_SECTIONS.accountsSection]: <FormattedMessage id="ui-organizations.accounts" />,
+  [ORGANIZATION_SECTIONS.integrationDetailsSection]: <FormattedMessage id="ui-organizations.integrationDetails" />,
 };
 
 export const EDI_CODE_TYPES = [

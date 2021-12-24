@@ -10,7 +10,7 @@ export const useIntegrationConfigs = ({ organizationId }) => {
   const [namespace] = useNamespace({ key: 'organization-integrations' });
 
   const searchParams = {
-    query: `configName==EDIFACT_ORDERS_EXPORT_${organizationId}`,
+    query: `configName==EDIFACT_ORDERS_EXPORT_${organizationId}*`,
     limit: 1,
   };
 
