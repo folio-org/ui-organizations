@@ -4,6 +4,7 @@ import {
   useNamespace,
   useOkapiKy,
 } from '@folio/stripes/core';
+import { LIMIT_MAX } from '@folio/stripes-acq-components';
 
 export const useIntegrationConfigs = ({ organizationId }) => {
   const ky = useOkapiKy();
@@ -11,7 +12,7 @@ export const useIntegrationConfigs = ({ organizationId }) => {
 
   const searchParams = {
     query: `configName==EDIFACT_ORDERS_EXPORT_${organizationId}*`,
-    limit: 1,
+    limit: LIMIT_MAX,
   };
 
   const { isFetching, data = {} } = useQuery(
