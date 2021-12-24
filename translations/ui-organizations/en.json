@@ -86,6 +86,7 @@
   "ediInformation": "EDI information",
   "interface": "Interface",
   "accounts": "Accounts",
+  "integrationDetails": "Integration details",
 
   "main.code":"Code",
   "main.description":"Description",

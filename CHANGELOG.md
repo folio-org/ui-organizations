@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* View details - Organization record can contain multiple "Integration details" configurations. Refs UIORGS-274.
+
 ## [3.0.1](https://github.com/folio-org/ui-organizations/tree/v3.0.1) (2021-11-02)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.0.0...v3.0.1)
 

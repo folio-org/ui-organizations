@@ -6,6 +6,7 @@ import {
 import { renderHook } from '@testing-library/react-hooks';
 
 import { useOkapiKy } from '@folio/stripes/core';
+import { LIMIT_MAX } from '@folio/stripes-acq-components';
 
 import { useIntegrationConfigs } from './useIntegrationConfigs';
 
@@ -52,8 +53,8 @@ describe('useIntegrationConfigs', () => {
       'data-export-spring/configs',
       {
         searchParams: {
-          query: `configName==EDIFACT_ORDERS_EXPORT_${organizationId}`,
-          limit: 1,
+          query: `configName==EDIFACT_ORDERS_EXPORT_${organizationId}*`,
+          limit: LIMIT_MAX,
         },
       },
     );

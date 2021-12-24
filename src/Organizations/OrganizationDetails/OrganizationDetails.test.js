@@ -12,7 +12,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
 }));
 jest.mock('@folio/stripes-smart-components/lib/Notes/NotesSmartAccordion', () => () => 'NotesSmartAccordion');
 jest.mock('./OrganizationAccounts', () => ({ OrganizationAccounts: () => 'OrganizationAccounts' }));
-jest.mock('./OrganizationEDIInfo', () => ({ OrganizationEDIInfo: () => 'OrganizationEDIInfo' }));
+jest.mock('./IntegrationDetails', () => ({ IntegrationDetails: () => 'IntegrationDetails' }));
 jest.mock('./OrganizationAgreements', () => ({ OrganizationAgreements: () => 'OrganizationAgreements' }));
 jest.mock('./OrganizationVendorInfo', () => ({ OrganizationVendorInfo: () => 'OrganizationVendorInfo' }));
 jest.mock('./OrganizationSummary', () => ({ OrganizationSummary: () => 'OrganizationSummary' }));
@@ -90,13 +90,13 @@ describe('OrganizationDetails', () => {
     expect(screen.getByText('OrganizationAgreements')).toBeDefined();
   });
 
-  it('should display EDI info accordion when org is vendor', () => {
+  it('should display Integration details accordion', () => {
     renderOrganizationDetails({
       ...defaultProps,
       organization: { name: 'Amazon', isVendor: true },
     });
 
-    expect(screen.getByText('OrganizationEDIInfo')).toBeDefined();
+    expect(screen.getByText('IntegrationDetails')).toBeDefined();
   });
 
   it('should display Accounts accordion when org is vendor', () => {
