@@ -164,6 +164,27 @@ const OrganizationDetails = ({
     </PaneMenu>
   );
 
+  const addIntegrationButton = (
+    <IfPermission perm="ui-organizations.create">
+      <FormattedMessage id="ui-organizations.integration.create">
+        {ariaLabel => (
+          <Button
+            id="clickable-neworganization"
+            aria-label={ariaLabel}
+            to={{
+              pathname: `/organizations/${organization.id}/integration/create`,
+              search: location.search,
+            }}
+            buttonStyle="primary"
+            marginBottom0
+          >
+            <FormattedMessage id="ui-organizations.integration.create" />
+          </Button>
+        )}
+      </FormattedMessage>
+    </IfPermission>
+  );
+
   const shortcuts = [
     {
       name: 'new',
@@ -311,6 +332,7 @@ const OrganizationDetails = ({
                   <Accordion
                     id={ORGANIZATION_SECTIONS.integrationDetailsSection}
                     label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.integrationDetailsSection]}
+                    displayWhenOpen={addIntegrationButton}
                   >
                     <IntegrationDetails integrationConfigs={integrationConfigs} />
                   </Accordion>
