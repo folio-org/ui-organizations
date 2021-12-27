@@ -6,7 +6,6 @@ import React, {
 import { FormattedMessage, useIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import moment from 'moment-timezone';
 
 import {
   stripesConnect,
@@ -19,7 +18,6 @@ import {
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
-import FormatTime from '../../Utils/FormatTime';
 import { VIEW_ORG_DETAILS } from '../../common/constants';
 import {
   organizationResourceByUrl,
@@ -41,13 +39,6 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
     () => {
       mutator.editOrganizationOrg.GET()
         .then(organizationsResponse => {
-          // TODO: change time to UTC-0
-          if (organizationsResponse?.edi?.ediJob?.time) {
-            organizationsResponse.edi.ediJob.time = moment(
-              organizationsResponse.edi.ediJob.time,
-            ).format('HH:mm:ss');
-          }
-
           setOrganization(organizationsResponse);
         })
         .finally(() => setIsLoading(false));
@@ -70,10 +61,6 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
 
   const updateOrganization = useCallback(
     (data) => {
-      const time = FormatTime(data, 'post');
-
-      if (time) data.edi.ediJob.time = time;
-
       return mutator.editOrganizationOrg.PUT(data)
         .then(() => {
           setTimeout(cancelForm);

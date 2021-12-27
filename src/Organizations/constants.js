@@ -8,7 +8,6 @@ export const ORGANIZATION_SECTIONS = {
   interfacesSection: 'interfacesSection',
   vendorInformationSection: 'vendorInformationSection',
   vendorTermsSection: 'agreementsSection',
-  ediInformationSection: 'EDIInformationSection',
   accountsSection: 'accountsSection',
   notesSection: 'notesSection',
   integrationDetailsSection: 'integrationDetailsSection',
@@ -21,7 +20,6 @@ export const ORGANIZATION_SECTION_LABELS = {
   [ORGANIZATION_SECTIONS.interfacesSection]: <FormattedMessage id="ui-organizations.interface" />,
   [ORGANIZATION_SECTIONS.vendorInformationSection]: <FormattedMessage id="ui-organizations.vendorInformation" />,
   [ORGANIZATION_SECTIONS.vendorTermsSection]: <FormattedMessage id="ui-organizations.vendorTerms" />,
-  [ORGANIZATION_SECTIONS.ediInformationSection]: <FormattedMessage id="ui-organizations.ediInformation" />,
   [ORGANIZATION_SECTIONS.accountsSection]: <FormattedMessage id="ui-organizations.accounts" />,
   [ORGANIZATION_SECTIONS.integrationDetailsSection]: <FormattedMessage id="ui-organizations.integrationDetails" />,
 };

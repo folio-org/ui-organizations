@@ -48,10 +48,6 @@ jest.mock(
   () => ({ OrganizationAgreementsForm: () => 'OrganizationAgreementsForm' }),
 );
 jest.mock(
-  './OrganizationEDIInfoForm',
-  () => ({ OrganizationEDIInfoForm: () => 'OrganizationEDIInfoForm' }),
-);
-jest.mock(
   './OrganizationAccountsForm',
   () => ({ OrganizationAccountsForm: () => 'OrganizationAccountsForm' }),
 );
