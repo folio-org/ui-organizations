@@ -30,7 +30,6 @@ import { OrganizationContactPeopleForm } from './OrganizationContactPeopleForm';
 import { OrganizationInterfacesForm } from './OrganizationInterfacesForm';
 import { OrganizationVendorInfoForm } from './OrganizationVendorInfoForm';
 import { OrganizationAgreementsForm } from './OrganizationAgreementsForm';
-import { OrganizationEDIInfoForm } from './OrganizationEDIInfoForm';
 import { OrganizationAccountsForm } from './OrganizationAccountsForm';
 
 import {
@@ -56,7 +55,6 @@ const OrganizationForm = ({
     [ORGANIZATION_SECTIONS.interfacesSection]: false,
     [ORGANIZATION_SECTIONS.vendorInformationSection]: false,
     [ORGANIZATION_SECTIONS.vendorTermsSection]: false,
-    [ORGANIZATION_SECTIONS.ediInformationSection]: false,
     [ORGANIZATION_SECTIONS.accountsSection]: false,
   };
   const [expandAll, stateSections, toggleSection] = useAccordionToggle(initialAccordionStatus);
@@ -206,13 +204,6 @@ const OrganizationForm = ({
                           label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorTermsSection]}
                         >
                           <OrganizationAgreementsForm />
-                        </Accordion>
-
-                        <Accordion
-                          id={ORGANIZATION_SECTIONS.ediInformationSection}
-                          label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.ediInformationSection]}
-                        >
-                          <OrganizationEDIInfoForm />
                         </Accordion>
 
                         <Accordion

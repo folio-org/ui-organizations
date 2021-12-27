@@ -8,7 +8,6 @@ import {
 } from '@folio/stripes/core';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
-import FormatTime from '../../Utils/FormatTime';
 import { VIEW_ORG_DETAILS } from '../../common/constants';
 import {
   organizationsResource,
@@ -49,10 +48,6 @@ export const OrganizationCreate = ({ history, location, mutator }) => {
   const intl = useIntl();
   const createOrganization = useCallback(
     (data) => {
-      const time = FormatTime(data, 'post');
-
-      if (time) data.edi.ediJob.time = time;
-
       return mutator.createOrganizationOrg.POST(data)
         .then(organization => {
           setTimeout(() => cancelForm(organization.id));
