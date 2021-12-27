@@ -6,6 +6,5 @@ export const SECTIONS = {
   interfacesSection: 'interfacesSection',
   vendorInformationSection: 'vendorInformationSection',
   vendorTermsSection: 'agreementsSection',
-  ediInformationSection: 'EDIInformationSection',
   accountsSection: 'accountsSection',
 };

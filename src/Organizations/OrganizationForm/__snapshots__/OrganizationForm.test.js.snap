@@ -15,10 +15,10 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
           style="flex: 0 0 100%;"
         >
           <div
-            aria-labelledby="paneHeader17-pane-title"
+            aria-labelledby="paneHeader16-pane-title"
             class="paneHeader"
             data-test-pane-header="true"
-            id="paneHeader17"
+            id="paneHeader16"
             tabindex="-1"
           >
             <div
@@ -50,7 +50,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
             >
               <div
                 class="paneHeaderCenterInner"
-                id="paneHeader17-pane-title"
+                id="paneHeader16-pane-title"
               >
                 <h2
                   class="paneTitle"
@@ -67,7 +67,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
           </div>
           <div
             class="paneContent hasPadding"
-            id="17-content"
+            id="16-content"
             tabindex="-1"
           >
             <div
@@ -125,7 +125,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                           data-test-headline="true"
                         >
                           <button
-                            aria-controls="accordion40"
+                            aria-controls="accordion37"
                             aria-expanded="true"
                             class="defaultCollapseButton"
                             id="accordion-toggle-button-summarySection"
@@ -159,7 +159,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                         aria-labelledby="accordion-toggle-button-summarySection"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
-                        id="accordion40"
+                        id="accordion37"
                         role="region"
                       >
                         <div>
@@ -186,7 +186,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                           data-test-headline="true"
                         >
                           <button
-                            aria-controls="accordion41"
+                            aria-controls="accordion38"
                             aria-expanded="false"
                             class="defaultCollapseButton"
                             id="accordion-toggle-button-contactInformationSection"
@@ -220,7 +220,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                         aria-labelledby="accordion-toggle-button-contactInformationSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion41"
+                        id="accordion38"
                         role="region"
                       >
                         OrganizationContactInfoFormContainer
@@ -244,7 +244,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                           data-test-headline="true"
                         >
                           <button
-                            aria-controls="accordion42"
+                            aria-controls="accordion39"
                             aria-expanded="false"
                             class="defaultCollapseButton"
                             id="accordion-toggle-button-contactPeopleSection"
@@ -278,7 +278,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                         aria-labelledby="accordion-toggle-button-contactPeopleSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion42"
+                        id="accordion39"
                         role="region"
                       >
                         OrganizationContactPeopleForm
@@ -302,7 +302,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                           data-test-headline="true"
                         >
                           <button
-                            aria-controls="accordion43"
+                            aria-controls="accordion40"
                             aria-expanded="false"
                             class="defaultCollapseButton"
                             id="accordion-toggle-button-interfacesSection"
@@ -336,7 +336,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                         aria-labelledby="accordion-toggle-button-interfacesSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion43"
+                        id="accordion40"
                         role="region"
                       >
                         OrganizationInterfacesForm
@@ -1278,64 +1278,6 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                   <section
                     class="accordion hasSeparator"
                     data-test-accordion-section="true"
-                    id="EDIInformationSection"
-                  >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="header default"
-                      >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
-                        >
-                          <button
-                            aria-controls="accordion21"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-EDIInformationSection"
-                            type="button"
-                          >
-                            <span
-                              class="headerInner"
-                            >
-                              <span
-                                class="defaultHeaderIcon"
-                              >
-                                <span>
-                                  Icon
-                                </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.ediInformation
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
-                      </div>
-                    </div>
-                    <div
-                      class="content-wrap"
-                      style="z-index: 1;"
-                    >
-                      <div
-                        aria-labelledby="accordion-toggle-button-EDIInformationSection"
-                        class="content-region"
-                        data-test-accordion-wrapper="true"
-                        id="accordion21"
-                        role="region"
-                      >
-                        OrganizationEDIInfoForm
-                      </div>
-                    </div>
-                  </section>
-                  <section
-                    class="accordion hasSeparator"
-                    data-test-accordion-section="true"
                     id="accountsSection"
                   >
                     <div
@@ -1350,7 +1292,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                           data-test-headline="true"
                         >
                           <button
-                            aria-controls="accordion22"
+                            aria-controls="accordion21"
                             aria-expanded="false"
                             class="defaultCollapseButton"
                             id="accordion-toggle-button-accountsSection"
@@ -1384,7 +1326,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                         aria-labelledby="accordion-toggle-button-accountsSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion22"
+                        id="accordion21"
                         role="region"
                       >
                         OrganizationAccountsForm
