@@ -375,6 +375,7 @@
   "accounts.pleaseAddAccount": "Please add account",
   "accounts.remove": "Remove",
 
+  "integration.create": "Add integration",
   "integration.info": "Integration information",
   "integration.info.configName": "Integration name",
   "integration.info.configDescription": "Description",
