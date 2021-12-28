@@ -85,13 +85,8 @@ const OrganizationIntegrationForm = ({
 
   const shortcuts = [
     {
-      name: 'cancel',
-      shortcut: 'esc',
-      handler: handleKeyCommand(onClose),
-    },
-    {
-      name: 'save',
-      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
+      name: 'search',
+      handler: handleKeyCommand(() => history.push(ORGANIZATIONS_ROUTE)),
     },
     {
       name: 'expandAllSections',
@@ -102,8 +97,13 @@ const OrganizationIntegrationForm = ({
       handler: (e) => collapseAllSections(e, accordionStatusRef),
     },
     {
-      name: 'search',
-      handler: handleKeyCommand(() => history.push(ORGANIZATIONS_ROUTE)),
+      name: 'cancel',
+      shortcut: 'esc',
+      handler: handleKeyCommand(onClose),
+    },
+    {
+      name: 'save',
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
     },
   ];
 
