@@ -65,6 +65,16 @@ const Organizations = () => {
               <NavList>
                 <NavListSection>
                   <NavListItem
+                    id="organizations-app-search-item"
+                    to={ORGANIZATIONS_ROUTE}
+                    onClick={() => {
+                      handleToggle();
+                      focusSearchField();
+                    }}
+                  >
+                    <FormattedMessage id="ui-organizations.appMenu.organizationsAppSearch" />
+                  </NavListItem>
+                  <NavListItem
                     id="keyboard-shortcuts-item"
                     onClick={() => {
                       handleToggle();
