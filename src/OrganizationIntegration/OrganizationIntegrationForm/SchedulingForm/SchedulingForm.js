@@ -103,7 +103,7 @@ export const SchedulingForm = () => {
           <Row>
             <Col xs={3}>
               <Field
-                data-testid="schedule-frequency"
+                data-testid="schedule-hour-frequency"
                 component={TextField}
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleFrequency" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleFrequency"
@@ -118,6 +118,7 @@ export const SchedulingForm = () => {
 
             <Col xs={3}>
               <Field
+                data-testid="schedule-hour-time"
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleTime" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleTime"
                 component={Timepicker}
@@ -174,7 +175,7 @@ export const SchedulingForm = () => {
           <Row>
             <Col xs={3}>
               <Field
-                data-testid="schedule-frequency"
+                data-testid="schedule-week-frequency"
                 component={TextField}
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleFrequency" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleFrequency"
@@ -189,6 +190,7 @@ export const SchedulingForm = () => {
 
             <Col xs={3}>
               <Field
+                data-testid="schedule-week-time"
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleTime" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleTime"
                 component={Timepicker}

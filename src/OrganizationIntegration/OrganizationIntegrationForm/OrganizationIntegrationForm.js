@@ -47,6 +47,18 @@ const OrganizationIntegrationForm = ({
   const accordionStatusRef = useRef();
   const paneFooter = useMemo(
     () => {
+      const end = (
+        <Button
+          id="clickable-save-contact-person-footer"
+          type="submit"
+          buttonStyle="primary mega"
+          disabled={pristine || submitting}
+          onClick={handleSubmit}
+        >
+          <FormattedMessage id="ui-organizations.button.saveAndClose" />
+        </Button>
+      );
+
       const start = (
         <FormattedMessage id="ui-organizations.button.cancel">
           {(btnLabel) => (
@@ -61,18 +73,6 @@ const OrganizationIntegrationForm = ({
         </FormattedMessage>
       );
 
-      const end = (
-        <Button
-          id="clickable-save-contact-person-footer"
-          type="submit"
-          buttonStyle="primary mega"
-          disabled={pristine || submitting}
-          onClick={handleSubmit}
-        >
-          <FormattedMessage id="ui-organizations.button.saveAndClose" />
-        </Button>
-      );
-
       return (
         <PaneFooter
           renderStart={start}
@@ -85,13 +85,8 @@ const OrganizationIntegrationForm = ({
 
   const shortcuts = [
     {
-      name: 'cancel',
-      shortcut: 'esc',
-      handler: handleKeyCommand(onClose),
-    },
-    {
-      name: 'save',
-      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
+      name: 'search',
+      handler: handleKeyCommand(() => history.push(ORGANIZATIONS_ROUTE)),
     },
     {
       name: 'expandAllSections',
@@ -102,8 +97,13 @@ const OrganizationIntegrationForm = ({
       handler: (e) => collapseAllSections(e, accordionStatusRef),
     },
     {
-      name: 'search',
-      handler: handleKeyCommand(() => history.push(ORGANIZATIONS_ROUTE)),
+      name: 'cancel',
+      shortcut: 'esc',
+      handler: handleKeyCommand(onClose),
+    },
+    {
+      name: 'save',
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
     },
   ];
 
