@@ -47,6 +47,18 @@ const OrganizationIntegrationForm = ({
   const accordionStatusRef = useRef();
   const paneFooter = useMemo(
     () => {
+      const end = (
+        <Button
+          id="clickable-save-contact-person-footer"
+          type="submit"
+          buttonStyle="primary mega"
+          disabled={pristine || submitting}
+          onClick={handleSubmit}
+        >
+          <FormattedMessage id="ui-organizations.button.saveAndClose" />
+        </Button>
+      );
+
       const start = (
         <FormattedMessage id="ui-organizations.button.cancel">
           {(btnLabel) => (
@@ -59,18 +71,6 @@ const OrganizationIntegrationForm = ({
             </Button>
           )}
         </FormattedMessage>
-      );
-
-      const end = (
-        <Button
-          id="clickable-save-contact-person-footer"
-          type="submit"
-          buttonStyle="primary mega"
-          disabled={pristine || submitting}
-          onClick={handleSubmit}
-        >
-          <FormattedMessage id="ui-organizations.button.saveAndClose" />
-        </Button>
       );
 
       return (
