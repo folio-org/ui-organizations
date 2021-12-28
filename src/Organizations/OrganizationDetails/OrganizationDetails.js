@@ -165,7 +165,7 @@ const OrganizationDetails = ({
   );
 
   const addIntegrationButton = (
-    <IfPermission perm="ui-organizations.create">
+    <IfPermission perm="ui-organizations.edit">
       <FormattedMessage id="ui-organizations.integration.create">
         {ariaLabel => (
           <Button

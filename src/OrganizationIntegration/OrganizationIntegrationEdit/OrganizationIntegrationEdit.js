@@ -1,52 +1,62 @@
+import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 
 import {
   LoadingPane,
+  useShowCallout,
 } from '@folio/stripes-acq-components';
 
 import {
   useAcqMethods,
   useOrganization,
+  useIntegrationConfig,
+  useIntegrationConfigMutation,
   useIntegrationConfigs,
 } from '../../common/hooks';
 
-import {
-  EDI_CODE_TYPES,
-  FTP_TYPES,
-  TRANSMISSION_MODES,
-  CONNECTION_MODES,
-} from '../constants';
-import { buildAvailableAccounts } from '../utils';
+import { buildAvailableAccounts, findDefaultIntegration } from '../utils';
 import { OrganizationIntegrationForm } from '../OrganizationIntegrationForm';
 
 export const OrganizationIntegrationEdit = ({ orgId }) => {
-  const initialValues = {
-    schedulePeriod: 'NONE',
-    exportTypeSpecificParameters: {
-      vendorEdiOrdersExportConfig: {
-        vendorId: orgId,
-        ediConfig: {
-          vendorEdiCode: EDI_CODE_TYPES[0].value,
-          libEdiCode: EDI_CODE_TYPES[0].value,
-        },
-        editFtp: {
-          ftpFormat: FTP_TYPES[0].value,
-          ftpMode: TRANSMISSION_MODES[0].value,
-          ftpConnMode: CONNECTION_MODES[0].value,
-        },
-      },
-    },
-  };
+  const { id } = useParams();
+  const location = useLocation();
+  const history = useHistory();
+  const sendCallout = useShowCallout();
 
-  const { organization, isLoading } = useOrganization(orgId);
+  const { integrationConfig, isLoading } = useIntegrationConfig(id);
+  const { organization, isLoading: isOrgLoading } = useOrganization(orgId);
   const { acqMethods, isLoading: isAcqMethodsLoading } = useAcqMethods();
   const { integrationConfigs, isLoading: isIntegrationsLoading } = useIntegrationConfigs({ organizationId: orgId });
 
-  if (isLoading || isIntegrationsLoading || isAcqMethodsLoading) {
+  const closeForm = () => {
+    history.push({
+      pathname: `/organizations/${orgId}/integration/${id}/view`,
+      search: location.search,
+    });
+  };
+
+  const { saveIntegrationConfig } = useIntegrationConfigMutation({
+    onSuccess: () => {
+      sendCallout({
+        message: <FormattedMessage id="ui-organizations.integration.message.save.success" />,
+      });
+      closeForm();
+    },
+    onError: () => {
+      sendCallout({
+        message: <FormattedMessage id="ui-organizations.integration.message.save.error" />,
+        type: 'error',
+      });
+    },
+  });
+
+  if (isLoading || isOrgLoading || isIntegrationsLoading || isAcqMethodsLoading) {
     return (
       <LoadingPane
         id="integration-create"
-        onClose={() => console.log('close')}
+        onClose={closeForm}
       />
     );
   }
@@ -54,10 +64,17 @@ export const OrganizationIntegrationEdit = ({ orgId }) => {
   return (
     <OrganizationIntegrationForm
       acqMethods={acqMethods}
-      accounts={buildAvailableAccounts(organization, integrationConfigs)}
-      organization={organization}
-      initialValues={initialValues}
-      onSubmit={values => console.log(values)}
+      accounts={buildAvailableAccounts(organization, integrationConfigs, integrationConfig)}
+      defaultIntegration={findDefaultIntegration(integrationConfigs, integrationConfig)}
+      initialValues={integrationConfig}
+      onSubmit={saveIntegrationConfig}
+      onClose={closeForm}
+      paneTitle={
+        <FormattedMessage
+          id="ui-organizations.integration.edit.paneTitle"
+          values={{ name: integrationConfig.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig?.configName }}
+        />
+      }
     />
   );
 };

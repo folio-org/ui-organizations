@@ -13,8 +13,8 @@ const columnMapping = {
   description: <FormattedMessage id="ui-organizations.main.description" />,
 };
 const formatter = {
-  name: i => i.configName,
-  description: i => i.configDescription || <NoValue />,
+  name: i => i.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig?.configName,
+  description: i => i.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig?.configDescription || <NoValue />,
 };
 
 const IntegrationDetails = ({ integrationConfigs = [] }) => (
