@@ -27,6 +27,7 @@ import {
   handleKeyCommand,
 } from '@folio/stripes-acq-components';
 
+import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import { IntegrationInfoForm } from './IntegrationInfoForm';
 import { EdiForm } from './EdiForm';
 import { FtpForm } from './FtpForm';
@@ -35,6 +36,7 @@ import { SchedulingForm } from './SchedulingForm';
 const OrganizationIntegrationForm = ({
   acqMethods,
   accounts,
+  defaultIntegration,
   onClose,
   paneTitle,
   handleSubmit,
@@ -101,8 +103,7 @@ const OrganizationIntegrationForm = ({
     },
     {
       name: 'search',
-      // TODO: implement correctly
-      handler: handleKeyCommand(() => history.push()),
+      handler: handleKeyCommand(() => history.push(ORGANIZATIONS_ROUTE)),
     },
   ];
 
@@ -139,7 +140,7 @@ const OrganizationIntegrationForm = ({
                 </Col>
               </Row>
               <AccordionSet>
-                <IntegrationInfoForm />
+                <IntegrationInfoForm defaultIntegration={defaultIntegration} />
 
                 <EdiForm
                   acqMethods={acqMethods}
@@ -161,6 +162,7 @@ const OrganizationIntegrationForm = ({
 OrganizationIntegrationForm.propTypes = {
   acqMethods: PropTypes.arrayOf(PropTypes.object),
   accounts: PropTypes.arrayOf(PropTypes.string),
+  defaultIntegration: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   paneTitle: PropTypes.node.isRequired,

@@ -1,12 +1,17 @@
+import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import {
   LoadingPane,
+  useShowCallout,
 } from '@folio/stripes-acq-components';
 
 import {
   useAcqMethods,
   useOrganization,
+  useIntegrationConfigMutation,
   useIntegrationConfigs,
 } from '../../common/hooks';
 
@@ -16,18 +21,23 @@ import {
   TRANSMISSION_MODES,
   CONNECTION_MODES,
 } from '../constants';
-import { buildAvailableAccounts } from '../utils';
+import { buildAvailableAccounts, findDefaultIntegration } from '../utils';
 import { OrganizationIntegrationForm } from '../OrganizationIntegrationForm';
 
 export const OrganizationIntegrationCreate = ({ orgId }) => {
+  const location = useLocation();
+  const history = useHistory();
+  const sendCallout = useShowCallout();
+
   const initialValues = {
     schedulePeriod: 'NONE',
+    type: 'EDIFACT_ORDERS_EXPORT',
     exportTypeSpecificParameters: {
       vendorEdiOrdersExportConfig: {
         vendorId: orgId,
         ediConfig: {
-          vendorEdiCode: EDI_CODE_TYPES[0].value,
-          libEdiCode: EDI_CODE_TYPES[0].value,
+          vendorEdiType: EDI_CODE_TYPES[0].value,
+          libEdiType: EDI_CODE_TYPES[0].value,
         },
         editFtp: {
           ftpFormat: FTP_TYPES[0].value,
@@ -42,11 +52,33 @@ export const OrganizationIntegrationCreate = ({ orgId }) => {
   const { acqMethods, isLoading: isAcqMethodsLoading } = useAcqMethods();
   const { integrationConfigs, isLoading: isIntegrationsLoading } = useIntegrationConfigs({ organizationId: orgId });
 
+  const closeForm = () => {
+    history.push({
+      pathname: `/organizations/view/${organization.id}`,
+      search: location.search,
+    });
+  };
+
+  const { saveIntegrationConfig } = useIntegrationConfigMutation({
+    onSuccess: () => {
+      sendCallout({
+        message: <FormattedMessage id="ui-organizations.integration.message.save.success" />,
+      });
+      closeForm();
+    },
+    onError: () => {
+      sendCallout({
+        message: <FormattedMessage id="ui-organizations.integration.message.save.error" />,
+        type: 'error',
+      });
+    },
+  });
+
   if (isLoading || isIntegrationsLoading || isAcqMethodsLoading) {
     return (
       <LoadingPane
         id="integration-create"
-        onClose={() => console.log('close')}
+        onClose={closeForm}
       />
     );
   }
@@ -55,9 +87,11 @@ export const OrganizationIntegrationCreate = ({ orgId }) => {
     <OrganizationIntegrationForm
       acqMethods={acqMethods}
       accounts={buildAvailableAccounts(organization, integrationConfigs)}
-      organization={organization}
+      defaultIntegration={findDefaultIntegration(integrationConfigs)}
       initialValues={initialValues}
-      onSubmit={values => console.log(values)}
+      onSubmit={saveIntegrationConfig}
+      onClose={closeForm}
+      paneTitle={<FormattedMessage id="ui-organizations.integration.create.paneTitle" />}
     />
   );
 };

@@ -331,6 +331,8 @@
   "accounts.remove": "Remove",
 
   "integration.create": "Add integration",
+  "integration.create.paneTitle": "Create integration",
+  "integration.edit.paneTitle": "Edit integration - {name}",
   "integration.info": "Integration information",
   "integration.info.configName": "Integration name",
   "integration.info.configDescription": "Description",
@@ -379,6 +381,8 @@
   "integration.scheduling.scheduleWeekdays.THURSDAY": "T",
   "integration.scheduling.scheduleWeekdays.TUESDAY": "T",
   "integration.scheduling.scheduleWeekdays.WEDNESDAY": "W",
+  "integration.message.save.success": "Integration was saved",
+  "integration.message.save.error": "Integration could not be saved",
 
   "save.error.genericError": "Organization could not be saved",
   "save.error.codeInUse": "Code is already in use",

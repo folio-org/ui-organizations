@@ -57,6 +57,13 @@ export const SchedulingForm = () => {
     );
   };
 
+  const changeSchedulePeriod = ({ target }) => {
+    change(
+      'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters',
+      { schedulePeriod: target.value },
+    );
+  };
+
   return (
     <Accordion
       id="scheduling"
@@ -84,6 +91,7 @@ export const SchedulingForm = () => {
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.schedulePeriod"
                 component={Select}
                 dataOptions={schedulePeriodOptions}
+                onChange={changeSchedulePeriod}
               />
             </Col>
           )

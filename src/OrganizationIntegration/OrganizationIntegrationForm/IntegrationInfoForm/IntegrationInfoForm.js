@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field } from 'react-final-form';
 
@@ -14,9 +15,7 @@ import {
   validateRequired,
 } from '@folio/stripes-acq-components';
 
-// TODO: check isDefault in existing configs
-
-export const IntegrationInfoForm = () => {
+export const IntegrationInfoForm = ({ defaultIntegration }) => {
   return (
     <Accordion
       id="integrationInfo"
@@ -50,9 +49,14 @@ export const IntegrationInfoForm = () => {
             label={<FormattedMessage id="ui-organizations.integration.info.isDefaultConfig" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.isDefaultConfig"
             vertical
+            disabled={Boolean(defaultIntegration)}
           />
         </Col>
       </Row>
     </Accordion>
   );
+};
+
+IntegrationInfoForm.propTypes = {
+  defaultIntegration: PropTypes.object,
 };

@@ -77,6 +77,7 @@
         "subPermissions": [
           "module.organizations.enabled",
           "data-export.config.collection.get",
+          "data-export.config.item.get",
           "organizations.organizations.collection.get",
           "organizations.organizations.item.get",
           "organizations-storage.accounts.collection.get",
@@ -107,6 +108,8 @@
         "displayName": "Organizations: View, edit",
         "visible": true,
         "subPermissions": [
+          "data-export.config.item.post",
+          "data-export.config.item.put",
           "organizations.organizations.item.put",
           "organizations-storage.accounts.item.put",
           "organizations-storage.addresses.item.put",

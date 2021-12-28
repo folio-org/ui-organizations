@@ -59,7 +59,7 @@ export const EdiForm = ({
                 dataOptions={accountOptions}
                 fullWidth
                 multiple
-                required={isDefaultConfig}
+                required
                 validate={validateRequired}
               />
             </Col>
