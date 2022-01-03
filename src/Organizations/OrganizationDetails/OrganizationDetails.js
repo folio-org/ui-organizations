@@ -334,7 +334,10 @@ const OrganizationDetails = ({
                     label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.integrationDetailsSection]}
                     displayWhenOpen={addIntegrationButton}
                   >
-                    <IntegrationDetails integrationConfigs={integrationConfigs} />
+                    <IntegrationDetails
+                      integrationConfigs={integrationConfigs}
+                      orgId={organization.id}
+                    />
                   </Accordion>
 
                   <Accordion

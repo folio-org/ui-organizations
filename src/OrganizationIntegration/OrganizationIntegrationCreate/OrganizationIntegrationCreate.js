@@ -39,7 +39,7 @@ export const OrganizationIntegrationCreate = ({ orgId }) => {
           vendorEdiType: EDI_CODE_TYPES[0].value,
           libEdiType: EDI_CODE_TYPES[0].value,
         },
-        editFtp: {
+        ediFtp: {
           ftpFormat: FTP_TYPES[0].value,
           ftpMode: TRANSMISSION_MODES[0].value,
           ftpConnMode: CONNECTION_MODES[0].value,
@@ -59,7 +59,7 @@ export const OrganizationIntegrationCreate = ({ orgId }) => {
     });
   };
 
-  const { saveIntegrationConfig } = useIntegrationConfigMutation({
+  const { mutateIntegrationConfig } = useIntegrationConfigMutation({
     onSuccess: () => {
       sendCallout({
         message: <FormattedMessage id="ui-organizations.integration.message.save.success" />,
@@ -89,7 +89,7 @@ export const OrganizationIntegrationCreate = ({ orgId }) => {
       accounts={buildAvailableAccounts(organization, integrationConfigs)}
       defaultIntegration={findDefaultIntegration(integrationConfigs)}
       initialValues={initialValues}
-      onSubmit={saveIntegrationConfig}
+      onSubmit={mutateIntegrationConfig}
       onClose={closeForm}
       paneTitle={<FormattedMessage id="ui-organizations.integration.create.paneTitle" />}
     />

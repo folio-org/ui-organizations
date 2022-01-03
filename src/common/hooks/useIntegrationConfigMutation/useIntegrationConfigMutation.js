@@ -22,7 +22,7 @@ export const useIntegrationConfigMutation = (options = {}) => {
           .filter(weekDay => scheduleParameters.weekDays[weekDay]);
       }
 
-      const kyMethod = integrationConfig.id ? 'put' : 'post';
+      const kyMethod = options.method ?? (integrationConfig.id ? 'put' : 'post');
       const kyPath = integrationConfig.id
         ? `data-export-spring/configs/${integrationConfig.id}`
         : 'data-export-spring/configs';
@@ -33,6 +33,6 @@ export const useIntegrationConfigMutation = (options = {}) => {
   });
 
   return {
-    saveIntegrationConfig: mutateAsync,
+    mutateIntegrationConfig: mutateAsync,
   };
 };
