@@ -29,6 +29,8 @@ const normalizeNumber = value => {
   return Number(value);
 };
 
+const trimTime = value => value.slice(0, 8);
+
 export const SchedulingForm = () => {
   const { formatMessage } = useIntl();
   const { getState, change } = useForm();
@@ -124,6 +126,7 @@ export const SchedulingForm = () => {
                 component={Timepicker}
                 timeZone="UTC"
                 validateFields={[]}
+                parse={trimTime}
               />
             </Col>
           </Row>
@@ -164,6 +167,7 @@ export const SchedulingForm = () => {
                 component={Timepicker}
                 timeZone="UTC"
                 validateFields={[]}
+                parse={trimTime}
               />
             </Col>
           </Row>
@@ -196,6 +200,7 @@ export const SchedulingForm = () => {
                 component={Timepicker}
                 timeZone="UTC"
                 validateFields={[]}
+                parse={trimTime}
               />
             </Col>
 
@@ -248,6 +253,7 @@ export const SchedulingForm = () => {
                 component={Timepicker}
                 timeZone="UTC"
                 validateFields={[]}
+                parse={trimTime}
               />
             </Col>
           </Row>
