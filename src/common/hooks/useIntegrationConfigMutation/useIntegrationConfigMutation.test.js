@@ -28,7 +28,7 @@ describe('useIntegrationConfigMutation', () => {
       { wrapper },
     );
 
-    await result.current.saveIntegrationConfig({
+    await result.current.mutateIntegrationConfig({
       schedulePeriod: 'NONE',
       exportTypeSpecificParameters: {
         vendorEdiOrdersExportConfig: {
@@ -52,7 +52,7 @@ describe('useIntegrationConfigMutation', () => {
       { wrapper },
     );
 
-    await result.current.saveIntegrationConfig({
+    await result.current.mutateIntegrationConfig({
       id: 1,
       schedulePeriod: 'NONE',
       exportTypeSpecificParameters: {
@@ -68,5 +68,25 @@ describe('useIntegrationConfigMutation', () => {
     });
 
     expect(putMock).toHaveBeenCalled();
+  });
+
+  it('should make delete request when \'delete\' method is specified in options', async () => {
+    const deleteMock = jest.fn();
+
+    useOkapiKy.mockClear().mockReturnValue({
+      put: deleteMock,
+    });
+
+    const { result } = renderHook(
+      () => useIntegrationConfigMutation(),
+      { wrapper },
+    );
+
+    await result.current.mutateIntegrationConfig({
+      id: 1,
+      method: 'delete',
+    });
+
+    expect(deleteMock).toHaveBeenCalled();
   });
 });

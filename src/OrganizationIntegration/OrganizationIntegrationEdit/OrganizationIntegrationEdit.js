@@ -37,7 +37,7 @@ export const OrganizationIntegrationEdit = ({ orgId }) => {
     });
   };
 
-  const { saveIntegrationConfig } = useIntegrationConfigMutation({
+  const { mutateIntegrationConfig } = useIntegrationConfigMutation({
     onSuccess: () => {
       sendCallout({
         message: <FormattedMessage id="ui-organizations.integration.message.save.success" />,
@@ -67,7 +67,7 @@ export const OrganizationIntegrationEdit = ({ orgId }) => {
       accounts={buildAvailableAccounts(organization, integrationConfigs, integrationConfig)}
       defaultIntegration={findDefaultIntegration(integrationConfigs, integrationConfig)}
       initialValues={integrationConfig}
-      onSubmit={saveIntegrationConfig}
+      onSubmit={mutateIntegrationConfig}
       onClose={closeForm}
       paneTitle={
         <FormattedMessage

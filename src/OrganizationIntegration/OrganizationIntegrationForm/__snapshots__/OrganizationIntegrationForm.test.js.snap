@@ -1177,7 +1177,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               id="text-input-22"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.ftpPort"
                               spellcheck="false"
-                              type="text"
+                              type="number"
                               value=""
                               warning=""
                             />

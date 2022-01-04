@@ -13,7 +13,7 @@ const renderIntegrationDetails = (props = {}) => render(
 
 describe('IntegrationDetails', () => {
   it('should render IntegrationDetails list', () => {
-    renderIntegrationDetails({ integrationConfigs: [{}] });
+    renderIntegrationDetails({ integrationConfigs: [{}], orgId: 'orgId' });
 
     expect(screen.getByText('ui-organizations.main.description')).toBeInTheDocument();
     expect(screen.getByText('ui-organizations.main.name')).toBeInTheDocument();

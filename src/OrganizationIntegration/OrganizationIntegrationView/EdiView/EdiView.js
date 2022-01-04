@@ -1,41 +1,29 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Field, useForm } from 'react-final-form';
 
 import {
   Accordion,
   Checkbox,
   Col,
+  KeyValue,
   Row,
   Select,
-  TextArea,
-  TextField,
 } from '@folio/stripes/components';
-import {
-  validateRequired,
-} from '@folio/stripes-acq-components';
-
-import { EDI_CODE_TYPES } from '../../constants';
 import {
   getAccountOptions,
   getAcqMethodOptions,
 } from '../../utils';
 
-export const EdiForm = ({
+const EdiView = ({
+  vendorEdiOrdersExportConfig = {},
   acqMethods = [],
   accounts = [],
 }) => {
-  const { getState } = useForm();
-
   const acqMethodOptions = useMemo(() => getAcqMethodOptions(acqMethods), [acqMethods]);
   const accountOptions = useMemo(() => getAccountOptions(accounts), [accounts]);
 
-  const isDefaultConfig = getState()
-    ?.values
-    ?.exportTypeSpecificParameters
-    ?.vendorEdiOrdersExportConfig
-    ?.isDefaultConfig;
+  const isDefaultConfig = vendorEdiOrdersExportConfig?.isDefaultConfig;
 
   return (
     <Accordion
@@ -50,15 +38,13 @@ export const EdiForm = ({
               xs={6}
               md={3}
             >
-              <Field
+              <Select
                 label={<FormattedMessage id="ui-organizations.integration.edi.accountNumbers" />}
-                name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.accountNoList"
-                component={Select}
                 dataOptions={accountOptions}
                 fullWidth
                 multiple
-                required
-                validate={validateRequired}
+                disabled
+                value={vendorEdiOrdersExportConfig.ediConfig?.accountNoList}
               />
             </Col>
           )
@@ -69,13 +55,13 @@ export const EdiForm = ({
           xs={6}
           md={3}
         >
-          <Field
+          <Select
             label={<FormattedMessage id="ui-organizations.integration.edi.defaultAcquisitionMethods" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods"
-            component={Select}
             dataOptions={acqMethodOptions}
             fullWidth
             multiple
+            disabled
+            value={vendorEdiOrdersExportConfig.ediConfig?.defaultAcquisitionMethods}
           />
         </Col>
 
@@ -84,12 +70,9 @@ export const EdiForm = ({
           xs={6}
           md={3}
         >
-          <Field
-            component={TextField}
-            fullWidth
-            id="vendorEdiCode"
+          <KeyValue
             label={<FormattedMessage id="ui-organizations.integration.edi.vendorEDICode" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.vendorEdiCode"
+            value={vendorEdiOrdersExportConfig.ediConfig?.vendorEdiCode}
           />
         </Col>
 
@@ -98,12 +81,9 @@ export const EdiForm = ({
           xs={6}
           md={3}
         >
-          <Field
+          <KeyValue
             label={<FormattedMessage id="ui-organizations.integration.edi.vendorEDIType" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.vendorEdiType"
-            component={Select}
-            dataOptions={EDI_CODE_TYPES}
-            fullWidth
+            value={vendorEdiOrdersExportConfig.ediConfig?.vendorEdiType}
           />
         </Col>
 
@@ -112,12 +92,9 @@ export const EdiForm = ({
           xs={6}
           md={3}
         >
-          <Field
-            component={TextField}
-            fullWidth
-            id="libEdiCode"
+          <KeyValue
             label={<FormattedMessage id="ui-organizations.integration.edi.libraryEDICode" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.libEdiCode"
+            value={vendorEdiOrdersExportConfig.ediConfig?.libEdiCode}
           />
         </Col>
 
@@ -126,12 +103,9 @@ export const EdiForm = ({
           xs={6}
           md={3}
         >
-          <Field
-            component={Select}
-            dataOptions={EDI_CODE_TYPES}
-            fullWidth
+          <KeyValue
             label={<FormattedMessage id="ui-organizations.integration.edi.libraryEDIType" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.libEdiType"
+            value={vendorEdiOrdersExportConfig.ediConfig?.libEdiType}
           />
         </Col>
 
@@ -140,12 +114,9 @@ export const EdiForm = ({
           xs={6}
           md={3}
         >
-          <Field
-            component={TextField}
-            fullWidth
-            id="ediNamingConvention"
+          <KeyValue
             label={<FormattedMessage id="ui-organizations.integration.edi.ediNamingConvention" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.ediNamingConvention"
+            value={vendorEdiOrdersExportConfig.ediConfig?.ediNamingConvention}
           />
         </Col>
 
@@ -154,32 +125,37 @@ export const EdiForm = ({
           xs={6}
           md={3}
         >
-          <Field
+          <Checkbox
             label={<FormattedMessage id="ui-organizations.integration.edi.sendAccountNumber" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.sendAccountNumber"
-            type="checkbox"
-            component={Checkbox}
+            checked={vendorEdiOrdersExportConfig.ediConfig?.sendAccountNumber}
             vertical
+            disabled
           />
         </Col>
 
         <Col
-          data-test-notifications
+          data-test-notifications-orders
           xs={6}
           md={3}
         >
-          <FormattedMessage id="ui-organizations.integration.edi.receiveNotifications" />
-          <Field
+          <Checkbox
             label={<FormattedMessage id="ui-organizations.integration.edi.orders" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.supportOrder"
-            component={Checkbox}
-            type="checkbox"
+            checked={vendorEdiOrdersExportConfig.ediConfig?.supportOrder}
+            vertical
+            disabled
           />
-          <Field
+        </Col>
+
+        <Col
+          data-test-notifications-invoices
+          xs={6}
+          md={3}
+        >
+          <Checkbox
             label={<FormattedMessage id="ui-organizations.integration.edi.invoices" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.supportInvoice"
-            component={Checkbox}
-            type="checkbox"
+            checked={vendorEdiOrdersExportConfig.ediConfig?.supportInvoice}
+            vertical
+            disabled
           />
         </Col>
 
@@ -188,11 +164,9 @@ export const EdiForm = ({
           xs={6}
           md={3}
         >
-          <Field
+          <KeyValue
             label={<FormattedMessage id="ui-organizations.integration.edi.notes" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.notes"
-            component={TextArea}
-            fullWidth
+            value={vendorEdiOrdersExportConfig.ediConfig?.notes}
           />
         </Col>
       </Row>
@@ -200,7 +174,10 @@ export const EdiForm = ({
   );
 };
 
-EdiForm.propTypes = {
+EdiView.propTypes = {
+  vendorEdiOrdersExportConfig: PropTypes.object,
   acqMethods: PropTypes.arrayOf(PropTypes.object),
   accounts: PropTypes.arrayOf(PropTypes.string),
 };
+
+export default EdiView;

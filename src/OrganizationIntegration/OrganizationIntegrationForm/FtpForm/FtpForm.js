@@ -121,7 +121,7 @@ export const FtpForm = () => {
           <Field
             label={<FormattedMessage id="ui-organizations.integration.ftp.ftpPort" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.ftpPort"
-            type="text"
+            type="number"
             component={TextField}
             fullWidth
             validateFields={[]}

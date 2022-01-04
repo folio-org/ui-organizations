@@ -70,7 +70,7 @@ describe('OrganizationIntegrationCreate', () => {
   it('should save integration', async () => {
     const saveIntegrationConfigMock = jest.fn();
 
-    useIntegrationConfigMutation.mockClear().mockReturnValue({ saveIntegrationConfig: saveIntegrationConfigMock });
+    useIntegrationConfigMutation.mockClear().mockReturnValue({ mutateIntegrationConfig: saveIntegrationConfigMock });
     renderOrganizationIntegrationCreate();
 
     await screen.findByText('OrganizationIntegrationForm');

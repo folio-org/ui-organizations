@@ -19,3 +19,13 @@ export const findDefaultIntegration = (integrations, currentIntegration) => {
       && integration.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig?.isDefaultConfig
     ));
 };
+
+export const getAcqMethodOptions = (acqMethods = []) => acqMethods.map(acqMethod => ({
+  label: acqMethod.value,
+  value: acqMethod.id,
+}));
+
+export const getAccountOptions = (accounts = []) => accounts.map(account => ({
+  label: account,
+  value: account,
+}));

@@ -1,6 +1,8 @@
 import {
   buildAvailableAccounts,
   findDefaultIntegration,
+  getAcqMethodOptions,
+  getAccountOptions,
 } from './utils';
 
 const organization = {
@@ -32,6 +34,9 @@ const integrationConfigs = [
   },
 ];
 
+const acqMethods = [{ id: 'acqMethodId', value: 'acqMethod' }];
+const accounts = ['1'];
+
 describe('OrganizationIntegration utils', () => {
   describe('buildAvailableAccounts', () => {
     it('should return accounts in existing configs use except current config', () => {
@@ -57,6 +62,19 @@ describe('OrganizationIntegration utils', () => {
       };
 
       expect(findDefaultIntegration([currentConfig], currentConfig)).not.toBeDefined();
+    });
+  });
+
+  describe('getAcqMethodOptions', () => {
+    it('should return acq method options', () => {
+      expect(getAcqMethodOptions(acqMethods)).toEqual([{ label: acqMethods[0].value, value: acqMethods[0].id }]);
+    });
+  });
+
+  describe('getAccountOptions', () => {
+    it('should return account options', () => {
+      expect(getAccountOptions(accounts))
+        .toEqual([{ label: accounts[0], value: accounts[0] }]);
     });
   });
 });

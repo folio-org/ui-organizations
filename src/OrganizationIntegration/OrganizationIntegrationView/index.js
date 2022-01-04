@@ -1,1 +1,1 @@
-export * from './OrganizationIntegrationView';
+export { default as OrganizationIntegrationView } from './OrganizationIntegrationView';
