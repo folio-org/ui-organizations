@@ -37,6 +37,7 @@ import {
   useIntegrationConfigMutation,
 } from '../../common/hooks';
 import { buildAvailableAccounts } from '../utils';
+import { IntegrationInfoView } from './IntegrationInfoView';
 import { EdiView } from './EdiView';
 import { FtpView } from './FtpView';
 import { SchedulingView } from './SchedulingView';
@@ -192,6 +193,12 @@ const OrganizationIntegrationView = ({ orgId }) => {
                 </Col>
               </Row>
               <AccordionSet>
+                <IntegrationInfoView
+                  integrationConfig={integrationConfig
+                    ?.exportTypeSpecificParameters
+                    ?.vendorEdiOrdersExportConfig
+                  }
+                />
                 <EdiView
                   vendorEdiOrdersExportConfig={integrationConfig
                     ?.exportTypeSpecificParameters

@@ -174,7 +174,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
               <section
                 class="accordion hasSeparator"
                 data-test-accordion-section="true"
-                id="edi"
+                id="integrationInfo"
               >
                 <div
                   class="headerWrapper"
@@ -189,6 +189,163 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                     >
                       <button
                         aria-controls="accordion1"
+                        aria-expanded="true"
+                        class="defaultCollapseButton"
+                        id="accordion-toggle-button-integrationInfo"
+                        type="button"
+                      >
+                        <span
+                          class="headerInner"
+                        >
+                          <span
+                            class="defaultHeaderIcon"
+                          >
+                            <span>
+                              Icon
+                            </span>
+                          </span>
+                          <div
+                            class="labelArea"
+                          >
+                            ui-organizations.integration.info
+                          </div>
+                        </span>
+                      </button>
+                    </h3>
+                  </div>
+                </div>
+                <div
+                  class="content-wrap expanded"
+                  style="z-index: 1;"
+                >
+                  <div
+                    aria-labelledby="accordion-toggle-button-integrationInfo"
+                    class="content-region expanded"
+                    data-test-accordion-wrapper="true"
+                    id="accordion1"
+                    role="region"
+                  >
+                    <div
+                      class="row"
+                    >
+                      <div
+                        class="col-xs-3"
+                      >
+                        <div
+                          class="kvRoot"
+                        >
+                          <div
+                            class="kvLabel"
+                          >
+                            ui-organizations.integration.info.configName
+                          </div>
+                          <div
+                            class="kvValue"
+                            data-test-kv-value="true"
+                          >
+                            testConfig
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="col-xs-3"
+                      >
+                        <div
+                          class="kvRoot"
+                        >
+                          <div
+                            class="kvLabel"
+                          >
+                            ui-organizations.integration.info.configDescription
+                          </div>
+                          <div
+                            class="kvValue"
+                            data-test-kv-value="true"
+                          >
+                            <span
+                              aria-label="stripes-components.noValue.noValueSet"
+                              data-test-no-value="true"
+                            >
+                              -
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="col-xs-3"
+                      >
+                        <div
+                          class="checkbox inline vertical disabled"
+                          data-test-checkbox="true"
+                        >
+                          <label
+                            class="label label"
+                            for="checkbox-3"
+                          >
+                            <span
+                              class="labelText"
+                            >
+                              ui-organizations.integration.info.isDefaultConfig
+                            </span>
+                            <span
+                              class="inner disabledLabel"
+                            >
+                              <input
+                                aria-invalid="false"
+                                class="input"
+                                disabled=""
+                                id="checkbox-3"
+                                type="checkbox"
+                                value=""
+                              />
+                              <span
+                                class="checkboxIcon"
+                              >
+                                <svg
+                                  height="10"
+                                  viewBox="0 0 14 14"
+                                  width="10"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M10.395 4.617L5.63 9.383 3.605 7.358"
+                                    fill="none"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-miterlimit="10"
+                                    stroke-width="1.5"
+                                  />
+                                </svg>
+                              </span>
+                            </span>
+                          </label>
+                          <div
+                            role="alert"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section
+                class="accordion hasSeparator"
+                data-test-accordion-section="true"
+                id="edi"
+              >
+                <div
+                  class="headerWrapper"
+                  tabindex="-1"
+                >
+                  <div
+                    class="header default"
+                  >
+                    <h3
+                      class="headline size-medium margin-none font-weight-bold block"
+                      data-test-headline="true"
+                    >
+                      <button
+                        aria-controls="accordion2"
                         aria-expanded="true"
                         class="defaultCollapseButton"
                         id="accordion-toggle-button-edi"
@@ -222,7 +379,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                     aria-labelledby="accordion-toggle-button-edi"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
-                    id="accordion1"
+                    id="accordion2"
                     role="region"
                   >
                     <div
@@ -237,8 +394,8 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="select-3"
-                            id="select-3-label"
+                            for="select-5"
+                            id="select-5-label"
                           >
                             ui-organizations.integration.edi.accountNumbers
                           </label>
@@ -247,10 +404,10 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                           >
                             <select
                               aria-invalid="false"
-                              aria-labelledby="select-3-label"
+                              aria-labelledby="select-5-label"
                               class="selectControl formControl disabled"
                               disabled=""
-                              id="select-3"
+                              id="select-5"
                               multiple=""
                             />
                             <span>
@@ -271,8 +428,8 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="select-4"
-                            id="select-4-label"
+                            for="select-6"
+                            id="select-6-label"
                           >
                             ui-organizations.integration.edi.defaultAcquisitionMethods
                           </label>
@@ -281,10 +438,10 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                           >
                             <select
                               aria-invalid="false"
-                              aria-labelledby="select-4-label"
+                              aria-labelledby="select-6-label"
                               class="selectControl formControl disabled"
                               disabled=""
-                              id="select-4"
+                              id="select-6"
                               multiple=""
                             />
                             <span>
@@ -421,7 +578,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-5"
+                            for="checkbox-7"
                           >
                             <span
                               class="labelText"
@@ -435,7 +592,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 aria-invalid="false"
                                 class="input"
                                 disabled=""
-                                id="checkbox-5"
+                                id="checkbox-7"
                                 type="checkbox"
                                 value=""
                               />
@@ -475,7 +632,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-6"
+                            for="checkbox-8"
                           >
                             <span
                               class="labelText"
@@ -489,7 +646,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 aria-invalid="false"
                                 class="input"
                                 disabled=""
-                                id="checkbox-6"
+                                id="checkbox-8"
                                 type="checkbox"
                                 value=""
                               />
@@ -529,7 +686,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-7"
+                            for="checkbox-9"
                           >
                             <span
                               class="labelText"
@@ -543,7 +700,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 aria-invalid="false"
                                 class="input"
                                 disabled=""
-                                id="checkbox-7"
+                                id="checkbox-9"
                                 type="checkbox"
                                 value=""
                               />
@@ -619,7 +776,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                       data-test-headline="true"
                     >
                       <button
-                        aria-controls="accordion2"
+                        aria-controls="accordion3"
                         aria-expanded="true"
                         class="defaultCollapseButton"
                         id="accordion-toggle-button-ftp"
@@ -653,7 +810,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                     aria-labelledby="accordion-toggle-button-ftp"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
-                    id="accordion2"
+                    id="accordion3"
                     role="region"
                   >
                     <div
@@ -923,7 +1080,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                       data-test-headline="true"
                     >
                       <button
-                        aria-controls="accordion3"
+                        aria-controls="accordion4"
                         aria-expanded="true"
                         class="defaultCollapseButton"
                         id="accordion-toggle-button-scheduling"
@@ -957,7 +1114,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                     aria-labelledby="accordion-toggle-button-scheduling"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
-                    id="accordion3"
+                    id="accordion4"
                     role="region"
                   >
                     <div
@@ -972,7 +1129,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-10"
+                            for="checkbox-12"
                           >
                             <span
                               class="labelText"
@@ -987,7 +1144,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 checked=""
                                 class="input"
                                 disabled=""
-                                id="checkbox-10"
+                                id="checkbox-12"
                                 type="checkbox"
                                 value=""
                               />

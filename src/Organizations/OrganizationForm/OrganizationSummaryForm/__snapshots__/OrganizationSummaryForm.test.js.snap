@@ -211,7 +211,6 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
             <button
               aria-expanded="false"
               aria-haspopup="listbox"
-              aria-invalid="false"
               aria-labelledby="sl-label-stripes-selection-4 selected-stripes-selection-4-item"
               aria-owns="sl-undefined"
               class="selectionControl formControl"
