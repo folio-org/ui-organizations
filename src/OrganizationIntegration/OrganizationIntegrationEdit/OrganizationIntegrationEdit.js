@@ -5,6 +5,7 @@ import { useHistory, useLocation, useParams } from 'react-router-dom';
 
 import {
   LoadingPane,
+  useIntegrationConfigs,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
@@ -13,7 +14,6 @@ import {
   useOrganization,
   useIntegrationConfig,
   useIntegrationConfigMutation,
-  useIntegrationConfigs,
 } from '../../common/hooks';
 
 import { buildAvailableAccounts, findDefaultIntegration } from '../utils';

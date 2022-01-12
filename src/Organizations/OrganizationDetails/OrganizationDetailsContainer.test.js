@@ -6,11 +6,11 @@ import { match, location, history } from '../../../test/jest/routerMocks';
 import OrganizationDetails from './OrganizationDetails';
 import { OrganizationDetailsContainer } from './OrganizationDetailsContainer';
 
-jest.mock('./OrganizationDetails', () => jest.fn(() => 'OrganizationDetails'));
-jest.mock('../../common/hooks', () => ({
-  ...jest.requireActual('../../common/hooks'),
-  useIntegrationConfigs: jest.fn().mockReturnValue({ integrationConfigs: [] }),
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  useIntegrationConfigs: jest.fn().mockReturnValue({ integrationConfigs: [], isLoading: false }),
 }));
+jest.mock('./OrganizationDetails', () => jest.fn(() => 'OrganizationDetails'));
 
 const organization = {
   id: 'orgUId',

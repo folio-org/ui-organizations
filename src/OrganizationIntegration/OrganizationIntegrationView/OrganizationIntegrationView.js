@@ -25,6 +25,7 @@ import {
   useShowCallout,
   LoadingPane,
   handleKeyCommand,
+  useIntegrationConfigs,
   useModalToggle,
 } from '@folio/stripes-acq-components';
 
@@ -33,7 +34,6 @@ import {
   useAcqMethods,
   useOrganization,
   useIntegrationConfig,
-  useIntegrationConfigs,
   useIntegrationConfigMutation,
 } from '../../common/hooks';
 import { buildAvailableAccounts } from '../utils';
