@@ -20,10 +20,13 @@ jest.mock('react-router', () => ({
   useLocation: jest.fn(),
   useParams: jest.fn(),
 }));
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  useIntegrationConfigs: jest.fn().mockReturnValue({ integrationConfigs: [], isLoading: false }),
+}));
 jest.mock('../../common/hooks', () => ({
   useAcqMethods: jest.fn().mockReturnValue({ acqMethods: [], isLoading: false }),
   useOrganization: jest.fn(),
-  useIntegrationConfigs: jest.fn().mockReturnValue({ integrationConfigs: [], isLoading: false }),
   useIntegrationConfigMutation: jest.fn(),
   useIntegrationConfig: jest.fn(),
 }));

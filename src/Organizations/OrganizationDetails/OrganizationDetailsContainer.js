@@ -11,6 +11,7 @@ import { useIntl } from 'react-intl';
 import { stripesConnect } from '@folio/stripes/core';
 import {
   LoadingPane,
+  useIntegrationConfigs,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
@@ -19,7 +20,6 @@ import {
   categoriesResource,
 } from '../../common/resources';
 import {
-  useIntegrationConfigs,
   useTranslatedCategories,
 } from '../../common/hooks';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
