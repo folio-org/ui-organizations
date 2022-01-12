@@ -24,29 +24,42 @@ import {
 import { buildAvailableAccounts, findDefaultIntegration } from '../utils';
 import { OrganizationIntegrationForm } from '../OrganizationIntegrationForm';
 
-export const OrganizationIntegrationCreate = ({ orgId }) => {
-  const location = useLocation();
-  const history = useHistory();
-  const sendCallout = useShowCallout();
+// should be removed after lotus release
+const buildInitialValues = (organization, withMigration) => {
+  const edi = withMigration ? organization.edi : {};
 
-  const initialValues = {
+  return {
     schedulePeriod: 'NONE',
     type: 'EDIFACT_ORDERS_EXPORT',
     exportTypeSpecificParameters: {
       vendorEdiOrdersExportConfig: {
-        vendorId: orgId,
+        vendorId: organization.id,
         ediConfig: {
-          vendorEdiType: EDI_CODE_TYPES[0].value,
-          libEdiType: EDI_CODE_TYPES[0].value,
+          vendorEdiCode: edi.vendorEdiCode,
+          vendorEdiType: edi.vendorEdiType || EDI_CODE_TYPES[0].value,
+          libEdiCode: edi.libEdiCode,
+          libEdiType: edi.libEdiType || EDI_CODE_TYPES[0].value,
+          ediNamingConvention: edi.ediNamingConvention,
+          sendAccountNumber: edi.sendAcctNum,
+          supportInvoice: edi.supportInvoice,
+          supportOrder: edi.supportOrder,
+          notes: edi.notes,
         },
         ediFtp: {
-          ftpFormat: FTP_TYPES[0].value,
-          ftpMode: TRANSMISSION_MODES[0].value,
-          ftpConnMode: CONNECTION_MODES[0].value,
+          ...(edi.ediFtp || {}),
+          ftpFormat: edi.ediFtp?.ftpFormat || FTP_TYPES[0].value,
+          ftpMode: edi.ediFtp?.ftpMode || TRANSMISSION_MODES[0].value,
+          ftpConnMode: edi.ediFtp?.ftpConnMode || CONNECTION_MODES[0].value,
         },
       },
     },
   };
+};
+
+export const OrganizationIntegrationCreate = ({ orgId }) => {
+  const location = useLocation();
+  const history = useHistory();
+  const sendCallout = useShowCallout();
 
   const { organization, isLoading } = useOrganization(orgId);
   const { acqMethods, isLoading: isAcqMethodsLoading } = useAcqMethods();
@@ -88,7 +101,7 @@ export const OrganizationIntegrationCreate = ({ orgId }) => {
       acqMethods={acqMethods}
       accounts={buildAvailableAccounts(organization, integrationConfigs)}
       defaultIntegration={findDefaultIntegration(integrationConfigs)}
-      initialValues={initialValues}
+      initialValues={buildInitialValues(organization, !integrationConfigs.length)}
       onSubmit={mutateIntegrationConfig}
       onClose={closeForm}
       paneTitle={<FormattedMessage id="ui-organizations.integration.create.paneTitle" />}
