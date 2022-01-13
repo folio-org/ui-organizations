@@ -354,6 +354,7 @@ exports[`EditContact should render correct form structure 1`] = `
                             <button
                               aria-expanded="false"
                               aria-haspopup="listbox"
+                              aria-invalid="false"
                               aria-labelledby="sl-label-stripes-selection-7 selected-stripes-selection-7-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
@@ -833,6 +834,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                         <button
                                           aria-expanded="false"
                                           aria-haspopup="listbox"
+                                          aria-invalid="false"
                                           aria-labelledby="emailFormLanguageLabel selected-stripes-selection-12-item"
                                           aria-owns="sl-undefined"
                                           class="selectionControl formControl"
@@ -1358,6 +1360,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                         <button
                                           aria-expanded="false"
                                           aria-haspopup="listbox"
+                                          aria-invalid="false"
                                           aria-labelledby="phoneFormLanguageLabel selected-stripes-selection-16-item"
                                           aria-owns="sl-undefined"
                                           class="selectionControl formControl"
@@ -1860,6 +1863,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                         <button
                                           aria-expanded="false"
                                           aria-haspopup="listbox"
+                                          aria-invalid="false"
                                           aria-labelledby="urlFormLanguageLabel selected-stripes-selection-20-item"
                                           aria-owns="sl-undefined"
                                           class="selectionControl formControl"
@@ -2459,6 +2463,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                             <button
                                               aria-expanded="false"
                                               aria-haspopup="listbox"
+                                              aria-invalid="false"
                                               aria-labelledby="sl-label-stripes-selection-25 selected-stripes-selection-25-item"
                                               aria-owns="sl-undefined"
                                               class="selectionControl formControl"
@@ -2521,6 +2526,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                             <button
                                               aria-expanded="false"
                                               aria-haspopup="listbox"
+                                              aria-invalid="false"
                                               aria-labelledby="sl-label-stripes-selection-26 selected-stripes-selection-26-item"
                                               aria-owns="sl-undefined"
                                               class="selectionControl formControl"

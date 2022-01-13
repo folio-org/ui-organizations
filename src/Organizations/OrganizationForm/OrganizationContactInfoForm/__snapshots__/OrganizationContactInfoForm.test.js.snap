@@ -280,6 +280,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <button
                               aria-expanded="false"
                               aria-haspopup="listbox"
+                              aria-invalid="false"
                               aria-labelledby="sl-label-stripes-selection-4 selected-stripes-selection-4-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
@@ -342,6 +343,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <button
                               aria-expanded="false"
                               aria-haspopup="listbox"
+                              aria-invalid="false"
                               aria-labelledby="sl-label-stripes-selection-5 selected-stripes-selection-5-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
@@ -809,6 +811,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <button
                               aria-expanded="false"
                               aria-haspopup="listbox"
+                              aria-invalid="false"
                               aria-labelledby="sl-label-stripes-selection-7 selected-stripes-selection-7-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
@@ -1191,6 +1194,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <button
                               aria-expanded="false"
                               aria-haspopup="listbox"
+                              aria-invalid="false"
                               aria-labelledby="sl-label-stripes-selection-10 selected-stripes-selection-10-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
@@ -1573,6 +1577,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <button
                               aria-expanded="false"
                               aria-haspopup="listbox"
+                              aria-invalid="false"
                               aria-labelledby="sl-label-stripes-selection-13 selected-stripes-selection-13-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
