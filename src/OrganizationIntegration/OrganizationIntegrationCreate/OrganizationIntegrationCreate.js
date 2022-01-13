@@ -26,7 +26,7 @@ import { OrganizationIntegrationForm } from '../OrganizationIntegrationForm';
 
 // should be removed after lotus release
 const buildInitialValues = (organization, withMigration) => {
-  const edi = withMigration ? organization.edi : {};
+  const edi = withMigration ? organization.edi || {} : {};
 
   return {
     schedulePeriod: 'NONE',
