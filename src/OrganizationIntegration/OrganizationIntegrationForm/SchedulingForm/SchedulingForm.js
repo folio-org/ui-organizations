@@ -125,7 +125,8 @@ export const SchedulingForm = () => {
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleTime"
                 component={Timepicker}
                 timeZone="UTC"
-                validateFields={[]}
+                required
+                validate={validateRequired}
                 parse={trimTime}
               />
             </Col>
@@ -166,7 +167,8 @@ export const SchedulingForm = () => {
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleTime"
                 component={Timepicker}
                 timeZone="UTC"
-                validateFields={[]}
+                required
+                validate={validateRequired}
                 parse={trimTime}
               />
             </Col>
@@ -199,7 +201,8 @@ export const SchedulingForm = () => {
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleTime"
                 component={Timepicker}
                 timeZone="UTC"
-                validateFields={[]}
+                required
+                validate={validateRequired}
                 parse={trimTime}
               />
             </Col>
@@ -252,7 +255,8 @@ export const SchedulingForm = () => {
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleTime"
                 component={Timepicker}
                 timeZone="UTC"
-                validateFields={[]}
+                required
+                validate={validateRequired}
                 parse={trimTime}
               />
             </Col>

@@ -6,7 +6,7 @@
 * Create details - Organization record can contain multiple "Integration details" configurations. Refs UIORGS-271.
 * Display integration configuration view. Refs UIORGS-279.
 * Add a return to Organizations default search to app context menu dropdown. Refs UIORGS-276.
-* UI EDI migration process. Refs UIORGS-280.
+* EDI migration process. Refs UIORGS-280.
 * useIntegrationConfigs hook usage from stripes-acq-components. Refs UIORGS-281.
 
 ## [3.0.1](https://github.com/folio-org/ui-organizations/tree/v3.0.1) (2021-11-02)
