@@ -7,7 +7,6 @@ import {
 import { hot } from 'react-hot-loader';
 
 import { OrganizationIntegration } from './src/OrganizationIntegration';
-import { OrganizationExportLog } from './src/OrganizationExportLog';
 import { Organizations as Organization } from './src/Organizations';
 import { ContactsContainer } from './src/contacts';
 import { InterfaceContainer } from './src/interfaces';
@@ -49,10 +48,6 @@ class Organizations extends Component {
         <Route
           path="/organizations/:orgId/integration/"
           component={OrganizationIntegration}
-        />
-        <Route
-          path="/organizations/:id/log"
-          component={OrganizationExportLog}
         />
         <Route
           path="/organizations"

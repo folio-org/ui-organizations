@@ -94,7 +94,8 @@ export const OrganizationDetailsContainer = ({
   const viewExportLog = useCallback(
     () => {
       history.push({
-        pathname: `/organizations/${organizationId}/log`,
+        pathname: '/export-manager/edi-jobs',
+        search: `vendorId=${organizationId}`,
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
