@@ -81,6 +81,6 @@ describe('OrganizationDetailsContainer', () => {
 
     OrganizationDetails.mock.calls[0][0].onViewExportLog();
 
-    expect(historyMock.push.mock.calls[0][0].pathname).toBe('/organizations/id/log');
+    expect(historyMock.push.mock.calls[0][0].pathname).toBe('/export-manager/edi-jobs');
   });
 });
