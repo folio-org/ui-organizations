@@ -8,6 +8,7 @@
 * Add a return to Organizations default search to app context menu dropdown. Refs UIORGS-276.
 * EDI migration process. Refs UIORGS-280.
 * useIntegrationConfigs hook usage from stripes-acq-components. Refs UIORGS-281.
+* useOrganization hook usage from stripes-acq-components. Refs UIORGS-282.
 
 ## [3.0.1](https://github.com/folio-org/ui-organizations/tree/v3.0.1) (2021-11-02)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.0.0...v3.0.1)

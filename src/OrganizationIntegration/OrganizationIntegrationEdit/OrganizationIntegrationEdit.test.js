@@ -2,11 +2,12 @@ import React from 'react';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 
+import { useOrganization } from '@folio/stripes-acq-components';
+
 import { organization } from '../../../test/jest/fixtures';
 import { history, location } from '../../../test/jest/routerMocks';
 
 import {
-  useOrganization,
   useIntegrationConfig,
   useIntegrationConfigMutation,
 } from '../../common/hooks';
@@ -23,10 +24,10 @@ jest.mock('react-router', () => ({
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   useIntegrationConfigs: jest.fn().mockReturnValue({ integrationConfigs: [], isLoading: false }),
+  useOrganization: jest.fn(),
 }));
 jest.mock('../../common/hooks', () => ({
   useAcqMethods: jest.fn().mockReturnValue({ acqMethods: [], isLoading: false }),
-  useOrganization: jest.fn(),
   useIntegrationConfigMutation: jest.fn(),
   useIntegrationConfig: jest.fn(),
 }));

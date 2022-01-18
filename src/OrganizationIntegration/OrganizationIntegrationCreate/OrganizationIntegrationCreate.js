@@ -6,12 +6,12 @@ import { useHistory, useLocation } from 'react-router-dom';
 import {
   LoadingPane,
   useIntegrationConfigs,
+  useOrganization,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
 import {
   useAcqMethods,
-  useOrganization,
   useIntegrationConfigMutation,
 } from '../../common/hooks';
 

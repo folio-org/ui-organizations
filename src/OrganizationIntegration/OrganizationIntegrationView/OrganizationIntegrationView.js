@@ -27,12 +27,12 @@ import {
   handleKeyCommand,
   useIntegrationConfigs,
   useModalToggle,
+  useOrganization,
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import {
   useAcqMethods,
-  useOrganization,
   useIntegrationConfig,
   useIntegrationConfigMutation,
 } from '../../common/hooks';

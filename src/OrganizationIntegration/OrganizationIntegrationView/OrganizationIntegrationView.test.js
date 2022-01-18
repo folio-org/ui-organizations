@@ -10,11 +10,11 @@ import {
   expandAllSections,
   collapseAllSections,
 } from '@folio/stripes/components';
+import { useOrganization } from '@folio/stripes-acq-components';
 
 import { integrationConfig } from '../../../test/jest/fixtures';
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import {
-  useOrganization,
   useIntegrationConfig,
   useIntegrationConfigMutation,
 } from '../../common/hooks';
@@ -33,10 +33,10 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   useIntegrationConfigs: jest.fn().mockReturnValue({ integrationConfigs: [], isLoading: false }),
+  useOrganization: jest.fn(),
 }));
 jest.mock('../../common/hooks', () => ({
   useAcqMethods: jest.fn().mockReturnValue({ acqMethods: [], isLoading: false }),
-  useOrganization: jest.fn(),
   useIntegrationConfig: jest.fn(),
   useIntegrationConfigMutation: jest.fn().mockReturnValue({ mutateIntegrationConfig: jest.fn() }),
 }));
