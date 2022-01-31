@@ -406,6 +406,8 @@
   "settings.name": "name",
   "settings.action": "actions",
   "settings.vendorSettings": "Organizations settings",
+  "settings.types": "Types",
+  "settings.type": "Type",
 
   "permission.view": "Organizations: View",
   "permission.edit": "Organizations: View, edit",
