@@ -403,8 +403,8 @@
   "save.error.assignInterface": "Error while assigning interface to the organization",
 
   "settings.categories": "Categories",
-  "settings.name": "name",
-  "settings.action": "actions",
+  "settings.name": "Name",
+  "settings.status": "Status",
   "settings.vendorSettings": "Organizations settings",
   "settings.types": "Types",
   "settings.type": "Type",

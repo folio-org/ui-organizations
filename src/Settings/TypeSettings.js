@@ -13,8 +13,8 @@ class TypeSettings extends Component {
   render() {
     const { stripes } = this.props;
     const columnMapping = {
-      value: <FormattedMessage id="ui-organizations.settings.name" />,
-      action: <FormattedMessage id="ui-organizations.settings.action" />,
+      name: <FormattedMessage id="ui-organizations.settings.name" />,
+      status: <FormattedMessage id="ui-organizations.settings.status" />,
     };
     const getDisableAttr = () => ({
       disabled: !stripes.hasPerm('ui-organizations.settings'),
@@ -28,17 +28,17 @@ class TypeSettings extends Component {
     return (
       <this.connectedControlledVocab
         stripes={stripes}
-        baseUrl="organizations-storage/types"
-        records="types"
+        baseUrl="organizations-storage/organization-types"
+        records="organizationTypes"
         label={<FormattedMessage id="ui-organizations.settings.types" />}
         labelSingular={<FormattedMessage id="ui-organizations.settings.type" />}
         objectLabel={<FormattedMessage id="ui-organizations.settings.types" />}
-        visibleFields={['value']}
+        visibleFields={['name', 'status']}
         columnMapping={columnMapping}
         hiddenFields={['lastUpdated', 'numberOfObjects']}
         nameKey="types"
         id="types"
-        sortby="value"
+        sortby="name"
         actionProps={actionProps}
       />
     );
