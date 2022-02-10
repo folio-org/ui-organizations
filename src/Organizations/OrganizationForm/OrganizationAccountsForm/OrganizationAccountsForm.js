@@ -21,6 +21,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATION_STATUS } from '../../../common/constants';
+import { FieldAccountNumber } from './FieldAccountNumber';
 import css from './OrganizationAccountsForm.css';
 
 class OrganizationAccountsForm extends Component {
@@ -79,15 +80,7 @@ class OrganizationAccountsForm extends Component {
             xs={6}
             md={3}
           >
-            <Field
-              label={<FormattedMessage id="ui-organizations.accounts.accountNumber" />}
-              name={`${elem}.accountNo`}
-              validate={validateRequired}
-              required
-              component={TextField}
-              fullWidth
-              validateFields={[]}
-            />
+            <FieldAccountNumber name={`${elem}.accountNo`} />
           </Col>
           <Col
             xs={6}

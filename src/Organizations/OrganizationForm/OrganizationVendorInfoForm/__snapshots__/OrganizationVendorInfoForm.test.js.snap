@@ -638,6 +638,7 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
               style="z-index: 1;"
             >
               <div
+                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-taxSection"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"

@@ -12,6 +12,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
         class="paneHeader"
         data-test-pane-header="true"
         id="paneHeaderintegration-form"
+        role="region"
         tabindex="-1"
       >
         <div
@@ -149,6 +150,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-integrationInfo"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -329,6 +331,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-edi"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -382,9 +385,6 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                                 456
                               </option>
                             </select>
-                            <span>
-                              Icon
-                            </span>
                           </div>
                           <div
                             role="alert"
@@ -416,9 +416,6 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               multiple=""
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods"
                             />
-                            <span>
-                              Icon
-                            </span>
                           </div>
                           <div
                             role="alert"
@@ -873,6 +870,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-ftp"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -1334,6 +1332,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-scheduling"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
