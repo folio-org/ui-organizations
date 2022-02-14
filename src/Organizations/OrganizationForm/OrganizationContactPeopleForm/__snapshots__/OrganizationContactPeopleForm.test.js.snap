@@ -86,7 +86,7 @@ exports[`OrganizationContactPeopleForm should render correct structure 1`] = `
                 style="position: static;"
               >
                 <a
-                  aria-label="[object Object]: Brownstein, Carrie...[object Object]: ...[object Object]: cust.service03@amazon.com...null: null"
+                  aria-label=""
                   class="mclRow mclIsOdd mclIsInteractive alignLastColToEnd"
                   data-row-inner="0"
                   href="/organizations/contacts/e0fb5df2-cdf1-11e8-a8d5-f2801f1b9fd1/view"

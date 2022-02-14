@@ -19,6 +19,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
             class="paneHeader"
             data-test-pane-header="true"
             id="paneHeader16"
+            role="region"
             tabindex="-1"
           >
             <div
@@ -156,6 +157,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-summarySection"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -217,6 +219,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-contactInformationSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
@@ -275,6 +278,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-contactPeopleSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
@@ -333,6 +337,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-interfacesSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
@@ -430,6 +435,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
             class="paneHeader"
             data-test-pane-header="true"
             id="paneHeader1"
+            role="region"
             tabindex="-1"
           >
             <div
@@ -567,6 +573,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-summarySection"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -625,6 +632,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-contactInformationSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
@@ -683,6 +691,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-contactPeopleSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
@@ -741,6 +750,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-interfacesSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
@@ -838,6 +848,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
             class="paneHeader"
             data-test-pane-header="true"
             id="paneHeader7"
+            role="region"
             tabindex="-1"
           >
             <div
@@ -975,6 +986,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-summarySection"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -1033,6 +1045,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-contactInformationSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
@@ -1091,6 +1104,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-contactPeopleSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
@@ -1149,6 +1163,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-interfacesSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
@@ -1207,6 +1222,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-vendorInformationSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
@@ -1265,6 +1281,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-agreementsSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
@@ -1323,6 +1340,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-accountsSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"

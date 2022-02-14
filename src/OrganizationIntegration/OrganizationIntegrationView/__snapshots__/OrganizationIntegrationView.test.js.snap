@@ -12,6 +12,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
         class="paneHeader"
         data-test-pane-header="true"
         id="paneHeaderintegration-view"
+        role="region"
         tabindex="-1"
       >
         <div
@@ -219,6 +220,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-integrationInfo"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -376,6 +378,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-edi"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -410,9 +413,6 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                               id="select-5"
                               multiple=""
                             />
-                            <span>
-                              Icon
-                            </span>
                           </div>
                           <div
                             role="alert"
@@ -444,9 +444,6 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                               id="select-6"
                               multiple=""
                             />
-                            <span>
-                              Icon
-                            </span>
                           </div>
                           <div
                             role="alert"
@@ -807,6 +804,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-ftp"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -1111,6 +1109,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-scheduling"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"

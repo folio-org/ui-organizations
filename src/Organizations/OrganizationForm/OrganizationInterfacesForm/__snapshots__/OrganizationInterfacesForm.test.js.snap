@@ -77,7 +77,7 @@ exports[`OrganizationInterfacesForm should render correct structure 1`] = `
                 style="position: static;"
               >
                 <a
-                  aria-label="[object Object]: GOBI...[object Object]: www.gobi3.com...null: null"
+                  aria-label=""
                   class="mclRow mclIsOdd mclIsInteractive alignLastColToEnd"
                   data-row-inner="0"
                   href="/organizations/interface/793b9d42-ae12-41d7-a36a-f33e5b9e82c5/view"
