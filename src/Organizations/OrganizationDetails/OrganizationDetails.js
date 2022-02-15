@@ -25,6 +25,7 @@ import {
   HasCommand,
   Icon,
   MenuSection,
+  MessageBanner,
   Pane,
   PaneMenu,
   Row,
@@ -91,6 +92,8 @@ const OrganizationDetails = ({
   const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
     organization.id, organization.acqUnitIds,
   );
+  const accountNumbers = (organization.isVendor && organization.accounts?.map(({ accountNo }) => accountNo)) || [];
+  const hasDuplicateAccountNumbers = [...new Set(accountNumbers)].length !== accountNumbers.length;
 
   useEffect(() => {
     if (isDetailsPaneInFocus) paneTitleRef.current.focus();
@@ -230,6 +233,11 @@ const OrganizationDetails = ({
         actionMenu={getActionMenu}
         lastMenu={detailsLastMenu}
       >
+        {hasDuplicateAccountNumbers && (
+          <MessageBanner type="warning">
+            <FormattedMessage id="ui-organizations.view.duplicateAccounts" />
+          </MessageBanner>
+        )}
         <AccordionStatus ref={accordionStatusRef}>
           <Row end="xs">
             <Col xs={12}>

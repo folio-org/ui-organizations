@@ -30,6 +30,7 @@ const defaultProps = {
   organization: { name: 'Amazon' },
   organizationCategories: [],
   integrationConfigs: [],
+  duplicateAccounts: [],
   onClose: jest.fn(),
   onEdit: jest.fn(),
   onDelete: jest.fn(),
@@ -106,6 +107,19 @@ describe('OrganizationDetails', () => {
     });
 
     expect(screen.getByText('OrganizationAccounts')).toBeDefined();
+  });
+
+  it('should display warning message if vendor has not unique account numbers', () => {
+    renderOrganizationDetails({
+      ...defaultProps,
+      organization: {
+        ...defaultProps.organization,
+        isVendor: true,
+        accounts: [{ accountNo: '1' }, { accountNo: '1' }],
+      },
+    });
+
+    expect(screen.getByText('ui-organizations.view.duplicateAccounts')).toBeDefined();
   });
 
   describe('Actions', () => {

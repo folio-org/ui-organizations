@@ -12,6 +12,7 @@ exports[`EditContact should render correct form structure 1`] = `
         class="paneHeader"
         data-test-pane-header="true"
         id="paneHeaderedit-contact"
+        role="region"
         tabindex="-1"
       >
         <div
@@ -149,6 +150,7 @@ exports[`EditContact should render correct form structure 1`] = `
                   style="z-index: 2;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-name"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -647,6 +649,7 @@ exports[`EditContact should render correct form structure 1`] = `
                   style="z-index: 2;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-emails"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -1149,6 +1152,7 @@ exports[`EditContact should render correct form structure 1`] = `
                   style="z-index: 2;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-phones"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -1674,6 +1678,7 @@ exports[`EditContact should render correct form structure 1`] = `
                   style="z-index: 2;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-urls"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -2176,6 +2181,7 @@ exports[`EditContact should render correct form structure 1`] = `
                   style="z-index: 2;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-addresses"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"

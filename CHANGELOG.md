@@ -9,6 +9,7 @@
 * EDI migration process. Refs UIORGS-280.
 * useIntegrationConfigs hook usage from stripes-acq-components. Refs UIORGS-281.
 * useOrganization hook usage from stripes-acq-components. Refs UIORGS-282.
+* Validation for "Account number" must be unique for organization. Refs UIORGS-292.
 * Create area Settings - Organizations - Types. Refs UIORGS-283.
 
 ## [3.0.1](https://github.com/folio-org/ui-organizations/tree/v3.0.1) (2021-11-02)

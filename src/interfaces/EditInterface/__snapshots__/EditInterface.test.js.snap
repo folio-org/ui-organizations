@@ -12,6 +12,7 @@ exports[`EditContact should render correct form structure 1`] = `
         class="paneHeader"
         data-test-pane-header="true"
         id="paneHeaderedit-interface"
+        role="region"
         tabindex="-1"
       >
         <div
@@ -137,9 +138,6 @@ exports[`EditContact should render correct form structure 1`] = `
                         Other
                       </option>
                     </select>
-                    <span>
-                      Icon
-                    </span>
                   </div>
                   <div
                     role="alert"
