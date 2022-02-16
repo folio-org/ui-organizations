@@ -380,5 +380,7 @@
     "integration.confirmation.confirm": "确认",
     "integration.confirmation.message": "确定删除集成？",
     "integration.message.delete.error": "集成未被<b>删除</b>",
-    "integration.message.delete.success": "集成已成功<b>删除</b>"
+    "integration.message.delete.success": "集成已成功<b>删除</b>",
+    "view.duplicateAccounts": "An organization can not have duplicate account numbers. Before editing this organization in any way you will need to change or remove any duplicate account numbers",
+    "save.error.accountNumberMustBeUnique": "An organization can not have duplicate account numbers"
 }

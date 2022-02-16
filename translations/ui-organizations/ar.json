@@ -380,5 +380,7 @@
     "integration.confirmation.confirm": "تأكيد",
     "integration.confirmation.message": "هل أنت متأكد من أنك تريد حذف التكامل؟",
     "integration.message.delete.error": "لم يتم <b>حذف</b> التكامل",
-    "integration.message.delete.success": "تم <b>حذف</b> التكامل بنجاح"
+    "integration.message.delete.success": "تم <b>حذف</b> التكامل بنجاح",
+    "view.duplicateAccounts": "An organization can not have duplicate account numbers. Before editing this organization in any way you will need to change or remove any duplicate account numbers",
+    "save.error.accountNumberMustBeUnique": "An organization can not have duplicate account numbers"
 }
