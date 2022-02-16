@@ -356,9 +356,9 @@
     "integration.scheduling.schedulePeriod.days": "Quotidien",
     "integration.scheduling.schedulePeriod.weeks": "Hebdomadaire",
     "integration.scheduling.schedulePeriod.months": "Mensuel",
-    "integration.scheduling.scheduleTime": "Time (UTC)",
+    "integration.scheduling.scheduleTime": "Time",
     "integration.scheduling.scheduleFrequency": "Schedule frequency",
-    "integration.scheduling.scheduleDate": "Date (UTC)",
+    "integration.scheduling.scheduleDate": "Date",
     "integration.scheduling.scheduleDay": "Jour",
     "integration.scheduling.scheduleWeekdays.FRIDAY": "Ven",
     "integration.scheduling.scheduleWeekdays.MONDAY": "Lun",
@@ -380,5 +380,7 @@
     "integration.confirmation.confirm": "Confirm",
     "integration.confirmation.message": "Are you sure you want to delete the integration?",
     "integration.message.delete.error": "The integration was not <b>deleted</b>",
-    "integration.message.delete.success": "The integration was successfully <b>deleted</b>"
+    "integration.message.delete.success": "The integration was successfully <b>deleted</b>",
+    "view.duplicateAccounts": "An organization can not have duplicate account numbers. Before editing this organization in any way you will need to change or remove any duplicate account numbers",
+    "save.error.accountNumberMustBeUnique": "An organization can not have duplicate account numbers"
 }

@@ -380,5 +380,7 @@
     "integration.confirmation.confirm": "Confirm",
     "integration.confirmation.message": "Are you sure you want to delete the integration?",
     "integration.message.delete.error": "The integration was not <b>deleted</b>",
-    "integration.message.delete.success": "The integration was successfully <b>deleted</b>"
+    "integration.message.delete.success": "The integration was successfully <b>deleted</b>",
+    "view.duplicateAccounts": "An organization can not have duplicate account numbers. Before editing this organization in any way you will need to change or remove any duplicate account numbers",
+    "save.error.accountNumberMustBeUnique": "An organization can not have duplicate account numbers"
 }
