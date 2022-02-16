@@ -3,6 +3,8 @@ import {
   findDefaultIntegration,
   getAcqMethodOptions,
   getAccountOptions,
+  getTenantTime,
+  getUTCDate,
 } from './utils';
 
 const organization = {
@@ -75,6 +77,20 @@ describe('OrganizationIntegration utils', () => {
     it('should return account options', () => {
       expect(getAccountOptions(accounts))
         .toEqual([{ label: accounts[0], value: accounts[0] }]);
+    });
+  });
+
+  describe('getTenantTime', () => {
+    it('should return tenant time', () => {
+      expect(getTenantTime({ time: '23:00:00.000Z', timeZone: 'Europe/Berlin' }))
+        .toEqual('00:00:00');
+    });
+  });
+
+  describe('getUTCDate', () => {
+    it('should return UTC date time', () => {
+      expect(getUTCDate({ time: '05:30:00.000Z', timezone: 'Europe/Berlin', date: '2022-01-01T23:00:00.000Z' }))
+        .toEqual('2022-01-02T04:30:00Z');
     });
   });
 });
