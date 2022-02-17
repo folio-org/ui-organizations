@@ -1,4 +1,7 @@
+import { flow, join, map, pick, values } from 'lodash/fp';
 import moment from 'moment-timezone';
+
+import { EDI_NAMING_TOKENS } from './constants';
 
 export const buildAvailableAccounts = (organization, integrations, currentIntegration) => {
   const accounts = organization.accounts.map(({ accountNo }) => accountNo);
@@ -49,3 +52,16 @@ export const getUTCDate = ({ time, date, timezone }) => {
 
   return moment.tz(`${trimmedDate}${trimmedTime}${tenantTimezone}`, 'UTC').format();
 };
+
+export const getDefaultEdiNamingConvention = () => (
+  flow(
+    pick([
+      'organizationCode',
+      'integrationName',
+      'exportJobEndDate',
+    ]),
+    values,
+    map(token => `{${token}}`),
+    join('-'),
+  )(EDI_NAMING_TOKENS)
+);
