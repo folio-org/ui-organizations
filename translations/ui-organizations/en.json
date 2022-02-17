@@ -346,6 +346,7 @@
   "integration.edi.libraryEDICode": "Library EDI code",
   "integration.edi.libraryEDIType": "Library EDI type",
   "integration.edi.ediNamingConvention": "EDI naming convention",
+  "integration.edi.ediNamingConvention.info": "When defining your naming convention you can use text or one of the following tokens. Tokens will be replace by the corresponding information from the export job. Possible tokens are <em>{tokens}</em>",
   "integration.edi.sendAccountNumber": "Send account number",
   "integration.edi.receiveNotifications": "What messages are expected for this vendor?",
   "integration.edi.orders": "Orders",
