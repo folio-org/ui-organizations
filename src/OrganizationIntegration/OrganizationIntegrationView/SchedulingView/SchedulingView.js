@@ -30,7 +30,7 @@ const SchedulingView = ({ ediSchedule = {} }) => {
         time: ediSchedule.scheduleParameters.scheduleTime,
         timeZone,
       })
-  ), [ediSchedule.scheduleParameters.scheduleTime, schedulePeriod, timeZone]);
+  ), [ediSchedule.scheduleParameters?.scheduleTime, schedulePeriod, timeZone]);
 
   return (
     <Accordion
