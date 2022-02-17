@@ -714,7 +714,15 @@ exports[`ContactPerson should render correct collapsed structre 1`] = `
                       class="kvValue"
                       data-test-kv-value="true"
                     >
-                      https://www.amazon.com
+                      <a
+                        class="root"
+                        data-test-text-link="true"
+                        href="https://www.amazon.com"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        https://www.amazon.com
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -1492,7 +1500,15 @@ exports[`ContactPerson should render correct not collapsed structre 1`] = `
                     class="kvValue"
                     data-test-kv-value="true"
                   >
-                    https://www.amazon.com
+                    <a
+                      class="root"
+                      data-test-text-link="true"
+                      href="https://www.amazon.com"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      https://www.amazon.com
+                    </a>
                   </div>
                 </div>
               </div>
