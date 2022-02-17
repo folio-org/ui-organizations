@@ -43,7 +43,7 @@ const buildInitialValues = (organization, withMigration) => {
           vendorEdiType: edi.vendorEdiType || EDI_CODE_TYPES[0].value,
           libEdiCode: edi.libEdiCode,
           libEdiType: edi.libEdiType || EDI_CODE_TYPES[0].value,
-          ediNamingConvention: edi.ediNamingConvention || getDefaultEdiNamingConvention(),
+          ediNamingConvention: getDefaultEdiNamingConvention(),
           sendAccountNumber: edi.sendAcctNum,
           supportInvoice: edi.supportInvoice,
           supportOrder: edi.supportOrder,
