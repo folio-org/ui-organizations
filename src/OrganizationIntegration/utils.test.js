@@ -1,3 +1,4 @@
+import { EDI_NAMING_TOKENS } from './constants';
 import {
   buildAvailableAccounts,
   findDefaultIntegration,
@@ -5,6 +6,7 @@ import {
   getAccountOptions,
   getTenantTime,
   getUTCDate,
+  getDefaultEdiNamingConvention,
 } from './utils';
 
 const organization = {
@@ -91,6 +93,19 @@ describe('OrganizationIntegration utils', () => {
     it('should return UTC date time', () => {
       expect(getUTCDate({ time: '05:30:00.000Z', timezone: 'Europe/Berlin', date: '2022-01-01T23:00:00.000Z' }))
         .toEqual('2022-01-02T04:30:00Z');
+    });
+  });
+
+  describe('getDefaultEdiNamingConvention', () => {
+    it('should return default EDI naming convention', () => {
+      const {
+        organizationCode,
+        integrationName,
+        exportJobEndDate,
+      } = EDI_NAMING_TOKENS;
+
+      expect(getDefaultEdiNamingConvention())
+        .toEqual(`{${organizationCode}}-{${integrationName}}-{${exportJobEndDate}}`);
     });
   });
 });
