@@ -630,13 +630,14 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                             </button>
                           </label>
                           <div
-                            class="formControl inputGroup"
+                            class="formControl disabled inputGroup isDisabled"
                           >
                             <input
                               aria-invalid="false"
                               autocapitalize="off"
                               autocomplete="off"
                               autocorrect="off"
+                              disabled=""
                               error=""
                               id="ediNamingConvention"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.ediNamingConvention"
