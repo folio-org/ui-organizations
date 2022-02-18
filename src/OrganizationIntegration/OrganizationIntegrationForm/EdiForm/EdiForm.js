@@ -145,6 +145,7 @@ export const EdiForm = ({
           md={3}
         >
           <Field
+            disabled
             component={TextField}
             fullWidth
             id="ediNamingConvention"
