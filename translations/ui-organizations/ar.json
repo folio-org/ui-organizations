@@ -356,9 +356,9 @@
     "integration.scheduling.schedulePeriod.days": "يومياً",
     "integration.scheduling.schedulePeriod.weeks": "أسبوعياً",
     "integration.scheduling.schedulePeriod.months": "شهرياً",
-    "integration.scheduling.scheduleTime": "الوقت (التوقيت العالمي الموحّد)",
+    "integration.scheduling.scheduleTime": "الوقت",
     "integration.scheduling.scheduleFrequency": "جدولة التواتر",
-    "integration.scheduling.scheduleDate": "التاريخ (التوقيت العالمي الموحّد)",
+    "integration.scheduling.scheduleDate": "التاريخ",
     "integration.scheduling.scheduleDay": "اليوم",
     "integration.scheduling.scheduleWeekdays.FRIDAY": "الجمعة",
     "integration.scheduling.scheduleWeekdays.MONDAY": "الإثنين",
@@ -380,5 +380,8 @@
     "integration.confirmation.confirm": "تأكيد",
     "integration.confirmation.message": "هل أنت متأكد من أنك تريد حذف التكامل؟",
     "integration.message.delete.error": "لم يتم <b>حذف</b> التكامل",
-    "integration.message.delete.success": "تم <b>حذف</b> التكامل بنجاح"
+    "integration.message.delete.success": "تم <b>حذف</b> التكامل بنجاح",
+    "view.duplicateAccounts": "لا يمكن أن يكون للمؤسسة أرقام حسابات مكررة. قبل تحرير هذه المؤسسة بأي طريقة يجب عليك تغيير أو إزالة أي أرقام حسابات مكررة",
+    "save.error.accountNumberMustBeUnique": "لا يمكن أن يكون للمؤسسة أرقام حسابات مكررة",
+    "integration.edi.ediNamingConvention.info": "When defining your naming convention you can use text or one of the following tokens. Tokens will be replace by the corresponding information from the export job. Possible tokens are <em>{tokens}</em>"
 }
