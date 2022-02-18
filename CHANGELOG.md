@@ -12,6 +12,7 @@
 * Validation for "Account number" must be unique for organization. Refs UIORGS-292.
 * Adding tenant's timezone in Organization integration form.Refs UIORGS-300.
 * Allow user to set EDI naming convention. Refs UIORGS-301.
+* URLs should be hyperlinks in the view. Refs UIORGS-299.
 
 ## [3.0.1](https://github.com/folio-org/ui-organizations/tree/v3.0.1) (2021-11-02)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.0.0...v3.0.1)
