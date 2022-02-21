@@ -612,15 +612,32 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                             for="ediNamingConvention"
                           >
                             ui-organizations.integration.edi.ediNamingConvention
+                            <button
+                              aria-label="info"
+                              class="iconButton small icon"
+                              data-test-info-popover-trigger="true"
+                              icon="info"
+                              type="button"
+                            >
+                              <span
+                                class="iconButtonInner smallOffset"
+                                data-test-info-popover-trigger="true"
+                              >
+                                <span>
+                                  Icon
+                                </span>
+                              </span>
+                            </button>
                           </label>
                           <div
-                            class="formControl inputGroup"
+                            class="formControl disabled inputGroup isDisabled"
                           >
                             <input
                               aria-invalid="false"
                               autocapitalize="off"
                               autocomplete="off"
                               autocorrect="off"
+                              disabled=""
                               error=""
                               id="ediNamingConvention"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.ediNamingConvention"

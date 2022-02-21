@@ -21,7 +21,11 @@ import {
   TRANSMISSION_MODES,
   CONNECTION_MODES,
 } from '../constants';
-import { buildAvailableAccounts, findDefaultIntegration } from '../utils';
+import {
+  buildAvailableAccounts,
+  findDefaultIntegration,
+  getDefaultEdiNamingConvention,
+} from '../utils';
 import { OrganizationIntegrationForm } from '../OrganizationIntegrationForm';
 
 // should be removed after lotus release
@@ -39,7 +43,7 @@ const buildInitialValues = (organization, withMigration) => {
           vendorEdiType: edi.vendorEdiType || EDI_CODE_TYPES[0].value,
           libEdiCode: edi.libEdiCode,
           libEdiType: edi.libEdiType || EDI_CODE_TYPES[0].value,
-          ediNamingConvention: edi.ediNamingConvention,
+          ediNamingConvention: getDefaultEdiNamingConvention(),
           sendAccountNumber: edi.sendAcctNum,
           supportInvoice: edi.supportInvoice,
           supportOrder: edi.supportOrder,

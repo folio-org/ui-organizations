@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import { MultiColumnList } from '@folio/stripes/components';
+import {
+  MultiColumnList,
+  TextLink,
+} from '@folio/stripes/components';
 import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
 
 import { transformCategoryIdsToLables } from '../../../common/utils';
@@ -18,7 +21,15 @@ const columnMapping = {
 
 const ContactUrls = ({ categories, urls }) => {
   const resultsFormatter = {
-    url: ({ value }) => value,
+    url: url => (
+      <TextLink
+        rel="noopener noreferrer"
+        target="_blank"
+        href={url.value}
+      >
+        {url.value}
+      </TextLink>
+    ),
     urlDescription: ({ description }) => description,
     urlLanguage: ({ language }) => LANG_LABEL_BY_CODE[language] || language,
     urlCategories: url => transformCategoryIdsToLables(categories, url.categories),

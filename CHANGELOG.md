@@ -11,6 +11,10 @@
 * useOrganization hook usage from stripes-acq-components. Refs UIORGS-282.
 * Validation for "Account number" must be unique for organization. Refs UIORGS-292.
 * Create area Settings - Organizations - Types. Refs UIORGS-283.
+* Adding tenant's timezone in Organization integration form.Refs UIORGS-300.
+* Allow user to set EDI naming convention. Refs UIORGS-301.
+* URLs should be hyperlinks in the view. Refs UIORGS-299.
+* Refactor psets away from backend ".all" permissions. Refs UIORGS-265.
 
 ## [3.0.1](https://github.com/folio-org/ui-organizations/tree/v3.0.1) (2021-11-02)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.0.0...v3.0.1)

@@ -7,6 +7,7 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import { useOkapiKy } from '@folio/stripes/core';
 
+import { SCHEDULE_PERIODS } from '../../../OrganizationIntegration/constants';
 import { useIntegrationConfig } from './useIntegrationConfig';
 
 const queryClient = new QueryClient();
@@ -25,6 +26,8 @@ const config = {
       vendorId: 'organizationId',
       ediSchedule: {
         scheduleParameters: {
+          schedulePeriod: SCHEDULE_PERIODS.weeks,
+          scheduleTime: '00:00:00',
           weekDays: ['MONDAY'],
         },
       },
@@ -55,6 +58,8 @@ describe('useIntegrationConfig', () => {
           vendorId: 'organizationId',
           ediSchedule: {
             scheduleParameters: {
+              schedulePeriod: SCHEDULE_PERIODS.weeks,
+              scheduleTime: '00:00:00.000Z',
               weekDays: { MONDAY: true },
             },
           },

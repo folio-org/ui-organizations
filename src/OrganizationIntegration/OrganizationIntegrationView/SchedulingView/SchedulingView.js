@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import {
   Accordion,
@@ -15,11 +15,22 @@ import {
   SCHEDULE_PERIODS,
   WEEKDAYS,
 } from '../../constants';
+import { getTenantTime } from '../../utils';
 
 const SchedulingView = ({ ediSchedule = {} }) => {
+  const { timeZone } = useIntl();
   const isScheduleEnabled = ediSchedule.enableScheduledExport;
   const schedulePeriod = ediSchedule.scheduleParameters?.schedulePeriod;
   const schedulePeriodValue = Object.keys(SCHEDULE_PERIODS).find(key => SCHEDULE_PERIODS[key] === schedulePeriod);
+
+  const getTime = useCallback(() => (
+    schedulePeriod === SCHEDULE_PERIODS.days
+      ? ediSchedule.scheduleParameters.scheduleTime.slice(0, 8)
+      : getTenantTime({
+        time: ediSchedule.scheduleParameters.scheduleTime,
+        timeZone,
+      })
+  ), [ediSchedule.scheduleParameters?.scheduleTime, schedulePeriod, timeZone]);
 
   return (
     <Accordion
@@ -72,7 +83,7 @@ const SchedulingView = ({ ediSchedule = {} }) => {
                 <KeyValue
                   label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleDate" />}
                 >
-                  <FolioFormattedDate value={ediSchedule.scheduleParameters?.schedulingDate} />
+                  <FolioFormattedDate value={ediSchedule.scheduleParameters?.schedulingDate} utc={false} />
                 </KeyValue>
               </Col>
             )}
@@ -80,7 +91,7 @@ const SchedulingView = ({ ediSchedule = {} }) => {
             <Col xs={3}>
               <KeyValue
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleTime" />}
-                value={ediSchedule.scheduleParameters?.scheduleTime}
+                value={ediSchedule.scheduleParameters?.scheduleTime && getTime()}
               />
             </Col>
           </>

@@ -10,6 +10,8 @@ import {
   Button,
   Icon,
   MultiColumnList,
+  NoValue,
+  TextLink,
 } from '@folio/stripes/components';
 import { Pluggable } from '@folio/stripes/core';
 import { acqRowFormatter } from '@folio/stripes-acq-components';
@@ -102,7 +104,18 @@ const OrganizationInterfacesList = ({ fetchInterfaces, fields, interfaces, orgId
 
   const resultsFormatter = {
     interfaceName: ({ name }) => name,
-    interfaceUrl: ({ uri }) => uri,
+    interfaceUrl: (item) => (item.uri
+      ? (
+        <TextLink
+          rel="noopener noreferrer"
+          target="_blank"
+          href={item.uri}
+        >
+          {item.uri}
+        </TextLink>
+      )
+      : <NoValue />
+    ),
     unassignInterface: (item) => (
       <Button
         align="end"

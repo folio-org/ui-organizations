@@ -16,8 +16,8 @@ const renderSchedulingView = (props = defaultProps) => render(
   { wrapper: MemoryRouter },
 );
 
-describe('FtpView', () => {
-  it('should render FtpView', () => {
+describe('SchedulingView', () => {
+  it('should render SchedulingView', () => {
     renderSchedulingView();
 
     expect(screen.getByText('ui-organizations.integration.scheduling')).toBeInTheDocument();

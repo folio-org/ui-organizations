@@ -90,32 +90,48 @@ exports[`OrganizationInterfacesForm should render correct structure 1`] = `
                   >
                     GOBI
                   </div>
-                  <div
-                    class="mclCell  mclCellStyle"
-                    role="gridcell"
+                </a>
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                >
+                  <a
+                    aria-label=""
+                    class="mclRow mclIsOdd mclIsInteractive alignLastColToEnd"
+                    data-row-inner="0"
+                    href="/organizations/interface/793b9d42-ae12-41d7-a36a-f33e5b9e82c5/view"
+                    style="min-width: 0px;"
+                    tabindex="0"
+                  />
+                  <a
+                    class="root"
+                    data-test-text-link="true"
+                    href="www.gobi3.com"
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     www.gobi3.com
-                  </div>
-                  <div
-                    class="mclCell  mclCellStyle"
-                    role="gridcell"
+                  </a>
+                </div>
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                >
+                  <button
+                    aria-label="ui-organizations.interface.button.unassign"
+                    class="button fieldControl align-end"
+                    data-test-unassign-interface="true"
+                    type="button"
                   >
-                    <button
-                      aria-label="ui-organizations.interface.button.unassign"
-                      class="button fieldControl align-end"
-                      data-test-unassign-interface="true"
-                      type="button"
+                    <span
+                      class="inner"
                     >
-                      <span
-                        class="inner"
-                      >
-                        <span>
-                          Icon
-                        </span>
+                      <span>
+                        Icon
                       </span>
-                    </button>
-                  </div>
-                </a>
+                    </span>
+                  </button>
+                </div>
               </div>
               <div
                 class="mclEndOfListContainer"

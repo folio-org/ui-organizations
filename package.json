@@ -204,12 +204,15 @@
         "visible": true,
         "subPermissions": [
           "settings.organizations.enabled",
-          "organizations-storage.categories.all",
           "organizations-storage.organization-types.collection.get",
           "organizations-storage.organization-types.item.get",
           "organizations-storage.organization-types.item.post",
           "organizations-storage.organization-types.item.put",
-          "organizations-storage.organization-types.item.delete"
+          "organizations-storage.organization-types.item.delete",
+          "organizations-storage.categories.collection.get",
+          "organizations-storage.categories.item.delete",
+          "organizations-storage.categories.item.post",
+          "organizations-storage.categories.item.put"
         ]
       }
     ]
