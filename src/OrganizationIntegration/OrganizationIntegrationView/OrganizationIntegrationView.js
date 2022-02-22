@@ -25,9 +25,7 @@ import {
   useShowCallout,
   LoadingPane,
   handleKeyCommand,
-  useIntegrationConfigs,
   useModalToggle,
-  useOrganization,
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
@@ -36,7 +34,6 @@ import {
   useIntegrationConfig,
   useIntegrationConfigMutation,
 } from '../../common/hooks';
-import { buildAvailableAccounts } from '../utils';
 import { IntegrationInfoView } from './IntegrationInfoView';
 import { EdiView } from './EdiView';
 import { FtpView } from './FtpView';
@@ -52,9 +49,7 @@ const OrganizationIntegrationView = ({ orgId }) => {
   const [isRemoveConfirmation, toggleRemoveConfirmation] = useModalToggle();
 
   const { integrationConfig, isLoading } = useIntegrationConfig(id);
-  const { organization, isLoading: isOrgLoading } = useOrganization(orgId);
   const { acqMethods, isLoading: isAcqMethodsLoading } = useAcqMethods();
-  const { integrationConfigs, isLoading: isIntegrationsLoading } = useIntegrationConfigs({ organizationId: orgId });
 
   const onEdit = useCallback(
     () => {
@@ -150,7 +145,7 @@ const OrganizationIntegrationView = ({ orgId }) => {
     },
   ];
 
-  if (isLoading || isOrgLoading || isIntegrationsLoading || isAcqMethodsLoading) {
+  if (isLoading || isAcqMethodsLoading) {
     return (
       <LoadingPane
         id="integration-view-loading"
@@ -205,7 +200,6 @@ const OrganizationIntegrationView = ({ orgId }) => {
                     ?.vendorEdiOrdersExportConfig
                   }
                   acqMethods={acqMethods}
-                  accounts={buildAvailableAccounts(organization, integrationConfigs, integrationConfig)}
                 />
 
                 <FtpView ediFtp={integrationConfig
