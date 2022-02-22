@@ -8,20 +8,20 @@ import {
   Col,
   KeyValue,
   Row,
-  Select,
 } from '@folio/stripes/components';
-import {
-  getAccountOptions,
-  getAcqMethodOptions,
-} from '../../utils';
 
 const EdiView = ({
   vendorEdiOrdersExportConfig = {},
   acqMethods = [],
-  accounts = [],
 }) => {
-  const acqMethodOptions = useMemo(() => getAcqMethodOptions(acqMethods), [acqMethods]);
-  const accountOptions = useMemo(() => getAccountOptions(accounts), [accounts]);
+  const defaultAcquisitionMethodsOptions = useMemo(() => {
+    const defaultAcquisitionMethods = vendorEdiOrdersExportConfig.ediConfig?.defaultAcquisitionMethods || [];
+
+    return acqMethods
+      .filter(({ id }) => defaultAcquisitionMethods.includes(id))
+      .map(({ value }) => value)
+      .join(', ');
+  }, [vendorEdiOrdersExportConfig.ediConfig?.defaultAcquisitionMethods, acqMethods]);
 
   const isDefaultConfig = vendorEdiOrdersExportConfig?.isDefaultConfig;
 
@@ -38,13 +38,9 @@ const EdiView = ({
               xs={6}
               md={3}
             >
-              <Select
+              <KeyValue
                 label={<FormattedMessage id="ui-organizations.integration.edi.accountNumbers" />}
-                dataOptions={accountOptions}
-                fullWidth
-                multiple
-                disabled
-                value={vendorEdiOrdersExportConfig.ediConfig?.accountNoList}
+                value={vendorEdiOrdersExportConfig.ediConfig?.accountNoList?.join(', ')}
               />
             </Col>
           )
@@ -55,13 +51,9 @@ const EdiView = ({
           xs={6}
           md={3}
         >
-          <Select
+          <KeyValue
             label={<FormattedMessage id="ui-organizations.integration.edi.defaultAcquisitionMethods" />}
-            dataOptions={acqMethodOptions}
-            fullWidth
-            multiple
-            disabled
-            value={vendorEdiOrdersExportConfig.ediConfig?.defaultAcquisitionMethods}
+            value={defaultAcquisitionMethodsOptions}
           />
         </Col>
 
@@ -177,7 +169,6 @@ const EdiView = ({
 EdiView.propTypes = {
   vendorEdiOrdersExportConfig: PropTypes.object,
   acqMethods: PropTypes.arrayOf(PropTypes.object),
-  accounts: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default EdiView;
