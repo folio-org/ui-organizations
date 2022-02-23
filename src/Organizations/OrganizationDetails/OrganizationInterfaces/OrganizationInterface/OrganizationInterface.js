@@ -10,6 +10,7 @@ import {
   Button,
   NoValue,
   Headline,
+  TextLink,
 } from '@folio/stripes/components';
 import {
   IfPermission,
@@ -65,7 +66,18 @@ const OrganizationInterface = ({ getCreds, item = {}, isNarrow = false }) => {
         <Col xs={columnsAmount}>
           <KeyValue label={<FormattedMessage id="ui-organizations.interface.uri" />}>
             <span className={css.wrapValue}>
-              {uri || <NoValue />}
+              {uri
+                ? (
+                  <TextLink
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href={uri}
+                  >
+                    {uri}
+                  </TextLink>
+                )
+                : <NoValue />
+              }
             </span>
           </KeyValue>
         </Col>

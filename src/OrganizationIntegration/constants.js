@@ -28,3 +28,11 @@ export const SCHEDULE_PERIODS = {
 };
 
 export const WEEKDAYS = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+
+export const EDI_NAMING_TOKENS = {
+  organizationCode: 'organizationCode',
+  integrationName: 'integrationName',
+  exportJobEndDate: 'exportJobEndDate',
+  jobID: 'jobID',
+  numberSequence: 'numberSequence',
+};

@@ -12,6 +12,7 @@ exports[`ViewContact should render correct structure 1`] = `
         class="paneHeader"
         data-test-pane-header="true"
         id="paneHeaderview-contact"
+        role="region"
         tabindex="-1"
       >
         <div
@@ -229,6 +230,7 @@ exports[`ViewContact should render correct structure 1`] = `
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-name"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -429,6 +431,7 @@ exports[`ViewContact should render correct structure 1`] = `
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-emails"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -522,11 +525,9 @@ exports[`ViewContact should render correct structure 1`] = `
                             style="position: static;"
                           >
                             <div
-                              aria-label="[object Object]: cust.service03@amazon.com...[object Object]: customer service...[object Object]: English...[object Object]: Customer Service...[object Object]: null"
                               class="mclRow mclIsOdd"
                               data-row-inner="0"
                               style="min-width: 0px;"
-                              tabindex="0"
                             >
                               <div
                                 class="mclCell  mclCellStyle"
@@ -637,6 +638,7 @@ exports[`ViewContact should render correct structure 1`] = `
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-phones"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -730,11 +732,9 @@ exports[`ViewContact should render correct structure 1`] = `
                             style="position: static;"
                           >
                             <div
-                              aria-label="[object Object]: 1-888-238-22090...[object Object]: undefined...[object Object]: English...[object Object]: Customer Service...[object Object]: null"
                               class="mclRow mclIsOdd"
                               data-row-inner="0"
                               style="min-width: 0px;"
-                              tabindex="0"
                             >
                               <div
                                 class="mclCell  mclCellStyle"
@@ -843,6 +843,7 @@ exports[`ViewContact should render correct structure 1`] = `
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-urls"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -936,17 +937,23 @@ exports[`ViewContact should render correct structure 1`] = `
                             style="position: static;"
                           >
                             <div
-                              aria-label="[object Object]: https://www.amazon.com...[object Object]: main website...[object Object]: en-us...[object Object]: Customer Service...[object Object]: null"
                               class="mclRow mclIsOdd"
                               data-row-inner="0"
                               style="min-width: 0px;"
-                              tabindex="0"
                             >
                               <div
                                 class="mclCell  mclCellStyle"
                                 role="gridcell"
                               >
-                                https://www.amazon.com
+                                <a
+                                  class="root"
+                                  data-test-text-link="true"
+                                  href="https://www.amazon.com"
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                >
+                                  https://www.amazon.com
+                                </a>
                               </div>
                               <div
                                 class="mclCell  mclCellStyle"
@@ -1051,6 +1058,7 @@ exports[`ViewContact should render correct structure 1`] = `
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-addresses"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"

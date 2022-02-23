@@ -7,6 +7,7 @@ import {
   Accordion,
   Checkbox,
   Col,
+  InfoPopover,
   Row,
   Select,
   TextArea,
@@ -16,7 +17,10 @@ import {
   validateRequired,
 } from '@folio/stripes-acq-components';
 
-import { EDI_CODE_TYPES } from '../../constants';
+import {
+  EDI_CODE_TYPES,
+  EDI_NAMING_TOKENS,
+} from '../../constants';
 import {
   getAccountOptions,
   getAcqMethodOptions,
@@ -141,10 +145,21 @@ export const EdiForm = ({
           md={3}
         >
           <Field
+            disabled
             component={TextField}
             fullWidth
             id="ediNamingConvention"
-            label={<FormattedMessage id="ui-organizations.integration.edi.ediNamingConvention" />}
+            label={(
+              <>
+                <FormattedMessage id="ui-organizations.integration.edi.ediNamingConvention" />
+                <InfoPopover content={(
+                  <FormattedMessage
+                    id="ui-organizations.integration.edi.ediNamingConvention.info"
+                    values={{ tokens: Object.values(EDI_NAMING_TOKENS).join(', ') }}
+                  />)}
+                />
+              </>
+            )}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.ediNamingConvention"
           />
         </Col>

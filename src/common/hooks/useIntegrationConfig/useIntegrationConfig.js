@@ -1,13 +1,18 @@
 import { useQuery } from 'react-query';
+import moment from 'moment-timezone';
 
 import {
   useNamespace,
   useOkapiKy,
+  useStripes,
 } from '@folio/stripes/core';
+
+import { SCHEDULE_PERIODS } from '../../../OrganizationIntegration/constants';
 
 export const useIntegrationConfig = (id) => {
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'organization-integration' });
+  const stripes = useStripes();
 
   const { isFetching, data = {} } = useQuery(
     [namespace, id],
@@ -24,6 +29,16 @@ export const useIntegrationConfig = (id) => {
           ...acc,
           [weekDay]: true,
         }), {});
+      }
+
+      if (scheduleParameters?.schedulePeriod === SCHEDULE_PERIODS.days && scheduleParameters?.schedulingDate) {
+        const tenantDate = moment.tz(scheduleParameters.schedulingDate, stripes.timezone).format();
+
+        scheduleParameters.scheduleTime = tenantDate.slice(11, 19);
+      }
+
+      if (scheduleParameters?.scheduleTime) {
+        scheduleParameters.scheduleTime = `${scheduleParameters.scheduleTime}.000Z`;
       }
 
       return responseData;

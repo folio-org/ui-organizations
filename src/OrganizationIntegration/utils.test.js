@@ -1,8 +1,12 @@
+import { EDI_NAMING_TOKENS } from './constants';
 import {
   buildAvailableAccounts,
   findDefaultIntegration,
   getAcqMethodOptions,
   getAccountOptions,
+  getTenantTime,
+  getUTCDate,
+  getDefaultEdiNamingConvention,
 } from './utils';
 
 const organization = {
@@ -75,6 +79,33 @@ describe('OrganizationIntegration utils', () => {
     it('should return account options', () => {
       expect(getAccountOptions(accounts))
         .toEqual([{ label: accounts[0], value: accounts[0] }]);
+    });
+  });
+
+  describe('getTenantTime', () => {
+    it('should return tenant time', () => {
+      expect(getTenantTime({ time: '23:00:00.000Z', timeZone: 'Europe/Berlin' }))
+        .toEqual('00:00:00');
+    });
+  });
+
+  describe('getUTCDate', () => {
+    it('should return UTC date time', () => {
+      expect(getUTCDate({ time: '05:30:00.000Z', timezone: 'Europe/Berlin', date: '2022-01-01T23:00:00.000Z' }))
+        .toEqual('2022-01-02T04:30:00Z');
+    });
+  });
+
+  describe('getDefaultEdiNamingConvention', () => {
+    it('should return default EDI naming convention', () => {
+      const {
+        organizationCode,
+        integrationName,
+        exportJobEndDate,
+      } = EDI_NAMING_TOKENS;
+
+      expect(getDefaultEdiNamingConvention())
+        .toEqual(`{${organizationCode}}-{${integrationName}}-{${exportJobEndDate}}`);
     });
   });
 });

@@ -29,8 +29,6 @@ const normalizeNumber = value => {
   return Number(value);
 };
 
-const trimTime = value => value.slice(0, 8);
-
 export const SchedulingForm = () => {
   const { formatMessage } = useIntl();
   const { getState, change } = useForm();
@@ -124,10 +122,8 @@ export const SchedulingForm = () => {
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleTime" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleTime"
                 component={Timepicker}
-                timeZone="UTC"
                 required
                 validate={validateRequired}
-                parse={trimTime}
               />
             </Col>
           </Row>
@@ -169,7 +165,6 @@ export const SchedulingForm = () => {
                 timeZone="UTC"
                 required
                 validate={validateRequired}
-                parse={trimTime}
               />
             </Col>
           </Row>
@@ -200,10 +195,8 @@ export const SchedulingForm = () => {
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleTime" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleTime"
                 component={Timepicker}
-                timeZone="UTC"
                 required
                 validate={validateRequired}
-                parse={trimTime}
               />
             </Col>
 
@@ -254,10 +247,8 @@ export const SchedulingForm = () => {
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleTime" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleTime"
                 component={Timepicker}
-                timeZone="UTC"
                 required
                 validate={validateRequired}
-                parse={trimTime}
               />
             </Col>
           </Row>

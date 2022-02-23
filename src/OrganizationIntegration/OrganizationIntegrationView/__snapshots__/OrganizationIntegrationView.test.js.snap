@@ -12,6 +12,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
         class="paneHeader"
         data-test-pane-header="true"
         id="paneHeaderintegration-view"
+        role="region"
         tabindex="-1"
       >
         <div
@@ -219,6 +220,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-integrationInfo"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -376,6 +378,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-edi"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -390,33 +393,24 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         data-test-edi-account-numbers="true"
                       >
                         <div
-                          class="select inputGroup fullWidth"
+                          class="kvRoot"
                         >
-                          <label
-                            class="label"
-                            for="select-5"
-                            id="select-5-label"
+                          <div
+                            class="kvLabel"
                           >
                             ui-organizations.integration.edi.accountNumbers
-                          </label>
-                          <div
-                            class="selectWrap"
-                          >
-                            <select
-                              aria-invalid="false"
-                              aria-labelledby="select-5-label"
-                              class="selectControl formControl disabled"
-                              disabled=""
-                              id="select-5"
-                              multiple=""
-                            />
-                            <span>
-                              Icon
-                            </span>
                           </div>
                           <div
-                            role="alert"
-                          />
+                            class="kvValue"
+                            data-test-kv-value="true"
+                          >
+                            <span
+                              aria-label="stripes-components.noValue.noValueSet"
+                              data-test-no-value="true"
+                            >
+                              -
+                            </span>
+                          </div>
                         </div>
                       </div>
                       <div
@@ -424,33 +418,24 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         data-test-edi-acq-methods="true"
                       >
                         <div
-                          class="select inputGroup fullWidth"
+                          class="kvRoot"
                         >
-                          <label
-                            class="label"
-                            for="select-6"
-                            id="select-6-label"
+                          <div
+                            class="kvLabel"
                           >
                             ui-organizations.integration.edi.defaultAcquisitionMethods
-                          </label>
-                          <div
-                            class="selectWrap"
-                          >
-                            <select
-                              aria-invalid="false"
-                              aria-labelledby="select-6-label"
-                              class="selectControl formControl disabled"
-                              disabled=""
-                              id="select-6"
-                              multiple=""
-                            />
-                            <span>
-                              Icon
-                            </span>
                           </div>
                           <div
-                            role="alert"
-                          />
+                            class="kvValue"
+                            data-test-kv-value="true"
+                          >
+                            <span
+                              aria-label="stripes-components.noValue.noValueSet"
+                              data-test-no-value="true"
+                            >
+                              -
+                            </span>
+                          </div>
                         </div>
                       </div>
                       <div
@@ -578,7 +563,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-7"
+                            for="checkbox-5"
                           >
                             <span
                               class="labelText"
@@ -592,7 +577,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 aria-invalid="false"
                                 class="input"
                                 disabled=""
-                                id="checkbox-7"
+                                id="checkbox-5"
                                 type="checkbox"
                                 value=""
                               />
@@ -632,7 +617,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-8"
+                            for="checkbox-6"
                           >
                             <span
                               class="labelText"
@@ -646,7 +631,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 aria-invalid="false"
                                 class="input"
                                 disabled=""
-                                id="checkbox-8"
+                                id="checkbox-6"
                                 type="checkbox"
                                 value=""
                               />
@@ -686,7 +671,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-9"
+                            for="checkbox-7"
                           >
                             <span
                               class="labelText"
@@ -700,7 +685,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 aria-invalid="false"
                                 class="input"
                                 disabled=""
-                                id="checkbox-9"
+                                id="checkbox-7"
                                 type="checkbox"
                                 value=""
                               />
@@ -807,6 +792,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-ftp"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -1111,6 +1097,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
+                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-scheduling"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -1129,7 +1116,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-12"
+                            for="checkbox-10"
                           >
                             <span
                               class="labelText"
@@ -1144,7 +1131,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 checked=""
                                 class="input"
                                 disabled=""
-                                id="checkbox-12"
+                                id="checkbox-10"
                                 type="checkbox"
                                 value=""
                               />
