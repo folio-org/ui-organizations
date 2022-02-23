@@ -356,5 +356,11 @@
     "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
     "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
     "permission.acqUnits.manage": "Organizations: Manage acquisition units",
-    "permission.settings": "Settings (Organizations): Can view and edit settings"
+    "permission.settings": "Settings (Organizations): Can view and edit settings",
+    "relatedOrganization.linkOrganization": "Link organization",
+    "relatedOrganization.noPlugin": "No \"find-organization\" plugin is installed",
+    "relatedOrganization.replaceOrganization": "Replace organization",
+    "relatedOrganization.replaceOrganizationSpecific": "Replace organization {organizationName}",
+    "relatedOrganization.noneLinked": "No organization linked",
+    "relatedOrganization.linkToStart": "Link an organization to get started"
 }
