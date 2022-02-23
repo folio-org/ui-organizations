@@ -172,7 +172,7 @@ const OrganizationDetails = ({
       <FormattedMessage id="ui-organizations.integration.create">
         {ariaLabel => (
           <Button
-            id="clickable-neworganization"
+            id="clickable-neworganization-integration"
             aria-label={ariaLabel}
             to={{
               pathname: `/organizations/${organization.id}/integration/create`,
