@@ -1,6 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+import {
+  find,
+  map,
+} from 'lodash';
 import { Field, useForm } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 
@@ -16,6 +20,7 @@ import {
 } from '@folio/stripes/components';
 import {
   AcqUnitsField,
+  FieldMultiSelectionFinal,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
@@ -28,7 +33,7 @@ import {
 import resetVendorFields from './resetVendorFields';
 import FieldCode from './FieldCode';
 
-function OrganizationSummaryForm({ initialValues }) {
+function OrganizationSummaryForm({ initialValues, organizationTypes, mutators }) {
   const [isVendorUncheckConfirm, setVendorUncheckConfirm] = useState(false);
   const { change } = useForm();
 
@@ -83,6 +88,32 @@ function OrganizationSummaryForm({ initialValues }) {
   }, [initialValues.id, change]);
 
   const isEditMode = Boolean(initialValues.id);
+
+  const getSelectedTypes = (e) => {
+    mutators.setType({}, e);
+  };
+
+  const formatter = ({ option }) => {
+    const item = find(organizationTypes, { id: option }) || option;
+
+    if (!item) return option;
+
+    return item.name;
+  };
+
+  const itemToString = item => item;
+
+  const typeOptions = map(organizationTypes, 'id');
+
+  const filter = (filterText, list) => {
+    const renderedItems = filterText
+      ? organizationTypes
+        .filter(group => group.name.toLowerCase().includes(filterText.toLowerCase()))
+        .map(({ id }) => id)
+      : list;
+
+    return { renderedItems };
+  };
 
   return (
     <Row>
@@ -142,6 +173,22 @@ function OrganizationSummaryForm({ initialValues }) {
             </FormattedMessage>
           ))}
         </Field>
+      </Col>
+      <Col
+        xs={6}
+        md={3}
+      >
+        <FieldMultiSelectionFinal
+          ariaLabelledBy="organizationFormTypesLabel"
+          dataOptions={typeOptions}
+          filter={filter}
+          formatter={formatter}
+          id="organizations-type"
+          itemToString={itemToString}
+          label={<FormattedMessage id="ui-organizations.summary.type" />}
+          name="organizationTypes"
+          onChange={getSelectedTypes}
+        />
       </Col>
       <Col
         xs={6}
@@ -218,6 +265,10 @@ function OrganizationSummaryForm({ initialValues }) {
 
 OrganizationSummaryForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
+  organizationTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  mutators: PropTypes.shape({
+    setType: PropTypes.func,
+  }),
 };
 
 export default OrganizationSummaryForm;

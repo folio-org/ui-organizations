@@ -11,6 +11,7 @@ import { useShowCallout } from '@folio/stripes-acq-components';
 import { VIEW_ORG_DETAILS } from '../../common/constants';
 import {
   organizationsResource,
+  typesResource,
 } from '../../common/resources';
 import {
   OrganizationForm,
@@ -32,7 +33,7 @@ const INITIAL_VALUES = {
   },
 };
 
-export const OrganizationCreate = ({ history, location, mutator }) => {
+export const OrganizationCreate = ({ history, location, mutator, resources: { organizationTypes } }) => {
   const cancelForm = useCallback(
     (id) => {
       history.push({
@@ -65,18 +66,26 @@ export const OrganizationCreate = ({ history, location, mutator }) => {
       initialValues={INITIAL_VALUES}
       onSubmit={createOrganization}
       cancelForm={cancelForm}
+      organizationTypes={organizationTypes}
     />
   );
 };
 
 OrganizationCreate.manifest = Object.freeze({
   createOrganizationOrg: organizationsResource,
+  organizationTypes: {
+    ...typesResource,
+    fetch: true,
+  },
 });
 
 OrganizationCreate.propTypes = {
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   mutator: PropTypes.object.isRequired,
+  resources: PropTypes.shape({
+    organizationTypes: PropTypes.object,
+  }).isRequired,
 };
 
 export default withRouter(stripesConnect(OrganizationCreate));

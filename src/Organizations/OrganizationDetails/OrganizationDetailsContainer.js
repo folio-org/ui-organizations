@@ -18,6 +18,7 @@ import {
 import {
   organizationResourceByUrl,
   categoriesResource,
+  typesResource,
 } from '../../common/resources';
 import {
   useTranslatedCategories,
@@ -31,6 +32,7 @@ export const OrganizationDetailsContainer = ({
   match,
   mutator,
   refreshList,
+  resources: { organizationTypes },
 }) => {
   const organizationId = match.params.id;
 
@@ -151,6 +153,7 @@ export const OrganizationDetailsContainer = ({
       organization={organization}
       organizationCategories={translatedCategories}
       integrationConfigs={integrationConfigs}
+      organizationTypes={organizationTypes.records}
     />
   );
 };
@@ -164,6 +167,10 @@ OrganizationDetailsContainer.manifest = Object.freeze({
     ...categoriesResource,
     accumulate: true,
   },
+  organizationTypes: {
+    ...typesResource,
+    fetch: true,
+  },
 });
 
 OrganizationDetailsContainer.propTypes = {
@@ -172,6 +179,9 @@ OrganizationDetailsContainer.propTypes = {
   location: ReactRouterPropTypes.location.isRequired,
   mutator: PropTypes.object.isRequired,
   refreshList: PropTypes.func.isRequired,
+  resources: PropTypes.shape({
+    organizationTypes: PropTypes.object,
+  }).isRequired,
 };
 
 export default withRouter(stripesConnect(OrganizationDetailsContainer));
