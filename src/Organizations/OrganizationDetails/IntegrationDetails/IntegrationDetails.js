@@ -8,14 +8,14 @@ import {
   NoValue,
 } from '@folio/stripes/components';
 
-const visibleColumns = ['name', 'description'];
+const visibleColumns = ['configName', 'configDescription'];
 const columnMapping = {
-  name: <FormattedMessage id="ui-organizations.main.name" />,
-  description: <FormattedMessage id="ui-organizations.main.description" />,
+  configName: <FormattedMessage id="ui-organizations.main.name" />,
+  configDescription: <FormattedMessage id="ui-organizations.main.description" />,
 };
 const formatter = {
-  name: i => i.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig?.configName,
-  description: i => i.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig?.configDescription || <NoValue />,
+  configName: i => i.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig?.configName,
+  configDescription: i => i.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig?.configDescription || <NoValue />,
 };
 
 const IntegrationDetails = ({ orgId, integrationConfigs = [] }) => {
