@@ -17,11 +17,15 @@ const mutatorMock = {
 const historyMock = {
   push: jest.fn(),
 };
+const resourcesMock = {
+  resources: { organizationTypes: {} },
+};
 const renderOrganizationCreate = (props) => render(
   <OrganizationCreate
     location={{}}
     history={historyMock}
     mutator={mutatorMock}
+    resources={resourcesMock}
     {...props}
   />,
 );
