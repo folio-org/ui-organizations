@@ -58,4 +58,11 @@ describe('OrganizationSummaryForm', () => {
 
     expect(asFragment()).toMatchSnapshot();
   });
+
+  it('should render type', async () => {
+    renderForm({ initialValues: organization });
+
+    expect(document.querySelector('#multiselect-option-list-organizations-type')).toBeInTheDocument();
+    expect(document.querySelectorAll('#multiselect-option-list-organizations-type [role=option]').length).toEqual(2);
+  });
 });
