@@ -16,6 +16,24 @@ const organization = {
   id: 'orgUId',
   name: 'Amazon',
 };
+
+const resourcesMock = {
+  organizationTypes: {
+    records: [
+      {
+        'id': 'f04c7277-0019-43cf-84b3-02d894a9d81a',
+        'name': 'Auction house',
+        'status': 'Active',
+      },
+      {
+        'id': 'e7e9af00-c12c-448f-8ad1-d15ff209605a',
+        'name': 'Book trade',
+        'status': 'Inactive',
+      },
+    ],
+  },
+};
+
 const mutatorMock = {
   organizationDetailsOrg: {
     GET: jest.fn(),
@@ -36,6 +54,7 @@ const renderOrganizationDetailsContainer = () => render(
     history={historyMock}
     match={match}
     refreshList={refreshListMock}
+    resources={resourcesMock}
   />,
 );
 

@@ -54,8 +54,8 @@ jest.mock(
 
 const queryAllByClass = queryHelpers.queryAllByAttribute.bind(null, 'class');
 
-const organizationTypesMock =
-  { records: [
+const organizationTypesMock = {
+  records: [
     {
       'id': 'f04c7277-0019-43cf-84b3-02d894a9d81a',
       'name': 'Auction house',
@@ -66,7 +66,8 @@ const organizationTypesMock =
       'name': 'Book trade',
       'status': 'Inactive',
     },
-  ] };
+  ],
+};
 
 const defaultProps = {
   onSubmit: jest.fn(),
