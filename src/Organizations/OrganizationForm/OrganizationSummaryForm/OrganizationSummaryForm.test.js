@@ -8,11 +8,27 @@ import { organization } from '../../../../test/jest/fixtures';
 
 import OrganizationSummaryForm from './OrganizationSummaryForm';
 
+const organizationTypesMock = [
+  {
+    'id': 'f04c7277-0019-43cf-84b3-02d894a9d81a',
+    'name': 'Auction house',
+    'status': 'Active',
+  },
+  {
+    'id': 'e7e9af00-c12c-448f-8ad1-d15ff209605a',
+    'name': 'Book trade',
+    'status': 'Inactive',
+  },
+];
+
 const TestForm = stripesFinalForm({})(
   () => {
     return (
       <form>
-        <OrganizationSummaryForm initialValues={organization} />
+        <OrganizationSummaryForm
+          initialValues={organization}
+          organizationTypes={organizationTypesMock}
+        />
       </form>
     );
   },
