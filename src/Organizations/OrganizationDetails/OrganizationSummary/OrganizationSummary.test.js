@@ -25,6 +25,7 @@ const STUB_ORG = {
   isVendor: true,
   changelogs: [],
   acqUnitIds: [],
+  organizationTypes: ['type 1', 'type 2'],
   metadata: {
     createdDate: '2020-09-09T09:13:03.147+0000',
     createdByUserId: 'd40ce2c6-e043-51c6-8573-b3d953bf5ea6',
@@ -64,6 +65,7 @@ const renderOrganizationSummary = (organization = STUB_ORG) => (render(
       metadata={organization.metadata}
       name={organization.name}
       status={organization.status}
+      initialOrganizationTypes={organization.organizationTypes}
     />
   </IntlProvider>,
 ));
@@ -75,10 +77,12 @@ describe('OrganizationSummary component', () => {
     const accountingCodeValue = screen.getByTestId('accountingCode').querySelector('[data-test-kv-value]');
     const nameValue = screen.getByTestId('name').querySelector('[data-test-kv-value]');
     const description = screen.getByTestId('description').querySelector('[data-test-kv-value]');
+    const type = screen.getByTestId('type').querySelector('[data-test-kv-value]');
 
     expect(nameValue).toHaveTextContent('Test org');
     expect(defaultLanguageValue).toHaveTextContent('-');
     expect(accountingCodeValue).toHaveTextContent('-');
     expect(description).toHaveTextContent('-');
+    expect(type).toHaveTextContent('type 1, type 2');
   });
 });
