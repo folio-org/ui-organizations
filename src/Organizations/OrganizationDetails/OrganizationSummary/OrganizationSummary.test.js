@@ -77,12 +77,18 @@ describe('OrganizationSummary component', () => {
     const accountingCodeValue = screen.getByTestId('accountingCode').querySelector('[data-test-kv-value]');
     const nameValue = screen.getByTestId('name').querySelector('[data-test-kv-value]');
     const description = screen.getByTestId('description').querySelector('[data-test-kv-value]');
-    const type = screen.getByTestId('type').querySelector('[data-test-kv-value]');
 
     expect(nameValue).toHaveTextContent('Test org');
     expect(defaultLanguageValue).toHaveTextContent('-');
     expect(accountingCodeValue).toHaveTextContent('-');
     expect(description).toHaveTextContent('-');
+  });
+
+  it('should display types', () => {
+    renderOrganizationSummary();
+    const type = screen.getByTestId('type').querySelector('[data-test-kv-value]');
+
+    expect(screen.getByText('ui-organizations.summary.type')).toBeDefined();
     expect(type).toHaveTextContent('type 1, type 2');
   });
 });
