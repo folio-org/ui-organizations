@@ -2,9 +2,7 @@
 
 exports[`OrganizationsListFilter should render correct structure 1`] = `
 <DocumentFragment>
-  <div
-    aria-multiselectable="true"
-  >
+  <div>
     <section
       class="accordion hasSeparator"
       data-test-accordion-section="true"
@@ -223,7 +221,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           <button
             aria-controls="accordion2"
             aria-expanded="false"
-            aria-label="- filter list"
+            aria-label="stripes-acq-components.filter.tags filter list"
             class="filterSetHeader"
             id="accordion-toggle-button-org-filter-tags"
             tabindex="0"
@@ -249,7 +247,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="stripes-acq-components.filter.tags"
+          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-org-filter-tags"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -1260,9 +1258,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
 
 exports[`OrganizationsListFilter should render correct structure when disabled 1`] = `
 <DocumentFragment>
-  <div
-    aria-multiselectable="true"
-  >
+  <div>
     <section
       class="accordion hasSeparator"
       data-test-accordion-section="true"
@@ -1496,7 +1492,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           <button
             aria-controls="accordion23"
             aria-expanded="false"
-            aria-label="- filter list"
+            aria-label="stripes-acq-components.filter.tags filter list"
             class="filterSetHeader"
             id="accordion-toggle-button-org-filter-tags"
             tabindex="0"
@@ -1522,7 +1518,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
         style="z-index: 1;"
       >
         <div
-          aria-label="stripes-acq-components.filter.tags"
+          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-org-filter-tags"
           class="content-region"
           data-test-accordion-wrapper="true"

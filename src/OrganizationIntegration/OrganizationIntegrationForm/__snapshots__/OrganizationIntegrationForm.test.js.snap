@@ -99,9 +99,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                 </button>
               </div>
             </div>
-            <div
-              aria-multiselectable="true"
-            >
+            <div>
               <section
                 class="accordion hasSeparator"
                 data-test-accordion-section="true"
@@ -385,9 +383,6 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                                 456
                               </option>
                             </select>
-                            <span>
-                              Icon
-                            </span>
                           </div>
                           <div
                             role="alert"
@@ -419,9 +414,6 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               multiple=""
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods"
                             />
-                            <span>
-                              Icon
-                            </span>
                           </div>
                           <div
                             role="alert"
