@@ -385,6 +385,9 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                                 456
                               </option>
                             </select>
+                            <span>
+                              Icon
+                            </span>
                           </div>
                           <div
                             role="alert"
@@ -416,6 +419,9 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               multiple=""
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods"
                             />
+                            <span>
+                              Icon
+                            </span>
                           </div>
                           <div
                             role="alert"

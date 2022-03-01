@@ -138,6 +138,9 @@ exports[`EditContact should render correct form structure 1`] = `
                         Other
                       </option>
                     </select>
+                    <span>
+                      Icon
+                    </span>
                   </div>
                   <div
                     role="alert"
