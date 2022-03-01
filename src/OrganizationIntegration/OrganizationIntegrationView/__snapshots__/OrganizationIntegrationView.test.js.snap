@@ -169,9 +169,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                 </button>
               </div>
             </div>
-            <div
-              aria-multiselectable="true"
-            >
+            <div>
               <section
                 class="accordion hasSeparator"
                 data-test-accordion-section="true"
@@ -265,10 +263,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -405,10 +411,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -430,10 +444,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -455,10 +477,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -500,10 +530,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -545,10 +583,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -732,10 +778,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -859,10 +913,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -908,10 +970,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -933,10 +1003,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -958,10 +1036,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -983,10 +1069,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -1012,10 +1106,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -1037,10 +1139,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -1177,10 +1287,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>
@@ -1201,10 +1319,18 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             data-test-kv-value="true"
                           >
                             <span
-                              aria-label="stripes-components.noValue.noValueSet"
                               data-test-no-value="true"
                             >
-                              -
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.noValue.noValueSet
+                              </span>
+                              <span
+                                aria-hidden="true"
+                              >
+                                -
+                              </span>
                             </span>
                           </div>
                         </div>

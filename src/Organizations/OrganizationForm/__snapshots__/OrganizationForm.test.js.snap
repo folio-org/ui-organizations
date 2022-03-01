@@ -106,9 +106,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
               <div
                 class="col-xs-12 col-md-8 col-md-offset-2"
               >
-                <div
-                  aria-multiselectable="true"
-                >
+                <div>
                   <section
                     class="accordion hasSeparator"
                     data-test-accordion-section="true"
@@ -522,9 +520,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
               <div
                 class="col-xs-12 col-md-8 col-md-offset-2"
               >
-                <div
-                  aria-multiselectable="true"
-                >
+                <div>
                   <section
                     class="accordion hasSeparator"
                     data-test-accordion-section="true"
@@ -935,9 +931,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
               <div
                 class="col-xs-12 col-md-8 col-md-offset-2"
               >
-                <div
-                  aria-multiselectable="true"
-                >
+                <div>
                   <section
                     class="accordion hasSeparator"
                     data-test-accordion-section="true"
