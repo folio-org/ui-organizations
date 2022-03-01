@@ -190,6 +190,195 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
         class="col-xs-6 col-md-3"
       >
         <div
+          class="multiSelectContainer"
+          id="organizations-type"
+        >
+          <div
+            aria-live="assertive"
+            aria-relevant="additions"
+            class="sr-only"
+          />
+          <div
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-labelledby="organizationFormTypesLabel"
+            class="multiSelectContainer"
+            role="application"
+          >
+            <label
+              class="label"
+              for="organizations-type-input"
+              id="organizationFormTypesLabel"
+            >
+              ui-organizations.summary.type
+            </label>
+            <span
+              class="sr-only"
+              id="multi-value-status-organizations-type"
+            >
+              1 item selected
+            </span>
+            <span
+              class="sr-only"
+              id="multi-describe-control-organizations-type"
+            >
+              stripes-components.multiSelection.controlDescription
+            </span>
+            <div
+              class="multiSelectControlWrapper"
+            >
+              <div
+                aria-describedby="multi-describe-control-organizations-type"
+                aria-labelledby="organizationFormTypesLabel multi-value-status-organizations-type"
+                class="multiSelectControl formControl"
+                tabindex="0"
+              >
+                <div
+                  class="multiSelectControlGroup"
+                >
+                  <div
+                    class="multiSelectValueListContainer"
+                    id="multi-values-list-organizations-type"
+                  >
+                    <span
+                      class="sr-only"
+                      id="multi-value-organizations-type"
+                    >
+                      stripes-components.multiSelection.removeSelectedButtonLabel
+                    </span>
+                    <span
+                      class="sr-only"
+                      id="multi-describe-action-organizations-type"
+                    >
+                      stripes-components.multiSelection.removeSelectedButtonDescription
+                    </span>
+                    <ul
+                      class="multiSelectValueList"
+                    >
+                      <li
+                        class="valueChipRoot"
+                        id="e7e9af00-c12c-448f-8ad1-d15ff209605a-0_multiselect_selected"
+                      >
+                        <div
+                          class="valueChipGroup"
+                        >
+                          <div
+                            class="valueChipValue"
+                            id="e7e9af00-c12c-448f-8ad1-d15ff209605a-0_multiselect_selected_label"
+                          >
+                            Book trade
+                          </div>
+                          <button
+                            aria-describedby="multi-describe-action-organizations-type"
+                            aria-label="times"
+                            aria-labelledby="e7e9af00-c12c-448f-8ad1-d15ff209605a-0_multiselect_selected_label multi-value-organizations-type"
+                            class="iconButton small"
+                            icon="times"
+                            style="padding: 0px;"
+                            type="button"
+                          >
+                            <span
+                              aria-describedby="multi-describe-action-organizations-type"
+                              class="iconButtonInner smallOffset"
+                            >
+                              <span>
+                                Icon
+                              </span>
+                            </span>
+                          </button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <input
+                    aria-autocomplete="list"
+                    aria-labelledby="organizationFormTypesLabel"
+                    autocomplete="off"
+                    class="multiSelectFilterField"
+                    id="organizations-type-input"
+                    placeholder=""
+                    type="text"
+                    value=""
+                  />
+                  <input
+                    aria-autocomplete="list"
+                    aria-hidden="true"
+                    autocomplete="off"
+                    class="multiSelectValueInput"
+                    id="multiselect-input-organizations-type"
+                    tabindex="-1"
+                    type="text"
+                    value="e7e9af00-c12c-448f-8ad1-d15ff209605a"
+                  />
+                </div>
+                <button
+                  aria-haspopup="true"
+                  aria-label="open menu"
+                  class="multiSelectToggleButton"
+                  data-toggle="true"
+                  role="button"
+                  type="button"
+                >
+                  <div
+                    class="textFieldIcon"
+                  >
+                    <span>
+                      Icon
+                    </span>
+                  </div>
+                </button>
+              </div>
+              <div
+                class="multiSelectMenu"
+                hidden=""
+                style="width: 100px;"
+              >
+                <div
+                  class="multiSelectFeedback"
+                  role="alert"
+                />
+                <ul
+                  aria-labelledby="organizationFormTypesLabel"
+                  class="multiSelectOptionList"
+                  id="multiselect-option-list-organizations-type"
+                  role="listbox"
+                  style="max-height: 168px;"
+                >
+                  <li
+                    aria-selected="false"
+                    class="multiSelectOption optionCursor"
+                    id="organizations-type-main-item-0"
+                    role="option"
+                  >
+                    Auction house
+                    <div>
+                      +
+                    </div>
+                  </li>
+                  <li
+                    aria-selected="true"
+                    class="multiSelectOption optionSelected"
+                    id="organizations-type-main-item-1"
+                    role="option"
+                  >
+                    Book trade
+                    <div>
+                      -
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            role="alert"
+          />
+        </div>
+      </div>
+      <div
+        class="col-xs-6 col-md-3"
+      >
+        <div
           class="tether-target tether-enabled tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center"
           style="position: relative; width: 100%;"
         >
