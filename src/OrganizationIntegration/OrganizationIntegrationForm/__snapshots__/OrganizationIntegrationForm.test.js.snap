@@ -99,9 +99,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                 </button>
               </div>
             </div>
-            <div
-              aria-multiselectable="true"
-            >
+            <div>
               <section
                 class="accordion hasSeparator"
                 data-test-accordion-section="true"
