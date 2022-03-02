@@ -16,6 +16,7 @@
 * URLs should be hyperlinks in the view. Refs UIORGS-299.
 * Refactor psets away from backend ".all" permissions. Refs UIORGS-265.
 * ui-organizations accessibility analysis. Refs UINV-359.
+* Avoid undefined backend permissions. Refs UIORGS-304.
 
 ## [3.0.1](https://github.com/folio-org/ui-organizations/tree/v3.0.1) (2021-11-02)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.0.0...v3.0.1)

@@ -86,10 +86,6 @@
           "organizations.organizations.item.get",
           "organizations-storage.addresses.collection.get",
           "organizations-storage.addresses.item.get",
-          "organizations-storage.agreements.collection.get",
-          "organizations-storage.agreements.item.get",
-          "organizations-storage.aliases.collection.get",
-          "organizations-storage.aliases.item.get",
           "organizations-storage.categories.collection.get",
           "organizations-storage.organization-types.collection.get",
           "organizations-storage.categories.item.get",
@@ -116,8 +112,6 @@
           "data-export.config.item.put",
           "organizations.organizations.item.put",
           "organizations-storage.addresses.item.put",
-          "organizations-storage.agreements.item.put",
-          "organizations-storage.aliases.item.put",
           "organizations-storage.emails.item.put",
           "organizations-storage.phone-numbers.item.put",
           "organizations-storage.urls.item.put",
@@ -137,8 +131,6 @@
         "subPermissions": [
           "organizations.organizations.item.post",
           "organizations-storage.addresses.item.post",
-          "organizations-storage.agreements.item.post",
-          "organizations-storage.aliases.item.post",
           "organizations-storage.emails.item.post",
           "organizations-storage.phone-numbers.item.post",
           "organizations-storage.urls.item.post",
@@ -152,8 +144,6 @@
         "subPermissions": [
           "organizations.organizations.item.delete",
           "organizations-storage.addresses.item.delete",
-          "organizations-storage.agreements.item.delete",
-          "organizations-storage.aliases.item.delete",
           "organizations-storage.emails.item.delete",
           "organizations-storage.phone-numbers.item.delete",
           "organizations-storage.urls.item.delete",
@@ -184,19 +174,13 @@
         "permissionName": "ui-organizations.acqUnits.assign",
         "displayName": "Organizations: Assign acquisition units to new organization",
         "description": "",
-        "visible": true,
-        "subPermissions": [
-          "organizations.acquisitions-units-assignments.assign"
-        ]
+        "visible": true
       },
       {
         "permissionName": "ui-organizations.acqUnits.manage",
         "displayName": "Organizations: Manage acquisition units",
         "description": "",
-        "visible": true,
-        "subPermissions": [
-          "organizations.acquisitions-units-assignments.manage"
-        ]
+        "visible": true
       },
       {
         "permissionName": "ui-organizations.settings",
