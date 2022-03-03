@@ -356,9 +356,9 @@
     "integration.scheduling.schedulePeriod.days": "每日",
     "integration.scheduling.schedulePeriod.weeks": "每周",
     "integration.scheduling.schedulePeriod.months": "每月",
-    "integration.scheduling.scheduleTime": "时间 (UTC)",
+    "integration.scheduling.scheduleTime": "时间",
     "integration.scheduling.scheduleFrequency": "计划频率",
-    "integration.scheduling.scheduleDate": "日期 (UTC)",
+    "integration.scheduling.scheduleDate": "日期",
     "integration.scheduling.scheduleDay": "日",
     "integration.scheduling.scheduleWeekdays.FRIDAY": "星期五",
     "integration.scheduling.scheduleWeekdays.MONDAY": "星期一",
@@ -381,7 +381,7 @@
     "integration.confirmation.message": "确定删除集成？",
     "integration.message.delete.error": "集成未被<b>删除</b>",
     "integration.message.delete.success": "集成已成功<b>删除</b>",
-    "view.duplicateAccounts": "An organization can not have duplicate account numbers. Before editing this organization in any way you will need to change or remove any duplicate account numbers",
-    "save.error.accountNumberMustBeUnique": "An organization can not have duplicate account numbers",
-    "integration.edi.ediNamingConvention.info": "When defining your naming convention you can use text or one of the following tokens. Tokens will be replace by the corresponding information from the export job. Possible tokens are <em>{tokens}</em>"
+    "view.duplicateAccounts": "组织不能有重复的帐号。在以任何方式编辑此组织之前，需要更改或删除任何重复的帐号",
+    "save.error.accountNumberMustBeUnique": "组织不能有重复的帐号",
+    "integration.edi.ediNamingConvention.info": "定义命名约定时，可以使用文本或以下令牌之一。令牌将被导出任务中的相应信息替换。可能的令牌是<em> {tokens} </em>"
 }
