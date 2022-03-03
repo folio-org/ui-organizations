@@ -382,6 +382,6 @@
     "integration.message.delete.error": "The integration was not <b>deleted</b>",
     "integration.message.delete.success": "The integration was successfully <b>deleted</b>",
     "view.duplicateAccounts": "An organization can not have duplicate account numbers. Before editing this organization in any way you will need to change or remove any duplicate account numbers",
-    "save.error.accountNumberMustBeUnique": "An organization can not have duplicate account numbers",
+    "save.error.accountNumberMustBeUnique": "Une organisation ne peut pas avoir de numéros de compte en double",
     "integration.edi.ediNamingConvention.info": "When defining your naming convention you can use text or one of the following tokens. Tokens will be replace by the corresponding information from the export job. Possible tokens are <em>{tokens}</em>"
 }
