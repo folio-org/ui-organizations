@@ -79,7 +79,9 @@ describe('OrganizationIntegrationForm', () => {
   });
 
   it('should render correct form structure', () => {
-    const { asFragment } = renderOrganizationIntegrationForm();
+    const { container, asFragment } = renderOrganizationIntegrationForm();
+
+    container.querySelector('#org-integration-form-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });

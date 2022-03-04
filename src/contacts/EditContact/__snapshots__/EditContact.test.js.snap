@@ -99,7 +99,9 @@ exports[`EditContact should render correct form structure 1`] = `
                 </button>
               </div>
             </div>
-            <div>
+            <div
+              id="edit-contact-accordion-set"
+            >
               <section
                 class="accordion hasSeparator"
                 data-test-accordion-section="true"
@@ -589,7 +591,9 @@ exports[`EditContact should render correct form structure 1`] = `
                             id="textarea-input-8"
                             name="notes"
                             type="text"
-                          />
+                          >
+                            notes
+                          </textarea>
                           <div
                             role="alert"
                           />

@@ -33,7 +33,7 @@ const OrganizationsListFilter = ({
   );
 
   return (
-    <AccordionSet>
+    <AccordionSet id="org-list-filters-accordion-set">
       <AcqCheckboxFilter
         activeFilters={activeFilters[FILTERS.STATUS]}
         disabled={disabled}

@@ -151,7 +151,7 @@ const ViewContact = ({
                   <ExpandAllButton />
                 </Col>
               </Row>
-              <AccordionSet>
+              <AccordionSet id="view-contact-accordion-set">
                 <Accordion
                   id={CONTACT_PERSON_ACCORDIONS.NAME}
                   label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.NAME]}

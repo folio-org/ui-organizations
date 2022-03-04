@@ -25,6 +25,9 @@ jest.mock('react-router', () => ({
   useHistory: jest.fn(),
   useParams: jest.fn(),
 }));
+jest.mock('@folio/stripes-components/lib/NoValue', () => {
+  return () => <span>NoValue</span>;
+});
 jest.mock('@folio/stripes-components/lib/Commander', () => ({
   HasCommand: jest.fn(({ children }) => <div>{children}</div>),
   expandAllSections: jest.fn(),
@@ -68,7 +71,9 @@ describe('OrganizationIntegrationView', () => {
   });
 
   it('should render correct view structure', () => {
-    const { asFragment } = renderOrganizationIntegrationView();
+    const { container, asFragment } = renderOrganizationIntegrationView();
+
+    container.querySelector('#org-integration-view-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });

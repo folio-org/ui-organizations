@@ -155,7 +155,7 @@ const EditContact = ({
                   <ExpandAllButton />
                 </Col>
               </Row>
-              <AccordionSet>
+              <AccordionSet id="edit-contact-accordion-set">
                 <Accordion
                   id={CONTACT_PERSON_ACCORDIONS.NAME}
                   label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.NAME]}

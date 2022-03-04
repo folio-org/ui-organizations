@@ -587,7 +587,9 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
       <div
         class="col-xs-12"
       >
-        <div>
+        <div
+          id="vendor-info-accordion-set"
+        >
           <section
             class="accordion hasSeparator"
             data-test-accordion-section="true"
