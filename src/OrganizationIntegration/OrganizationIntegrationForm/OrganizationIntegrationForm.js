@@ -139,7 +139,7 @@ const OrganizationIntegrationForm = ({
                   <ExpandAllButton />
                 </Col>
               </Row>
-              <AccordionSet>
+              <AccordionSet id="org-integration-form-accordion-set">
                 <IntegrationInfoForm defaultIntegration={defaultIntegration} />
 
                 <EdiForm

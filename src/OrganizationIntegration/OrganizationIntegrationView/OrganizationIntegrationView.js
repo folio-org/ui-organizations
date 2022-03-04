@@ -187,7 +187,7 @@ const OrganizationIntegrationView = ({ orgId }) => {
                   <ExpandAllButton />
                 </Col>
               </Row>
-              <AccordionSet>
+              <AccordionSet id="org-integration-view-accordion-set">
                 <IntegrationInfoView
                   integrationConfig={integrationConfig
                     ?.exportTypeSpecificParameters

@@ -99,7 +99,9 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                 </button>
               </div>
             </div>
-            <div>
+            <div
+              id="org-integration-form-accordion-set"
+            >
               <section
                 class="accordion hasSeparator"
                 data-test-accordion-section="true"
