@@ -4,12 +4,13 @@ export const contact = {
   firstName: 'Carrie',
   lastName: 'Brownstein',
   language: 'English',
-  notes: '',
+  notes: 'notes',
   phoneNumbers: [{
     phoneNumber: '1-888-238-22090',
     categories: ['f52ceea4-8e35'],
     isPrimary: true,
     language: 'English',
+    type: 'Mobile',
   }],
   emails: [{
     value: 'cust.service03@amazon.com',
