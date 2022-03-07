@@ -3,6 +3,10 @@ import { render } from '@testing-library/react';
 
 import OrganizationAccounts from './OrganizationAccounts';
 
+jest.mock('@folio/stripes-components/lib/NoValue', () => {
+  return () => <span>NoValue</span>;
+});
+
 const accounts = [{
   name: 'Amazon V',
   accountNo: 'A34sA',

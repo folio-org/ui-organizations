@@ -36,9 +36,11 @@ describe('OrganizationVendorInfoForm', () => {
   });
 
   it('should render correct structure', async () => {
-    const { asFragment } = renderForm({ initialValues: organization });
+    const { container, asFragment } = renderForm({ initialValues: organization });
 
     await screen.findByText('ui-organizations.vendorInfo.paymentMethod');
+
+    container.querySelector('#vendor-info-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });

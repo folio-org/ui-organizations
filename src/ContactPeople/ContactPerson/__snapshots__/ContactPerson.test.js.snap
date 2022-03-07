@@ -157,20 +157,7 @@ exports[`ContactPerson should render correct collapsed structre 1`] = `
                 class="kvValue"
                 data-test-kv-value="true"
               >
-                <span
-                  data-test-no-value="true"
-                >
-                  <span
-                    class="sr-only"
-                  >
-                    stripes-components.noValue.noValueSet
-                  </span>
-                  <span
-                    aria-hidden="true"
-                  >
-                    -
-                  </span>
-                </span>
+                notes
               </div>
             </div>
           </div>
@@ -478,20 +465,7 @@ exports[`ContactPerson should render correct collapsed structre 1`] = `
                       class="kvValue"
                       data-test-kv-value="true"
                     >
-                      <span
-                        data-test-no-value="true"
-                      >
-                        <span
-                          class="sr-only"
-                        >
-                          stripes-components.noValue.noValueSet
-                        </span>
-                        <span
-                          aria-hidden="true"
-                        >
-                          -
-                        </span>
-                      </span>
+                      Mobile
                     </div>
                   </div>
                 </div>
@@ -966,20 +940,7 @@ exports[`ContactPerson should render correct not collapsed structre 1`] = `
                 class="kvValue"
                 data-test-kv-value="true"
               >
-                <span
-                  data-test-no-value="true"
-                >
-                  <span
-                    class="sr-only"
-                  >
-                    stripes-components.noValue.noValueSet
-                  </span>
-                  <span
-                    aria-hidden="true"
-                  >
-                    -
-                  </span>
-                </span>
+                notes
               </div>
             </div>
           </div>
@@ -1284,20 +1245,7 @@ exports[`ContactPerson should render correct not collapsed structre 1`] = `
                     class="kvValue"
                     data-test-kv-value="true"
                   >
-                    <span
-                      data-test-no-value="true"
-                    >
-                      <span
-                        class="sr-only"
-                      >
-                        stripes-components.noValue.noValueSet
-                      </span>
-                      <span
-                        aria-hidden="true"
-                      >
-                        -
-                      </span>
-                    </span>
+                    Mobile
                   </div>
                 </div>
               </div>

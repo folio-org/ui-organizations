@@ -90,22 +90,26 @@ describe('OrganizationForm', () => {
   });
 
   it('should render correct non-vendor form structure', () => {
-    const { asFragment } = renderOrganizationForm();
+    const { container, asFragment } = renderOrganizationForm();
+
+    container.querySelector('#org-form-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render correct vendor form structure', () => {
-    const { asFragment } = renderOrganizationForm({
+    const { container, asFragment } = renderOrganizationForm({
       ...defaultProps,
       initialValues: { isVendor: true },
     });
+
+    container.querySelector('#org-form-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render correct form with metadata', () => {
-    const { asFragment } = renderOrganizationForm({
+    const { container, asFragment } = renderOrganizationForm({
       ...defaultProps,
       initialValues: {
         metadata: {
@@ -113,6 +117,8 @@ describe('OrganizationForm', () => {
         },
       },
     });
+
+    container.querySelector('#org-form-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });

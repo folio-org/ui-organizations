@@ -146,6 +146,7 @@ const OrganizationForm = ({
                 mdOffset={2}
               >
                 <AccordionSet
+                  id="org-form-accordion-set"
                   accordionStatus={sections}
                   onToggle={toggleSection}
                 >
