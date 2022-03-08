@@ -407,6 +407,7 @@
   "settings.categories": "Categories",
   "settings.name": "Name",
   "settings.status": "Status",
+  "settings.action": "actions",
   "settings.vendorSettings": "Organizations settings",
   "settings.types": "Types",
   "settings.type": "Type",
