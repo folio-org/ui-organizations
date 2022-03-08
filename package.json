@@ -24,7 +24,7 @@
       "acquisition-methods": "1.0",
       "data-export-spring": "1.0",
       "configuration": "2.0",
-      "organizations.organizations": "1.2",
+      "organizations.organizations": "1.0",
       "organizations-storage.addresses": "1.1",
       "organizations-storage.categories": "1.1",
       "organizations-storage.organization-types": "1.0",
