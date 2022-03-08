@@ -18,6 +18,7 @@ class TypeSettings extends Component {
     const columnMapping = {
       name: <FormattedMessage id="ui-organizations.settings.type.name" />,
       status: <FormattedMessage id="ui-organizations.settings.type.status" />,
+      action: <FormattedMessage id="ui-organizations.settings.action" />,
     };
 
     const getDisableAttr = () => ({
