@@ -36,6 +36,7 @@ class TypeSettings extends Component {
         <Field
           component={Select}
           dataOptions={TypeStatus}
+          id="select-type-status"
           placeholder=" "
           {...fieldProps}
         />

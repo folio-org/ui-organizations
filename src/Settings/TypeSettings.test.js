@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import TypeSettings from './TypeSettings';
 
@@ -16,13 +17,27 @@ jest.mock('@folio/stripes-smart-components/lib/ControlledVocab', () => jest.fn((
     <button
       data-testid="button-new"
       type="button"
-      onClick={() => {
-        preCreateHook();
-        listSuppressor();
-      }}
+      onClick={() => {}}
     >
       New
     </button>
+    <button
+      data-testid="button-cancel"
+      type="button"
+      onClick={() => {}}
+    >
+      Cancel
+    </button>
+    <button
+      data-testid="button-save"
+      type="button"
+      onClick={() => {}}
+    >
+      Save
+    </button>
+    <select
+      id="select-type-status"
+    />
   </>
 )));
 
@@ -47,5 +62,16 @@ describe('TypeSettings component', () => {
 
   it('should display new button', async () => {
     expect(screen.getByText('New')).toBeInTheDocument();
+  });
+
+  it('should display buttons and select box', async () => {
+    userEvent.click(screen.getByText('New'));
+
+    const cancelButton = screen.getByRole('button', { name: 'Cancel' });
+    const saveButton = screen.getByRole('button', { name: 'Save' });
+    expect(cancelButton).toBeInTheDocument();
+    expect(saveButton).toBeInTheDocument();
+
+    expect(document.querySelector('#select-type-status')).toBeInTheDocument();
   });
 });
