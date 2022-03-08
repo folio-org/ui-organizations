@@ -16,8 +16,8 @@ class TypeSettings extends Component {
   render() {
     const { stripes } = this.props;
     const columnMapping = {
-      name: <FormattedMessage id="ui-organizations.settings.name" />,
-      status: <FormattedMessage id="ui-organizations.settings.status" />,
+      name: <FormattedMessage id="ui-organizations.settings.type.name" />,
+      status: <FormattedMessage id="ui-organizations.settings.type.status" />,
     };
 
     const getDisableAttr = () => ({
