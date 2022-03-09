@@ -241,6 +241,13 @@ exports[`ViewContact should render correct structure 1`] = `
                       class="row"
                     >
                       <div
+                        class="col-xs-12"
+                      />
+                    </div>
+                    <div
+                      class="row"
+                    >
+                      <div
                         class="col-xs-3"
                       >
                         <div
