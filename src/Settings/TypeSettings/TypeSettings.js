@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
+import {
+  injectIntl,
+  FormattedMessage,
+} from 'react-intl';
 import { Field } from 'redux-form';
 
 import { stripesShape } from '@folio/stripes/core';
 import { Select } from '@folio/stripes/components';
 import { ControlledVocab } from '@folio/stripes/smart-components';
-import TypeStatus from '../Utils/TypeStatus';
+import { typeStatus } from './typeStatus';
 
 class TypeSettings extends Component {
   constructor(props) {
     super(props);
     this.connectedControlledVocab = props.stripes.connect(ControlledVocab);
+  }
+
+  getDataOptions(field) {
+    return field.map((item) => ({
+      label: this.props.intl.formatMessage({ id: `ui-organizations.settings.typeStatus.${item.value}` }),
+      value: item.value,
+    }));
   }
 
   render() {
@@ -35,7 +46,7 @@ class TypeSettings extends Component {
       'status': ({ fieldProps }) => (
         <Field
           component={Select}
-          dataOptions={TypeStatus}
+          dataOptions={this.getDataOptions(typeStatus)}
           id="select-type-status"
           placeholder=" "
           {...fieldProps}
@@ -77,6 +88,9 @@ class TypeSettings extends Component {
 
 TypeSettings.propTypes = {
   stripes: stripesShape.isRequired,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }),
 };
 
-export default TypeSettings;
+export default injectIntl(TypeSettings);

@@ -412,6 +412,8 @@
   "settings.vendorSettings": "Organizations settings",
   "settings.types": "Types",
   "settings.type": "Type",
+  "settings.typeStatus.Active": "Active",
+  "settings.typeStatus.Inactive": "Inactive",
 
   "permission.view": "Organizations: View",
   "permission.edit": "Organizations: View, edit",
