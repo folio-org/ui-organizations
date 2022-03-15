@@ -9,7 +9,7 @@ import { Field } from 'redux-form';
 import { stripesShape } from '@folio/stripes/core';
 import { Select } from '@folio/stripes/components';
 import { ControlledVocab } from '@folio/stripes/smart-components';
-import { typeStatus } from './typeStatus';
+import { typeStatus } from './constants';
 
 class TypeSettings extends Component {
   constructor(props) {
