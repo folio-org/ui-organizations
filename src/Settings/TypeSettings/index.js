@@ -1,1 +1,1 @@
-export { TypeSettings } from './TypeSettings';
+export { default as TypeSettings } from './TypeSettings';
