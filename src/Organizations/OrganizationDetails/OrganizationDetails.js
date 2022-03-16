@@ -51,6 +51,7 @@ import {
   ORGANIZATION_SECTIONS,
   ORGANIZATION_SECTION_LABELS,
 } from '../constants';
+import { LinkedAgreements } from './LinkedAgreements';
 import { OrganizationSummary } from './OrganizationSummary';
 import { OrganizationContactInfo } from './OrganizationContactInfo';
 import { OrganizationContactPeopleContainer } from './OrganizationContactPeople';
@@ -82,6 +83,7 @@ const OrganizationDetails = ({
     [ORGANIZATION_SECTIONS.integrationDetailsSection]: false,
     [ORGANIZATION_SECTIONS.accountsSection]: false,
     [ORGANIZATION_SECTIONS.notesSection]: false,
+    [ORGANIZATION_SECTIONS.agreements]: false,
   };
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
   const paneTitleRef = useRef();
@@ -359,6 +361,12 @@ const OrganizationDetails = ({
                 </>
               )
             }
+
+            <LinkedAgreements
+              id={ORGANIZATION_SECTIONS.agreements}
+              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.agreements]}
+              organization={organization}
+            />
           </AccordionSet>
         </AccordionStatus>
 

@@ -238,6 +238,12 @@
   "agreement.add": "Add",
   "agreement.pleaseAddAgreements": "Please add agreements",
 
+  "linkedAgreements.section": "Agreements",
+  "linkedAgreements.agreement.name": "Agreement Name",
+  "linkedAgreements.agreement.startDate": "Period start",
+  "linkedAgreements.agreement.endDate": "Period End",
+  "linkedAgreements.agreement.agreementStatus": "Agreement status",
+
   "vendorInfo.paymentMethod": "Payment method",
   "vendorInfo.vendorCurrencies": "Vendor currencies",
   "vendorInfo.claimingInterval": "Claiming interval",
