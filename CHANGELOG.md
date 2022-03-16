@@ -2,7 +2,6 @@
 
 ## (IN PROGRESS)
 * Create area Settings - Organizations - Types. Refs UIORGS-283.
-
 * Add record metadata widget to contact person. Refs UIORGS-305.
 
 ## [3.1.0](https://github.com/folio-org/ui-organizations/tree/v3.1.0) (2022-03-04)
