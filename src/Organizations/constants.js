@@ -11,6 +11,7 @@ export const ORGANIZATION_SECTIONS = {
   accountsSection: 'accountsSection',
   notesSection: 'notesSection',
   integrationDetailsSection: 'integrationDetailsSection',
+  agreements: 'linkedAgreements',
 };
 
 export const ORGANIZATION_SECTION_LABELS = {
@@ -22,6 +23,7 @@ export const ORGANIZATION_SECTION_LABELS = {
   [ORGANIZATION_SECTIONS.vendorTermsSection]: <FormattedMessage id="ui-organizations.vendorTerms" />,
   [ORGANIZATION_SECTIONS.accountsSection]: <FormattedMessage id="ui-organizations.accounts" />,
   [ORGANIZATION_SECTIONS.integrationDetailsSection]: <FormattedMessage id="ui-organizations.integrationDetails" />,
+  [ORGANIZATION_SECTIONS.agreements]: <FormattedMessage id="ui-organizations.linkedAgreements.section" />,
 };
 
 export const CREATE_UNITS_PERM = 'ui-organizations.acqUnits.assign';
