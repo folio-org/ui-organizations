@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
@@ -26,6 +30,17 @@ jest.mock(
   () => ({ OrganizationInterfacesContainer: () => 'OrganizationInterfacesContainer' }),
 );
 
+const queryClient = new QueryClient();
+
+// eslint-disable-next-line react/prop-types
+const wrapper = ({ children }) => (
+  <MemoryRouter>
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
+  </MemoryRouter>
+);
+
 const defaultProps = {
   organization: { name: 'Amazon' },
   organizationCategories: [],
@@ -39,7 +54,7 @@ const defaultProps = {
 };
 const renderOrganizationDetails = (props = defaultProps) => render(
   <OrganizationDetails {...props} />,
-  { wrapper: MemoryRouter },
+  { wrapper },
 );
 
 describe('OrganizationDetails', () => {
