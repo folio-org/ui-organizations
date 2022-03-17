@@ -1,11 +1,11 @@
 import { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import {
   Accordion,
   Loading,
   MultiColumnList,
-  NoValue,
   TextLink,
 } from '@folio/stripes/components';
 import {
@@ -30,7 +30,12 @@ const formatter = {
   ),
   [AGREEMENTS_LIST_COLUMNS.startDate]: agreement => <FolioFormattedDate value={agreement.startDate} />,
   [AGREEMENTS_LIST_COLUMNS.endDate]: agreement => <FolioFormattedDate value={agreement.endDate} />,
-  [AGREEMENTS_LIST_COLUMNS.agreementStatus]: agreement => agreement.agreementStatus?.label || <NoValue />,
+  [AGREEMENTS_LIST_COLUMNS.agreementStatus]: agreement => (
+    <FormattedMessage
+      id={`ui-organizations.linkedAgreements.agreement.agreementStatus.${agreement.agreementStatus?.value}`}
+      defaultMessage={agreement.agreementStatus?.label}
+    />
+  ),
 };
 
 export const LinkedAgreements = ({
