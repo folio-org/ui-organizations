@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 * Create area Settings - Organizations - Types. Refs UIORGS-283.
 * Add record metadata widget to contact person. Refs UIORGS-305.
+* Display linked agreements on an organization record. Refs UIORGS-306.
 
 ## [3.1.0](https://github.com/folio-org/ui-organizations/tree/v3.1.0) (2022-03-04)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.0.1...v3.1.0)
