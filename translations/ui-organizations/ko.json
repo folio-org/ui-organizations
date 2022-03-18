@@ -383,5 +383,15 @@
     "integration.message.delete.success": "통합이 성공적으로 <b> 삭제되었습니다 </b>",
     "view.duplicateAccounts": "공급사는 중복 계정 번호를 가질 수 없습니다. 어떤 식으로든 이 조직을 편집하기 전에 중복 계정 번호를 변경하거나 제거해야 합니다.",
     "save.error.accountNumberMustBeUnique": "공급사는 중복 계정 번호를 가질 수 없습니다.",
-    "integration.edi.ediNamingConvention.info": "명명 규칙을 정의할 때 텍스트 또는 다음 토큰 중 하나를 사용할 수 있습니다. 토큰은 내보내기 작업의 해당 정보로 대체됩니다. 가능한 토큰은 <em> {tokens} </em> 입니다."
+    "integration.edi.ediNamingConvention.info": "명명 규칙을 정의할 때 텍스트 또는 다음 토큰 중 하나를 사용할 수 있습니다. 토큰은 내보내기 작업의 해당 정보로 대체됩니다. 가능한 토큰은 <em> {tokens} </em> 입니다.",
+    "linkedAgreements.section": "Agreements",
+    "linkedAgreements.agreement.name": "Agreement Name",
+    "linkedAgreements.agreement.startDate": "Period start",
+    "linkedAgreements.agreement.endDate": "Period End",
+    "linkedAgreements.agreement.agreementStatus": "Agreement status",
+    "linkedAgreements.agreement.agreementStatus.active": "Active",
+    "linkedAgreements.agreement.agreementStatus.closed": "Closed",
+    "linkedAgreements.agreement.agreementStatus.draft": "Draft",
+    "linkedAgreements.agreement.agreementStatus.in_negotiation": "In negotiation",
+    "linkedAgreements.agreement.agreementStatus.requested": "Requested"
 }

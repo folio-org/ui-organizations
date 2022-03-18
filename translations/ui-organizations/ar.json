@@ -383,5 +383,15 @@
     "integration.message.delete.success": "تم <b>حذف</b> التكامل بنجاح",
     "view.duplicateAccounts": "لا يمكن أن يكون للمؤسسة أرقام حسابات مكررة. قبل تحرير هذه المؤسسة بأي طريقة يجب عليك تغيير أو إزالة أي أرقام حسابات مكررة",
     "save.error.accountNumberMustBeUnique": "لا يمكن أن يكون للمؤسسة أرقام حسابات مكررة",
-    "integration.edi.ediNamingConvention.info": "عند تعريف اصطلاح التسمية الخاص بك يمكنك استخدام نص أو أحد الرموز التالية. سيتم استبدال الرموز بالمعلومات المقابلة من مهمة التصدير. الرموز الممكنة هي <em>{tokens}</em>"
+    "integration.edi.ediNamingConvention.info": "عند تعريف اصطلاح التسمية الخاص بك يمكنك استخدام نص أو أحد الرموز التالية. سيتم استبدال الرموز بالمعلومات المقابلة من مهمة التصدير. الرموز الممكنة هي <em>{tokens}</em>",
+    "linkedAgreements.section": "Agreements",
+    "linkedAgreements.agreement.name": "Agreement Name",
+    "linkedAgreements.agreement.startDate": "Period start",
+    "linkedAgreements.agreement.endDate": "Period End",
+    "linkedAgreements.agreement.agreementStatus": "Agreement status",
+    "linkedAgreements.agreement.agreementStatus.active": "Active",
+    "linkedAgreements.agreement.agreementStatus.closed": "Closed",
+    "linkedAgreements.agreement.agreementStatus.draft": "Draft",
+    "linkedAgreements.agreement.agreementStatus.in_negotiation": "In negotiation",
+    "linkedAgreements.agreement.agreementStatus.requested": "Requested"
 }
