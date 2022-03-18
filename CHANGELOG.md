@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Can not delete integration from organization. Refs UIORGS-307.
+
 ## [3.1.0](https://github.com/folio-org/ui-organizations/tree/v3.1.0) (2022-03-04)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.0.1...v3.1.0)
 
