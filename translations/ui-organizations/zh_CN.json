@@ -383,5 +383,15 @@
     "integration.message.delete.success": "集成已成功<b>删除</b>",
     "view.duplicateAccounts": "组织不能有重复的帐号。在以任何方式编辑此组织之前，需要更改或删除任何重复的帐号",
     "save.error.accountNumberMustBeUnique": "组织不能有重复的帐号",
-    "integration.edi.ediNamingConvention.info": "定义命名约定时，可以使用文本或以下令牌之一。令牌将被导出任务中的相应信息替换。可能的令牌是<em> {tokens} </em>"
+    "integration.edi.ediNamingConvention.info": "定义命名约定时，可以使用文本或以下令牌之一。令牌将被导出任务中的相应信息替换。可能的令牌是<em> {tokens} </em>",
+    "linkedAgreements.section": "Agreements",
+    "linkedAgreements.agreement.name": "Agreement Name",
+    "linkedAgreements.agreement.startDate": "Period start",
+    "linkedAgreements.agreement.endDate": "Period End",
+    "linkedAgreements.agreement.agreementStatus": "Agreement status",
+    "linkedAgreements.agreement.agreementStatus.active": "Active",
+    "linkedAgreements.agreement.agreementStatus.closed": "Closed",
+    "linkedAgreements.agreement.agreementStatus.draft": "Draft",
+    "linkedAgreements.agreement.agreementStatus.in_negotiation": "In negotiation",
+    "linkedAgreements.agreement.agreementStatus.requested": "Requested"
 }
