@@ -47,7 +47,7 @@ const defaultProps = {
   organizationCategories: [],
   integrationConfigs: [],
   duplicateAccounts: [],
-  organizationTypes: organizationTypes,
+  organizationTypes,
   onClose: jest.fn(),
   onEdit: jest.fn(),
   onDelete: jest.fn(),
