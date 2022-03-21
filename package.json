@@ -106,6 +106,7 @@
         "displayName": "Organizations: View, edit",
         "visible": true,
         "subPermissions": [
+          "data-export.config.item.delete",
           "data-export.config.item.post",
           "data-export.config.item.put",
           "organizations.organizations.item.put",
