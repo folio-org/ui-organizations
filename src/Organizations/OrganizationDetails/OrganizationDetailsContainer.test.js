@@ -5,6 +5,7 @@ import { match, location, history } from '../../../test/jest/routerMocks';
 
 import OrganizationDetails from './OrganizationDetails';
 import { OrganizationDetailsContainer } from './OrganizationDetailsContainer';
+import { organizationTypes } from '../../../test/jest/fixtures';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
@@ -19,18 +20,7 @@ const organization = {
 
 const resourcesMock = {
   organizationTypes: {
-    records: [
-      {
-        'id': 'f04c7277-0019-43cf-84b3-02d894a9d81a',
-        'name': 'Auction house',
-        'status': 'Active',
-      },
-      {
-        'id': 'e7e9af00-c12c-448f-8ad1-d15ff209605a',
-        'name': 'Book trade',
-        'status': 'Inactive',
-      },
-    ],
+    records: organizationTypes,
   },
 };
 

@@ -13,6 +13,7 @@ import {
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import OrganizationForm from './OrganizationForm';
+import { organizationTypes } from '../../../test/jest/fixtures';
 
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
@@ -55,18 +56,7 @@ jest.mock(
 const queryAllByClass = queryHelpers.queryAllByAttribute.bind(null, 'class');
 
 const organizationTypesMock = {
-  records: [
-    {
-      'id': 'f04c7277-0019-43cf-84b3-02d894a9d81a',
-      'name': 'Auction house',
-      'status': 'Active',
-    },
-    {
-      'id': 'e7e9af00-c12c-448f-8ad1-d15ff209605a',
-      'name': 'Book trade',
-      'status': 'Inactive',
-    },
-  ],
+  records: organizationTypes,
 };
 
 const defaultProps = {

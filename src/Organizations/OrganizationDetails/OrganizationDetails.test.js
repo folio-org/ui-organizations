@@ -8,6 +8,7 @@ import user from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
 import OrganizationDetails from './OrganizationDetails';
+import { organizationTypes } from '../../../test/jest/fixtures';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
@@ -46,18 +47,7 @@ const defaultProps = {
   organizationCategories: [],
   integrationConfigs: [],
   duplicateAccounts: [],
-  organizationTypes: [
-    {
-      'id': 'f04c7277-0019-43cf-84b3-02d894a9d81a',
-      'name': 'Auction house',
-      'status': 'Active',
-    },
-    {
-      'id': 'e7e9af00-c12c-448f-8ad1-d15ff209605a',
-      'name': 'Book trade',
-      'status': 'Inactive',
-    },
-  ],
+  organizationTypes: organizationTypes,
   onClose: jest.fn(),
   onEdit: jest.fn(),
   onDelete: jest.fn(),
