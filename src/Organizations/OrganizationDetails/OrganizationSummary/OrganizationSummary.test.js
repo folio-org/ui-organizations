@@ -52,7 +52,7 @@ const messages = {
   'stripes-components.noValue.noValueSet': 'noValueSet',
 };
 
-const renderOrganizationSummary = (organization = STUB_ORG) => (render(
+const renderOrganizationSummary = (organization) => (render(
   <IntlProvider locale="en" messages={messages}>
     <OrganizationSummary
       acqUnitIds={organization.acqUnitIds}
@@ -72,7 +72,7 @@ const renderOrganizationSummary = (organization = STUB_ORG) => (render(
 
 describe('OrganizationSummary component', () => {
   it('should display NoValue', () => {
-    renderOrganizationSummary();
+    renderOrganizationSummary(STUB_ORG);
     const defaultLanguageValue = screen.getByTestId('defaultLanguage').querySelector('[data-test-kv-value]');
     const accountingCodeValue = screen.getByTestId('accountingCode').querySelector('[data-test-kv-value]');
     const nameValue = screen.getByTestId('name').querySelector('[data-test-kv-value]');
@@ -85,10 +85,17 @@ describe('OrganizationSummary component', () => {
   });
 
   it('should display types', () => {
-    renderOrganizationSummary();
+    renderOrganizationSummary(STUB_ORG);
     const type = screen.getByTestId('type').querySelector('[data-test-kv-value]');
 
     expect(screen.getByText('ui-organizations.summary.type')).toBeDefined();
     expect(type).toHaveTextContent('type 1, type 2');
+  });
+
+  it('should display NoValue sign', () => {
+    renderOrganizationSummary({ organizationTypes: [] });
+    const type = screen.getByTestId('type').querySelector('[data-test-kv-value]');
+
+    expect(type).toHaveTextContent('-');
   });
 });
