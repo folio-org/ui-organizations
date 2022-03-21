@@ -65,4 +65,11 @@ describe('OrganizationSummaryForm', () => {
     expect(document.querySelector('#multiselect-option-list-organizations-type')).toBeInTheDocument();
     expect(document.querySelectorAll('#multiselect-option-list-organizations-type [role=option]').length).toEqual(2);
   });
+
+  it('should show the label of the selected initial value type twice', async () => {
+    renderForm({ initialValues: organization });
+
+    const selectedType = await screen.findAllByText('Book trade');
+    expect((selectedType).length).toEqual(2);
+  });
 });
