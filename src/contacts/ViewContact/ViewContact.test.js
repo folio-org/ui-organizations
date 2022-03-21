@@ -47,7 +47,9 @@ describe('ViewContact', () => {
   });
 
   it('should render correct structure', () => {
-    const { asFragment } = renderViewContact();
+    const { container, asFragment } = renderViewContact();
+
+    container.querySelector('#view-contact-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });

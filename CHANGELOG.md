@@ -1,6 +1,13 @@
 # Change history for ui-organizations
 
 ## (IN PROGRESS)
+* Create area Settings - Organizations - Types. Refs UIORGS-283.
+* Add record metadata widget to contact person. Refs UIORGS-305.
+* Display linked agreements on an organization record. Refs UIORGS-306.
+* Can not delete integration from organization. Refs UIORGS-307.
+
+## [3.1.0](https://github.com/folio-org/ui-organizations/tree/v3.1.0) (2022-03-04)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.0.1...v3.1.0)
 
 * View details - Organization record can contain multiple "Integration details" configurations. Refs UIORGS-274.
 * Create details - Organization record can contain multiple "Integration details" configurations. Refs UIORGS-271.
@@ -15,6 +22,7 @@
 * URLs should be hyperlinks in the view. Refs UIORGS-299.
 * Refactor psets away from backend ".all" permissions. Refs UIORGS-265.
 * ui-organizations accessibility analysis. Refs UINV-359.
+* Avoid undefined backend permissions. Refs UIORGS-304.
 
 ## [3.0.1](https://github.com/folio-org/ui-organizations/tree/v3.0.1) (2021-11-02)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.0.0...v3.0.1)

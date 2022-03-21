@@ -588,7 +588,7 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
         class="col-xs-12"
       >
         <div
-          aria-multiselectable="true"
+          id="vendor-info-accordion-set"
         >
           <section
             class="accordion hasSeparator"

@@ -157,12 +157,7 @@ exports[`ContactPerson should render correct collapsed structre 1`] = `
                 class="kvValue"
                 data-test-kv-value="true"
               >
-                <span
-                  aria-label="stripes-components.noValue.noValueSet"
-                  data-test-no-value="true"
-                >
-                  -
-                </span>
+                notes
               </div>
             </div>
           </div>
@@ -470,12 +465,7 @@ exports[`ContactPerson should render correct collapsed structre 1`] = `
                       class="kvValue"
                       data-test-kv-value="true"
                     >
-                      <span
-                        aria-label="stripes-components.noValue.noValueSet"
-                        data-test-no-value="true"
-                      >
-                        -
-                      </span>
+                      Mobile
                     </div>
                   </div>
                 </div>
@@ -950,12 +940,7 @@ exports[`ContactPerson should render correct not collapsed structre 1`] = `
                 class="kvValue"
                 data-test-kv-value="true"
               >
-                <span
-                  aria-label="stripes-components.noValue.noValueSet"
-                  data-test-no-value="true"
-                >
-                  -
-                </span>
+                notes
               </div>
             </div>
           </div>
@@ -1260,12 +1245,7 @@ exports[`ContactPerson should render correct not collapsed structre 1`] = `
                     class="kvValue"
                     data-test-kv-value="true"
                   >
-                    <span
-                      aria-label="stripes-components.noValue.noValueSet"
-                      data-test-no-value="true"
-                    >
-                      -
-                    </span>
+                    Mobile
                   </div>
                 </div>
               </div>

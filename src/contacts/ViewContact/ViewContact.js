@@ -18,6 +18,7 @@ import {
   Pane,
   Row,
 } from '@folio/stripes/components';
+import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   AppIcon,
   IfPermission,
@@ -128,6 +129,8 @@ const ViewContact = ({
     );
   };
 
+  const { metadata } = contact;
+
   return (
     <HasCommand
       commands={shortcuts}
@@ -151,11 +154,22 @@ const ViewContact = ({
                   <ExpandAllButton />
                 </Col>
               </Row>
-              <AccordionSet>
+              <AccordionSet id="view-contact-accordion-set">
                 <Accordion
                   id={CONTACT_PERSON_ACCORDIONS.NAME}
                   label={CONTACT_PERSON_ACCORDION_LABELS[CONTACT_PERSON_ACCORDIONS.NAME]}
                 >
+                  <Row>
+                    <Col xs={12}>
+                      {metadata && (
+                        <ViewMetaData
+                          id={`${CONTACT_PERSON_ACCORDIONS.NAME}.metadata`}
+                          metadata={metadata}
+                        />
+                      )}
+                    </Col>
+                  </Row>
+
                   <ContactDetails
                     firstName={contact.firstName}
                     lastName={contact.lastName}

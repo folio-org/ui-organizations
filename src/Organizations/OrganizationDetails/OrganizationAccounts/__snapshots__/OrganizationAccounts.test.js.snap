@@ -200,11 +200,8 @@ exports[`OrganizationAccounts should render correct structure 1`] = `
               class="kvValue"
               data-test-kv-value="true"
             >
-              <span
-                aria-label="stripes-components.noValue.noValueSet"
-                data-test-no-value="true"
-              >
-                -
+              <span>
+                NoValue
               </span>
             </div>
           </div>

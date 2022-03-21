@@ -52,7 +52,9 @@ describe('EditContact', () => {
   });
 
   it('should render correct form structure', () => {
-    const { asFragment } = renderEditContact();
+    const { container, asFragment } = renderEditContact();
+
+    container.querySelector('#edit-contact-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });

@@ -24,13 +24,17 @@ describe('OrganizationsListFilter', () => {
   });
 
   it('should render correct structure', async () => {
-    const { asFragment } = renderOrganizationsListFilter();
+    const { container, asFragment } = renderOrganizationsListFilter();
+
+    container.querySelector('#org-list-filters-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render correct structure when disabled', async () => {
-    const { asFragment } = renderOrganizationsListFilter({ ...defaultProps, disabled: true });
+    const { container, asFragment } = renderOrganizationsListFilter({ ...defaultProps, disabled: true });
+
+    container.querySelector('#org-list-filters-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });
