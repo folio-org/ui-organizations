@@ -8,7 +8,6 @@ import user from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
 import OrganizationDetails from './OrganizationDetails';
-import { makeQueryFunction } from '@folio/stripes/smart-components';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
