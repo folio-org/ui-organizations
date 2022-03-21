@@ -1,7 +1,7 @@
 # Change history for ui-organizations
 
 ## (IN PROGRESS)
-
+* Create area Settings - Organizations - Types. Refs UIORGS-283.
 * Add record metadata widget to contact person. Refs UIORGS-305.
 * Display linked agreements on an organization record. Refs UIORGS-306.
 * Can not delete integration from organization. Refs UIORGS-307.
