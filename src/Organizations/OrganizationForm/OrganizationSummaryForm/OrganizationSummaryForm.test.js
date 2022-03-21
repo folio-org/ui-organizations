@@ -70,6 +70,7 @@ describe('OrganizationSummaryForm', () => {
     renderForm({ initialValues: organization });
 
     const selectedType = await screen.findAllByText('Book trade');
+  
     expect((selectedType).length).toEqual(2);
   });
 });
