@@ -345,25 +345,25 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
                   style="max-height: 168px;"
                 >
                   <li
-                    aria-selected="false"
-                    class="multiSelectOption optionCursor"
-                    id="organizations-type-main-item-0"
-                    role="option"
-                  >
-                    Auction house
-                    <div>
-                      +
-                    </div>
-                  </li>
-                  <li
                     aria-selected="true"
-                    class="multiSelectOption optionSelected"
-                    id="organizations-type-main-item-1"
+                    class="multiSelectOption optionCursor optionSelected"
+                    id="organizations-type-main-item-0"
                     role="option"
                   >
                     Book trade
                     <div>
                       -
+                    </div>
+                  </li>
+                  <li
+                    aria-selected="false"
+                    class="multiSelectOption"
+                    id="organizations-type-main-item-1"
+                    role="option"
+                  >
+                    Auction house
+                    <div>
+                      +
                     </div>
                   </li>
                 </ul>
