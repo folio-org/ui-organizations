@@ -29,7 +29,14 @@ const propTypes = {
   resource: PropTypes.object,
 };
 
-const OrganizationLookup = ({ disabled, id, input: { name, value }, onResourceSelected, resource }) => {
+const OrganizationLookup = ({
+  disabled,
+  id,
+  input: { name, value },
+  onResourceSelected,
+  renderOrganizations,
+  resource
+}) => {
   let triggerButton = useRef(null);
 
   const renderOrganizationLinkButton = (v) => (
@@ -84,7 +91,7 @@ const OrganizationLookup = ({ disabled, id, input: { name, value }, onResourceSe
     </Pluggable>
   );
 
-  const renderOrganizations = () => (
+  const defaultRenderOrganizations = () => (
     <div>
       <Row>
         <Col md={12} xs={12}>
@@ -110,6 +117,18 @@ const OrganizationLookup = ({ disabled, id, input: { name, value }, onResourceSe
     </div>
   );
 
+  const renderFunction = () => {
+    if (value) {
+      if (renderOrganizations) {
+        return renderOrganizations(resource);
+      }
+
+      return defaultRenderOrganizations();
+    }
+
+    return renderEmpty();
+  };
+
   return (
     <Card
       cardStyle={value ? 'positive' : 'negative'}
@@ -124,7 +143,7 @@ const OrganizationLookup = ({ disabled, id, input: { name, value }, onResourceSe
       id={id}
       roundedBorder
     >
-      {value ? renderOrganizations() : renderEmpty()}
+      {renderFunction()}
     </Card>
   );
 };
