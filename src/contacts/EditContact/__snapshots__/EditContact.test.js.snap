@@ -363,6 +363,11 @@ exports[`EditContact should render correct form structure 1`] = `
                               name="language"
                               type="button"
                             >
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.selection.controlLabel
+                              </span>
                               <div
                                 class="singleValue"
                                 id="selected-stripes-selection-7-item"
@@ -845,6 +850,11 @@ exports[`EditContact should render correct form structure 1`] = `
                                           name="emails[0].language"
                                           type="button"
                                         >
+                                          <span
+                                            class="sr-only"
+                                          >
+                                            stripes-components.selection.controlLabel
+                                          </span>
                                           <div
                                             class="singleValue"
                                             id="selected-stripes-selection-12-item"
@@ -1371,6 +1381,11 @@ exports[`EditContact should render correct form structure 1`] = `
                                           name="phoneNumbers[0].language"
                                           type="button"
                                         >
+                                          <span
+                                            class="sr-only"
+                                          >
+                                            stripes-components.selection.controlLabel
+                                          </span>
                                           <div
                                             class="singleValue"
                                             id="selected-stripes-selection-16-item"
@@ -1874,6 +1889,11 @@ exports[`EditContact should render correct form structure 1`] = `
                                           name="urls[0].language"
                                           type="button"
                                         >
+                                          <span
+                                            class="sr-only"
+                                          >
+                                            stripes-components.selection.controlLabel
+                                          </span>
                                           <div
                                             class="singleValue"
                                             id="selected-stripes-selection-20-item"
@@ -2474,6 +2494,11 @@ exports[`EditContact should render correct form structure 1`] = `
                                               name="addresses[0].country"
                                               type="button"
                                             >
+                                              <span
+                                                class="sr-only"
+                                              >
+                                                stripes-components.selection.controlLabel
+                                              </span>
                                               <div
                                                 class="singleValue"
                                                 id="selected-stripes-selection-25-item"
@@ -2536,6 +2561,11 @@ exports[`EditContact should render correct form structure 1`] = `
                                               name="addresses[0].language"
                                               type="button"
                                             >
+                                              <span
+                                                class="sr-only"
+                                              >
+                                                stripes-components.selection.controlLabel
+                                              </span>
                                               <div
                                                 class="singleValue"
                                                 id="selected-stripes-selection-26-item"

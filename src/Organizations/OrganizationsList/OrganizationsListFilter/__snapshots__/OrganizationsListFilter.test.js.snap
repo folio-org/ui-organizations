@@ -588,6 +588,11 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
                 id="addresses-selection"
                 type="button"
               >
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.selection.controlLabel
+                </span>
                 <div
                   class="singleValue"
                   id="selected-addresses-selection-item"
@@ -683,6 +688,11 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
                 id="language-selection"
                 type="button"
               >
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.selection.controlLabel
+                </span>
                 <div
                   class="singleValue"
                   id="selected-language-selection-item"
@@ -1230,6 +1240,11 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
                 id="acqUnitIds-selection"
                 type="button"
               >
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.selection.controlLabel
+                </span>
                 <div
                   class="singleValue"
                   id="selected-acqUnitIds-selection-item"
@@ -1874,6 +1889,11 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
                 id="addresses-selection"
                 type="button"
               >
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.selection.controlLabel
+                </span>
                 <div
                   class="singleValue"
                   id="selected-addresses-selection-item"
@@ -1970,6 +1990,11 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
                 id="language-selection"
                 type="button"
               >
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.selection.controlLabel
+                </span>
                 <div
                   class="singleValue"
                   id="selected-language-selection-item"
@@ -2558,6 +2583,11 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
                 id="acqUnitIds-selection"
                 type="button"
               >
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.selection.controlLabel
+                </span>
                 <div
                   class="singleValue"
                   id="selected-acqUnitIds-selection-item"
