@@ -177,6 +177,7 @@ const OrganizationsList = ({
           filters={filters}
           isFiltersOpened={isFiltersOpened}
           resultsPaneTitleRef={resultsPaneTitleRef}
+          isLoading={isLoading}
         >
           {({ height, width }) => (
             <>
