@@ -287,6 +287,11 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               name="addresses[0].country"
                               type="button"
                             >
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.selection.controlLabel
+                              </span>
                               <div
                                 class="singleValue"
                                 id="selected-stripes-selection-4-item"
@@ -349,6 +354,11 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               name="addresses[0].language"
                               type="button"
                             >
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.selection.controlLabel
+                              </span>
                               <div
                                 class="singleValue"
                                 id="selected-stripes-selection-5-item"
@@ -816,6 +826,11 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               name="phoneNumbers[0].language"
                               type="button"
                             >
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.selection.controlLabel
+                              </span>
                               <div
                                 class="singleValue"
                                 id="selected-stripes-selection-7-item"
@@ -1198,6 +1213,11 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               name="emails[0].language"
                               type="button"
                             >
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.selection.controlLabel
+                              </span>
                               <div
                                 class="singleValue"
                                 id="selected-stripes-selection-10-item"
@@ -1580,6 +1600,11 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               name="urls[0].language"
                               type="button"
                             >
+                              <span
+                                class="sr-only"
+                              >
+                                stripes-components.selection.controlLabel
+                              </span>
                               <div
                                 class="singleValue"
                                 id="selected-stripes-selection-13-item"

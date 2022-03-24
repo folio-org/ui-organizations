@@ -407,6 +407,11 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
               name="language"
               type="button"
             >
+              <span
+                class="sr-only"
+              >
+                stripes-components.selection.controlLabel
+              </span>
               <div
                 class="singleValue"
                 id="selected-stripes-selection-4-item"
