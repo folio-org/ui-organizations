@@ -24,8 +24,8 @@ export const ORGANIZATION_SECTION_LABELS = {
   [ORGANIZATION_SECTIONS.integrationDetailsSection]: <FormattedMessage id="ui-organizations.integrationDetails" />,
 };
 
-export const CREATE_UNITS_PERM = 'ui-organizations.acqUnits.assign';
-export const MANAGE_UNITS_PERM = 'ui-organizations.acqUnits.manage';
+export const CREATE_UNITS_PERM = 'organizations.acquisitions-units-assignments.assign';
+export const MANAGE_UNITS_PERM = 'organizations.acquisitions-units-assignments.manage';
 
 // Mapping between attribute (field) in form and id of accordion
 export const MAP_FIELD_ACCORDION = {
