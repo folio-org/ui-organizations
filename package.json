@@ -215,6 +215,7 @@
     "test:unit:report": "cp -r ./artifacts/coverage-jest ./artifacts/coverage",
     "test:e2e": "yarn stripes test karma --karma.singleRun --karma.browsers ChromeDocker",
     "lint": "eslint .",
+    "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json ",
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-organizations ./translations/ui-organizations/compiled"
   },
   "devDependencies": {
