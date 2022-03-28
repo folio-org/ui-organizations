@@ -175,13 +175,19 @@
         "permissionName": "ui-organizations.acqUnits.assign",
         "displayName": "Organizations: Assign acquisition units to new organization",
         "description": "",
-        "visible": true
+        "visible": true,
+        "subPermissions": [
+          "organizations.acquisitions-units-assignments.assign"
+        ]
       },
       {
         "permissionName": "ui-organizations.acqUnits.manage",
         "displayName": "Organizations: Manage acquisition units",
         "description": "",
-        "visible": true
+        "visible": true,
+        "subPermissions": [
+          "organizations.acquisitions-units-assignments.manage"
+        ]
       },
       {
         "permissionName": "ui-organizations.settings",
@@ -250,7 +256,6 @@
     "miragejs": "^0.1.32",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-hot-loader": "^4.3.12",
     "react-intl": "^5.7.1",
     "react-query": "^3.23.2",
     "react-redux": "^7.2.2",

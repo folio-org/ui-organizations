@@ -4,6 +4,9 @@
 * Create area Settings - Organizations - Types. Refs UIORGS-283.
 * Add record metadata widget to contact person. Refs UIORGS-305.
 * Display linked agreements on an organization record. Refs UIORGS-306.
+* Manage acquisition unit permission not working. Refs UIORGS-312.
+* Remove react-hot-loader. Refs UIORGS-313.
+* Select filter should announce the number of Results in Result List pane header. Refs UIORGS-310.
 
 ## [3.1.1](https://github.com/folio-org/ui-organizations/tree/v3.1.1) (2022-03-24)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.1.0...v3.1.1)
