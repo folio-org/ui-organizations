@@ -61,7 +61,7 @@ export const OrganizationDetailsContainer = ({
       setIsLoading(true);
       setOrganization({});
       let _organization;
-    
+
       mutator.organizationDetailsOrg.GET()
         .then(organizationResponse => {
           _organization = organizationResponse;
@@ -75,7 +75,7 @@ export const OrganizationDetailsContainer = ({
             mutator.organizationTypes.GET({ params: { query } })
               .then(organizationTypesResponse => {
                 setOrganizationTypes(organizationTypesResponse);
-              })
+              });
           } else {
             setOrganizationTypes([]);
           }
