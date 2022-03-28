@@ -61,24 +61,25 @@ export const OrganizationDetailsContainer = ({
       setIsLoading(true);
       setOrganization({});
       let _organization;
+    
       mutator.organizationDetailsOrg.GET()
         .then(organizationResponse => {
-          _organization = organizationResponse
+          _organization = organizationResponse;
           setOrganization(organizationResponse);
         })
         .finally(() => {
-          console.log(_organization.organizationTypes);
-          if(_organization.organizationTypes && _organization.organizationTypes.length !== 0) {
-            const ids = _organization.organizationTypes.join(" or ");
+          if (_organization.organizationTypes && _organization.organizationTypes.length !== 0) {
+            const ids = _organization.organizationTypes.join(' or ');
             const query = `(id==(${ids}))`;
-            mutator.organizationTypes.GET({params: { query }})
+
+            mutator.organizationTypes.GET({ params: { query } })
               .then(organizationTypesResponse => {
-                setOrganizationTypes(organizationTypesResponse)
+                setOrganizationTypes(organizationTypesResponse);
               })
           } else {
-            setOrganizationTypes([])
+            setOrganizationTypes([]);
           }
-          setIsLoading(false)
+          setIsLoading(false);
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
