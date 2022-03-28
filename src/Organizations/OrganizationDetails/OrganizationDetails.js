@@ -97,16 +97,7 @@ const OrganizationDetails = ({
   );
   const accountNumbers = (organization.isVendor && organization.accounts?.map(({ accountNo }) => accountNo)) || [];
   const hasDuplicateAccountNumbers = [...new Set(accountNumbers)].length !== accountNumbers.length;
-
-  const getOrganizationTypeElement = ((id) => {
-    return (
-      organizationTypes.find(e => e.id === id)
-    );
-  });
-
-  const selectedOrganizationTypes = (organization.organizationTypes?.map((id) => getOrganizationTypeElement(id))) || [];
-
-  const organizationTypesLabels = selectedOrganizationTypes.map((item) => (item.name));
+  const organizationTypesLabels = organizationTypes.map((item) => (item.name));
 
   useEffect(() => {
     if (isDetailsPaneInFocus) paneTitleRef.current.focus();

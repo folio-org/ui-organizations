@@ -32,7 +32,6 @@ export const OrganizationDetailsContainer = ({
   match,
   mutator,
   refreshList,
-  resources: { organizationTypes },
 }) => {
   const organizationId = match.params.id;
 
@@ -41,6 +40,7 @@ export const OrganizationDetailsContainer = ({
   const [isLoading, setIsLoading] = useState(true);
   const [organizationCategories, setOrganizationCategories] = useState([]);
   const [translatedCategories] = useTranslatedCategories(organizationCategories);
+  const [organizationTypes, setOrganizationTypes] = useState([]);
   const intl = useIntl();
 
   const { integrationConfigs } = useIntegrationConfigs({ organizationId });
@@ -60,12 +60,26 @@ export const OrganizationDetailsContainer = ({
     () => {
       setIsLoading(true);
       setOrganization({});
-
+      let _organization;
       mutator.organizationDetailsOrg.GET()
         .then(organizationResponse => {
+          _organization = organizationResponse
           setOrganization(organizationResponse);
         })
-        .finally(() => setIsLoading(false));
+        .finally(() => {
+          console.log(_organization.organizationTypes);
+          if(_organization.organizationTypes && _organization.organizationTypes.length !== 0) {
+            const ids = _organization.organizationTypes.join(" or ");
+            const query = `(id==(${ids}))`;
+            mutator.organizationTypes.GET({params: { query }})
+              .then(organizationTypesResponse => {
+                setOrganizationTypes(organizationTypesResponse)
+              })
+          } else {
+            setOrganizationTypes([])
+          }
+          setIsLoading(false)
+        });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [organizationId],
@@ -153,7 +167,7 @@ export const OrganizationDetailsContainer = ({
       organization={organization}
       organizationCategories={translatedCategories}
       integrationConfigs={integrationConfigs}
-      organizationTypes={organizationTypes.records}
+      organizationTypes={organizationTypes}
     />
   );
 };
@@ -169,7 +183,7 @@ OrganizationDetailsContainer.manifest = Object.freeze({
   },
   organizationTypes: {
     ...typesResource,
-    fetch: true,
+    accumulate: true,
   },
 });
 
