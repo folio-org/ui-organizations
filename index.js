@@ -1,10 +1,10 @@
+/* eslint-disable filenames/match-exported */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   Route,
   Switch,
 } from 'react-router-dom';
-import { hot } from 'react-hot-loader';
 
 import { OrganizationIntegration } from './src/OrganizationIntegration';
 import { Organizations as Organization } from './src/Organizations';
@@ -58,4 +58,4 @@ class Organizations extends Component {
   }
 }
 
-export default hot(module)(Organizations);
+export default Organizations;
