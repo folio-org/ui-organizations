@@ -84,8 +84,8 @@ describe('OrganizationIntegration utils', () => {
 
   describe('getTenantTime', () => {
     it('should return tenant time', () => {
-      expect(getTenantTime({ time: '23:00:00.000Z', timeZone: 'Europe/Berlin' }))
-        .toEqual('00:00:00');
+      expect(getTenantTime({ time: '23:00:00.000Z', timeZone: 'Europe/Minsk' }))
+        .toEqual('02:00:00');
     });
   });
 
