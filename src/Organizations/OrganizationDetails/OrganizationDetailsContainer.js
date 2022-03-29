@@ -71,6 +71,7 @@ export const OrganizationDetailsContainer = ({
         .finally(() => {
           if (_organization.organizationTypes && _organization.organizationTypes.length !== 0) {
             const typeIds = _organization.organizationTypes;
+
             batchFetch(mutator.organizationTypes, typeIds)
               .then(setOrganizationTypes)
               .catch(() => {
