@@ -5,7 +5,6 @@ import { match, location, history } from '../../../test/jest/routerMocks';
 
 import OrganizationDetails from './OrganizationDetails';
 import { OrganizationDetailsContainer } from './OrganizationDetailsContainer';
-import { organizationTypes } from '../../../test/jest/fixtures';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
@@ -18,18 +17,15 @@ const organization = {
   name: 'Amazon',
 };
 
-const resourcesMock = {
-  organizationTypes: {
-    records: organizationTypes,
-  },
-};
-
 const mutatorMock = {
   organizationDetailsOrg: {
     GET: jest.fn(),
   },
   organizationDetailsCategories: {
     GET: jest.fn().mockReturnValue(Promise.resolve([])),
+  },
+  organizationTypes: {
+    GET: jest.fn(),
   },
 };
 const historyMock = {
@@ -44,7 +40,6 @@ const renderOrganizationDetailsContainer = () => render(
     history={historyMock}
     match={match}
     refreshList={refreshListMock}
-    resources={resourcesMock}
   />,
 );
 
