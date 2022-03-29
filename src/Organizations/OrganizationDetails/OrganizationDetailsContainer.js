@@ -69,23 +69,23 @@ export const OrganizationDetailsContainer = ({
           setOrganization(organizationResponse);
         })
         .finally(() => {
-          if (_organization.organizationTypes && _organization.organizationTypes.length !== 0) {
-            const typeIds = _organization.organizationTypes;
-
-            batchFetch(mutator.organizationTypes, typeIds)
-              .then(setOrganizationTypes)
-              .catch(() => {
-                setOrganizationTypes([]);
-              });
-          } else {
-            setOrganizationTypes([]);
-          }
+          fetchOrganizationTypes(_organization);
           setIsLoading(false);
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [organizationId],
   );
+
+  const fetchOrganizationTypes = (organization) => {
+    const typeIds = organization.organizationTypes;
+
+    batchFetch(mutator.organizationTypes, typeIds)
+      .then(setOrganizationTypes)
+      .catch(() => {
+        setOrganizationTypes([]);
+      });
+  };
 
   const closePane = useCallback(
     () => {
