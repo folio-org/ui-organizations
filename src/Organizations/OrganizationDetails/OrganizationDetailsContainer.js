@@ -10,6 +10,7 @@ import { useIntl } from 'react-intl';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
+  batchFetch,
   LoadingPane,
   useIntegrationConfigs,
   useShowCallout,
@@ -69,12 +70,11 @@ export const OrganizationDetailsContainer = ({
         })
         .finally(() => {
           if (_organization.organizationTypes && _organization.organizationTypes.length !== 0) {
-            const ids = _organization.organizationTypes.join(' or ');
-            const query = `(id==(${ids}))`;
-
-            mutator.organizationTypes.GET({ params: { query } })
-              .then(organizationTypesResponse => {
-                setOrganizationTypes(organizationTypesResponse);
+            const typeIds = _organization.organizationTypes;
+            batchFetch(mutator.organizationTypes, typeIds)
+              .then(setOrganizationTypes)
+              .catch(() => {
+                setOrganizationTypes([]);
               });
           } else {
             setOrganizationTypes([]);
