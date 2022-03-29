@@ -79,7 +79,9 @@ export const OrganizationDetailsContainer = ({
           setOrganization(organizationResponse);
         })
         .finally(() => {
-          fetchOrganizationTypes(_organization);
+          if (_organization) {
+            fetchOrganizationTypes(_organization);
+          }
           setIsLoading(false);
         });
     },
