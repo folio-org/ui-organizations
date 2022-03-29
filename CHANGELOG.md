@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.1.2](https://github.com/folio-org/ui-organizations/tree/v3.1.2) (2022-03-29)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.1.1...v3.1.2)
+
 * Manage acquisition unit permission not working. Refs UIORGS-312.
 
 ## [3.1.1](https://github.com/folio-org/ui-organizations/tree/v3.1.1) (2022-03-24)
