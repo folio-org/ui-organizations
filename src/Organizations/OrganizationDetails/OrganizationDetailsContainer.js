@@ -57,6 +57,16 @@ export const OrganizationDetailsContainer = ({
     [],
   );
 
+  const fetchOrganizationTypes = (org) => {
+    const typeIds = org.organizationTypes;
+
+    batchFetch(mutator.organizationTypes, typeIds)
+      .then(setOrganizationTypes)
+      .catch(() => {
+        setOrganizationTypes([]);
+      });
+  };
+
   useEffect(
     () => {
       setIsLoading(true);
@@ -76,16 +86,6 @@ export const OrganizationDetailsContainer = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [organizationId],
   );
-
-  const fetchOrganizationTypes = (organization) => {
-    const typeIds = organization.organizationTypes;
-
-    batchFetch(mutator.organizationTypes, typeIds)
-      .then(setOrganizationTypes)
-      .catch(() => {
-        setOrganizationTypes([]);
-      });
-  };
 
   const closePane = useCallback(
     () => {
