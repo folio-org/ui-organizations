@@ -2,9 +2,9 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
-    find,
-    map,
-  } from 'lodash';
+  find,
+  map,
+} from 'lodash';
 
 import { FieldMultiSelectionFinal } from '@folio/stripes-acq-components';
 
