@@ -48,7 +48,6 @@ const OrganizationForm = ({
   values: formValues,
   form,
   organizationTypes,
-  form: { mutators },
 }) => {
   const initialAccordionStatus = {
     [ORGANIZATION_SECTIONS.summarySection]: true,
@@ -159,7 +158,6 @@ const OrganizationForm = ({
                     <OrganizationSummaryForm
                       initialValues={initialValues}
                       organizationTypes={organizationTypes.records}
-                      mutators={mutators}
                     />
                   </Accordion>
                   <Accordion
@@ -254,9 +252,4 @@ export default stripesForm({
   navigationCheck: true,
   subscription: { values: true },
   validateOnBlur: true,
-  mutators: {
-    setType: (args, state, tools) => {
-      tools.changeValue(state, 'organizationTypes', () => args[1]);
-    },
-  },
 })(OrganizationForm);

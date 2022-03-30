@@ -29,7 +29,7 @@ import {
 import resetVendorFields from './resetVendorFields';
 import FieldCode from './FieldCode';
 
-function OrganizationSummaryForm({ initialValues, organizationTypes, mutators }) {
+function OrganizationSummaryForm({ initialValues, organizationTypes }) {
   const [isVendorUncheckConfirm, setVendorUncheckConfirm] = useState(false);
   const { change } = useForm();
 
@@ -84,8 +84,6 @@ function OrganizationSummaryForm({ initialValues, organizationTypes, mutators })
   }, [initialValues.id, change]);
 
   const isEditMode = Boolean(initialValues.id);
-
-  const _organizationTypes = organizationTypes;
 
   return (
     <Row>
@@ -150,10 +148,7 @@ function OrganizationSummaryForm({ initialValues, organizationTypes, mutators })
         xs={6}
         md={3}
       >
-        <FieldOrganizationTypes
-          organizationTypes={_organizationTypes}
-          mutators={mutators}
-        />
+        <FieldOrganizationTypes organizationTypes={organizationTypes} />
       </Col>
       <Col
         xs={6}
@@ -231,9 +226,6 @@ function OrganizationSummaryForm({ initialValues, organizationTypes, mutators })
 OrganizationSummaryForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
   organizationTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  mutators: PropTypes.shape({
-    setType: PropTypes.func,
-  }),
 };
 
 export default OrganizationSummaryForm;

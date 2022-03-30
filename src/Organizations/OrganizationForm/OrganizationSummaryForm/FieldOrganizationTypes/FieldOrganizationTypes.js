@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { useForm } from 'react-final-form';
 import PropTypes from 'prop-types';
-import {
-  find,
-  map,
-} from 'lodash';
 
 import { FieldMultiSelectionFinal } from '@folio/stripes-acq-components';
 
-export const FieldOrganizationTypes = ({ organizationTypes, mutators }) => {
+export const FieldOrganizationTypes = ({ organizationTypes }) => {
+  const { change } = useForm();
+
   const formatter = ({ option }) => {
-    const item = find(organizationTypes, { id: option }) || option;
+    const item = organizationTypes.find(e => e.id === option);
 
     if (!item) return option;
 
@@ -19,7 +18,7 @@ export const FieldOrganizationTypes = ({ organizationTypes, mutators }) => {
 
   const itemToString = item => item;
 
-  const typeOptions = map(organizationTypes, 'id');
+  const typeOptions = organizationTypes.map(({ id }) => id);
 
   const filter = (filterText, list) => {
     const renderedItems = filterText
@@ -31,9 +30,9 @@ export const FieldOrganizationTypes = ({ organizationTypes, mutators }) => {
     return { renderedItems };
   };
 
-  const getSelectedTypes = (e) => {
-    mutators.setType({}, e);
-  };
+  const onChangeTypes = useCallback((types) => {
+    change('organizationTypes', types);
+  }, [change])
 
   return (
     <FieldMultiSelectionFinal
@@ -45,14 +44,11 @@ export const FieldOrganizationTypes = ({ organizationTypes, mutators }) => {
       itemToString={itemToString}
       label={<FormattedMessage id="ui-organizations.summary.type" />}
       name="organizationTypes"
-      onChange={getSelectedTypes}
+      onChange={onChangeTypes}
     />
   );
 };
 
 FieldOrganizationTypes.propTypes = {
   organizationTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  mutators: PropTypes.shape({
-    setType: PropTypes.func,
-  }),
 };
