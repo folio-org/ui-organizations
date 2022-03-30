@@ -32,7 +32,7 @@ export const FieldOrganizationTypes = ({ organizationTypes }) => {
 
   const onChangeTypes = useCallback((types) => {
     change('organizationTypes', types);
-  }, [change])
+  }, [change]);
 
   return (
     <FieldMultiSelectionFinal
