@@ -16,9 +16,7 @@ export const useTypes = () => {
   const { isLoading, data } = useQuery(
     ['ui-organizations', 'organization-types'],
     () => {
-      const responseData = ky.get(TYPES_API, { searchParams }).json();
-
-      return responseData;
+      return ky.get(TYPES_API, { searchParams }).json();
     },
   );
 
