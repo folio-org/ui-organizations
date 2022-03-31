@@ -19,16 +19,13 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { VIEW_ORG_DETAILS } from '../../common/constants';
-import {
-  organizationResourceByUrl,
-  typesResource,
-} from '../../common/resources';
+import { organizationResourceByUrl } from '../../common/resources';
 import {
   OrganizationForm,
 } from '../OrganizationForm';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 
-export const OrganizationEdit = ({ match, history, location, mutator, resources: { organizationTypes } }) => {
+export const OrganizationEdit = ({ match, history, location, mutator }) => {
   const organizationId = match.params.id;
 
   const [organization, setOrganization] = useState({});
@@ -88,7 +85,6 @@ export const OrganizationEdit = ({ match, history, location, mutator, resources:
       onSubmit={updateOrganization}
       cancelForm={cancelForm}
       paneTitle={<FormattedMessage id="ui-organizations.editOrg.title" values={{ name: organization.name }} />}
-      organizationTypes={organizationTypes}
     />
   );
 };
@@ -98,10 +94,6 @@ OrganizationEdit.manifest = Object.freeze({
     ...organizationResourceByUrl,
     accumulate: true,
   },
-  organizationTypes: {
-    ...typesResource,
-    fetch: true,
-  },
 });
 
 OrganizationEdit.propTypes = {
@@ -109,9 +101,6 @@ OrganizationEdit.propTypes = {
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   mutator: PropTypes.object.isRequired,
-  resources: PropTypes.shape({
-    organizationTypes: PropTypes.object,
-  }).isRequired,
 };
 
 export default withRouter(stripesConnect(OrganizationEdit));

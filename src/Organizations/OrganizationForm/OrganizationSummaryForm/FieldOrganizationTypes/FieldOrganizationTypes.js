@@ -1,12 +1,16 @@
 import React, { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useForm } from 'react-final-form';
-import PropTypes from 'prop-types';
+import { get } from 'lodash';
 
 import { FieldMultiSelectionFinal } from '@folio/stripes-acq-components';
 
-export const FieldOrganizationTypes = ({ organizationTypes }) => {
+import { useTypes } from '../../../../common/hooks';
+
+export const FieldOrganizationTypes = () => {
   const { change } = useForm();
+  const organizationTypesAll = useTypes();
+  const organizationTypes = get(organizationTypesAll, 'orgTypes.organizationTypes', []);
 
   const formatter = ({ option }) => {
     const item = organizationTypes.find(e => e.id === option);
@@ -47,8 +51,4 @@ export const FieldOrganizationTypes = ({ organizationTypes }) => {
       onChange={onChangeTypes}
     />
   );
-};
-
-FieldOrganizationTypes.propTypes = {
-  organizationTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

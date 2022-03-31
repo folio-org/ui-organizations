@@ -47,7 +47,6 @@ const OrganizationForm = ({
   cancelForm,
   values: formValues,
   form,
-  organizationTypes,
 }) => {
   const initialAccordionStatus = {
     [ORGANIZATION_SECTIONS.summarySection]: true,
@@ -157,7 +156,6 @@ const OrganizationForm = ({
 
                     <OrganizationSummaryForm
                       initialValues={initialValues}
-                      organizationTypes={organizationTypes.records}
                     />
                   </Accordion>
                   <Accordion
@@ -240,7 +238,6 @@ OrganizationForm.propTypes = {
   paneTitle: PropTypes.node,
   values: PropTypes.object,
   form: PropTypes.object,
-  organizationTypes: PropTypes.object,
 };
 
 OrganizationForm.defaultProps = {

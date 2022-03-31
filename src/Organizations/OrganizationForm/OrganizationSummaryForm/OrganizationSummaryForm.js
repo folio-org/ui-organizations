@@ -29,7 +29,7 @@ import {
 import resetVendorFields from './resetVendorFields';
 import FieldCode from './FieldCode';
 
-function OrganizationSummaryForm({ initialValues, organizationTypes }) {
+function OrganizationSummaryForm({ initialValues }) {
   const [isVendorUncheckConfirm, setVendorUncheckConfirm] = useState(false);
   const { change } = useForm();
 
@@ -148,7 +148,7 @@ function OrganizationSummaryForm({ initialValues, organizationTypes }) {
         xs={6}
         md={3}
       >
-        <FieldOrganizationTypes organizationTypes={organizationTypes} />
+        <FieldOrganizationTypes />
       </Col>
       <Col
         xs={6}
@@ -225,7 +225,6 @@ function OrganizationSummaryForm({ initialValues, organizationTypes }) {
 
 OrganizationSummaryForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
-  organizationTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default OrganizationSummaryForm;
