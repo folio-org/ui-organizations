@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
 import { useIntl } from 'react-intl';
+import { get } from 'lodash';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
-  batchFetch,
   LoadingPane,
   useIntegrationConfigs,
   useShowCallout,
@@ -19,10 +19,10 @@ import {
 import {
   organizationResourceByUrl,
   categoriesResource,
-  typesResource,
 } from '../../common/resources';
 import {
   useTranslatedCategories,
+  useTypes,
 } from '../../common/hooks';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 import OrganizationDetails from './OrganizationDetails';
@@ -41,9 +41,9 @@ export const OrganizationDetailsContainer = ({
   const [isLoading, setIsLoading] = useState(true);
   const [organizationCategories, setOrganizationCategories] = useState([]);
   const [translatedCategories] = useTranslatedCategories(organizationCategories);
-  const [organizationTypes, setOrganizationTypes] = useState([]);
+  const organizationTypesAll = useTypes();
+  const organizationTypes = get(organizationTypesAll, 'orgTypes.organizationTypes', []);
   const intl = useIntl();
-
   const { integrationConfigs } = useIntegrationConfigs({ organizationId });
 
   useEffect(
@@ -57,16 +57,6 @@ export const OrganizationDetailsContainer = ({
     [],
   );
 
-  const fetchOrganizationTypes = (org) => {
-    const typeIds = org.organizationTypes;
-
-    batchFetch(mutator.organizationTypes, typeIds)
-      .then(setOrganizationTypes)
-      .catch(() => {
-        setOrganizationTypes([]);
-      });
-  };
-
   useEffect(
     () => {
       setIsLoading(true);
@@ -79,9 +69,6 @@ export const OrganizationDetailsContainer = ({
           setOrganization(organizationResponse);
         })
         .finally(() => {
-          if (_organization) {
-            fetchOrganizationTypes(_organization);
-          }
           setIsLoading(false);
         });
     },
@@ -152,7 +139,7 @@ export const OrganizationDetailsContainer = ({
     [intl, showCallout, organizationId],
   );
 
-  if (isLoading) {
+  if (isLoading || organizationTypesAll.isLoading) {
     return (
       <LoadingPane
         id="pane-organization-details"
@@ -183,10 +170,6 @@ OrganizationDetailsContainer.manifest = Object.freeze({
   },
   organizationDetailsCategories: {
     ...categoriesResource,
-    accumulate: true,
-  },
-  organizationTypes: {
-    ...typesResource,
     accumulate: true,
   },
 });
