@@ -197,9 +197,6 @@ OrganizationDetailsContainer.propTypes = {
   location: ReactRouterPropTypes.location.isRequired,
   mutator: PropTypes.object.isRequired,
   refreshList: PropTypes.func.isRequired,
-  resources: PropTypes.shape({
-    organizationTypes: PropTypes.object,
-  }).isRequired,
 };
 
 export default withRouter(stripesConnect(OrganizationDetailsContainer));

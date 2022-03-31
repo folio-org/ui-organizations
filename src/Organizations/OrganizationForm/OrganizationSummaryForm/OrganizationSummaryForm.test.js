@@ -7,13 +7,18 @@ import stripesFinalForm from '@folio/stripes/final-form';
 import { organization, organizationTypes } from '../../../../test/jest/fixtures';
 import OrganizationSummaryForm from './OrganizationSummaryForm';
 
+import { useTypes } from '../../../common/hooks';
+
+jest.mock('../../../common/hooks', () => ({
+  useTypes: jest.fn(),
+}));
+
 const TestForm = stripesFinalForm({})(
   () => {
     return (
       <form>
         <OrganizationSummaryForm
           initialValues={organization}
-          organizationTypes={organizationTypes}
         />
       </form>
     );
@@ -31,6 +36,9 @@ const renderForm = ({ initialValues = {} } = {}) => render(
 describe('OrganizationSummaryForm', () => {
   beforeEach(() => {
     global.document.createRange = global.document.originalCreateRange;
+    useTypes
+      .mockClear()
+      .mockReturnValue({ orgTypes: { organizationTypes, totalRecords: organizationTypes.length } });
   });
 
   afterEach(() => {
