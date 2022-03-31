@@ -19,7 +19,7 @@ export const useTypes = () => {
       const responseData = ky.get(TYPES_API, { searchParams }).json();
 
       return responseData;
-    }
+    },
   );
 
   return ({
