@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
 import { useIntl } from 'react-intl';
-import { get } from 'lodash';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
@@ -41,8 +40,7 @@ export const OrganizationDetailsContainer = ({
   const [isLoading, setIsLoading] = useState(true);
   const [organizationCategories, setOrganizationCategories] = useState([]);
   const [translatedCategories] = useTranslatedCategories(organizationCategories);
-  const organizationTypesAll = useTypes();
-  const organizationTypes = get(organizationTypesAll, 'orgTypes.organizationTypes', []);
+  const { organizationTypes, isLoading: isOrgTypesLoading } = useTypes();
   const intl = useIntl();
   const { integrationConfigs } = useIntegrationConfigs({ organizationId });
 
@@ -61,16 +59,12 @@ export const OrganizationDetailsContainer = ({
     () => {
       setIsLoading(true);
       setOrganization({});
-      let _organization;
 
       mutator.organizationDetailsOrg.GET()
         .then(organizationResponse => {
-          _organization = organizationResponse;
           setOrganization(organizationResponse);
         })
-        .finally(() => {
-          setIsLoading(false);
-        });
+        .finally(() => setIsLoading(false));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [organizationId],
@@ -139,7 +133,7 @@ export const OrganizationDetailsContainer = ({
     [intl, showCallout, organizationId],
   );
 
-  if (isLoading || organizationTypesAll.isLoading) {
+  if (isLoading || isOrgTypesLoading) {
     return (
       <LoadingPane
         id="pane-organization-details"

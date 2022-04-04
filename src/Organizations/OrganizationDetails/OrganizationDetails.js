@@ -273,7 +273,7 @@ const OrganizationDetails = ({
                 metadata={organization.metadata}
                 name={organization.name}
                 status={organization.status}
-                initialOrganizationTypes={organizationTypesLabels}
+                organizationTypes={organizationTypesLabels}
               />
             </Accordion>
 

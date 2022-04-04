@@ -35,7 +35,7 @@ const OrganizationSummary = ({
   metadata,
   name,
   status,
-  initialOrganizationTypes,
+  organizationTypes,
 }) => {
   const defaultLanguageValue = LANG_LABEL_BY_CODE[language] || language;
 
@@ -105,7 +105,7 @@ const OrganizationSummary = ({
           <KeyValue
             data-testid="type"
             label={<FormattedMessage id="ui-organizations.summary.type" />}
-            value={initialOrganizationTypes.join(', ') || <NoValue />}
+            value={organizationTypes.join(', ') || <NoValue />}
           />
         </Col>
 
@@ -154,7 +154,7 @@ OrganizationSummary.propTypes = {
   metadata: PropTypes.object,
   name: PropTypes.string,
   status: PropTypes.string,
-  initialOrganizationTypes: PropTypes.arrayOf(PropTypes.string),
+  organizationTypes: PropTypes.arrayOf(PropTypes.string),
 };
 
 OrganizationSummary.defaultProps = {

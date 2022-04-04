@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useForm } from 'react-final-form';
-import { get } from 'lodash';
 
 import { FieldMultiSelectionFinal } from '@folio/stripes-acq-components';
 
@@ -9,8 +8,7 @@ import { useTypes } from '../../../../common/hooks';
 
 export const FieldOrganizationTypes = () => {
   const { change } = useForm();
-  const organizationTypesAll = useTypes();
-  const organizationTypes = get(organizationTypesAll, 'orgTypes.organizationTypes', []);
+  const { organizationTypes } = useTypes();
 
   const formatter = ({ option }) => {
     const item = organizationTypes.find(e => e.id === option);

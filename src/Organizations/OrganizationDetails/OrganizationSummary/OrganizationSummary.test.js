@@ -65,7 +65,7 @@ const renderOrganizationSummary = (organization) => (render(
       metadata={organization.metadata}
       name={organization.name}
       status={organization.status}
-      initialOrganizationTypes={organization.organizationTypes}
+      organizationTypes={organization.organizationTypes}
     />
   </IntlProvider>,
 ));

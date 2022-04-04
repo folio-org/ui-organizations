@@ -21,7 +21,7 @@ export const useTypes = () => {
   );
 
   return ({
-    orgTypes: data,
+    organizationTypes: data?.organizationTypes,
     isLoading,
   });
 };
