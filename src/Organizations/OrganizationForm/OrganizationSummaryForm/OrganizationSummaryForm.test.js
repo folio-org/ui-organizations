@@ -38,7 +38,7 @@ describe('OrganizationSummaryForm', () => {
     global.document.createRange = global.document.originalCreateRange;
     useTypes
       .mockClear()
-      .mockReturnValue({ orgTypes: { organizationTypes, totalRecords: organizationTypes.length } });
+      .mockReturnValue({ organizationTypes, totalRecords: organizationTypes.length });
   });
 
   afterEach(() => {

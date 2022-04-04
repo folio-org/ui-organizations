@@ -11,7 +11,7 @@ export const FieldOrganizationTypes = () => {
   const { organizationTypes } = useTypes();
 
   const formatter = ({ option }) => {
-    const item = organizationTypes.find(e => e.id === option);
+    const item = organizationTypes?.find(e => e.id === option);
 
     if (!item) return option;
 
@@ -20,7 +20,7 @@ export const FieldOrganizationTypes = () => {
 
   const itemToString = item => item;
 
-  const typeOptions = organizationTypes.map(({ id }) => id);
+  const typeOptions = organizationTypes?.map(({ id }) => id);
 
   const filter = (filterText, list) => {
     const renderedItems = filterText
