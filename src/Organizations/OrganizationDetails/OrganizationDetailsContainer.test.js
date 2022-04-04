@@ -13,6 +13,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
   useIntegrationConfigs: jest.fn().mockReturnValue({ integrationConfigs: [], isLoading: false }),
 }));
 jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
   useTypes: jest.fn(),
 }));
 jest.mock('./OrganizationDetails', () => jest.fn(() => 'OrganizationDetails'));

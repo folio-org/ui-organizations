@@ -27,16 +27,12 @@ const matchMock = {
     id: organization.id,
   },
 };
-const resourcesMock = {
-  resources: { organizationTypes: {} },
-};
 const renderOrganizationEdit = (props) => render(
   <OrganizationEdit
     match={matchMock}
     location={{}}
     history={historyMock}
     mutator={mutatorMock}
-    resources={resourcesMock}
     {...props}
   />,
 );
