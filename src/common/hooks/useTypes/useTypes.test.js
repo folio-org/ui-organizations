@@ -8,7 +8,7 @@ import { organizationTypes } from '../../../../test/jest/fixtures';
 
 const queryClient = new QueryClient();
 
-const MOCK_TYPES = { orgTypes: { organizationTypes, totalRecords: organizationTypes.length } };
+const MOCK_TYPES = { organizationTypes };
 
 // eslint-disable-next-line react/prop-types
 const wrapper = ({ children }) => (
@@ -23,7 +23,7 @@ describe('useTypes', () => {
       .mockClear()
       .mockReturnValue({
         get: () => ({
-          json: () => Promise.resolve([MOCK_TYPES]),
+          json: () => Promise.resolve({ organizationTypes: [MOCK_TYPES] }),
         }),
       });
   });
@@ -33,6 +33,6 @@ describe('useTypes', () => {
 
     await waitFor(() => !result.current.isLoading);
 
-    expect(result.current.orgTypes).toEqual([MOCK_TYPES]);
+    expect(result.current.organizationTypes).toEqual([MOCK_TYPES]);
   });
 });
