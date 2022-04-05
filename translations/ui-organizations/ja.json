@@ -112,7 +112,7 @@
     "vendorInfo.vendorCurrencies": "Vendor currencies",
     "vendorInfo.claimingInterval": "Claiming interval",
     "vendorInfo.discountPercent": "割引率",
-    "vendorInfo.expectedActivationInterval": "Expected activation interval",
+    "vendorInfo.expectedActivationInterval": "アクティベーション予定日",
     "vendorInfo.expectedInvoiceInterval": "Expected invoice interval",
     "vendorInfo.expectedReceiptInterval": "予定受入間隔",
     "vendorInfo.renewalActivationInterval": "Renewal activation interval",
