@@ -6,6 +6,7 @@
 * Display linked agreements on an organization record. Refs UIORGS-306.
 * Remove react-hot-loader. Refs UIORGS-313.
 * Select filter should announce the number of Results in Result List pane header. Refs UIORGS-310.
+* Select Type from controlled vocabulary list. Refs UIORGS-285.
 
 ## [3.1.2](https://github.com/folio-org/ui-organizations/tree/v3.1.2) (2022-03-29)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.1.1...v3.1.2)
