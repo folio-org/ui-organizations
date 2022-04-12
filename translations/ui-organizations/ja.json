@@ -290,7 +290,7 @@
     "contactInfo.vendorCategory.uncategorized": "未分類",
     "contacts.actions.load.error": "Failed to load contacts data",
     "save.error.genericError": "Organization could not be saved",
-    "filterConfig.acqUnits": "調達ユニット",
+    "filterConfig.acqUnits": "収集ユニット",
     "save.error.codeInUse": "Code is already in use",
     "search.placeholder.language": "言語コードで検索",
     "vendorInfo.exportToAccounting": "会計にエクスポート",
