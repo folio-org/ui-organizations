@@ -171,6 +171,20 @@
         ]
       },
       {
+        "permissionName": "ui-organizations.integrations.creds.view",
+        "displayName": "Organizations: Integration usernames and passwords: view",
+        "visible": true,
+        "subPermissions": []
+      },
+      {
+        "permissionName": "ui-organizations.integrations.creds.edit",
+        "displayName": "Organizations: Integration usernames and passwords: view, edit",
+        "visible": true,
+        "subPermissions": [
+          "ui-organizations.integrations.creds.view"
+        ]
+      },
+      {
         "permissionName": "ui-organizations.acqUnits.assign",
         "displayName": "Organizations: Assign acquisition units to new organization",
         "description": "",
