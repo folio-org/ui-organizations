@@ -881,9 +881,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                             class="kvValue"
                             data-test-kv-value="true"
                           >
-                            <span>
-                              NoValue
-                            </span>
+                            ********
                           </div>
                         </div>
                       </div>
@@ -897,16 +895,32 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                           <div
                             class="kvLabel"
                           >
-                            ui-organizations.integration.ftp.password
+                            ui-organizations.edit.password
                           </div>
                           <div
                             class="kvValue"
                             data-test-kv-value="true"
                           >
-                            <span>
-                              NoValue
-                            </span>
+                            ********
                           </div>
+                        </div>
+                      </div>
+                      <div
+                        class="col-xs-6 col-md-3"
+                      >
+                        <div
+                          class="toggle"
+                        >
+                          <button
+                            class="button default"
+                            type="button"
+                          >
+                            <span
+                              class="inner"
+                            >
+                              ui-organizations.edit.showCredentials
+                            </span>
+                          </button>
                         </div>
                       </div>
                       <div
