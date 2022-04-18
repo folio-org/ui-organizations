@@ -18,6 +18,9 @@ export const CredentialsField = ({
   } = useContext(CredentialsContext);
 
   const isVisible = isCredsVisible && hasPerm;
+  const isDisabled = !hasPerm || disabled;
+  const fieldType = isVisible ? 'text' : 'password';
+  const keyValueString = isVisible ? (props.children ?? value) : '********';
 
   return (
     <>
@@ -27,18 +30,18 @@ export const CredentialsField = ({
             <KeyValue
               {...props}
             >
-              {isVisible ? (props.children ?? value) : '********'}
+              {keyValueString}
             </KeyValue>
           )
           : (
             <Field
               data-testid="credentials-field"
               component={TextField}
-              type={isVisible ? 'text' : 'password'}
+              type={fieldType}
               fullWidth
               value={value}
               {...props}
-              disabled={!hasPerm || disabled}
+              disabled={isDisabled}
             />
           )
       }
