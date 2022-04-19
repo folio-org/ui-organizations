@@ -479,6 +479,7 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
                       aria-describedby="multi-describe-control-account-acq-units-0"
                       aria-labelledby="account-acq-units-0-label multi-value-status-account-acq-units-0"
                       class="multiSelectControl formControl"
+                      role="search"
                       tabindex="0"
                     >
                       <div
