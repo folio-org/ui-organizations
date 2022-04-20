@@ -21,6 +21,7 @@ import {
 
 import { ORGANIZATION_STATUS } from '../../../common/constants';
 import { FieldLanguage } from '../../../common/components';
+import { FieldOrganizationTypes } from './FieldOrganizationTypes';
 import {
   CREATE_UNITS_PERM,
   MANAGE_UNITS_PERM,
@@ -142,6 +143,12 @@ function OrganizationSummaryForm({ initialValues }) {
             </FormattedMessage>
           ))}
         </Field>
+      </Col>
+      <Col
+        xs={6}
+        md={3}
+      >
+        <FieldOrganizationTypes />
       </Col>
       <Col
         xs={6}

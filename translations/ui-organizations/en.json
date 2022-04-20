@@ -105,6 +105,7 @@
   "summary.code": "Code",
   "summary.description": "Description",
   "summary.organizationStatus": "Organization status",
+  "summary.type": "Type",
   "summary.isVendor": "Vendor",
   "summary.accountingCode": "Accounting code",
   "summary.defaultLanguage": "Default language",
@@ -425,7 +426,6 @@
   "settings.type": "Type",
   "settings.typeStatus.Active": "Active",
   "settings.typeStatus.Inactive": "Inactive",
-
   "permission.view": "Organizations: View",
   "permission.edit": "Organizations: View, edit",
   "permission.create": "Organizations: View, edit, create",

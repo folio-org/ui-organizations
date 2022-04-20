@@ -9,9 +9,7 @@ import {
 import { useShowCallout } from '@folio/stripes-acq-components';
 
 import { VIEW_ORG_DETAILS } from '../../common/constants';
-import {
-  organizationsResource,
-} from '../../common/resources';
+import { organizationsResource } from '../../common/resources';
 import {
   OrganizationForm,
 } from '../OrganizationForm';
