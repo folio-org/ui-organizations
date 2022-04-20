@@ -344,6 +344,7 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
                 aria-describedby="multi-describe-control-org-acq-units"
                 aria-labelledby="org-acq-units-label multi-value-status-org-acq-units"
                 class="multiSelectControl formControl"
+                role="search"
                 tabindex="0"
               >
                 <div
