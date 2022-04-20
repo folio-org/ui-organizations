@@ -138,6 +138,7 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
                     aria-describedby="multi-describe-control-multiselect-1"
                     aria-labelledby="vendorFormCurrenciesLabel multi-value-status-multiselect-1"
                     class="multiSelectControl formControl"
+                    role="search"
                     tabindex="0"
                   >
                     <div
