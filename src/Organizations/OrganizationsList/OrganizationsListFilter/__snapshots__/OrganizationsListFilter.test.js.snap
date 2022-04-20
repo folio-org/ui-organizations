@@ -291,7 +291,6 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
                   aria-describedby="multi-describe-control-acq-tags-filter"
                   aria-labelledby="accordion-toggle-button-org-filter-tags multi-value-status-acq-tags-filter"
                   class="multiSelectControl formControl"
-                  role="search"
                   tabindex="0"
                 >
                   <div
@@ -1580,7 +1579,6 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
                   aria-describedby="multi-describe-control-acq-tags-filter"
                   aria-labelledby="accordion-toggle-button-org-filter-tags multi-value-status-acq-tags-filter"
                   class="multiSelectControl isDisabled formControl disabled"
-                  role="search"
                   tabindex="0"
                 >
                   <div
