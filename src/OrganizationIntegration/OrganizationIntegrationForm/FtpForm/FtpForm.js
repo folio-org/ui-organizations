@@ -14,7 +14,10 @@ import {
   validateURL,
 } from '@folio/stripes-acq-components';
 
-import TogglePassword from '../../../Utils/TogglePassword';
+import {
+  Credentials,
+  CredentialsField,
+} from '../../../common/components';
 import {
   FTP_TYPES,
   TRANSMISSION_MODES,
@@ -86,32 +89,42 @@ export const FtpForm = () => {
           />
         </Col>
       </Row>
-      <Row>
-        <Col
-          data-test-username
-          xs={6}
-          md={3}
-        >
-          <Field
-            label={<FormattedMessage id="ui-organizations.integration.ftp.username" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.username"
-            type="text"
-            component={TextField}
-            fullWidth
-            validateFields={[]}
-          />
-        </Col>
-        <Col
-          data-test-password
-          xs={6}
-          md={3}
-        >
-          <TogglePassword
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.password"
-            buttonID="ediPassword.button"
-          />
-        </Col>
-      </Row>
+      <Credentials perm="ui-organizations.integrations.creds.edit">
+        {(renderToggle, hasCredsPerm) => (
+          <Row>
+            <Col
+              data-test-username
+              xs={6}
+              md={3}
+            >
+              <CredentialsField
+                label={<FormattedMessage id="ui-organizations.integration.ftp.username" />}
+                name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.username"
+                validateFields={[]}
+              />
+            </Col>
+            <Col
+              data-test-password
+              xs={6}
+              md={3}
+            >
+              <CredentialsField
+                autoComplete="new-password"
+                label={<FormattedMessage id="ui-organizations.edit.password" />}
+                name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.password"
+              />
+            </Col>
+            {hasCredsPerm && (
+              <Col
+                xs={6}
+                md={3}
+              >
+                {renderToggle()}
+              </Col>
+            )}
+          </Row>
+        )}
+      </Credentials>
       <Row>
         <Col
           data-test-ftp-port
