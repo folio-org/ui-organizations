@@ -11,6 +11,7 @@ import {
   TextField,
 } from '@folio/stripes/components';
 import {
+  validateRequired,
   validateURL,
 } from '@folio/stripes-acq-components';
 
@@ -137,7 +138,9 @@ export const FtpForm = () => {
             type="number"
             component={TextField}
             fullWidth
+            required
             validateFields={[]}
+            validate={validateRequired}
           />
         </Col>
         <Col

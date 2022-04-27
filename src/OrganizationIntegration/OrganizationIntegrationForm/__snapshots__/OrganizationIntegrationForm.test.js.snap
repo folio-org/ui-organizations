@@ -434,18 +434,26 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                             for="vendorEdiCode"
                           >
                             ui-organizations.integration.edi.vendorEDICode
+                            <span
+                              aria-hidden="true"
+                              class="asterisk"
+                            >
+                              *
+                            </span>
                           </label>
                           <div
                             class="formControl inputGroup"
                           >
                             <input
                               aria-invalid="false"
+                              aria-required="true"
                               autocapitalize="off"
                               autocomplete="off"
                               autocorrect="off"
                               error=""
                               id="vendorEdiCode"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.vendorEdiCode"
+                              required=""
                               spellcheck="false"
                               type="text"
                               value=""
@@ -523,18 +531,26 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                             for="libEdiCode"
                           >
                             ui-organizations.integration.edi.libraryEDICode
+                            <span
+                              aria-hidden="true"
+                              class="asterisk"
+                            >
+                              *
+                            </span>
                           </label>
                           <div
                             class="formControl inputGroup"
                           >
                             <input
                               aria-invalid="false"
+                              aria-required="true"
                               autocapitalize="off"
                               autocomplete="off"
                               autocorrect="off"
                               error=""
                               id="libEdiCode"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.libEdiCode"
+                              required=""
                               spellcheck="false"
                               type="text"
                               value=""
@@ -1174,18 +1190,26 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                             for="text-input-22"
                           >
                             ui-organizations.integration.ftp.ftpPort
+                            <span
+                              aria-hidden="true"
+                              class="asterisk"
+                            >
+                              *
+                            </span>
                           </label>
                           <div
                             class="formControl inputGroup"
                           >
                             <input
                               aria-invalid="false"
+                              aria-required="true"
                               autocapitalize="off"
                               autocomplete="off"
                               autocorrect="off"
                               error=""
                               id="text-input-22"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.ftpPort"
+                              required=""
                               spellcheck="false"
                               type="number"
                               value=""
