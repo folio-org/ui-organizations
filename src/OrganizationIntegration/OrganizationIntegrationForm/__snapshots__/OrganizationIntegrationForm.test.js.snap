@@ -1013,18 +1013,26 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                             for="text-input-18"
                           >
                             ui-organizations.integration.ftp.serverAddress
+                            <span
+                              aria-hidden="true"
+                              class="asterisk"
+                            >
+                              *
+                            </span>
                           </label>
                           <div
                             class="formControl inputGroup"
                           >
                             <input
                               aria-invalid="false"
+                              aria-required="true"
                               autocapitalize="off"
                               autocomplete="off"
                               autocorrect="off"
                               error=""
                               id="text-input-18"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.serverAddress"
+                              required=""
                               spellcheck="false"
                               type="text"
                               value=""
