@@ -12,7 +12,7 @@ import {
 } from '@folio/stripes/components';
 import {
   validateRequired,
-  validateURL,
+  validateURLRequired,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -69,9 +69,10 @@ export const FtpForm = () => {
             label={<FormattedMessage id="ui-organizations.integration.ftp.serverAddress" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.serverAddress"
             type="text"
-            validate={validateURL}
+            validate={validateURLRequired}
             component={TextField}
             fullWidth
+            required
             validateFields={[]}
           />
         </Col>
