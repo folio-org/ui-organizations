@@ -434,18 +434,26 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                             for="vendorEdiCode"
                           >
                             ui-organizations.integration.edi.vendorEDICode
+                            <span
+                              aria-hidden="true"
+                              class="asterisk"
+                            >
+                              *
+                            </span>
                           </label>
                           <div
                             class="formControl inputGroup"
                           >
                             <input
                               aria-invalid="false"
+                              aria-required="true"
                               autocapitalize="off"
                               autocomplete="off"
                               autocorrect="off"
                               error=""
                               id="vendorEdiCode"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.vendorEdiCode"
+                              required=""
                               spellcheck="false"
                               type="text"
                               value=""
@@ -523,18 +531,26 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                             for="libEdiCode"
                           >
                             ui-organizations.integration.edi.libraryEDICode
+                            <span
+                              aria-hidden="true"
+                              class="asterisk"
+                            >
+                              *
+                            </span>
                           </label>
                           <div
                             class="formControl inputGroup"
                           >
                             <input
                               aria-invalid="false"
+                              aria-required="true"
                               autocapitalize="off"
                               autocomplete="off"
                               autocorrect="off"
                               error=""
                               id="libEdiCode"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.libEdiCode"
+                              required=""
                               spellcheck="false"
                               type="text"
                               value=""
@@ -997,18 +1013,26 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                             for="text-input-18"
                           >
                             ui-organizations.integration.ftp.serverAddress
+                            <span
+                              aria-hidden="true"
+                              class="asterisk"
+                            >
+                              *
+                            </span>
                           </label>
                           <div
                             class="formControl inputGroup"
                           >
                             <input
                               aria-invalid="false"
+                              aria-required="true"
                               autocapitalize="off"
                               autocomplete="off"
                               autocorrect="off"
                               error=""
                               id="text-input-18"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.serverAddress"
+                              required=""
                               spellcheck="false"
                               type="text"
                               value=""
@@ -1089,11 +1113,12 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               autocapitalize="off"
                               autocomplete="off"
                               autocorrect="off"
+                              data-testid="credentials-field"
                               error=""
                               id="text-input-20"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.username"
                               spellcheck="false"
-                              type="text"
+                              type="password"
                               value=""
                               warning=""
                             />
@@ -1108,59 +1133,53 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         data-test-password="true"
                       >
                         <div
-                          class="row"
+                          class="textField"
                         >
-                          <div
-                            class="col-xs-10"
+                          <label
+                            class="label"
+                            for="text-input-21"
                           >
-                            <div
-                              class="textField"
-                            >
-                              <label
-                                class="label"
-                                for="text-input-21"
-                              >
-                                ui-organizations.edit.password
-                              </label>
-                              <div
-                                class="formControl inputGroup"
-                              >
-                                <input
-                                  aria-invalid="false"
-                                  autocapitalize="off"
-                                  autocomplete="new-password"
-                                  autocorrect="off"
-                                  data-testid="password-field"
-                                  error=""
-                                  id="text-input-21"
-                                  name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.password"
-                                  spellcheck="false"
-                                  type="password"
-                                  value=""
-                                  warning=""
-                                />
-                              </div>
-                              <div
-                                role="alert"
-                              />
-                            </div>
+                            ui-organizations.edit.password
+                          </label>
+                          <div
+                            class="formControl inputGroup"
+                          >
+                            <input
+                              aria-invalid="false"
+                              autocapitalize="off"
+                              autocomplete="new-password"
+                              autocorrect="off"
+                              data-testid="credentials-field"
+                              error=""
+                              id="text-input-21"
+                              name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.password"
+                              spellcheck="false"
+                              type="password"
+                              value=""
+                              warning=""
+                            />
                           </div>
                           <div
-                            class="col-xs-2"
-                            style="padding-top: 20px; margin-bottom: 0px;"
+                            role="alert"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="col-xs-6 col-md-3"
+                      >
+                        <div
+                          class="toggle"
+                        >
+                          <button
+                            class="button default"
+                            type="button"
                           >
-                            <button
-                              class="button default"
-                              id="ediPassword.button"
-                              type="button"
+                            <span
+                              class="inner"
                             >
-                              <span
-                                class="inner"
-                              >
-                                ui-organizations.edit.show
-                              </span>
-                            </button>
-                          </div>
+                              ui-organizations.edit.showCredentials
+                            </span>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -1179,18 +1198,26 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                             for="text-input-22"
                           >
                             ui-organizations.integration.ftp.ftpPort
+                            <span
+                              aria-hidden="true"
+                              class="asterisk"
+                            >
+                              *
+                            </span>
                           </label>
                           <div
                             class="formControl inputGroup"
                           >
                             <input
                               aria-invalid="false"
+                              aria-required="true"
                               autocapitalize="off"
                               autocomplete="off"
                               autocorrect="off"
                               error=""
                               id="text-input-22"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.ftpPort"
+                              required=""
                               spellcheck="false"
                               type="number"
                               value=""

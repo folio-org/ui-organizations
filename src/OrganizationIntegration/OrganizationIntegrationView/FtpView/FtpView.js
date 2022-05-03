@@ -9,6 +9,11 @@ import {
   Row,
 } from '@folio/stripes/components';
 
+import {
+  Credentials,
+  CredentialsField,
+} from '../../../common/components';
+
 const FtpView = ({ ediFtp = {} }) => {
   return (
     <Accordion
@@ -58,26 +63,43 @@ const FtpView = ({ ediFtp = {} }) => {
         </Col>
       </Row>
       <Row>
-        <Col
-          data-test-username
-          xs={6}
-          md={3}
+        <Credentials
+          perm="ui-organizations.integrations.creds.view"
+          isKeyValue
         >
-          <KeyValue
-            label={<FormattedMessage id="ui-organizations.integration.ftp.username" />}
-            value={ediFtp.username}
-          />
-        </Col>
-        <Col
-          data-test-password
-          xs={6}
-          md={3}
-        >
-          <KeyValue
-            label={<FormattedMessage id="ui-organizations.integration.ftp.password" />}
-            value={ediFtp.password}
-          />
-        </Col>
+          {(renderToggle, hasCredsPerm) => (
+            <>
+              <Col
+                data-test-username
+                xs={6}
+                md={3}
+              >
+                <CredentialsField
+                  label={<FormattedMessage id="ui-organizations.integration.ftp.username" />}
+                  value={ediFtp.username}
+                />
+              </Col>
+              <Col
+                data-test-password
+                xs={6}
+                md={3}
+              >
+                <CredentialsField
+                  label={<FormattedMessage id="ui-organizations.edit.password" />}
+                  value={ediFtp.password}
+                />
+              </Col>
+              {hasCredsPerm && (
+                <Col
+                  xs={6}
+                  md={3}
+                >
+                  {renderToggle()}
+                </Col>
+              )}
+            </>
+          )}
+        </Credentials>
         <Col
           data-test-ftp-port
           xs={6}
