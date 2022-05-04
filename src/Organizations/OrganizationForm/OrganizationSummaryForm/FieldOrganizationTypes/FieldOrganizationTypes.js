@@ -21,7 +21,9 @@ export const FieldOrganizationTypes = () => {
 
   const itemToString = item => item;
 
-  const typeOptions = organizationTypes?.filter(type => type.status === ORGANIZATION_TYPES_STATUS.active).map(({ id }) => id);
+  const typeOptions = organizationTypes
+    .filter(type => type.status === ORGANIZATION_TYPES_STATUS.active)
+    .map(({ id }) => id);
 
   const filter = (filterText, list) => {
     const renderedItems = filterText
