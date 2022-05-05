@@ -4,6 +4,7 @@ import { useForm } from 'react-final-form';
 
 import { FieldMultiSelectionFinal } from '@folio/stripes-acq-components';
 
+import { ORGANIZATION_TYPES_STATUS } from '../../../../common/constants';
 import { useTypes } from '../../../../common/hooks';
 
 export const FieldOrganizationTypes = () => {
@@ -20,7 +21,9 @@ export const FieldOrganizationTypes = () => {
 
   const itemToString = item => item;
 
-  const typeOptions = organizationTypes?.map(({ id }) => id);
+  const typeOptions = organizationTypes
+    .filter(type => type.status === ORGANIZATION_TYPES_STATUS.active)
+    .map(({ id }) => id);
 
   const filter = (filterText, list) => {
     const renderedItems = filterText
