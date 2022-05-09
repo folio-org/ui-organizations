@@ -3,6 +3,13 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import OrganizationsListFilter from './OrganizationsListFilter';
+import { organizationTypes } from '../../../../test/jest/fixtures';
+
+import { useTypes } from '../../../common/hooks';
+
+jest.mock('../../../common/hooks', () => ({
+  useTypes: jest.fn(),
+}));
 
 const defaultProps = {
   activeFilters: {},
@@ -17,6 +24,9 @@ const renderOrganizationsListFilter = (props = defaultProps) => render(
 describe('OrganizationsListFilter', () => {
   beforeEach(() => {
     global.document.createRange = global.document.originalCreateRange;
+    useTypes
+      .mockClear()
+      .mockReturnValue({ organizationTypes, totalRecords: organizationTypes.length });
   });
 
   afterEach(() => {
