@@ -40,6 +40,7 @@
   "filterConfig.vendorStatus": "Organizations status",
   "filterConfig.boolean.true": "Yes",
   "filterConfig.boolean.false": "No",
+  "filterConfig.types": "Types",
 
   "search.keyword": "All",
   "search.name": "Name",
