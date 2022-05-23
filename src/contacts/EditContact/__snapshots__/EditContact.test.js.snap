@@ -435,6 +435,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                 aria-describedby="multi-describe-control-multiselect-2"
                                 aria-labelledby="nameFormCategoriesLabel multi-value-status-multiselect-2"
                                 class="multiSelectControl formControl"
+                                role="search"
                                 tabindex="0"
                               >
                                 <div
@@ -916,6 +917,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                             aria-describedby="multi-describe-control-multiselect-4"
                                             aria-labelledby="emailFormCategoriesLabel multi-value-status-multiselect-4"
                                             class="multiSelectControl formControl"
+                                            role="search"
                                             tabindex="0"
                                           >
                                             <div
@@ -1447,6 +1449,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                             aria-describedby="multi-describe-control-multiselect-6"
                                             aria-labelledby="phoneFormCategoriesLabel multi-value-status-multiselect-6"
                                             class="multiSelectControl formControl"
+                                            role="search"
                                             tabindex="0"
                                           >
                                             <div
@@ -1955,6 +1958,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                             aria-describedby="multi-describe-control-multiselect-8"
                                             aria-labelledby="urlFormCategoriesLabel multi-value-status-multiselect-8"
                                             class="multiSelectControl formControl"
+                                            role="search"
                                             tabindex="0"
                                           >
                                             <div
@@ -2634,6 +2638,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                                 aria-describedby="multi-describe-control-multiselect-10"
                                                 aria-labelledby="addressFormCategoriesLabel multi-value-status-multiselect-10"
                                                 class="multiSelectControl formControl"
+                                                role="search"
                                                 tabindex="0"
                                               >
                                                 <div

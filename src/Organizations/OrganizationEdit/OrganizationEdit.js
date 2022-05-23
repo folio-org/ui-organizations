@@ -19,9 +19,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { VIEW_ORG_DETAILS } from '../../common/constants';
-import {
-  organizationResourceByUrl,
-} from '../../common/resources';
+import { organizationResourceByUrl } from '../../common/resources';
 import {
   OrganizationForm,
 } from '../OrganizationForm';

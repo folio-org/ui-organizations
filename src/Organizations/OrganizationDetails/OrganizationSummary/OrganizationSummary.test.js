@@ -25,6 +25,7 @@ const STUB_ORG = {
   isVendor: true,
   changelogs: [],
   acqUnitIds: [],
+  organizationTypes: ['type 1', 'type 2'],
   metadata: {
     createdDate: '2020-09-09T09:13:03.147+0000',
     createdByUserId: 'd40ce2c6-e043-51c6-8573-b3d953bf5ea6',
@@ -51,7 +52,7 @@ const messages = {
   'stripes-components.noValue.noValueSet': 'noValueSet',
 };
 
-const renderOrganizationSummary = (organization = STUB_ORG) => (render(
+const renderOrganizationSummary = (organization) => (render(
   <IntlProvider locale="en" messages={messages}>
     <OrganizationSummary
       acqUnitIds={organization.acqUnitIds}
@@ -64,13 +65,14 @@ const renderOrganizationSummary = (organization = STUB_ORG) => (render(
       metadata={organization.metadata}
       name={organization.name}
       status={organization.status}
+      organizationTypes={organization.organizationTypes}
     />
   </IntlProvider>,
 ));
 
 describe('OrganizationSummary component', () => {
   it('should display NoValue', () => {
-    renderOrganizationSummary();
+    renderOrganizationSummary(STUB_ORG);
     const defaultLanguageValue = screen.getByTestId('defaultLanguage').querySelector('[data-test-kv-value]');
     const accountingCodeValue = screen.getByTestId('accountingCode').querySelector('[data-test-kv-value]');
     const nameValue = screen.getByTestId('name').querySelector('[data-test-kv-value]');
@@ -80,5 +82,20 @@ describe('OrganizationSummary component', () => {
     expect(defaultLanguageValue).toHaveTextContent('-');
     expect(accountingCodeValue).toHaveTextContent('-');
     expect(description).toHaveTextContent('-');
+  });
+
+  it('should display types', () => {
+    renderOrganizationSummary(STUB_ORG);
+    const type = screen.getByTestId('type').querySelector('[data-test-kv-value]');
+
+    expect(screen.getByText('ui-organizations.summary.type')).toBeDefined();
+    expect(type).toHaveTextContent('type 1, type 2');
+  });
+
+  it('should display NoValue sign', () => {
+    renderOrganizationSummary({ organizationTypes: [] });
+    const type = screen.getByTestId('type').querySelector('[data-test-kv-value]');
+
+    expect(type).toHaveTextContent('-');
   });
 });

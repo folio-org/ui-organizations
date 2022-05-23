@@ -210,7 +210,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
     <section
       class="accordion hasSeparator"
       data-test-accordion-section="true"
-      id="org-filter-tags"
+      id="org-filter-organizationTypes"
     >
       <div
         class="headerWrapper"
@@ -222,6 +222,192 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
         >
           <button
             aria-controls="accordion2"
+            aria-expanded="false"
+            aria-label="ui-organizations.filterConfig.types filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-org-filter-organizationTypes"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-organizations.filterConfig.types
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 1;"
+      >
+        <div
+          aria-label="[object Object]"
+          aria-labelledby="accordion-toggle-button-org-filter-organizationTypes"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion2"
+          role="region"
+        >
+          <div
+            class="multiSelectContainer"
+            id="types-filter"
+          >
+            <div
+              aria-live="assertive"
+              aria-relevant="additions"
+              class="sr-only"
+            />
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-labelledby="accordion-toggle-button-org-filter-organizationTypes"
+              class="multiSelectContainer"
+              role="application"
+            >
+              <span
+                class="sr-only"
+                id="multi-value-status-types-filter"
+              >
+                0 items selected
+              </span>
+              <span
+                class="sr-only"
+                id="multi-describe-control-types-filter"
+              >
+                stripes-components.multiSelection.controlDescription
+              </span>
+              <div
+                class="multiSelectControlWrapper"
+              >
+                <div
+                  aria-describedby="multi-describe-control-types-filter"
+                  aria-labelledby="accordion-toggle-button-org-filter-organizationTypes multi-value-status-types-filter"
+                  class="multiSelectControl formControl"
+                  role="search"
+                  tabindex="0"
+                >
+                  <div
+                    class="multiSelectControlGroup"
+                  >
+                    <input
+                      aria-autocomplete="list"
+                      aria-labelledby="accordion-toggle-button-org-filter-organizationTypes"
+                      autocomplete="off"
+                      class="multiSelectFilterField"
+                      id="types-filter-input"
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      aria-autocomplete="list"
+                      aria-hidden="true"
+                      autocomplete="off"
+                      class="multiSelectValueInput"
+                      id="multiselect-input-types-filter"
+                      tabindex="-1"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <button
+                    aria-haspopup="true"
+                    aria-label="open menu"
+                    class="multiSelectToggleButton"
+                    data-toggle="true"
+                    role="button"
+                    type="button"
+                  >
+                    <div
+                      class="textFieldIcon"
+                    >
+                      <span>
+                        Icon
+                      </span>
+                    </div>
+                  </button>
+                </div>
+                <div
+                  class="multiSelectMenu"
+                  hidden=""
+                  style="width: 100px;"
+                >
+                  <div
+                    class="multiSelectFeedback"
+                    role="alert"
+                  />
+                  <ul
+                    aria-labelledby="accordion-toggle-button-org-filter-organizationTypes"
+                    class="multiSelectOptionList"
+                    id="multiselect-option-list-types-filter"
+                    role="listbox"
+                    style="max-height: 168px;"
+                  >
+                    <li
+                      aria-selected="false"
+                      class="multiSelectOption optionCursor"
+                      id="types-filter-main-item-0"
+                      role="option"
+                    >
+                      <div
+                        class="optionSegment"
+                        data-test-selection-option-segment="true"
+                      >
+                        Book trade
+                      </div>
+                      <div>
+                        +
+                      </div>
+                    </li>
+                    <li
+                      aria-selected="false"
+                      class="multiSelectOption"
+                      id="types-filter-main-item-1"
+                      role="option"
+                    >
+                      <div
+                        class="optionSegment"
+                        data-test-selection-option-segment="true"
+                      >
+                        Auction house
+                      </div>
+                      <div>
+                        +
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="org-filter-tags"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion3"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.tags filter list"
             class="filterSetHeader"
@@ -253,7 +439,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           aria-labelledby="accordion-toggle-button-org-filter-tags"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion2"
+          id="accordion3"
           role="region"
         >
           <div
@@ -291,6 +477,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
                   aria-describedby="multi-describe-control-acq-tags-filter"
                   aria-labelledby="accordion-toggle-button-org-filter-tags multi-value-status-acq-tags-filter"
                   class="multiSelectControl formControl"
+                  role="search"
                   tabindex="0"
                 >
                   <div
@@ -379,7 +566,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion3"
+            aria-controls="accordion4"
             aria-expanded="false"
             aria-label="ui-organizations.filterConfig.isVendor filter list"
             class="filterSetHeader"
@@ -411,7 +598,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           aria-labelledby="accordion-toggle-button-org-filter-isVendor"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion3"
+          id="accordion4"
           role="region"
         >
           <div
@@ -531,7 +718,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion4"
+            aria-controls="accordion5"
             aria-expanded="false"
             aria-label="ui-organizations.filterConfig.country filter list"
             class="filterSetHeader"
@@ -563,7 +750,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           aria-labelledby="accordion-toggle-button-org-filter-addresses"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion4"
+          id="accordion5"
           role="region"
         >
           <div
@@ -631,7 +818,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion5"
+            aria-controls="accordion6"
             aria-expanded="false"
             aria-label="ui-organizations.filterConfig.languages filter list"
             class="filterSetHeader"
@@ -663,7 +850,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           aria-labelledby="accordion-toggle-button-org-filter-language"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion5"
+          id="accordion6"
           role="region"
         >
           <div
@@ -731,7 +918,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion6"
+            aria-controls="accordion7"
             aria-expanded="false"
             aria-label="ui-organizations.filterConfig.paymentMethod filter list"
             class="filterSetHeader"
@@ -763,7 +950,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           aria-labelledby="accordion-toggle-button-org-filter-paymentMethod"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion6"
+          id="accordion7"
           role="region"
         >
           <div
@@ -1183,7 +1370,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion7"
+            aria-controls="accordion8"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.acqUnit filter list"
             class="filterSetHeader"
@@ -1215,7 +1402,7 @@ exports[`OrganizationsListFilter should render correct structure 1`] = `
           aria-labelledby="accordion-toggle-button-org-filter-acqUnitIds"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion7"
+          id="accordion8"
           role="region"
         >
           <div
@@ -1292,7 +1479,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion22"
+            aria-controls="accordion25"
             aria-expanded="true"
             aria-label="ui-organizations.filterConfig.vendorStatus filter list"
             class="filterSetHeader"
@@ -1324,7 +1511,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           aria-labelledby="accordion-toggle-button-org-filter-status"
           class="content-region expanded"
           data-test-accordion-wrapper="true"
-          id="accordion22"
+          id="accordion25"
           role="region"
         >
           <div
@@ -1498,6 +1685,194 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
     <section
       class="accordion hasSeparator"
       data-test-accordion-section="true"
+      id="org-filter-organizationTypes"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion26"
+            aria-expanded="false"
+            aria-label="ui-organizations.filterConfig.types filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-org-filter-organizationTypes"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-organizations.filterConfig.types
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 1;"
+      >
+        <div
+          aria-label="[object Object]"
+          aria-labelledby="accordion-toggle-button-org-filter-organizationTypes"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion26"
+          role="region"
+        >
+          <div
+            class="multiSelectContainer"
+            id="types-filter"
+          >
+            <div
+              aria-live="assertive"
+              aria-relevant="additions"
+              class="sr-only"
+            />
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-labelledby="accordion-toggle-button-org-filter-organizationTypes"
+              class="multiSelectContainer"
+              role="application"
+            >
+              <span
+                class="sr-only"
+                id="multi-value-status-types-filter"
+              >
+                0 items selected
+              </span>
+              <span
+                class="sr-only"
+                id="multi-describe-control-types-filter"
+              >
+                stripes-components.multiSelection.controlDescription
+              </span>
+              <div
+                class="multiSelectControlWrapper"
+              >
+                <div
+                  aria-describedby="multi-describe-control-types-filter"
+                  aria-labelledby="accordion-toggle-button-org-filter-organizationTypes multi-value-status-types-filter"
+                  class="multiSelectControl isDisabled formControl disabled"
+                  role="search"
+                  tabindex="0"
+                >
+                  <div
+                    class="multiSelectControlGroup"
+                  >
+                    <input
+                      aria-autocomplete="list"
+                      aria-labelledby="accordion-toggle-button-org-filter-organizationTypes"
+                      autocomplete="off"
+                      class="multiSelectFilterField"
+                      disabled=""
+                      id="types-filter-input"
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      aria-autocomplete="list"
+                      aria-hidden="true"
+                      autocomplete="off"
+                      class="multiSelectValueInput"
+                      id="multiselect-input-types-filter"
+                      tabindex="-1"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <button
+                    aria-haspopup="true"
+                    aria-label="open menu"
+                    class="multiSelectToggleButton"
+                    data-toggle="true"
+                    disabled=""
+                    role="button"
+                    type="button"
+                  >
+                    <div
+                      class="textFieldIcon"
+                    >
+                      <span>
+                        Icon
+                      </span>
+                    </div>
+                  </button>
+                </div>
+                <div
+                  class="multiSelectMenu"
+                  hidden=""
+                  style="width: 100px;"
+                >
+                  <div
+                    class="multiSelectFeedback"
+                    role="alert"
+                  />
+                  <ul
+                    aria-labelledby="accordion-toggle-button-org-filter-organizationTypes"
+                    class="multiSelectOptionList"
+                    id="multiselect-option-list-types-filter"
+                    role="listbox"
+                    style="max-height: 168px;"
+                  >
+                    <li
+                      aria-selected="false"
+                      class="multiSelectOption optionCursor"
+                      id="types-filter-main-item-0"
+                      role="option"
+                    >
+                      <div
+                        class="optionSegment"
+                        data-test-selection-option-segment="true"
+                      >
+                        Book trade
+                      </div>
+                      <div>
+                        +
+                      </div>
+                    </li>
+                    <li
+                      aria-selected="false"
+                      class="multiSelectOption"
+                      id="types-filter-main-item-1"
+                      role="option"
+                    >
+                      <div
+                        class="optionSegment"
+                        data-test-selection-option-segment="true"
+                      >
+                        Auction house
+                      </div>
+                      <div>
+                        +
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
       id="org-filter-tags"
     >
       <div
@@ -1509,7 +1884,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion23"
+            aria-controls="accordion27"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.tags filter list"
             class="filterSetHeader"
@@ -1541,7 +1916,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           aria-labelledby="accordion-toggle-button-org-filter-tags"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion23"
+          id="accordion27"
           role="region"
         >
           <div
@@ -1579,6 +1954,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
                   aria-describedby="multi-describe-control-acq-tags-filter"
                   aria-labelledby="accordion-toggle-button-org-filter-tags multi-value-status-acq-tags-filter"
                   class="multiSelectControl isDisabled formControl disabled"
+                  role="search"
                   tabindex="0"
                 >
                   <div
@@ -1669,7 +2045,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion24"
+            aria-controls="accordion28"
             aria-expanded="false"
             aria-label="ui-organizations.filterConfig.isVendor filter list"
             class="filterSetHeader"
@@ -1701,7 +2077,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           aria-labelledby="accordion-toggle-button-org-filter-isVendor"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion24"
+          id="accordion28"
           role="region"
         >
           <div
@@ -1831,7 +2207,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion25"
+            aria-controls="accordion29"
             aria-expanded="false"
             aria-label="ui-organizations.filterConfig.country filter list"
             class="filterSetHeader"
@@ -1863,7 +2239,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           aria-labelledby="accordion-toggle-button-org-filter-addresses"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion25"
+          id="accordion29"
           role="region"
         >
           <div
@@ -1932,7 +2308,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion26"
+            aria-controls="accordion30"
             aria-expanded="false"
             aria-label="ui-organizations.filterConfig.languages filter list"
             class="filterSetHeader"
@@ -1964,7 +2340,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           aria-labelledby="accordion-toggle-button-org-filter-language"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion26"
+          id="accordion30"
           role="region"
         >
           <div
@@ -2033,7 +2409,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion27"
+            aria-controls="accordion31"
             aria-expanded="false"
             aria-label="ui-organizations.filterConfig.paymentMethod filter list"
             class="filterSetHeader"
@@ -2065,7 +2441,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           aria-labelledby="accordion-toggle-button-org-filter-paymentMethod"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion27"
+          id="accordion31"
           role="region"
         >
           <div
@@ -2525,7 +2901,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion28"
+            aria-controls="accordion32"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.acqUnit filter list"
             class="filterSetHeader"
@@ -2557,7 +2933,7 @@ exports[`OrganizationsListFilter should render correct structure when disabled 1
           aria-labelledby="accordion-toggle-button-org-filter-acqUnitIds"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion28"
+          id="accordion32"
           role="region"
         >
           <div

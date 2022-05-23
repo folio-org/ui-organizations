@@ -81,6 +81,7 @@ export const organization = {
     acqUnitIds: [],
   }],
   isVendor: true,
+  organizationTypes: ['e7e9af00-c12c-448f-8ad1-d15ff209605a'],
   sanCode: '1234567',
   changelogs: [{
     description: 'This is a sample note.',

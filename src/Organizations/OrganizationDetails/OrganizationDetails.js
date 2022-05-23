@@ -70,6 +70,7 @@ const OrganizationDetails = ({
   organization,
   organizationCategories,
   integrationConfigs,
+  organizationTypes,
 }) => {
   const stripes = useStripes();
   const [isRemoveModalOpened, toggleRemoveModal] = useModalToggle();
@@ -96,6 +97,15 @@ const OrganizationDetails = ({
   );
   const accountNumbers = (organization.isVendor && organization.accounts?.map(({ accountNo }) => accountNo)) || [];
   const hasDuplicateAccountNumbers = [...new Set(accountNumbers)].length !== accountNumbers.length;
+
+  const getOrganizationTypeElement = ((id) => {
+    return (
+      organizationTypes.find(e => e.id === id)
+    );
+  });
+
+  const selectedOrganizationTypes = (organization.organizationTypes?.map((id) => getOrganizationTypeElement(id))) || [];
+  const organizationTypesLabels = selectedOrganizationTypes.map((item) => (item.name));
 
   useEffect(() => {
     if (isDetailsPaneInFocus) paneTitleRef.current.focus();
@@ -263,6 +273,7 @@ const OrganizationDetails = ({
                 metadata={organization.metadata}
                 name={organization.name}
                 status={organization.status}
+                organizationTypes={organizationTypesLabels}
               />
             </Accordion>
 
@@ -408,6 +419,7 @@ OrganizationDetails.propTypes = {
     value: PropTypes.string,
   })),
   integrationConfigs: PropTypes.arrayOf(PropTypes.object),
+  organizationTypes: PropTypes.arrayOf(PropTypes.object),
 };
 
 OrganizationDetails.defaultProps = {

@@ -9,6 +9,7 @@ import {
 export const FILTERS = {
   ACQUISITIONS_UNIT: 'acqUnitIds',
   STATUS: 'status',
+  TYPES: 'organizationTypes',
   TAGS: 'tags',
   ADDRESS_COUNTRY: 'addresses',
   LANGUAGE: 'language',

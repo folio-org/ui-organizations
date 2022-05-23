@@ -5,10 +5,16 @@ import { match, location, history } from '../../../test/jest/routerMocks';
 
 import OrganizationDetails from './OrganizationDetails';
 import { OrganizationDetailsContainer } from './OrganizationDetailsContainer';
+import { organizationTypes } from '../../../test/jest/fixtures';
+import { useTypes } from '../../common/hooks';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   useIntegrationConfigs: jest.fn().mockReturnValue({ integrationConfigs: [], isLoading: false }),
+}));
+jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
+  useTypes: jest.fn(),
 }));
 jest.mock('./OrganizationDetails', () => jest.fn(() => 'OrganizationDetails'));
 
@@ -16,6 +22,7 @@ const organization = {
   id: 'orgUId',
   name: 'Amazon',
 };
+
 const mutatorMock = {
   organizationDetailsOrg: {
     GET: jest.fn(),
@@ -42,6 +49,9 @@ const renderOrganizationDetailsContainer = () => render(
 describe('OrganizationDetailsContainer', () => {
   beforeEach(() => {
     mutatorMock.organizationDetailsOrg.GET.mockClear().mockReturnValue(Promise.resolve(organization));
+    useTypes
+      .mockClear()
+      .mockReturnValue({ orgTypes: { organizationTypes, totalRecords: organizationTypes.length } });
 
     historyMock.push.mockClear();
   });

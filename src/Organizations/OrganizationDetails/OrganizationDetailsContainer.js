@@ -21,6 +21,7 @@ import {
 } from '../../common/resources';
 import {
   useTranslatedCategories,
+  useTypes,
 } from '../../common/hooks';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 import OrganizationDetails from './OrganizationDetails';
@@ -39,8 +40,8 @@ export const OrganizationDetailsContainer = ({
   const [isLoading, setIsLoading] = useState(true);
   const [organizationCategories, setOrganizationCategories] = useState([]);
   const [translatedCategories] = useTranslatedCategories(organizationCategories);
+  const { organizationTypes, isLoading: isOrgTypesLoading } = useTypes();
   const intl = useIntl();
-
   const { integrationConfigs } = useIntegrationConfigs({ organizationId });
 
   useEffect(
@@ -132,7 +133,7 @@ export const OrganizationDetailsContainer = ({
     [intl, showCallout, organizationId],
   );
 
-  if (isLoading) {
+  if (isLoading || isOrgTypesLoading) {
     return (
       <LoadingPane
         id="pane-organization-details"
@@ -151,6 +152,7 @@ export const OrganizationDetailsContainer = ({
       organization={organization}
       organizationCategories={translatedCategories}
       integrationConfigs={integrationConfigs}
+      organizationTypes={organizationTypes}
     />
   );
 };

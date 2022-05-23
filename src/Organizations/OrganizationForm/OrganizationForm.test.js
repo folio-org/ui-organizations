@@ -13,6 +13,7 @@ import {
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import OrganizationForm from './OrganizationForm';
+import { organizationTypes } from '../../../test/jest/fixtures';
 
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
@@ -54,9 +55,14 @@ jest.mock(
 
 const queryAllByClass = queryHelpers.queryAllByAttribute.bind(null, 'class');
 
+const organizationTypesMock = {
+  records: organizationTypes,
+};
+
 const defaultProps = {
   onSubmit: jest.fn(),
   initialValues: {},
+  organizationTypes: organizationTypesMock,
   cancelForm: jest.fn(),
 };
 const renderOrganizationForm = (props = defaultProps) => render(

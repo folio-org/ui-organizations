@@ -94,6 +94,8 @@ export const EdiForm = ({
             id="vendorEdiCode"
             label={<FormattedMessage id="ui-organizations.integration.edi.vendorEDICode" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.vendorEdiCode"
+            required
+            validate={validateRequired}
           />
         </Col>
 
@@ -122,6 +124,8 @@ export const EdiForm = ({
             id="libEdiCode"
             label={<FormattedMessage id="ui-organizations.integration.edi.libraryEDICode" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.libEdiCode"
+            required
+            validate={validateRequired}
           />
         </Col>
 

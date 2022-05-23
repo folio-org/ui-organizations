@@ -14,6 +14,7 @@ import {
   PAYMENT_METHOD_OPTIONS,
 } from '@folio/stripes-acq-components';
 
+import { TypeFilter } from './TypeFilter';
 import {
   FILTERS,
   BOOLEAN_OPTIONS,
@@ -43,6 +44,14 @@ const OrganizationsListFilter = ({
         onChange={adaptedApplyFilters}
         options={STATUS_OPTIONS}
         closedByDefault={false}
+      />
+
+      <TypeFilter
+        activeFilters={activeFilters[FILTERS.TYPES]}
+        disabled={disabled}
+        id={`org-filter-${FILTERS.TYPES}`}
+        name={FILTERS.TYPES}
+        onChange={adaptedApplyFilters}
       />
 
       <AcqTagsFilter
