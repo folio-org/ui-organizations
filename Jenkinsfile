@@ -1,5 +1,5 @@
 buildNPM {
-  buildNode = 'jenkins-agent-java17'
+  buildNode = 'jenkins-agent-java11'
   publishModDescriptor = true
   runLint = true
   runSonarqube = true
