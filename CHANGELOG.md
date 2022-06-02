@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Backport recent zh_TW translations. Refs UIORGS-321.
+
 ## [3.1.2](https://github.com/folio-org/ui-organizations/tree/v3.1.2) (2022-03-29)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.1.1...v3.1.2)
 

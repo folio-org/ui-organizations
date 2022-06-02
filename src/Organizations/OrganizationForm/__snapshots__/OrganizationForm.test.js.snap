@@ -7,7 +7,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
   >
     <div>
       <div
-        class="paneset  "
+        class="paneset"
       >
         <section
           class="pane focusIndicator"
@@ -423,7 +423,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
   >
     <div>
       <div
-        class="paneset  "
+        class="paneset"
       >
         <section
           class="pane focusIndicator"
@@ -836,7 +836,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
   >
     <div>
       <div
-        class="paneset  "
+        class="paneset"
       >
         <section
           class="pane focusIndicator"
