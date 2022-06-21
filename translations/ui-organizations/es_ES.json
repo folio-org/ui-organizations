@@ -390,7 +390,7 @@
     "linkedAgreements.agreement.endDate": "Period End",
     "linkedAgreements.agreement.agreementStatus": "Agreement status",
     "linkedAgreements.agreement.agreementStatus.active": "Active",
-    "linkedAgreements.agreement.agreementStatus.closed": "Closed",
+    "linkedAgreements.agreement.agreementStatus.closed": "Cerrado",
     "linkedAgreements.agreement.agreementStatus.draft": "Draft",
     "linkedAgreements.agreement.agreementStatus.in_negotiation": "In negotiation",
     "linkedAgreements.agreement.agreementStatus.requested": "Requested"
