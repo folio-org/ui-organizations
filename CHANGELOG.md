@@ -20,6 +20,7 @@
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.1.0...v3.1.1)
 
 * Can not delete integration from organization. Refs UIORGS-307.
+* Add filter integration for ui-dashboard. Refs ERM-1958.
 
 ## [3.1.0](https://github.com/folio-org/ui-organizations/tree/v3.1.0) (2022-03-04)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.0.1...v3.1.0)

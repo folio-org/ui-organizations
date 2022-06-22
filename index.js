@@ -11,8 +11,18 @@ import { Organizations as Organization } from './src/Organizations';
 import { ContactsContainer } from './src/contacts';
 import { InterfaceContainer } from './src/interfaces';
 import Settings from './src/Settings';
+import setUpRegistry from './setUpRegistry';
 
 class Organizations extends Component {
+  static eventHandler(event, _s, data) {
+    if (event === 'LOAD_STRIPES_REGISTRY') {
+      // Data should contain Registry singleton:
+      setUpRegistry(data);
+    }
+
+    return null;
+  }
+
   static propTypes = {
     stripes: PropTypes.shape({
       connect: PropTypes.func.isRequired,

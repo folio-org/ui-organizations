@@ -14,8 +14,10 @@
   "stripes": {
     "actsAs": [
       "app",
+      "handler",
       "settings"
     ],
+    "handlerName": "eventHandler",
     "displayName": "ui-organizations.meta.title",
     "moduleName": "Organizations",
     "route": "/organizations",
