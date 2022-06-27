@@ -290,7 +290,7 @@
     "contactInfo.vendorCategory.uncategorized": "Sin categorizar",
     "contacts.actions.load.error": "No se cargaron los datos de los contactos",
     "save.error.genericError": "No se pudo guardar la organización",
-    "filterConfig.acqUnits": "Unidades de adquisición",
+    "filterConfig.acqUnits": "Unidad de adquisición",
     "save.error.codeInUse": "El código ya está en uso",
     "search.placeholder.language": "Search with language code",
     "vendorInfo.exportToAccounting": "Exportar a contabilidad",
@@ -393,5 +393,5 @@
     "linkedAgreements.agreement.agreementStatus.closed": "Cerrado",
     "linkedAgreements.agreement.agreementStatus.draft": "Draft",
     "linkedAgreements.agreement.agreementStatus.in_negotiation": "In negotiation",
-    "linkedAgreements.agreement.agreementStatus.requested": "Requested"
+    "linkedAgreements.agreement.agreementStatus.requested": "Solicitado"
 }
