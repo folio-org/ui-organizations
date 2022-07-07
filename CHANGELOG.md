@@ -1,6 +1,10 @@
 # Change history for ui-organizations
 
 ## (IN PROGRESS)
+
+## [3.2.0](https://github.com/folio-org/ui-organizations/tree/v3.2.0) (2022-07-07)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.1.2...v3.2.0)
+
 * Create area Settings - Organizations - Types. Refs UIORGS-283.
 * Add record metadata widget to contact person. Refs UIORGS-305.
 * Display linked agreements on an organization record. Refs UIORGS-306.
