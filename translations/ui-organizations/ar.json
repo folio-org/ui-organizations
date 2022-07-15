@@ -393,5 +393,15 @@
     "linkedAgreements.agreement.agreementStatus.closed": "مغلق",
     "linkedAgreements.agreement.agreementStatus.draft": "مسودة",
     "linkedAgreements.agreement.agreementStatus.in_negotiation": "قيد التفاوض",
-    "linkedAgreements.agreement.agreementStatus.requested": "مطلوب"
+    "linkedAgreements.agreement.agreementStatus.requested": "مطلوب",
+    "filterConfig.types": "Types",
+    "summary.type": "Type",
+    "settings.type.name": "Name",
+    "settings.type.status": "Status",
+    "settings.types": "Types",
+    "settings.type": "Type",
+    "settings.typeStatus.Active": "Active",
+    "settings.typeStatus.Inactive": "Inactive",
+    "permission.integrations.creds.view": "Organizations: Integration usernames and passwords: view",
+    "permission.integrations.creds.edit": "Organizations: Integration usernames and passwords: view, edit"
 }
