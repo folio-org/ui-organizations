@@ -393,5 +393,15 @@
     "linkedAgreements.agreement.agreementStatus.closed": "已关闭",
     "linkedAgreements.agreement.agreementStatus.draft": "草案",
     "linkedAgreements.agreement.agreementStatus.in_negotiation": "谈判中",
-    "linkedAgreements.agreement.agreementStatus.requested": "已请求"
+    "linkedAgreements.agreement.agreementStatus.requested": "已请求",
+    "filterConfig.types": "Types",
+    "summary.type": "Type",
+    "settings.type.name": "Name",
+    "settings.type.status": "Status",
+    "settings.types": "Types",
+    "settings.type": "Type",
+    "settings.typeStatus.Active": "Active",
+    "settings.typeStatus.Inactive": "Inactive",
+    "permission.integrations.creds.view": "Organizations: Integration usernames and passwords: view",
+    "permission.integrations.creds.edit": "Organizations: Integration usernames and passwords: view, edit"
 }
