@@ -396,12 +396,12 @@
     "linkedAgreements.agreement.agreementStatus.requested": "Demandé",
     "filterConfig.types": "Types",
     "summary.type": "Type",
-    "settings.type.name": "Name",
-    "settings.type.status": "Status",
+    "settings.type.name": "Nom",
+    "settings.type.status": "Statut",
     "settings.types": "Types",
     "settings.type": "Type",
-    "settings.typeStatus.Active": "Active",
-    "settings.typeStatus.Inactive": "Inactive",
+    "settings.typeStatus.Active": "Actif",
+    "settings.typeStatus.Inactive": "Inactif",
     "permission.integrations.creds.view": "Organizations: Integration usernames and passwords: view",
     "permission.integrations.creds.edit": "Organizations: Integration usernames and passwords: view, edit"
 }
