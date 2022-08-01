@@ -69,7 +69,7 @@ function OrganizationSummaryForm({ initialValues }) {
   }, [change]);
 
   const onResetVendorFields = useCallback(() => {
-    resetVendorFields.forEach(field => change(field, null));
+    resetVendorFields.forEach(field => change(field, undefined));
   }, [change]);
 
   const handleVendorUncheck = useCallback(() => {

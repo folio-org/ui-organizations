@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Edit Organizations record: Unselecting Vendor checkbox results in 400 error. Refs UIORGS-325.
+
 ## [3.2.0](https://github.com/folio-org/ui-organizations/tree/v3.2.0) (2022-07-07)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.1.2...v3.2.0)
 
