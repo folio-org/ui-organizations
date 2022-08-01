@@ -8,6 +8,7 @@ export default [
   'expectedReceiptInterval',
   'renewalActivationInterval',
   'subscriptionInterval',
+  'exportToAccounting',
   'taxId',
   'taxPercentage',
   'liableForVat',
