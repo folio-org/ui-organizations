@@ -1,6 +1,6 @@
 {
   "name": "@folio/organizations",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Organizations",
   "main": "index.js",
   "repository": "folio-org/ui-organizations",
@@ -305,7 +305,7 @@
     "@rehooks/local-storage": "2.4.0"
   },
   "optionalDependencies": {
-    "@folio/plugin-find-contact": "*",
-    "@folio/plugin-find-interface": "*"
+    "@folio/plugin-find-contact": "^3.2.0",
+    "@folio/plugin-find-interface": "^3.2.0"
   }
 }
