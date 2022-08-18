@@ -398,10 +398,10 @@
     "summary.type": "النوع",
     "settings.type.name": "الاسم",
     "settings.type.status": "الحالة",
-    "settings.types": "Types",
+    "settings.types": "الأنواع",
     "settings.type": "النوع",
     "settings.typeStatus.Active": "نشط",
     "settings.typeStatus.Inactive": "غير نشط",
-    "permission.integrations.creds.view": "Organizations: Integration usernames and passwords: view",
+    "permission.integrations.creds.view": "المؤسسات: أسماء المستخدمين وكلمات المرور للتكامل: اعرض",
     "permission.integrations.creds.edit": "المؤسسات: أسماء المستخدمين وكلمات المرور للتكامل: اعرض، حرّر"
 }
