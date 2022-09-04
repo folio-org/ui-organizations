@@ -312,7 +312,7 @@
     "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
     "permission.acqUnits.assign": "Organisationen: Erwerbungsteams einer neuen Organisation zuweisen",
     "permission.acqUnits.manage": "Organisationen: Erwerbungsteams verwalten",
-    "permission.settings": "Settings (Organizations): Can view and edit settings",
+    "permission.settings": "Einstellungen (Organisationen): Kann Einstellungen anzeigen und bearbeiten",
     "appMenu.organizationsAppSearch": "Suche in Organisationen",
     "view.exportLog": "Exportprotokoll anzeigen",
     "integrationDetails": "Integration details",
