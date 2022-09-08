@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Field, useForm } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
@@ -23,10 +23,18 @@ import {
   WEEKDAYS,
 } from '../../constants';
 
+const ALLOWED_SCHEDULE_PERIODS = [SCHEDULE_PERIODS.days, SCHEDULE_PERIODS.weeks, SCHEDULE_PERIODS.none];
+
 const normalizeNumber = value => {
   if (!value && value !== 0) return value;
 
   return Number(value);
+};
+
+const validatePeriod = (value) => {
+  return value !== SCHEDULE_PERIODS.none
+    ? undefined
+    : <FormattedMessage id="stripes-acq-components.validation.required" />;
 };
 
 export const SchedulingForm = () => {
@@ -38,7 +46,18 @@ export const SchedulingForm = () => {
   const isScheduleEnabled = ediSchedule.enableScheduledExport;
   const schedulePeriod = ediSchedule.scheduleParameters?.schedulePeriod;
 
+  useEffect(() => {
+    if (schedulePeriod && !ALLOWED_SCHEDULE_PERIODS.includes(schedulePeriod)) {
+      change(
+        'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.schedulePeriod',
+        'NONE',
+      );
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [schedulePeriod]);
+
   const schedulePeriodOptions = Object.keys(SCHEDULE_PERIODS)
+    .filter(periodKey => ALLOWED_SCHEDULE_PERIODS.includes(SCHEDULE_PERIODS[periodKey]))
     .map(periodKey => ({
       label: formatMessage({ id: `ui-organizations.integration.scheduling.schedulePeriod.${periodKey}` }),
       value: SCHEDULE_PERIODS[periodKey],
@@ -53,7 +72,7 @@ export const SchedulingForm = () => {
     );
     change(
       'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.schedulePeriod',
-      newState ? SCHEDULE_PERIODS.hours : 'NONE',
+      newState ? SCHEDULE_PERIODS.days : 'NONE',
     );
   };
 
@@ -92,6 +111,8 @@ export const SchedulingForm = () => {
                 component={Select}
                 dataOptions={schedulePeriodOptions}
                 onChange={changeSchedulePeriod}
+                required
+                validate={validatePeriod}
               />
             </Col>
           )

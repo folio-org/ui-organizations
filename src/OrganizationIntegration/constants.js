@@ -21,6 +21,7 @@ export const CONNECTION_MODES = [
 ];
 
 export const SCHEDULE_PERIODS = {
+  none: 'NONE',
   hours: 'HOUR',
   days: 'DAY',
   weeks: 'WEEK',
