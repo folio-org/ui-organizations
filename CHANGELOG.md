@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.2.2](https://github.com/folio-org/ui-organizations/tree/v3.2.2) (2022-09-09)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.2.1...v3.2.2)
+
 * Disable hourly and monthly schedule periods. Refs UIORGS-330.
 
 ## [3.2.1](https://github.com/folio-org/ui-organizations/tree/v3.2.1) (2022-08-04)
