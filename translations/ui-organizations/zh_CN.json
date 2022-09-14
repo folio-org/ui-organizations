@@ -403,5 +403,6 @@
     "settings.typeStatus.Active": "激活",
     "settings.typeStatus.Inactive": "未激活",
     "permission.integrations.creds.view": "组织：集成用户名和密码：查看",
-    "permission.integrations.creds.edit": "组织：集成用户名和密码：查看、编辑"
+    "permission.integrations.creds.edit": "组织：集成用户名和密码：查看、编辑",
+    "integration.scheduling.schedulePeriod.none": "Please select schedule period"
 }
