@@ -403,5 +403,6 @@
     "settings.typeStatus.Active": "Aktiv",
     "settings.typeStatus.Inactive": "Inaktiv",
     "permission.integrations.creds.view": "Organizations: Integration usernames and passwords: view",
-    "permission.integrations.creds.edit": "Organizations: Integration usernames and passwords: view, edit"
+    "permission.integrations.creds.edit": "Organizations: Integration usernames and passwords: view, edit",
+    "integration.scheduling.schedulePeriod.none": "Please select schedule period"
 }

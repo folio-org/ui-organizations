@@ -403,5 +403,6 @@
     "settings.typeStatus.Active": "نشط",
     "settings.typeStatus.Inactive": "غير نشط",
     "permission.integrations.creds.view": "المؤسسات: أسماء المستخدمين وكلمات المرور للتكامل: اعرض",
-    "permission.integrations.creds.edit": "المؤسسات: أسماء المستخدمين وكلمات المرور للتكامل: اعرض، حرّر"
+    "permission.integrations.creds.edit": "المؤسسات: أسماء المستخدمين وكلمات المرور للتكامل: اعرض، حرّر",
+    "integration.scheduling.schedulePeriod.none": "Please select schedule period"
 }

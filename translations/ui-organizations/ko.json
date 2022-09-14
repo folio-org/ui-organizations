@@ -403,5 +403,6 @@
     "settings.typeStatus.Active": "활성(Active)",
     "settings.typeStatus.Inactive": "비활성(Inactive)",
     "permission.integrations.creds.view": "공급사: 연동 사용자 이름 및 암호: 보기",
-    "permission.integrations.creds.edit": "공급사: 연동 사용자 이름 및 암호: 보기, 편집"
+    "permission.integrations.creds.edit": "공급사: 연동 사용자 이름 및 암호: 보기, 편집",
+    "integration.scheduling.schedulePeriod.none": "Please select schedule period"
 }
