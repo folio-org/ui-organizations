@@ -5,6 +5,7 @@ import { Settings } from '@folio/stripes/smart-components';
 
 import CategorySettings from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
+import NumberGeneratorOptions from './NumberGeneratorOptions';
 
 const pages = [
   {
@@ -18,6 +19,12 @@ const pages = [
     label: <FormattedMessage id="ui-organizations.settings.types" />,
     perm: 'settings.organizations.enabled',
     route: 'type',
+  },
+  {
+    component: NumberGeneratorOptions,
+    label: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />,
+    perm: 'settings.organizations.enabled',
+    route: 'numberGeneratorOptions',
   },
 ];
 

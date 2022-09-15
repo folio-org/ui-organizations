@@ -4,4 +4,6 @@ export const INTERFACES_API = 'organizations-storage/interfaces';
 export const TYPES_API = 'organizations-storage/organization-types';
 export const AGREEMENTS_API = 'erm/sas';
 
+export const CONFIG_API = 'configurations/entries';
+
 export const MAX_LIMIT = 2147483647;

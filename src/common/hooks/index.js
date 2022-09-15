@@ -4,3 +4,4 @@ export * from './useIntegrationConfigMutation';
 export * from './useLinkedAgreements';
 export * from './useTranslatedCategories';
 export * from './useTypes';
+export * from './useSettings';
