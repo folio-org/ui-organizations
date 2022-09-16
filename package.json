@@ -309,5 +309,8 @@
   "optionalDependencies": {
     "@folio/plugin-find-contact": "^3.2.0",
     "@folio/plugin-find-interface": "^3.2.0"
+  },
+  "optionalOkapiInterfaces": {
+    "servint": "2.0"
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { Settings } from '@folio/stripes/smart-components';
@@ -20,20 +21,38 @@ const pages = [
     perm: 'settings.organizations.enabled',
     route: 'type',
   },
-  {
-    component: NumberGeneratorOptions,
-    label: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />,
-    perm: 'settings.organizations.enabled',
-    route: 'numberGeneratorOptions',
-  },
 ];
 
-const SettingsPage = (props) => (
-  <Settings
-    {...props}
-    pages={pages}
-    paneTitle={<FormattedMessage id="ui-organizations.settings.vendorSettings" />}
-  />
-);
+const SettingsPage = (props) => {
+  const { stripes } = props;
+
+  if (stripes.hasInterface('servint')) {
+    pages.push({
+      component: NumberGeneratorOptions,
+      label: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />,
+      perm: 'settings.organizations.enabled',
+      route: 'numberGeneratorOptions',
+    },)
+  }
+
+  return (
+    <Settings
+      {...props}
+      pages={pages}
+      paneTitle={<FormattedMessage id="ui-organizations.settings.vendorSettings" />}
+    />
+  );
+};
+
+SettingsPage.propTypes = {
+  stripes: PropTypes.shape({
+    hasInterface: PropTypes.func.isRequired,
+    timezone: PropTypes.string.isRequired,
+    store: PropTypes.shape({
+      dispatch: PropTypes.func.isRequired,
+      getState: PropTypes.func,
+    }),
+  }).isRequired,
+}
 
 export default SettingsPage;

@@ -3,7 +3,7 @@ import { Field, useForm } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { stripesConnect } from '@folio/stripes/core';
+import { stripesConnect, useStripes } from '@folio/stripes/core';
 import { Col, Row, TextField } from '@folio/stripes/components';
 import { NumberGeneratorButton } from '@folio/service-interaction';
 
@@ -21,9 +21,14 @@ const FieldCode = ({ orgId, mutator }) => {
   [orgId]);
 
   const { change } = useForm();
+  const stripes = useStripes();
 
   const { settings } = useSettings([CONFIG_NAME]);
-  const vendorCodeSetting = settings?.find(sett => sett?.configName === CONFIG_NAME)?.parsedSettings?.vendorGeneratorSetting ?? 'useTextField';
+  let vendorCodeSetting = 'useTextField';
+
+  if (stripes.hasInterface('servint')) {
+    vendorCodeSetting = settings?.find(sett => sett?.configName === CONFIG_NAME)?.parsedSettings?.vendorGeneratorSetting ?? 'useTextField';
+  }
 
   return (
     <Row>
