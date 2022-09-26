@@ -1,7 +1,7 @@
 # Change history for ui-organizations
 
 ## (IN PROGRESS)
-
+* Support interface `users` version `16.0`. Refs UIORGS-324.
 * Disable hourly and monthly schedule periods. Refs UIORGS-330.
 
 ## [3.2.1](https://github.com/folio-org/ui-organizations/tree/v3.2.1) (2022-08-04)
