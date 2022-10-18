@@ -105,7 +105,7 @@ const SchedulingView = ({ ediSchedule = {} }) => {
               <Col xs={3} key={weekday}>
                 <Checkbox
                   label={<FormattedMessage id={`ui-organizations.integration.scheduling.scheduleWeekdaysView.${weekday}`} />}
-                  checked={ediSchedule.scheduleParameters?.weekDays?.[weekday]}
+                  checked={Boolean(ediSchedule.scheduleParameters?.weekDays?.[weekday])}
                   disabled
                   vertical
                 />
