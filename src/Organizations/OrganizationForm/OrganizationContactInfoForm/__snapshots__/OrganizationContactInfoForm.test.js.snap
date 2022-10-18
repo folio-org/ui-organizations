@@ -50,7 +50,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                       >
                         <label
                           class="label label"
-                          for="checkbox-1"
+                          for="checkbox-2"
                         >
                           <span
                             class="inner disabledLabel"
@@ -61,7 +61,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               class="input"
                               data-test-checkbox-is-primary="true"
                               disabled=""
-                              id="checkbox-1"
+                              id="checkbox-2"
                               name="addresses[0].isPrimary"
                               type="checkbox"
                               value=""
@@ -123,7 +123,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                         >
                           <label
                             class="label"
-                            for="text-input-2"
+                            for="text-input-3"
                           >
                             ui-organizations.data.contactTypes.addressLine2
                           </label>
@@ -136,7 +136,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               autocomplete="off"
                               autocorrect="off"
                               error=""
-                              id="text-input-2"
+                              id="text-input-3"
                               name="addresses[0].addressLine2"
                               spellcheck="false"
                               type="text"
@@ -158,7 +158,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                         >
                           <label
                             class="label"
-                            for="text-input-3"
+                            for="text-input-4"
                           >
                             ui-organizations.data.contactTypes.city
                           </label>
@@ -171,7 +171,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               autocomplete="off"
                               autocorrect="off"
                               error=""
-                              id="text-input-3"
+                              id="text-input-4"
                               name="addresses[0].city"
                               spellcheck="false"
                               type="text"
@@ -269,8 +269,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="stripes-selection-4"
-                            id="sl-label-stripes-selection-4"
+                            for="stripes-selection-5"
+                            id="sl-label-stripes-selection-5"
                           >
                             ui-organizations.data.contactTypes.country
                           </label>
@@ -280,10 +280,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <button
                               aria-expanded="false"
                               aria-haspopup="listbox"
-                              aria-labelledby="sl-label-stripes-selection-4 selected-stripes-selection-4-item"
+                              aria-labelledby="sl-label-stripes-selection-5 selected-stripes-selection-5-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
-                              id="stripes-selection-4"
+                              id="stripes-selection-5"
                               name="addresses[0].country"
                               type="button"
                             >
@@ -294,7 +294,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               </span>
                               <div
                                 class="singleValue"
-                                id="selected-stripes-selection-4-item"
+                                id="selected-stripes-selection-5-item"
                               >
                                 <div
                                   class="optionSegment"
@@ -336,8 +336,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="stripes-selection-5"
-                            id="sl-label-stripes-selection-5"
+                            for="stripes-selection-6"
+                            id="sl-label-stripes-selection-6"
                           >
                             ui-organizations.contactInfo.language
                           </label>
@@ -347,10 +347,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <button
                               aria-expanded="false"
                               aria-haspopup="listbox"
-                              aria-labelledby="sl-label-stripes-selection-5 selected-stripes-selection-5-item"
+                              aria-labelledby="sl-label-stripes-selection-6 selected-stripes-selection-6-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
-                              id="stripes-selection-5"
+                              id="stripes-selection-6"
                               name="addresses[0].language"
                               type="button"
                             >
@@ -361,7 +361,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               </span>
                               <div
                                 class="singleValue"
-                                id="selected-stripes-selection-5-item"
+                                id="selected-stripes-selection-6-item"
                               />
                             </button>
                             <div
@@ -670,7 +670,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                       >
                         <label
                           class="label label"
-                          for="checkbox-6"
+                          for="checkbox-7"
                         >
                           <span
                             class="inner disabledLabel"
@@ -681,7 +681,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               class="input"
                               data-test-checkbox-is-primary="true"
                               disabled=""
-                              id="checkbox-6"
+                              id="checkbox-7"
                               name="phoneNumbers[0].isPrimary"
                               type="checkbox"
                               value=""
@@ -809,8 +809,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="stripes-selection-7"
-                            id="sl-label-stripes-selection-7"
+                            for="stripes-selection-8"
+                            id="sl-label-stripes-selection-8"
                           >
                             ui-organizations.contactInfo.language
                           </label>
@@ -820,10 +820,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <button
                               aria-expanded="false"
                               aria-haspopup="listbox"
-                              aria-labelledby="sl-label-stripes-selection-7 selected-stripes-selection-7-item"
+                              aria-labelledby="sl-label-stripes-selection-8 selected-stripes-selection-8-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
-                              id="stripes-selection-7"
+                              id="stripes-selection-8"
                               name="phoneNumbers[0].language"
                               type="button"
                             >
@@ -834,7 +834,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               </span>
                               <div
                                 class="singleValue"
-                                id="selected-stripes-selection-7-item"
+                                id="selected-stripes-selection-8-item"
                               />
                             </button>
                             <div
@@ -1083,7 +1083,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                       >
                         <label
                           class="label label"
-                          for="checkbox-8"
+                          for="checkbox-9"
                         >
                           <span
                             class="inner disabledLabel"
@@ -1094,7 +1094,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               class="input"
                               data-test-checkbox-is-primary="true"
                               disabled=""
-                              id="checkbox-8"
+                              id="checkbox-9"
                               name="emails[0].isPrimary"
                               type="checkbox"
                               value=""
@@ -1156,7 +1156,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                         >
                           <label
                             class="label"
-                            for="text-input-9"
+                            for="text-input-10"
                           >
                             ui-organizations.contactInfo.description
                           </label>
@@ -1169,7 +1169,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               autocomplete="off"
                               autocorrect="off"
                               error=""
-                              id="text-input-9"
+                              id="text-input-10"
                               name="emails[0].description"
                               spellcheck="false"
                               type="text"
@@ -1197,8 +1197,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="stripes-selection-10"
-                            id="sl-label-stripes-selection-10"
+                            for="stripes-selection-11"
+                            id="sl-label-stripes-selection-11"
                           >
                             ui-organizations.contactInfo.language
                           </label>
@@ -1208,10 +1208,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <button
                               aria-expanded="false"
                               aria-haspopup="listbox"
-                              aria-labelledby="sl-label-stripes-selection-10 selected-stripes-selection-10-item"
+                              aria-labelledby="sl-label-stripes-selection-11 selected-stripes-selection-11-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
-                              id="stripes-selection-10"
+                              id="stripes-selection-11"
                               name="emails[0].language"
                               type="button"
                             >
@@ -1222,7 +1222,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               </span>
                               <div
                                 class="singleValue"
-                                id="selected-stripes-selection-10-item"
+                                id="selected-stripes-selection-11-item"
                               />
                             </button>
                             <div
@@ -1471,7 +1471,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                       >
                         <label
                           class="label label"
-                          for="checkbox-11"
+                          for="checkbox-12"
                         >
                           <span
                             class="inner disabledLabel"
@@ -1482,7 +1482,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               class="input"
                               data-test-checkbox-is-primary="true"
                               disabled=""
-                              id="checkbox-11"
+                              id="checkbox-12"
                               name="urls[0].isPrimary"
                               type="checkbox"
                               value=""
@@ -1544,7 +1544,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                         >
                           <label
                             class="label"
-                            for="text-input-12"
+                            for="text-input-13"
                           >
                             ui-organizations.contactInfo.description
                           </label>
@@ -1557,7 +1557,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               autocomplete="off"
                               autocorrect="off"
                               error=""
-                              id="text-input-12"
+                              id="text-input-13"
                               name="urls[0].description"
                               spellcheck="false"
                               type="text"
@@ -1585,8 +1585,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="stripes-selection-13"
-                            id="sl-label-stripes-selection-13"
+                            for="stripes-selection-14"
+                            id="sl-label-stripes-selection-14"
                           >
                             ui-organizations.contactInfo.language
                           </label>
@@ -1596,10 +1596,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <button
                               aria-expanded="false"
                               aria-haspopup="listbox"
-                              aria-labelledby="sl-label-stripes-selection-13 selected-stripes-selection-13-item"
+                              aria-labelledby="sl-label-stripes-selection-14 selected-stripes-selection-14-item"
                               aria-owns="sl-undefined"
                               class="selectionControl formControl"
-                              id="stripes-selection-13"
+                              id="stripes-selection-14"
                               name="urls[0].language"
                               type="button"
                             >
@@ -1610,7 +1610,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               </span>
                               <div
                                 class="singleValue"
-                                id="selected-stripes-selection-13-item"
+                                id="selected-stripes-selection-14-item"
                               />
                             </button>
                             <div
