@@ -4,6 +4,7 @@
 * Support interface `users` version `16.0`. Refs UIORGS-324.
 * Disable hourly and monthly schedule periods. Refs UIORGS-330.
 * The days previously selected for weekly scheduling are displayed in the updated scheduling settings. Refs UIORGS-331.
+* Dependency `react-tether` is incompatible with react 17. Refs UIORGS-333.
 
 ## [3.2.1](https://github.com/folio-org/ui-organizations/tree/v3.2.1) (2022-08-04)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.2.0...v3.2.1)
