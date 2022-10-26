@@ -1,6 +1,10 @@
 # Change history for ui-organizations
 
 ## (IN PROGRESS)
+
+## [3.3.0](https://github.com/folio-org/ui-organizations/tree/v3.3.0) (2022-10-27)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.2.1...v3.3.0)
+
 * Support interface `users` version `16.0`. Refs UIORGS-324.
 * Disable hourly and monthly schedule periods. Refs UIORGS-330.
 * The days previously selected for weekly scheduling are displayed in the updated scheduling settings. Refs UIORGS-331.
