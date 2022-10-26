@@ -292,7 +292,7 @@
     "save.error.genericError": "No se pudo guardar la organización",
     "filterConfig.acqUnits": "Unidades de adquisición",
     "save.error.codeInUse": "El código ya está en uso",
-    "search.placeholder.language": "Search with language code",
+    "search.placeholder.language": "Búsqueda por código lenguaje",
     "vendorInfo.exportToAccounting": "Exportar a contabilidad",
     "notes.entity": "Organización",
     "notes.entityPlural": "Organizaciones",
