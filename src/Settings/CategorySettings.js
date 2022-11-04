@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { stripesShape } from '@folio/stripes/core';
 import { ControlledVocab } from '@folio/stripes/smart-components';
+import { getControlledVocabTranslations } from '@folio/stripes-acq-components';
 
 class CategorySettings extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class CategorySettings extends Component {
         baseUrl="organizations-storage/categories"
         records="categories"
         label={<FormattedMessage id="ui-organizations.settings.categories" />}
-        labelSingular="Category"
+        translations={getControlledVocabTranslations('ui-organizations.settings.categories')}
         objectLabel="Categories"
         visibleFields={['value']}
         columnMapping={columnMapping}

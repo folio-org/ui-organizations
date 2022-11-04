@@ -419,6 +419,11 @@
   "save.error.assignInterface": "Error while assigning interface to the organization",
 
   "settings.categories": "Categories",
+  "settings.categories.cannotDeleteTermHeader": "Cannot delete category",
+  "settings.categories.cannotDeleteTermMessage": "This category cannot be deleted, as it is in use by one or more records.",
+  "settings.categories.deleteEntry": "Delete category",
+  "settings.categories.termDeleted": "The category <b>{term}</b> was successfully <b>deleted</b>",
+  "settings.categories.termWillBeDeleted": "The category <b>{term}</b> will be <b>deleted.</b>",
   "settings.name": "name",
   "settings.action": "actions",
   "settings.type.name": "Name",
