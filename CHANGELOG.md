@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Provide local translations to `ControlledVocab`. Refs UIORGS-335.
+
 ## [3.3.0](https://github.com/folio-org/ui-organizations/tree/v3.3.0) (2022-10-27)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.2.1...v3.3.0)
 
