@@ -9,6 +9,8 @@ import { Field } from 'redux-form';
 import { stripesShape } from '@folio/stripes/core';
 import { Select } from '@folio/stripes/components';
 import { ControlledVocab } from '@folio/stripes/smart-components';
+import { getControlledVocabTranslations } from '@folio/stripes-acq-components';
+
 import { typeStatus } from './constants';
 
 class TypeSettings extends Component {
@@ -73,7 +75,7 @@ class TypeSettings extends Component {
         hiddenFields={['lastUpdated', 'numberOfObjects']}
         id="types"
         label={<FormattedMessage id="ui-organizations.settings.types" />}
-        labelSingular={<FormattedMessage id="ui-organizations.settings.type" />}
+        translations={getControlledVocabTranslations('ui-organizations.settings.types')}
         nameKey="types"
         objectLabel={<FormattedMessage id="ui-organizations.settings.types" />}
         records="organizationTypes"
