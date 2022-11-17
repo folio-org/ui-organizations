@@ -404,5 +404,15 @@
     "settings.typeStatus.Inactive": "비활성(Inactive)",
     "permission.integrations.creds.view": "공급사: 연동 사용자 이름 및 암호: 보기",
     "permission.integrations.creds.edit": "공급사: 연동 사용자 이름 및 암호: 보기, 편집",
-    "integration.scheduling.schedulePeriod.none": "Please select schedule period"
+    "integration.scheduling.schedulePeriod.none": "Please select schedule period",
+    "settings.categories.cannotDeleteTermHeader": "Cannot delete category",
+    "settings.categories.cannotDeleteTermMessage": "This category cannot be deleted, as it is in use by one or more records.",
+    "settings.categories.deleteEntry": "Delete category",
+    "settings.categories.termDeleted": "The category <b>{term}</b> was successfully <b>deleted</b>",
+    "settings.categories.termWillBeDeleted": "The category <b>{term}</b> will be <b>deleted.</b>",
+    "settings.types.cannotDeleteTermHeader": "Cannot delete type",
+    "settings.types.cannotDeleteTermMessage": "This type cannot be deleted, as it is in use by one or more records.",
+    "settings.types.deleteEntry": "Delete type",
+    "settings.types.termDeleted": "The type <b>{term}</b> was successfully <b>deleted</b>",
+    "settings.types.termWillBeDeleted": "The type <b>{term}</b> will be <b>deleted.</b>"
 }

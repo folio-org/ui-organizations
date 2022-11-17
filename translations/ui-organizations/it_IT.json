@@ -404,5 +404,15 @@
     "settings.typeStatus.Inactive": "Inattivo",
     "permission.integrations.creds.view": "Organizzazioni: username e password dell'integrazione: visualizzare",
     "permission.integrations.creds.edit": "Organizzazioni: username e password dell'integrazione: visualizzare, modificare",
-    "integration.scheduling.schedulePeriod.none": "Si prega di selezionare il periodo di pianificazione"
+    "integration.scheduling.schedulePeriod.none": "Si prega di selezionare il periodo di pianificazione",
+    "settings.categories.cannotDeleteTermHeader": "Cannot delete category",
+    "settings.categories.cannotDeleteTermMessage": "This category cannot be deleted, as it is in use by one or more records.",
+    "settings.categories.deleteEntry": "Delete category",
+    "settings.categories.termDeleted": "The category <b>{term}</b> was successfully <b>deleted</b>",
+    "settings.categories.termWillBeDeleted": "The category <b>{term}</b> will be <b>deleted.</b>",
+    "settings.types.cannotDeleteTermHeader": "Cannot delete type",
+    "settings.types.cannotDeleteTermMessage": "This type cannot be deleted, as it is in use by one or more records.",
+    "settings.types.deleteEntry": "Delete type",
+    "settings.types.termDeleted": "The type <b>{term}</b> was successfully <b>deleted</b>",
+    "settings.types.termWillBeDeleted": "The type <b>{term}</b> will be <b>deleted.</b>"
 }

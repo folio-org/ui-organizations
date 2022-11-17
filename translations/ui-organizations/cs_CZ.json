@@ -325,7 +325,7 @@
     "integration.info.isDefaultConfig": "Výchozí integrace",
     "integration.edi": "Konfigurace EDI",
     "integration.edi.accountNumbers": "Čísla účtů",
-    "integration.edi.defaultAcquisitionMethods": "Automatizace exportu objednávek pro metody pořízení",
+    "integration.edi.defaultAcquisitionMethods": "Automatizace exportu objednávek pro metody akvizice",
     "integration.edi.vendorEDICode": "EDI kód dodavatele",
     "integration.edi.vendorEDIType": "Typ EDI dodavatele",
     "integration.edi.libraryEDICode": "Kód EDI knihovny",
@@ -404,5 +404,15 @@
     "settings.typeStatus.Inactive": "Neaktivní",
     "permission.integrations.creds.view": "Organizace: Uživatelská jména a hesla pro integraci: zobrazení",
     "permission.integrations.creds.edit": "Organizace: Uživatelská jména a hesla pro integraci: zobrazení, úpravy",
-    "integration.scheduling.schedulePeriod.none": "Vyberte prosím období plánu"
+    "integration.scheduling.schedulePeriod.none": "Vyberte prosím období plánu",
+    "settings.categories.cannotDeleteTermHeader": "Nelze smazat kategorii",
+    "settings.categories.cannotDeleteTermMessage": "Tuto kategorii nelze smazat, protože ji používá jeden nebo více záznamů.",
+    "settings.categories.deleteEntry": "Smazat kategorii",
+    "settings.categories.termDeleted": "Kategorie <b>{term}</b> byla úspěšně <b>smazána</b>",
+    "settings.categories.termWillBeDeleted": "Kategorie <b>{term}</b> bude <b>smazána.</b>",
+    "settings.types.cannotDeleteTermHeader": "Nelze smazat typ",
+    "settings.types.cannotDeleteTermMessage": "Tento typ nelze smazat, protože jej používá jeden nebo více záznamů.",
+    "settings.types.deleteEntry": "Smazat typ",
+    "settings.types.termDeleted": "Typ <b>{term}</b> byl úspěšně <b>smazán</b>",
+    "settings.types.termWillBeDeleted": "Typ <b>{term}</b> bude <b>smazán.</b>"
 }
