@@ -24,13 +24,11 @@ const SchedulingView = ({ ediSchedule = {} }) => {
   const schedulePeriodValue = Object.keys(SCHEDULE_PERIODS).find(key => SCHEDULE_PERIODS[key] === schedulePeriod);
 
   const getTime = useCallback(() => (
-    schedulePeriod === SCHEDULE_PERIODS.days
-      ? ediSchedule.scheduleParameters.scheduleTime.slice(0, 8)
-      : getTenantTime({
-        time: ediSchedule.scheduleParameters.scheduleTime,
-        timeZone,
-      })
-  ), [ediSchedule.scheduleParameters?.scheduleTime, schedulePeriod, timeZone]);
+    getTenantTime({
+      time: ediSchedule.scheduleParameters.scheduleTime,
+      timeZone,
+    })
+  ), [ediSchedule.scheduleParameters?.scheduleTime, timeZone]);
 
   return (
     <Accordion
