@@ -23,10 +23,11 @@ import {
   ResultsPane,
   SingleSearchForm,
   PrevNextPagination,
+  useFiltersReset,
   useFiltersToogle,
+  useItemToView,
   useLocationFilters,
   useLocationSorting,
-  useItemToView,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -87,6 +88,8 @@ const OrganizationsList = ({
     sortingDirection,
     changeSorting,
   ] = useLocationSorting(location, history, resetData, sortableFields);
+
+  useFiltersReset(resetFilters);
 
   const { isFiltersOpened, toggleFilters } = useFiltersToogle('ui-organizations/filters');
 
