@@ -4,6 +4,7 @@
 
 * Provide local translations to `ControlledVocab`. Refs UIORGS-335.
 * Fix timezone in organization integration config for "Daily" schedule period. Refs UIORGS-338.
+* "No results found" shown after return to search page. Refs UIORGS-323.
 
 ## [3.3.0](https://github.com/folio-org/ui-organizations/tree/v3.3.0) (2022-10-27)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.2.1...v3.3.0)
