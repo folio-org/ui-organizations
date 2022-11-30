@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.3.1](https://github.com/folio-org/ui-organizations/tree/v3.3.1) (2022-11-30)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.3.0...v3.3.1)
+
 * Fix timezone in organization integration config for "Daily" schedule period. Refs UIORGS-338.
 * "No results found" shown after return to search page. Refs UIORGS-323.
 
