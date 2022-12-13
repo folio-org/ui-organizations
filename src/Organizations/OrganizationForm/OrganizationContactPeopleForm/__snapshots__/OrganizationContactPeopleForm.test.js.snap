@@ -31,7 +31,7 @@ exports[`OrganizationContactPeopleForm should render correct structure 1`] = `
               aria-rowindex="1"
               class="mclHeaderRow"
               role="row"
-              style="display: flex;"
+              style="display: flex; width: 17px;"
             >
               <div
                 aria-sort="none"
@@ -95,23 +95,23 @@ exports[`OrganizationContactPeopleForm should render correct structure 1`] = `
                   tabindex="0"
                 >
                   <div
-                    class="mclCell  mclCellStyle"
+                    class="mclCell mclCellStyle"
                     role="gridcell"
                   >
                     Brownstein, Carrie
                   </div>
                   <div
-                    class="mclCell  mclCellStyle"
+                    class="mclCell mclCellStyle"
                     role="gridcell"
                   />
                   <div
-                    class="mclCell  mclCellStyle"
+                    class="mclCell mclCellStyle"
                     role="gridcell"
                   >
                     cust.service03@amazon.com
                   </div>
                   <div
-                    class="mclCell  mclCellStyle"
+                    class="mclCell mclCellStyle"
                     role="gridcell"
                   >
                     <button
