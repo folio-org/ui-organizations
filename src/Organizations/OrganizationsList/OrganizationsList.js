@@ -54,7 +54,7 @@ const columnMapping = {
   isVendor: <FormattedMessage id="ui-organizations.main.isVendor" />,
 };
 const getResultsFormatter = ({ search }) => ({
-  orgName: (data) => (
+  orgName: data => (
     <TextLink
       to={{
         pathname: `${VIEW_ORG_DETAILS}${data.id}`,
