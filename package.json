@@ -1,6 +1,6 @@
 {
   "name": "@folio/organizations",
-  "version": "3.3.1",
+  "version": "4.0.0",
   "description": "Organizations",
   "main": "index.js",
   "repository": "folio-org/ui-organizations",
@@ -9,7 +9,7 @@
   },
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=10"
+    "node": ">=14.0.0"
   },
   "stripes": {
     "actsAs": [
@@ -246,7 +246,7 @@
     "@bigtest/mocha": "^0.5.2",
     "@bigtest/react": "^0.1.2",
     "@folio/eslint-config-stripes": "^6.1.0",
-    "@folio/stripes": "^7.0.0",
+    "@folio/stripes": "^8.0.0",
     "@folio/stripes-cli": "^2.4.0",
     "@formatjs/cli": "^4.2.16",
     "@testing-library/dom": "^7.31.2",
@@ -272,7 +272,6 @@
     "react-dom": "^17.0.2",
     "react-intl": "^5.7.1",
     "react-query": "^3.23.2",
-    "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-router-prop-types": "^1.0.4",
@@ -281,7 +280,7 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "~3.4.0",
+    "@folio/stripes-acq-components": "~4.0.0",
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.20",
     "prop-types": "^15.5.10",
@@ -295,10 +294,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-intl": "^5.7.1",
-    "react-redux": "*",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "redux": "*"
+    "redux": "^4.0.0"
   },
   "resolutions": {
     "@rehooks/local-storage": "2.4.0"
