@@ -313,7 +313,7 @@
     "permission.acqUnits.assign": "Organizace: Přiřaďte akviziční jednotky nové organizaci",
     "permission.acqUnits.manage": "Organizace: Správa akvizičních jednotek",
     "permission.settings": "Nastavení (Organizace): Může zobrazit a upravit nastavení",
-    "appMenu.organizationsAppSearch": "Vyhledávání v aplikaci Organizace",
+    "appMenu.organizationsAppSearch": "Vyhledat organizaci",
     "view.exportLog": "Zobrazit log exportu",
     "integrationDetails": "Detaily integrace",
     "integration.create": "Přidat integraci",
