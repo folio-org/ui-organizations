@@ -156,7 +156,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
               >
                 <button
                   class="button link bottomMargin0"
-                  data-tast-expand-button="true"
+                  data-test-expand-button="true"
                   type="button"
                 >
                   <span
