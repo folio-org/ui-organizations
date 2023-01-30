@@ -1,11 +1,11 @@
 # Change history for ui-organizations
 
-## (4.0.0 IN PROGRESS)
+## 4.0.0 (IN PROGRESS)
 
 * Provide local translations to `ControlledVocab`. Refs UIORGS-335.
 * Results List | Hyperlink one column to improve accessibility. Refs UIORGS-328.
-* Upgrade `stripes-acq-components` to `v4` and upgrade `react-redux` to `v8`. Refs UIORGS-343.
 * *BREAKING*: Update `@folio/stripes` to `8.0.0`. Refs UIORGS-342.
+* Upgrade `stripes-acq-components` to `v4` and upgrade `react-redux` to `v8`. Refs UIORGS-343.
 
 ## [3.3.1](https://github.com/folio-org/ui-organizations/tree/v3.3.1) (2022-11-30)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.3.0...v3.3.1)
