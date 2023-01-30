@@ -166,7 +166,7 @@ exports[`ViewContact should render correct structure 1`] = `
               >
                 <button
                   class="button link bottomMargin0"
-                  data-tast-expand-button="true"
+                  data-test-expand-button="true"
                   type="button"
                 >
                   <span
