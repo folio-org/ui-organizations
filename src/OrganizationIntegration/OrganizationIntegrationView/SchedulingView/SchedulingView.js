@@ -24,13 +24,11 @@ const SchedulingView = ({ ediSchedule = {} }) => {
   const schedulePeriodValue = Object.keys(SCHEDULE_PERIODS).find(key => SCHEDULE_PERIODS[key] === schedulePeriod);
 
   const getTime = useCallback(() => (
-    schedulePeriod === SCHEDULE_PERIODS.days
-      ? ediSchedule.scheduleParameters.scheduleTime.slice(0, 8)
-      : getTenantTime({
-        time: ediSchedule.scheduleParameters.scheduleTime,
-        timeZone,
-      })
-  ), [ediSchedule.scheduleParameters?.scheduleTime, schedulePeriod, timeZone]);
+    getTenantTime({
+      time: ediSchedule.scheduleParameters.scheduleTime,
+      timeZone,
+    })
+  ), [ediSchedule.scheduleParameters?.scheduleTime, timeZone]);
 
   return (
     <Accordion
@@ -105,7 +103,7 @@ const SchedulingView = ({ ediSchedule = {} }) => {
               <Col xs={3} key={weekday}>
                 <Checkbox
                   label={<FormattedMessage id={`ui-organizations.integration.scheduling.scheduleWeekdaysView.${weekday}`} />}
-                  checked={ediSchedule.scheduleParameters?.weekDays?.[weekday]}
+                  checked={Boolean(ediSchedule.scheduleParameters?.weekDays?.[weekday])}
                   disabled
                   vertical
                 />

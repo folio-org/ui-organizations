@@ -292,7 +292,7 @@
     "save.error.genericError": "No se pudo guardar la organización",
     "filterConfig.acqUnits": "Unidades de adquisición",
     "save.error.codeInUse": "El código ya está en uso",
-    "search.placeholder.language": "Search with language code",
+    "search.placeholder.language": "Búsqueda por código lenguaje",
     "vendorInfo.exportToAccounting": "Exportar a contabilidad",
     "notes.entity": "Organización",
     "notes.entityPlural": "Organizaciones",
@@ -404,5 +404,15 @@
     "settings.typeStatus.Inactive": "Inactive",
     "permission.integrations.creds.view": "Organizations: Integration usernames and passwords: view",
     "permission.integrations.creds.edit": "Organizations: Integration usernames and passwords: view, edit",
-    "integration.scheduling.schedulePeriod.none": "Please select schedule period"
+    "integration.scheduling.schedulePeriod.none": "Please select schedule period",
+    "settings.categories.cannotDeleteTermHeader": "No se puede eliminar la categoría",
+    "settings.categories.cannotDeleteTermMessage": "Esta categoría no se puede eliminar, ya que está en uso por uno o más registros.",
+    "settings.categories.deleteEntry": "Eliminar categoría",
+    "settings.categories.termDeleted": "La categoría <b> {term} </b> se <b> eliminó </b> con éxito",
+    "settings.categories.termWillBeDeleted": "La categoría <b> {term} </b> se <b> eliminará. </b>",
+    "settings.types.cannotDeleteTermHeader": "Cannot delete type",
+    "settings.types.cannotDeleteTermMessage": "This type cannot be deleted, as it is in use by one or more records.",
+    "settings.types.deleteEntry": "Delete type",
+    "settings.types.termDeleted": "The type <b>{term}</b> was successfully <b>deleted</b>",
+    "settings.types.termWillBeDeleted": "The type <b>{term}</b> will be <b>deleted.</b>"
 }

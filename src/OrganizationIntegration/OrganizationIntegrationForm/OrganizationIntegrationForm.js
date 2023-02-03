@@ -172,6 +172,7 @@ OrganizationIntegrationForm.propTypes = {
 
 export default stripesForm({
   enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
   navigationCheck: true,
   subscription: { values: true },
 })(OrganizationIntegrationForm);

@@ -183,7 +183,6 @@ export const SchedulingForm = () => {
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleTime" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleTime"
                 component={Timepicker}
-                timeZone="UTC"
                 required
                 validate={validateRequired}
               />

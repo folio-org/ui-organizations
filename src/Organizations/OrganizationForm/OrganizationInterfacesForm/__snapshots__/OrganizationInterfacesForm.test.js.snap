@@ -31,7 +31,7 @@ exports[`OrganizationInterfacesForm should render correct structure 1`] = `
               aria-rowindex="1"
               class="mclHeaderRow"
               role="row"
-              style="display: flex;"
+              style="display: flex; width: 17px;"
             >
               <div
                 aria-sort="none"
@@ -86,14 +86,14 @@ exports[`OrganizationInterfacesForm should render correct structure 1`] = `
                   tabindex="0"
                 >
                   <div
-                    class="mclCell  mclCellStyle"
+                    class="mclCell mclCellStyle"
                     role="gridcell"
                   >
                     GOBI
                   </div>
                 </a>
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 >
                   <a
@@ -115,7 +115,7 @@ exports[`OrganizationInterfacesForm should render correct structure 1`] = `
                   </a>
                 </div>
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 >
                   <button

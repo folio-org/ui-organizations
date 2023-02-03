@@ -1,8 +1,25 @@
 # Change history for ui-organizations
 
-## (IN PROGRESS)
+## 4.0.0 (IN PROGRESS)
 
+* Provide local translations to `ControlledVocab`. Refs UIORGS-335.
+* Results List | Hyperlink one column to improve accessibility. Refs UIORGS-328.
+* *BREAKING*: Update `@folio/stripes` to `8.0.0`. Refs UIORGS-342.
+* Upgrade `stripes-acq-components` to `v4` and upgrade `react-redux` to `v8`. Refs UIORGS-343.
+
+## [3.3.1](https://github.com/folio-org/ui-organizations/tree/v3.3.1) (2022-11-30)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.3.0...v3.3.1)
+
+* Fix timezone in organization integration config for "Daily" schedule period. Refs UIORGS-338.
+* "No results found" shown after return to search page. Refs UIORGS-323.
+
+## [3.3.0](https://github.com/folio-org/ui-organizations/tree/v3.3.0) (2022-10-27)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.2.1...v3.3.0)
+
+* Support interface `users` version `16.0`. Refs UIORGS-324.
 * Disable hourly and monthly schedule periods. Refs UIORGS-330.
+* The days previously selected for weekly scheduling are displayed in the updated scheduling settings. Refs UIORGS-331.
+* Dependency `react-tether` is incompatible with react 17. Refs UIORGS-333.
 
 ## [3.2.1](https://github.com/folio-org/ui-organizations/tree/v3.2.1) (2022-08-04)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.2.0...v3.2.1)

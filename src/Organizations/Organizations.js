@@ -66,7 +66,10 @@ const Organizations = () => {
                 <NavListSection>
                   <NavListItem
                     id="organizations-app-search-item"
-                    to={ORGANIZATIONS_ROUTE}
+                    to={{
+                      pathname: ORGANIZATIONS_ROUTE,
+                      state: { resetFilters: true },
+                    }}
                     onClick={() => {
                       handleToggle();
                       focusSearchField();

@@ -166,7 +166,7 @@ exports[`ViewContact should render correct structure 1`] = `
               >
                 <button
                   class="button link bottomMargin0"
-                  data-tast-expand-button="true"
+                  data-test-expand-button="true"
                   type="button"
                 >
                   <span
@@ -461,7 +461,7 @@ exports[`ViewContact should render correct structure 1`] = `
                           aria-rowindex="1"
                           class="mclHeaderRow"
                           role="row"
-                          style="display: flex;"
+                          style="display: flex; width: 17px;"
                         >
                           <div
                             aria-sort="none"
@@ -533,31 +533,31 @@ exports[`ViewContact should render correct structure 1`] = `
                               style="min-width: 0px;"
                             >
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 cust.service03@amazon.com
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 customer service
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 English
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 Customer Service
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 ui-organizations.primaryItem
@@ -669,7 +669,7 @@ exports[`ViewContact should render correct structure 1`] = `
                           aria-rowindex="1"
                           class="mclHeaderRow"
                           role="row"
-                          style="display: flex;"
+                          style="display: flex; width: 17px;"
                         >
                           <div
                             aria-sort="none"
@@ -741,31 +741,31 @@ exports[`ViewContact should render correct structure 1`] = `
                               style="min-width: 0px;"
                             >
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 1-888-238-22090
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 Mobile
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 English
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 Customer Service
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 ui-organizations.primaryItem
@@ -877,7 +877,7 @@ exports[`ViewContact should render correct structure 1`] = `
                           aria-rowindex="1"
                           class="mclHeaderRow"
                           role="row"
-                          style="display: flex;"
+                          style="display: flex; width: 17px;"
                         >
                           <div
                             aria-sort="none"
@@ -949,7 +949,7 @@ exports[`ViewContact should render correct structure 1`] = `
                               style="min-width: 0px;"
                             >
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 <a
@@ -963,25 +963,25 @@ exports[`ViewContact should render correct structure 1`] = `
                                 </a>
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 main website
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 en-us
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 Customer Service
                               </div>
                               <div
-                                class="mclCell  mclCellStyle"
+                                class="mclCell mclCellStyle"
                                 role="gridcell"
                               >
                                 ui-organizations.primaryItem

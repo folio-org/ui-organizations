@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
+  matchPath,
   Route,
   useHistory,
   useLocation,
@@ -11,6 +12,7 @@ import {
   checkScope,
   HasCommand,
   MultiColumnList,
+  TextLink,
 } from '@folio/stripes/components';
 import { useStripes } from '@folio/stripes/core';
 import { PersistedPaneset } from '@folio/stripes/smart-components';
@@ -23,10 +25,11 @@ import {
   ResultsPane,
   SingleSearchForm,
   PrevNextPagination,
+  useFiltersReset,
   useFiltersToogle,
+  useItemToView,
   useLocationFilters,
   useLocationSorting,
-  useItemToView,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -50,13 +53,23 @@ const columnMapping = {
   orgStatus: <FormattedMessage id="ui-organizations.main.vendorStatus" />,
   isVendor: <FormattedMessage id="ui-organizations.main.isVendor" />,
 };
-const resultsFormatter = {
-  orgName: ({ name }) => name,
+const getResultsFormatter = ({ search }) => ({
+  orgName: data => (
+    <TextLink
+      to={{
+        pathname: `${VIEW_ORG_DETAILS}${data.id}`,
+        state: { isDetailsPaneInFocus: true },
+        search,
+      }}
+    >
+      {data.name}
+    </TextLink>
+  ),
   orgCode: ({ code }) => code,
   orgDescription: ({ description }) => description,
   orgStatus: data => <FormattedMessage id={`ui-organizations.organizationStatus.${data.status.toLowerCase()}`} />,
   isVendor: data => <FormattedMessage id={`ui-organizations.main.isVendor.${data.isVendor ? 'yes' : 'no'}`} />,
-};
+});
 
 const OrganizationsList = ({
   isLoading,
@@ -88,19 +101,17 @@ const OrganizationsList = ({
     changeSorting,
   ] = useLocationSorting(location, history, resetData, sortableFields);
 
+  useFiltersReset(resetFilters);
+
   const { isFiltersOpened, toggleFilters } = useFiltersToogle('ui-organizations/filters');
 
-  const openOrganizationDetails = useCallback(
-    (e, meta) => {
-      history.push({
-        pathname: `${VIEW_ORG_DETAILS}${meta.id}`,
-        search: location.search,
-        state: { isDetailsPaneInFocus: true },
-      });
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [location.search],
-  );
+  const urlParams = useMemo(() => (
+    matchPath(location.pathname, { path: `${VIEW_ORG_DETAILS}:id` })
+  ), [location.pathname]);
+
+  const isRowSelected = useCallback(({ item }) => {
+    return urlParams && (urlParams.params.id === item.id);
+  }, [urlParams]);
 
   const renderLastMenu = useCallback(() => <OrganizationsListLastMenu />, []);
   const resultsStatusMessage = (
@@ -111,6 +122,13 @@ const OrganizationsList = ({
       toggleFilters={toggleFilters}
     />
   );
+
+  const renderOrganizationDetails = useCallback((props) => (
+    <OrganizationDetailsContainer
+      {...props}
+      refreshList={refreshList}
+    />
+  ), [refreshList]);
 
   const shortcuts = [
     {
@@ -187,14 +205,14 @@ const OrganizationsList = ({
                 contentData={organizations}
                 visibleColumns={visibleColumns}
                 columnMapping={columnMapping}
-                formatter={resultsFormatter}
+                formatter={getResultsFormatter(location)}
                 loading={isLoading}
                 onNeedMoreData={onNeedMoreData}
                 sortOrder={sortingField}
                 sortDirection={sortingDirection}
                 onHeaderClick={changeSorting}
-                onRowClick={openOrganizationDetails}
                 isEmptyMessage={resultsStatusMessage}
+                isSelected={isRowSelected}
                 pagingType="none"
                 hasMargin
                 pageAmount={RESULT_COUNT_INCREMENT}
@@ -218,12 +236,7 @@ const OrganizationsList = ({
 
         <Route
           path={`${VIEW_ORG_DETAILS}:id`}
-          render={props => (
-            <OrganizationDetailsContainer
-              {...props}
-              refreshList={refreshList}
-            />
-          )}
+          render={renderOrganizationDetails}
         />
       </PersistedPaneset>
     </HasCommand>

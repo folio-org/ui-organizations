@@ -15,10 +15,10 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
           style="flex: 0 0 100%;"
         >
           <div
-            aria-labelledby="paneHeader16-pane-title"
+            aria-labelledby="paneHeader18-pane-title"
             class="paneHeader"
             data-test-pane-header="true"
-            id="paneHeader16"
+            id="paneHeader18"
             role="region"
             tabindex="-1"
           >
@@ -51,7 +51,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
             >
               <div
                 class="paneHeaderCenterInner"
-                id="paneHeader16-pane-title"
+                id="paneHeader18-pane-title"
               >
                 <h2
                   class="paneTitle"
@@ -68,7 +68,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
           </div>
           <div
             class="paneContent hasPadding"
-            id="16-content"
+            id="18-content"
             tabindex="-1"
           >
             <div
@@ -85,7 +85,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                   >
                     <button
                       class="button link bottomMargin0"
-                      data-tast-expand-button="true"
+                      data-test-expand-button="true"
                       type="button"
                     >
                       <span
@@ -501,7 +501,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                   >
                     <button
                       class="button link bottomMargin0"
-                      data-tast-expand-button="true"
+                      data-test-expand-button="true"
                       type="button"
                     >
                       <span
@@ -844,10 +844,10 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
           style="flex: 0 0 100%;"
         >
           <div
-            aria-labelledby="paneHeader7-pane-title"
+            aria-labelledby="paneHeader8-pane-title"
             class="paneHeader"
             data-test-pane-header="true"
-            id="paneHeader7"
+            id="paneHeader8"
             role="region"
             tabindex="-1"
           >
@@ -880,7 +880,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
             >
               <div
                 class="paneHeaderCenterInner"
-                id="paneHeader7-pane-title"
+                id="paneHeader8-pane-title"
               >
                 <h2
                   class="paneTitle"
@@ -897,7 +897,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
           </div>
           <div
             class="paneContent hasPadding"
-            id="7-content"
+            id="8-content"
             tabindex="-1"
           >
             <div
@@ -914,7 +914,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                   >
                     <button
                       class="button link bottomMargin0"
-                      data-tast-expand-button="true"
+                      data-test-expand-button="true"
                       type="button"
                     >
                       <span

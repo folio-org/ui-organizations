@@ -404,5 +404,15 @@
     "settings.typeStatus.Inactive": "Inativo",
     "permission.integrations.creds.view": "Organizações: nomes de usuários e senhas de integração: visualizar",
     "permission.integrations.creds.edit": "Organizações: Nomes de usuário e senhas de integração: ver, editar",
-    "integration.scheduling.schedulePeriod.none": "Please select schedule period"
+    "integration.scheduling.schedulePeriod.none": "Favor selecionar o período de agendamento",
+    "settings.categories.cannotDeleteTermHeader": "Não é possível excluir a categoria",
+    "settings.categories.cannotDeleteTermMessage": "Esta categoria não pode ser excluída, pois está em uso por um ou mais registros.",
+    "settings.categories.deleteEntry": "Excluir categoria",
+    "settings.categories.termDeleted": "A categoria <b> {term} </b> foi <b> excluída </b> com sucesso",
+    "settings.categories.termWillBeDeleted": "A categoria <b> {term} </b> será <b> excluída. </b>",
+    "settings.types.cannotDeleteTermHeader": "Não é possível excluir o tipo",
+    "settings.types.cannotDeleteTermMessage": "Este tipo não pode ser excluído, pois está em uso por um ou mais registros.",
+    "settings.types.deleteEntry": "Excluir tipo",
+    "settings.types.termDeleted": "O tipo <b> {term} </b> foi <b> excluído </b> com sucesso",
+    "settings.types.termWillBeDeleted": "O tipo <b> {term} </b> será <b> excluído. </b>"
 }

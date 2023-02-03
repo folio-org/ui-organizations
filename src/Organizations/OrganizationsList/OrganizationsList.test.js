@@ -1,5 +1,5 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import user from '@testing-library/user-event';
+import { act, render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
@@ -18,6 +18,9 @@ jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
   useHistory: jest.fn(),
 }));
+jest.mock('react-virtualized-auto-sizer', () => jest.fn(
+  (props) => <div>{props.children({ width: 123 })}</div>,
+));
 jest.mock('@folio/stripes/smart-components', () => ({
   ...jest.requireActual('@folio/stripes/smart-components'),
   // eslint-disable-next-line react/prop-types
@@ -72,6 +75,16 @@ describe('OrganizationsList', () => {
       const { getByText } = renderOrganizationsList();
 
       expect(getByText('OrganizationsListFilter')).toBeDefined();
+    });
+
+    it('should display org results list', async () => {
+      const { getByText } = renderOrganizationsList();
+
+      await act(async () => user.click(getByText(defaultProps.organizations[0].name)));
+
+      expect(getByText('ui-organizations.main.name')).toBeInTheDocument();
+      expect(getByText('ui-organizations.main.code')).toBeInTheDocument();
+      expect(getByText('ui-organizations.main.vendorStatus')).toBeInTheDocument();
     });
   });
 
