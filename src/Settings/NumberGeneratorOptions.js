@@ -26,7 +26,10 @@ const NumberGeneratorOptions = (props) => {
       const value = settings.length === 0 ? '' : settings[0].value;
 
       loadedValues = JSON.parse(value);
-    } catch (e) { } // eslint-disable-line no-empty
+    } catch (e) {
+      // Make sure we return _something_ because ConfigManager no longer has a safety check here
+      return {};
+    }
 
     return {
       ...defaultValues,

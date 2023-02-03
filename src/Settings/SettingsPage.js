@@ -21,20 +21,16 @@ const pages = [
     perm: 'settings.organizations.enabled',
     route: 'type',
   },
+  {
+    component: NumberGeneratorOptions,
+    label: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />,
+    perm: 'settings.organizations.enabled',
+    interface: 'servint',
+    route: 'numberGeneratorOptions',
+  },
 ];
 
 const SettingsPage = (props) => {
-  const { stripes } = props;
-
-  if (stripes.hasInterface('servint')) {
-    pages.push({
-      component: NumberGeneratorOptions,
-      label: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />,
-      perm: 'settings.organizations.enabled',
-      route: 'numberGeneratorOptions',
-    },)
-  }
-
   return (
     <Settings
       {...props}
@@ -53,6 +49,6 @@ SettingsPage.propTypes = {
       getState: PropTypes.func,
     }),
   }).isRequired,
-}
+};
 
 export default SettingsPage;
