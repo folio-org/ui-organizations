@@ -51,7 +51,7 @@ const FieldCode = ({ orgId, mutator }) => {
           <NumberGeneratorButton
             callback={(generated) => change('code', generated)}
             id="vendor-code-generator"
-            generator="Vendor"
+            generator="organizations_vendorCode"
             sequence="vendor"
           />
         </Col>
