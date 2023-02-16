@@ -215,6 +215,14 @@
           "organizations-storage.categories.item.post",
           "organizations-storage.categories.item.put"
         ]
+      },
+      {
+        "permissionName": "ui-organizations.settings.numberGenerator.manage",
+        "displayName": "Settings (Organizations): Manage number generator options",
+        "subPermissions": [
+          "settings.organizations.enabled"
+        ],
+        "visible": true
       }
     ]
   },

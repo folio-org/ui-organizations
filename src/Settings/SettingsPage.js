@@ -24,7 +24,7 @@ const pages = [
   {
     component: NumberGeneratorOptions,
     label: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />,
-    perm: 'settings.organizations.enabled',
+    perm: 'ui-organizations.settings.numberGenerator.manage',
     interface: 'servint',
     route: 'numberGeneratorOptions',
   },
