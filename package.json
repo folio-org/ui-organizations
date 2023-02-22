@@ -301,7 +301,7 @@
     "@rehooks/local-storage": "2.4.0"
   },
   "optionalDependencies": {
-    "@folio/plugin-find-contact": "^3.2.0",
-    "@folio/plugin-find-interface": "^3.2.0"
+    "@folio/plugin-find-contact": "^4.0.0",
+    "@folio/plugin-find-interface": "^4.0.0"
   }
 }
