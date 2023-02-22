@@ -1,6 +1,9 @@
 # Change history for ui-organizations
 
-## 4.0.0 (IN PROGRESS)
+## 4.1.0 (IN PROGRESS)
+
+## [4.0.0](https://github.com/folio-org/ui-organizations/tree/v4.0.0) (2023-02-22)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.3.1...v4.0.0)
 
 * Provide local translations to `ControlledVocab`. Refs UIORGS-335.
 * Results List | Hyperlink one column to improve accessibility. Refs UIORGS-328.
