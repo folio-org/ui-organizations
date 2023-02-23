@@ -2,6 +2,8 @@
 
 ## 4.1.0 (IN PROGRESS)
 
+* Unpin `@rehooks/local-storage` now that it's no longer broken. Refs UIORGS-344.
+
 ## [4.0.0](https://github.com/folio-org/ui-organizations/tree/v4.0.0) (2023-02-22)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.3.1...v4.0.0)
 
@@ -9,7 +11,6 @@
 * Results List | Hyperlink one column to improve accessibility. Refs UIORGS-328.
 * *BREAKING*: Update `@folio/stripes` to `8.0.0`. Refs UIORGS-342.
 * Upgrade `stripes-acq-components` to `v4` and upgrade `react-redux` to `v8`. Refs UIORGS-343.
-* Unpin `@rehooks/local-storage` now that it's no longer broken. Refs UIORGS-344.
 
 ## [3.3.1](https://github.com/folio-org/ui-organizations/tree/v3.3.1) (2022-11-30)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.3.0...v3.3.1)
