@@ -410,9 +410,9 @@
     "settings.categories.deleteEntry": "Eliminar categoría",
     "settings.categories.termDeleted": "La categoría <b> {term} </b> se <b> eliminó </b> con éxito",
     "settings.categories.termWillBeDeleted": "La categoría <b> {term} </b> se <b> eliminará. </b>",
-    "settings.types.cannotDeleteTermHeader": "Cannot delete type",
-    "settings.types.cannotDeleteTermMessage": "This type cannot be deleted, as it is in use by one or more records.",
-    "settings.types.deleteEntry": "Delete type",
-    "settings.types.termDeleted": "The type <b>{term}</b> was successfully <b>deleted</b>",
-    "settings.types.termWillBeDeleted": "The type <b>{term}</b> will be <b>deleted.</b>"
+    "settings.types.cannotDeleteTermHeader": "No se puede eliminar el tipo",
+    "settings.types.cannotDeleteTermMessage": "Este tipo no puede eliminarse, ya que está siendo utilizado por uno o varios registros.",
+    "settings.types.deleteEntry": "Borrar tipo",
+    "settings.types.termDeleted": "El tipo <b>{term}</b> se ha <b>eliminado</b> correctamente",
+    "settings.types.termWillBeDeleted": "Se <b>eliminará</b> el tipo <b>{term}</b> <b>.</b>"
 }
