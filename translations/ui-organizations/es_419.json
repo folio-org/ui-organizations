@@ -404,7 +404,7 @@
     "settings.typeStatus.Inactive": "Inactive",
     "permission.integrations.creds.view": "Organizations: Integration usernames and passwords: view",
     "permission.integrations.creds.edit": "Organizations: Integration usernames and passwords: view, edit",
-    "integration.scheduling.schedulePeriod.none": "Please select schedule period",
+    "integration.scheduling.schedulePeriod.none": "Seleccione el período de programación",
     "settings.categories.cannotDeleteTermHeader": "No se puede eliminar la categoría",
     "settings.categories.cannotDeleteTermMessage": "Esta categoría no se puede eliminar, ya que está en uso por uno o más registros.",
     "settings.categories.deleteEntry": "Eliminar categoría",
