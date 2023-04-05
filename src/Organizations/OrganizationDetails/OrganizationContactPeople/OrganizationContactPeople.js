@@ -13,15 +13,27 @@ import {
 } from '@folio/stripes/components';
 import { acqRowFormatter } from '@folio/stripes-acq-components';
 
+import { Ellipsis } from '../../../common/components';
 import { transformCategoryIdsToLables } from '../../../common/utils';
 
-const visibleColumns = ['name', 'categories', 'email', 'phone', 'status', 'icon'];
+import css from './OrganizationContactPeople.css';
+
+const visibleColumns = [
+  'name',
+  'categories',
+  'email',
+  'phone',
+  'status',
+  'notes',
+  'icon',
+];
 const columnMapping = {
   name: <FormattedMessage id="ui-organizations.contactPeople.name" />,
   categories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
   email: <FormattedMessage id="ui-organizations.contactPeople.email" />,
   phone: <FormattedMessage id="ui-organizations.contactPeople.phone" />,
   status: <FormattedMessage id="ui-organizations.contactPeople.status" />,
+  notes: <FormattedMessage id="ui-organizations.contactPeople.note" />,
   icon: null,
 };
 const alignRowProps = { alignLastColToEnd: true };
@@ -40,6 +52,7 @@ const OrganizationContactPeople = ({ vendorCategories, contacts, openContact }) 
     email: c => get(find(c.emails, 'isPrimary'), 'value', '') || <NoValue />,
     phone: c => get(find(c.phoneNumbers, 'isPrimary'), 'phoneNumber', '') || <NoValue />,
     status: c => <FormattedMessage id={`ui-organizations.contactPeople.status.${c.inactive ? 'inactive' : 'active'}`} />,
+    notes: c => <Ellipsis className={css.ellipsis}>{c.notes}</Ellipsis>,
     icon: () => <Icon icon="caret-right" />,
   };
 
