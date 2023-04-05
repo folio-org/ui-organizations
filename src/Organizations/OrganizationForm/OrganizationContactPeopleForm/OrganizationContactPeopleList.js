@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   map,
@@ -35,6 +35,36 @@ const visibleColumns = [
   'notes',
   'unassignContact',
 ];
+
+const getResultsFormatter = ({
+  intl,
+  fields,
+  categoriesDict,
+}) => ({
+  contactCategories: ({ categories = [] }) => transformCategoryIdsToLables(categoriesDict, categories),
+  contactEmails: ({ emails }) => map(emails, 'value').join(', '),
+  contactName: contact => (
+    contact.isDeleted
+      ? intl.formatMessage({ id: 'ui-organizations.contactPeople.removedContact' })
+      : `${contact.lastName}, ${contact.firstName}`
+  ),
+  notes: (contact) => <Ellipsis>{contact.notes}</Ellipsis>,
+  unassignContact: (contact) => (
+    <Button
+      align="end"
+      aria-label={intl.formatMessage({ id: 'ui-organizations.contacts.button.unassign' })}
+      buttonStyle="fieldControl"
+      data-test-unassign-contact
+      type="button"
+      onClick={(e) => {
+        e.preventDefault();
+        fields.remove(contact._index);
+      }}
+    >
+      <Icon icon="times-circle" />
+    </Button>
+  ),
+});
 
 const getContactsUrl = (orgId, contactId) => {
   if (!contactId) return undefined;
@@ -121,31 +151,9 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
     });
   };
 
-  const resultsFormatter = {
-    contactCategories: ({ categories = [] }) => transformCategoryIdsToLables(categoriesDict, categories),
-    contactEmails: ({ emails }) => map(emails, 'value').join(', '),
-    contactName: contact => (
-      contact.isDeleted
-        ? intl.formatMessage({ id: 'ui-organizations.contactPeople.removedContact' })
-        : `${contact.lastName}, ${contact.firstName}`
-    ),
-    notes: (contact) => <Ellipsis>{contact.notes}</Ellipsis>,
-    unassignContact: (contact) => (
-      <Button
-        align="end"
-        aria-label={intl.formatMessage({ id: 'ui-organizations.contacts.button.unassign' })}
-        buttonStyle="fieldControl"
-        data-test-unassign-contact
-        type="button"
-        onClick={(e) => {
-          e.preventDefault();
-          fields.remove(contact._index);
-        }}
-      >
-        <Icon icon="times-circle" />
-      </Button>
-    ),
-  };
+  const resultsFormatter = useMemo(() => {
+    return getResultsFormatter({ intl, categoriesDict, fields });
+  }, [categoriesDict, fields, intl]);
 
   return (
     <>
