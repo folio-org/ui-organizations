@@ -16,8 +16,6 @@ import { acqRowFormatter } from '@folio/stripes-acq-components';
 import { Ellipsis } from '../../../common/components';
 import { transformCategoryIdsToLables } from '../../../common/utils';
 
-import css from './OrganizationContactPeople.css';
-
 const visibleColumns = [
   'name',
   'categories',
@@ -52,7 +50,7 @@ const OrganizationContactPeople = ({ vendorCategories, contacts, openContact }) 
     email: c => get(find(c.emails, 'isPrimary'), 'value', '') || <NoValue />,
     phone: c => get(find(c.phoneNumbers, 'isPrimary'), 'phoneNumber', '') || <NoValue />,
     status: c => <FormattedMessage id={`ui-organizations.contactPeople.status.${c.inactive ? 'inactive' : 'active'}`} />,
-    notes: c => <Ellipsis className={css.ellipsis}>{c.notes}</Ellipsis>,
+    notes: c => <Ellipsis>{c.notes}</Ellipsis>,
     icon: () => <Icon icon="caret-right" />,
   };
 

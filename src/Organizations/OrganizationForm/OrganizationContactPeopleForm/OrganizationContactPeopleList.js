@@ -20,8 +20,6 @@ import { acqRowFormatter } from '@folio/stripes-acq-components';
 import { Ellipsis } from '../../../common/components';
 import { transformCategoryIdsToLables } from '../../../common/utils/category';
 
-import css from './OrganizationContactPeopleList.css';
-
 const columnMapping = {
   contactCategories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
   contactEmails: <FormattedMessage id="ui-organizations.contactPeople.emails" />,
@@ -131,7 +129,7 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
         ? intl.formatMessage({ id: 'ui-organizations.contactPeople.removedContact' })
         : `${contact.lastName}, ${contact.firstName}`
     ),
-    notes: (contact) => <Ellipsis className={css.ellipsis}>{contact.notes}</Ellipsis>,
+    notes: (contact) => <Ellipsis>{contact.notes}</Ellipsis>,
     unassignContact: (contact) => (
       <Button
         align="end"
