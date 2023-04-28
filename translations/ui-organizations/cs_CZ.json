@@ -310,7 +310,7 @@
     "permission.delete": "Organizace: Zobrazit, upravit, smazat",
     "permission.creds.view": "Organizace: Uživatelská jména a hesla rozhraní: zobrazit",
     "permission.creds.manage": "Organizace: Uživatelská jména a hesla rozhraní: prohlížet, upravovat, vytvářet, mazat",
-    "permission.acqUnits.assign": "Organizace: Přiřaďte akviziční jednotky nové organizaci",
+    "permission.acqUnits.assign": "Organizace: Přiřadit akviziční jednotky nové organizaci",
     "permission.acqUnits.manage": "Organizace: Správa akvizičních jednotek",
     "permission.settings": "Nastavení (Organizace): Může zobrazit a upravit nastavení",
     "appMenu.organizationsAppSearch": "Vyhledat organizaci",

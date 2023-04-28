@@ -318,7 +318,7 @@
     "integrationDetails": "Detalles de la integración",
     "integration.create": "Añadir integración",
     "integration.create.paneTitle": "Crear integración",
-    "integration.edit.paneTitle": "Editar integración - {nombre}",
+    "integration.edit.paneTitle": "Editar integración - {name}",
     "integration.info": "Información sobre la integración",
     "integration.info.configName": "Nombre de la integración",
     "integration.info.configDescription": "Descripción",
