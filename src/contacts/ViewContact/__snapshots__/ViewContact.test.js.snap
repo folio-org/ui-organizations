@@ -230,7 +230,6 @@ exports[`ViewContact should render correct structure 1`] = `
                   style="z-index: 1;"
                 >
                   <div
-                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-name"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -433,7 +432,6 @@ exports[`ViewContact should render correct structure 1`] = `
                   style="z-index: 1;"
                 >
                   <div
-                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-emails"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -570,7 +568,7 @@ exports[`ViewContact should render correct structure 1`] = `
                           >
                             <div
                               class="mclCenteredContainer"
-                              style="width: 100%; visibility: hidden; height: 0px; padding: 0px;"
+                              style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
                             >
                               <div
                                 class="textCentered"
@@ -641,7 +639,6 @@ exports[`ViewContact should render correct structure 1`] = `
                   style="z-index: 1;"
                 >
                   <div
-                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-phones"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -778,7 +775,7 @@ exports[`ViewContact should render correct structure 1`] = `
                           >
                             <div
                               class="mclCenteredContainer"
-                              style="width: 100%; visibility: hidden; height: 0px; padding: 0px;"
+                              style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
                             >
                               <div
                                 class="textCentered"
@@ -849,7 +846,6 @@ exports[`ViewContact should render correct structure 1`] = `
                   style="z-index: 1;"
                 >
                   <div
-                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-urls"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -993,7 +989,7 @@ exports[`ViewContact should render correct structure 1`] = `
                           >
                             <div
                               class="mclCenteredContainer"
-                              style="width: 100%; visibility: hidden; height: 0px; padding: 0px;"
+                              style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
                             >
                               <div
                                 class="textCentered"
@@ -1064,7 +1060,6 @@ exports[`ViewContact should render correct structure 1`] = `
                   style="z-index: 1;"
                 >
                   <div
-                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-contact-addresses"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
