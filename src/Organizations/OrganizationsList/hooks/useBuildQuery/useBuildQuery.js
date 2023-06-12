@@ -3,14 +3,17 @@ import { useCallback } from 'react';
 import {
   makeQueryBuilder,
 } from '@folio/stripes-acq-components';
-
 import {
+  filterMap,
   getKeywordQuery,
-} from '../../OrganizationsListSearchConfig';
-import {
-  customFilterMap,
-  CUSTOM_SORT_MAP,
-} from '../../OrganizationsListFilter/OrganizationsListFilterConfig';
+} from '@folio/plugin-find-organization';
+
+const CUSTOM_SORT_MAP = {
+  orgName: 'name',
+  orgCode: 'code',
+  orgDescription: 'description',
+  orgStatus: 'status',
+};
 
 export const useBuildQuery = () => {
   return useCallback(makeQueryBuilder(
@@ -23,7 +26,7 @@ export const useBuildQuery = () => {
       return getKeywordQuery(query);
     },
     'sortby name/sort.ascending',
-    customFilterMap,
+    filterMap,
     CUSTOM_SORT_MAP,
   ), []);
 };

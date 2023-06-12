@@ -38,11 +38,14 @@ jest.mock('@folio/stripes-acq-components', () => {
     useItemToView: () => ({}),
   };
 });
+jest.mock('@folio/plugin-find-organization', () => ({
+  ...jest.requireActual('@folio/plugin-find-organization'),
+  OrganizationsListFilter: jest.fn(() => 'OrganizationsListFilter'),
+}));
 
 jest.mock('../OrganizationDetails', () => ({
   OrganizationDetailsContainer: jest.fn().mockReturnValue('OrganizationDetailsContainer'),
 }));
-jest.mock('./OrganizationsListFilter', () => jest.fn().mockReturnValue('OrganizationsListFilter'));
 
 const defaultProps = {
   onNeedMoreData: jest.fn(),
