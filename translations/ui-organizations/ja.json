@@ -344,7 +344,7 @@
     "integration.ftp.ftpConnectionMode.Active": "有効",
     "integration.ftp.ftpConnectionMode.Passive": "Passive",
     "integration.ftp.username": "Username",
-    "integration.ftp.password": "Password",
+    "integration.ftp.password": "パスワード",
     "integration.ftp.ftpPort": "FTP port",
     "integration.ftp.orderDirectory": "Order directory",
     "integration.ftp.invoiceDirectory": "Invoice directory",
