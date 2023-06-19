@@ -87,7 +87,7 @@ const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationInterfacesList = ({ fetchInterfaces, fields, interfaces, orgId }) => {
   const intl = useIntl();
-  const contentData = fields.value.map((interfaceId, _index) => ({
+  const contentData = (fields.value || []).map((interfaceId, _index) => ({
     ...get(interfaces, interfaceId, {}),
     _index,
   }));

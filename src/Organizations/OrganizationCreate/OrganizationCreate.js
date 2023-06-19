@@ -49,6 +49,10 @@ export const OrganizationCreate = ({ history, location, mutator }) => {
       return mutator.createOrganizationOrg.POST(data)
         .then(organization => {
           setTimeout(() => cancelForm(organization.id));
+          showCallout({
+            messageId: 'ui-organizations.save.success',
+            values: { organizationName: organization.name },
+          });
         })
         .catch(async e => {
           await handleSaveErrorResponse(intl, showCallout, e);
