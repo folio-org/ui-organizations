@@ -412,6 +412,7 @@
   "integration.message.delete.error": "The integration was not <b>deleted</b>",
   "integration.message.delete.success": "The integration was successfully <b>deleted</b>",
 
+  "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>",
   "save.error.accountNumberMustBeUnique": "An organization can not have duplicate account numbers",
   "save.error.genericError": "Organization could not be saved",
   "save.error.codeInUse": "Code is already in use",

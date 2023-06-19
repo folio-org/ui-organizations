@@ -130,7 +130,7 @@ const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, orgId, categoriesDict, stripes }) => {
   const intl = useIntl();
-  const contacts = fields.value
+  const contacts = (fields.value || [])
     .map((contactId, _index) => {
       const contact = contactsMap?.[contactId];
 
