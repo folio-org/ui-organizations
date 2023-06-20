@@ -62,6 +62,10 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
       return mutator.editOrganizationOrg.PUT(data)
         .then(() => {
           setTimeout(cancelForm);
+          showCallout({
+            messageId: 'ui-organizations.save.success',
+            values: { organizationName: data.name },
+          });
         })
         .catch(async e => {
           await handleSaveErrorResponse(intl, showCallout, e);

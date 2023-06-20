@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   map,
@@ -17,16 +17,54 @@ import {
 import { Pluggable } from '@folio/stripes/core';
 import { acqRowFormatter } from '@folio/stripes-acq-components';
 
+import { Ellipsis } from '../../../common/components';
 import { transformCategoryIdsToLables } from '../../../common/utils/category';
 
 const columnMapping = {
   contactCategories: <FormattedMessage id="ui-organizations.contactPeople.categories" />,
   contactEmails: <FormattedMessage id="ui-organizations.contactPeople.emails" />,
   contactName: <FormattedMessage id="ui-organizations.contactPeople.name" />,
+  notes: <FormattedMessage id="ui-organizations.contactPeople.note" />,
   unassignContact: null,
 };
 
-const visibleColumns = ['contactName', 'contactCategories', 'contactEmails', 'unassignContact'];
+const visibleColumns = [
+  'contactName',
+  'contactCategories',
+  'contactEmails',
+  'notes',
+  'unassignContact',
+];
+
+const getResultsFormatter = ({
+  intl,
+  fields,
+  categoriesDict,
+}) => ({
+  contactCategories: ({ categories = [] }) => transformCategoryIdsToLables(categoriesDict, categories),
+  contactEmails: ({ emails }) => map(emails, 'value').join(', '),
+  contactName: contact => (
+    contact.isDeleted
+      ? intl.formatMessage({ id: 'ui-organizations.contactPeople.removedContact' })
+      : `${contact.lastName}, ${contact.firstName}`
+  ),
+  notes: (contact) => <Ellipsis>{contact.notes}</Ellipsis>,
+  unassignContact: (contact) => (
+    <Button
+      align="end"
+      aria-label={intl.formatMessage({ id: 'ui-organizations.contacts.button.unassign' })}
+      buttonStyle="fieldControl"
+      data-test-unassign-contact
+      type="button"
+      onClick={(e) => {
+        e.preventDefault();
+        fields.remove(contact._index);
+      }}
+    >
+      <Icon icon="times-circle" />
+    </Button>
+  ),
+});
 
 const getContactsUrl = (orgId, contactId) => {
   if (!contactId) return undefined;
@@ -92,7 +130,7 @@ const alignRowProps = { alignLastColToEnd: true };
 
 const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, orgId, categoriesDict, stripes }) => {
   const intl = useIntl();
-  const contacts = fields.value
+  const contacts = (fields.value || [])
     .map((contactId, _index) => {
       const contact = contactsMap?.[contactId];
 
@@ -113,30 +151,9 @@ const OrganizationContactPeopleList = ({ fetchContacts, fields, contactsMap, org
     });
   };
 
-  const resultsFormatter = {
-    contactCategories: ({ categories = [] }) => transformCategoryIdsToLables(categoriesDict, categories),
-    contactEmails: ({ emails }) => map(emails, 'value').join(', '),
-    contactName: contact => (
-      contact.isDeleted
-        ? intl.formatMessage({ id: 'ui-organizations.contactPeople.removedContact' })
-        : `${contact.lastName}, ${contact.firstName}`
-    ),
-    unassignContact: (contact) => (
-      <Button
-        align="end"
-        aria-label={intl.formatMessage({ id: 'ui-organizations.contacts.button.unassign' })}
-        buttonStyle="fieldControl"
-        data-test-unassign-contact
-        type="button"
-        onClick={(e) => {
-          e.preventDefault();
-          fields.remove(contact._index);
-        }}
-      >
-        <Icon icon="times-circle" />
-      </Button>
-    ),
-  };
+  const resultsFormatter = useMemo(() => {
+    return getResultsFormatter({ intl, categoriesDict, fields });
+  }, [categoriesDict, fields, intl]);
 
   return (
     <>

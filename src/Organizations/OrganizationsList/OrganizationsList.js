@@ -31,16 +31,16 @@ import {
   useLocationFilters,
   useLocationSorting,
 } from '@folio/stripes-acq-components';
+import {
+  OrganizationsListFilter,
+  searchableIndexes,
+} from '@folio/plugin-find-organization';
 
 import {
   ORGANIZATIONS_ROUTE,
   VIEW_ORG_DETAILS,
 } from '../../common/constants';
 import { OrganizationDetailsContainer } from '../OrganizationDetails';
-import OrganizationsListFilter from './OrganizationsListFilter';
-import {
-  searchableIndexes,
-} from './OrganizationsListSearchConfig';
 import OrganizationsListLastMenu from './OrganizationsListLastMenu';
 
 const resultsPaneTitle = <FormattedMessage id="ui-organizations.meta.title" />;

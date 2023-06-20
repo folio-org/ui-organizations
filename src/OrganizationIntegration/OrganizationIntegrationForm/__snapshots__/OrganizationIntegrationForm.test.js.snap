@@ -150,7 +150,6 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
-                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-integrationInfo"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -331,7 +330,6 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
-                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-edi"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -903,7 +901,6 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
-                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-ftp"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"
@@ -1376,7 +1373,6 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                   style="z-index: 1;"
                 >
                   <div
-                    aria-label="[object Object]"
                     aria-labelledby="accordion-toggle-button-scheduling"
                     class="content-region expanded"
                     data-test-accordion-wrapper="true"

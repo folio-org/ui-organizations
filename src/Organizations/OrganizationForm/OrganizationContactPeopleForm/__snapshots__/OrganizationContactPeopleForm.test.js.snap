@@ -63,6 +63,15 @@ exports[`OrganizationContactPeopleForm should render correct structure 1`] = `
               <div
                 aria-sort="none"
                 class="mclHeader"
+                id="list-column-notes"
+                role="columnheader"
+                style="flex: 0 0 auto;"
+              >
+                ui-organizations.contactPeople.note
+              </div>
+              <div
+                aria-sort="none"
+                class="mclHeader"
                 id="list-column-unassigncontact"
                 role="columnheader"
                 style="flex: 0 0 auto;"
@@ -113,6 +122,17 @@ exports[`OrganizationContactPeopleForm should render correct structure 1`] = `
                     class="mclCell mclCellStyle"
                     role="gridcell"
                   >
+                    <span
+                      class="text"
+                      title="notes"
+                    >
+                      notes
+                    </span>
+                  </div>
+                  <div
+                    class="mclCell mclCellStyle"
+                    role="gridcell"
+                  >
                     <button
                       aria-label="ui-organizations.contacts.button.unassign"
                       class="button fieldControl align-end"
@@ -136,7 +156,7 @@ exports[`OrganizationContactPeopleForm should render correct structure 1`] = `
               >
                 <div
                   class="mclCenteredContainer"
-                  style="width: 100%; visibility: hidden; height: 0px; padding: 0px;"
+                  style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
                 >
                   <div
                     class="textCentered"
