@@ -414,5 +414,6 @@
     "settings.types.cannotDeleteTermMessage": "Questa tipologia non può essere eliminata perché è utilizzata da uno o più record.",
     "settings.types.deleteEntry": "Elimina tipologia",
     "settings.types.termDeleted": "Il tipo <b>{term}</b> è stata <b>eliminata</b> correttamente",
-    "settings.types.termWillBeDeleted": "La tipologia <b>{term}</b> verrà <b>eliminata.</b>"
+    "settings.types.termWillBeDeleted": "La tipologia <b>{term}</b> verrà <b>eliminata.</b>",
+    "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>"
 }

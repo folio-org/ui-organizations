@@ -414,5 +414,6 @@
     "settings.types.cannotDeleteTermMessage": "Tento typ nelze smazat, protože jej používá jeden nebo více záznamů.",
     "settings.types.deleteEntry": "Smazat typ",
     "settings.types.termDeleted": "Typ <b>{term}</b> byl úspěšně <b>smazán</b>",
-    "settings.types.termWillBeDeleted": "Typ <b>{term}</b> bude <b>smazán.</b>"
+    "settings.types.termWillBeDeleted": "Typ <b>{term}</b> bude <b>smazán.</b>",
+    "save.success": "<b>Organizace - \"{organizationName}\"</b> byla úspěšně <b>uložena</b>"
 }

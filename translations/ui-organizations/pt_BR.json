@@ -414,5 +414,6 @@
     "settings.types.cannotDeleteTermMessage": "Este tipo não pode ser excluído, pois está em uso por um ou mais registros.",
     "settings.types.deleteEntry": "Excluir tipo",
     "settings.types.termDeleted": "O tipo <b> {term} </b> foi <b> excluído </b> com sucesso",
-    "settings.types.termWillBeDeleted": "O tipo <b> {term} </b> será <b> excluído. </b>"
+    "settings.types.termWillBeDeleted": "O tipo <b> {term} </b> será <b> excluído. </b>",
+    "save.success": "A <b> Organização - \" {organizationName} \" </b> foi <b> salva </b> com sucesso"
 }
