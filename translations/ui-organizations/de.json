@@ -414,5 +414,6 @@
     "settings.types.cannotDeleteTermMessage": "Dieser Typ kann nicht gelöscht werden, da er von einem oder mehreren Datensätzen verwendet wird.",
     "settings.types.deleteEntry": "Typ löschen",
     "settings.types.termDeleted": "Der Typ <b>{term}</b> wurde erfolgreich <b>gelöscht</b>",
-    "settings.types.termWillBeDeleted": "Der Typ <b>{term}</b> wird <b>gelöscht.</b>"
+    "settings.types.termWillBeDeleted": "Der Typ <b>{term}</b> wird <b>gelöscht.</b>",
+    "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>"
 }

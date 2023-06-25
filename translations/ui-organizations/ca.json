@@ -414,5 +414,6 @@
     "settings.types.cannotDeleteTermMessage": "This type cannot be deleted, as it is in use by one or more records.",
     "settings.types.deleteEntry": "Delete type",
     "settings.types.termDeleted": "The type <b>{term}</b> was successfully <b>deleted</b>",
-    "settings.types.termWillBeDeleted": "The type <b>{term}</b> will be <b>deleted.</b>"
+    "settings.types.termWillBeDeleted": "The type <b>{term}</b> will be <b>deleted.</b>",
+    "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>"
 }
