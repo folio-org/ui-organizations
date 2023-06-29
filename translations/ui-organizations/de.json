@@ -322,7 +322,7 @@
     "integration.info": "Informationen",
     "integration.info.configName": "Name der Integration",
     "integration.info.configDescription": "Beschreibung",
-    "integration.info.isDefaultConfig": "Standard-EDI-Verbindung",
+    "integration.info.isDefaultConfig": "Standardintegration",
     "integration.edi": "EDI-Konfiguration",
     "integration.edi.accountNumbers": "Kundennummern",
     "integration.edi.defaultAcquisitionMethods": "Auftragsexport für Erwerbungsarten automatisieren",
@@ -415,5 +415,5 @@
     "settings.types.deleteEntry": "Typ löschen",
     "settings.types.termDeleted": "Der Typ <b>{term}</b> wurde erfolgreich <b>gelöscht</b>",
     "settings.types.termWillBeDeleted": "Der Typ <b>{term}</b> wird <b>gelöscht.</b>",
-    "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>"
+    "save.success": "Die<b>Organisation -\"{organizationName}\"</b> wurde erfolgreich <b> gespeichert</b>"
 }

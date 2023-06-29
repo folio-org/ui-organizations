@@ -415,5 +415,5 @@
     "settings.types.deleteEntry": "删除类型",
     "settings.types.termDeleted": "<b> {term} </b>类型已成功<b>删除</b>",
     "settings.types.termWillBeDeleted": "类型<b> {term} </b>将被<b>删除。 </b>",
-    "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>"
+    "save.success": "<b>组织 -“ {organizationName} ” </b>已成功<b>保存</b>"
 }
