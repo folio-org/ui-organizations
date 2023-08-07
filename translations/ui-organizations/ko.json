@@ -414,5 +414,6 @@
     "settings.types.cannotDeleteTermMessage": "이 유형은 하나 이상의 레코드에서 사용 중이므로 삭제할 수 없습니다.",
     "settings.types.deleteEntry": "유형 삭제",
     "settings.types.termDeleted": "<b> {term} </b> 유형이 성공적으로 <b> 삭제되었습니다 </b>",
-    "settings.types.termWillBeDeleted": "<b> {term} </b> 유형이 <b> 삭제됩니다. </b>"
+    "settings.types.termWillBeDeleted": "<b> {term} </b> 유형이 <b> 삭제됩니다. </b>",
+    "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>"
 }
