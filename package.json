@@ -200,17 +200,25 @@
         ]
       },
       {
-        "permissionName": "ui-organizations.settings",
-        "displayName": "Settings (Organizations): Can view and edit settings",
+        "permissionName": "ui-organizations.settings.view",
+        "displayName": "Settings (Organizations): View settings",
         "visible": true,
         "subPermissions": [
           "settings.organizations.enabled",
           "organizations-storage.organization-types.collection.get",
           "organizations-storage.organization-types.item.get",
+          "organizations-storage.categories.collection.get"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.settings",
+        "displayName": "Settings (Organizations): Can view and edit settings",
+        "visible": true,
+        "subPermissions": [
+          "ui-organizations.settings.view",
           "organizations-storage.organization-types.item.post",
           "organizations-storage.organization-types.item.put",
           "organizations-storage.organization-types.item.delete",
-          "organizations-storage.categories.collection.get",
           "organizations-storage.categories.item.delete",
           "organizations-storage.categories.item.post",
           "organizations-storage.categories.item.put"
