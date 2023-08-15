@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Settings } from '@folio/stripes/smart-components';
 
-import CategorySettings from './CategorySettings';
+import { CategorySettings } from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
 
 const pages = [
