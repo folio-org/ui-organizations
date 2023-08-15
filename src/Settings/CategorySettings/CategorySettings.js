@@ -24,8 +24,10 @@ class CategorySettings extends Component {
       delete: () => !hasEditPerms,
     };
 
+    const ConnectedComponent = this.connectedControlledVocab;
+
     return (
-      <this.connectedControlledVocab
+      <ConnectedComponent
         actionSuppressor={actionSuppressor}
         canCreate={hasEditPerms}
         stripes={stripes}
