@@ -1,9 +1,8 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import { ControlledVocab } from '@folio/stripes/smart-components';
 
-import TypeSettings from './TypeSettings';
+import CategorySettings from './CategorySettings';
 
 jest.mock('@folio/stripes-smart-components/lib/ControlledVocab', () => jest.fn(({
   rowFilter,
@@ -33,26 +32,16 @@ const stripesMock = {
   hasPerm: jest.fn(() => true),
 };
 
-const renderTypeSettings = () => render(
-  <TypeSettings
+const renderCategorySettings = () => render(
+  <CategorySettings
     stripes={stripesMock}
   />,
 );
 
-describe('TypeSettings component', () => {
-  beforeEach(() => {
-    renderTypeSettings();
-  });
-
-  it('should display label', async () => {
-    expect(screen.getByText('ui-organizations.settings.types')).toBeInTheDocument();
-  });
-
-  it('should display new button', async () => {
-    expect(screen.getByText('New')).toBeInTheDocument();
-  });
-
+describe('CategorySettings', () => {
   it('should check action suppression', () => {
+    renderCategorySettings();
+
     const { actionSuppressor } = ControlledVocab.mock.calls[0][0];
 
     expect(stripesMock.hasPerm).toHaveBeenCalled();
