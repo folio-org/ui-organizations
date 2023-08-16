@@ -415,5 +415,6 @@
     "settings.types.deleteEntry": "Excluir tipo",
     "settings.types.termDeleted": "O tipo <b> {term} </b> foi <b> excluído </b> com sucesso",
     "settings.types.termWillBeDeleted": "O tipo <b> {term} </b> será <b> excluído. </b>",
-    "save.success": "A <b> Organização - \" {organizationName} \" </b> foi <b> salva </b> com sucesso"
+    "save.success": "A <b> Organização - \" {organizationName} \" </b> foi <b> salva </b> com sucesso",
+    "permission.settings.view": "Configurações (Organizações): Exibir configurações"
 }
