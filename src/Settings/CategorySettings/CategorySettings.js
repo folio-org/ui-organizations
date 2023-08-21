@@ -17,17 +17,19 @@ class CategorySettings extends Component {
       value: <FormattedMessage id="ui-organizations.settings.name" />,
       action: <FormattedMessage id="ui-organizations.settings.action" />,
     };
-    const getDisableAttr = () => ({
-      disabled: !stripes.hasPerm('ui-organizations.settings'),
-    });
-    const actionProps = {
-      create: getDisableAttr,
-      edit: getDisableAttr,
-      delete: getDisableAttr,
+
+    const hasEditPerms = stripes.hasPerm('ui-organizations.settings');
+    const actionSuppressor = {
+      edit: () => !hasEditPerms,
+      delete: () => !hasEditPerms,
     };
 
+    const ConnectedComponent = this.connectedControlledVocab;
+
     return (
-      <this.connectedControlledVocab
+      <ConnectedComponent
+        actionSuppressor={actionSuppressor}
+        canCreate={hasEditPerms}
         stripes={stripes}
         baseUrl="organizations-storage/categories"
         records="categories"
@@ -40,7 +42,6 @@ class CategorySettings extends Component {
         nameKey="categories"
         id="categories"
         sortby="value"
-        actionProps={actionProps}
       />
     );
   }

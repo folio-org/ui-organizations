@@ -34,14 +34,10 @@ class TypeSettings extends Component {
       action: <FormattedMessage id="ui-organizations.settings.action" />,
     };
 
-    const getDisableAttr = () => ({
-      disabled: !stripes.hasPerm('ui-organizations.settings'),
-    });
-
-    const actionProps = {
-      create: getDisableAttr,
-      edit: getDisableAttr,
-      delete: getDisableAttr,
+    const hasEditPerms = stripes.hasPerm('ui-organizations.settings');
+    const actionSuppressor = {
+      edit: () => !hasEditPerms,
+      delete: () => !hasEditPerms,
     };
 
     const fieldComponents = {
@@ -68,7 +64,8 @@ class TypeSettings extends Component {
 
     return (
       <this.connectedControlledVocab
-        actionProps={actionProps}
+        actionSuppressor={actionSuppressor}
+        canCreate={hasEditPerms}
         baseUrl="organizations-storage/organization-types"
         columnMapping={columnMapping}
         fieldComponents={fieldComponents}

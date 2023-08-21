@@ -6,6 +6,7 @@
 * Add `Note` field to contact people summary list. Refs UIORGS-352.
 * Organizations filters consistency in `ui-organizations` and `ui-plugin-find-organization` . Refs UIORGS-373.
 * No pop-up message when creating or editing an organization. Refs UIORGS-375.
+* Introduce new permission to view all organizations' settings. Refs UIORGS-346.
 
 ## [4.0.0](https://github.com/folio-org/ui-organizations/tree/v4.0.0) (2023-02-22)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.3.1...v4.0.0)
