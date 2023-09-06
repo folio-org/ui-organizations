@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
-import { organization } from '../../../test/jest/fixtures';
+import { organization } from 'fixtures';
 
 import { OrganizationsListContainer } from './OrganizationsListContainer';
 import { useOrganizations } from './hooks';

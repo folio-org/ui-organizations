@@ -3,12 +3,13 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query';
-import { render, screen } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
+import { organizationTypes as organizationTypesMock } from 'fixtures';
+
 import OrganizationDetails from './OrganizationDetails';
-import { organizationTypes as organizationTypesMock } from '../../../test/jest/fixtures';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
@@ -140,7 +141,7 @@ describe('OrganizationDetails', () => {
   });
 
   describe('Actions', () => {
-    it('should call onEdit when edit action is pressed', () => {
+    it('should call onEdit when edit action is pressed', async () => {
       const onEdit = jest.fn();
 
       renderOrganizationDetails({
@@ -149,18 +150,18 @@ describe('OrganizationDetails', () => {
         onEdit,
       });
 
-      user.click(screen.getByTestId('edit-organization'));
+      await user.click(screen.getByTestId('edit-organization'));
 
       expect(onEdit).toHaveBeenCalled();
     });
 
-    it('should open confirmation modal when delete action is pressed', () => {
+    it('should open confirmation modal when delete action is pressed', async () => {
       renderOrganizationDetails({
         ...defaultProps,
         organization: { name: 'Amazon', isVendor: true },
       });
 
-      user.click(screen.getByTestId('delete-organization'));
+      await user.click(screen.getByTestId('delete-organization'));
 
       expect(screen.getByText('ui-organizations.organization.delete.confirmLabel')).toBeDefined();
     });
@@ -175,7 +176,7 @@ describe('OrganizationDetails', () => {
       expect(screen.queryByTestId('view-organization-export-log')).toBeNull();
     });
 
-    it('should call onViewExportLog when view log action is pressed', () => {
+    it('should call onViewExportLog when view log action is pressed', async () => {
       const onViewExportLog = jest.fn();
 
       renderOrganizationDetails({
@@ -185,20 +186,20 @@ describe('OrganizationDetails', () => {
         integrationConfigs: [{ id: 'integrationConfigId' }],
       });
 
-      user.click(screen.getByTestId('view-organization-export-log'));
+      await user.click(screen.getByTestId('view-organization-export-log'));
 
       expect(onViewExportLog).toHaveBeenCalled();
     });
   });
 
   describe('Tags', () => {
-    it('should tags pane when badge is clicked', () => {
+    it('should tags pane when badge is clicked', async () => {
       renderOrganizationDetails({
         ...defaultProps,
         organization: { name: 'Amazon', isVendor: true },
       });
 
-      user.click(screen.getAllByTitle('stripes-acq-components.showTags')[0]);
+      await user.click(screen.getAllByTitle('stripes-acq-components.showTags')[0]);
 
       expect(screen.getByText('TagsPane')).toBeDefined();
     });

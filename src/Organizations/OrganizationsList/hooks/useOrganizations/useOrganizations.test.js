@@ -1,11 +1,11 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useLocation } from 'react-router';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { useOkapiKy } from '@folio/stripes/core';
+import { organization } from 'fixtures';
 
 import { useOrganizations } from './useOrganizations';
-import { organization } from '../../../../../test/jest/fixtures';
 
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
@@ -46,11 +46,11 @@ describe('useOrganizations', () => {
       .mockClear()
       .mockReturnValue({ search: '' });
 
-    const { result, waitFor } = renderHook(() => useOrganizations({
+    const { result } = renderHook(() => useOrganizations({
       pagination: { limit: 5, offset: 0, timestamp: 42 },
     }), { wrapper });
 
-    await waitFor(() => !result.current.isFetching);
+    await waitFor(() => expect(result.current.isFetching).toBeFalsy());
 
     expect(result.current).toEqual({
       organizations: [],
@@ -64,11 +64,11 @@ describe('useOrganizations', () => {
       .mockClear()
       .mockReturnValue({ search: 'status=Inactive&status=Active' });
 
-    const { result, waitFor } = renderHook(() => useOrganizations({
+    const { result } = renderHook(() => useOrganizations({
       pagination: { limit: 5, offset: 0, timestamp: 42 },
     }), { wrapper });
 
-    await waitFor(() => !result.current.isFetching);
+    await waitFor(() => expect(result.current.isFetching).toBeFalsy());
 
     expect(result.current).toEqual({
       organizations: [organization],

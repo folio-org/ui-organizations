@@ -1,8 +1,8 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
-import { integrationConfig } from '../../../../test/jest/fixtures';
+import { integrationConfig } from 'fixtures';
 import FtpView from './FtpView';
 
 const defaultProps = {

@@ -3,7 +3,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 
 import { useOkapiKy } from '@folio/stripes/core';
 
@@ -47,9 +47,9 @@ describe('useIntegrationConfig', () => {
   });
 
   it('fetches organization integration config', async () => {
-    const { result, waitFor } = renderHook(() => useIntegrationConfig(config.id), { wrapper });
+    const { result } = renderHook(() => useIntegrationConfig(config.id), { wrapper });
 
-    await waitFor(() => !result.current.isFetching);
+    await waitFor(() => expect(result.current.isFetching).toBeFalsy());
 
     expect(result.current.integrationConfig).toEqual({
       id: 'configId',

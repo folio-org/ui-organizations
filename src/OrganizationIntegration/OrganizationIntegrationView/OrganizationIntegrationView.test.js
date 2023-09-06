@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { queryHelpers } from '@testing-library/dom';
-import user from '@testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import { queryHelpers } from '@folio/jest-config-stripes/testing-library/dom';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory, useParams } from 'react-router';
 
@@ -12,7 +12,7 @@ import {
 } from '@folio/stripes/components';
 import { useOrganization } from '@folio/stripes-acq-components';
 
-import { integrationConfig } from '../../../test/jest/fixtures';
+import { integrationConfig } from 'fixtures';
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import {
   useIntegrationConfig,
@@ -91,10 +91,10 @@ describe('OrganizationIntegrationView', () => {
       ).toBe(sections.length);
     });
 
-    it('should collapse sections when Collapse all button is pressed', () => {
+    it('should collapse sections when Collapse all button is pressed', async () => {
       const { container } = renderOrganizationIntegrationView();
 
-      user.click(screen.getByText('stripes-components.collapseAll'));
+      await user.click(screen.getByText('stripes-components.collapseAll'));
 
       const sections = queryAllByClass(container, 'defaultCollapseButton');
 
@@ -107,15 +107,15 @@ describe('OrganizationIntegrationView', () => {
   });
 
   describe('Actions', () => {
-    it('should open remove confirmation', () => {
+    it('should open remove confirmation', async () => {
       renderOrganizationIntegrationView();
 
-      user.click(screen.getByTestId('remove-integration-action'));
+      await user.click(screen.getByTestId('remove-integration-action'));
 
       expect(screen.getByText('ui-organizations.integration.confirmation.heading')).toBeInTheDocument();
     });
 
-    it('should open form', () => {
+    it('should open form', async () => {
       const pushMock = jest.fn();
 
       useHistory.mockClear().mockReturnValue({
@@ -124,7 +124,7 @@ describe('OrganizationIntegrationView', () => {
 
       renderOrganizationIntegrationView();
 
-      user.click(screen.getByTestId('edit-integration-action'));
+      await user.click(screen.getByTestId('edit-integration-action'));
 
       expect(pushMock).toHaveBeenCalledWith({
         pathname: `/organizations/${orgId}/integration/${integrationConfig.id}/edit`,

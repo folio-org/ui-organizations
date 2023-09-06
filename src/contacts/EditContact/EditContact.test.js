@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { queryHelpers } from '@testing-library/dom';
-import user from '@testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import { queryHelpers } from '@folio/jest-config-stripes/testing-library/dom';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
@@ -11,7 +11,7 @@ import {
   collapseAllSections,
 } from '@folio/stripes/components';
 
-import { contact } from '../../../test/jest/fixtures';
+import { contact } from 'fixtures';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import EditContact from './EditContact';
@@ -72,10 +72,10 @@ describe('EditContact', () => {
       ).toBe(sections.length);
     });
 
-    it('should collapse sections when Collapse all button is pressed', () => {
+    it('should collapse sections when Collapse all button is pressed', async () => {
       const { container } = renderEditContact();
 
-      user.click(screen.getByText('stripes-components.collapseAll'));
+      await user.click(screen.getByText('stripes-components.collapseAll'));
 
       const sections = queryAllByClass(container, 'defaultCollapseButton');
 

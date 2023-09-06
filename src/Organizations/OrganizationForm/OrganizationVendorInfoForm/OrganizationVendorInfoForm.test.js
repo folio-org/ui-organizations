@@ -1,10 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import stripesFinalForm from '@folio/stripes/final-form';
 
-import { organization } from '../../../../test/jest/fixtures';
+import { organization } from 'fixtures';
 
 import OrganizationVendorInfoForm from './OrganizationVendorInfoForm';
 
