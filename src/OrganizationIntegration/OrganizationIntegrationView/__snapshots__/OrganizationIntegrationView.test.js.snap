@@ -276,7 +276,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-3"
+                            for="checkbox-6"
                           >
                             <span
                               class="labelText"
@@ -290,7 +290,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 aria-invalid="false"
                                 class="input"
                                 disabled=""
-                                id="checkbox-3"
+                                id="checkbox-6"
                                 type="checkbox"
                                 value=""
                               />
@@ -541,7 +541,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-5"
+                            for="checkbox-7"
                           >
                             <span
                               class="labelText"
@@ -555,7 +555,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 aria-invalid="false"
                                 class="input"
                                 disabled=""
-                                id="checkbox-5"
+                                id="checkbox-7"
                                 type="checkbox"
                                 value=""
                               />
@@ -595,7 +595,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-6"
+                            for="checkbox-8"
                           >
                             <span
                               class="labelText"
@@ -609,7 +609,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 aria-invalid="false"
                                 class="input"
                                 disabled=""
-                                id="checkbox-6"
+                                id="checkbox-8"
                                 type="checkbox"
                                 value=""
                               />
@@ -649,7 +649,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         >
                           <label
                             class="label label"
-                            for="checkbox-7"
+                            for="checkbox-9"
                           >
                             <span
                               class="labelText"
@@ -663,7 +663,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                                 aria-invalid="false"
                                 class="input"
                                 disabled=""
-                                id="checkbox-7"
+                                id="checkbox-9"
                                 type="checkbox"
                                 value=""
                               />

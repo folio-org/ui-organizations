@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
-import { contact } from '../../../test/jest/fixtures';
+import { contact } from 'fixtures';
 import { history, match } from '../../../test/jest/routerMocks';
 
 import { DICT_CATEGORIES } from '../../common/constants';

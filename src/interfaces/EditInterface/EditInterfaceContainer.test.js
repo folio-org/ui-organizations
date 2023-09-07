@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
-import { orgInterface } from '../../../test/jest/fixtures';
+import { orgInterface } from 'fixtures';
 import { history, match } from '../../../test/jest/routerMocks';
 
 import saveInterface from './saveInterface';

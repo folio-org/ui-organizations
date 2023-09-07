@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen, act } from '@testing-library/react';
-import { queryHelpers } from '@testing-library/dom';
-import user from '@testing-library/user-event';
+import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
+import { queryHelpers } from '@folio/jest-config-stripes/testing-library/dom';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
@@ -10,10 +10,11 @@ import {
   expandAllSections,
   collapseAllSections,
 } from '@folio/stripes/components';
+import { organizationTypes } from 'fixtures';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import OrganizationForm from './OrganizationForm';
-import { organizationTypes } from '../../../test/jest/fixtures';
+
 
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
@@ -113,7 +114,7 @@ describe('OrganizationForm', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('should call cancelForm prop when cancel button is pressed', () => {
+  it('should call cancelForm prop when cancel button is pressed', async () => {
     const cancelForm = jest.fn();
 
     renderOrganizationForm({
@@ -121,7 +122,7 @@ describe('OrganizationForm', () => {
       cancelForm,
     });
 
-    user.click(screen.getByText('stripes-acq-components.FormFooter.cancel'));
+    await user.click(screen.getByText('stripes-acq-components.FormFooter.cancel'));
 
     expect(cancelForm).toHaveBeenCalled();
   });
@@ -139,10 +140,10 @@ describe('OrganizationForm', () => {
       ).toBe(sections.length - 1);
     });
 
-    it('should expand sections when Expand all button is pressed', () => {
+    it('should expand sections when Expand all button is pressed', async () => {
       const { container } = renderOrganizationForm();
 
-      user.click(screen.getByText('stripes-components.expandAll'));
+      await user.click(screen.getByText('stripes-components.expandAll'));
 
       const sections = queryAllByClass(container, 'defaultCollapseButton');
 

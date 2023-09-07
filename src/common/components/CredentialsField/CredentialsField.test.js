@@ -1,6 +1,6 @@
 import { Form } from 'react-final-form';
-import user from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { Credentials } from '../Credentials';
 import { CredentialsField } from './CredentialsField';
@@ -48,10 +48,10 @@ describe('CredentialsField', () => {
       expect(field.type).toBe('password');
     });
 
-    it('should render field with \'text\' type if credentials are visible', () => {
+    it('should render field with \'text\' type if credentials are visible', async () => {
       const toggleBtn = screen.getByRole('button', { name: 'ui-organizations.edit.showCredentials' });
 
-      user.click(toggleBtn);
+      await user.click(toggleBtn);
 
       expect(field.type).toBe('text');
     });
@@ -66,10 +66,10 @@ describe('CredentialsField', () => {
       expect(screen.getByText(/[*]{3,}/)).toBeInTheDocument();
     });
 
-    it('should display value if credentials are visible', () => {
+    it('should display value if credentials are visible', async () => {
       const toggleBtn = screen.getByRole('button', { name: 'ui-organizations.edit.showCredentials' });
 
-      user.click(toggleBtn);
+      await user.click(toggleBtn);
 
       expect(screen.getByText(defaultProps.value)).toBeInTheDocument();
     });

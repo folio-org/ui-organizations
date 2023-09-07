@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { queryHelpers } from '@testing-library/dom';
-import user from '@testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import { queryHelpers } from '@folio/jest-config-stripes/testing-library/dom';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
@@ -99,10 +99,10 @@ describe('OrganizationIntegrationForm', () => {
       ).toBe(sections.length);
     });
 
-    it('should collapse sections when Collapse all button is pressed', () => {
+    it('should collapse sections when Collapse all button is pressed', async () => {
       const { container } = renderOrganizationIntegrationForm();
 
-      user.click(screen.getByText('stripes-components.collapseAll'));
+      await user.click(screen.getByText('stripes-components.collapseAll'));
 
       const sections = queryAllByClass(container, 'defaultCollapseButton');
 
