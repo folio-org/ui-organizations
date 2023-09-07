@@ -416,5 +416,5 @@
     "settings.types.termDeleted": "El tipo <b>{term}</b> se ha <b>eliminado</b> correctamente",
     "settings.types.termWillBeDeleted": "Se <b>eliminará</b> el tipo <b>{term}</b> <b>.</b>",
     "save.success": "La <b>Organización - \"{organizationName}\"</b> se ha <b>guardado</b> correctamente",
-    "permission.settings.view": "Settings (Organizations): View settings"
+    "permission.settings.view": "Ajustes (Organizaciones): Ver configuración"
 }
