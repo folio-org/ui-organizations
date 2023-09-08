@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import TogglePassword from './TogglePassword';
 
@@ -28,10 +28,10 @@ describe('TogglePassword', () => {
     expect(screen.getByTestId('password-field').type).toBe('password');
   });
 
-  it('should show password value when toggle button is pressed', () => {
+  it('should show password value when toggle button is pressed', async () => {
     renderTogglePassword();
 
-    user.click(screen.getByText('ui-organizations.edit.show'));
+    await user.click(screen.getByText('ui-organizations.edit.show'));
 
     expect(screen.getByTestId('password-field').type).toBe('text');
   });

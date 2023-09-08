@@ -3,7 +3,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 
 import { useOkapiKy } from '@folio/stripes/core';
 
@@ -37,7 +37,7 @@ describe('useLinkedAgreements', () => {
   });
 
   it('should fetch organization linked agreements', async () => {
-    const { result, waitFor } = renderHook(() => useLinkedAgreements(
+    const { result } = renderHook(() => useLinkedAgreements(
       'organizationId',
       {
         limit: 30,
@@ -45,7 +45,7 @@ describe('useLinkedAgreements', () => {
       },
     ), { wrapper });
 
-    await waitFor(() => !result.current.isFetching);
+    await waitFor(() => expect(result.current.isFetching).toBeFalsy());
 
     expect(result.current).toEqual(expect.objectContaining({
       agreements: mockAgreeemnts,

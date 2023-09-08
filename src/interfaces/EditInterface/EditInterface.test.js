@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
@@ -7,7 +7,7 @@ import {
   HasCommand,
 } from '@folio/stripes/components';
 
-import { orgInterface } from '../../../test/jest/fixtures';
+import { orgInterface } from 'fixtures';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import EditInterface from './EditInterface';

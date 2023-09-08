@@ -1,12 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+
+import { organizationTypes } from 'fixtures';
 
 import { match, location, history } from '../../../test/jest/routerMocks';
-
+import { useTypes } from '../../common/hooks';
 import OrganizationDetails from './OrganizationDetails';
 import { OrganizationDetailsContainer } from './OrganizationDetailsContainer';
-import { organizationTypes } from '../../../test/jest/fixtures';
-import { useTypes } from '../../common/hooks';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),

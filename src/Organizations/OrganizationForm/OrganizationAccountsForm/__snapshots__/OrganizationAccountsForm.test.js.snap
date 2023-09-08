@@ -525,7 +525,7 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
                     <div
                       class="multiSelectMenu"
                       hidden=""
-                      style="width: 0px;"
+                      style="width: 100px;"
                     >
                       <div
                         class="multiSelectFeedback"

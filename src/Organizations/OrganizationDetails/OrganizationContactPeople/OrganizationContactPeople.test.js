@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import user from '@testing-library/user-event';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import { OrganizationContactPeopleContainer } from './OrganizationContactPeopleContainer';
 
@@ -60,7 +60,7 @@ describe('OrganizationContactPeople', () => {
 
     await screen.findByText('ui-organizations.contactPeople.name');
 
-    user.click(screen.getByText(`${contact.lastName}, ${contact.firstName}`));
+    await user.click(screen.getByText(`${contact.lastName}, ${contact.firstName}`));
 
     expect(historyMock.push).toHaveBeenCalled();
   });

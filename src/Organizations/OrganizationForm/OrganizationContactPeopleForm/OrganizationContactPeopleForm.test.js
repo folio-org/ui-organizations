@@ -1,10 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import stripesFinalForm from '@folio/stripes/final-form';
 
-import { contact } from '../../../../test/jest/fixtures';
+import { contact } from 'fixtures';
 
 import { DICT_CATEGORIES } from '../../../common/constants';
 import OrganizationContactPeopleForm from './OrganizationContactPeopleForm';

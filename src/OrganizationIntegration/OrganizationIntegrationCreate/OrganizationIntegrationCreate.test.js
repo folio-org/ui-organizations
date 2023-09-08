@@ -1,10 +1,10 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { useOrganization } from '@folio/stripes-acq-components';
 
-import { organization } from '../../../test/jest/fixtures';
+import { organization } from 'fixtures';
 import { history, location } from '../../../test/jest/routerMocks';
 
 import { useIntegrationConfigMutation } from '../../common/hooks';

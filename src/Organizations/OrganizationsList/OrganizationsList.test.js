@@ -1,5 +1,5 @@
-import user from '@testing-library/user-event';
-import { act, render } from '@testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { act, screen, render, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
@@ -7,7 +7,7 @@ import {
   HasCommand,
 } from '@folio/stripes/components';
 
-import { organization } from '../../../test/jest/fixtures';
+import { organization } from 'fixtures';
 
 import {
   ORGANIZATIONS_ROUTE,
@@ -83,7 +83,14 @@ describe('OrganizationsList', () => {
     it('should display org results list', async () => {
       const { getByText } = renderOrganizationsList();
 
-      await act(async () => user.click(getByText(defaultProps.organizations[0].name)));
+      screen.debug(undefined, 200000);
+      const orgName = await screen.findByText(defaultProps.organizations[0].name);
+
+      expect(orgName).toBeInTheDocument();
+
+      await act(async () => {
+        await user.click(orgName);
+      });
 
       expect(getByText('ui-organizations.main.name')).toBeInTheDocument();
       expect(getByText('ui-organizations.main.code')).toBeInTheDocument();
@@ -96,7 +103,7 @@ describe('OrganizationsList', () => {
       HasCommand.mockClear();
     });
 
-    it('should navigate to list view when search shortcut is called', () => {
+    it('should navigate to list view when search shortcut is called', async () => {
       const pushMock = jest.fn();
 
       useHistory.mockClear().mockReturnValue({
@@ -104,9 +111,9 @@ describe('OrganizationsList', () => {
       });
 
       renderOrganizationsList();
-      HasCommand.mock.calls[0][0].commands.find(c => c.name === 'new').handler();
+      HasCommand.mock.calls[0]?.[0].commands.find(c => c.name === 'new').handler();
 
-      expect(pushMock).toHaveBeenCalledWith(`${ORGANIZATIONS_ROUTE}/create`);
+      await waitFor(() => expect(pushMock).toHaveBeenCalledWith(`${ORGANIZATIONS_ROUTE}/create`));
     });
   });
 });

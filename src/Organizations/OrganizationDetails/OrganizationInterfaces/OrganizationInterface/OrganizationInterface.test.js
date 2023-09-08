@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import OrganizationInterfaceContainer from './OrganizationInterfaceContainer';
 
@@ -40,7 +40,7 @@ describe('OrganizationInterface', () => {
 
     renderOrganizationInterfaceContainer();
 
-    user.click(screen.getByText('ui-organizations.edit.showCredentials'));
+    await user.click(screen.getByText('ui-organizations.edit.showCredentials'));
 
     await screen.findByText('ui-organizations.interface.username');
 

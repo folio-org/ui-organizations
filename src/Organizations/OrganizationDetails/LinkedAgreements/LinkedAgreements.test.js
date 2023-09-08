@@ -1,5 +1,5 @@
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { useLinkedAgreements } from '../../../common/hooks';
 import { LinkedAgreements } from './LinkedAgreements';

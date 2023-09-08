@@ -1,4 +1,4 @@
-import { organization } from '../../../../test/jest/fixtures';
+import { organization } from 'fixtures';
 
 import {
   getResourceDataList,

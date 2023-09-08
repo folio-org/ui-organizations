@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
@@ -45,7 +45,7 @@ describe('ViewInterface', () => {
   });
 
   describe('Actions', () => {
-    it('should call unassign prop when unassign action is pressed', () => {
+    it('should call unassign prop when unassign action is pressed', async () => {
       const unassign = jest.fn();
 
       renderViewInterface({
@@ -53,12 +53,12 @@ describe('ViewInterface', () => {
         unassign,
       });
 
-      user.click(screen.getByTestId('unassign-interface'));
+      await user.click(screen.getByTestId('unassign-interface'));
 
       expect(unassign).toHaveBeenCalled();
     });
 
-    it('should call deleteInterface prop when delete action is pressed', () => {
+    it('should call deleteInterface prop when delete action is pressed', async () => {
       const deleteInterface = jest.fn();
 
       renderViewInterface({
@@ -66,7 +66,7 @@ describe('ViewInterface', () => {
         deleteInterface,
       });
 
-      user.click(screen.getByTestId('delete-interface'));
+      await user.click(screen.getByTestId('delete-interface'));
 
       expect(deleteInterface).toHaveBeenCalled();
     });

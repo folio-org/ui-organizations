@@ -167,7 +167,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="text-input-3"
+                            for="text-input-7"
                           >
                             ui-organizations.integration.info.configName
                             <span
@@ -187,7 +187,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               autocomplete="off"
                               autocorrect="off"
                               error=""
-                              id="text-input-3"
+                              id="text-input-7"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.configName"
                               required=""
                               spellcheck="false"
@@ -209,14 +209,14 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="textarea-input-4"
+                            for="textarea-input-8"
                           >
                             ui-organizations.integration.info.configDescription
                           </label>
                           <textarea
                             aria-invalid="false"
                             class="formControl"
-                            id="textarea-input-4"
+                            id="textarea-input-8"
                             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.configDescription"
                             type="text"
                           />
@@ -234,7 +234,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label label checkboxInteractionStylesControl"
-                            for="checkbox-5"
+                            for="checkbox-9"
                           >
                             <span
                               class="labelText"
@@ -247,7 +247,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               <input
                                 aria-invalid="false"
                                 class="input"
-                                id="checkbox-5"
+                                id="checkbox-9"
                                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.isDefaultConfig"
                                 type="checkbox"
                                 value=""
@@ -348,8 +348,8 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="select-7"
-                            id="select-7-label"
+                            for="select-10"
+                            id="select-10-label"
                           >
                             ui-organizations.integration.edi.accountNumbers
                             <span
@@ -364,10 +364,10 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                           >
                             <select
                               aria-invalid="false"
-                              aria-labelledby="select-7-label"
+                              aria-labelledby="select-10-label"
                               aria-required="true"
                               class="selectControl formControl"
-                              id="select-7"
+                              id="select-10"
                               multiple=""
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.accountNoList"
                               required=""
@@ -398,8 +398,8 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="select-8"
-                            id="select-8-label"
+                            for="select-11"
+                            id="select-11-label"
                           >
                             ui-organizations.integration.edi.defaultAcquisitionMethods
                           </label>
@@ -408,9 +408,9 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                           >
                             <select
                               aria-invalid="false"
-                              aria-labelledby="select-8-label"
+                              aria-labelledby="select-11-label"
                               class="selectControl formControl"
-                              id="select-8"
+                              id="select-11"
                               multiple=""
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods"
                             />
@@ -472,8 +472,8 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="select-9"
-                            id="select-9-label"
+                            for="select-12"
+                            id="select-12-label"
                           >
                             ui-organizations.integration.edi.vendorEDIType
                           </label>
@@ -482,9 +482,9 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                           >
                             <select
                               aria-invalid="false"
-                              aria-labelledby="select-9-label"
+                              aria-labelledby="select-12-label"
                               class="selectControl formControl"
-                              id="select-9"
+                              id="select-12"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.vendorEdiType"
                             >
                               <option
@@ -569,8 +569,8 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="select-10"
-                            id="select-10-label"
+                            for="select-13"
+                            id="select-13-label"
                           >
                             ui-organizations.integration.edi.libraryEDIType
                           </label>
@@ -579,9 +579,9 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                           >
                             <select
                               aria-invalid="false"
-                              aria-labelledby="select-10-label"
+                              aria-labelledby="select-13-label"
                               class="selectControl formControl"
-                              id="select-10"
+                              id="select-13"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.libEdiType"
                             >
                               <option
@@ -676,7 +676,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label label checkboxInteractionStylesControl"
-                            for="checkbox-11"
+                            for="checkbox-14"
                           >
                             <span
                               class="labelText"
@@ -689,7 +689,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               <input
                                 aria-invalid="false"
                                 class="input"
-                                id="checkbox-11"
+                                id="checkbox-14"
                                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.sendAccountNumber"
                                 type="checkbox"
                                 value=""
@@ -731,7 +731,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label label checkboxInteractionStylesControl"
-                            for="checkbox-12"
+                            for="checkbox-15"
                           >
                             <span
                               class="inner checkboxInteractionStyles"
@@ -739,7 +739,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               <input
                                 aria-invalid="false"
                                 class="input"
-                                id="checkbox-12"
+                                id="checkbox-15"
                                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.supportOrder"
                                 type="checkbox"
                                 value=""
@@ -780,7 +780,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label label checkboxInteractionStylesControl"
-                            for="checkbox-13"
+                            for="checkbox-16"
                           >
                             <span
                               class="inner checkboxInteractionStyles"
@@ -788,7 +788,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               <input
                                 aria-invalid="false"
                                 class="input"
-                                id="checkbox-13"
+                                id="checkbox-16"
                                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.supportInvoice"
                                 type="checkbox"
                                 value=""
@@ -833,14 +833,14 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="textarea-input-14"
+                            for="textarea-input-17"
                           >
                             ui-organizations.integration.edi.notes
                           </label>
                           <textarea
                             aria-invalid="false"
                             class="formControl"
-                            id="textarea-input-14"
+                            id="textarea-input-17"
                             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.notes"
                             type="text"
                           />
@@ -919,8 +919,8 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="select-16"
-                            id="select-16-label"
+                            for="select-18"
+                            id="select-18-label"
                           >
                             ui-organizations.integration.ftp.ftpFormat
                           </label>
@@ -929,9 +929,9 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                           >
                             <select
                               aria-invalid="false"
-                              aria-labelledby="select-16-label"
+                              aria-labelledby="select-18-label"
                               class="selectControl formControl"
-                              id="select-16"
+                              id="select-18"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.ftpFormat"
                             >
                               <option
@@ -963,8 +963,8 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="select-17"
-                            id="select-17-label"
+                            for="select-19"
+                            id="select-19-label"
                           >
                             ui-organizations.integration.ftp.ftpMode
                           </label>
@@ -973,9 +973,9 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                           >
                             <select
                               aria-invalid="false"
-                              aria-labelledby="select-17-label"
+                              aria-labelledby="select-19-label"
                               class="selectControl formControl"
-                              id="select-17"
+                              id="select-19"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.ftpMode"
                             >
                               <option
@@ -1007,7 +1007,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="text-input-18"
+                            for="text-input-20"
                           >
                             ui-organizations.integration.ftp.serverAddress
                             <span
@@ -1027,7 +1027,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               autocomplete="off"
                               autocorrect="off"
                               error=""
-                              id="text-input-18"
+                              id="text-input-20"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.serverAddress"
                               required=""
                               spellcheck="false"
@@ -1050,8 +1050,8 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="select-19"
-                            id="select-19-label"
+                            for="select-21"
+                            id="select-21-label"
                           >
                             ui-organizations.integration.ftp.ftpConnectionMode
                           </label>
@@ -1060,9 +1060,9 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                           >
                             <select
                               aria-invalid="false"
-                              aria-labelledby="select-19-label"
+                              aria-labelledby="select-21-label"
                               class="selectControl formControl"
-                              id="select-19"
+                              id="select-21"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.ftpConnMode"
                             >
                               <option
@@ -1098,7 +1098,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="text-input-20"
+                            for="text-input-22"
                           >
                             ui-organizations.integration.ftp.username
                           </label>
@@ -1112,7 +1112,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               autocorrect="off"
                               data-testid="credentials-field"
                               error=""
-                              id="text-input-20"
+                              id="text-input-22"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.username"
                               spellcheck="false"
                               type="password"
@@ -1134,7 +1134,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="text-input-21"
+                            for="text-input-23"
                           >
                             ui-organizations.edit.password
                           </label>
@@ -1148,7 +1148,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               autocorrect="off"
                               data-testid="credentials-field"
                               error=""
-                              id="text-input-21"
+                              id="text-input-23"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.password"
                               spellcheck="false"
                               type="password"
@@ -1192,7 +1192,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="text-input-22"
+                            for="text-input-24"
                           >
                             ui-organizations.integration.ftp.ftpPort
                             <span
@@ -1212,7 +1212,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               autocomplete="off"
                               autocorrect="off"
                               error=""
-                              id="text-input-22"
+                              id="text-input-24"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.ftpPort"
                               required=""
                               spellcheck="false"
@@ -1235,7 +1235,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="text-input-23"
+                            for="text-input-25"
                           >
                             ui-organizations.integration.ftp.orderDirectory
                           </label>
@@ -1248,7 +1248,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               autocomplete="off"
                               autocorrect="off"
                               error=""
-                              id="text-input-23"
+                              id="text-input-25"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.orderDirectory"
                               spellcheck="false"
                               type="text"
@@ -1270,7 +1270,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="text-input-24"
+                            for="text-input-26"
                           >
                             ui-organizations.integration.ftp.invoiceDirectory
                           </label>
@@ -1283,7 +1283,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               autocomplete="off"
                               autocorrect="off"
                               error=""
-                              id="text-input-24"
+                              id="text-input-26"
                               name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.invoiceDirectory"
                               spellcheck="false"
                               type="text"
@@ -1305,14 +1305,14 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label"
-                            for="textarea-input-25"
+                            for="textarea-input-27"
                           >
                             ui-organizations.integration.ftp.notes
                           </label>
                           <textarea
                             aria-invalid="false"
                             class="formControl"
-                            id="textarea-input-25"
+                            id="textarea-input-27"
                             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.notes"
                             type="text"
                           />
@@ -1391,7 +1391,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                         >
                           <label
                             class="label label checkboxInteractionStylesControl"
-                            for="checkbox-27"
+                            for="checkbox-28"
                           >
                             <span
                               class="labelText"
@@ -1404,7 +1404,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                               <input
                                 aria-invalid="false"
                                 class="input"
-                                id="checkbox-27"
+                                id="checkbox-28"
                                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.enableScheduledExport"
                                 type="checkbox"
                                 value=""

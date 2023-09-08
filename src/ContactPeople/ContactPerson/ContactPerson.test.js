@@ -1,8 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-import { contact } from '../../../test/jest/fixtures';
+import { contact } from 'fixtures';
 import ContactPerson from './ContactPerson';
 
 const defaultProps = {
