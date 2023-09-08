@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { stripesConnect, useStripes } from '@folio/stripes/core';
 import { Col, Row, TextField } from '@folio/stripes/components';
-import { NumberGeneratorButton } from '@folio/service-interaction';
+import { NumberGeneratorModalButton } from '@folio/service-interaction';
 
 import { fetchOrgsByParam } from '../../../../common/resources';
 import { validateOrgCode } from './validateOrgCode';
@@ -48,11 +48,16 @@ const FieldCode = ({ orgId, mutator }) => {
         vendorCodeSetting === 'useBoth'
       ) &&
         <Col xs={12}>
-          <NumberGeneratorButton
+          <NumberGeneratorModalButton
+            buttonLabel={<FormattedMessage id="ui-organizations.numberGenerator.generateVendorCode" />}
             callback={(generated) => change('code', generated)}
+            fullWidth
             id="vendor-code-generator"
+            generateButtonLabel={<FormattedMessage id="ui-organizations.numberGenerator.generateVendorCode" />}
             generator="organizations_vendorCode"
-            sequence="vendor"
+            modalProps={{
+              label: <FormattedMessage id="ui-organizations.numberGenerator.vendorCodeGenerator" />
+            }}
           />
         </Col>
       }

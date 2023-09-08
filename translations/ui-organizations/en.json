@@ -443,6 +443,8 @@
   "settings.numberGeneratorOptions.useGeneratorForVendor": "Number generator on, fixed: the vendor code can be filled using the generator only.",
   "settings.numberGeneratorOptions.useTextFieldForVendor": "Number generator off: the vendor code can be filled manually only.",
   "settings.numberGeneratorOptions.useBothForVendor": "Number generator on, editable: the vendor code can be filled using the generator and be edited, or filled manually.",
+  "numberGenerator.vendorCodeGenerator": "Vendor code generator",
+  "numberGenerator.generateVendorCode": "Generate vendor code",
   "permission.view": "Organizations: View",
   "permission.edit": "Organizations: View, edit",
   "permission.create": "Organizations: View, edit, create",

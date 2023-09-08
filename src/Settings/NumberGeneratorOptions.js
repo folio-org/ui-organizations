@@ -51,14 +51,6 @@ const NumberGeneratorOptions = (props) => {
         <Col xs={12}>
           <Field
             component={RadioButton}
-            id="useGenerator"
-            name="vendorGeneratorSetting"
-            label={<FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.useGeneratorForVendor" />}
-            type="radio"
-            value="useGenerator"
-          />
-          <Field
-            component={RadioButton}
             id="useTextField"
             name="vendorGeneratorSetting"
             label={<FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.useTextFieldForVendor" />}
@@ -72,6 +64,14 @@ const NumberGeneratorOptions = (props) => {
             label={<FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.useBothForVendor" />}
             type="radio"
             value="useBoth"
+          />
+          <Field
+            component={RadioButton}
+            id="useGenerator"
+            name="vendorGeneratorSetting"
+            label={<FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.useGeneratorForVendor" />}
+            type="radio"
+            value="useGenerator"
           />
         </Col>
       </Row>
