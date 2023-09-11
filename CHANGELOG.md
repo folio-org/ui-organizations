@@ -9,6 +9,7 @@
 * Introduce new permission to view all organizations' settings. Refs UIORGS-346.
 * *BREAKING* Upgrade React to v18. Refs UIORGS-377.
 * Upgrade `Node.js` to `18` version in GitHub Actions. Refs UIORGS-378.
+* *BREAKING* bump `react-intl` to `v6.4.4`. Refs UIORGS-386.
 
 ## [4.0.0](https://github.com/folio-org/ui-organizations/tree/v4.0.0) (2023-02-22)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.3.1...v4.0.0)
