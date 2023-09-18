@@ -315,7 +315,7 @@
     "permission.settings": "Settings (Organizations): Can view and edit settings",
     "appMenu.organizationsAppSearch": "Organizations app Search",
     "view.exportLog": "View export log",
-    "integrationDetails": "Integration details",
+    "integrationDetails": "Szczegóły integracji",
     "integration.create": "Add integration",
     "integration.create.paneTitle": "Create integration",
     "integration.edit.paneTitle": "Edit integration - {name}",
