@@ -416,5 +416,6 @@
     "settings.types.termDeleted": "The type <b>{term}</b> was successfully <b>deleted</b>",
     "settings.types.termWillBeDeleted": "The type <b>{term}</b> will be <b>deleted.</b>",
     "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>",
-    "permission.settings.view": "Settings (Organizations): View settings"
+    "permission.settings.view": "Settings (Organizations): View settings",
+    "comingSoon": "Coming in a future release."
 }
