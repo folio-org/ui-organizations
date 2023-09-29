@@ -157,10 +157,15 @@ export const EdiForm = ({
               <>
                 <FormattedMessage id="ui-organizations.integration.edi.ediNamingConvention" />
                 <InfoPopover content={(
-                  <FormattedMessage
-                    id="ui-organizations.integration.edi.ediNamingConvention.info"
-                    values={{ tokens: Object.values(EDI_NAMING_TOKENS).join(', ') }}
-                  />)}
+                  <>
+                    <FormattedMessage id="ui-organizations.comingSoon" />
+                    <FormattedMessage
+                      id="ui-organizations.integration.edi.ediNamingConvention.info"
+                      values={{ tokens: <p>{Object.values(EDI_NAMING_TOKENS).join(', ')}</p> }}
+                      tagName="p"
+                    />
+                  </>
+                  )}
                 />
               </>
             )}

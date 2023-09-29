@@ -10,6 +10,8 @@
   "notes.entity": "Organization",
   "notes.entityPlural": "Organizations",
 
+  "comingSoon": "Coming in a future release.",
+
   "data.contactTypes.address": "Address",
   "data.contactTypes.addressLine1": "Address 1",
   "data.contactTypes.addressLine2": "Address 2",
