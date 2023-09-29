@@ -51,7 +51,6 @@ const FieldCode = ({ orgId, mutator }) => {
           <NumberGeneratorModalButton
             buttonLabel={<FormattedMessage id="ui-organizations.numberGenerator.generateVendorCode" />}
             callback={(generated) => change('code', generated)}
-            fullWidth
             id="vendor-code-generator"
             generateButtonLabel={<FormattedMessage id="ui-organizations.numberGenerator.generateVendorCode" />}
             generator="organizations_vendorCode"
