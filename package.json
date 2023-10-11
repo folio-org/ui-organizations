@@ -255,7 +255,7 @@
     "@folio/jest-config-stripes": "^2.0.0",
     "@folio/stripes": "^9.0.0",
     "@folio/stripes-cli": "^3.0.0",
-    "@formatjs/cli":  "^6.1.3",
+    "@formatjs/cli": "^6.1.3",
     "babel-jest": "^26.3.0",
     "chai": "^4.2.0",
     "core-js": "^3.6.4",
@@ -302,7 +302,7 @@
     "redux": "^4.0.0"
   },
   "optionalDependencies": {
-    "@folio/plugin-find-contact": "^4.0.0",
-    "@folio/plugin-find-interface": "^4.0.0"
+    "@folio/plugin-find-contact": "^5.0.0",
+    "@folio/plugin-find-interface": "^5.0.0"
   }
 }
