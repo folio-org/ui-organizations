@@ -441,6 +441,11 @@
   "settings.type": "Type",
   "settings.typeStatus.Active": "Active",
   "settings.typeStatus.Inactive": "Inactive",
+  "settings.bankingInformation": "Banking information",
+  "settings.bankingInformation.enabled": "Enabled",
+  "settings.bankingInformation.disabled": "Disabled",
+  "settings.accountTypes": "Account types",
+
   "permission.view": "Organizations: View",
   "permission.edit": "Organizations: View, edit",
   "permission.create": "Organizations: View, edit, create",

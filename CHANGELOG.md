@@ -11,6 +11,7 @@
 * Upgrade `Node.js` to `18` version in GitHub Actions. Refs UIORGS-378.
 * *BREAKING* bump `react-intl` to `v6.4.4`. Refs UIORGS-386.
 * Add a message indicating future functionality for EDI naming convention. Refs UIORGS-382.
+* Settings for banking information. Refs UIORGS-391.
 
 ## [4.0.0](https://github.com/folio-org/ui-organizations/tree/v4.0.0) (2023-02-22)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.3.1...v4.0.0)
