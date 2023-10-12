@@ -1,6 +1,9 @@
 # Change history for ui-organizations
 
-## 5.0.0 (IN PROGRESS)
+## 5.1.0 (IN PROGRESS)
+
+## [5.0.0](https://github.com/folio-org/ui-organizations/tree/v5.0.0) (2023-10-12)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v4.0.0...v5.0.0)
 
 * Unpin `@rehooks/local-storage` now that it's no longer broken. Refs UIORGS-344.
 * Add `Note` field to contact people summary list. Refs UIORGS-352.
