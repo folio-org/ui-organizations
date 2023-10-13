@@ -439,152 +439,148 @@ exports[`ViewContact should render correct structure 1`] = `
                     role="region"
                   >
                     <div
-                      class="mclContainer"
-                      style="position: relative; overflow: hidden; height: auto; width: 100%;"
+                      aria-live="assertive"
+                      aria-relevant="additions"
+                      class="sr-only"
                       tabindex="-1"
+                    />
+                    <div
+                      aria-rowcount="2"
+                      class="mclContainer"
+                      data-total-count="0"
+                      role="grid"
+                      style="position: relative; overflow: hidden; height: auto; width: 100%;"
+                      tabindex="0"
                     >
                       <div
-                        aria-live="assertive"
-                        aria-relevant="additions"
-                        class="sr-only"
-                      />
+                        class="mclHeaderContainer"
+                      >
+                        <div
+                          aria-rowindex="1"
+                          class="mclHeaderRow"
+                          role="row"
+                          style="display: flex; width: 17px;"
+                        >
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-email"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.contactPeople.email
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-emaildescription"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.contactPeople.description
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-emaillanguage"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.contactPeople.language
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-emailcategories"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.contactPeople.categories
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-emailprimary"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.primaryItem
+                          </div>
+                        </div>
+                      </div>
                       <div
-                        aria-rowcount="2"
-                        class=""
-                        data-total-count="0"
-                        role="grid"
+                        class="mclScrollable"
+                        style="position: static; width: 100%;"
                         tabindex="0"
                       >
                         <div
-                          class="mclHeaderContainer"
+                          class="mclRowContainer"
+                          role="rowgroup"
+                          style="position: static;"
                         >
                           <div
-                            aria-rowindex="1"
-                            class="mclHeaderRow"
+                            aria-rowindex="2"
+                            class="mclRowFormatterContainer"
+                            data-row-index="row-0"
                             role="row"
-                            style="display: flex; width: 17px;"
-                          >
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-email"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.email
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-emaildescription"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.description
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-emaillanguage"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.language
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-emailcategories"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.categories
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-emailprimary"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.primaryItem
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="mclScrollable"
-                          style="position: static; width: 100%;"
-                          tabindex="0"
-                        >
-                          <div
-                            class="mclRowContainer"
-                            role="rowgroup"
                             style="position: static;"
                           >
                             <div
-                              aria-rowindex="2"
-                              class="mclRowFormatterContainer"
-                              data-row-index="row-0"
-                              role="row"
-                              style="position: static;"
+                              class="mclRow mclIsOdd"
+                              data-row-inner="0"
+                              style="min-width: 0px;"
                             >
                               <div
-                                class="mclRow mclIsOdd"
-                                data-row-inner="0"
-                                style="min-width: 0px;"
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
                               >
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  cust.service03@amazon.com
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  customer service
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  English
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  Customer Service
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  ui-organizations.primaryItem
-                                </div>
+                                cust.service03@amazon.com
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                customer service
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                English
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                Customer Service
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                ui-organizations.primaryItem
                               </div>
                             </div>
+                          </div>
+                          <div
+                            class="mclEndOfListContainer"
+                            data-end-of-list="1"
+                          >
                             <div
-                              class="mclEndOfListContainer"
-                              data-end-of-list="1"
+                              class="mclCenteredContainer"
+                              style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
                             >
                               <div
-                                class="mclCenteredContainer"
-                                style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
+                                class="textCentered"
+                                data-test-layout="true"
                               >
                                 <div
-                                  class="textCentered"
+                                  class="mclEndOfList"
                                   data-test-layout="true"
                                 >
-                                  <div
-                                    class="mclEndOfList"
-                                    data-test-layout="true"
-                                  >
-                                    <span>
-                                      Icon
-                                    </span>
-                                  </div>
+                                  <span>
+                                    Icon
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -650,152 +646,148 @@ exports[`ViewContact should render correct structure 1`] = `
                     role="region"
                   >
                     <div
-                      class="mclContainer"
-                      style="position: relative; overflow: hidden; height: auto; width: 100%;"
+                      aria-live="assertive"
+                      aria-relevant="additions"
+                      class="sr-only"
                       tabindex="-1"
+                    />
+                    <div
+                      aria-rowcount="2"
+                      class="mclContainer"
+                      data-total-count="0"
+                      role="grid"
+                      style="position: relative; overflow: hidden; height: auto; width: 100%;"
+                      tabindex="0"
                     >
                       <div
-                        aria-live="assertive"
-                        aria-relevant="additions"
-                        class="sr-only"
-                      />
+                        class="mclHeaderContainer"
+                      >
+                        <div
+                          aria-rowindex="1"
+                          class="mclHeaderRow"
+                          role="row"
+                          style="display: flex; width: 17px;"
+                        >
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-phonenumber"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.contactPeople.phoneNumber
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-phonetype"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.contactPeople.type
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-phonelanguage"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.contactPeople.language
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-phonecategories"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.contactPeople.categories
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-phoneprimary"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.primaryItem
+                          </div>
+                        </div>
+                      </div>
                       <div
-                        aria-rowcount="2"
-                        class=""
-                        data-total-count="0"
-                        role="grid"
+                        class="mclScrollable"
+                        style="position: static; width: 100%;"
                         tabindex="0"
                       >
                         <div
-                          class="mclHeaderContainer"
+                          class="mclRowContainer"
+                          role="rowgroup"
+                          style="position: static;"
                         >
                           <div
-                            aria-rowindex="1"
-                            class="mclHeaderRow"
+                            aria-rowindex="2"
+                            class="mclRowFormatterContainer"
+                            data-row-index="row-0"
                             role="row"
-                            style="display: flex; width: 17px;"
-                          >
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-phonenumber"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.phoneNumber
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-phonetype"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.type
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-phonelanguage"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.language
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-phonecategories"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.categories
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-phoneprimary"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.primaryItem
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="mclScrollable"
-                          style="position: static; width: 100%;"
-                          tabindex="0"
-                        >
-                          <div
-                            class="mclRowContainer"
-                            role="rowgroup"
                             style="position: static;"
                           >
                             <div
-                              aria-rowindex="2"
-                              class="mclRowFormatterContainer"
-                              data-row-index="row-0"
-                              role="row"
-                              style="position: static;"
+                              class="mclRow mclIsOdd"
+                              data-row-inner="0"
+                              style="min-width: 0px;"
                             >
                               <div
-                                class="mclRow mclIsOdd"
-                                data-row-inner="0"
-                                style="min-width: 0px;"
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
                               >
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  1-888-238-22090
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  Mobile
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  English
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  Customer Service
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  ui-organizations.primaryItem
-                                </div>
+                                1-888-238-22090
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                Mobile
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                English
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                Customer Service
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                ui-organizations.primaryItem
                               </div>
                             </div>
+                          </div>
+                          <div
+                            class="mclEndOfListContainer"
+                            data-end-of-list="1"
+                          >
                             <div
-                              class="mclEndOfListContainer"
-                              data-end-of-list="1"
+                              class="mclCenteredContainer"
+                              style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
                             >
                               <div
-                                class="mclCenteredContainer"
-                                style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
+                                class="textCentered"
+                                data-test-layout="true"
                               >
                                 <div
-                                  class="textCentered"
+                                  class="mclEndOfList"
                                   data-test-layout="true"
                                 >
-                                  <div
-                                    class="mclEndOfList"
-                                    data-test-layout="true"
-                                  >
-                                    <span>
-                                      Icon
-                                    </span>
-                                  </div>
+                                  <span>
+                                    Icon
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -861,159 +853,155 @@ exports[`ViewContact should render correct structure 1`] = `
                     role="region"
                   >
                     <div
-                      class="mclContainer"
-                      style="position: relative; overflow: hidden; height: auto; width: 100%;"
+                      aria-live="assertive"
+                      aria-relevant="additions"
+                      class="sr-only"
                       tabindex="-1"
+                    />
+                    <div
+                      aria-rowcount="2"
+                      class="mclContainer"
+                      data-total-count="0"
+                      role="grid"
+                      style="position: relative; overflow: hidden; height: auto; width: 100%;"
+                      tabindex="0"
                     >
                       <div
-                        aria-live="assertive"
-                        aria-relevant="additions"
-                        class="sr-only"
-                      />
-                      <div
-                        aria-rowcount="2"
-                        class=""
-                        data-total-count="0"
-                        role="grid"
-                        tabindex="0"
+                        class="mclHeaderContainer"
                       >
                         <div
-                          class="mclHeaderContainer"
+                          aria-rowindex="1"
+                          class="mclHeaderRow"
+                          role="row"
+                          style="display: flex; width: 17px;"
                         >
                           <div
-                            aria-rowindex="1"
-                            class="mclHeaderRow"
-                            role="row"
-                            style="display: flex; width: 17px;"
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-url"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
                           >
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-url"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.name
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-urldescription"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.description
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-urllanguage"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.language
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-urlcategories"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.contactPeople.categories
-                            </div>
-                            <div
-                              aria-sort="none"
-                              class="mclHeader"
-                              id="list-column-urlprimary"
-                              role="columnheader"
-                              style="flex: 0 0 auto;"
-                            >
-                              ui-organizations.primaryItem
-                            </div>
+                            ui-organizations.contactPeople.name
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-urldescription"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.contactPeople.description
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-urllanguage"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.contactPeople.language
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-urlcategories"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.contactPeople.categories
+                          </div>
+                          <div
+                            aria-sort="none"
+                            class="mclHeader"
+                            id="list-column-urlprimary"
+                            role="columnheader"
+                            style="flex: 0 0 auto;"
+                          >
+                            ui-organizations.primaryItem
                           </div>
                         </div>
+                      </div>
+                      <div
+                        class="mclScrollable"
+                        style="position: static; width: 100%;"
+                      >
                         <div
-                          class="mclScrollable"
-                          style="position: static; width: 100%;"
+                          class="mclRowContainer"
+                          role="rowgroup"
+                          style="position: static;"
                         >
                           <div
-                            class="mclRowContainer"
-                            role="rowgroup"
+                            aria-rowindex="2"
+                            class="mclRowFormatterContainer"
+                            data-row-index="row-0"
+                            role="row"
                             style="position: static;"
                           >
                             <div
-                              aria-rowindex="2"
-                              class="mclRowFormatterContainer"
-                              data-row-index="row-0"
-                              role="row"
-                              style="position: static;"
+                              class="mclRow mclIsOdd"
+                              data-row-inner="0"
+                              style="min-width: 0px;"
                             >
                               <div
-                                class="mclRow mclIsOdd"
-                                data-row-inner="0"
-                                style="min-width: 0px;"
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
                               >
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
+                                <a
+                                  class="root"
+                                  data-test-text-link="true"
+                                  href="https://www.amazon.com"
+                                  rel="noopener noreferrer"
+                                  target="_blank"
                                 >
-                                  <a
-                                    class="root"
-                                    data-test-text-link="true"
-                                    href="https://www.amazon.com"
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                  >
-                                    https://www.amazon.com
-                                  </a>
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  main website
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  en-us
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  Customer Service
-                                </div>
-                                <div
-                                  class="mclCell mclCellStyle"
-                                  role="gridcell"
-                                >
-                                  ui-organizations.primaryItem
-                                </div>
+                                  https://www.amazon.com
+                                </a>
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                main website
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                en-us
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                Customer Service
+                              </div>
+                              <div
+                                class="mclCell mclCellStyle"
+                                role="gridcell"
+                              >
+                                ui-organizations.primaryItem
                               </div>
                             </div>
+                          </div>
+                          <div
+                            class="mclEndOfListContainer"
+                            data-end-of-list="1"
+                          >
                             <div
-                              class="mclEndOfListContainer"
-                              data-end-of-list="1"
+                              class="mclCenteredContainer"
+                              style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
                             >
                               <div
-                                class="mclCenteredContainer"
-                                style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
+                                class="textCentered"
+                                data-test-layout="true"
                               >
                                 <div
-                                  class="textCentered"
+                                  class="mclEndOfList"
                                   data-test-layout="true"
                                 >
-                                  <div
-                                    class="mclEndOfList"
-                                    data-test-layout="true"
-                                  >
-                                    <span>
-                                      Icon
-                                    </span>
-                                  </div>
+                                  <span>
+                                    Icon
+                                  </span>
                                 </div>
                               </div>
                             </div>
