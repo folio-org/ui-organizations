@@ -77,8 +77,8 @@ function OrganizationSummaryForm({ initialValues }) {
     onResetVendorFields();
   }, [onResetVendorFields]);
 
-  const onChangeIsVendor = useCallback(({ target: { checked } }) => {
-    change('isVendor', checked);
+  const handleCheckbox = useCallback(({ target: { checked, name } }) => {
+    change(name, checked);
 
     if (initialValues.id && !checked) setVendorUncheckConfirm(true);
   }, [initialValues.id, change]);
@@ -163,20 +163,6 @@ function OrganizationSummaryForm({ initialValues }) {
         xs={6}
         md={3}
       >
-        <Field
-          component={Checkbox}
-          label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
-          name="isVendor"
-          type="checkbox"
-          onChange={onChangeIsVendor}
-          vertical
-          validateFields={[]}
-        />
-      </Col>
-      <Col
-        xs={6}
-        md={3}
-      >
         <AcqUnitsField
           id="org-acq-units"
           name="acqUnitIds"
@@ -194,6 +180,34 @@ function OrganizationSummaryForm({ initialValues }) {
           label={<FormattedMessage id="ui-organizations.summary.description" />}
           name="description"
           component={TextArea}
+          validateFields={[]}
+        />
+      </Col>
+      <Col
+        xs={6}
+        md={3}
+      >
+        <Field
+          component={Checkbox}
+          label={<FormattedMessage id="ui-organizations.summary.isDonor" />}
+          name="isDonor"
+          type="checkbox"
+          onChange={handleCheckbox}
+          vertical
+          validateFields={[]}
+        />
+      </Col>
+      <Col
+        xs={6}
+        md={3}
+      >
+        <Field
+          component={Checkbox}
+          label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
+          name="isVendor"
+          type="checkbox"
+          onChange={handleCheckbox}
+          vertical
           validateFields={[]}
         />
       </Col>

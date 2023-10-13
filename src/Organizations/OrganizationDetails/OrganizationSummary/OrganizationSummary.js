@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
@@ -6,7 +6,6 @@ import {
   Checkbox,
   Col,
   KeyValue,
-  MultiColumnList,
   NoValue,
   Row,
 } from '@folio/stripes/components';
@@ -18,12 +17,6 @@ import {
 
 import { ORGANIZATION_SECTIONS } from '../../constants';
 
-const aliasesColumnMapping = {
-  value: <FormattedMessage id="ui-organizations.summary.alias" />,
-  description: <FormattedMessage id="ui-organizations.summary.description" />,
-};
-const aliasesVisibleColumns = ['value', 'description'];
-
 const OrganizationSummary = ({
   acqUnitIds,
   aliases,
@@ -31,6 +24,7 @@ const OrganizationSummary = ({
   description,
   erpCode,
   isVendor,
+  isDonor,
   language,
   metadata,
   name,
@@ -38,6 +32,7 @@ const OrganizationSummary = ({
   organizationTypes,
 }) => {
   const defaultLanguageValue = LANG_LABEL_BY_CODE[language] || language;
+  const alternativeNames = useMemo(() => aliases.map(({ value }) => value).join(', '), [aliases]);
 
   return (
     <>
@@ -53,7 +48,7 @@ const OrganizationSummary = ({
       </Row>
 
       <Row>
-        <Col xs={4}>
+        <Col xs={3}>
           <KeyValue
             data-testid="name"
             label={<FormattedMessage id="ui-organizations.summary.name" />}
@@ -61,14 +56,14 @@ const OrganizationSummary = ({
           />
         </Col>
 
-        <Col xs={4}>
+        <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.summary.code" />}
             value={code}
           />
         </Col>
 
-        <Col xs={4}>
+        <Col xs={3}>
           <KeyValue
             data-testid="accountingCode"
             label={<FormattedMessage id="ui-organizations.summary.accountingCode" />}
@@ -76,7 +71,7 @@ const OrganizationSummary = ({
           />
         </Col>
 
-        <Col xs={4}>
+        <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-organizations.summary.organizationStatus" />}
           >
@@ -84,7 +79,7 @@ const OrganizationSummary = ({
           </KeyValue>
         </Col>
 
-        <Col xs={4}>
+        <Col xs={3}>
           <KeyValue
             data-testid="defaultLanguage"
             label={<FormattedMessage id="ui-organizations.summary.defaultLanguage" />}
@@ -92,7 +87,36 @@ const OrganizationSummary = ({
           />
         </Col>
 
-        <Col xs={4}>
+        <Col xs={3}>
+          <KeyValue
+            data-testid="type"
+            label={<FormattedMessage id="ui-organizations.summary.type" />}
+            value={organizationTypes.join(', ') || <NoValue />}
+          />
+        </Col>
+
+        <Col xs={3}>
+          <AcqUnitsView units={acqUnitIds} />
+        </Col>
+
+        <Col xs={3}>
+          <KeyValue
+            data-testid="description"
+            label={<FormattedMessage id="ui-organizations.summary.description" />}
+            value={description || <NoValue />}
+          />
+        </Col>
+
+        <Col xs={3}>
+          <Checkbox
+            checked={isDonor}
+            disabled
+            label={<FormattedMessage id="ui-organizations.summary.isDonor" />}
+            vertical
+          />
+        </Col>
+
+        <Col xs={3}>
           <Checkbox
             checked={isVendor}
             disabled
@@ -101,39 +125,12 @@ const OrganizationSummary = ({
           />
         </Col>
 
-        <Col xs={4}>
+        <Col xs={3}>
           <KeyValue
-            data-testid="type"
-            label={<FormattedMessage id="ui-organizations.summary.type" />}
-            value={organizationTypes.join(', ') || <NoValue />}
-          />
-        </Col>
-
-        <Col xs={4}>
-          <AcqUnitsView units={acqUnitIds} />
-        </Col>
-
-        <Col xs={12}>
-          <KeyValue
-            data-testid="description"
-            label={<FormattedMessage id="ui-organizations.summary.description" />}
-            value={description || <NoValue />}
-          />
-        </Col>
-      </Row>
-
-      <Row>
-        <Col xs={12}>
-          <KeyValue
+            data-testid="alternativeNames"
             label={<FormattedMessage id="ui-organizations.summary.alternativeNames" />}
-          >
-            <MultiColumnList
-              contentData={aliases}
-              columnMapping={aliasesColumnMapping}
-              interactive={false}
-              visibleColumns={aliasesVisibleColumns}
-            />
-          </KeyValue>
+            value={alternativeNames || <NoValue />}
+          />
         </Col>
       </Row>
     </>
@@ -150,6 +147,7 @@ OrganizationSummary.propTypes = {
   description: PropTypes.string,
   erpCode: PropTypes.string,
   isVendor: PropTypes.bool,
+  isDonor: PropTypes.bool,
   language: PropTypes.string,
   metadata: PropTypes.object,
   name: PropTypes.string,

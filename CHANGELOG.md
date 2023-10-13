@@ -2,6 +2,8 @@
 
 ## 5.1.0 (IN PROGRESS)
 
+* Designate Organization as donor. Refs UIORGS-383.
+
 ## [5.0.0](https://github.com/folio-org/ui-organizations/tree/v5.0.0) (2023-10-12)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v4.0.0...v5.0.0)
 
