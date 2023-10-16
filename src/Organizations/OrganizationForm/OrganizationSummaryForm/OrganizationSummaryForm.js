@@ -77,8 +77,8 @@ function OrganizationSummaryForm({ initialValues }) {
     onResetVendorFields();
   }, [onResetVendorFields]);
 
-  const handleCheckbox = useCallback(({ target: { checked, name } }) => {
-    change(name, checked);
+  const onChangeIsVendor = useCallback(({ target: { checked } }) => {
+    change('isVendor', checked);
 
     if (initialValues.id && !checked) setVendorUncheckConfirm(true);
   }, [initialValues.id, change]);
@@ -192,7 +192,6 @@ function OrganizationSummaryForm({ initialValues }) {
           label={<FormattedMessage id="ui-organizations.summary.isDonor" />}
           name="isDonor"
           type="checkbox"
-          onChange={handleCheckbox}
           vertical
           validateFields={[]}
         />
@@ -206,8 +205,8 @@ function OrganizationSummaryForm({ initialValues }) {
           label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
           name="isVendor"
           type="checkbox"
-          onChange={handleCheckbox}
           vertical
+          onChange={onChangeIsVendor}
           validateFields={[]}
         />
       </Col>
