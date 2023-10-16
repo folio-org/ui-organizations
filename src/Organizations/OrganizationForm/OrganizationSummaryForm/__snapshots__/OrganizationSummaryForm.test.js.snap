@@ -7769,60 +7769,6 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
         class="col-xs-6 col-md-3"
       >
         <div
-          class="checkbox inline vertical"
-          data-test-checkbox="true"
-        >
-          <label
-            class="label label checkboxInteractionStylesControl"
-            for="checkbox-5"
-          >
-            <span
-              class="labelText"
-            >
-              ui-organizations.summary.isVendor
-            </span>
-            <span
-              class="inner checkboxInteractionStyles"
-            >
-              <input
-                aria-invalid="false"
-                checked=""
-                class="input"
-                id="checkbox-5"
-                name="isVendor"
-                type="checkbox"
-                value=""
-              />
-              <span
-                class="checkboxIcon"
-              >
-                <svg
-                  height="10"
-                  viewBox="0 0 14 14"
-                  width="10"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.395 4.617L5.63 9.383 3.605 7.358"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-miterlimit="10"
-                    stroke-width="1.5"
-                  />
-                </svg>
-              </span>
-            </span>
-          </label>
-          <div
-            role="alert"
-          />
-        </div>
-      </div>
-      <div
-        class="col-xs-6 col-md-3"
-      >
-        <div
           class="multiSelectContainer"
           id="org-acq-units"
         >
@@ -7945,19 +7891,126 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
         >
           <label
             class="label"
-            for="textarea-input-6"
+            for="textarea-input-5"
           >
             ui-organizations.summary.description
           </label>
           <textarea
             aria-invalid="false"
             class="formControl"
-            id="textarea-input-6"
+            id="textarea-input-5"
             name="description"
             type="text"
           >
             Use for rush orders, replacement requests, and second hand market
           </textarea>
+          <div
+            role="alert"
+          />
+        </div>
+      </div>
+      <div
+        class="col-xs-6 col-md-3"
+      >
+        <div
+          class="checkbox inline vertical"
+          data-test-checkbox="true"
+        >
+          <label
+            class="label label checkboxInteractionStylesControl"
+            for="checkbox-6"
+          >
+            <span
+              class="labelText"
+            >
+              ui-organizations.summary.isDonor
+            </span>
+            <span
+              class="inner checkboxInteractionStyles"
+            >
+              <input
+                aria-invalid="false"
+                class="input"
+                id="checkbox-6"
+                name="isDonor"
+                type="checkbox"
+                value=""
+              />
+              <span
+                class="checkboxIcon"
+              >
+                <svg
+                  height="10"
+                  viewBox="0 0 14 14"
+                  width="10"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10.395 4.617L5.63 9.383 3.605 7.358"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-miterlimit="10"
+                    stroke-width="1.5"
+                  />
+                </svg>
+              </span>
+            </span>
+          </label>
+          <div
+            role="alert"
+          />
+        </div>
+      </div>
+      <div
+        class="col-xs-6 col-md-3"
+      >
+        <div
+          class="checkbox inline vertical"
+          data-test-checkbox="true"
+        >
+          <label
+            class="label label checkboxInteractionStylesControl"
+            for="checkbox-7"
+          >
+            <span
+              class="labelText"
+            >
+              ui-organizations.summary.isVendor
+            </span>
+            <span
+              class="inner checkboxInteractionStyles"
+            >
+              <input
+                aria-invalid="false"
+                checked=""
+                class="input"
+                id="checkbox-7"
+                name="isVendor"
+                type="checkbox"
+                value=""
+              />
+              <span
+                class="checkboxIcon"
+              >
+                <svg
+                  height="10"
+                  viewBox="0 0 14 14"
+                  width="10"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10.395 4.617L5.63 9.383 3.605 7.358"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-miterlimit="10"
+                    stroke-width="1.5"
+                  />
+                </svg>
+              </span>
+            </span>
+          </label>
           <div
             role="alert"
           />
@@ -8001,7 +8054,7 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
                     >
                       <label
                         class="label"
-                        for="text-input-7"
+                        for="text-input-8"
                       >
                         ui-organizations.summary.alias
                         <span
@@ -8021,7 +8074,7 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
                           autocomplete="off"
                           autocorrect="off"
                           error=""
-                          id="text-input-7"
+                          id="text-input-8"
                           name="aliases[0].value"
                           required=""
                           spellcheck="false"
@@ -8043,7 +8096,7 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
                     >
                       <label
                         class="label"
-                        for="text-input-8"
+                        for="text-input-9"
                       >
                         ui-organizations.summary.description
                       </label>
@@ -8056,7 +8109,7 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
                           autocomplete="off"
                           autocorrect="off"
                           error=""
-                          id="text-input-8"
+                          id="text-input-9"
                           name="aliases[0].description"
                           spellcheck="false"
                           type="text"

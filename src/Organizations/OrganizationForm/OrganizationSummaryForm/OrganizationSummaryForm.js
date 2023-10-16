@@ -163,20 +163,6 @@ function OrganizationSummaryForm({ initialValues }) {
         xs={6}
         md={3}
       >
-        <Field
-          component={Checkbox}
-          label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
-          name="isVendor"
-          type="checkbox"
-          onChange={onChangeIsVendor}
-          vertical
-          validateFields={[]}
-        />
-      </Col>
-      <Col
-        xs={6}
-        md={3}
-      >
         <AcqUnitsField
           id="org-acq-units"
           name="acqUnitIds"
@@ -194,6 +180,33 @@ function OrganizationSummaryForm({ initialValues }) {
           label={<FormattedMessage id="ui-organizations.summary.description" />}
           name="description"
           component={TextArea}
+          validateFields={[]}
+        />
+      </Col>
+      <Col
+        xs={6}
+        md={3}
+      >
+        <Field
+          component={Checkbox}
+          label={<FormattedMessage id="ui-organizations.summary.isDonor" />}
+          name="isDonor"
+          type="checkbox"
+          vertical
+          validateFields={[]}
+        />
+      </Col>
+      <Col
+        xs={6}
+        md={3}
+      >
+        <Field
+          component={Checkbox}
+          label={<FormattedMessage id="ui-organizations.summary.isVendor" />}
+          name="isVendor"
+          type="checkbox"
+          vertical
+          onChange={onChangeIsVendor}
           validateFields={[]}
         />
       </Col>
