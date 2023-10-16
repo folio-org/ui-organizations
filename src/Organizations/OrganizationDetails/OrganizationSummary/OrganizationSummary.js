@@ -31,6 +31,7 @@ const OrganizationSummary = ({
   description,
   erpCode,
   isVendor,
+  isDonor,
   language,
   metadata,
   name,
@@ -102,6 +103,15 @@ const OrganizationSummary = ({
         </Col>
 
         <Col xs={4}>
+          <Checkbox
+            checked={isDonor}
+            disabled
+            label={<FormattedMessage id="ui-organizations.summary.isDonor" />}
+            vertical
+          />
+        </Col>
+
+        <Col xs={4}>
           <KeyValue
             data-testid="type"
             label={<FormattedMessage id="ui-organizations.summary.type" />}
@@ -150,6 +160,7 @@ OrganizationSummary.propTypes = {
   description: PropTypes.string,
   erpCode: PropTypes.string,
   isVendor: PropTypes.bool,
+  isDonor: PropTypes.bool,
   language: PropTypes.string,
   metadata: PropTypes.object,
   name: PropTypes.string,
@@ -160,6 +171,7 @@ OrganizationSummary.propTypes = {
 OrganizationSummary.defaultProps = {
   aliases: [],
   isVendor: false,
+  isDonor: false,
 };
 
 export default OrganizationSummary;
