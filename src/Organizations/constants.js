@@ -12,6 +12,7 @@ export const ORGANIZATION_SECTIONS = {
   notesSection: 'notesSection',
   integrationDetailsSection: 'integrationDetailsSection',
   agreements: 'linkedAgreements',
+  donorContacts: 'donorContacts',
 };
 
 export const ORGANIZATION_SECTION_LABELS = {
@@ -25,6 +26,7 @@ export const ORGANIZATION_SECTION_LABELS = {
   [ORGANIZATION_SECTIONS.accountsSection]: <FormattedMessage id="ui-organizations.accounts" />,
   [ORGANIZATION_SECTIONS.integrationDetailsSection]: <FormattedMessage id="ui-organizations.integrationDetails" />,
   [ORGANIZATION_SECTIONS.agreements]: <FormattedMessage id="ui-organizations.linkedAgreements.section" />,
+  [ORGANIZATION_SECTIONS.donorContacts]: <FormattedMessage id="ui-organizations.donorContacts" />,
 };
 
 export const CREATE_UNITS_PERM = 'organizations.acquisitions-units-assignments.assign';

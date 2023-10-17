@@ -62,6 +62,21 @@ import { OrganizationInterfacesContainer } from './OrganizationInterfaces';
 import { OrganizationSummary } from './OrganizationSummary';
 import { OrganizationVendorInfo } from './OrganizationVendorInfo';
 
+const {
+  accountsSection,
+  agreements,
+  bankingInformationSection,
+  contactInformationSection,
+  contactPeopleSection,
+  donorContacts,
+  integrationDetailsSection,
+  interfacesSection,
+  notesSection,
+  summarySection,
+  vendorInformationSection,
+  vendorTermsSection,
+} = ORGANIZATION_SECTIONS;
+
 const OrganizationDetails = ({
   onClose,
   onEdit,
@@ -77,17 +92,17 @@ const OrganizationDetails = ({
   const stripes = useStripes();
   const [isRemoveModalOpened, toggleRemoveModal] = useModalToggle();
   const initialAccordionStatus = {
-    [ORGANIZATION_SECTIONS.summarySection]: true,
-    [ORGANIZATION_SECTIONS.contactInformationSection]: false,
-    [ORGANIZATION_SECTIONS.contactPeopleSection]: true,
-    [ORGANIZATION_SECTIONS.interfacesSection]: false,
-    [ORGANIZATION_SECTIONS.vendorInformationSection]: false,
-    [ORGANIZATION_SECTIONS.vendorTermsSection]: false,
-    [ORGANIZATION_SECTIONS.integrationDetailsSection]: false,
-    [ORGANIZATION_SECTIONS.accountsSection]: false,
-    [ORGANIZATION_SECTIONS.bankingInformationSection]: false,
-    [ORGANIZATION_SECTIONS.notesSection]: false,
-    [ORGANIZATION_SECTIONS.agreements]: false,
+    [summarySection]: true,
+    [contactInformationSection]: false,
+    [contactPeopleSection]: true,
+    [interfacesSection]: false,
+    [vendorInformationSection]: false,
+    [vendorTermsSection]: false,
+    [integrationDetailsSection]: false,
+    [accountsSection]: false,
+    [bankingInformationSection]: false,
+    [notesSection]: false,
+    [agreements]: false,
   };
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
   const paneTitleRef = useRef();
@@ -263,8 +278,8 @@ const OrganizationDetails = ({
 
           <AccordionSet initialStatus={initialAccordionStatus}>
             <Accordion
-              id={ORGANIZATION_SECTIONS.summarySection}
-              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.summarySection]}
+              id={summarySection}
+              label={ORGANIZATION_SECTION_LABELS[summarySection]}
             >
               <OrganizationSummary
                 acqUnitIds={organization.acqUnitIds}
@@ -288,14 +303,14 @@ const OrganizationDetails = ({
               entityName={organization.name}
               entityType={ORG_NOTE_TYPE}
               hideAssignButton
-              id={ORGANIZATION_SECTIONS.notesSection}
+              id={notesSection}
               pathToNoteCreate={`${NOTES_ROUTE}/new`}
               pathToNoteDetails={NOTES_ROUTE}
             />
 
             <Accordion
-              id={ORGANIZATION_SECTIONS.contactInformationSection}
-              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactInformationSection]}
+              id={contactInformationSection}
+              label={ORGANIZATION_SECTION_LABELS[contactInformationSection]}
             >
               <OrganizationContactInfo
                 organization={organization}
@@ -304,8 +319,8 @@ const OrganizationDetails = ({
             </Accordion>
 
             <Accordion
-              id={ORGANIZATION_SECTIONS.contactPeopleSection}
-              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactPeopleSection]}
+              id={contactPeopleSection}
+              label={ORGANIZATION_SECTION_LABELS[contactPeopleSection]}
             >
               <OrganizationContactPeopleContainer
                 contactsIds={organization.contacts}
@@ -314,8 +329,8 @@ const OrganizationDetails = ({
             </Accordion>
 
             <Accordion
-              id={ORGANIZATION_SECTIONS.interfacesSection}
-              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.interfacesSection]}
+              id={interfacesSection}
+              label={ORGANIZATION_SECTION_LABELS[interfacesSection]}
             >
               <OrganizationInterfacesContainer
                 interfaceIds={organization.interfaces}
@@ -323,11 +338,24 @@ const OrganizationDetails = ({
             </Accordion>
 
             {
+              Boolean(organization.isVendor && organization.isDonor) && (
+              <Accordion
+                id={donorContacts}
+                label={ORGANIZATION_SECTION_LABELS[donorContacts]}
+              >
+                {/*
+                  TODO: add donor contacts list component https://issues.folio.org/browse/UIORGS-394
+                */}
+              </Accordion>
+              )
+            }
+
+            {
               organization.isVendor && (
                 <>
                   <Accordion
-                    id={ORGANIZATION_SECTIONS.vendorInformationSection}
-                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
+                    id={vendorInformationSection}
+                    label={ORGANIZATION_SECTION_LABELS[vendorInformationSection]}
                   >
                     <OrganizationVendorInfo
                       paymentMethod={organization.paymentMethod}
@@ -347,8 +375,8 @@ const OrganizationDetails = ({
                   </Accordion>
 
                   <Accordion
-                    id={ORGANIZATION_SECTIONS.vendorTermsSection}
-                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorTermsSection]}
+                    id={vendorTermsSection}
+                    label={ORGANIZATION_SECTION_LABELS[vendorTermsSection]}
                   >
                     <OrganizationAgreements
                       agreements={organization.agreements}
@@ -356,8 +384,8 @@ const OrganizationDetails = ({
                   </Accordion>
 
                   <Accordion
-                    id={ORGANIZATION_SECTIONS.integrationDetailsSection}
-                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.integrationDetailsSection]}
+                    id={integrationDetailsSection}
+                    label={ORGANIZATION_SECTION_LABELS[integrationDetailsSection]}
                     displayWhenOpen={addIntegrationButton}
                   >
                     <IntegrationDetails
@@ -367,8 +395,8 @@ const OrganizationDetails = ({
                   </Accordion>
 
                   <Accordion
-                    id={ORGANIZATION_SECTIONS.accountsSection}
-                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.accountsSection]}
+                    id={accountsSection}
+                    label={ORGANIZATION_SECTION_LABELS[accountsSection]}
                   >
                     <OrganizationAccounts
                       accounts={organization.accounts}
@@ -388,8 +416,8 @@ const OrganizationDetails = ({
             }
 
             <LinkedAgreements
-              id={ORGANIZATION_SECTIONS.agreements}
-              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.agreements]}
+              id={agreements}
+              label={ORGANIZATION_SECTION_LABELS[agreements]}
               organization={organization}
             />
           </AccordionSet>
