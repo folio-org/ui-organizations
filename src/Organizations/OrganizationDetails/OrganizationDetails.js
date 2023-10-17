@@ -110,6 +110,7 @@ const OrganizationDetails = ({
   const history = useHistory();
   const accordionStatusRef = useRef();
   const isDetailsPaneInFocus = location.state?.isDetailsPaneInFocus;
+  const isDonorVisible = organization?.isVendor && organization?.isDonor;
   const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
     organization.id, organization.acqUnitIds,
   );
@@ -338,7 +339,7 @@ const OrganizationDetails = ({
             </Accordion>
 
             {
-              Boolean(organization.isVendor && organization.isDonor) && (
+              isDonorVisible && (
               <Accordion
                 id={donorContacts}
                 label={ORGANIZATION_SECTION_LABELS[donorContacts]}
