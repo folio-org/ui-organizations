@@ -443,9 +443,10 @@
   "settings.typeStatus.Active": "Active",
   "settings.typeStatus.Inactive": "Inactive",
   "settings.bankingInformation": "Banking information",
-  "settings.bankingInformation.enabled": "Enabled",
-  "settings.bankingInformation.disabled": "Disabled",
+  "settings.bankingInformation.enabled": "Enable",
+  "settings.bankingInformation.disabled": "Disable",
   "settings.accountTypes": "Account types",
+  "settings.accountTypes.save.error.accountTypeMustBeUnique": "Account type must be uniq",
 
   "permission.view": "Organizations: View",
   "permission.edit": "Organizations: View, edit",

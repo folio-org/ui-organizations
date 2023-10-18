@@ -6,7 +6,7 @@ import { Settings } from '@folio/stripes/smart-components';
 import { CategorySettings } from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
 import { BankingInformationSettings } from './BankingInformationSettings';
-import { AccountTypeSettings } from './AccountTypeSettings';
+import { BankingAccountTypeSettings } from './BankingAccountTypeSettings';
 
 const pages = [
   {
@@ -28,7 +28,7 @@ const pages = [
     route: 'banking-information',
   },
   {
-    component: AccountTypeSettings,
+    component: BankingAccountTypeSettings,
     label: <FormattedMessage id="ui-organizations.settings.accountTypes" />,
     perm: 'settings.organizations.enabled',
     route: 'account-types',

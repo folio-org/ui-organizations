@@ -5,7 +5,7 @@ import { stripesShape } from '@folio/stripes/core';
 import { ControlledVocab } from '@folio/stripes/smart-components';
 import { getControlledVocabTranslations } from '@folio/stripes-acq-components';
 
-class AccountTypeSettings extends Component {
+class BankingAccountTypeSettings extends Component {
   constructor(props) {
     super(props);
     this.connectedControlledVocab = props.stripes.connect(ControlledVocab);
@@ -26,29 +26,44 @@ class AccountTypeSettings extends Component {
 
     const ConnectedComponent = this.connectedControlledVocab;
 
+    const setUniqValidation = (value, index, items) => {
+      const errors = {};
+
+      const isAccountTypeExist = items.some(({ id, name }) => {
+        return name?.toLowerCase() === value?.name?.toLowerCase() && id !== value?.id;
+      });
+
+      if (isAccountTypeExist) {
+        errors.name = <FormattedMessage id="ui-organizations.settings.accountTypes.save.error.accountTypeMustBeUnique" />;
+      }
+
+      return errors;
+    };
+
     return (
       <ConnectedComponent
         actionSuppressor={actionSuppressor}
         canCreate={hasEditPerms}
         stripes={stripes}
-        baseUrl="organizations-storage/categories"
-        records="categories"
+        baseUrl="organizations-storage/banking-account-types"
+        records="bankingAccountTypes"
         label={<FormattedMessage id="ui-organizations.settings.accountTypes" />}
         translations={getControlledVocabTranslations('ui-organizations.settings.accountTypes')}
-        objectLabel="Categories"
-        visibleFields={['value']}
+        objectLabel="BankingAccountTypes"
+        visibleFields={['name']}
         columnMapping={columnMapping}
         hiddenFields={['lastUpdated', 'numberOfObjects']}
-        nameKey="categories"
-        id="categories"
-        sortby="value"
+        nameKey="bankingAccountTypes"
+        id="bankingAccountTypes"
+        validate={setUniqValidation}
+        sortby="name"
       />
     );
   }
 }
 
-AccountTypeSettings.propTypes = {
+BankingAccountTypeSettings.propTypes = {
   stripes: stripesShape.isRequired,
 };
 
-export default AccountTypeSettings;
+export default BankingAccountTypeSettings;

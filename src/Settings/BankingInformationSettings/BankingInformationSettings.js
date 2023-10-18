@@ -3,7 +3,6 @@ import { Field, Form } from 'react-final-form';
 
 import {
   Button,
-  Checkbox,
   Col,
   Headline,
   Pane,
