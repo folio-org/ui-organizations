@@ -341,7 +341,7 @@
     "integration.ftp.ftpMode": "FTP mode",
     "integration.ftp.serverAddress": "Server address",
     "integration.ftp.ftpConnectionMode": "FTP connection mode",
-    "integration.ftp.ftpConnectionMode.Active": "Active",
+    "integration.ftp.ftpConnectionMode.Active": "Aktywny",
     "integration.ftp.ftpConnectionMode.Passive": "Passive",
     "integration.ftp.username": "Username",
     "integration.ftp.password": "Password",
@@ -389,7 +389,7 @@
     "linkedAgreements.agreement.startDate": "Period start",
     "linkedAgreements.agreement.endDate": "Period End",
     "linkedAgreements.agreement.agreementStatus": "Agreement status",
-    "linkedAgreements.agreement.agreementStatus.active": "Active",
+    "linkedAgreements.agreement.agreementStatus.active": "Aktywny",
     "linkedAgreements.agreement.agreementStatus.closed": "Closed",
     "linkedAgreements.agreement.agreementStatus.draft": "Draft",
     "linkedAgreements.agreement.agreementStatus.in_negotiation": "In negotiation",
@@ -400,8 +400,8 @@
     "settings.type.status": "Status",
     "settings.types": "Types",
     "settings.type": "Type",
-    "settings.typeStatus.Active": "Active",
-    "settings.typeStatus.Inactive": "Inactive",
+    "settings.typeStatus.Active": "Aktywny",
+    "settings.typeStatus.Inactive": "Nieaktywny",
     "permission.integrations.creds.view": "Organizations: Integration usernames and passwords: view",
     "permission.integrations.creds.edit": "Organizations: Integration usernames and passwords: view, edit",
     "integration.scheduling.schedulePeriod.none": "Please select schedule period",
@@ -416,5 +416,7 @@
     "settings.types.termDeleted": "The type <b>{term}</b> was successfully <b>deleted</b>",
     "settings.types.termWillBeDeleted": "The type <b>{term}</b> will be <b>deleted.</b>",
     "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>",
-    "permission.settings.view": "Settings (Organizations): View settings"
+    "permission.settings.view": "Settings (Organizations): View settings",
+    "comingSoon": "Coming in a future release.",
+    "summary.isDonor": "Donor"
 }

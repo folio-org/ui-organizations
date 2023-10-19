@@ -416,5 +416,7 @@
     "settings.types.termDeleted": "Typ <b>{term}</b> byl úspěšně <b>smazán</b>",
     "settings.types.termWillBeDeleted": "Typ <b>{term}</b> bude <b>smazán.</b>",
     "save.success": "<b>Organizace - \"{organizationName}\"</b> byla úspěšně <b>uložena</b>",
-    "permission.settings.view": "Nastavení (Organizace): Zobrazení nastavení"
+    "permission.settings.view": "Nastavení (Organizace): Zobrazení nastavení",
+    "comingSoon": "Coming in a future release.",
+    "summary.isDonor": "Donor"
 }
