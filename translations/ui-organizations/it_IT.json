@@ -416,5 +416,7 @@
     "settings.types.termDeleted": "Il tipo <b>{term}</b> è stata <b>eliminata</b> correttamente",
     "settings.types.termWillBeDeleted": "La tipologia <b>{term}</b> verrà <b>eliminata.</b>",
     "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>",
-    "permission.settings.view": "Settings (Organizations): View settings"
+    "permission.settings.view": "Settings (Organizations): View settings",
+    "comingSoon": "Coming in a future release.",
+    "summary.isDonor": "Donor"
 }
