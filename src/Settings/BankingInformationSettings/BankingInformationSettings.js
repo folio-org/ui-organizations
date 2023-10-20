@@ -12,6 +12,7 @@ import {
   RadioButtonGroup,
   Row,
 } from '@folio/stripes/components';
+import { useShowCallout } from '@folio/stripes-acq-components';
 import {
   useOkapiKy,
   useNamespace,
@@ -25,13 +26,24 @@ const BankingInformationSettings = () => {
   const ky = useOkapiKy();
   const queryClient = useQueryClient();
   const [namespace] = useNamespace({ key: 'banking-information-settings' });
+  const sendCallout = useShowCallout();
 
-  const onSubmit = ({ value }) => {
-    ky.put(`${SETTINGS_API}/${bankingInformationId}`, {
-      json: { value, key },
-    }).then(() => {
+  const onSubmit = async ({ value }) => {
+    try {
+      await ky.put(`${SETTINGS_API}/${bankingInformationId}`, {
+        json: { value, key },
+      });
       queryClient.invalidateQueries([namespace]);
-    });
+      sendCallout({
+        type: 'success',
+        message: <FormattedMessage id="ui-organizations.settings.accountTypes.save.success.message" />,
+      });
+    } catch (error) {
+      sendCallout({
+        type: 'success',
+        message: <FormattedMessage id="settings.accountTypes.save.error.generic.message" />,
+      });
+    }
   };
 
   if (isLoading) {
@@ -71,7 +83,9 @@ const BankingInformationSettings = () => {
                     value="false"
                   />
                 </Field>
-                <Button type="submit" buttonStyle="primary">Save</Button>
+                <Button type="submit" buttonStyle="primary">
+                  <FormattedMessage id="ui-organizations.settings.accountTypes.save.button" />
+                </Button>
               </form>
             )}
           />
