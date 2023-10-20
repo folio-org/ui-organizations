@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { Settings } from '@folio/stripes/smart-components';
+import { Loading } from '@folio/stripes/components';
 
+import { useBankingInformation } from './hooks/useBankingInformation';
 import { CategorySettings } from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
 import { BankingInformationSettings } from './BankingInformationSettings';
@@ -27,20 +29,32 @@ const pages = [
     perm: 'settings.organizations.enabled',
     route: 'banking-information',
   },
-  {
-    component: BankingAccountTypeSettings,
-    label: <FormattedMessage id="ui-organizations.settings.accountTypes" />,
-    perm: 'settings.organizations.enabled',
-    route: 'account-types',
-  },
 ];
 
-const SettingsPage = (props) => (
-  <Settings
-    {...props}
-    pages={pages}
-    paneTitle={<FormattedMessage id="ui-organizations.settings.vendorSettings" />}
-  />
-);
+const bankingAccountTypesPage = {
+  component: BankingAccountTypeSettings,
+  label: <FormattedMessage id="ui-organizations.settings.bankingAccountTypes" />,
+  perm: 'settings.organizations.enabled',
+  route: 'banking-account-types',
+};
+
+const SettingsPage = (props) => {
+  const { enabled, isLoading } = useBankingInformation();
+
+  const settingsPages = useMemo(() => (enabled ? pages.concat(bankingAccountTypesPage) : pages), [enabled]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  return (
+    <Settings
+      {...props}
+      key={settingsPages.length}
+      pages={settingsPages}
+      paneTitle={<FormattedMessage id="ui-organizations.settings.vendorSettings" />}
+    />
+  );
+};
 
 export default SettingsPage;

@@ -1,25 +1,46 @@
 import { FormattedMessage } from 'react-intl';
 import { Field, Form } from 'react-final-form';
+import { useQueryClient } from 'react-query';
 
 import {
   Button,
   Col,
   Headline,
+  Loading,
   Pane,
   RadioButton,
   RadioButtonGroup,
   Row,
 } from '@folio/stripes/components';
+import {
+  useOkapiKy,
+  useNamespace,
+} from '@folio/stripes/core';
+
+import { useBankingInformation } from '../hooks/useBankingInformation';
+import { SETTINGS_API } from '../constants';
 
 const BankingInformationSettings = () => {
-  const onSubmit = (values) => {
-    console.log(values);
+  const { enabled, key, id: bankingInformationId, isLoading } = useBankingInformation();
+  const ky = useOkapiKy();
+  const queryClient = useQueryClient();
+  const [namespace] = useNamespace({ key: 'banking-information-settings' });
+
+  const onSubmit = ({ value }) => {
+    ky.put(`${SETTINGS_API}/${bankingInformationId}`, {
+      json: { value, key },
+    }).then(() => {
+      queryClient.invalidateQueries([namespace]);
+    });
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <Pane
       defaultWidth="fill"
-      dismissible
       id="banking-information"
       paneTitle={<FormattedMessage id="ui-organizations.settings.bankingInformation" />}
     >
@@ -32,11 +53,11 @@ const BankingInformationSettings = () => {
         <Col xs={12}>
           <Form
             onSubmit={onSubmit}
-            initialValues={{ enabled: false }}
+            initialValues={{ value: enabled }}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
                 <Field
-                  name="enabled"
+                  name="value"
                   component={RadioButtonGroup}
                 >
                   <RadioButton
