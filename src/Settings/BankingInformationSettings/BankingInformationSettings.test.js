@@ -11,8 +11,11 @@ jest.mock('react-query', () => ({
   })),
 }));
 
-jest.mock('../hooks/useBankingInformation', () => ({
-  useBankingInformation: jest.fn(() => ({ isLoading: false, enabled: false })),
+jest.mock('../hooks', () => ({
+  useBankingInformation: jest.fn(() => ({
+    isLoading: false,
+    enabled: false,
+  })),
 }));
 
 const renderBankingInformationSettings = () => render(

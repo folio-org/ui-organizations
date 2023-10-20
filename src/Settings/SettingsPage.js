@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { Settings } from '@folio/stripes/smart-components';
 import { Loading } from '@folio/stripes/components';
 
-import { useBankingInformation } from './hooks/useBankingInformation';
+import { useBankingInformation } from './hooks';
 import { CategorySettings } from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
 import { BankingInformationSettings } from './BankingInformationSettings';

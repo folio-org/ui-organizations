@@ -18,7 +18,7 @@ import {
   useNamespace,
 } from '@folio/stripes/core';
 
-import { useBankingInformation } from '../hooks/useBankingInformation';
+import { useBankingInformation } from '../hooks';
 import { SETTINGS_API } from '../constants';
 
 const BankingInformationSettings = () => {
