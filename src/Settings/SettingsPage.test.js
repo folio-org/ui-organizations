@@ -9,6 +9,10 @@ import { useBankingInformation } from './hooks';
 jest.mock('@folio/stripes/core');
 jest.mock('@folio/stripes/smart-components');
 
+jest.mock('@folio/stripes/components', () => ({
+  ...jest.requireActual('@folio/stripes/components'),
+  Loading: () => <div>Loading</div>,
+}));
 jest.mock('./hooks', () => ({
   useBankingInformation: jest.fn(() => ({
     isLoading: false,
@@ -56,5 +60,16 @@ describe('SettingsPage', () => {
     renderSettingsPage();
 
     expect(screen.getByText('ui-organizations.settings.bankingAccountTypes')).toBeInTheDocument();
+  });
+
+  it('should display loading on fetching useBankingInformation', async () => {
+    useBankingInformation.mockReturnValue({
+      isLoading: true,
+      enabled: false,
+    });
+
+    renderSettingsPage();
+
+    expect(screen.getByText('Loading')).toBeInTheDocument();
   });
 });
