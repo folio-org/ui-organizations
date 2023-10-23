@@ -3,12 +3,18 @@ import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import BankingInformationSettings from './BankingInformationSettings';
+import { useBankingInformation } from '../hooks';
 
 jest.mock('react-query', () => ({
   ...jest.requireActual('react-query'),
   useQueryClient: jest.fn(() => ({
     invalidateQueries: jest.fn(),
   })),
+}));
+
+jest.mock('@folio/stripes/components', () => ({
+  ...jest.requireActual('@folio/stripes/components'),
+  Loading: () => <div>Loading</div>,
 }));
 
 jest.mock('../hooks', () => ({
@@ -38,7 +44,22 @@ describe('BankingInformationSettings component', () => {
     expect(screen.getByText('ui-organizations.settings.bankingInformation.disabled')).toBeInTheDocument();
   });
 
+  it('should render Loading component', () => {
+    useBankingInformation.mockReturnValue({
+      isLoading: true,
+      enabled: false,
+    });
+
+    renderBankingInformationSettings();
+
+    expect(screen.getByText('Loading')).toBeInTheDocument();
+  });
+
   it('should save banking options', async () => {
+    useBankingInformation.mockClear().mockReturnValue({
+      isLoading: false,
+      enabled: true,
+    });
     const mockPutMethod = jest.fn(() => ({
       json: () => Promise.resolve('ok'),
     }));
