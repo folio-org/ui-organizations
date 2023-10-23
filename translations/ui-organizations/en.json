@@ -110,6 +110,7 @@
   "summary.organizationStatus": "Organization status",
   "summary.type": "Type",
   "summary.isVendor": "Vendor",
+  "summary.isDonor": "Donor",
   "summary.accountingCode": "Accounting code",
   "summary.defaultLanguage": "Default language",
   "summary.alternativeNames": "Alternative names",

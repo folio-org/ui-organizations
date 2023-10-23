@@ -1,6 +1,6 @@
 {
   "name": "@folio/organizations",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Organizations",
   "main": "index.js",
   "repository": "folio-org/ui-organizations",
@@ -264,7 +264,7 @@
     "@folio/service-interaction": "^2.0.0",
     "@folio/stripes": "^9.0.0",
     "@folio/stripes-cli": "^3.0.0",
-    "@formatjs/cli":  "^6.1.3",
+    "@formatjs/cli": "^6.1.3",
     "babel-jest": "^26.3.0",
     "chai": "^4.2.0",
     "core-js": "^3.6.4",
@@ -290,7 +290,7 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/plugin-find-organization": "^4.0.0",
+    "@folio/plugin-find-organization": "^5.0.0",
     "@folio/stripes-acq-components": "~5.0.0",
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.20",
@@ -312,12 +312,10 @@
     "redux": "^4.0.0"
   },
   "optionalDependencies": {
-    "@folio/plugin-find-contact": "^3.2.0",
-    "@folio/plugin-find-interface": "^3.2.0"
+    "@folio/plugin-find-contact": "^5.0.0",
+    "@folio/plugin-find-interface": "^5.0.0"
   },
   "optionalOkapiInterfaces": {
-    "servint": "2.0 3.0",
-    "@folio/plugin-find-contact": "^4.0.0",
-    "@folio/plugin-find-interface": "^4.0.0"
+    "servint": "2.0 3.0"
   }
 }

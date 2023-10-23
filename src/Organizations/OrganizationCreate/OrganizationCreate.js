@@ -19,6 +19,7 @@ const INITIAL_VALUES = {
   interfaces: [],
   contacts: [],
   isVendor: false,
+  isDonor: false,
   edi: {
     vendorEdiType: '31B/US-SAN',
     libEdiType: '31B/US-SAN',

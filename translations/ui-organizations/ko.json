@@ -416,5 +416,7 @@
     "settings.types.termDeleted": "<b> {term} </b> 유형이 성공적으로 <b> 삭제되었습니다 </b>",
     "settings.types.termWillBeDeleted": "<b> {term} </b> 유형이 <b> 삭제됩니다. </b>",
     "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>",
-    "permission.settings.view": "Settings (Organizations): View settings"
+    "permission.settings.view": "Settings (Organizations): View settings",
+    "comingSoon": "Coming in a future release.",
+    "summary.isDonor": "Donor"
 }

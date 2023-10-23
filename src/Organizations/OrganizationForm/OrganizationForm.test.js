@@ -1,7 +1,3 @@
-import React from 'react';
-import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
-import { queryHelpers } from '@folio/jest-config-stripes/testing-library/dom';
-import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
@@ -10,11 +6,17 @@ import {
   expandAllSections,
   collapseAllSections,
 } from '@folio/stripes/components';
-import { organizationTypes } from 'fixtures';
+import {
+  render,
+  screen,
+  act,
+} from '@folio/jest-config-stripes/testing-library/react';
+import { queryHelpers } from '@folio/jest-config-stripes/testing-library/dom';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
+import { organizationTypes } from 'fixtures';
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import OrganizationForm from './OrganizationForm';
-
 
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),

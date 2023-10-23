@@ -1,6 +1,11 @@
 # Change history for ui-organizations
 
-## 5.0.0 (IN PROGRESS)
+## 5.1.0 (IN PROGRESS)
+
+* Designate Organization as donor. Refs UIORGS-383.
+
+## [5.0.0](https://github.com/folio-org/ui-organizations/tree/v5.0.0) (2023-10-12)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v4.0.0...v5.0.0)
 
 * Unpin `@rehooks/local-storage` now that it's no longer broken. Refs UIORGS-344.
 * Add `Note` field to contact people summary list. Refs UIORGS-352.
@@ -11,6 +16,7 @@
 * Upgrade `Node.js` to `18` version in GitHub Actions. Refs UIORGS-378.
 * *BREAKING* bump `react-intl` to `v6.4.4`. Refs UIORGS-386.
 * Add a message indicating future functionality for EDI naming convention. Refs UIORGS-382.
+* Bump optional plugins to their `@folio/stripes` `v9` compatible versions. Refs UIORGS-404.
 
 ## [4.0.0](https://github.com/folio-org/ui-organizations/tree/v4.0.0) (2023-02-22)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v3.3.1...v4.0.0)

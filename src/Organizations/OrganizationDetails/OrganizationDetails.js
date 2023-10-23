@@ -269,6 +269,7 @@ const OrganizationDetails = ({
                 description={organization.description}
                 erpCode={organization.erpCode}
                 isVendor={organization.isVendor}
+                isDonor={organization.isDonor}
                 language={organization.language}
                 metadata={organization.metadata}
                 name={organization.name}
