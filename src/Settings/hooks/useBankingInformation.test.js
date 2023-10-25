@@ -17,6 +17,7 @@ const MOCK_BANKING_INFORMATION = {
   'id': 'cb007def-4b68-496c-ad78-ea8e039e819d',
   'key': 'BANKING_INFORMATION_ENABLED',
   'value': 'true',
+  refetch: jest.fn(),
 };
 
 // eslint-disable-next-line react/prop-types
@@ -42,11 +43,11 @@ describe('useBankingInformation', () => {
 
     await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
-    expect(result.current).toEqual({
+    expect(result.current).toEqual(expect.objectContaining({
       enabled: true,
       isLoading: false,
       id: MOCK_BANKING_INFORMATION.id,
       key: MOCK_BANKING_INFORMATION.key,
-    });
+    }));
   });
 });
