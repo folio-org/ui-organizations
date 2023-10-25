@@ -1,5 +1,5 @@
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
-
+import { useStripes } from '@folio/stripes/core';
 import { ControlledVocab } from '@folio/stripes/smart-components';
 
 import BankingAccountTypeSettings from './BankingAccountTypeSettings';
@@ -38,9 +38,13 @@ const stripesMock = {
   clone: jest.fn(),
 };
 
-const renderCategorySettings = () => render(<BankingAccountTypeSettings stripes={stripesMock} resources={[]} />);
+const renderCategorySettings = () => render(<BankingAccountTypeSettings />);
 
 describe('BankingAccountTypeSettings', () => {
+  beforeEach(() => {
+    useStripes.mockReturnValue(stripesMock);
+  });
+
   it('should render component', () => {
     renderCategorySettings();
 

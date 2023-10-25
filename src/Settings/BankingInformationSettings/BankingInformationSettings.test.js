@@ -5,12 +5,7 @@ import { useOkapiKy } from '@folio/stripes/core';
 import BankingInformationSettings from './BankingInformationSettings';
 import { useBankingInformation } from '../hooks';
 
-jest.mock('react-query', () => ({
-  ...jest.requireActual('react-query'),
-  useQueryClient: jest.fn(() => ({
-    invalidateQueries: jest.fn(),
-  })),
-}));
+const mockRefetch = jest.fn();
 
 jest.mock('@folio/stripes/components', () => ({
   ...jest.requireActual('@folio/stripes/components'),
@@ -21,6 +16,7 @@ jest.mock('../hooks', () => ({
   useBankingInformation: jest.fn(() => ({
     isLoading: false,
     enabled: false,
+    refetch: mockRefetch,
   })),
 }));
 
@@ -59,6 +55,7 @@ describe('BankingInformationSettings component', () => {
     useBankingInformation.mockClear().mockReturnValue({
       isLoading: false,
       enabled: true,
+      refetch: mockRefetch,
     });
     const mockPutMethod = jest.fn(() => ({
       json: () => Promise.resolve('ok'),
@@ -80,6 +77,7 @@ describe('BankingInformationSettings component', () => {
       await user.click(saveButton);
     });
 
+    expect(mockPutMethod).toHaveBeenCalled();
     expect(mockPutMethod).toHaveBeenCalled();
   });
 });

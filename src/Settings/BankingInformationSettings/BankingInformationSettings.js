@@ -1,6 +1,5 @@
 import { FormattedMessage } from 'react-intl';
 import { Field, Form } from 'react-final-form';
-import { useQueryClient } from 'react-query';
 
 import {
   Button,
@@ -13,19 +12,20 @@ import {
   Row,
 } from '@folio/stripes/components';
 import { useShowCallout } from '@folio/stripes-acq-components';
-import {
-  useOkapiKy,
-  useNamespace,
-} from '@folio/stripes/core';
+import { useOkapiKy } from '@folio/stripes/core';
 
 import { useBankingInformation } from '../hooks';
 import { SETTINGS_API } from '../constants';
 
 const BankingInformationSettings = () => {
-  const { enabled, key, id: bankingInformationId, isLoading } = useBankingInformation();
+  const {
+    enabled,
+    key,
+    id: bankingInformationId,
+    isLoading,
+    refetch,
+  } = useBankingInformation();
   const ky = useOkapiKy();
-  const queryClient = useQueryClient();
-  const [namespace] = useNamespace({ key: 'banking-information-settings' });
   const sendCallout = useShowCallout();
 
   const onSubmit = async ({ value }) => {
@@ -33,14 +33,14 @@ const BankingInformationSettings = () => {
       await ky.put(`${SETTINGS_API}/${bankingInformationId}`, {
         json: { value, key },
       });
-      queryClient.invalidateQueries([namespace]);
+
+      refetch();
       sendCallout({
-        type: 'success',
         message: <FormattedMessage id="ui-organizations.settings.accountTypes.save.success.message" />,
       });
     } catch (error) {
       sendCallout({
-        type: 'success',
+        type: 'error',
         message: <FormattedMessage id="settings.accountTypes.save.error.generic.message" />,
       });
     }

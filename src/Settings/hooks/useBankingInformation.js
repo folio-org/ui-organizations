@@ -6,7 +6,11 @@ import {
   useOkapiKy,
 } from '@folio/stripes/core';
 
-import { MAX_LIMIT, SETTINGS_API } from '../constants';
+import {
+  MAX_LIMIT,
+  SETTINGS_API,
+  BANKING_INFORMATION_SEARCH_QUERY,
+} from '../constants';
 
 export const useBankingInformation = () => {
   const ky = useOkapiKy();
@@ -14,10 +18,10 @@ export const useBankingInformation = () => {
 
   const searchParams = {
     limit: MAX_LIMIT,
-    query: 'key=BANKING_INFORMATION_ENABLED',
+    query: BANKING_INFORMATION_SEARCH_QUERY,
   };
 
-  const { isLoading, data } = useQuery(
+  const { isLoading, data, refetch } = useQuery(
     [namespace],
     () => ky.get(SETTINGS_API, { searchParams }).json().catch(() => null),
   );
@@ -29,5 +33,6 @@ export const useBankingInformation = () => {
     enabled: bankingInformation.value === 'true',
     key: bankingInformation.key,
     isLoading,
+    refetch,
   });
 };
