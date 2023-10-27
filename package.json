@@ -97,7 +97,9 @@
           "organizations-storage.phone-numbers.item.get",
           "organizations-storage.urls.collection.get",
           "organizations-storage.urls.item.get",
-          "ui-organizations.third-party-services"
+          "ui-organizations.third-party-services",
+          "organizations-storage.settings.collection.get",
+          "organizations-storage.settings.item.get"
         ]
       },
       {
@@ -208,7 +210,9 @@
           "settings.organizations.enabled",
           "organizations-storage.organization-types.collection.get",
           "organizations-storage.organization-types.item.get",
-          "organizations-storage.categories.collection.get"
+          "organizations-storage.categories.collection.get",
+          "organizations-storage.settings.collection.get",
+          "organizations-storage.settings.item.get"
         ]
       },
       {
@@ -222,16 +226,7 @@
           "organizations-storage.organization-types.item.delete",
           "organizations-storage.categories.item.delete",
           "organizations-storage.categories.item.post",
-          "organizations-storage.categories.item.put"
-        ]
-      },
-      {
-        "permissionName" : "organizations-storage.settings.all",
-        "displayName" : "setting all",
-        "description" : "All permissions for setting",
-        "subPermissions" : [
-          "organizations-storage.settings.collection.get",
-          "organizations-storage.settings.item.get",
+          "organizations-storage.categories.item.put",
           "organizations-storage.settings.item.put"
         ]
       }
