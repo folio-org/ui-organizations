@@ -19,21 +19,20 @@ const renderBankingInformationSettingsForm = (props = DEFAULT_PROPS) => render(
 );
 
 describe('BankingInformationSettingsForm component', () => {
-  it('should display radio buttons', async () => {
+  it('should render component', async () => {
     renderBankingInformationSettingsForm();
 
-    expect(screen.getByText('ui-organizations.settings.bankingInformation.enabled')).toBeInTheDocument();
-    expect(screen.getByText('ui-organizations.settings.bankingInformation.disabled')).toBeInTheDocument();
+    expect(screen.getAllByLabelText('ui-organizations.settings.bankingInformation')).toHaveLength(2);
   });
 
   it('should save banking options', async () => {
     renderBankingInformationSettingsForm();
 
-    const disabledButton = screen.getByText('ui-organizations.settings.bankingInformation.disabled');
+    const checkbox = screen.getByRole('checkbox', { name: 'ui-organizations.settings.bankingInformation' });
     const saveButton = screen.getByText('ui-organizations.settings.accountTypes.save.button');
 
     await act(async () => {
-      await user.click(disabledButton);
+      await user.click(checkbox);
       await user.click(saveButton);
     });
 

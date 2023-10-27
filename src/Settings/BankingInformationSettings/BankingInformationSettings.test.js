@@ -35,13 +35,6 @@ describe('BankingInformationSettings component', () => {
     expect(paneTitle).toHaveLength(2);
   });
 
-  it('should display radio buttons', async () => {
-    renderBankingInformationSettings();
-
-    expect(screen.getByText('ui-organizations.settings.bankingInformation.enabled')).toBeInTheDocument();
-    expect(screen.getByText('ui-organizations.settings.bankingInformation.disabled')).toBeInTheDocument();
-  });
-
   it('should render Loading component', () => {
     useBankingInformation.mockReturnValue({
       isLoading: true,
@@ -71,11 +64,11 @@ describe('BankingInformationSettings component', () => {
 
     renderBankingInformationSettings();
 
-    const disabledButton = screen.getByText('ui-organizations.settings.bankingInformation.disabled');
+    const checkbox = screen.getByRole('checkbox', { name: 'ui-organizations.settings.bankingInformation' });
     const saveButton = screen.getByText('ui-organizations.settings.accountTypes.save.button');
 
     await act(async () => {
-      await user.click(disabledButton);
+      await user.click(checkbox);
       await user.click(saveButton);
     });
 

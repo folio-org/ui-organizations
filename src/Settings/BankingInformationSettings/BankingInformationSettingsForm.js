@@ -5,13 +5,11 @@ import { Field } from 'react-final-form';
 
 import {
   Button,
+  Checkbox,
   Col,
-  Headline,
   Pane,
   PaneFooter,
   PaneHeader,
-  RadioButton,
-  RadioButtonGroup,
   Row,
 } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/final-form';
@@ -21,24 +19,21 @@ const BankingInformationSettingsForm = ({
   pristine,
   submitting,
 }) => {
-  const paneFooter = useMemo(
-    () => {
-      const end = (
-        <Button
-          id="clickable-save-contact-person-footer"
-          type="submit"
-          buttonStyle="primary mega"
-          disabled={pristine || submitting}
-          onClick={handleSubmit}
-        >
-          <FormattedMessage id="ui-organizations.settings.accountTypes.save.button" />
-        </Button>
-      );
+  const paneFooter = useMemo(() => {
+    const end = (
+      <Button
+        id="clickable-save-contact-person-footer"
+        type="submit"
+        buttonStyle="primary mega"
+        disabled={pristine || submitting}
+        onClick={handleSubmit}
+      >
+        <FormattedMessage id="ui-organizations.settings.accountTypes.save.button" />
+      </Button>
+    );
 
-      return <PaneFooter renderEnd={end} />;
-    },
-    [handleSubmit, pristine, submitting],
-  );
+    return <PaneFooter renderEnd={end} />;
+  }, [handleSubmit, pristine, submitting]);
 
   const paneTitle = <FormattedMessage id="ui-organizations.settings.bankingInformation" />;
 
@@ -51,26 +46,13 @@ const BankingInformationSettingsForm = ({
     >
       <Row>
         <Col xs={12}>
-          <Headline margin="none">
-            <FormattedMessage id="ui-organizations.settings.bankingInformation" />
-          </Headline>
-        </Col>
-        <Col xs={12}>
           <Field
+            component={Checkbox}
+            label={<FormattedMessage id="ui-organizations.settings.bankingInformation" />}
             name="value"
-            component={RadioButtonGroup}
-          >
-            <RadioButton
-              label={<FormattedMessage id="ui-organizations.settings.bankingInformation.enabled" />}
-              id="enabled"
-              value="true"
-            />
-            <RadioButton
-              label={<FormattedMessage id="ui-organizations.settings.bankingInformation.disabled" />}
-              id="disabled"
-              value="false"
-            />
-          </Field>
+            type="checkbox"
+            vertical
+          />
         </Col>
       </Row>
     </Pane>
