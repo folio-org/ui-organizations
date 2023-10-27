@@ -224,6 +224,16 @@
           "organizations-storage.categories.item.post",
           "organizations-storage.categories.item.put"
         ]
+      },
+      {
+        "permissionName" : "organizations-storage.settings.all",
+        "displayName" : "setting all",
+        "description" : "All permissions for setting",
+        "subPermissions" : [
+          "organizations-storage.settings.collection.get",
+          "organizations-storage.settings.item.get",
+          "organizations-storage.settings.item.put"
+        ]
       }
     ]
   },
