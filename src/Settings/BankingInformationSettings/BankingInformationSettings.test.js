@@ -1,5 +1,7 @@
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { useOkapiKy } from '@folio/stripes/core';
 
 import BankingInformationSettings from './BankingInformationSettings';
 import { useBankingInformation } from '../hooks';
@@ -49,5 +51,34 @@ describe('BankingInformationSettings component', () => {
     renderBankingInformationSettings();
 
     expect(screen.getByText('Loading')).toBeInTheDocument();
+  });
+
+  it('should save banking options', async () => {
+    useBankingInformation.mockClear().mockReturnValue({
+      isLoading: false,
+      enabled: true,
+      refetch: mockRefetch,
+    });
+    const mockPutMethod = jest.fn(() => ({
+      json: () => Promise.resolve('ok'),
+    }));
+
+    useOkapiKy
+      .mockClear()
+      .mockReturnValue({
+        put: mockPutMethod,
+      });
+
+    renderBankingInformationSettings();
+
+    const disabledButton = screen.getByText('ui-organizations.settings.bankingInformation.disabled');
+    const saveButton = screen.getByText('ui-organizations.settings.accountTypes.save.button');
+
+    await act(async () => {
+      await user.click(disabledButton);
+      await user.click(saveButton);
+    });
+
+    expect(mockPutMethod).toHaveBeenCalled();
   });
 });

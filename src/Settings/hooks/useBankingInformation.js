@@ -19,7 +19,7 @@ export const useBankingInformation = () => {
     [namespace],
     () => ky.get(SETTINGS_API, {
       searchParams: BANKING_INFORMATION_SEARCH_QUERY,
-    }).json().catch(() => null),
+    }).json(),
   );
 
   const bankingInformation = get(data, 'settings[0]', {});
