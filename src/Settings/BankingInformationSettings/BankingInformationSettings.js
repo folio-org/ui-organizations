@@ -1,21 +1,12 @@
 import { FormattedMessage } from 'react-intl';
-import { Field, Form } from 'react-final-form';
 
-import {
-  Button,
-  Col,
-  Headline,
-  Loading,
-  Pane,
-  RadioButton,
-  RadioButtonGroup,
-  Row,
-} from '@folio/stripes/components';
-import { useShowCallout } from '@folio/stripes-acq-components';
+import { Loading } from '@folio/stripes/components';
 import { useOkapiKy } from '@folio/stripes/core';
+import { useShowCallout } from '@folio/stripes-acq-components';
 
-import { useBankingInformation } from '../hooks';
+import BankingInformationSettingsForm from './BankingInformationSettingsForm';
 import { SETTINGS_API } from '../constants';
+import { useBankingInformation } from '../hooks';
 
 const BankingInformationSettings = () => {
   const {
@@ -51,47 +42,10 @@ const BankingInformationSettings = () => {
   }
 
   return (
-    <Pane
-      defaultWidth="fill"
-      id="banking-information"
-      paneTitle={<FormattedMessage id="ui-organizations.settings.bankingInformation" />}
-    >
-      <Row>
-        <Col xs={12}>
-          <Headline margin="none">
-            <FormattedMessage id="ui-organizations.settings.bankingInformation" />
-          </Headline>
-        </Col>
-        <Col xs={12}>
-          <Form
-            onSubmit={onSubmit}
-            initialValues={{ value: enabled }}
-            render={({ handleSubmit }) => (
-              <form onSubmit={handleSubmit}>
-                <Field
-                  name="value"
-                  component={RadioButtonGroup}
-                >
-                  <RadioButton
-                    label={<FormattedMessage id="ui-organizations.settings.bankingInformation.enabled" />}
-                    id="enabled"
-                    value="true"
-                  />
-                  <RadioButton
-                    label={<FormattedMessage id="ui-organizations.settings.bankingInformation.disabled" />}
-                    id="disabled"
-                    value="false"
-                  />
-                </Field>
-                <Button type="submit" buttonStyle="primary">
-                  <FormattedMessage id="ui-organizations.settings.accountTypes.save.button" />
-                </Button>
-              </form>
-            )}
-          />
-        </Col>
-      </Row>
-    </Pane>
+    <BankingInformationSettingsForm
+      onSubmit={onSubmit}
+      initialValues={{ value: enabled }}
+    />
   );
 };
 

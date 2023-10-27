@@ -1,6 +1,5 @@
-import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
-import user from '@folio/jest-config-stripes/testing-library/user-event';
-import { useOkapiKy } from '@folio/stripes/core';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
 import BankingInformationSettings from './BankingInformationSettings';
 import { useBankingInformation } from '../hooks';
@@ -22,6 +21,7 @@ jest.mock('../hooks', () => ({
 
 const renderBankingInformationSettings = () => render(
   <BankingInformationSettings />,
+  { wrapper: MemoryRouter },
 );
 
 describe('BankingInformationSettings component', () => {
@@ -49,35 +49,5 @@ describe('BankingInformationSettings component', () => {
     renderBankingInformationSettings();
 
     expect(screen.getByText('Loading')).toBeInTheDocument();
-  });
-
-  it('should save banking options', async () => {
-    useBankingInformation.mockClear().mockReturnValue({
-      isLoading: false,
-      enabled: true,
-      refetch: mockRefetch,
-    });
-    const mockPutMethod = jest.fn(() => ({
-      json: () => Promise.resolve('ok'),
-    }));
-
-    useOkapiKy
-      .mockClear()
-      .mockReturnValue({
-        put: mockPutMethod,
-      });
-
-    renderBankingInformationSettings();
-
-    const enabledButton = screen.getByText('ui-organizations.settings.bankingInformation.enabled');
-    const saveButton = screen.getByText('ui-organizations.settings.accountTypes.save.button');
-
-    await act(async () => {
-      await user.click(enabledButton);
-      await user.click(saveButton);
-    });
-
-    expect(mockPutMethod).toHaveBeenCalled();
-    expect(mockPutMethod).toHaveBeenCalled();
   });
 });

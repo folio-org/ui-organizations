@@ -7,6 +7,20 @@ import { getControlledVocabTranslations } from '@folio/stripes-acq-components';
 
 import { BANKING_ACCOUNT_TYPES_API } from '../constants';
 
+const setUniqValidation = (value, index, items) => {
+  const errors = {};
+
+  const isBankingAccountTypeExist = items.some(({ id, name }) => {
+    return name?.toLowerCase() === value?.name?.toLowerCase() && id !== value?.id;
+  });
+
+  if (isBankingAccountTypeExist) {
+    errors.name = <FormattedMessage id="ui-organizations.settings.accountTypes.save.error.accountTypeMustBeUnique" />;
+  }
+
+  return errors;
+};
+
 const BankingAccountTypeSettings = () => {
   const stripes = useStripes();
   const ConnectedComponent = stripes.connect(ControlledVocab);
@@ -20,20 +34,6 @@ const BankingAccountTypeSettings = () => {
   const actionSuppressor = {
     edit: () => !hasEditPerms,
     delete: () => !hasEditPerms,
-  };
-
-  const setUniqValidation = (value, index, items) => {
-    const errors = {};
-
-    const isBankingAccountTypeExist = items.some(({ id, name }) => {
-      return name?.toLowerCase() === value?.name?.toLowerCase() && id !== value?.id;
-    });
-
-    if (isBankingAccountTypeExist) {
-      errors.name = <FormattedMessage id="ui-organizations.settings.accountTypes.save.error.accountTypeMustBeUnique" />;
-    }
-
-    return errors;
   };
 
   return (
