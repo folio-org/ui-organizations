@@ -97,9 +97,7 @@
           "organizations-storage.phone-numbers.item.get",
           "organizations-storage.urls.collection.get",
           "organizations-storage.urls.item.get",
-          "ui-organizations.third-party-services",
-          "organizations-storage.settings.collection.get",
-          "organizations-storage.settings.item.get"
+          "ui-organizations.third-party-services"
         ]
       },
       {
