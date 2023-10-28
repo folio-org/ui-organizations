@@ -210,7 +210,9 @@
           "organizations-storage.organization-types.item.get",
           "organizations-storage.categories.collection.get",
           "organizations-storage.settings.collection.get",
-          "organizations-storage.settings.item.get"
+          "organizations-storage.settings.item.get",
+          "organizations-storage.banking-account-types.collection.get",
+          "organizations-storage.banking-account-types.item.get"
         ]
       },
       {
@@ -225,7 +227,10 @@
           "organizations-storage.categories.item.delete",
           "organizations-storage.categories.item.post",
           "organizations-storage.categories.item.put",
-          "organizations-storage.settings.item.put"
+          "organizations-storage.settings.item.put",
+          "organizations-storage.banking-account-types.item.post",
+          "organizations-storage.banking-account-types.item.put",
+          "organizations-storage.banking-account-types.item.delete"
         ]
       }
     ]
