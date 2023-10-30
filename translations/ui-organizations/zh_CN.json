@@ -418,5 +418,5 @@
     "save.success": "<b>组织 -“ {organizationName} ” </b>已成功<b>保存</b>",
     "permission.settings.view": "设置（组织）：查看设置",
     "comingSoon": "将在未来版本中推出。",
-    "summary.isDonor": "Donor"
+    "summary.isDonor": "捐赠者"
 }
