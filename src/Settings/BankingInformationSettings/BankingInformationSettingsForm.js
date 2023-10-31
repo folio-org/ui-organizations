@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
+import { FormattedMessage } from 'react-intl';
 
 import {
   Button,
@@ -51,7 +51,6 @@ const BankingInformationSettingsForm = ({
             label={<FormattedMessage id="ui-organizations.settings.bankingInformation" />}
             name="value"
             type="checkbox"
-            vertical
           />
         </Col>
       </Row>

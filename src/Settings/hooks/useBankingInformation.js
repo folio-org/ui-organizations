@@ -1,5 +1,5 @@
-import { useQuery } from 'react-query';
 import { get } from 'lodash';
+import { useQuery } from 'react-query';
 
 import {
   useNamespace,

@@ -1,12 +1,12 @@
 import { FormattedMessage } from 'react-intl';
 
+import { useShowCallout } from '@folio/stripes-acq-components';
 import { Loading } from '@folio/stripes/components';
 import { useOkapiKy } from '@folio/stripes/core';
-import { useShowCallout } from '@folio/stripes-acq-components';
 
-import BankingInformationSettingsForm from './BankingInformationSettingsForm';
 import { SETTINGS_API } from '../constants';
 import { useBankingInformation } from '../hooks';
+import BankingInformationSettingsForm from './BankingInformationSettingsForm';
 
 const BankingInformationSettings = () => {
   const {

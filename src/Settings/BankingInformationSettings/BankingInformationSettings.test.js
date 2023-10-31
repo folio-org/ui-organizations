@@ -1,10 +1,15 @@
-import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+
+import {
+  act,
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
 import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { useOkapiKy } from '@folio/stripes/core';
 
-import BankingInformationSettings from './BankingInformationSettings';
 import { useBankingInformation } from '../hooks';
+import BankingInformationSettings from './BankingInformationSettings';
 
 const mockRefetch = jest.fn();
 
