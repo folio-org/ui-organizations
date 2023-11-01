@@ -48,7 +48,7 @@ const BankingInformationSettingsForm = ({
         <Col xs={12}>
           <Field
             component={Checkbox}
-            label={<FormattedMessage id="ui-organizations.settings.bankingInformation" />}
+            label={<FormattedMessage id="ui-organizations.settings.bankingInformation.enable" />}
             name="value"
             type="checkbox"
           />

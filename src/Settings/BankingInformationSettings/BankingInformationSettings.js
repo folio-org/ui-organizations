@@ -13,6 +13,7 @@ const BankingInformationSettings = () => {
     enabled,
     key,
     id: bankingInformationId,
+    version,
     isLoading,
     refetch,
   } = useBankingInformation();
@@ -22,7 +23,7 @@ const BankingInformationSettings = () => {
   const onSubmit = async ({ value }) => {
     try {
       await ky.put(`${SETTINGS_API}/${bankingInformationId}`, {
-        json: { value, key },
+        json: { value, key, _version: version },
       });
 
       refetch();

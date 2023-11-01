@@ -444,6 +444,7 @@
   "settings.typeStatus.Active": "Active",
   "settings.typeStatus.Inactive": "Inactive",
   "settings.bankingInformation": "Banking information",
+  "settings.bankingInformation.enable": "Enable banking information",
   "settings.bankingAccountTypes": "Account types",
   "settings.bankingAccountTypes.cannotDeleteTermHeader": "Cannot delete account type",
   "settings.bankingAccountTypes.cannotDeleteTermMessage": "This account type cannot be deleted, as it is in use by one or more records.",

@@ -28,6 +28,7 @@ export const useBankingInformation = () => {
     id: bankingInformation.id,
     enabled: bankingInformation.value === 'true',
     key: bankingInformation.key,
+    version: bankingInformation._version,
     isLoading,
     refetch,
   });
