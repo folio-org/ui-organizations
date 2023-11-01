@@ -32,7 +32,7 @@ const BankingInformationSettings = () => {
     } catch (error) {
       sendCallout({
         type: 'error',
-        message: <FormattedMessage id="settings.accountTypes.save.error.generic.message" />,
+        message: <FormattedMessage id="ui-organizations.settings.accountTypes.save.error.generic.message" />,
       });
     }
   };

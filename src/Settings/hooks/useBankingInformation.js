@@ -7,7 +7,7 @@ import {
 } from '@folio/stripes/core';
 
 import {
-  BANKING_INFORMATION_SEARCH_QUERY,
+  BANKING_INFORMATION_SEARCH_PARAMS,
   SETTINGS_API,
 } from '../constants';
 
@@ -18,7 +18,7 @@ export const useBankingInformation = () => {
   const { isLoading, data, refetch } = useQuery(
     [namespace],
     () => ky.get(SETTINGS_API, {
-      searchParams: BANKING_INFORMATION_SEARCH_QUERY,
+      searchParams: BANKING_INFORMATION_SEARCH_PARAMS,
     }).json(),
   );
 

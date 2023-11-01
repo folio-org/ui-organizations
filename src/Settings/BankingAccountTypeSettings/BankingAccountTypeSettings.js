@@ -26,8 +26,8 @@ const BankingAccountTypeSettings = () => {
   const ConnectedComponent = stripes.connect(ControlledVocab);
 
   const columnMapping = {
-    value: <FormattedMessage id="ui-organizations.settings.name" />,
-    action: <FormattedMessage id="ui-organizations.settings.action" />,
+    name: <FormattedMessage id="ui-organizations.settings.accountTypes.name" />,
+    action: <FormattedMessage id="ui-organizations.settings.accountTypes.action" />,
   };
 
   const hasEditPerms = stripes.hasPerm('ui-organizations.settings');
