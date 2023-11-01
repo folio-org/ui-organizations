@@ -27,13 +27,13 @@ describe('BankingInformationSettingsForm component', () => {
   it('should render component', async () => {
     renderBankingInformationSettingsForm();
 
-    expect(screen.getAllByLabelText('ui-organizations.settings.bankingInformation')).toHaveLength(2);
+    expect(screen.getByLabelText('ui-organizations.settings.bankingInformation')).toBeInTheDocument();
   });
 
   it('should save banking options', async () => {
     renderBankingInformationSettingsForm();
 
-    const checkbox = screen.getByRole('checkbox', { name: 'ui-organizations.settings.bankingInformation' });
+    const checkbox = screen.getByRole('checkbox', { name: 'ui-organizations.settings.bankingInformation.enable' });
     const saveButton = screen.getByText('ui-organizations.settings.accountTypes.save.button');
 
     await act(async () => {

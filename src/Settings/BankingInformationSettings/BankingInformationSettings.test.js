@@ -35,9 +35,11 @@ describe('BankingInformationSettings component', () => {
   it('should display pane headings', () => {
     renderBankingInformationSettings();
 
-    const paneTitle = screen.getAllByText('ui-organizations.settings.bankingInformation');
+    const paneTitle = screen.getByText('ui-organizations.settings.bankingInformation');
+    const checkboxLabel = screen.getByText('ui-organizations.settings.bankingInformation.enable');
 
-    expect(paneTitle).toHaveLength(2);
+    expect(paneTitle).toBeInTheDocument();
+    expect(checkboxLabel).toBeInTheDocument();
   });
 
   it('should render Loading component', () => {
@@ -69,7 +71,7 @@ describe('BankingInformationSettings component', () => {
 
     renderBankingInformationSettings();
 
-    const checkbox = screen.getByRole('checkbox', { name: 'ui-organizations.settings.bankingInformation' });
+    const checkbox = screen.getByRole('checkbox', { name: 'ui-organizations.settings.bankingInformation.enable' });
     const saveButton = screen.getByText('ui-organizations.settings.accountTypes.save.button');
 
     await act(async () => {
