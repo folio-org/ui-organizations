@@ -418,5 +418,20 @@
     "save.success": "A <b> Organização - \" {organizationName} \" </b> foi <b> salva </b> com sucesso",
     "permission.settings.view": "Configurações (Organizações): Exibir configurações",
     "comingSoon": "Vindo em uma versão futura.",
-    "summary.isDonor": "Doador"
+    "summary.isDonor": "Doador",
+    "filterConfig.isDonor": "É doador",
+    "settings.bankingInformation": "Informações bancárias",
+    "settings.bankingInformation.enable": "Habilitar informações bancárias",
+    "settings.bankingAccountTypes": "Tipos de conta",
+    "settings.bankingAccountTypes.cannotDeleteTermHeader": "Não é possível excluir o tipo de conta",
+    "settings.bankingAccountTypes.cannotDeleteTermMessage": "Este tipo de conta não pode ser excluído, pois está em uso por um ou mais registros.",
+    "settings.bankingAccountTypes.deleteEntry": "Excluir tipo de conta",
+    "settings.bankingAccountTypes.termDeleted": "O tipo de conta <b>{term}</b> foi <b>excluído</b> com sucesso",
+    "settings.bankingAccountTypes.termWillBeDeleted": "O tipo de conta <b>{term}</b> será <b>excluído.</b>",
+    "settings.accountTypes.save.error.accountTypeMustBeUnique": "O tipo de conta deve ser exclusivo.",
+    "settings.accountTypes.save.button": "Salvar",
+    "settings.accountTypes.save.success.message": "A configuração foi atualizada com sucesso.",
+    "settings.accountTypes.save.error.generic.message": "Algo deu errado.",
+    "settings.accountTypes.name": "Nome",
+    "settings.accountTypes.action": "Ação"
 }
