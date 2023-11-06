@@ -418,5 +418,20 @@
     "save.success": "The <b>Organization - \"{organizationName}\"</b> has been successfully <b>saved</b>",
     "permission.settings.view": "Settings (Organizations): View settings",
     "comingSoon": "Coming in a future release.",
-    "summary.isDonor": "Donante"
+    "summary.isDonor": "Donante",
+    "filterConfig.isDonor": "Is donor",
+    "settings.bankingInformation": "Banking information",
+    "settings.bankingInformation.enable": "Enable banking information",
+    "settings.bankingAccountTypes": "Account types",
+    "settings.bankingAccountTypes.cannotDeleteTermHeader": "Cannot delete account type",
+    "settings.bankingAccountTypes.cannotDeleteTermMessage": "This account type cannot be deleted, as it is in use by one or more records.",
+    "settings.bankingAccountTypes.deleteEntry": "Delete account type",
+    "settings.bankingAccountTypes.termDeleted": "The account type <b>{term}</b> was successfully <b>deleted</b>",
+    "settings.bankingAccountTypes.termWillBeDeleted": "The account type <b>{term}</b> will be <b>deleted.</b>",
+    "settings.accountTypes.save.error.accountTypeMustBeUnique": "Account type must be unique.",
+    "settings.accountTypes.save.button": "Save",
+    "settings.accountTypes.save.success.message": "Setting was successfully updated.",
+    "settings.accountTypes.save.error.generic.message": "Something went wrong.",
+    "settings.accountTypes.name": "Name",
+    "settings.accountTypes.action": "Action"
 }
