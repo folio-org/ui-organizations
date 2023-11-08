@@ -8,7 +8,7 @@ import {
 import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { useOkapiKy } from '@folio/stripes/core';
 
-import { useBankingInformation } from '../hooks';
+import { useBankingInformation } from '../../common/hooks';
 import BankingInformationSettings from './BankingInformationSettings';
 
 const mockRefetch = jest.fn();

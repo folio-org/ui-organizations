@@ -1,11 +1,10 @@
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { getControlledVocabTranslations } from '@folio/stripes-acq-components';
 import { useStripes } from '@folio/stripes/core';
 import { ControlledVocab } from '@folio/stripes/smart-components';
 
-import { BANKING_ACCOUNT_TYPES_API } from '../constants';
+import { BANKING_ACCOUNT_TYPES_API } from '../../common/constants';
 
 const setUniqValidation = (value, index, items) => {
   const errors = {};

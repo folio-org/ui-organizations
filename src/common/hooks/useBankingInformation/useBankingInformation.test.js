@@ -9,14 +9,15 @@ import {
 } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
+import { BANKING_INFORMATION_ENABLED_KEY } from '../../constants';
 import { useBankingInformation } from './useBankingInformation';
 
 const queryClient = new QueryClient();
 
 const MOCK_BANKING_INFORMATION = {
-  'id': 'cb007def-4b68-496c-ad78-ea8e039e819d',
-  'key': 'BANKING_INFORMATION_ENABLED',
-  'value': 'true',
+  id: 'cb007def-4b68-496c-ad78-ea8e039e819d',
+  key: BANKING_INFORMATION_ENABLED_KEY,
+  value: 'true',
   refetch: jest.fn(),
 };
 
@@ -38,7 +39,7 @@ describe('useBankingInformation', () => {
       });
   });
 
-  it('should fetch all organization types', async () => {
+  it('should fetch banking information settings', async () => {
     const { result } = renderHook(() => useBankingInformation(), { wrapper });
 
     await waitFor(() => expect(result.current.isLoading).toBeFalsy());

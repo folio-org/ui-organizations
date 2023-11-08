@@ -3,8 +3,8 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { screen, render } from '@folio/jest-config-stripes/testing-library/react';
 
+import { useBankingInformation } from '../common/hooks';
 import SettingsPage from './SettingsPage';
-import { useBankingInformation } from './hooks';
 
 jest.mock('@folio/stripes/core');
 jest.mock('@folio/stripes/smart-components');

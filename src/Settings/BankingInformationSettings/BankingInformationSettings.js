@@ -4,16 +4,14 @@ import { useShowCallout } from '@folio/stripes-acq-components';
 import { Loading } from '@folio/stripes/components';
 import { useOkapiKy } from '@folio/stripes/core';
 
-import { SETTINGS_API } from '../constants';
-import { useBankingInformation } from '../hooks';
+import { SETTINGS_API } from '../../common/constants';
+import { useBankingInformation } from '../../common/hooks';
 import BankingInformationSettingsForm from './BankingInformationSettingsForm';
 
 const BankingInformationSettings = () => {
   const {
     enabled,
-    key,
-    id: bankingInformationId,
-    version,
+    bankingInformation,
     isLoading,
     refetch,
   } = useBankingInformation();
@@ -22,8 +20,8 @@ const BankingInformationSettings = () => {
 
   const onSubmit = async ({ value }) => {
     try {
-      await ky.put(`${SETTINGS_API}/${bankingInformationId}`, {
-        json: { value, key, _version: version },
+      await ky.put(`${SETTINGS_API}/${bankingInformation.id}`, {
+        json: { ...bankingInformation, value },
       });
 
       refetch();
