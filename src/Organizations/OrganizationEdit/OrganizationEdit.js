@@ -1,6 +1,7 @@
-import React, {
+import {
   useCallback,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -19,6 +20,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { VIEW_ORG_DETAILS } from '../../common/constants';
+import { useOrganizationBankingInformation } from '../../common/hooks';
 import { organizationResourceByUrl } from '../../common/resources';
 import {
   OrganizationForm,
@@ -29,9 +31,14 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
   const organizationId = match.params.id;
 
   const [organization, setOrganization] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  const [isOrganizationLoading, setIsOrganizationLoading] = useState(true);
   const showCallout = useShowCallout();
   const intl = useIntl();
+
+  const {
+    bankingInformation: bankingInformationData,
+    isLoading: isBankingInformationLoading,
+  } = useOrganizationBankingInformation(organizationId);
 
   useEffect(
     () => {
@@ -39,7 +46,7 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
         .then(organizationsResponse => {
           setOrganization(organizationsResponse);
         })
-        .finally(() => setIsLoading(false));
+        .finally(() => setIsOrganizationLoading(false));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
@@ -58,7 +65,10 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
   );
 
   const updateOrganization = useCallback(
-    (data) => {
+    ({ bankingInformation, ...data }) => {
+      // TODO: implement create/update banking info logic
+      console.log('bankingInformation on update', bankingInformation);
+
       return mutator.editOrganizationOrg.PUT(data)
         .then(() => {
           setTimeout(cancelForm);
@@ -75,6 +85,13 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
     [cancelForm, intl, showCallout],
   );
 
+  const initialValues = useMemo(() => ({
+    bankingInformation: bankingInformationData,
+    ...organization,
+  }), [organization, bankingInformationData]);
+
+  const isLoading = isOrganizationLoading || isBankingInformationLoading;
+
   if (isLoading) {
     return (
       <Paneset>
@@ -85,7 +102,7 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
 
   return (
     <OrganizationForm
-      initialValues={organization}
+      initialValues={initialValues}
       onSubmit={updateOrganization}
       cancelForm={cancelForm}
       paneTitle={<FormattedMessage id="ui-organizations.editOrg.title" values={{ name: organization.name }} />}

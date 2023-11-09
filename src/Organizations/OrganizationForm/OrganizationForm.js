@@ -24,6 +24,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
+import { OrganizationBankingInfoForm } from './OrganizationBankingInfoForm';
 import { OrganizationSummaryForm } from './OrganizationSummaryForm';
 import { OrganizationContactInfoFormContainer } from './OrganizationContactInfoForm';
 import { OrganizationContactPeopleForm } from './OrganizationContactPeopleForm';
@@ -198,6 +199,13 @@ const OrganizationForm = ({
                           label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
                         >
                           <OrganizationVendorInfoForm />
+                        </Accordion>
+
+                        <Accordion
+                          id={ORGANIZATION_SECTIONS.bankingInformationSection}
+                          label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
+                        >
+                          <OrganizationBankingInfoForm />
                         </Accordion>
 
                         <Accordion

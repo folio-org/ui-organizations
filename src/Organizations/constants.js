@@ -1,8 +1,8 @@
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 export const ORGANIZATION_SECTIONS = {
   summarySection: 'summarySection',
+  bankingInformationSection: 'bankingInformationSection',
   contactInformationSection: 'contactInformationSection',
   contactPeopleSection: 'contactPeopleSection',
   interfacesSection: 'interfacesSection',
@@ -16,6 +16,7 @@ export const ORGANIZATION_SECTIONS = {
 
 export const ORGANIZATION_SECTION_LABELS = {
   [ORGANIZATION_SECTIONS.summarySection]: <FormattedMessage id="ui-organizations.summary" />,
+  [ORGANIZATION_SECTIONS.bankingInformationSection]: <FormattedMessage id="ui-organizations.bankingInformation" />,
   [ORGANIZATION_SECTIONS.contactInformationSection]: <FormattedMessage id="ui-organizations.contactInformation" />,
   [ORGANIZATION_SECTIONS.contactPeopleSection]: <FormattedMessage id="ui-organizations.contactPeople" />,
   [ORGANIZATION_SECTIONS.interfacesSection]: <FormattedMessage id="ui-organizations.interface" />,

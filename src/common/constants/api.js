@@ -1,5 +1,6 @@
 export const AGREEMENTS_API = 'erm/sas';
 export const BANKING_ACCOUNT_TYPES_API = 'organizations-storage/banking-account-types';
+export const BANKING_INFORMATION_API = 'organizations/banking-information';
 export const CATEGORIES_API = 'organizations-storage/categories';
 export const CONTACTS_API = 'organizations-storage/contacts';
 export const INTERFACES_API = 'organizations-storage/interfaces';

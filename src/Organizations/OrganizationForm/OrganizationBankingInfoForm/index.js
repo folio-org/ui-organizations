@@ -1,0 +1,1 @@
+export { OrganizationBankingInfoForm } from './OrganizationBankingInfoForm';

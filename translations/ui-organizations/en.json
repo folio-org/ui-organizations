@@ -12,6 +12,13 @@
 
   "comingSoon": "Coming in a future release.",
 
+  "data.bankingInformation.accountType": "Account type",
+  "data.bankingInformation.address": "Address",
+  "data.bankingInformation.bankAccountNumber": "Bank account number",
+  "data.bankingInformation.bankName": "Bank name",
+  "data.bankingInformation.isPrimary": "Use as primary banking information",
+  "data.bankingInformation.notes": "Notes",
+  "data.bankingInformation.transitNumber": "Transit number",
   "data.contactTypes.address": "Address",
   "data.contactTypes.addressLine1": "Address 1",
   "data.contactTypes.addressLine2": "Address 2",
@@ -84,6 +91,7 @@
   "vendor.confirmation.message": "Warning. All vendor information, vendor terms, EDI information, and accounts will be deleted from this record.",
 
   "summary": "Summary",
+  "bankingInformation": "Banking information",
   "contactInformation": "Contact information",
   "contactPeople": "Contact people",
   "agreements": "Agreements",
@@ -120,6 +128,7 @@
   "summary.add": "Add alternative names",
   "summary.pleaseAddAltNames": "Please add alternative names",
 
+  "button.bankingInformation.add": "Add banking information",
   "button.cancel": "Cancel",
   "button.saveAndClose": "Save & close",
 

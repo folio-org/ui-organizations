@@ -1,0 +1,1 @@
+export { useOrganizationBankingInformation } from './useOrganizationBankingInformation';

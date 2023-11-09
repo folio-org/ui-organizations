@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { useIntl } from 'react-intl';
@@ -46,7 +46,10 @@ export const OrganizationCreate = ({ history, location, mutator }) => {
   const showCallout = useShowCallout();
   const intl = useIntl();
   const createOrganization = useCallback(
-    (data) => {
+    ({ bankingInformation, ...data }) => {
+      // TODO: implement create banking info logic
+      console.log('bankingInformation on create', bankingInformation);
+
       return mutator.createOrganizationOrg.POST(data)
         .then(organization => {
           setTimeout(() => cancelForm(organization.id));
@@ -63,9 +66,15 @@ export const OrganizationCreate = ({ history, location, mutator }) => {
     [cancelForm, intl, showCallout],
   );
 
+  // TODO: provide info without perms and setting?
+  const initialValues = useMemo(() => ({
+    bankingInformation: [],
+    ...INITIAL_VALUES,
+  }), []);
+
   return (
     <OrganizationForm
-      initialValues={INITIAL_VALUES}
+      initialValues={initialValues}
       onSubmit={createOrganization}
       cancelForm={cancelForm}
     />
