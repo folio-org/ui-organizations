@@ -8,7 +8,7 @@ import {
 import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { useOkapiKy } from '@folio/stripes/core';
 
-import { useBankingInformation } from '../../common/hooks';
+import { useBankingInformationSettings } from '../../common/hooks';
 import BankingInformationSettings from './BankingInformationSettings';
 
 const mockRefetch = jest.fn();
@@ -19,7 +19,7 @@ jest.mock('@folio/stripes/components', () => ({
 }));
 
 jest.mock('../hooks', () => ({
-  useBankingInformation: jest.fn(() => ({
+  useBankingInformationSettings: jest.fn(() => ({
     isLoading: false,
     enabled: false,
     refetch: mockRefetch,
@@ -43,7 +43,7 @@ describe('BankingInformationSettings component', () => {
   });
 
   it('should render Loading component', () => {
-    useBankingInformation.mockReturnValue({
+    useBankingInformationSettings.mockReturnValue({
       isLoading: true,
       enabled: false,
     });
@@ -54,7 +54,7 @@ describe('BankingInformationSettings component', () => {
   });
 
   it('should save banking options', async () => {
-    useBankingInformation.mockClear().mockReturnValue({
+    useBankingInformationSettings.mockClear().mockReturnValue({
       isLoading: false,
       enabled: true,
       refetch: mockRefetch,

@@ -5,7 +5,7 @@ import { Loading } from '@folio/stripes/components';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { SETTINGS_API } from '../../common/constants';
-import { useBankingInformation } from '../../common/hooks';
+import { useBankingInformationSettings } from '../../common/hooks';
 import BankingInformationSettingsForm from './BankingInformationSettingsForm';
 
 const BankingInformationSettings = () => {
@@ -14,7 +14,7 @@ const BankingInformationSettings = () => {
     bankingInformation,
     isLoading,
     refetch,
-  } = useBankingInformation();
+  } = useBankingInformationSettings();
   const ky = useOkapiKy();
   const sendCallout = useShowCallout();
 

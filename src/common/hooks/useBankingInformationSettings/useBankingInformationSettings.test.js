@@ -10,7 +10,7 @@ import {
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { BANKING_INFORMATION_ENABLED_KEY } from '../../constants';
-import { useBankingInformation } from './useBankingInformation';
+import { useBankingInformationSettings } from './useBankingInformationSettings';
 
 const queryClient = new QueryClient();
 
@@ -28,7 +28,7 @@ const wrapper = ({ children }) => (
   </QueryClientProvider>
 );
 
-describe('useBankingInformation', () => {
+describe('useBankingInformationSettings', () => {
   beforeEach(() => {
     useOkapiKy
       .mockClear()
@@ -40,7 +40,7 @@ describe('useBankingInformation', () => {
   });
 
   it('should fetch banking information settings', async () => {
-    const { result } = renderHook(() => useBankingInformation(), { wrapper });
+    const { result } = renderHook(() => useBankingInformationSettings(), { wrapper });
 
     await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 

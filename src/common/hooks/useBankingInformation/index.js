@@ -1,1 +1,0 @@
-export { useBankingInformation } from './useBankingInformation';

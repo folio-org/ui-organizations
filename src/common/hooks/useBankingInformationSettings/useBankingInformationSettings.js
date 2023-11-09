@@ -13,7 +13,7 @@ import {
 
 const DEFAULT_DATA = {};
 
-export const useBankingInformation = () => {
+export const useBankingInformationSettings = () => {
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'banking-information-settings' });
 

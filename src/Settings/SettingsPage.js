@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Settings } from '@folio/stripes/smart-components';
 
-import { useBankingInformation } from '../common/hooks';
+import { useBankingInformationSettings } from '../common/hooks';
 import { CategorySettings } from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
 import { BankingAccountTypeSettings } from './BankingAccountTypeSettings';
@@ -38,7 +38,7 @@ const bankingAccountTypesPage = {
 };
 
 const SettingsPage = (props) => {
-  const { enabled } = useBankingInformation();
+  const { enabled } = useBankingInformationSettings();
 
   const settingsPages = useMemo(() => (enabled ? pages.concat(bankingAccountTypesPage) : pages), [enabled]);
 
