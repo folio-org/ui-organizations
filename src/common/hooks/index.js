@@ -2,6 +2,7 @@ export * from './useAcqMethods';
 export * from './useBankingAccountTypes';
 export * from './useBankingInformationMutation';
 export * from './useBankingInformationSettings';
+export * from './useCategories';
 export * from './useIntegrationConfig';
 export * from './useIntegrationConfigMutation';
 export * from './useLinkedAgreements';

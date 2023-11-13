@@ -6,7 +6,10 @@ import { FieldArray } from 'react-final-form-arrays';
 import { Loading } from '@folio/stripes/components';
 import { RepeatableFieldWithValidation } from '@folio/stripes-acq-components';
 
-import { useBankingAccountTypes } from '../../../common/hooks';
+import {
+  useBankingAccountTypes,
+  useCategories,
+} from '../../../common/hooks';
 import {
   createAddNewItem,
   removeItem,
@@ -27,8 +30,13 @@ const renderField = (props) => (name, index, fields) => (
 export const OrganizationBankingInfoForm = ({ organizationId }) => {
   const {
     bankingAccountTypes,
-    isFetching,
+    isFetching: isBankingAccountTypesFetching,
   } = useBankingAccountTypes();
+
+  const {
+    categories,
+    isFetching: isCategoriesFetching,
+  } = useCategories();
 
   const bankingAccountTypeOptions = useMemo(() => {
     return bankingAccountTypes.map(({ id, name }) => ({
@@ -37,7 +45,16 @@ export const OrganizationBankingInfoForm = ({ organizationId }) => {
     }));
   }, [bankingAccountTypes]);
 
-  if (isFetching) {
+  const categoriesOptions = useMemo(() => {
+    return categories.map(({ id, value }) => ({
+      label: value,
+      value: id,
+    }));
+  }, [categories]);
+
+  const isLoading = isBankingAccountTypesFetching || isCategoriesFetching;
+
+  if (isLoading) {
     return <Loading />;
   }
 
@@ -49,7 +66,7 @@ export const OrganizationBankingInfoForm = ({ organizationId }) => {
       name={BANKING_INFORMATION_FIELD_NAME}
       onAdd={createAddNewItem(null, { organizationId })}
       onRemove={removeItem}
-      renderField={renderField({ bankingAccountTypeOptions })}
+      renderField={renderField({ categoriesOptions, bankingAccountTypeOptions })}
       validate={validatePrimary}
     />
   );
