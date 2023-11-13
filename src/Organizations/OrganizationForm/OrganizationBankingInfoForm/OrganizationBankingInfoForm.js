@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FieldArray } from 'react-final-form-arrays';
@@ -11,6 +12,7 @@ import {
   removeItem,
 } from '../../../common/utils';
 import { validatePrimary } from '../../../common/validation';
+import { BANKING_INFORMATION_FIELD_NAME } from '../../constants';
 import { BankingInformationField } from './BankingInformationField';
 
 const renderField = (props) => (name, index, fields) => (
@@ -22,7 +24,7 @@ const renderField = (props) => (name, index, fields) => (
   />
 );
 
-export const OrganizationBankingInfoForm = () => {
+export const OrganizationBankingInfoForm = ({ organizationId }) => {
   const {
     bankingAccountTypes,
     isFetching,
@@ -44,11 +46,15 @@ export const OrganizationBankingInfoForm = () => {
       addLabel={<FormattedMessage id="ui-organizations.button.bankingInformation.add" />}
       component={RepeatableFieldWithValidation}
       id="bankingInformation"
-      name="bankingInformation"
-      onAdd={createAddNewItem()}
+      name={BANKING_INFORMATION_FIELD_NAME}
+      onAdd={createAddNewItem(null, { organizationId })}
       onRemove={removeItem}
       renderField={renderField({ bankingAccountTypeOptions })}
       validate={validatePrimary}
     />
   );
+};
+
+OrganizationBankingInfoForm.propTypes = {
+  organizationId: PropTypes.string.isRequired,
 };

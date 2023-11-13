@@ -22,10 +22,10 @@ import {
 import { VIEW_ORG_DETAILS } from '../../common/constants';
 import { useOrganizationBankingInformation } from '../../common/hooks';
 import { organizationResourceByUrl } from '../../common/resources';
-import {
-  OrganizationForm,
-} from '../OrganizationForm';
+import { BANKING_INFORMATION_FIELD_NAME } from '../constants';
+import { OrganizationForm } from '../OrganizationForm';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
+import { useBankingInformationManager } from '../useBankingInformationManager';
 
 export const OrganizationEdit = ({ match, history, location, mutator }) => {
   const organizationId = match.params.id;
@@ -34,6 +34,8 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
   const [isOrganizationLoading, setIsOrganizationLoading] = useState(true);
   const showCallout = useShowCallout();
   const intl = useIntl();
+
+  const { manageBankingInformation } = useBankingInformationManager();
 
   const {
     bankingInformation: bankingInformationData,
@@ -65,11 +67,16 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
   );
 
   const updateOrganization = useCallback(
-    ({ bankingInformation, ...data }) => {
-      // TODO: implement create/update banking info logic
-      console.log('bankingInformation on update', bankingInformation);
+    (values, { getFieldState }) => {
+      const { [BANKING_INFORMATION_FIELD_NAME]: bankingInformation, ...data } = values;
 
       return mutator.editOrganizationOrg.PUT(data)
+        .then(() => {
+          return manageBankingInformation({
+            initBankingInformation: getFieldState(BANKING_INFORMATION_FIELD_NAME).initial,
+            bankingInformation,
+          });
+        })
         .then(() => {
           setTimeout(cancelForm);
           showCallout({
@@ -82,11 +89,11 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [cancelForm, intl, showCallout],
+    [cancelForm, intl, manageBankingInformation, showCallout],
   );
 
   const initialValues = useMemo(() => ({
-    bankingInformation: bankingInformationData,
+    [BANKING_INFORMATION_FIELD_NAME]: bankingInformationData,
     ...organization,
   }), [organization, bankingInformationData]);
 

@@ -1,0 +1,1 @@
+export { getArrayItemsChanges } from './getArrayItemsChanges';

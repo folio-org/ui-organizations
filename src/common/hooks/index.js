@@ -1,5 +1,6 @@
 export * from './useAcqMethods';
 export * from './useBankingAccountTypes';
+export * from './useBankingInformationMutation';
 export * from './useBankingInformationSettings';
 export * from './useIntegrationConfig';
 export * from './useIntegrationConfigMutation';

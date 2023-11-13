@@ -205,7 +205,7 @@ const OrganizationForm = ({
                           id={ORGANIZATION_SECTIONS.bankingInformationSection}
                           label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
                         >
-                          <OrganizationBankingInfoForm />
+                          <OrganizationBankingInfoForm organizationId={initialValues.id} />
                         </Accordion>
 
                         <Accordion

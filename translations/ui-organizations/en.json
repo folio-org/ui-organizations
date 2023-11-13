@@ -92,6 +92,7 @@
 
   "summary": "Summary",
   "bankingInformation": "Banking information",
+  "bankingInformation.save.error": "Failed to save banking information.",
   "contactInformation": "Contact information",
   "contactPeople": "Contact people",
   "agreements": "Agreements",

@@ -1,7 +1,6 @@
-// eslint-disable-next-line import/prefer-default-export
-export function createAddNewItem(defaultLanguage) {
+export function createAddNewItem(defaultLanguage, initialData = {}) {
   return fields => {
-    const newItem = {};
+    const newItem = { ...initialData };
 
     if (defaultLanguage) newItem.language = defaultLanguage;
     if (fields.length === 0) newItem.isPrimary = true;

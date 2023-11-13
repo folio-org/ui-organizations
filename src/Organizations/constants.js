@@ -42,3 +42,5 @@ export const MAP_FIELD_ACCORDION = {
   agreements: ORGANIZATION_SECTIONS.vendorTermsSection,
   accounts: ORGANIZATION_SECTIONS.accountsSection,
 };
+
+export const BANKING_INFORMATION_FIELD_NAME = 'bankingInformation';
