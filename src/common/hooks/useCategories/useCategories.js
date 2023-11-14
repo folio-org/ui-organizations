@@ -7,6 +7,7 @@ import {
 import { LIMIT_MAX } from '@folio/stripes-acq-components';
 
 import { CATEGORIES_API } from '../../constants';
+import { useTranslatedCategories } from '../useTranslatedCategories';
 
 const DEFAULT_DATA = [];
 
@@ -28,8 +29,10 @@ export const useCategories = () => {
     () => ky.get(CATEGORIES_API, { searchParams }).json(),
   );
 
+  const [translatedCategories] = useTranslatedCategories(data?.categories);
+
   return ({
-    categories: data?.categories || DEFAULT_DATA,
+    categories: translatedCategories || DEFAULT_DATA,
     totalRecords: data?.totalRecords,
     isFetching,
     isLoading,
