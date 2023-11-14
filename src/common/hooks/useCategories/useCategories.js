@@ -11,7 +11,7 @@ import { useTranslatedCategories } from '../useTranslatedCategories';
 
 const DEFAULT_DATA = [];
 
-export const useCategories = () => {
+export const useCategories = (options = {}) => {
   const ky = useOkapiKy();
   const [namespace] = useNamespace('categories');
 
@@ -27,6 +27,7 @@ export const useCategories = () => {
   } = useQuery(
     [namespace],
     () => ky.get(CATEGORIES_API, { searchParams }).json(),
+    options,
   );
 
   const [translatedCategories] = useTranslatedCategories(data?.categories);

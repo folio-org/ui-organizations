@@ -1,9 +1,8 @@
 import { useMemo } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { FieldArray } from 'react-final-form-arrays';
+import { FormattedMessage } from 'react-intl';
 
 import { Loading } from '@folio/stripes/components';
-import { RepeatableFieldWithValidation } from '@folio/stripes-acq-components';
 
 import {
   useBankingAccountTypes,
@@ -16,6 +15,7 @@ import {
 import { validatePrimary } from '../../../common/validation';
 import { BANKING_INFORMATION_FIELD_NAME } from '../../constants';
 import { BankingInformationField } from './BankingInformationField';
+import { BankingInformationFieldArray } from './BankingInformationFieldArray';
 
 const renderField = (props) => (name, index, fields) => (
   <BankingInformationField
@@ -44,13 +44,6 @@ export const OrganizationBankingInfoForm = () => {
     }));
   }, [bankingAccountTypes]);
 
-  const categoriesOptions = useMemo(() => {
-    return categories.map(({ id, value }) => ({
-      label: value,
-      value: id,
-    }));
-  }, [categories]);
-
   const isLoading = isBankingAccountTypesFetching || isCategoriesFetching;
 
   if (isLoading) {
@@ -60,12 +53,15 @@ export const OrganizationBankingInfoForm = () => {
   return (
     <FieldArray
       addLabel={<FormattedMessage id="ui-organizations.button.bankingInformation.add" />}
-      component={RepeatableFieldWithValidation}
+      component={BankingInformationFieldArray}
       id="bankingInformation"
       name={BANKING_INFORMATION_FIELD_NAME}
       onAdd={createAddNewItem()}
       onRemove={removeItem}
-      renderField={renderField({ categoriesOptions, bankingAccountTypeOptions })}
+      renderField={renderField({
+        bankingAccountTypeOptions,
+        categories,
+      })}
       validate={validatePrimary}
     />
   );

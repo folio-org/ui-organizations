@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { Field } from 'react-final-form';
+import { useMemo } from 'react';
+import { Field, useForm } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -11,14 +12,25 @@ import {
 import { FieldSelectionFinal } from '@folio/stripes-acq-components';
 
 import { FieldIsPrimary } from '../../../../common/components';
+import { getAddressCategoryIdsSet } from '../../getAddressCategoryIdsSet';
 
 export const BankingInformationField = ({
-  categoriesOptions,
   bankingAccountTypeOptions,
+  categories,
   fields,
   index,
   name,
 }) => {
+  const { getFieldState } = useForm();
+
+  // TODO: category id instead of address
+  const initCategoryId = getFieldState(`${name}.addressId`)?.initial;
+
+  const addresses = getFieldState('addresses')?.value;
+  const addressCategoryIdsSet = useMemo(() => {
+    return getAddressCategoryIdsSet(addresses);
+  }, [addresses]);
+
   const cardHeader = (
     <FieldIsPrimary
       fields={fields}
@@ -27,6 +39,16 @@ export const BankingInformationField = ({
       labelId="ui-organizations.data.bankingInformation.isPrimary"
     />
   );
+
+  const categoriesOptions = useMemo(() => {
+    return categories.reduce((acc, { id, value }) => {
+      if (addressCategoryIdsSet.has(id) || id === initCategoryId) {
+        acc.push({ label: value, value: id });
+      }
+
+      return acc;
+    }, []);
+  }, [addressCategoryIdsSet, categories]);
 
   return (
     <Card headerStart={cardHeader}>

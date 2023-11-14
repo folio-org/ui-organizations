@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback } from 'react';
 import {
   FormattedMessage,
   injectIntl,
@@ -21,6 +21,8 @@ import {
 } from '@folio/stripes-acq-components';
 
 import CategoryDropdown from '../../../Utils/CategoryDropdown';
+import { EVENT_EMITTER_EVENTS } from '../../constants';
+import { useEventEmitter } from '../../hooks';
 import {
   createAddNewItem,
   removeItem,
@@ -36,6 +38,12 @@ const AddressInfo = ({
   dropdownVendorCategories,
   intl,
 }) => {
+  const eventEmitter = useEventEmitter();
+
+  const onCategoryChange = useCallback(() => {
+    eventEmitter.emit(EVENT_EMITTER_EVENTS.ADDRESS_CATEGORY_CHANGED);
+  }, [eventEmitter]);
+
   const countriesOptions = countries.map(c => ({
     label: intl.formatMessage({ id: `stripes-components.countries.${c.alpha2}` }),
     value: c.alpha3,
@@ -161,6 +169,7 @@ const AddressInfo = ({
               ariaLabelledBy="addressFormCategoriesLabel"
               dropdownVendorCategories={dropdownVendorCategories}
               name={name}
+              onChange={onCategoryChange}
             />
           </Col>
         </Row>
