@@ -1,6 +1,6 @@
-export function createAddNewItem(defaultLanguage, initialData = {}) {
+export function createAddNewItem(defaultLanguage) {
   return fields => {
-    const newItem = { ...initialData };
+    const newItem = {};
 
     if (defaultLanguage) newItem.language = defaultLanguage;
     if (fields.length === 0) newItem.isPrimary = true;

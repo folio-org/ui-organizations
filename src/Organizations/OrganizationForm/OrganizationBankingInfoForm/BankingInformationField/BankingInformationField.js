@@ -13,6 +13,7 @@ import { FieldSelectionFinal } from '@folio/stripes-acq-components';
 import { FieldIsPrimary } from '../../../../common/components';
 
 export const BankingInformationField = ({
+  categoriesOptions,
   bankingAccountTypeOptions,
   fields,
   index,
@@ -61,8 +62,7 @@ export const BankingInformationField = ({
           <FieldSelectionFinal
             label={<FormattedMessage id="ui-organizations.data.bankingInformation.address" />}
             name={`${name}.addressId`}
-            // TODO: refine address field
-            dataOptions={[]}
+            dataOptions={categoriesOptions}
             validateFields={[]}
           />
         </Col>
@@ -92,6 +92,10 @@ export const BankingInformationField = ({
 
 BankingInformationField.propTypes = {
   bankingAccountTypeOptions: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    value: PropTypes.string,
+  })).isRequired,
+  categoriesOptions: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
     value: PropTypes.string,
   })).isRequired,

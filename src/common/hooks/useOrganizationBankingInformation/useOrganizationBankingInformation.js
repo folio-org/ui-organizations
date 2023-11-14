@@ -4,6 +4,7 @@ import {
   useNamespace,
   useOkapiKy,
 } from '@folio/stripes/core';
+import { LIMIT_MAX } from '@folio/stripes-acq-components';
 
 import { BANKING_INFORMATION_API } from '../../constants';
 
@@ -27,7 +28,8 @@ export const useOrganizationBankingInformation = (organizationId, options = {}) 
     [namespace],
     () => {
       const searchParams = {
-        query: `organizationId==${organizationId}`,
+        query: `organizationId==${organizationId} sortby metadata.createdDate/sort.ascending`,
+        limit: LIMIT_MAX,
       };
 
       return ky.get(BANKING_INFORMATION_API, { searchParams }).json();

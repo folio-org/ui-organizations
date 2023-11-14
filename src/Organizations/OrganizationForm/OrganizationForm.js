@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router';
@@ -24,6 +23,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
+import { useBankingInformationSettings } from '../../common/hooks';
 import { OrganizationBankingInfoForm } from './OrganizationBankingInfoForm';
 import { OrganizationSummaryForm } from './OrganizationSummaryForm';
 import { OrganizationContactInfoFormContainer } from './OrganizationContactInfoForm';
@@ -55,6 +55,7 @@ const OrganizationForm = ({
     [ORGANIZATION_SECTIONS.contactPeopleSection]: false,
     [ORGANIZATION_SECTIONS.interfacesSection]: false,
     [ORGANIZATION_SECTIONS.vendorInformationSection]: false,
+    [ORGANIZATION_SECTIONS.bankingInformationSection]: false,
     [ORGANIZATION_SECTIONS.vendorTermsSection]: false,
     [ORGANIZATION_SECTIONS.accountsSection]: false,
   };
@@ -70,6 +71,9 @@ const OrganizationForm = ({
     : stateSections;
   const history = useHistory();
   const { id, interfaces, contacts, metadata } = initialValues;
+
+  const { enabled: isBankingInformationEnabled } = useBankingInformationSettings();
+
   const shortcuts = [
     {
       name: 'cancel',
@@ -201,12 +205,14 @@ const OrganizationForm = ({
                           <OrganizationVendorInfoForm />
                         </Accordion>
 
-                        <Accordion
-                          id={ORGANIZATION_SECTIONS.bankingInformationSection}
-                          label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
-                        >
-                          <OrganizationBankingInfoForm organizationId={initialValues.id} />
-                        </Accordion>
+                        {isBankingInformationEnabled && (
+                          <Accordion
+                            id={ORGANIZATION_SECTIONS.bankingInformationSection}
+                            label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
+                          >
+                            <OrganizationBankingInfoForm />
+                          </Accordion>
+                        )}
 
                         <Accordion
                           id={ORGANIZATION_SECTIONS.vendorTermsSection}

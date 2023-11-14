@@ -73,8 +73,9 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
       return mutator.editOrganizationOrg.PUT(data)
         .then(() => {
           return manageBankingInformation({
-            initBankingInformation: getFieldState(BANKING_INFORMATION_FIELD_NAME).initial,
+            initBankingInformation: getFieldState(BANKING_INFORMATION_FIELD_NAME)?.initial,
             bankingInformation,
+            organization: values,
           });
         })
         .then(() => {

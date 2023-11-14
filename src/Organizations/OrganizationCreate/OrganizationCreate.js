@@ -53,8 +53,9 @@ export const OrganizationCreate = ({ history, location, mutator }) => {
       return mutator.createOrganizationOrg.POST(data)
         .then(async organization => {
           await manageBankingInformation({
-            initBankingInformation: getFieldState(BANKING_INFORMATION_FIELD_NAME).initial,
+            initBankingInformation: getFieldState(BANKING_INFORMATION_FIELD_NAME)?.initial,
             bankingInformation,
+            organization,
           });
 
           return organization;
