@@ -60,8 +60,10 @@ export const BankingInformationField = ({
         </Col>
         <Col xs={12} md={4}>
           <FieldSelectionFinal
-            label={<FormattedMessage id="ui-organizations.data.bankingInformation.address" />}
+            label={<FormattedMessage id="ui-organizations.data.bankingInformation.addressCategory" />}
             name={`${name}.addressId`}
+            // TODO: replace after BE changes
+            // name={`${name}.categoryId`}
             dataOptions={categoriesOptions}
             validateFields={[]}
           />

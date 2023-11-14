@@ -205,15 +205,6 @@ const OrganizationForm = ({
                           <OrganizationVendorInfoForm />
                         </Accordion>
 
-                        {isBankingInformationEnabled && (
-                          <Accordion
-                            id={ORGANIZATION_SECTIONS.bankingInformationSection}
-                            label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
-                          >
-                            <OrganizationBankingInfoForm />
-                          </Accordion>
-                        )}
-
                         <Accordion
                           id={ORGANIZATION_SECTIONS.vendorTermsSection}
                           label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorTermsSection]}
@@ -230,6 +221,15 @@ const OrganizationForm = ({
                             accountFormValues={formValues.accounts}
                           />
                         </Accordion>
+
+                        {isBankingInformationEnabled && (
+                          <Accordion
+                            id={ORGANIZATION_SECTIONS.bankingInformationSection}
+                            label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
+                          >
+                            <OrganizationBankingInfoForm />
+                          </Accordion>
+                        )}
                       </>
                     )
                   }
