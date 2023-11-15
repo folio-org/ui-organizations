@@ -49,7 +49,10 @@ export const BankingInformationField = ({
   }, [addressCategoryIdsSet, categories, initCategoryId]);
 
   return (
-    <Card headerStart={cardHeader}>
+    <Card
+      headerStart={cardHeader}
+      data-testid="banking-information-card"
+    >
       <Row>
         <Col xs={12} md={4}>
           <Field
