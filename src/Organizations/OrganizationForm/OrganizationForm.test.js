@@ -17,6 +17,7 @@ import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import { organizationTypes } from 'fixtures';
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
+import { useBankingInformationSettings } from '../../common/hooks';
 import OrganizationForm from './OrganizationForm';
 
 jest.mock('react-router', () => ({
@@ -27,6 +28,10 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
   HasCommand: jest.fn(({ children }) => <div>{children}</div>),
   expandAllSections: jest.fn(),
   collapseAllSections: jest.fn(),
+}));
+jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
+  useBankingInformationSettings: jest.fn(),
 }));
 jest.mock(
   './OrganizationSummaryForm',
@@ -56,6 +61,9 @@ jest.mock(
   './OrganizationAccountsForm',
   () => ({ OrganizationAccountsForm: () => 'OrganizationAccountsForm' }),
 );
+jest.mock('./OrganizationBankingInfoForm', () => ({
+  OrganizationBankingInfoForm: () => 'OrganizationBankingInfoForm',
+}));
 
 const queryAllByClass = queryHelpers.queryAllByAttribute.bind(null, 'class');
 
@@ -88,6 +96,8 @@ const renderOrganizationForm = (props = defaultProps) => render(
 describe('OrganizationForm', () => {
   beforeEach(() => {
     global.document.createRange = global.document.originalCreateRange;
+
+    useBankingInformationSettings.mockClear().mockReturnValue({ enabled: false });
   });
 
   afterEach(() => {
@@ -166,6 +176,17 @@ describe('OrganizationForm', () => {
           .filter(collapseButton => collapseButton.getAttribute('aria-expanded') === 'true')
           .length,
       ).toBe(sections.length);
+    });
+
+    it('should render banking information form', () => {
+      useBankingInformationSettings.mockReturnValue({ enabled: true });
+
+      renderOrganizationForm({
+        ...defaultProps,
+        initialValues: { isVendor: true },
+      });
+
+      expect(screen.getByText('OrganizationBankingInfoForm')).toBeInTheDocument();
     });
   });
 
