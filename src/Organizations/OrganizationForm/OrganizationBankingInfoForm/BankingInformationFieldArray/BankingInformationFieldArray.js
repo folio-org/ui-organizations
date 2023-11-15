@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useForm } from 'react-final-form';
 
@@ -39,4 +40,8 @@ export const BankingInformationFieldArray = (props) => {
   }, [change, eventEmitter, fields, getFieldState]);
 
   return <RepeatableFieldWithValidation {...props} />;
+};
+
+BankingInformationFieldArray.propTypes = {
+  fields: PropTypes.object.isRequired,
 };

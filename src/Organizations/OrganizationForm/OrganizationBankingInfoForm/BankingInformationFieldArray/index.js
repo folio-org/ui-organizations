@@ -1,1 +1,1 @@
-export { BankingInformationFieldArray } from './BankingInformationFieldArray'
+export { BankingInformationFieldArray } from './BankingInformationFieldArray';

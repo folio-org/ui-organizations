@@ -46,7 +46,7 @@ export const BankingInformationField = ({
 
       return acc;
     }, []);
-  }, [addressCategoryIdsSet, categories]);
+  }, [addressCategoryIdsSet, categories, initCategoryId]);
 
   return (
     <Card headerStart={cardHeader}>
@@ -115,8 +115,8 @@ BankingInformationField.propTypes = {
     label: PropTypes.string,
     value: PropTypes.string,
   })).isRequired,
-  categoriesOptions: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string,
+  categories: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
     value: PropTypes.string,
   })).isRequired,
   fields: PropTypes.object.isRequired,

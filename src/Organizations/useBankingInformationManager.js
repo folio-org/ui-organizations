@@ -43,7 +43,10 @@ export const useBankingInformationManager = () => {
     } = getArrayItemsChanges(initBankingInformation, bankingInformation);
 
     return Promise.all([
-      executeSequentially(createBankingInformation, created.map((item) => ({ organizationId: organization.id, ...item }))),
+      executeSequentially(createBankingInformation, created.map((item) => ({
+        organizationId: organization.id,
+        ...item,
+      }))),
       executeParallel(updateBankingInformation, updated),
       executeParallel(deleteBankingInformation, deleted),
     ]).catch(() => {
@@ -52,7 +55,13 @@ export const useBankingInformationManager = () => {
         messageId: 'ui-organizations.bankingInformation.save.error',
       });
     });
-  }, [showCallout]);
+  }, [
+    createBankingInformation,
+    deleteBankingInformation,
+    isBankingInformationEnabled,
+    showCallout,
+    updateBankingInformation,
+  ]);
 
   return {
     manageBankingInformation,

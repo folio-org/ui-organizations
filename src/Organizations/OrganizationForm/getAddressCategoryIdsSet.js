@@ -6,4 +6,4 @@ export const getAddressCategoryIdsSet = memoize((addresses = []) => {
 
     return acc;
   }, new Set());
-})
+});

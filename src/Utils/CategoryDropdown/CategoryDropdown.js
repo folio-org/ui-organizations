@@ -48,7 +48,7 @@ function CategoryDropdown({
     change(fieldName, value);
 
     if (onChangeProp) onChangeProp(value);
-  }, [onChangeProp]);
+  }, [change, fieldName, onChangeProp]);
 
   return (
     <FieldMultiSelectionFinal
