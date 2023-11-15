@@ -23,9 +23,7 @@ export const BankingInformationField = ({
 }) => {
   const { getFieldState } = useForm();
 
-  // TODO: category id instead of address
-  const initCategoryId = getFieldState(`${name}.addressId`)?.initial;
-
+  const initCategoryId = getFieldState(`${name}.categoryId`)?.initial;
   const addresses = getFieldState('addresses')?.value;
   const addressCategoryIdsSet = useMemo(() => {
     return getAddressCategoryIdsSet(addresses);
@@ -83,9 +81,7 @@ export const BankingInformationField = ({
         <Col xs={12} md={4}>
           <FieldSelectionFinal
             label={<FormattedMessage id="ui-organizations.data.bankingInformation.addressCategory" />}
-            name={`${name}.addressId`}
-            // TODO: replace after BE changes
-            // name={`${name}.categoryId`}
+            name={`${name}.categoryId`}
             dataOptions={categoriesOptions}
             validateFields={[]}
           />

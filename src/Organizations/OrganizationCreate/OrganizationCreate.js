@@ -75,7 +75,6 @@ export const OrganizationCreate = ({ history, location, mutator }) => {
     [cancelForm, intl, manageBankingInformation, showCallout],
   );
 
-  // TODO: provide info without perms and setting?
   const initialValues = useMemo(() => ({
     [BANKING_INFORMATION_FIELD_NAME]: [],
     ...INITIAL_VALUES,

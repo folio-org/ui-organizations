@@ -22,8 +22,7 @@ export const BankingInformationFieldArray = (props) => {
       const addressesCategoriesIdsMap = getAddressCategoryIdsSet(getFieldState('addresses').value);
 
       fields.forEach(field => {
-        // TODO: change addres to categoty (id)
-        const fieldName = `${field}.addressId`;
+        const fieldName = `${field}.categoryId`;
         const { initial, value } = getFieldState(fieldName);
 
         if (!addressesCategoriesIdsMap.has(value) && value !== initial) {

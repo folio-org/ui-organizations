@@ -1,9 +1,9 @@
-import { useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { useCallback, useMemo } from 'react';
 import {
   FormattedMessage,
   injectIntl,
 } from 'react-intl';
-import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 
@@ -44,10 +44,14 @@ const AddressInfo = ({
     eventEmitter.emit(EVENT_EMITTER_EVENTS.ADDRESS_CATEGORY_CHANGED);
   }, [eventEmitter]);
 
-  const countriesOptions = countries.map(c => ({
-    label: intl.formatMessage({ id: `stripes-components.countries.${c.alpha2}` }),
-    value: c.alpha3,
-  }));
+  const countriesOptions = useMemo(() => (
+    countries
+      .map(c => ({
+        label: intl.formatDisplayName(c.alpha2, { type: 'region' }),
+        value: c.alpha3,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label))
+  ), [intl]);
 
   // eslint-disable-next-line react/prop-types
   const Address = (name, index, fields) => {
