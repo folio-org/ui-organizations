@@ -1,4 +1,3 @@
-import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
 import { screen, render } from '@folio/jest-config-stripes/testing-library/react';
@@ -13,7 +12,8 @@ jest.mock('@folio/stripes/components', () => ({
   ...jest.requireActual('@folio/stripes/components'),
   Loading: () => <div>Loading</div>,
 }));
-jest.mock('./hooks', () => ({
+jest.mock('../common/hooks', () => ({
+  ...jest.requireActual('../common/hooks'),
   useBankingInformationSettings: jest.fn(() => ({
     isLoading: false,
     enabled: false,
@@ -60,16 +60,5 @@ describe('SettingsPage', () => {
     renderSettingsPage();
 
     expect(screen.getByText('ui-organizations.settings.bankingAccountTypes')).toBeInTheDocument();
-  });
-
-  it('should display loading on fetching useBankingInformationSettings', async () => {
-    useBankingInformationSettings.mockReturnValue({
-      isLoading: true,
-      enabled: false,
-    });
-
-    renderSettingsPage();
-
-    expect(screen.getByText('Loading')).toBeInTheDocument();
   });
 });

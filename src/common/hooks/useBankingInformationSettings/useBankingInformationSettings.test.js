@@ -21,7 +21,6 @@ const MOCK_BANKING_INFORMATION = {
   refetch: jest.fn(),
 };
 
-// eslint-disable-next-line react/prop-types
 const wrapper = ({ children }) => (
   <QueryClientProvider client={queryClient}>
     {children}
@@ -47,8 +46,7 @@ describe('useBankingInformationSettings', () => {
     expect(result.current).toEqual(expect.objectContaining({
       enabled: true,
       isLoading: false,
-      id: MOCK_BANKING_INFORMATION.id,
-      key: MOCK_BANKING_INFORMATION.key,
+      bankingInformation: MOCK_BANKING_INFORMATION,
     }));
   });
 });

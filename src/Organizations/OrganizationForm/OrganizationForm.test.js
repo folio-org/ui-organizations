@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
@@ -68,9 +69,20 @@ const defaultProps = {
   organizationTypes: organizationTypesMock,
   cancelForm: jest.fn(),
 };
+
+const queryClient = new QueryClient();
+
+const wrapper = ({ children }) => (
+  <MemoryRouter>
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
+  </MemoryRouter>
+);
+
 const renderOrganizationForm = (props = defaultProps) => render(
   <OrganizationForm {...props} />,
-  { wrapper: MemoryRouter },
+  { wrapper },
 );
 
 describe('OrganizationForm', () => {

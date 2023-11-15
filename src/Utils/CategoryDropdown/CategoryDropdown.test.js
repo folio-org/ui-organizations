@@ -1,23 +1,28 @@
-import React from 'react';
+import { Form } from 'react-final-form';
+import { MemoryRouter } from 'react-router-dom';
+
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import CategoryDropdown from './CategoryDropdown';
-
-jest.mock('react-final-form', () => ({
-  // eslint-disable-next-line
-  Field: ({ component, ...rest }) => {
-    const Component = component;
-
-    return <Component {...rest} />;
-  },
-}));
 
 const categories = [
   { id: 'category1', value: 'Main' },
   { id: 'category2', value: 'Uncategorize' },
 ];
 
-const renderCategoryDropdown = (props = {}) => render(<CategoryDropdown {...props} />);
+const wrapper = ({ children }) => (
+  <MemoryRouter>
+    <Form
+      onSubmit={jest.fn()}
+      render={() => children}
+    />
+  </MemoryRouter>
+);
+
+const renderCategoryDropdown = (props = {}) => render(
+  <CategoryDropdown {...props} />,
+  { wrapper },
+);
 
 describe('CategoryDropdown', () => {
   it('should display passed categories as options', () => {
