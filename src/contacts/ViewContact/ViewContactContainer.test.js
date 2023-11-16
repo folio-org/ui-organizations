@@ -1,13 +1,14 @@
-import React from 'react';
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { match, history } from '../../../test/jest/routerMocks';
-
 import { DICT_CATEGORIES } from '../../common/constants';
 import ViewContact from './ViewContact';
 import { ViewContactContainer } from './ViewContactContainer';
 
-jest.mock('../../common/utils', () => ({ getResourceDataItem: jest.fn() }));
+jest.mock('../../common/utils', () => ({
+  ...jest.requireActual('../../common/utils'),
+  getResourceDataItem: jest.fn(),
+}));
 jest.mock('./ViewContact', () => jest.fn(() => 'ViewContact'));
 
 const historyMock = {

@@ -9,25 +9,25 @@ import {
 } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
-import { useBankingInformation } from './useBankingInformation';
+import { BANKING_INFORMATION_ENABLED_KEY } from '../../constants';
+import { useBankingInformationSettings } from './useBankingInformationSettings';
 
 const queryClient = new QueryClient();
 
 const MOCK_BANKING_INFORMATION = {
-  'id': 'cb007def-4b68-496c-ad78-ea8e039e819d',
-  'key': 'BANKING_INFORMATION_ENABLED',
-  'value': 'true',
+  id: 'cb007def-4b68-496c-ad78-ea8e039e819d',
+  key: BANKING_INFORMATION_ENABLED_KEY,
+  value: 'true',
   refetch: jest.fn(),
 };
 
-// eslint-disable-next-line react/prop-types
 const wrapper = ({ children }) => (
   <QueryClientProvider client={queryClient}>
     {children}
   </QueryClientProvider>
 );
 
-describe('useBankingInformation', () => {
+describe('useBankingInformationSettings', () => {
   beforeEach(() => {
     useOkapiKy
       .mockClear()
@@ -38,16 +38,15 @@ describe('useBankingInformation', () => {
       });
   });
 
-  it('should fetch all organization types', async () => {
-    const { result } = renderHook(() => useBankingInformation(), { wrapper });
+  it('should fetch banking information settings', async () => {
+    const { result } = renderHook(() => useBankingInformationSettings(), { wrapper });
 
     await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(result.current).toEqual(expect.objectContaining({
       enabled: true,
       isLoading: false,
-      id: MOCK_BANKING_INFORMATION.id,
-      key: MOCK_BANKING_INFORMATION.key,
+      bankingInformation: MOCK_BANKING_INFORMATION,
     }));
   });
 });

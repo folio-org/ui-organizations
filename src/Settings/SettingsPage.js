@@ -1,14 +1,13 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { Settings } from '@folio/stripes/smart-components';
-import { Loading } from '@folio/stripes/components';
 
-import { useBankingInformation } from './hooks';
+import { useBankingInformationSettings } from '../common/hooks';
 import { CategorySettings } from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
-import { BankingInformationSettings } from './BankingInformationSettings';
 import { BankingAccountTypeSettings } from './BankingAccountTypeSettings';
+import { BankingInformationSettings } from './BankingInformationSettings';
 
 const pages = [
   {
@@ -39,13 +38,9 @@ const bankingAccountTypesPage = {
 };
 
 const SettingsPage = (props) => {
-  const { enabled, isLoading } = useBankingInformation();
+  const { enabled } = useBankingInformationSettings();
 
   const settingsPages = useMemo(() => (enabled ? pages.concat(bankingAccountTypesPage) : pages), [enabled]);
-
-  if (isLoading) {
-    return <Loading />;
-  }
 
   return (
     <Settings

@@ -1,12 +1,15 @@
-import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { OrganizationForm } from '../OrganizationForm';
-
+import { useBankingInformationManager } from '../useBankingInformationManager';
 import { OrganizationCreate } from './OrganizationCreate';
 
 jest.mock('../OrganizationForm', () => ({
   OrganizationForm: jest.fn().mockReturnValue('OrganizationForm'),
+}));
+jest.mock('../useBankingInformationManager', () => ({
+  useBankingInformationManager: jest.fn(),
 }));
 
 const mutatorMock = {
@@ -17,6 +20,18 @@ const mutatorMock = {
 const historyMock = {
   push: jest.fn(),
 };
+
+const getFieldState = jest.fn();
+const manageBankingInformation = jest.fn();
+
+const queryClient = new QueryClient();
+
+const wrapper = ({ children }) => (
+  <QueryClientProvider client={queryClient}>
+    {children}
+  </QueryClientProvider>
+);
+
 const renderOrganizationCreate = (props) => render(
   <OrganizationCreate
     location={{}}
@@ -24,14 +39,21 @@ const renderOrganizationCreate = (props) => render(
     mutator={mutatorMock}
     {...props}
   />,
+  { wrapper },
 );
 
 describe('OrganizationCreate', () => {
   beforeEach(() => {
     OrganizationForm.mockClear();
 
+    getFieldState.mockClear();
     historyMock.push.mockClear();
+    manageBankingInformation.mockClear();
     mutatorMock.createOrganizationOrg.POST.mockClear();
+
+    useBankingInformationManager
+      .mockClear()
+      .mockReturnValue({ manageBankingInformation });
   });
 
   it('should display organization form', () => {
@@ -56,11 +78,23 @@ describe('OrganizationCreate', () => {
     expect(historyMock.push.mock.calls[0][0].pathname).toBe('/organizations/view/orgUid');
   });
 
-  it('should save organization', () => {
+  it('should save organization', async () => {
     mutatorMock.createOrganizationOrg.POST.mockReturnValue(Promise.resolve({ id: 'orgUid' }));
 
     renderOrganizationCreate();
 
-    OrganizationForm.mock.calls[0][0].onSubmit({});
+    await OrganizationForm.mock.calls[0][0].onSubmit({}, { getFieldState });
+
+    expect(mutatorMock.createOrganizationOrg.POST).toHaveBeenCalled();
+  });
+
+  it('should handle banking information on form submit', async () => {
+    mutatorMock.createOrganizationOrg.POST.mockReturnValue(Promise.resolve({ id: 'orgUid' }));
+
+    renderOrganizationCreate();
+
+    await OrganizationForm.mock.calls[0][0].onSubmit({}, { getFieldState });
+
+    expect(manageBankingInformation).toHaveBeenCalled();
   });
 });
