@@ -1,12 +1,12 @@
-import React, {
+import PropTypes from 'prop-types';
+import {
   useCallback,
   useEffect,
   useState,
 } from 'react';
-import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
-import { withRouter } from 'react-router-dom';
 import { useIntl } from 'react-intl';
+import { withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
@@ -20,6 +20,7 @@ import {
   categoriesResource,
 } from '../../common/resources';
 import {
+  useBankingInformationSettings,
   useTranslatedCategories,
   useTypes,
 } from '../../common/hooks';
@@ -35,14 +36,19 @@ export const OrganizationDetailsContainer = ({
 }) => {
   const organizationId = match.params.id;
 
+  const intl = useIntl();
   const showCallout = useShowCallout();
+
   const [organization, setOrganization] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  const [isOrganizationLoading, setIsOrganizationLoading] = useState(true);
   const [organizationCategories, setOrganizationCategories] = useState([]);
   const [translatedCategories] = useTranslatedCategories(organizationCategories);
   const { organizationTypes, isLoading: isOrgTypesLoading } = useTypes();
-  const intl = useIntl();
   const { integrationConfigs } = useIntegrationConfigs({ organizationId });
+  const {
+    enabled: isBankingInformationEnabled,
+    isLoading: isBankingInformationSettingsLoading,
+  } = useBankingInformationSettings();
 
   useEffect(
     () => {
@@ -57,14 +63,14 @@ export const OrganizationDetailsContainer = ({
 
   useEffect(
     () => {
-      setIsLoading(true);
+      setIsOrganizationLoading(true);
       setOrganization({});
 
       mutator.organizationDetailsOrg.GET()
         .then(organizationResponse => {
           setOrganization(organizationResponse);
         })
-        .finally(() => setIsLoading(false));
+        .finally(() => setIsOrganizationLoading(false));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [organizationId],
@@ -133,7 +139,13 @@ export const OrganizationDetailsContainer = ({
     [intl, showCallout, organizationId],
   );
 
-  if (isLoading || isOrgTypesLoading) {
+  const isLoading = (
+    isOrganizationLoading
+    || isOrgTypesLoading
+    || isBankingInformationSettingsLoading
+  );
+
+  if (isLoading) {
     return (
       <LoadingPane
         id="pane-organization-details"
@@ -152,6 +164,7 @@ export const OrganizationDetailsContainer = ({
       organization={organization}
       organizationCategories={translatedCategories}
       integrationConfigs={integrationConfigs}
+      isBankingInformationEnabled={isBankingInformationEnabled}
       organizationTypes={organizationTypes}
     />
   );

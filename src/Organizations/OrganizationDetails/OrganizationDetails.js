@@ -59,6 +59,7 @@ import { OrganizationInterfacesContainer } from './OrganizationInterfaces';
 import { OrganizationVendorInfo } from './OrganizationVendorInfo';
 import { OrganizationAgreements } from './OrganizationAgreements';
 import { OrganizationAccounts } from './OrganizationAccounts';
+import { OrganizationBankingInfo } from './OrganizationBankingInfo';
 import { IntegrationDetails } from './IntegrationDetails';
 
 const OrganizationDetails = ({
@@ -70,6 +71,7 @@ const OrganizationDetails = ({
   organization,
   organizationCategories,
   integrationConfigs,
+  isBankingInformationEnabled,
   organizationTypes,
 }) => {
   const stripes = useStripes();
@@ -83,6 +85,7 @@ const OrganizationDetails = ({
     [ORGANIZATION_SECTIONS.vendorTermsSection]: false,
     [ORGANIZATION_SECTIONS.integrationDetailsSection]: false,
     [ORGANIZATION_SECTIONS.accountsSection]: false,
+    [ORGANIZATION_SECTIONS.bankingInformationSection]: false,
     [ORGANIZATION_SECTIONS.notesSection]: false,
     [ORGANIZATION_SECTIONS.agreements]: false,
   };
@@ -95,6 +98,7 @@ const OrganizationDetails = ({
   const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
     organization.id, organization.acqUnitIds,
   );
+
   const accountNumbers = (organization.isVendor && organization.accounts?.map(({ accountNo }) => accountNo)) || [];
   const hasDuplicateAccountNumbers = [...new Set(accountNumbers)].length !== accountNumbers.length;
 
@@ -370,6 +374,15 @@ const OrganizationDetails = ({
                       accounts={organization.accounts}
                     />
                   </Accordion>
+
+                  {isBankingInformationEnabled && (
+                    <Accordion
+                      id={ORGANIZATION_SECTIONS.bankingInformationSection}
+                      label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
+                    >
+                      <OrganizationBankingInfo organization={organization} />
+                    </Accordion>
+                  )}
                 </>
               )
             }
@@ -420,11 +433,13 @@ OrganizationDetails.propTypes = {
     value: PropTypes.string,
   })),
   integrationConfigs: PropTypes.arrayOf(PropTypes.object),
+  isBankingInformationEnabled: PropTypes.bool,
   organizationTypes: PropTypes.arrayOf(PropTypes.object),
 };
 
 OrganizationDetails.defaultProps = {
   organizationCategories: [],
+  isBankingInformationEnabled: false,
 };
 
 export default OrganizationDetails;
