@@ -1,14 +1,13 @@
-import React from 'react';
 import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query';
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
-import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
-import { organizationTypes as organizationTypesMock } from 'fixtures';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
+import { organizationTypes as organizationTypesMock } from 'fixtures';
 import OrganizationDetails from './OrganizationDetails';
 
 jest.mock('@folio/stripes-acq-components', () => ({
@@ -18,6 +17,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
 }));
 jest.mock('@folio/stripes-smart-components/lib/Notes/NotesSmartAccordion', () => () => 'NotesSmartAccordion');
 jest.mock('./OrganizationAccounts', () => ({ OrganizationAccounts: () => 'OrganizationAccounts' }));
+jest.mock('./OrganizationBankingInfo', () => ({ OrganizationBankingInfo: () => 'OrganizationBankingInfo' }));
 jest.mock('./IntegrationDetails', () => ({ IntegrationDetails: () => 'IntegrationDetails' }));
 jest.mock('./OrganizationAgreements', () => ({ OrganizationAgreements: () => 'OrganizationAgreements' }));
 jest.mock('./OrganizationVendorInfo', () => ({ OrganizationVendorInfo: () => 'OrganizationVendorInfo' }));
@@ -138,6 +138,16 @@ describe('OrganizationDetails', () => {
     });
 
     expect(screen.getByText('ui-organizations.view.duplicateAccounts')).toBeDefined();
+  });
+
+  it('should display banking information accordion when org is vendor and related settings are enabled', () => {
+    renderOrganizationDetails({
+      ...defaultProps,
+      isBankingInformationEnabled: true,
+      organization: { name: 'Amazon', isVendor: true },
+    });
+
+    expect(screen.getByText('OrganizationBankingInfo')).toBeInTheDocument();
   });
 
   describe('Actions', () => {
