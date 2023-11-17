@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import { useCallback, useEffect, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
 import {
   useLocation,
   useHistory,
@@ -44,23 +44,23 @@ import {
   ORGANIZATIONS_ROUTE,
 } from '../../common/constants';
 import {
-  ORG_DOMAIN,
-  ORG_NOTE_TYPE,
-} from '../Notes/const';
-import {
   ORGANIZATION_SECTIONS,
   ORGANIZATION_SECTION_LABELS,
 } from '../constants';
+import {
+  ORG_DOMAIN,
+  ORG_NOTE_TYPE,
+} from '../Notes/const';
+import { IntegrationDetails } from './IntegrationDetails';
 import { LinkedAgreements } from './LinkedAgreements';
-import { OrganizationSummary } from './OrganizationSummary';
+import { OrganizationAccounts } from './OrganizationAccounts';
+import { OrganizationAgreements } from './OrganizationAgreements';
+import { OrganizationBankingInfo } from './OrganizationBankingInfo';
 import { OrganizationContactInfo } from './OrganizationContactInfo';
 import { OrganizationContactPeopleContainer } from './OrganizationContactPeople';
 import { OrganizationInterfacesContainer } from './OrganizationInterfaces';
+import { OrganizationSummary } from './OrganizationSummary';
 import { OrganizationVendorInfo } from './OrganizationVendorInfo';
-import { OrganizationAgreements } from './OrganizationAgreements';
-import { OrganizationAccounts } from './OrganizationAccounts';
-import { OrganizationBankingInfo } from './OrganizationBankingInfo';
-import { IntegrationDetails } from './IntegrationDetails';
 
 const OrganizationDetails = ({
   onClose,

@@ -16,14 +16,14 @@ import {
 } from '@folio/stripes-acq-components';
 
 import {
-  organizationResourceByUrl,
-  categoriesResource,
-} from '../../common/resources';
-import {
   useBankingInformationSettings,
   useTranslatedCategories,
   useTypes,
 } from '../../common/hooks';
+import {
+  organizationResourceByUrl,
+  categoriesResource,
+} from '../../common/resources';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 import OrganizationDetails from './OrganizationDetails';
 

@@ -1,14 +1,13 @@
-import React from 'react';
 import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query';
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
-import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
-import { organizationTypes as organizationTypesMock } from 'fixtures';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
+import { organizationTypes as organizationTypesMock } from 'fixtures';
 import OrganizationDetails from './OrganizationDetails';
 
 jest.mock('@folio/stripes-acq-components', () => ({
