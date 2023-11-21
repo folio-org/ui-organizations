@@ -3,6 +3,7 @@ import { FieldArray } from 'react-final-form-arrays';
 import { FormattedMessage } from 'react-intl';
 
 import { Loading } from '@folio/stripes/components';
+import { useStripes } from '@folio/stripes/core';
 
 import {
   useBankingAccountTypes,
@@ -27,6 +28,8 @@ const renderField = (props) => (name, index, fields) => (
 );
 
 export const OrganizationBankingInfoForm = () => {
+  const stripes = useStripes();
+
   const {
     bankingAccountTypes,
     isFetching: isBankingAccountTypesFetching,
@@ -54,6 +57,7 @@ export const OrganizationBankingInfoForm = () => {
     <FieldArray
       addLabel={<FormattedMessage id="ui-organizations.button.bankingInformation.add" />}
       component={BankingInformationFieldArray}
+      canRemove={stripes.hasPerm('ui-organizations.banking-information.delete')}
       id="bankingInformation"
       name={BANKING_INFORMATION_FIELD_NAME}
       onAdd={createAddNewItem()}

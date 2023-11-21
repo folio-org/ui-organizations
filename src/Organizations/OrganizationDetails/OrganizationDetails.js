@@ -405,12 +405,14 @@ const OrganizationDetails = ({
                   </Accordion>
 
                   {isBankingInformationEnabled && (
-                    <Accordion
-                      id={ORGANIZATION_SECTIONS.bankingInformationSection}
-                      label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
-                    >
-                      <OrganizationBankingInfo organization={organization} />
-                    </Accordion>
+                    <IfPermission perm="ui-organizations.banking-information.view">
+                      <Accordion
+                        id={ORGANIZATION_SECTIONS.bankingInformationSection}
+                        label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
+                      >
+                        <OrganizationBankingInfo organization={organization} />
+                      </Accordion>
+                    </IfPermission>
                   )}
                 </>
               )

@@ -81,8 +81,6 @@
           "data-export.config.item.get",
           "orders.acquisition-methods.collection.get",
           "orders.acquisition-method.item.get",
-          "organizations.banking-information.collection.get",
-          "organizations.banking-information.item.get",
           "organizations.organizations.collection.get",
           "organizations.organizations.item.get",
           "organizations-storage.addresses.collection.get",
@@ -111,7 +109,6 @@
           "data-export.config.item.delete",
           "data-export.config.item.post",
           "data-export.config.item.put",
-          "organizations.banking-information.item.put",
           "organizations.organizations.item.put",
           "organizations-storage.addresses.item.put",
           "organizations-storage.emails.item.put",
@@ -131,7 +128,6 @@
         "displayName": "Organizations: View, edit, create",
         "visible": true,
         "subPermissions": [
-          "organizations.banking-information.item.post",
           "organizations.organizations.item.post",
           "organizations-storage.addresses.item.post",
           "organizations-storage.emails.item.post",
@@ -145,13 +141,48 @@
         "displayName": "Organizations: View, edit, delete",
         "visible": true,
         "subPermissions": [
-          "organizations.banking-information.item.delete",
           "organizations.organizations.item.delete",
           "organizations-storage.addresses.item.delete",
           "organizations-storage.emails.item.delete",
           "organizations-storage.phone-numbers.item.delete",
           "organizations-storage.urls.item.delete",
           "ui-organizations.edit"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.banking-information.view",
+        "displayName": "Organizations: View banking information",
+        "visible": true,
+        "subPermissions": [
+          "organizations.banking-information.collection.get",
+          "organizations.banking-information.item.get"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.banking-information.create",
+        "displayName": "Organizations: View and create banking information",
+        "visible": true,
+        "subPermissions": [
+          "ui-organizations.banking-information.view",
+          "organizations.banking-information.item.post"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.banking-information.edit",
+        "displayName": "Organizations: View, create and edit banking information",
+        "visible": true,
+        "subPermissions": [
+          "ui-organizations.banking-information.create",
+          "organizations.banking-information.item.put"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.banking-information.delete",
+        "displayName": "Organizations: View, create, edit and delete banking information",
+        "visible": true,
+        "subPermissions": [
+          "ui-organizations.banking-information.edit",
+          "organizations.banking-information.item.delete"
         ]
       },
       {

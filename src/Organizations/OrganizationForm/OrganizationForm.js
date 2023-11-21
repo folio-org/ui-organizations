@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router';
 import { mapValues } from 'lodash';
 
+import { IfPermission } from '@folio/stripes/core';
 import stripesForm from '@folio/stripes/final-form';
 import {
   Accordion,
@@ -223,12 +224,14 @@ const OrganizationForm = ({
                         </Accordion>
 
                         {isBankingInformationEnabled && (
-                          <Accordion
-                            id={ORGANIZATION_SECTIONS.bankingInformationSection}
-                            label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
-                          >
-                            <OrganizationBankingInfoForm />
-                          </Accordion>
+                          <IfPermission perm="ui-organizations.banking-information.create">
+                            <Accordion
+                              id={ORGANIZATION_SECTIONS.bankingInformationSection}
+                              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
+                            >
+                              <OrganizationBankingInfoForm />
+                            </Accordion>
+                          </IfPermission>
                         )}
                       </>
                     )
