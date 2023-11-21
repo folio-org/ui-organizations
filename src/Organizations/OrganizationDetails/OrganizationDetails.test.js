@@ -127,6 +127,19 @@ describe('OrganizationDetails', () => {
     expect(screen.getByText('OrganizationAccounts')).toBeDefined();
   });
 
+  it('should display Donor Contacts accordion when both vendor and donor have been checked', () => {
+    renderOrganizationDetails({
+      ...defaultProps,
+      organization: {
+        name: 'Amazon',
+        isVendor: true,
+        isDonor: true,
+      },
+    });
+
+    expect(screen.getByText('ui-organizations.donorContacts')).toBeDefined();
+  });
+
   it('should display warning message if vendor has not unique account numbers', () => {
     renderOrganizationDetails({
       ...defaultProps,
