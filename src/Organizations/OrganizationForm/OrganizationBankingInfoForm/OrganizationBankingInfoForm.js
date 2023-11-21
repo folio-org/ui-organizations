@@ -57,6 +57,7 @@ export const OrganizationBankingInfoForm = () => {
     <FieldArray
       addLabel={<FormattedMessage id="ui-organizations.button.bankingInformation.add" />}
       component={BankingInformationFieldArray}
+      canAdd={stripes.hasPerm('ui-organizations.banking-information.create')}
       canRemove={stripes.hasPerm('ui-organizations.banking-information.delete')}
       id="bankingInformation"
       name={BANKING_INFORMATION_FIELD_NAME}

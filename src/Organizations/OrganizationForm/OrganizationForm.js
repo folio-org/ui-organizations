@@ -224,7 +224,7 @@ const OrganizationForm = ({
                         </Accordion>
 
                         {isBankingInformationEnabled && (
-                          <IfPermission perm="ui-organizations.banking-information.create">
+                          <IfPermission perm="ui-organizations.banking-information.edit">
                             <Accordion
                               id={ORGANIZATION_SECTIONS.bankingInformationSection}
                               label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
