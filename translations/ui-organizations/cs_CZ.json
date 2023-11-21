@@ -433,5 +433,16 @@
     "settings.accountTypes.save.success.message": "Nastavení bylo úspěšně aktualizováno.",
     "settings.accountTypes.save.error.generic.message": "Něco se pokazilo.",
     "settings.accountTypes.name": "Jméno",
-    "settings.accountTypes.action": "Akce"
+    "settings.accountTypes.action": "Akce",
+    "data.bankingInformation.accountType": "Typ účtu",
+    "data.bankingInformation.addressCategory": "Kategorie adresy",
+    "data.bankingInformation.bankAccountNumber": "Číslo bankovního účtu",
+    "data.bankingInformation.bankName": "Název banky",
+    "data.bankingInformation.isPrimary": "Použít jako primární bankovní informace",
+    "data.bankingInformation.notes": "Poznámky",
+    "data.bankingInformation.transitNumber": "Tranzitní číslo",
+    "bankingInformation": "Bankovní informace",
+    "bankingInformation.save.error": "Nepodařilo se uložit bankovní informace.",
+    "button.bankingInformation.add": "Přidat bankovní informace",
+    "donorContacts": "Kontakty na dárce"
 }

@@ -433,5 +433,16 @@
     "settings.accountTypes.save.success.message": "A configuração foi atualizada com sucesso.",
     "settings.accountTypes.save.error.generic.message": "Algo deu errado.",
     "settings.accountTypes.name": "Nome",
-    "settings.accountTypes.action": "Ação"
+    "settings.accountTypes.action": "Ação",
+    "data.bankingInformation.accountType": "Tipo de conta",
+    "data.bankingInformation.addressCategory": "Categoria de endereço",
+    "data.bankingInformation.bankAccountNumber": "Número da conta bancária",
+    "data.bankingInformation.bankName": "Nome do banco",
+    "data.bankingInformation.isPrimary": "Usar como informação bancária principal",
+    "data.bankingInformation.notes": "Notas",
+    "data.bankingInformation.transitNumber": "Número de trânsito",
+    "bankingInformation": "Informações bancárias",
+    "bankingInformation.save.error": "Falha ao salvar informações bancárias.",
+    "button.bankingInformation.add": "Adicionar informações bancárias",
+    "donorContacts": "Contatos do(s) doador(es)"
 }
