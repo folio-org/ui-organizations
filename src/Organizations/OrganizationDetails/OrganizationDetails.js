@@ -345,7 +345,7 @@ const OrganizationDetails = ({
                 label={ORGANIZATION_SECTION_LABELS[donorContacts]}
               >
                 {/*
-                  TODO: add donor contacts list component https://issues.folio.org/browse/UIORGS-394
+                  TODO: add Privileged donor information component https://issues.folio.org/browse/UIORGS-397
                 */}
               </Accordion>
               )
