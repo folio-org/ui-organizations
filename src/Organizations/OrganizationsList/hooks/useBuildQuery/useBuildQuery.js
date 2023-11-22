@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 
-import {
-  makeQueryBuilder,
-} from '@folio/stripes-acq-components';
+import { useStripes } from '@folio/stripes/core';
+import { makeQueryBuilder } from '@folio/stripes-acq-components';
 import {
   filterMap,
   getKeywordQuery,
@@ -16,6 +15,8 @@ const CUSTOM_SORT_MAP = {
 };
 
 export const useBuildQuery = () => {
+  const stripes = useStripes()
+
   return useCallback(makeQueryBuilder(
     'cql.allRecords=1',
     (query, qindex) => {
@@ -23,7 +24,7 @@ export const useBuildQuery = () => {
         return `(${qindex}=${query}*)`;
       }
 
-      return getKeywordQuery(query);
+      return getKeywordQuery(query, stripes);
     },
     'sortby name/sort.ascending',
     filterMap,

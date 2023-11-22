@@ -8,6 +8,7 @@
 * Implement organization's banking information details view. Refs UIORGS-389.
 * Modify summary display in organization view mode. Refs UIORGS-398.
 * Protection of viewing and changes of banking information by permissions. Refs UIORGS-388.
+* Search organization on bank account number. Refs UIORGS-392.
 
 ## [5.0.0](https://github.com/folio-org/ui-organizations/tree/v5.0.0) (2023-10-12)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v4.0.0...v5.0.0)
