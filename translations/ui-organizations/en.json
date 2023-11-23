@@ -479,6 +479,10 @@
   "permission.creds.manage": "Organizations: Interface usernames and passwords: view, edit, create, delete",
   "permission.acqUnits.assign": "Organizations: Assign acquisition units to new organization",
   "permission.acqUnits.manage": "Organizations: Manage acquisition units",
+  "permission.banking-information.view": "Organizations: View banking information",
+  "permission.banking-information.edit": "Organizations: View and edit banking information",
+  "permission.banking-information.create": "Organizations: View, edit and create banking information",
+  "permission.banking-information.delete": "Organizations: View, edit, create and delete banking information",
   "permission.settings.view": "Settings (Organizations): View settings",
   "permission.settings": "Settings (Organizations): Can view and edit settings"
 }
