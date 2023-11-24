@@ -444,5 +444,9 @@
     "bankingInformation": "Informações bancárias",
     "bankingInformation.save.error": "Falha ao salvar informações bancárias.",
     "button.bankingInformation.add": "Adicionar informações bancárias",
-    "donorContacts": "Contatos do(s) doador(es)"
+    "donorContacts": "Contatos do(s) doador(es)",
+    "permission.banking-information.view": "Organizações: Visualizar informações bancárias",
+    "permission.banking-information.edit": "Organizações: visualizar e editar informações bancárias",
+    "permission.banking-information.create": "Organizações: Visualizar, editar e criar informações bancárias",
+    "permission.banking-information.delete": "Organizações: Visualizar, editar, criar e excluir informações bancárias"
 }
