@@ -1,5 +1,3 @@
-import queryString from 'query-string';
-
 import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 import { useStripes } from '@folio/stripes/core';
 import {
@@ -30,13 +28,15 @@ describe('useBuildQuery', () => {
   it('should return function, that return query', () => {
     const { result } = renderHook(() => useBuildQuery());
 
-    expect(result.current(queryString.parse('?foo=bar'))).toBe('(foo=="bar") sortby name/sort.ascending');
+    expect(result.current({
+      [SEARCH_PARAMETER]: 'bar',
+      [SEARCH_INDEX_PARAMETER]: 'foo',
+    })).toBe('(((foo=bar*))) sortby name/sort.ascending');
   });
 
   describe('Banking information', () => {
     const params = {
       [SEARCH_PARAMETER]: 'qwerty',
-      [SEARCH_INDEX_PARAMETER]: 'name',
     };
 
     it('should include banking information index in the query if a user has the appropriate permission', () => {

@@ -15,7 +15,7 @@ const CUSTOM_SORT_MAP = {
 };
 
 export const useBuildQuery = () => {
-  const stripes = useStripes()
+  const stripes = useStripes();
 
   return useCallback(makeQueryBuilder(
     'cql.allRecords=1',
