@@ -42,7 +42,7 @@ describe('useBuildQuery', () => {
     it('should include banking information index in the query if a user has the appropriate permission', () => {
       const { result } = renderHook(() => useBuildQuery());
 
-      expect(result.current(params)).toEqual(expect.stringContaining('bankingInformation.bankAccountNumber="qwerty*"'));
+      expect(result.current(params)).toContain('bankingInformation.bankAccountNumber="qwerty*"');
     });
 
     it('should NOT include banking information index in the query if a user does not have the appropriate permission', async () => {
@@ -50,7 +50,7 @@ describe('useBuildQuery', () => {
 
       const { result } = renderHook(() => useBuildQuery());
 
-      expect(result.current(params)).toEqual(expect.not.stringContaining('bankingInformation.bankAccountNumber="qwerty*"'));
+      expect(result.current(params)).not.toContain('bankingInformation.bankAccountNumber="qwerty*"');
     });
   });
 });
