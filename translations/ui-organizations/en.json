@@ -61,6 +61,7 @@
   "search.erpCode": "Accounting code",
   "search.taxId": "Tax ID",
   "search.interfaces": "Interfaces",
+  "search.bankingInformation.bankAccountNumber": "Bank account number",
   "search.placeholder.language": "Search with language code",
 
   "organization.delete.heading": "Delete {organizationName}?",
