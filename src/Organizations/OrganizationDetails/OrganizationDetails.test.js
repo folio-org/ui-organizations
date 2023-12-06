@@ -13,6 +13,7 @@ import OrganizationDetails from './OrganizationDetails';
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   useAcqRestrictions: jest.fn().mockReturnValue({ restrictions: {} }),
+  PrivilegedDonorsListContainer: jest.fn(() => 'PrivilegedDonorsListContainer'),
   TagsPane: jest.fn(() => 'TagsPane'),
 }));
 jest.mock('@folio/stripes-smart-components/lib/Notes/NotesSmartAccordion', () => () => 'NotesSmartAccordion');
