@@ -33,6 +33,7 @@ import {
 import { NotesSmartAccordion } from '@folio/stripes/smart-components';
 import {
   handleKeyCommand,
+  PrivilegedDonorsListContainer,
   TagsBadge,
   TagsPane,
   useAcqRestrictions,
@@ -68,7 +69,7 @@ const {
   bankingInformationSection,
   contactInformationSection,
   contactPeopleSection,
-  donorContacts,
+  privilegedDonorInformation,
   integrationDetailsSection,
   interfacesSection,
   notesSection,
@@ -341,12 +342,12 @@ const OrganizationDetails = ({
             {
               isDonorVisible && (
               <Accordion
-                id={donorContacts}
-                label={ORGANIZATION_SECTION_LABELS[donorContacts]}
+                id={privilegedDonorInformation}
+                label={ORGANIZATION_SECTION_LABELS[privilegedDonorInformation]}
               >
-                {/*
-                  TODO: add Privileged donor information component https://issues.folio.org/browse/UIORGS-397
-                */}
+                <PrivilegedDonorsListContainer
+                  privilegedContactIds={organization.privilegedContacts}
+                />
               </Accordion>
               )
             }

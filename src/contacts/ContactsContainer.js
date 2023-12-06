@@ -16,11 +16,13 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { VIEW_ORG_DETAILS } from '../common/constants';
-import ViewContact from './ViewContact';
+import { PRIVILEGED_CONTACT_URL_PATH } from './constants';
 import EditContact from './EditContact';
+import ViewContact from './ViewContact';
 
 function ContactsContainer({ history, match: { params, url } }) {
   const sendCallout = useShowCallout();
+  const contactsUrlPath = url.includes(PRIVILEGED_CONTACT_URL_PATH) ? PRIVILEGED_CONTACT_URL_PATH : 'contacts';
   const showMessage = useCallback((messageKey, messageType = 'success') => {
     sendCallout({
       type: messageType,
@@ -32,9 +34,9 @@ function ContactsContainer({ history, match: { params, url } }) {
     if (!contactId) {
       history.push(`${VIEW_ORG_DETAILS}${orgId}`);
     } else {
-      history.push(`/organizations/${orgId}/contacts/details/${contactId}/view`);
+      history.push(`/organizations/${orgId}/${contactsUrlPath}/details/${contactId}/view`);
     }
-  }, [history]);
+  }, [contactsUrlPath, history]);
 
   const goToEdit = useCallback((props) => (
     <EditContact

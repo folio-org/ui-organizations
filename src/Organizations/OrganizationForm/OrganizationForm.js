@@ -19,6 +19,7 @@ import {
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   FormFooter,
+  PrivilegedDonorContacts,
   handleKeyCommand,
   useAccordionToggle,
 } from '@folio/stripes-acq-components';
@@ -55,6 +56,7 @@ const OrganizationForm = ({
     [ORGANIZATION_SECTIONS.contactInformationSection]: false,
     [ORGANIZATION_SECTIONS.contactPeopleSection]: false,
     [ORGANIZATION_SECTIONS.interfacesSection]: false,
+    [ORGANIZATION_SECTIONS.privilegedDonorInformation]: false,
     [ORGANIZATION_SECTIONS.vendorInformationSection]: false,
     [ORGANIZATION_SECTIONS.bankingInformationSection]: false,
     [ORGANIZATION_SECTIONS.vendorTermsSection]: false,
@@ -199,6 +201,20 @@ const OrganizationForm = ({
                   {
                     formValues.isVendor && (
                       <>
+                        {
+                          formValues.isDonor && (
+                            <Accordion
+                              id={ORGANIZATION_SECTIONS.privilegedDonorInformation}
+                              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.privilegedDonorInformation]}
+                            >
+                              <PrivilegedDonorContacts
+                                orgId={id}
+                                privilegedContactIds={formValues.privilegedContacts}
+                                isPrivilegedContactEnabled
+                              />
+                            </Accordion>
+                          )
+                        }
                         <Accordion
                           id={ORGANIZATION_SECTIONS.vendorInformationSection}
                           label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
