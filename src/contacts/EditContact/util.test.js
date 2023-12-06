@@ -44,4 +44,17 @@ describe('EditContact utils', () => {
 
     expect(mutator.contactsOrg.PUT).toHaveBeenCalledWith({ ...org, contacts: [contactId] });
   });
+
+  it('should update privileged contact when with id', async () => {
+    const contact = { id: 'contactId', name: 'Mark' };
+    const mutator = {
+      privilegedContact: {
+        PUT: jest.fn().mockReturnValue(Promise.resolve()),
+      },
+    };
+
+    await saveContact(mutator, contact);
+
+    expect(mutator.contact.PUT).toHaveBeenCalledWith(contact);
+  });
 });

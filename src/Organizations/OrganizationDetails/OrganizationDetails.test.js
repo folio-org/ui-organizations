@@ -137,7 +137,7 @@ describe('OrganizationDetails', () => {
       },
     });
 
-    expect(screen.getByText('ui-organizations.donorContacts')).toBeDefined();
+    expect(screen.getByText('ui-organizations.privilegedDonorInformation')).toBeDefined();
   });
 
   it('should display warning message if vendor has not unique account numbers', () => {

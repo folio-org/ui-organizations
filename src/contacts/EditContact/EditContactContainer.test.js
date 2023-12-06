@@ -29,6 +29,7 @@ const defaultProps = {
     [DICT_CATEGORIES]: {
       records: [{ value: 'Customer Service', id: 'f52ceea4-8e35' }],
     },
+    privilegedContact: { records: [contact] },
   },
   showMessage: jest.fn(),
   onClose: jest.fn(),
