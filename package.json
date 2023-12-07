@@ -99,6 +99,7 @@
           "organizations-storage.phone-numbers.item.get",
           "organizations-storage.privileged-contacts.collection.get",
           "organizations-storage.privileged-contacts.item.get",
+          "organizations-storage.settings.collection.get",
           "organizations-storage.urls.collection.get",
           "organizations-storage.urls.item.get",
           "ui-organizations.third-party-services"
