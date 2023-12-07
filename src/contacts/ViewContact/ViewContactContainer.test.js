@@ -2,6 +2,7 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 
 import { match, history } from '../../../test/jest/routerMocks';
 import { DICT_CATEGORIES } from '../../common/constants';
+import { PRIVILEGED_CONTACT_URL_PATH } from '../constants';
 import ViewContact from './ViewContact';
 import { ViewContactContainer } from './ViewContactContainer';
 
@@ -22,6 +23,12 @@ const defaultProps = {
   resources: {
     contact: { isPending: false },
     [DICT_CATEGORIES]: { records: [] },
+    privilegedContact: {
+      records: [{
+        id: 'contactId',
+        categories: [],
+      }],
+    },
   },
   match,
   history: historyMock,
@@ -38,6 +45,22 @@ describe('ViewContactContainer', () => {
     await screen.findByText('Icon');
 
     expect(screen.getByText('Icon')).toBeDefined();
+  });
+
+  it('should display ViewContact with privileged contacts', async () => {
+    const contactProps = {
+      ...defaultProps,
+      match: {
+        ...defaultProps.match,
+        path: `/${PRIVILEGED_CONTACT_URL_PATH}`,
+      },
+    };
+
+    renderViewContactContainer(contactProps);
+
+    await screen.findByText('ViewContact');
+
+    expect(screen.getByText('ViewContact')).toBeDefined();
   });
 
   it('should display ViewContact', async () => {

@@ -20,12 +20,12 @@ import { DICT_CATEGORIES } from '../../common/constants';
 import { getBackPath } from '../../common/utils/createItem';
 import { useTranslatedCategories } from '../../common/hooks';
 
+import { PRIVILEGED_CONTACT_URL_PATH } from '../constants';
 import ViewContact from './ViewContact';
 import {
   deleteContact,
   unassign,
 } from './util';
-import { PRIVILEGED_CONTACT_URL_PATH } from '../constants';
 
 export function ViewContactContainer({
   baseUrl,
