@@ -9,6 +9,7 @@ import { DICT_CATEGORIES } from '../../common/constants';
 import { saveContact } from './util';
 import EditContact from './EditContact';
 import { EditContactContainer } from './EditContactContainer';
+import { PRIVILEGED_CONTACT_URL_PATH } from '../constants';
 
 jest.mock('./util', () => ({
   saveContact: jest.fn(),
@@ -80,5 +81,38 @@ describe('EditContactContainer', () => {
     EditContact.mock.calls[0][0].onSubmit({});
 
     expect(saveContact).toHaveBeenCalled();
+  });
+
+  describe('Privileged contact actions', () => {
+    const props = {
+      ...defaultProps,
+      match: {
+        ...defaultProps.match,
+        path: `/contacts/view/:id/${PRIVILEGED_CONTACT_URL_PATH}`,
+      },
+      onClose: undefined,
+    };
+
+    it('should save privileged contacts', async () => {
+      saveContact.mockClear().mockReturnValue(Promise.resolve());
+
+      renderEditContactContainer(props);
+
+      await screen.findByText('EditContact');
+
+      EditContact.mock.calls[0][0].onSubmit({});
+
+      expect(saveContact).toHaveBeenCalled();
+    });
+
+    it('should redirect to org details when form is closed', async () => {
+      renderEditContactContainer(props);
+
+      await screen.findByText('EditContact');
+
+      EditContact.mock.calls[0][0].onClose();
+
+      expect(historyMock.push).toHaveBeenCalledWith('/organizations/orgId/privileged-contacts/id/view');
+    });
   });
 });
