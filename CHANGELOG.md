@@ -10,6 +10,7 @@
 * Protection of viewing and changes of banking information by permissions. Refs UIORGS-388.
 * Search organization on bank account number. Refs UIORGS-392.
 * Enable "Hourly" and "Monthly" EDI export scheduling frequency options. Refs UIORGS-415.
+* Create Privileged donor information accordion in organization record. Refs UIORGS-397.
 
 ## [5.0.0](https://github.com/folio-org/ui-organizations/tree/v5.0.0) (2023-10-12)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v4.0.0...v5.0.0)

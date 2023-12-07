@@ -1,21 +1,24 @@
-import React, { useCallback } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { get } from 'lodash';
 import PropTypes from 'prop-types';
+import { useCallback } from 'react';
+import { FormattedMessage } from 'react-intl';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { Icon } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
 
+import { DICT_CATEGORIES } from '../../common/constants';
+import { useTranslatedCategories } from '../../common/hooks';
 import {
   categoriesResource,
   contactResource,
   organizationResource,
+  privilegedContactResource,
 } from '../../common/resources';
-import { saveContact } from './util';
-import EditContact from './EditContact';
 import { getBackPath } from '../../common/utils/createItem';
-import { DICT_CATEGORIES } from '../../common/constants';
-import { useTranslatedCategories } from '../../common/hooks';
+import { PRIVILEGED_CONTACT_URL_PATH } from '../constants';
+import EditContact from './EditContact';
+import { saveContact } from './util';
 
 export const EditContactContainer = ({
   history,
@@ -27,7 +30,9 @@ export const EditContactContainer = ({
   showMessage,
 }) => {
   const isNew = !match.params.id;
-  const loadedContact = resources?.contact?.records?.[0];
+  const isPrivilegedContactUrl = match.path.includes(PRIVILEGED_CONTACT_URL_PATH);
+  const contactResources = isPrivilegedContactUrl ? 'privilegedContact' : 'contact';
+  const loadedContact = get(resources[contactResources], 'records[0]');
   const categories = resources?.[DICT_CATEGORIES]?.records;
   const [translatedCategories] = useTranslatedCategories(categories);
   const contactsOrganization = resources?.contactsOrg?.records?.[0];
@@ -36,12 +41,12 @@ export const EditContactContainer = ({
     if (onClose) {
       onClose(orgId, contactId);
     } else {
-      history.push(getBackPath(orgId, contactId, 'contacts'));
+      history.push(getBackPath(orgId, contactId, isPrivilegedContactUrl ? PRIVILEGED_CONTACT_URL_PATH : 'contacts'));
     }
-  }, [match.params.id, onClose, history, orgId]);
+  }, [match.params.id, onClose, orgId, history, isPrivilegedContactUrl]);
 
   const onSubmit = useCallback(contactValues => {
-    saveContact(mutator, contactValues, contactsOrganization)
+    saveContact(mutator, contactValues, contactsOrganization, isPrivilegedContactUrl)
       .then(({ id }) => {
         showMessage('ui-organizations.contacts.message.saved.success', 'success');
         onCloseForm(id);
@@ -63,6 +68,7 @@ export const EditContactContainer = ({
   const contact = isNew ? {} : loadedContact;
   const { firstName, lastName } = contact;
   const name = `${lastName}, ${firstName}`;
+
   const paneTitle = isNew
     ? <FormattedMessage id="ui-organizations.contacts.create.paneTitle" />
     : <FormattedMessage id="ui-organizations.contacts.edit.paneTitle" values={{ name }} />;
@@ -82,6 +88,7 @@ EditContactContainer.manifest = Object.freeze({
   contact: contactResource,
   [DICT_CATEGORIES]: categoriesResource,
   contactsOrg: organizationResource,
+  privilegedContact: privilegedContactResource,
 });
 
 EditContactContainer.propTypes = {

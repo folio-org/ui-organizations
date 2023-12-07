@@ -24,6 +24,7 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
   collapseAllSections: jest.fn(),
 }));
 
+const pushMock = jest.fn();
 const defaultProps = {
   categories: [{ value: 'Customer Service', id: 'f52ceea4-8e35' }],
   contact,
@@ -40,6 +41,12 @@ const renderViewContact = (props = defaultProps) => render(
 describe('ViewContact', () => {
   beforeEach(() => {
     global.document.createRange = global.document.originalCreateRange;
+    useHistory.mockClear().mockReturnValue({
+      push: pushMock,
+      location: {
+        pathname: '/contacts/view/123',
+      },
+    });
   });
 
   afterEach(() => {
@@ -106,12 +113,6 @@ describe('ViewContact', () => {
     });
 
     it('should navigate to edit view when edit shortcut is called', () => {
-      const pushMock = jest.fn();
-
-      useHistory.mockClear().mockReturnValue({
-        push: pushMock,
-      });
-
       renderViewContact();
       HasCommand.mock.calls[0][0].commands.find(c => c.name === 'edit').handler();
 
@@ -119,12 +120,6 @@ describe('ViewContact', () => {
     });
 
     it('should navigate to list view when search shortcut is called', () => {
-      const pushMock = jest.fn();
-
-      useHistory.mockClear().mockReturnValue({
-        push: pushMock,
-      });
-
       renderViewContact();
       HasCommand.mock.calls[0][0].commands.find(c => c.name === 'search').handler();
 

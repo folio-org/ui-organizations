@@ -24,6 +24,10 @@ jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
   useHistory: jest.fn(),
 }));
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  PrivilegedDonorContacts: jest.fn(() => 'PrivilegedDonorContacts'),
+}));
 jest.mock('@folio/stripes-components/lib/Commander', () => ({
   HasCommand: jest.fn(({ children }) => <div>{children}</div>),
   expandAllSections: jest.fn(),
@@ -187,6 +191,20 @@ describe('OrganizationForm', () => {
       });
 
       expect(screen.getByText('OrganizationBankingInfoForm')).toBeInTheDocument();
+    });
+
+    it('should render privileged donor contacts form', () => {
+      useBankingInformationSettings.mockReturnValue({ enabled: true });
+
+      renderOrganizationForm({
+        ...defaultProps,
+        initialValues: {
+          isDonor: true,
+          isVendor: true,
+        },
+      });
+
+      expect(screen.getByText('PrivilegedDonorContacts')).toBeInTheDocument();
     });
   });
 
