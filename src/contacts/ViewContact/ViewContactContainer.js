@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { FormattedMessage } from 'react-intl';
@@ -14,11 +14,13 @@ import {
   categoriesResource,
   contactResource,
   organizationResource,
+  privilegedContactResource,
 } from '../../common/resources';
 import { DICT_CATEGORIES } from '../../common/constants';
 import { getBackPath } from '../../common/utils/createItem';
 import { useTranslatedCategories } from '../../common/hooks';
 
+import { PRIVILEGED_CONTACT_URL_PATH } from '../constants';
 import ViewContact from './ViewContact';
 import {
   deleteContact,
@@ -37,6 +39,7 @@ export function ViewContactContainer({
 }) {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [confirmUnassign, setConfirmUnassign] = useState(false);
+  const isPrivilegedContactUrl = match.path.includes(PRIVILEGED_CONTACT_URL_PATH);
 
   const _onClose = useCallback(() => {
     if (onClose) {
@@ -67,14 +70,22 @@ export function ViewContactContainer({
   }, [_onClose, contactId, hideConfirmUnassign, org, showMessage]);
 
   const onDeleteContact = useCallback(() => {
+    const contactMutator = isPrivilegedContactUrl ? mutator.privilegedContact : mutator.contact;
+
     hideConfirmDelete();
-    deleteContact(mutator.organization, mutator.contact, contactId, org)
+    deleteContact(mutator.organization, contactMutator, contactId, org)
       .then(() => _onClose())
       .catch(() => showMessage('ui-organizations.contacts.message.deleted.fail', 'error'));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [_onClose, contactId, hideConfirmDelete, org, showMessage]);
 
-  const contact = get(resources, 'contact.records[0]', {});
+  const contact = useMemo(() => {
+    if (isPrivilegedContactUrl) {
+      return get(resources, 'privilegedContact.records[0]', {});
+    }
+
+    return get(resources, 'contact.records[0]', {});
+  }, [isPrivilegedContactUrl, resources]);
   const contactCategories = get(resources, `${DICT_CATEGORIES}.records`);
   const [translatedCategories] = useTranslatedCategories(contactCategories);
   const editUrl = `${baseUrl}/${contact.id}/edit`;
@@ -124,6 +135,7 @@ ViewContactContainer.manifest = Object.freeze({
   contact: contactResource,
   [DICT_CATEGORIES]: categoriesResource,
   organization: organizationResource,
+  privilegedContact: privilegedContactResource,
 });
 
 ViewContactContainer.propTypes = {
