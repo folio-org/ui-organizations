@@ -39,14 +39,15 @@ const pages = [
   },
 ];
 
+const bankingAccountTypesPage = {
+  component: BankingAccountTypeSettings,
+  label: <FormattedMessage id="ui-organizations.settings.bankingAccountTypes" />,
+  perm: 'settings.organizations.enabled',
+  route: 'banking-account-types',
+};
+
 const SettingsPage = (props) => {
   const { enabled } = useBankingInformationSettings();
-  const bankingAccountTypesPage = {
-    component: BankingAccountTypeSettings,
-    label: <FormattedMessage id="ui-organizations.settings.bankingAccountTypes" />,
-    perm: 'settings.organizations.enabled',
-    route: 'banking-account-types',
-  };
 
   const settingsPages = useMemo(() => (enabled ? pages.concat(bankingAccountTypesPage) : pages), [enabled]);
 
