@@ -1,10 +1,11 @@
-import React from 'react';
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { organizationTypes } from 'fixtures';
-
 import { match, location, history } from '../../../test/jest/routerMocks';
-import { useTypes } from '../../common/hooks';
+import {
+  useBankingInformationSettings,
+  useTypes,
+} from '../../common/hooks';
 import OrganizationDetails from './OrganizationDetails';
 import { OrganizationDetailsContainer } from './OrganizationDetailsContainer';
 
@@ -14,6 +15,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
 }));
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
+  useBankingInformationSettings: jest.fn(),
   useTypes: jest.fn(),
 }));
 jest.mock('./OrganizationDetails', () => jest.fn(() => 'OrganizationDetails'));
@@ -49,6 +51,9 @@ const renderOrganizationDetailsContainer = () => render(
 describe('OrganizationDetailsContainer', () => {
   beforeEach(() => {
     mutatorMock.organizationDetailsOrg.GET.mockClear().mockReturnValue(Promise.resolve(organization));
+    useBankingInformationSettings
+      .mockClear()
+      .mockReturnValue({ enabled: true, isLoading: false });
     useTypes
       .mockClear()
       .mockReturnValue({ orgTypes: { organizationTypes, totalRecords: organizationTypes.length } });

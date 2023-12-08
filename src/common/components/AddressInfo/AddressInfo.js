@@ -1,9 +1,9 @@
-import React from 'react';
+import PropTypes from 'prop-types';
+import { useCallback, useMemo } from 'react';
 import {
   FormattedMessage,
   injectIntl,
 } from 'react-intl';
-import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 
@@ -21,6 +21,8 @@ import {
 } from '@folio/stripes-acq-components';
 
 import CategoryDropdown from '../../../Utils/CategoryDropdown';
+import { EVENT_EMITTER_EVENTS } from '../../constants';
+import { useEventEmitter } from '../../hooks';
 import {
   createAddNewItem,
   removeItem,
@@ -36,10 +38,20 @@ const AddressInfo = ({
   dropdownVendorCategories,
   intl,
 }) => {
-  const countriesOptions = countries.map(c => ({
-    label: intl.formatMessage({ id: `stripes-components.countries.${c.alpha2}` }),
-    value: c.alpha3,
-  }));
+  const eventEmitter = useEventEmitter();
+
+  const onCategoryChange = useCallback(() => {
+    eventEmitter.emit(EVENT_EMITTER_EVENTS.ADDRESS_CATEGORY_CHANGED);
+  }, [eventEmitter]);
+
+  const countriesOptions = useMemo(() => (
+    countries
+      .map(c => ({
+        label: intl.formatDisplayName(c.alpha2, { type: 'region' }),
+        value: c.alpha3,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label))
+  ), [intl]);
 
   // eslint-disable-next-line react/prop-types
   const Address = (name, index, fields) => {
@@ -161,6 +173,7 @@ const AddressInfo = ({
               ariaLabelledBy="addressFormCategoriesLabel"
               dropdownVendorCategories={dropdownVendorCategories}
               name={name}
+              onChange={onCategoryChange}
             />
           </Col>
         </Row>

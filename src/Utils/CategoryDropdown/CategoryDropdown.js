@@ -1,6 +1,7 @@
-import React, { useCallback, useMemo } from 'react';
+import find from 'lodash/find';
 import PropTypes from 'prop-types';
-import { find } from 'lodash';
+import { useCallback, useMemo } from 'react';
+import { useForm } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 
 import { OptionSegment } from '@folio/stripes/components';
@@ -8,7 +9,15 @@ import { FieldMultiSelectionFinal } from '@folio/stripes-acq-components';
 
 import { filterCategories } from './utils';
 
-function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabelledBy }) {
+function CategoryDropdown({
+  dropdownVendorCategories,
+  name,
+  withLabel,
+  ariaLabelledBy,
+  onChange: onChangeProp,
+}) {
+  const { change } = useForm();
+
   const fieldName = name ? `${name}.categories` : 'categories';
   const toString = useCallback((option) => (
     option ? `${fieldName}-${option}` : option
@@ -35,6 +44,12 @@ function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabel
     return dropdownVendorCategories.map(item => item.id) || [];
   }, [dropdownVendorCategories]);
 
+  const onChange = useCallback((value) => {
+    change(fieldName, value);
+
+    if (onChangeProp) onChangeProp(value);
+  }, [change, fieldName, onChangeProp]);
+
   return (
     <FieldMultiSelectionFinal
       label={withLabel ? <FormattedMessage id="ui-organizations.data.contactTypes.categories" /> : undefined}
@@ -44,6 +59,7 @@ function CategoryDropdown({ dropdownVendorCategories, name, withLabel, ariaLabel
       itemToString={toString}
       formatter={formatter}
       filter={filterItems}
+      onChange={onChange}
     />
   );
 }
@@ -53,6 +69,7 @@ CategoryDropdown.propTypes = {
   name: PropTypes.string,
   withLabel: PropTypes.bool,
   ariaLabelledBy: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 CategoryDropdown.defaultProps = {

@@ -1,23 +1,24 @@
-import React from 'react';
 import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query';
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
-import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
-import { organizationTypes as organizationTypesMock } from 'fixtures';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
+import { organizationTypes as organizationTypesMock } from 'fixtures';
 import OrganizationDetails from './OrganizationDetails';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   useAcqRestrictions: jest.fn().mockReturnValue({ restrictions: {} }),
+  PrivilegedDonorsListContainer: jest.fn(() => 'PrivilegedDonorsListContainer'),
   TagsPane: jest.fn(() => 'TagsPane'),
 }));
 jest.mock('@folio/stripes-smart-components/lib/Notes/NotesSmartAccordion', () => () => 'NotesSmartAccordion');
 jest.mock('./OrganizationAccounts', () => ({ OrganizationAccounts: () => 'OrganizationAccounts' }));
+jest.mock('./OrganizationBankingInfo', () => ({ OrganizationBankingInfo: () => 'OrganizationBankingInfo' }));
 jest.mock('./IntegrationDetails', () => ({ IntegrationDetails: () => 'IntegrationDetails' }));
 jest.mock('./OrganizationAgreements', () => ({ OrganizationAgreements: () => 'OrganizationAgreements' }));
 jest.mock('./OrganizationVendorInfo', () => ({ OrganizationVendorInfo: () => 'OrganizationVendorInfo' }));
@@ -127,6 +128,19 @@ describe('OrganizationDetails', () => {
     expect(screen.getByText('OrganizationAccounts')).toBeDefined();
   });
 
+  it('should display Donor Contacts accordion when both vendor and donor have been checked', () => {
+    renderOrganizationDetails({
+      ...defaultProps,
+      organization: {
+        name: 'Amazon',
+        isVendor: true,
+        isDonor: true,
+      },
+    });
+
+    expect(screen.getByText('ui-organizations.privilegedDonorInformation')).toBeDefined();
+  });
+
   it('should display warning message if vendor has not unique account numbers', () => {
     renderOrganizationDetails({
       ...defaultProps,
@@ -138,6 +152,16 @@ describe('OrganizationDetails', () => {
     });
 
     expect(screen.getByText('ui-organizations.view.duplicateAccounts')).toBeDefined();
+  });
+
+  it('should display banking information accordion when org is vendor and related settings are enabled', () => {
+    renderOrganizationDetails({
+      ...defaultProps,
+      isBankingInformationEnabled: true,
+      organization: { name: 'Amazon', isVendor: true },
+    });
+
+    expect(screen.getByText('OrganizationBankingInfo')).toBeInTheDocument();
   });
 
   describe('Actions', () => {

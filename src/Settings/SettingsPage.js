@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { Settings } from '@folio/stripes/smart-components';
 
+import { useBankingInformationSettings } from '../common/hooks';
 import { CategorySettings } from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
 import NumberGeneratorOptions from './NumberGeneratorOptions';
+import { BankingAccountTypeSettings } from './BankingAccountTypeSettings';
+import { BankingInformationSettings } from './BankingInformationSettings';
 
 const pages = [
   {
@@ -28,13 +31,31 @@ const pages = [
     interface: 'servint',
     route: 'numberGeneratorOptions',
   },
+  {
+    component: BankingInformationSettings,
+    label: <FormattedMessage id="ui-organizations.settings.bankingInformation" />,
+    perm: 'settings.organizations.enabled',
+    route: 'banking-information',
+  },
 ];
 
+const bankingAccountTypesPage = {
+  component: BankingAccountTypeSettings,
+  label: <FormattedMessage id="ui-organizations.settings.bankingAccountTypes" />,
+  perm: 'settings.organizations.enabled',
+  route: 'banking-account-types',
+};
+
 const SettingsPage = (props) => {
+  const { enabled } = useBankingInformationSettings();
+
+  const settingsPages = useMemo(() => (enabled ? pages.concat(bankingAccountTypesPage) : pages), [enabled]);
+
   return (
     <Settings
       {...props}
-      pages={pages}
+      key={settingsPages.length}
+      pages={settingsPages}
       paneTitle={<FormattedMessage id="ui-organizations.settings.vendorSettings" />}
     />
   );

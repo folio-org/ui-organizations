@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/prefer-default-export
-export const saveContact = (mutator, contact, org) => {
+export const saveContact = (mutator, contact, org, isPrivilegedContactUrl = false) => {
   const isNew = !contact.id;
-  const httpMethod = isNew ? mutator.contact.POST : mutator.contact.PUT;
+  const currentMutator = isPrivilegedContactUrl ? mutator.privilegedContact : mutator.contact;
+  const httpMethod = isNew ? currentMutator.POST : currentMutator.PUT;
 
   return httpMethod(contact)
     .then(savedContact => {

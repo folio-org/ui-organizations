@@ -31,19 +31,19 @@ class Organizations extends Component {
       <Switch>
         <Route
           component={ContactsContainer}
-          path="/organizations/contacts/"
+          path={[
+            '/organizations/contacts/',
+            '/organizations/privileged-contacts/',
+            '/organizations/:orgId/contacts/',
+            '/organizations/:orgId/privileged-contacts/',
+          ]}
         />
         <Route
           component={InterfaceContainer}
-          path="/organizations/interface/"
-        />
-        <Route
-          component={ContactsContainer}
-          path="/organizations/:orgId/contacts/"
-        />
-        <Route
-          component={InterfaceContainer}
-          path="/organizations/:orgId/interface/"
+          path={[
+            '/organizations/interface/',
+            '/organizations/:orgId/interface/',
+          ]}
         />
         <Route
           path="/organizations/:orgId/integration/"

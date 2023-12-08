@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import { useCallback, useEffect, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
 import {
   useLocation,
   useHistory,
@@ -33,6 +33,7 @@ import {
 import { NotesSmartAccordion } from '@folio/stripes/smart-components';
 import {
   handleKeyCommand,
+  PrivilegedDonorsListContainer,
   TagsBadge,
   TagsPane,
   useAcqRestrictions,
@@ -44,22 +45,38 @@ import {
   ORGANIZATIONS_ROUTE,
 } from '../../common/constants';
 import {
-  ORG_DOMAIN,
-  ORG_NOTE_TYPE,
-} from '../Notes/const';
-import {
   ORGANIZATION_SECTIONS,
   ORGANIZATION_SECTION_LABELS,
 } from '../constants';
+import {
+  ORG_DOMAIN,
+  ORG_NOTE_TYPE,
+} from '../Notes/const';
+import { IntegrationDetails } from './IntegrationDetails';
 import { LinkedAgreements } from './LinkedAgreements';
-import { OrganizationSummary } from './OrganizationSummary';
+import { OrganizationAccounts } from './OrganizationAccounts';
+import { OrganizationAgreements } from './OrganizationAgreements';
+import { OrganizationBankingInfo } from './OrganizationBankingInfo';
 import { OrganizationContactInfo } from './OrganizationContactInfo';
 import { OrganizationContactPeopleContainer } from './OrganizationContactPeople';
 import { OrganizationInterfacesContainer } from './OrganizationInterfaces';
+import { OrganizationSummary } from './OrganizationSummary';
 import { OrganizationVendorInfo } from './OrganizationVendorInfo';
-import { OrganizationAgreements } from './OrganizationAgreements';
-import { OrganizationAccounts } from './OrganizationAccounts';
-import { IntegrationDetails } from './IntegrationDetails';
+
+const {
+  accountsSection,
+  agreements,
+  bankingInformationSection,
+  contactInformationSection,
+  contactPeopleSection,
+  privilegedDonorInformation,
+  integrationDetailsSection,
+  interfacesSection,
+  notesSection,
+  summarySection,
+  vendorInformationSection,
+  vendorTermsSection,
+} = ORGANIZATION_SECTIONS;
 
 const OrganizationDetails = ({
   onClose,
@@ -70,21 +87,23 @@ const OrganizationDetails = ({
   organization,
   organizationCategories,
   integrationConfigs,
+  isBankingInformationEnabled,
   organizationTypes,
 }) => {
   const stripes = useStripes();
   const [isRemoveModalOpened, toggleRemoveModal] = useModalToggle();
   const initialAccordionStatus = {
-    [ORGANIZATION_SECTIONS.summarySection]: true,
-    [ORGANIZATION_SECTIONS.contactInformationSection]: false,
-    [ORGANIZATION_SECTIONS.contactPeopleSection]: true,
-    [ORGANIZATION_SECTIONS.interfacesSection]: false,
-    [ORGANIZATION_SECTIONS.vendorInformationSection]: false,
-    [ORGANIZATION_SECTIONS.vendorTermsSection]: false,
-    [ORGANIZATION_SECTIONS.integrationDetailsSection]: false,
-    [ORGANIZATION_SECTIONS.accountsSection]: false,
-    [ORGANIZATION_SECTIONS.notesSection]: false,
-    [ORGANIZATION_SECTIONS.agreements]: false,
+    [summarySection]: true,
+    [contactInformationSection]: false,
+    [contactPeopleSection]: true,
+    [interfacesSection]: false,
+    [vendorInformationSection]: false,
+    [vendorTermsSection]: false,
+    [integrationDetailsSection]: false,
+    [accountsSection]: false,
+    [bankingInformationSection]: false,
+    [notesSection]: false,
+    [agreements]: false,
   };
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
   const paneTitleRef = useRef();
@@ -92,9 +111,11 @@ const OrganizationDetails = ({
   const history = useHistory();
   const accordionStatusRef = useRef();
   const isDetailsPaneInFocus = location.state?.isDetailsPaneInFocus;
+  const isDonorVisible = organization?.isVendor && organization?.isDonor;
   const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
     organization.id, organization.acqUnitIds,
   );
+
   const accountNumbers = (organization.isVendor && organization.accounts?.map(({ accountNo }) => accountNo)) || [];
   const hasDuplicateAccountNumbers = [...new Set(accountNumbers)].length !== accountNumbers.length;
 
@@ -259,8 +280,8 @@ const OrganizationDetails = ({
 
           <AccordionSet initialStatus={initialAccordionStatus}>
             <Accordion
-              id={ORGANIZATION_SECTIONS.summarySection}
-              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.summarySection]}
+              id={summarySection}
+              label={ORGANIZATION_SECTION_LABELS[summarySection]}
             >
               <OrganizationSummary
                 acqUnitIds={organization.acqUnitIds}
@@ -284,14 +305,14 @@ const OrganizationDetails = ({
               entityName={organization.name}
               entityType={ORG_NOTE_TYPE}
               hideAssignButton
-              id={ORGANIZATION_SECTIONS.notesSection}
+              id={notesSection}
               pathToNoteCreate={`${NOTES_ROUTE}/new`}
               pathToNoteDetails={NOTES_ROUTE}
             />
 
             <Accordion
-              id={ORGANIZATION_SECTIONS.contactInformationSection}
-              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactInformationSection]}
+              id={contactInformationSection}
+              label={ORGANIZATION_SECTION_LABELS[contactInformationSection]}
             >
               <OrganizationContactInfo
                 organization={organization}
@@ -300,8 +321,8 @@ const OrganizationDetails = ({
             </Accordion>
 
             <Accordion
-              id={ORGANIZATION_SECTIONS.contactPeopleSection}
-              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.contactPeopleSection]}
+              id={contactPeopleSection}
+              label={ORGANIZATION_SECTION_LABELS[contactPeopleSection]}
             >
               <OrganizationContactPeopleContainer
                 contactsIds={organization.contacts}
@@ -310,8 +331,8 @@ const OrganizationDetails = ({
             </Accordion>
 
             <Accordion
-              id={ORGANIZATION_SECTIONS.interfacesSection}
-              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.interfacesSection]}
+              id={interfacesSection}
+              label={ORGANIZATION_SECTION_LABELS[interfacesSection]}
             >
               <OrganizationInterfacesContainer
                 interfaceIds={organization.interfaces}
@@ -319,11 +340,24 @@ const OrganizationDetails = ({
             </Accordion>
 
             {
+              isDonorVisible && (
+              <Accordion
+                id={privilegedDonorInformation}
+                label={ORGANIZATION_SECTION_LABELS[privilegedDonorInformation]}
+              >
+                <PrivilegedDonorsListContainer
+                  privilegedContactIds={organization.privilegedContacts}
+                />
+              </Accordion>
+              )
+            }
+
+            {
               organization.isVendor && (
                 <>
                   <Accordion
-                    id={ORGANIZATION_SECTIONS.vendorInformationSection}
-                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
+                    id={vendorInformationSection}
+                    label={ORGANIZATION_SECTION_LABELS[vendorInformationSection]}
                   >
                     <OrganizationVendorInfo
                       paymentMethod={organization.paymentMethod}
@@ -343,8 +377,8 @@ const OrganizationDetails = ({
                   </Accordion>
 
                   <Accordion
-                    id={ORGANIZATION_SECTIONS.vendorTermsSection}
-                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorTermsSection]}
+                    id={vendorTermsSection}
+                    label={ORGANIZATION_SECTION_LABELS[vendorTermsSection]}
                   >
                     <OrganizationAgreements
                       agreements={organization.agreements}
@@ -352,8 +386,8 @@ const OrganizationDetails = ({
                   </Accordion>
 
                   <Accordion
-                    id={ORGANIZATION_SECTIONS.integrationDetailsSection}
-                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.integrationDetailsSection]}
+                    id={integrationDetailsSection}
+                    label={ORGANIZATION_SECTION_LABELS[integrationDetailsSection]}
                     displayWhenOpen={addIntegrationButton}
                   >
                     <IntegrationDetails
@@ -363,20 +397,31 @@ const OrganizationDetails = ({
                   </Accordion>
 
                   <Accordion
-                    id={ORGANIZATION_SECTIONS.accountsSection}
-                    label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.accountsSection]}
+                    id={accountsSection}
+                    label={ORGANIZATION_SECTION_LABELS[accountsSection]}
                   >
                     <OrganizationAccounts
                       accounts={organization.accounts}
                     />
                   </Accordion>
+
+                  {isBankingInformationEnabled && (
+                    <IfPermission perm="ui-organizations.banking-information.view">
+                      <Accordion
+                        id={ORGANIZATION_SECTIONS.bankingInformationSection}
+                        label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
+                      >
+                        <OrganizationBankingInfo organization={organization} />
+                      </Accordion>
+                    </IfPermission>
+                  )}
                 </>
               )
             }
 
             <LinkedAgreements
-              id={ORGANIZATION_SECTIONS.agreements}
-              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.agreements]}
+              id={agreements}
+              label={ORGANIZATION_SECTION_LABELS[agreements]}
               organization={organization}
             />
           </AccordionSet>
@@ -420,11 +465,13 @@ OrganizationDetails.propTypes = {
     value: PropTypes.string,
   })),
   integrationConfigs: PropTypes.arrayOf(PropTypes.object),
+  isBankingInformationEnabled: PropTypes.bool,
   organizationTypes: PropTypes.arrayOf(PropTypes.object),
 };
 
 OrganizationDetails.defaultProps = {
   organizationCategories: [],
+  isBankingInformationEnabled: false,
 };
 
 export default OrganizationDetails;
