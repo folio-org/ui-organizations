@@ -32,8 +32,8 @@ import {
   useLocationSorting,
 } from '@folio/stripes-acq-components';
 import {
+  getSearchableIndexes,
   OrganizationsListFilter,
-  searchableIndexes,
 } from '@folio/plugin-find-organization';
 
 import {
@@ -104,6 +104,10 @@ const OrganizationsList = ({
   useFiltersReset(resetFilters);
 
   const { isFiltersOpened, toggleFilters } = useFiltersToogle('ui-organizations/filters');
+
+  const searchableIndexes = useMemo(() => (
+    getSearchableIndexes(stripes)
+  ), [stripes]);
 
   const urlParams = useMemo(() => (
     matchPath(location.pathname, { path: `${VIEW_ORG_DETAILS}:id` })

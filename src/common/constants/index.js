@@ -1,5 +1,6 @@
 export * from './api';
 export * from './categories';
+export * from './events';
 export * from './interfaces';
 export * from './organization';
 export * from './organizationTypes';

@@ -1,0 +1,1 @@
+export { useBankingInformationMutation } from './useBankingInformationMutation';

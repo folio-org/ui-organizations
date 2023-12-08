@@ -1,4 +1,8 @@
-import { CONTACTS_API, MAX_LIMIT } from '../constants';
+import {
+  CONTACTS_API,
+  MAX_LIMIT,
+  PRIVILEGED_CONTACTS_API,
+} from '../constants';
 
 export const contactResource = {
   throwErrors: false,
@@ -6,6 +10,15 @@ export const contactResource = {
   path: `${CONTACTS_API}/:{id}`,
   POST: {
     path: CONTACTS_API,
+  },
+};
+
+export const privilegedContactResource = {
+  throwErrors: false,
+  type: 'okapi',
+  path: `${PRIVILEGED_CONTACTS_API}/:{id}`,
+  POST: {
+    path: PRIVILEGED_CONTACTS_API,
   },
 };
 

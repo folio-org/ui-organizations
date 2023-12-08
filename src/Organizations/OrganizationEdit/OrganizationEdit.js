@@ -1,6 +1,7 @@
-import React, {
+import {
   useCallback,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -19,19 +20,27 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { VIEW_ORG_DETAILS } from '../../common/constants';
+import { useOrganizationBankingInformation } from '../../common/hooks';
 import { organizationResourceByUrl } from '../../common/resources';
-import {
-  OrganizationForm,
-} from '../OrganizationForm';
+import { BANKING_INFORMATION_FIELD_NAME } from '../constants';
+import { OrganizationForm } from '../OrganizationForm';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
+import { useBankingInformationManager } from '../useBankingInformationManager';
 
 export const OrganizationEdit = ({ match, history, location, mutator }) => {
   const organizationId = match.params.id;
 
   const [organization, setOrganization] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  const [isOrganizationLoading, setIsOrganizationLoading] = useState(true);
   const showCallout = useShowCallout();
   const intl = useIntl();
+
+  const { manageBankingInformation } = useBankingInformationManager();
+
+  const {
+    bankingInformation: bankingInformationData,
+    isLoading: isBankingInformationLoading,
+  } = useOrganizationBankingInformation(organizationId);
 
   useEffect(
     () => {
@@ -39,7 +48,7 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
         .then(organizationsResponse => {
           setOrganization(organizationsResponse);
         })
-        .finally(() => setIsLoading(false));
+        .finally(() => setIsOrganizationLoading(false));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
@@ -58,8 +67,17 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
   );
 
   const updateOrganization = useCallback(
-    (data) => {
+    (values, { getFieldState }) => {
+      const { [BANKING_INFORMATION_FIELD_NAME]: bankingInformation, ...data } = values;
+
       return mutator.editOrganizationOrg.PUT(data)
+        .then(() => {
+          return manageBankingInformation({
+            initBankingInformation: getFieldState(BANKING_INFORMATION_FIELD_NAME)?.initial,
+            bankingInformation,
+            organization: values,
+          });
+        })
         .then(() => {
           setTimeout(cancelForm);
           showCallout({
@@ -72,8 +90,15 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [cancelForm, intl, showCallout],
+    [cancelForm, intl, manageBankingInformation, showCallout],
   );
+
+  const initialValues = useMemo(() => ({
+    [BANKING_INFORMATION_FIELD_NAME]: bankingInformationData,
+    ...organization,
+  }), [organization, bankingInformationData]);
+
+  const isLoading = isOrganizationLoading || isBankingInformationLoading;
 
   if (isLoading) {
     return (
@@ -85,7 +110,7 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
 
   return (
     <OrganizationForm
-      initialValues={organization}
+      initialValues={initialValues}
       onSubmit={updateOrganization}
       cancelForm={cancelForm}
       paneTitle={<FormattedMessage id="ui-organizations.editOrg.title" values={{ name: organization.name }} />}

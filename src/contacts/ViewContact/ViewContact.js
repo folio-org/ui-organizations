@@ -34,6 +34,7 @@ import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import {
   CONTACT_PERSON_ACCORDIONS,
   CONTACT_PERSON_ACCORDION_LABELS,
+  PRIVILEGED_CONTACT_URL_PATH,
 } from '../constants';
 import ContactDetails from './ContactDetails';
 import ContactAddresses from './ContactAddresses';
@@ -51,6 +52,7 @@ const ViewContact = ({
 }) => {
   const history = useHistory();
   const accordionStatusRef = useRef();
+  const isPrivilegedContactUrl = history.location?.pathname?.includes(PRIVILEGED_CONTACT_URL_PATH);
 
   const stripes = useStripes();
 
@@ -81,6 +83,7 @@ const ViewContact = ({
   // eslint-disable-next-line react/prop-types
   const getActionMenu = ({ onToggle }) => {
     const contactId = contact.id;
+    const isUnassignVisible = contactId && !isPrivilegedContactUrl;
 
     return (
       <div data-test-view-contact-actions>
@@ -95,7 +98,7 @@ const ViewContact = ({
             </Icon>
           </Button>
         </IfPermission>
-        {contactId && (
+        {isUnassignVisible && (
           <Button
             data-test-contacts-action-unassign
             data-testid="unassign-contact"

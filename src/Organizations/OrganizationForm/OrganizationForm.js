@@ -1,9 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router';
 import { mapValues } from 'lodash';
 
+import { IfPermission } from '@folio/stripes/core';
 import stripesForm from '@folio/stripes/final-form';
 import {
   Accordion,
@@ -19,11 +19,14 @@ import {
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   FormFooter,
+  PrivilegedDonorContacts,
   handleKeyCommand,
   useAccordionToggle,
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
+import { useBankingInformationSettings } from '../../common/hooks';
+import { OrganizationBankingInfoForm } from './OrganizationBankingInfoForm';
 import { OrganizationSummaryForm } from './OrganizationSummaryForm';
 import { OrganizationContactInfoFormContainer } from './OrganizationContactInfoForm';
 import { OrganizationContactPeopleForm } from './OrganizationContactPeopleForm';
@@ -53,7 +56,9 @@ const OrganizationForm = ({
     [ORGANIZATION_SECTIONS.contactInformationSection]: false,
     [ORGANIZATION_SECTIONS.contactPeopleSection]: false,
     [ORGANIZATION_SECTIONS.interfacesSection]: false,
+    [ORGANIZATION_SECTIONS.privilegedDonorInformation]: false,
     [ORGANIZATION_SECTIONS.vendorInformationSection]: false,
+    [ORGANIZATION_SECTIONS.bankingInformationSection]: false,
     [ORGANIZATION_SECTIONS.vendorTermsSection]: false,
     [ORGANIZATION_SECTIONS.accountsSection]: false,
   };
@@ -69,6 +74,9 @@ const OrganizationForm = ({
     : stateSections;
   const history = useHistory();
   const { id, interfaces, contacts, metadata } = initialValues;
+
+  const { enabled: isBankingInformationEnabled } = useBankingInformationSettings();
+
   const shortcuts = [
     {
       name: 'cancel',
@@ -193,6 +201,20 @@ const OrganizationForm = ({
                   {
                     formValues.isVendor && (
                       <>
+                        {
+                          formValues.isDonor && (
+                            <Accordion
+                              id={ORGANIZATION_SECTIONS.privilegedDonorInformation}
+                              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.privilegedDonorInformation]}
+                            >
+                              <PrivilegedDonorContacts
+                                orgId={id}
+                                privilegedContactIds={formValues.privilegedContacts}
+                                isPrivilegedContactEnabled
+                              />
+                            </Accordion>
+                          )
+                        }
                         <Accordion
                           id={ORGANIZATION_SECTIONS.vendorInformationSection}
                           label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
@@ -216,6 +238,17 @@ const OrganizationForm = ({
                             accountFormValues={formValues.accounts}
                           />
                         </Accordion>
+
+                        {isBankingInformationEnabled && (
+                          <IfPermission perm="ui-organizations.banking-information.edit">
+                            <Accordion
+                              id={ORGANIZATION_SECTIONS.bankingInformationSection}
+                              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.bankingInformationSection]}
+                            >
+                              <OrganizationBankingInfoForm />
+                            </Accordion>
+                          </IfPermission>
+                        )}
                       </>
                     )
                   }

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export function createAddNewItem(defaultLanguage) {
   return fields => {
     const newItem = {};

@@ -23,7 +23,13 @@ import {
   WEEKDAYS,
 } from '../../constants';
 
-const ALLOWED_SCHEDULE_PERIODS = [SCHEDULE_PERIODS.days, SCHEDULE_PERIODS.weeks, SCHEDULE_PERIODS.none];
+const ALLOWED_SCHEDULE_PERIODS = [
+  SCHEDULE_PERIODS.none,
+  SCHEDULE_PERIODS.hours,
+  SCHEDULE_PERIODS.days,
+  SCHEDULE_PERIODS.weeks,
+  SCHEDULE_PERIODS.months,
+];
 
 const normalizeNumber = value => {
   if (!value && value !== 0) return value;

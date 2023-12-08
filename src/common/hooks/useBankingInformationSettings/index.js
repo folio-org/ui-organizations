@@ -1,0 +1,1 @@
+export { useBankingInformationSettings } from './useBankingInformationSettings';

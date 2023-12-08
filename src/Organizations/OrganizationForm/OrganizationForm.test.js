@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
@@ -16,16 +17,25 @@ import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import { organizationTypes } from 'fixtures';
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
+import { useBankingInformationSettings } from '../../common/hooks';
 import OrganizationForm from './OrganizationForm';
 
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
   useHistory: jest.fn(),
 }));
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  PrivilegedDonorContacts: jest.fn(() => 'PrivilegedDonorContacts'),
+}));
 jest.mock('@folio/stripes-components/lib/Commander', () => ({
   HasCommand: jest.fn(({ children }) => <div>{children}</div>),
   expandAllSections: jest.fn(),
   collapseAllSections: jest.fn(),
+}));
+jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
+  useBankingInformationSettings: jest.fn(),
 }));
 jest.mock(
   './OrganizationSummaryForm',
@@ -55,6 +65,9 @@ jest.mock(
   './OrganizationAccountsForm',
   () => ({ OrganizationAccountsForm: () => 'OrganizationAccountsForm' }),
 );
+jest.mock('./OrganizationBankingInfoForm', () => ({
+  OrganizationBankingInfoForm: () => 'OrganizationBankingInfoForm',
+}));
 
 const queryAllByClass = queryHelpers.queryAllByAttribute.bind(null, 'class');
 
@@ -68,14 +81,27 @@ const defaultProps = {
   organizationTypes: organizationTypesMock,
   cancelForm: jest.fn(),
 };
+
+const queryClient = new QueryClient();
+
+const wrapper = ({ children }) => (
+  <MemoryRouter>
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
+  </MemoryRouter>
+);
+
 const renderOrganizationForm = (props = defaultProps) => render(
   <OrganizationForm {...props} />,
-  { wrapper: MemoryRouter },
+  { wrapper },
 );
 
 describe('OrganizationForm', () => {
   beforeEach(() => {
     global.document.createRange = global.document.originalCreateRange;
+
+    useBankingInformationSettings.mockClear().mockReturnValue({ enabled: false });
   });
 
   afterEach(() => {
@@ -154,6 +180,31 @@ describe('OrganizationForm', () => {
           .filter(collapseButton => collapseButton.getAttribute('aria-expanded') === 'true')
           .length,
       ).toBe(sections.length);
+    });
+
+    it('should render banking information form', () => {
+      useBankingInformationSettings.mockReturnValue({ enabled: true });
+
+      renderOrganizationForm({
+        ...defaultProps,
+        initialValues: { isVendor: true },
+      });
+
+      expect(screen.getByText('OrganizationBankingInfoForm')).toBeInTheDocument();
+    });
+
+    it('should render privileged donor contacts form', () => {
+      useBankingInformationSettings.mockReturnValue({ enabled: true });
+
+      renderOrganizationForm({
+        ...defaultProps,
+        initialValues: {
+          isDonor: true,
+          isVendor: true,
+        },
+      });
+
+      expect(screen.getByText('PrivilegedDonorContacts')).toBeInTheDocument();
     });
   });
 

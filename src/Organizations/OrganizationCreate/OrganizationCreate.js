@@ -1,19 +1,17 @@
-import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { useCallback, useMemo } from 'react';
 import { useIntl } from 'react-intl';
+import { withRouter } from 'react-router-dom';
 
-import {
-  stripesConnect,
-} from '@folio/stripes/core';
+import { stripesConnect } from '@folio/stripes/core';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
 import { VIEW_ORG_DETAILS } from '../../common/constants';
 import { organizationsResource } from '../../common/resources';
-import {
-  OrganizationForm,
-} from '../OrganizationForm';
+import { BANKING_INFORMATION_FIELD_NAME } from '../constants';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
+import { OrganizationForm } from '../OrganizationForm';
+import { useBankingInformationManager } from '../useBankingInformationManager';
 
 const INITIAL_VALUES = {
   interfaces: [],
@@ -32,6 +30,8 @@ const INITIAL_VALUES = {
 };
 
 export const OrganizationCreate = ({ history, location, mutator }) => {
+  const { manageBankingInformation } = useBankingInformationManager();
+
   const cancelForm = useCallback(
     (id) => {
       history.push({
@@ -45,9 +45,21 @@ export const OrganizationCreate = ({ history, location, mutator }) => {
 
   const showCallout = useShowCallout();
   const intl = useIntl();
+
   const createOrganization = useCallback(
-    (data) => {
+    (values, { getFieldState }) => {
+      const { [BANKING_INFORMATION_FIELD_NAME]: bankingInformation, ...data } = values;
+
       return mutator.createOrganizationOrg.POST(data)
+        .then(async organization => {
+          await manageBankingInformation({
+            initBankingInformation: getFieldState(BANKING_INFORMATION_FIELD_NAME)?.initial,
+            bankingInformation,
+            organization,
+          });
+
+          return organization;
+        })
         .then(organization => {
           setTimeout(() => cancelForm(organization.id));
           showCallout({
@@ -60,12 +72,17 @@ export const OrganizationCreate = ({ history, location, mutator }) => {
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [cancelForm, intl, showCallout],
+    [cancelForm, intl, manageBankingInformation, showCallout],
   );
+
+  const initialValues = useMemo(() => ({
+    [BANKING_INFORMATION_FIELD_NAME]: [],
+    ...INITIAL_VALUES,
+  }), []);
 
   return (
     <OrganizationForm
-      initialValues={INITIAL_VALUES}
+      initialValues={initialValues}
       onSubmit={createOrganization}
       cancelForm={cancelForm}
     />
