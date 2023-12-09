@@ -437,16 +437,17 @@
     "data.bankingInformation.accountType": "Account type",
     "data.bankingInformation.addressCategory": "Address category",
     "data.bankingInformation.bankAccountNumber": "Bank account number",
-    "data.bankingInformation.bankName": "Bank name",
+    "data.bankingInformation.bankName": "Nazwa banku",
     "data.bankingInformation.isPrimary": "Use as primary banking information",
     "data.bankingInformation.notes": "Notes",
     "data.bankingInformation.transitNumber": "Transit number",
     "bankingInformation": "Banking information",
     "bankingInformation.save.error": "Failed to save banking information.",
     "button.bankingInformation.add": "Add banking information",
-    "donorContacts": "Donor contacts",
     "permission.banking-information.view": "Organizations: View banking information",
     "permission.banking-information.edit": "Organizations: View and edit banking information",
     "permission.banking-information.create": "Organizations: View, edit and create banking information",
-    "permission.banking-information.delete": "Organizations: View, edit, create and delete banking information"
+    "permission.banking-information.delete": "Organizations: View, edit, create and delete banking information",
+    "search.bankingInformation.bankAccountNumber": "Numer konta bankowego",
+    "privilegedDonorInformation": "Privileged donor information"
 }
