@@ -177,7 +177,8 @@
         "visible": true,
         "subPermissions": [
           "organizations.banking-information.collection.get",
-          "organizations.banking-information.item.get"
+          "organizations.banking-information.item.get",
+          "organizations-storage.banking-account-types.collection.get"
         ]
       },
       {
