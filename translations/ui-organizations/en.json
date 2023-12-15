@@ -485,5 +485,7 @@
   "permission.banking-information.create": "Organizations: View, edit and create banking information",
   "permission.banking-information.delete": "Organizations: View, edit, create and delete banking information",
   "permission.settings.view": "Settings (Organizations): View settings",
-  "permission.settings": "Settings (Organizations): Can view and edit settings"
+  "permission.settings": "Settings (Organizations): Can view and edit settings",
+  "permission.privileged-contacts.view":"Organizations: can view privileged donor information",
+  "permission.privileged-contacts.edit":"Organizations: can view, create, edit, delete privileged donor information"
 }

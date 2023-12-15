@@ -97,8 +97,6 @@
           "organizations-storage.interfaces.collection.get",
           "organizations-storage.phone-numbers.collection.get",
           "organizations-storage.phone-numbers.item.get",
-          "organizations-storage.privileged-contacts.collection.get",
-          "organizations-storage.privileged-contacts.item.get",
           "organizations-storage.settings.collection.get",
           "organizations-storage.urls.collection.get",
           "organizations-storage.urls.item.get",
@@ -121,9 +119,6 @@
           "organizations-storage.contacts.item.post",
           "organizations-storage.contacts.item.put",
           "organizations-storage.contacts.item.delete",
-          "organizations-storage.privileged-contacts.item.post",
-          "organizations-storage.privileged-contacts.item.put",
-          "organizations-storage.privileged-contacts.item.delete",
           "organizations-storage.interfaces.item.post",
           "organizations-storage.interfaces.item.put",
           "organizations-storage.interfaces.item.delete",
@@ -154,6 +149,26 @@
           "organizations-storage.phone-numbers.item.delete",
           "organizations-storage.urls.item.delete",
           "ui-organizations.edit"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.privileged-contacts.view",
+        "displayName": "Organizations: can view privileged donor information",
+        "visible": true,
+        "subPermissions": [
+          "organizations-storage.privileged-contacts.collection.get",
+          "organizations-storage.privileged-contacts.item.get"
+        ]
+      },
+      {
+        "permissionName": "ui-organizations.privileged-contacts.edit",
+        "displayName": "Organizations: can view, create, edit, delete privileged donor information",
+        "visible": true,
+        "subPermissions": [
+          "ui-organizations.privileged-contacts.view",
+          "organizations-storage.privileged-contacts.item.post",
+          "organizations-storage.privileged-contacts.item.put",
+          "organizations-storage.privileged-contacts.item.delete"
         ]
       },
       {
