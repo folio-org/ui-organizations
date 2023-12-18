@@ -449,5 +449,7 @@
     "permission.banking-information.create": "Organizações: Visualizar, editar e criar informações bancárias",
     "permission.banking-information.delete": "Organizações: Visualizar, editar, criar e excluir informações bancárias",
     "search.bankingInformation.bankAccountNumber": "Número da conta bancária",
-    "privilegedDonorInformation": "Informações privilegiadas de doadores"
+    "privilegedDonorInformation": "Informações privilegiadas de doadores",
+    "permission.privileged-contacts.view": "Organizações: podem visualizar informações privilegiadas de doadores",
+    "permission.privileged-contacts.edit": "Organizações: podem visualizar, criar, editar e excluir informações privilegiadas de doadores"
 }
