@@ -449,5 +449,7 @@
     "permission.banking-information.create": "Organizations: View, edit and create banking information",
     "permission.banking-information.delete": "Organizations: View, edit, create and delete banking information",
     "search.bankingInformation.bankAccountNumber": "Numer konta bankowego",
-    "privilegedDonorInformation": "Privileged donor information"
+    "privilegedDonorInformation": "Privileged donor information",
+    "permission.privileged-contacts.view": "Organizations: can view privileged donor information",
+    "permission.privileged-contacts.edit": "Organizations: can view, create, edit, delete privileged donor information"
 }

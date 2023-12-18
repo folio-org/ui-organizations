@@ -438,7 +438,7 @@
     "data.bankingInformation.addressCategory": "Kategorie adresy",
     "data.bankingInformation.bankAccountNumber": "Číslo bankovního účtu",
     "data.bankingInformation.bankName": "Název banky",
-    "data.bankingInformation.isPrimary": "Použít jako primární bankovní informace",
+    "data.bankingInformation.isPrimary": "Použít jako hlavní bankovní informace",
     "data.bankingInformation.notes": "Poznámky",
     "data.bankingInformation.transitNumber": "Tranzitní číslo",
     "bankingInformation": "Bankovní informace",
@@ -449,5 +449,7 @@
     "permission.banking-information.create": "Organizace: Zobrazit, upravit a vytvořit bankovní informace",
     "permission.banking-information.delete": "Organizace: Zobrazit, upravit, vytvořit a smazat bankovní informace",
     "search.bankingInformation.bankAccountNumber": "Číslo bankovního účtu",
-    "privilegedDonorInformation": "Privileged donor information"
+    "privilegedDonorInformation": "Informace o privilegovaných dárcích",
+    "permission.privileged-contacts.view": "Organizations: can view privileged donor information",
+    "permission.privileged-contacts.edit": "Organizations: can view, create, edit, delete privileged donor information"
 }

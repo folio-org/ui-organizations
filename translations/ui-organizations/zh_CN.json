@@ -449,5 +449,7 @@
     "permission.banking-information.create": "组织：查看、编辑和创建银行信息",
     "permission.banking-information.delete": "组织：查看、编辑、创建和删除银行信息",
     "search.bankingInformation.bankAccountNumber": "银行账号",
-    "privilegedDonorInformation": "Privileged donor information"
+    "privilegedDonorInformation": "Privileged donor information",
+    "permission.privileged-contacts.view": "Organizations: can view privileged donor information",
+    "permission.privileged-contacts.edit": "Organizations: can view, create, edit, delete privileged donor information"
 }
