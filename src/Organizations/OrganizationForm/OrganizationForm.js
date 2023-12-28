@@ -203,16 +203,18 @@ const OrganizationForm = ({
                       <>
                         {
                           formValues.isDonor && (
-                            <Accordion
-                              id={ORGANIZATION_SECTIONS.privilegedDonorInformation}
-                              label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.privilegedDonorInformation]}
-                            >
-                              <PrivilegedDonorContacts
-                                orgId={id}
-                                privilegedContactIds={formValues.privilegedContacts}
-                                isPrivilegedContactEnabled
-                              />
-                            </Accordion>
+                            <IfPermission perm="ui-organizations.privileged-contacts.view">
+                              <Accordion
+                                id={ORGANIZATION_SECTIONS.privilegedDonorInformation}
+                                label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.privilegedDonorInformation]}
+                              >
+                                <PrivilegedDonorContacts
+                                  orgId={id}
+                                  privilegedContactIds={formValues.privilegedContacts}
+                                  isPrivilegedContactEnabled
+                                />
+                              </Accordion>
+                            </IfPermission>
                           )
                         }
                         <Accordion
