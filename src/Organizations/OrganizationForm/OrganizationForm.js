@@ -199,24 +199,24 @@ const OrganizationForm = ({
                     )}
                   </Accordion>
                   {
+                    formValues.isDonor && (
+                      <IfPermission perm="ui-organizations.privileged-contacts.view">
+                        <Accordion
+                          id={ORGANIZATION_SECTIONS.privilegedDonorInformation}
+                          label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.privilegedDonorInformation]}
+                        >
+                          <PrivilegedDonorContacts
+                            orgId={id}
+                            privilegedContactIds={formValues.privilegedContacts}
+                            isPrivilegedContactEnabled
+                          />
+                        </Accordion>
+                      </IfPermission>
+                    )
+                  }
+                  {
                     formValues.isVendor && (
                       <>
-                        {
-                          formValues.isDonor && (
-                            <IfPermission perm="ui-organizations.privileged-contacts.view">
-                              <Accordion
-                                id={ORGANIZATION_SECTIONS.privilegedDonorInformation}
-                                label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.privilegedDonorInformation]}
-                              >
-                                <PrivilegedDonorContacts
-                                  orgId={id}
-                                  privilegedContactIds={formValues.privilegedContacts}
-                                  isPrivilegedContactEnabled
-                                />
-                              </Accordion>
-                            </IfPermission>
-                          )
-                        }
                         <Accordion
                           id={ORGANIZATION_SECTIONS.vendorInformationSection}
                           label={ORGANIZATION_SECTION_LABELS[ORGANIZATION_SECTIONS.vendorInformationSection]}
