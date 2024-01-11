@@ -129,7 +129,7 @@ exports[`OrganizationAgreementsForm should render correct structure with defined
               class="col-xs-5 col-md-2"
             >
               <div
-                class="textArea inputGroup fullWidth"
+                class="textArea fullWidth"
               >
                 <label
                   class="label"
@@ -137,16 +137,19 @@ exports[`OrganizationAgreementsForm should render correct structure with defined
                 >
                   ui-organizations.agreement.notes
                 </label>
-                <textarea
-                  aria-invalid="false"
-                  class="formControl"
-                  id="agreements[0].notes"
-                  name="agreements[0].notes"
-                  type="text"
-                />
                 <div
-                  role="alert"
-                />
+                  class="inputGroup"
+                >
+                  <textarea
+                    aria-invalid="false"
+                    class="formControl"
+                    id="agreements[0].notes"
+                    name="agreements[0].notes"
+                  />
+                  <div
+                    role="alert"
+                  />
+                </div>
               </div>
             </div>
             <div

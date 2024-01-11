@@ -321,7 +321,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 class="col-xs-12"
               >
                 <div
-                  class="textArea inputGroup fullWidth"
+                  class="textArea fullWidth"
                 >
                   <label
                     class="label"
@@ -329,18 +329,21 @@ exports[`EditContact should render correct form structure 1`] = `
                   >
                     ui-organizations.interface.notes
                   </label>
-                  <textarea
-                    aria-invalid="false"
-                    class="formControl"
-                    id="textarea-input-7"
-                    name="notes"
-                    type="text"
-                  >
-                    all staff have different logons with different permissions
-                  </textarea>
                   <div
-                    role="alert"
-                  />
+                    class="inputGroup"
+                  >
+                    <textarea
+                      aria-invalid="false"
+                      class="formControl"
+                      id="textarea-input-7"
+                      name="notes"
+                    >
+                      all staff have different logons with different permissions
+                    </textarea>
+                    <div
+                      role="alert"
+                    />
+                  </div>
                 </div>
               </div>
               <div
@@ -542,7 +545,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 class="col-xs-12 col-md-6"
               >
                 <div
-                  class="textArea inputGroup fullWidth"
+                  class="textArea fullWidth"
                 >
                   <label
                     class="label"
@@ -550,18 +553,21 @@ exports[`EditContact should render correct form structure 1`] = `
                   >
                     ui-organizations.interface.statisticsNotes
                   </label>
-                  <textarea
-                    aria-invalid="false"
-                    class="formControl"
-                    id="textarea-input-13"
-                    name="statisticsNotes"
-                    type="text"
-                  >
-                    get stats on demand from GOBI, or contact customers service
-                  </textarea>
                   <div
-                    role="alert"
-                  />
+                    class="inputGroup"
+                  >
+                    <textarea
+                      aria-invalid="false"
+                      class="formControl"
+                      id="textarea-input-13"
+                      name="statisticsNotes"
+                    >
+                      get stats on demand from GOBI, or contact customers service
+                    </textarea>
+                    <div
+                      role="alert"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
