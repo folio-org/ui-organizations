@@ -414,7 +414,7 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
               class="col-xs-6 col-md-3"
             >
               <div
-                class="textArea inputGroup fullWidth"
+                class="textArea fullWidth"
               >
                 <label
                   class="label"
@@ -422,16 +422,19 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
                 >
                   ui-organizations.accounts.notes
                 </label>
-                <textarea
-                  aria-invalid="false"
-                  class="formControl"
-                  id="accounts[0].notes"
-                  name="accounts[0].notes"
-                  type="text"
-                />
                 <div
-                  role="alert"
-                />
+                  class="inputGroup"
+                >
+                  <textarea
+                    aria-invalid="false"
+                    class="formControl"
+                    id="accounts[0].notes"
+                    name="accounts[0].notes"
+                  />
+                  <div
+                    role="alert"
+                  />
+                </div>
               </div>
             </div>
             <div
