@@ -7887,7 +7887,7 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
         class="col-xs-6 col-md-3"
       >
         <div
-          class="textArea inputGroup"
+          class="textArea"
         >
           <label
             class="label"
@@ -7895,18 +7895,21 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
           >
             ui-organizations.summary.description
           </label>
-          <textarea
-            aria-invalid="false"
-            class="formControl"
-            id="textarea-input-5"
-            name="description"
-            type="text"
-          >
-            Use for rush orders, replacement requests, and second hand market
-          </textarea>
           <div
-            role="alert"
-          />
+            class="inputGroup"
+          >
+            <textarea
+              aria-invalid="false"
+              class="formControl"
+              id="textarea-input-5"
+              name="description"
+            >
+              Use for rush orders, replacement requests, and second hand market
+            </textarea>
+            <div
+              role="alert"
+            />
+          </div>
         </div>
       </div>
       <div
