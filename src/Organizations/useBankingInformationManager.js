@@ -1,6 +1,7 @@
 import chunk from 'lodash/chunk';
 import { useCallback } from 'react';
 
+import { useStripes } from '@folio/stripes/core';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
 import {
@@ -18,6 +19,7 @@ const executeParallel = (fn, arr) => chunk(arr, 5).reduce((acc, chunked) => {
 }, Promise.resolve());
 
 export const useBankingInformationManager = () => {
+  const stripes = useStripes();
   const showCallout = useShowCallout();
 
   const { enabled: isBankingInformationEnabled } = useBankingInformationSettings();
@@ -34,7 +36,15 @@ export const useBankingInformationManager = () => {
     bankingInformation,
     organization,
   }) => {
-    if (!(organization.isVendor && isBankingInformationEnabled)) return Promise.resolve();
+    const isOperationRestricted = !(
+      organization.isVendor
+      && isBankingInformationEnabled
+      && stripes.hasPerm('organizations.banking-information.item.post')
+      && stripes.hasPerm('organizations.banking-information.item.put')
+      && stripes.hasPerm('organizations.banking-information.item.delete')
+    );
+
+    if (isOperationRestricted) return Promise.resolve();
 
     const {
       created,
@@ -60,6 +70,7 @@ export const useBankingInformationManager = () => {
     deleteBankingInformation,
     isBankingInformationEnabled,
     showCallout,
+    stripes,
     updateBankingInformation,
   ]);
 

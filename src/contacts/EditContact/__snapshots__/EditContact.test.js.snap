@@ -7923,7 +7923,7 @@ exports[`EditContact should render correct form structure 1`] = `
                         class="col-xs-6"
                       >
                         <div
-                          class="textArea inputGroup fullWidth"
+                          class="textArea fullWidth"
                         >
                           <label
                             class="label"
@@ -7931,18 +7931,21 @@ exports[`EditContact should render correct form structure 1`] = `
                           >
                             ui-organizations.contactPeople.note
                           </label>
-                          <textarea
-                            aria-invalid="false"
-                            class="formControl"
-                            id="textarea-input-13"
-                            name="notes"
-                            type="text"
-                          >
-                            notes
-                          </textarea>
                           <div
-                            role="alert"
-                          />
+                            class="inputGroup"
+                          >
+                            <textarea
+                              aria-invalid="false"
+                              class="formControl"
+                              id="textarea-input-13"
+                              name="notes"
+                            >
+                              notes
+                            </textarea>
+                            <div
+                              role="alert"
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
