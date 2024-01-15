@@ -22,26 +22,16 @@ import {
   SCHEDULE_PERIODS,
   WEEKDAYS,
 } from '../../constants';
-
-const ALLOWED_SCHEDULE_PERIODS = [
-  SCHEDULE_PERIODS.none,
-  SCHEDULE_PERIODS.hours,
-  SCHEDULE_PERIODS.days,
-  SCHEDULE_PERIODS.weeks,
-  SCHEDULE_PERIODS.months,
-];
-
-const normalizeNumber = value => {
-  if (!value && value !== 0) return value;
-
-  return Number(value);
-};
-
-const validatePeriod = (value) => {
-  return value !== SCHEDULE_PERIODS.none
-    ? undefined
-    : <FormattedMessage id="stripes-acq-components.validation.required" />;
-};
+import {
+  ALLOWED_SCHEDULE_PERIODS,
+  MAX_DAYS_OF_MONTHLY_SCHEDULE,
+  MIN_REQUIRED_NUMBER,
+} from './constants';
+import {
+  handleMinAndMaxNumber,
+  normalizeNumber,
+  validatePeriod,
+} from './utils';
 
 export const SchedulingForm = () => {
   const { formatMessage } = useIntl();
@@ -135,7 +125,7 @@ export const SchedulingForm = () => {
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleFrequency" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleFrequency"
                 type="number"
-                min={1}
+                min={MIN_REQUIRED_NUMBER}
                 hasClearIcon={false}
                 required
                 validate={validateRequiredPositiveNumber}
@@ -167,7 +157,7 @@ export const SchedulingForm = () => {
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleFrequency" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleFrequency"
                 type="number"
-                min={1}
+                min={MIN_REQUIRED_NUMBER}
                 hasClearIcon={false}
                 required
                 validate={validateRequiredPositiveNumber}
@@ -207,7 +197,7 @@ export const SchedulingForm = () => {
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleFrequency" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleFrequency"
                 type="number"
-                min={1}
+                min={MIN_REQUIRED_NUMBER}
                 hasClearIcon={false}
                 required
                 validate={validateRequiredPositiveNumber}
@@ -259,11 +249,11 @@ export const SchedulingForm = () => {
                 label={<FormattedMessage id="ui-organizations.integration.scheduling.scheduleDay" />}
                 name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule.scheduleParameters.scheduleDay"
                 type="number"
-                min={1}
-                max={31}
+                min={MIN_REQUIRED_NUMBER}
+                max={MAX_DAYS_OF_MONTHLY_SCHEDULE}
                 hasClearIcon={false}
                 required
-                validate={validateRequiredPositiveNumber}
+                validate={handleMinAndMaxNumber}
                 parse={normalizeNumber}
               />
             </Col>
