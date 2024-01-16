@@ -1,6 +1,10 @@
 import { FormattedMessage } from 'react-intl';
 
-import { validateRequiredMinAndMaxNumber } from '@folio/stripes-acq-components';
+import {
+  validateRequiredMinNumber,
+  validateRequiredMaxNumber,
+  validateRequiredNumber,
+} from '@folio/stripes-acq-components';
 
 import { SCHEDULE_PERIODS } from '../../constants';
 import {
@@ -20,10 +24,10 @@ export const validatePeriod = (value) => {
     : <FormattedMessage id="stripes-acq-components.validation.required" />;
 };
 
-export const handleMinAndMaxNumber = (value) => {
-  return validateRequiredMinAndMaxNumber({
-    minNumber: MIN_REQUIRED_NUMBER,
-    maxNumber: MAX_DAYS_OF_MONTHLY_SCHEDULE,
-    value,
-  });
+export const validateRequiredMinAndMaxNumber = (value) => {
+  return (
+    validateRequiredNumber(value)
+    || validateRequiredMinNumber({ minNumber: MIN_REQUIRED_NUMBER, value })
+    || validateRequiredMaxNumber({ maxNumber: MAX_DAYS_OF_MONTHLY_SCHEDULE, value })
+  );
 };

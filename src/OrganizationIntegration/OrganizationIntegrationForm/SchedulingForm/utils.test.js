@@ -1,12 +1,13 @@
 import { SCHEDULE_PERIODS } from '../../constants';
 import {
-  handleMinAndMaxNumber,
+  validateRequiredMinAndMaxNumber,
   normalizeNumber,
   validatePeriod,
 } from './utils';
 
-jest.mock('@folio/stripes-acq-components', () => ({
-  validateRequiredMinAndMaxNumber: jest.fn(() => undefined),
+jest.mock('./utils', () => ({
+  ...jest.requireActual('./utils'),
+  validateRequiredMinAndMaxNumber: jest.fn(),
 }));
 
 describe('OrganizationIntegrationForm utils', () => {
@@ -34,9 +35,9 @@ describe('OrganizationIntegrationForm utils', () => {
     });
   });
 
-  describe('handleMinAndMaxNumber', () => {
+  describe('validateRequiredMinAndMaxNumber', () => {
     it('should return undefined', () => {
-      expect(handleMinAndMaxNumber({
+      expect(validateRequiredMinAndMaxNumber({
         minNumber: 0,
         maxNumber: 1,
         value: 0,

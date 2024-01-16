@@ -28,7 +28,7 @@ import {
   MIN_REQUIRED_NUMBER,
 } from './constants';
 import {
-  handleMinAndMaxNumber,
+  validateRequiredMinAndMaxNumber,
   normalizeNumber,
   validatePeriod,
 } from './utils';
@@ -253,7 +253,7 @@ export const SchedulingForm = () => {
                 max={MAX_DAYS_OF_MONTHLY_SCHEDULE}
                 hasClearIcon={false}
                 required
-                validate={handleMinAndMaxNumber}
+                validate={validateRequiredMinAndMaxNumber}
                 parse={normalizeNumber}
               />
             </Col>
