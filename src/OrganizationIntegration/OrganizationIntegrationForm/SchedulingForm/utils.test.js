@@ -5,9 +5,10 @@ import {
   validatePeriod,
 } from './utils';
 
-jest.mock('./utils', () => ({
-  ...jest.requireActual('./utils'),
-  validateRequiredMinAndMaxNumber: jest.fn(),
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  validateRequiredMinNumber: jest.fn(({ minNumber, value }) => (minNumber <= value ? undefined : 'min error')),
+  validateRequiredMaxNumber: jest.fn(({ maxNumber, value }) => (maxNumber >= value ? undefined : 'max error')),
 }));
 
 describe('OrganizationIntegrationForm utils', () => {
@@ -37,11 +38,12 @@ describe('OrganizationIntegrationForm utils', () => {
 
   describe('validateRequiredMinAndMaxNumber', () => {
     it('should return undefined', () => {
-      expect(validateRequiredMinAndMaxNumber({
-        minNumber: 0,
-        maxNumber: 1,
-        value: 0,
-      })).toBe(undefined);
+      expect(validateRequiredMinAndMaxNumber(0)).toBeTruthy();
+      expect(validateRequiredMinAndMaxNumber('')).toBeTruthy();
+      expect(validateRequiredMinAndMaxNumber(-1)).toBeTruthy();
+      expect(validateRequiredMinAndMaxNumber(1)).toBe(undefined);
+      expect(validateRequiredMinAndMaxNumber(2)).toBe(undefined);
+      expect(validateRequiredMinAndMaxNumber(34)).toBeTruthy();
     });
   });
 });
