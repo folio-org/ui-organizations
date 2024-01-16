@@ -351,7 +351,7 @@
   },
   "dependencies": {
     "@folio/plugin-find-organization": "^5.0.0",
-    "@folio/stripes-acq-components": "~5.0.0",
+    "@folio/stripes-acq-components": "https://github.com/folio-org/stripes-acq-components.git#develop",
     "lodash": "^4.17.5",
     "moment-timezone": "^0.5.20",
     "prop-types": "^15.5.10",
