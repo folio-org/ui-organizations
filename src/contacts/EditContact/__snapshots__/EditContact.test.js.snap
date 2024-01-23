@@ -147,7 +147,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 2;"
+                  style="z-index: 5;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-name"
@@ -7997,7 +7997,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 2;"
+                  style="z-index: 4;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-emails"
@@ -15846,7 +15846,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 2;"
+                  style="z-index: 3;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-phones"
@@ -31567,7 +31567,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 2;"
+                  style="z-index: 1;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-addresses"

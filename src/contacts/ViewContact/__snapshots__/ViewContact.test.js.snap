@@ -227,7 +227,7 @@ exports[`ViewContact should render correct structure 1`] = `
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 1;"
+                  style="z-index: 5;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-name"
@@ -429,7 +429,7 @@ exports[`ViewContact should render correct structure 1`] = `
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 1;"
+                  style="z-index: 4;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-emails"
@@ -640,7 +640,7 @@ exports[`ViewContact should render correct structure 1`] = `
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 1;"
+                  style="z-index: 3;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-phones"
@@ -851,7 +851,7 @@ exports[`ViewContact should render correct structure 1`] = `
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 1;"
+                  style="z-index: 2;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-urls"
