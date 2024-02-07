@@ -14,6 +14,7 @@
 * Factor away from unsupported `color()` function. Refs UIORGS-416.
 * Suppress banking information management for unauthorized user. Refs UIORGS-418.
 * Add validation for `Day` field in `Monthly` scheduler for export method. Refs UIORGS-417.
+* Support `data-export-spring` interface `v2.0`. Refs UXPROD-3903.
 
 ## [5.0.0](https://github.com/folio-org/ui-organizations/tree/v5.0.0) (2023-10-12)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v4.0.0...v5.0.0)
