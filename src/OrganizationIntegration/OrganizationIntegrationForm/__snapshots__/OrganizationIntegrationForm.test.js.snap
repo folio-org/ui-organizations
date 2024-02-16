@@ -147,7 +147,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 4;"
+                  style="z-index: 0;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-integrationInfo"
@@ -330,7 +330,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 3;"
+                  style="z-index: 1;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-edi"
@@ -1379,7 +1379,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 1;"
+                  style="z-index: 3;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-scheduling"
