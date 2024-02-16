@@ -80,6 +80,7 @@
           "module.organizations.enabled",
           "data-export.config.collection.get",
           "data-export.config.item.get",
+          "erm.agreements.collection.get",
           "orders.acquisition-methods.collection.get",
           "orders.acquisition-method.item.get",
           "organizations.organizations.collection.get",
