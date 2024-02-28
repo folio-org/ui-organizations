@@ -10,13 +10,21 @@ import {
 } from '../common/hooks';
 import { getArrayItemsChanges } from '../common/utils';
 
-const executeSequentially = (fn, arr) => arr.reduce((acc, curr) => {
-  return acc.then(() => fn({ bankingInformation: curr }));
-}, Promise.resolve());
+const executeSequentially = (fn, arr, hasPerm) => {
+  if (!hasPerm) return Promise.resolve();
 
-const executeParallel = (fn, arr) => chunk(arr, 5).reduce((acc, chunked) => {
-  return acc.then(() => Promise.all(chunked.map((bankingInformation) => fn({ bankingInformation }))));
-}, Promise.resolve());
+  return arr.reduce((acc, curr) => {
+    return acc.then(() => fn({ bankingInformation: curr }));
+  }, Promise.resolve());
+};
+
+const executeParallel = (fn, arr, hasPerm) => {
+  if (!hasPerm) return Promise.resolve();
+
+  return chunk(arr, 5).reduce((acc, chunked) => {
+    return acc.then(() => Promise.all(chunked.map((bankingInformation) => fn({ bankingInformation }))));
+  }, Promise.resolve());
+};
 
 export const useBankingInformationManager = () => {
   const stripes = useStripes();
@@ -36,13 +44,7 @@ export const useBankingInformationManager = () => {
     bankingInformation,
     organization,
   }) => {
-    const isOperationRestricted = !(
-      organization.isVendor
-      && isBankingInformationEnabled
-      && stripes.hasPerm('organizations.banking-information.item.post')
-      && stripes.hasPerm('organizations.banking-information.item.put')
-      && stripes.hasPerm('organizations.banking-information.item.delete')
-    );
+    const isOperationRestricted = !(organization.isVendor && isBankingInformationEnabled);
 
     if (isOperationRestricted) return Promise.resolve();
 
@@ -53,12 +55,13 @@ export const useBankingInformationManager = () => {
     } = getArrayItemsChanges(initBankingInformation, bankingInformation);
 
     return Promise.all([
-      executeSequentially(createBankingInformation, created.map((item) => ({
-        organizationId: organization.id,
-        ...item,
-      }))),
-      executeParallel(updateBankingInformation, updated),
-      executeParallel(deleteBankingInformation, deleted),
+      executeSequentially(
+        createBankingInformation,
+        created.map((item) => ({ organizationId: organization.id, ...item })),
+        stripes.hasPerm('organizations.banking-information.item.post'),
+      ),
+      executeParallel(updateBankingInformation, updated, stripes.hasPerm('organizations.banking-information.item.put')),
+      executeParallel(deleteBankingInformation, deleted, stripes.hasPerm('organizations.banking-information.item.delete')),
     ]).catch(() => {
       showCallout({
         type: 'error',

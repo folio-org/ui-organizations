@@ -1,4 +1,5 @@
 import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
+import { useStripes } from '@folio/stripes/core';
 
 import { organization } from 'fixtures';
 import {
@@ -12,6 +13,11 @@ const mutationsMock = {
   updateBankingInformation: jest.fn(),
   deleteBankingInformation: jest.fn(),
 };
+
+jest.mock('@folio/stripes/core', () => ({
+  ...jest.requireActual('@folio/stripes/core'),
+  useStripes: jest.fn(),
+}));
 
 jest.mock('../common/hooks', () => ({
   ...jest.requireActual('../common/hooks'),
@@ -29,7 +35,15 @@ const bankingInformation = [
   { id: 3, bankName: 'Bank name 3' },
 ];
 
-describe('useBankingAccountTypes', () => {
+const hasPermFactory = (permsMap) => (perm) => {
+  return permsMap ? permsMap[perm] : true;
+};
+
+const stripesStub = {
+  hasPerm: hasPermFactory(),
+};
+
+describe('useBankingInformationManager', () => {
   beforeEach(() => {
     Object
       .values(mutationsMock)
@@ -40,6 +54,9 @@ describe('useBankingAccountTypes', () => {
     useBankingInformationSettings
       .mockClear()
       .mockReturnValue({ enabled: true });
+    useStripes
+      .mockClear()
+      .mockReturnValue(stripesStub);
   });
 
   it('should handle banking information fields change', async () => {
@@ -99,5 +116,80 @@ describe('useBankingAccountTypes', () => {
     expect(mutationsMock.createBankingInformation).not.toHaveBeenCalled();
     expect(mutationsMock.deleteBankingInformation).not.toHaveBeenCalled();
     expect(mutationsMock.updateBankingInformation).not.toHaveBeenCalled();
+  });
+
+  describe('Permissions handling', () => {
+    it('edit banking information item', async () => {
+      useStripes.mockReturnValue({ hasPerm: hasPermFactory({ 'organizations.banking-information.item.put': true }) });
+
+      const { result } = renderHook(() => useBankingInformationManager());
+      const { manageBankingInformation } = result.current;
+
+      await manageBankingInformation({
+        initBankingInformation,
+        bankingInformation,
+        organization,
+      });
+
+      expect(mutationsMock.createBankingInformation).not.toHaveBeenCalled();
+      expect(mutationsMock.deleteBankingInformation).not.toHaveBeenCalled();
+      expect(mutationsMock.updateBankingInformation).toHaveBeenCalled();
+    });
+
+    it('create banking information item', async () => {
+      useStripes.mockReturnValue({ hasPerm: hasPermFactory({ 'organizations.banking-information.item.post': true }) });
+
+      const { result } = renderHook(() => useBankingInformationManager());
+      const { manageBankingInformation } = result.current;
+
+      await manageBankingInformation({
+        initBankingInformation,
+        bankingInformation,
+        organization,
+      });
+
+      expect(mutationsMock.createBankingInformation).toHaveBeenCalled();
+      expect(mutationsMock.deleteBankingInformation).not.toHaveBeenCalled();
+      expect(mutationsMock.updateBankingInformation).not.toHaveBeenCalled();
+    });
+
+    it('delete banking information item', async () => {
+      useStripes.mockReturnValue({ hasPerm: hasPermFactory({ 'organizations.banking-information.item.delete': true }) });
+
+      const { result } = renderHook(() => useBankingInformationManager());
+      const { manageBankingInformation } = result.current;
+
+      await manageBankingInformation({
+        initBankingInformation,
+        bankingInformation,
+        organization,
+      });
+
+      expect(mutationsMock.createBankingInformation).not.toHaveBeenCalled();
+      expect(mutationsMock.deleteBankingInformation).toHaveBeenCalled();
+      expect(mutationsMock.updateBankingInformation).not.toHaveBeenCalled();
+    });
+
+    it('create and edit banking information item', async () => {
+      const permsMap = {
+        'organizations.banking-information.item.post': true,
+        'organizations.banking-information.item.put': true,
+      };
+
+      useStripes.mockReturnValue({ hasPerm: hasPermFactory(permsMap) });
+
+      const { result } = renderHook(() => useBankingInformationManager());
+      const { manageBankingInformation } = result.current;
+
+      await manageBankingInformation({
+        initBankingInformation,
+        bankingInformation,
+        organization,
+      });
+
+      expect(mutationsMock.createBankingInformation).toHaveBeenCalled();
+      expect(mutationsMock.deleteBankingInformation).not.toHaveBeenCalled();
+      expect(mutationsMock.updateBankingInformation).toHaveBeenCalled();
+    });
   });
 });
