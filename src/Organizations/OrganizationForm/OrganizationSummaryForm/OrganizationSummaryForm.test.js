@@ -22,6 +22,10 @@ jest.mock('../../../common/hooks', () => ({
   ])),
 }));
 
+jest.mock('@folio/service-interaction', () => ({
+  NumberGeneratorModalButton: () => <div>NumberGeneratorModalButton</div>
+}));
+
 const TestForm = stripesFinalForm({})(
   () => {
     return (
