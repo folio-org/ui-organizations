@@ -217,7 +217,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 1;"
+                  style="z-index: 0;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-integrationInfo"
@@ -764,7 +764,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 1;"
+                  style="z-index: 2;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-ftp"
@@ -1061,7 +1061,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 1;"
+                  style="z-index: 3;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-scheduling"

@@ -111,7 +111,9 @@ const OrganizationDetails = ({
   const history = useHistory();
   const accordionStatusRef = useRef();
   const isDetailsPaneInFocus = location.state?.isDetailsPaneInFocus;
-  const isDonorVisible = organization?.isVendor && organization?.isDonor;
+  const isDonorVisible = (
+    organization?.isDonor && stripes.hasPerm('ui-organizations.privileged-contacts.view')
+  );
   const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
     organization.id, organization.acqUnitIds,
   );

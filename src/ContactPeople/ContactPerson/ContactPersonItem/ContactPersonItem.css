@@ -16,7 +16,7 @@
 
 .contactPersonItemContent {
   padding: 14px;
-  background-color: color(var(--bg) blend(var(--bg-hover) 20%));
+  background-color: color-mix(in oklch, var(--bg), var(--bg-hover) 20%);
   width: 100%;
 }
 
