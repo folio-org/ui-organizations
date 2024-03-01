@@ -52,42 +52,50 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
         class="col-xs-6 col-md-3"
       >
         <div
-          class="textField"
+          class="row"
         >
-          <label
-            class="label"
-            for="text-input-1"
+          <div
+            class="col-xs-12"
           >
-            ui-organizations.summary.code
-            <span
-              aria-hidden="true"
-              class="asterisk"
+            <div
+              class="textField"
             >
-              *
-            </span>
-          </label>
-          <div
-            class="formControl inputGroup"
-          >
-            <input
-              aria-invalid="false"
-              aria-required="true"
-              autocapitalize="off"
-              autocomplete="off"
-              autocorrect="off"
-              error=""
-              id="text-input-1"
-              name="code"
-              required=""
-              spellcheck="false"
-              type="text"
-              value="AMAZ"
-              warning=""
-            />
+              <label
+                class="label"
+                for="text-input-1"
+              >
+                ui-organizations.summary.code
+                <span
+                  aria-hidden="true"
+                  class="asterisk"
+                >
+                  *
+                </span>
+              </label>
+              <div
+                class="formControl inputGroup"
+              >
+                <input
+                  aria-invalid="false"
+                  aria-required="true"
+                  autocapitalize="off"
+                  autocomplete="off"
+                  autocorrect="off"
+                  error=""
+                  id="text-input-1"
+                  name="code"
+                  required=""
+                  spellcheck="false"
+                  type="text"
+                  value="AMAZ"
+                  warning=""
+                />
+              </div>
+              <div
+                role="alert"
+              />
+            </div>
           </div>
-          <div
-            role="alert"
-          />
         </div>
       </div>
       <div
