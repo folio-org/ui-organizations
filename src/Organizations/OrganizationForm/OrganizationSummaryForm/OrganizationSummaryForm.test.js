@@ -11,6 +11,15 @@ import { useTypes } from '../../../common/hooks';
 
 jest.mock('../../../common/hooks', () => ({
   useTypes: jest.fn(),
+  useSettings: jest.fn(() => ([
+    {
+      id: 'f2b84177-d85a-4b0c-93dd-279e8f9d1d42',
+      module: 'ORGANIZATIONS',
+      configName: 'number_generator',
+      enabled: true,
+      value: '{"vendorGeneratorSetting":"useBoth"}',
+    },
+  ])),
 }));
 
 const TestForm = stripesFinalForm({})(
