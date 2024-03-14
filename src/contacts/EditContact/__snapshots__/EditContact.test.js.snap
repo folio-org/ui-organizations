@@ -31567,7 +31567,7 @@ exports[`EditContact should render correct form structure 1`] = `
                 </div>
                 <div
                   class="content-wrap expanded"
-                  style="z-index: 5;"
+                  style="z-index: 6;"
                 >
                   <div
                     aria-labelledby="accordion-toggle-button-contact-addresses"
