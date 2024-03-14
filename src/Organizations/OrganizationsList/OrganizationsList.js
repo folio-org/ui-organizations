@@ -6,7 +6,10 @@ import {
   useHistory,
   useLocation,
 } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
 import {
   checkScope,
@@ -14,7 +17,10 @@ import {
   MultiColumnList,
   TextLink,
 } from '@folio/stripes/components';
-import { useStripes } from '@folio/stripes/core';
+import {
+  TitleManager,
+  useStripes,
+} from '@folio/stripes/core';
 import { PersistedPaneset } from '@folio/stripes/smart-components';
 import {
   RESULT_COUNT_INCREMENT,
@@ -23,6 +29,7 @@ import {
   NoResultsMessage,
   ResetButton,
   ResultsPane,
+  SEARCH_PARAMETER,
   SingleSearchForm,
   PrevNextPagination,
   useFiltersReset,
@@ -81,6 +88,7 @@ const OrganizationsList = ({
   resultsPaneTitleRef,
   pagination,
 }) => {
+  const intl = useIntl();
   const stripes = useStripes();
   const history = useHistory();
   const location = useLocation();
@@ -147,12 +155,16 @@ const OrganizationsList = ({
 
   const { itemToView, setItemToView, deleteItemToView } = useItemToView('organizations-list');
 
+  const queryFilter = filters?.[SEARCH_PARAMETER];
+  const pageTitle = queryFilter ? intl.formatMessage({ id: 'ui-organizations.document.title.search' }, { query: queryFilter }) : null;
+
   return (
     <HasCommand
       commands={shortcuts}
       isWithinScope={checkScope}
       scope={document.body}
     >
+      <TitleManager page={pageTitle} />
       <PersistedPaneset
         appId="ui-organizations"
         id="organizations-paneset"
