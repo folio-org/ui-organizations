@@ -1,6 +1,7 @@
 {
   "meta.title": "Organizations",
   "appMenu.organizationsAppSearch": "Organizations app Search",
+  "document.title.search": "Organizations - {query} - Search",
   "search": "Search",
   "resultCount": "{count, number} {count, plural, one {Record found} other {Records found}}",
   "showMore": "Show more",
