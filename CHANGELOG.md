@@ -1,6 +1,9 @@
 # Change history for ui-organizations
 
-## 5.1.0 (IN PROGRESS)
+## 5.2.0 (IN PROGRESS)
+
+## [5.1.0](https://github.com/folio-org/ui-organizations/tree/v5.1.0) (2024-03-18)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.0.0...v5.1.0)
 
 * Designate Organization as donor. Refs UIORGS-383.
 * Settings for banking information. Refs UIORGS-391.
