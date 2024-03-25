@@ -1,5 +1,9 @@
 # Change history for ui-organizations
 
+## (5.2.0 IN PROGRESS)
+
+* UX Consistency: HTML Page Title display when third pane (detail record) displays. Refs UIORGS-423.
+
 ## [5.1.0](https://github.com/folio-org/ui-organizations/tree/v5.1.0) (2024-03-19)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.0.0...v5.1.0)
 

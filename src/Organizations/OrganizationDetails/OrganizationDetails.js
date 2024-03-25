@@ -9,6 +9,7 @@ import {
 
 import {
   IfPermission,
+  TitleManager,
   useStripes,
 } from '@folio/stripes/core';
 import {
@@ -268,6 +269,7 @@ const OrganizationDetails = ({
         actionMenu={getActionMenu}
         lastMenu={detailsLastMenu}
       >
+        <TitleManager record={organization.name} />
         {hasDuplicateAccountNumbers && (
           <MessageBanner type="warning">
             <FormattedMessage id="ui-organizations.view.duplicateAccounts" />
