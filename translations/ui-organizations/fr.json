@@ -451,5 +451,6 @@
     "search.bankingInformation.bankAccountNumber": "Bank account number",
     "privilegedDonorInformation": "Privileged donor information",
     "permission.privileged-contacts.view": "Organizations: can view privileged donor information",
-    "permission.privileged-contacts.edit": "Organizations: can view, create, edit, delete privileged donor information"
+    "permission.privileged-contacts.edit": "Organizations: can view, create, edit, delete privileged donor information",
+    "document.title.search": "Organizations - {query} - Search"
 }

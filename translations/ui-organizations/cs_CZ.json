@@ -451,5 +451,6 @@
     "search.bankingInformation.bankAccountNumber": "Číslo bankovního účtu",
     "privilegedDonorInformation": "Informace o privilegovaných dárcích",
     "permission.privileged-contacts.view": "Organizace: mohou zobrazit informace o privilegovaných dárcích",
-    "permission.privileged-contacts.edit": "Organizace: mohou prohlížet, vytvářet, upravovat a mazat informace o privilegovaných dárcích"
+    "permission.privileged-contacts.edit": "Organizace: mohou prohlížet, vytvářet, upravovat a mazat informace o privilegovaných dárcích",
+    "document.title.search": "Organizace - {query} - Vyhledat"
 }

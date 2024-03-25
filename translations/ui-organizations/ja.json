@@ -94,11 +94,11 @@
     "contactPeople.addAddress": "住所を追加",
     "contactPeople.addEmail": "Add email",
     "contactPeople.addPhoneNumber": "電話番号を追加",
-    "contactPeople.addUrl": "Add URL",
+    "contactPeople.addUrl": "URLを追加",
     "contactPeople.pleaseAddAddress": "Please add address",
     "contactPeople.pleaseAddEmail": "Please add email",
     "contactPeople.pleaseAddPhoneNumbers": "電話番号を追加してください",
-    "contactPeople.pleaseAddUrl": "Please add URL",
+    "contactPeople.pleaseAddUrl": "URLを追加してください",
     "agreement.name": "名称",
     "agreement.discount": "割引",
     "agreement.discountSym": "割引率",
@@ -355,7 +355,7 @@
     "integration.scheduling.schedulePeriod.hours": "Hourly",
     "integration.scheduling.schedulePeriod.days": "日次",
     "integration.scheduling.schedulePeriod.weeks": "週次",
-    "integration.scheduling.schedulePeriod.months": "Monthly",
+    "integration.scheduling.schedulePeriod.months": "毎月",
     "integration.scheduling.scheduleTime": "Time",
     "integration.scheduling.scheduleFrequency": "Schedule frequency",
     "integration.scheduling.scheduleDate": "Date",
@@ -451,5 +451,6 @@
     "search.bankingInformation.bankAccountNumber": "Bank account number",
     "privilegedDonorInformation": "Privileged donor information",
     "permission.privileged-contacts.view": "組織: 特権的な寄贈者情報を表示できます",
-    "permission.privileged-contacts.edit": "組織: 特権寄贈者情報を表示、作成、編集、削除できます。"
+    "permission.privileged-contacts.edit": "組織: 特権寄贈者情報を表示、作成、編集、削除できます。",
+    "document.title.search": "Organizations - {query} - Search"
 }
