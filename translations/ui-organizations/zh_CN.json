@@ -451,5 +451,6 @@
     "search.bankingInformation.bankAccountNumber": "银行账号",
     "privilegedDonorInformation": "特权捐赠者信息",
     "permission.privileged-contacts.view": "组织：可以查看特权捐助者信息",
-    "permission.privileged-contacts.edit": "组织：可以查看、创建、编辑、删除特权捐赠者信息"
+    "permission.privileged-contacts.edit": "组织：可以查看、创建、编辑、删除特权捐赠者信息",
+    "document.title.search": "Organizations - {query} - Search"
 }
