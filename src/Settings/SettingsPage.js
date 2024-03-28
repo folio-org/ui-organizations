@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { Settings } from '@folio/stripes/smart-components';
@@ -6,6 +7,7 @@ import { Settings } from '@folio/stripes/smart-components';
 import { useBankingInformationSettings } from '../common/hooks';
 import { CategorySettings } from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
+import NumberGeneratorOptions from './NumberGeneratorOptions';
 import { BankingAccountTypeSettings } from './BankingAccountTypeSettings';
 import { BankingInformationSettings } from './BankingInformationSettings';
 
@@ -21,6 +23,13 @@ const pages = [
     label: <FormattedMessage id="ui-organizations.settings.types" />,
     perm: 'settings.organizations.enabled',
     route: 'type',
+  },
+  {
+    component: NumberGeneratorOptions,
+    label: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />,
+    perm: 'ui-organizations.settings.numberGenerator.manage',
+    interface: 'servint',
+    route: 'numberGeneratorOptions',
   },
   {
     component: BankingInformationSettings,
@@ -50,6 +59,17 @@ const SettingsPage = (props) => {
       paneTitle={<FormattedMessage id="ui-organizations.settings.vendorSettings" />}
     />
   );
+};
+
+SettingsPage.propTypes = {
+  stripes: PropTypes.shape({
+    hasInterface: PropTypes.func.isRequired,
+    timezone: PropTypes.string.isRequired,
+    store: PropTypes.shape({
+      dispatch: PropTypes.func.isRequired,
+      getState: PropTypes.func,
+    }),
+  }).isRequired,
 };
 
 export default SettingsPage;
