@@ -3,18 +3,17 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field } from 'react-final-form';
 
-import { stripesConnect, withStripes } from '@folio/stripes/core';
+import {
+  stripesConnect,
+  withStripes,
+} from '@folio/stripes/core';
 import { ConfigManager } from '@folio/stripes/smart-components';
 
 import { Col, RadioButton, Row } from '@folio/stripes/components';
 
+const ConnectedConfigManager = stripesConnect(ConfigManager);
+
 const NumberGeneratorOptions = (props) => {
-  const ConnectedConfigManager = stripesConnect(ConfigManager);
-
-  const defaultValues = {
-    useGenerator: 'useBoth',
-  };
-
   const beforeSave = (data) => {
     return JSON.stringify(data);
   };
@@ -32,7 +31,6 @@ const NumberGeneratorOptions = (props) => {
     }
 
     return {
-      ...defaultValues,
       ...loadedValues,
     };
   };
@@ -41,11 +39,11 @@ const NumberGeneratorOptions = (props) => {
     <ConnectedConfigManager
       configName="number_generator"
       getInitialValues={getInitialValues}
+      formType="final-form"
       label={<FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />}
       moduleName="ORGANIZATIONS"
       onBeforeSave={beforeSave}
       stripes={props.stripes}
-      formType="final-form"
     >
       <Row>
         <Col xs={12}>
