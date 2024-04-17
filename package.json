@@ -69,7 +69,8 @@
           "acquisitions-units.units.collection.get",
           "configuration.entries.collection.get",
           "tags.collection.get",
-          "users.collection.get"
+          "users.collection.get",
+          "usergroups.collection.get"
         ]
       },
       {
