@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
@@ -5,6 +6,7 @@ import queryString from 'query-string';
 import {
   useNamespace,
   useOkapiKy,
+  useStripes,
 } from '@folio/stripes/core';
 import {
   getFiltersCount,
@@ -19,13 +21,19 @@ export const useOrganizations = ({
   options = {},
 }) => {
   const ky = useOkapiKy();
+  const stripes = useStripes();
   const [namespace] = useNamespace({ key: 'organizations-list' });
 
   const { search } = useLocation();
   const buildQuery = useBuildQuery();
   const queryParams = queryString.parse(search);
-  const query = buildQuery(queryParams);
   const filtersCount = getFiltersCount(queryParams);
+
+  moment.tz.setDefault(stripes.timezone);
+
+  const query = buildQuery(queryParams);
+
+  moment.tz.setDefault();
 
   const defaultSearchParams = {
     query,
