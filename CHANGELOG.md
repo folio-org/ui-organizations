@@ -1,5 +1,9 @@
 # Change history for ui-organizations
 
+## 5.1.1 (IN PROGRESS)
+
+* Add additional filters to support reporting requirements. Refs UIORG-193.
+
 ## [5.1.0](https://github.com/folio-org/ui-organizations/tree/v5.1.0) (2024-03-19)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.0.0...v5.1.0)
 
