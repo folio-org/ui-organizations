@@ -352,7 +352,6 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/plugin-find-organization": "^5.0.0",
     "@folio/stripes-acq-components": "~5.1.0",
     "lodash": "^4.17.5",
     "moment": "^2.24.0",
@@ -375,6 +374,7 @@
   },
   "optionalDependencies": {
     "@folio/plugin-find-contact": "^5.0.0",
-    "@folio/plugin-find-interface": "^5.0.0"
+    "@folio/plugin-find-interface": "^5.0.0",
+    "@folio/plugin-find-organization": "^5.0.0"
   }
 }
