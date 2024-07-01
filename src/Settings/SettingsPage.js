@@ -13,19 +13,19 @@ const pages = [
   {
     component: CategorySettings,
     label: <FormattedMessage id="ui-organizations.settings.categories" />,
-    perm: 'settings.organizations.enabled',
+    perm: 'ui-organizations.settings.view',
     route: 'category',
   },
   {
     component: TypeSettings,
     label: <FormattedMessage id="ui-organizations.settings.types" />,
-    perm: 'settings.organizations.enabled',
+    perm: 'ui-organizations.settings.view',
     route: 'type',
   },
   {
     component: BankingInformationSettings,
     label: <FormattedMessage id="ui-organizations.settings.bankingInformation" />,
-    perm: 'settings.organizations.enabled',
+    perm: 'ui-organizations.settings.view',
     route: 'banking-information',
   },
 ];

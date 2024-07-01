@@ -3,6 +3,7 @@
 ## 5.2.0 (IN PROGRESS)
 
 * UX Consistency: HTML Page Title display when the third pane (detail record) displays. Refs UIORGS-423.
+* Settings > Organizations > Banking information is not properly fenced off by permissions. Refs UIORGS-436.
 
 ## [5.1.1](https://github.com/folio-org/ui-organizations/tree/v5.1.1) (2024-04-18)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.1.0...v5.1.1)
