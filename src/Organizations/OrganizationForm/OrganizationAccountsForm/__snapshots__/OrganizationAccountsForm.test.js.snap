@@ -441,113 +441,109 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
               class="col-xs-6 col-md-3"
             >
               <div
+                aria-expanded="false"
                 class="multiSelectContainer"
                 id="account-acq-units-0"
+                role="application"
               >
                 <div
                   aria-live="assertive"
                   aria-relevant="additions"
                   class="sr-only"
                 />
-                <div
-                  aria-expanded="false"
-                  aria-haspopup="listbox"
-                  aria-labelledby="account-acq-units-0-label"
-                  class="multiSelectContainer"
-                  role="application"
+                <label
+                  class="label"
+                  for="downshift-:r1:-input"
+                  id="multiselect-label-id-account-acq-units-0"
                 >
-                  <label
-                    class="label"
-                    for="account-acq-units-0-input"
-                    id="account-acq-units-0-label"
-                  >
-                    stripes-acq-components.label.acqUnits
-                  </label>
-                  <span
-                    class="sr-only"
-                    id="multi-value-status-account-acq-units-0"
-                  >
-                    0 items selected
-                  </span>
-                  <span
-                    class="sr-only"
-                    id="multi-describe-control-account-acq-units-0"
-                  >
-                    stripes-components.multiSelection.controlDescription
-                  </span>
+                  stripes-acq-components.label.acqUnits
+                </label>
+                <span
+                  class="sr-only"
+                  id="multi-value-status-account-acq-units-0"
+                >
+                  0 items selected
+                </span>
+                <span
+                  class="sr-only"
+                  id="multi-describe-control-account-acq-units-0"
+                >
+                  stripes-components.multiSelection.controlDescription
+                </span>
+                <div
+                  class="multiSelectControlWrapper"
+                >
                   <div
-                    class="multiSelectControlWrapper"
+                    aria-describedby="multi-describe-control-account-acq-units-0"
+                    aria-labelledby="multiselect-label-id-account-acq-units-0 multi-value-status-account-acq-units-0"
+                    class="multiSelectControl formControl"
+                    role="searchbox"
+                    tabindex="0"
                   >
                     <div
-                      aria-describedby="multi-describe-control-account-acq-units-0"
-                      aria-labelledby="account-acq-units-0-label multi-value-status-account-acq-units-0"
-                      class="multiSelectControl formControl"
-                      role="search"
-                      tabindex="0"
+                      class="multiSelectControlGroup"
                     >
-                      <div
-                        class="multiSelectControlGroup"
-                      >
-                        <input
-                          aria-autocomplete="list"
-                          aria-labelledby="account-acq-units-0-label"
-                          autocomplete="off"
-                          class="multiSelectFilterField"
-                          id="account-acq-units-0-input"
-                          type="text"
-                          value=""
-                        />
-                        <input
-                          aria-autocomplete="list"
-                          aria-hidden="true"
-                          autocomplete="off"
-                          class="multiSelectValueInput"
-                          id="multiselect-input-account-acq-units-0"
-                          tabindex="-1"
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                      <button
-                        aria-haspopup="true"
-                        aria-label="open menu"
-                        class="multiSelectToggleButton"
-                        data-toggle="true"
-                        role="button"
-                        type="button"
-                      >
-                        <div
-                          class="textFieldIcon"
-                        >
-                          <span>
-                            Icon
-                          </span>
-                        </div>
-                      </button>
-                    </div>
-                    <div
-                      class="multiSelectMenu"
-                      hidden=""
-                      style="width: 100px;"
-                    >
-                      <div
-                        class="multiSelectFeedback"
-                        role="alert"
-                      >
-                        <div
-                          class="multiSelectEmptyMessage"
-                        >
-                          stripes-components.multiSelection.defaultEmptyMessage
-                        </div>
-                      </div>
-                      <ul
-                        aria-labelledby="account-acq-units-0-label"
-                        class="multiSelectOptionList"
-                        id="multiselect-option-list-account-acq-units-0"
-                        role="listbox"
-                        style="max-height: 168px;"
+                      <input
+                        aria-activedescendant=""
+                        aria-autocomplete="list"
+                        aria-controls="multiselect-option-list-account-acq-units-0"
+                        aria-expanded="false"
+                        aria-labelledby="multiselect-label-id-account-acq-units-0"
+                        autocomplete="off"
+                        class="multiSelectFilterField"
+                        id="account-acq-units-0-input"
+                        role="combobox"
+                        type="text"
+                        value=""
+                      />
+                      <input
+                        aria-hidden="true"
+                        class="multiSelectValueInput"
+                        id="multiselect-input-account-acq-units-0"
+                        tabindex="-1"
+                        value=""
                       />
                     </div>
+                    <button
+                      aria-controls="multiselect-option-list-account-acq-units-0"
+                      aria-expanded="false"
+                      aria-label="toggle menu"
+                      class="multiSelectToggleButton"
+                      id="downshift-:r1:-toggle-button"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      <div
+                        class="textFieldIcon"
+                      >
+                        <span>
+                          Icon
+                        </span>
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class="multiSelectMenu"
+                    hidden=""
+                    style="width: 100%;"
+                  >
+                    <div
+                      class="multiSelectFeedback"
+                      role="alert"
+                    >
+                      <div
+                        class="multiSelectEmptyMessage"
+                      >
+                        stripes-components.multiSelection.defaultEmptyMessage
+                      </div>
+                    </div>
+                    <ul
+                      aria-labelledby="multiselect-label-id-account-acq-units-0"
+                      class="multiSelectOptionList"
+                      id="multiselect-option-list-account-acq-units-0"
+                      role="listbox"
+                      style="max-height: 168px;"
+                    />
                   </div>
                 </div>
                 <div
