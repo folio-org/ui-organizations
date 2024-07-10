@@ -8,4 +8,6 @@ export const PRIVILEGED_CONTACTS_API = 'organizations-storage/privileged-contact
 export const SETTINGS_API = 'organizations-storage/settings';
 export const TYPES_API = 'organizations-storage/organization-types';
 
+export const CONFIG_API = 'configurations/entries';
+
 export const MAX_LIMIT = 2147483647;
