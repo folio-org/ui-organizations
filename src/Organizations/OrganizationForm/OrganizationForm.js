@@ -104,7 +104,7 @@ const OrganizationForm = ({
   const paneFooter = (
     <FormFooter
       id="organization-form-save"
-      label={<FormattedMessage id="ui-organizations.button.saveAndClose" />}
+      label={<FormattedMessage id="stripes-components.saveAndClose" />}
       pristine={pristine}
       submitting={submitting}
       handleSubmit={handleSubmit}

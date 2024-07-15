@@ -55,7 +55,7 @@ const OrganizationIntegrationForm = ({
           disabled={pristine || submitting}
           onClick={handleSubmit}
         >
-          <FormattedMessage id="ui-organizations.button.saveAndClose" />
+          <FormattedMessage id="stripes-components.saveAndClose" />
         </Button>
       );
 
