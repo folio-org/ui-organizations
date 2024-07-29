@@ -8,7 +8,7 @@
     "data.contactTypes.addressLine1": "住所 1",
     "data.contactTypes.addressLine2": "住所 2",
     "data.contactTypes.stateProviceOrRegion": "State/Province/Region",
-    "data.contactTypes.zipOrPostalCode": "Zip/Postal code",
+    "data.contactTypes.zipOrPostalCode": "郵便番号",
     "data.contactTypes.addressType": "住所の種類",
     "data.contactTypes.city": "市",
     "data.contactTypes.country": "国",
