@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@folio/jest-config-stripes/testing-library/react';
 
+import { QueryClient, QueryClientProvider } from 'react-query';
 import OrganizationAccounts from './OrganizationAccounts';
 
 jest.mock('@folio/stripes-components/lib/NoValue', () => {
@@ -18,10 +19,13 @@ const accounts = [{
   libraryEdiCode: 'ECDA',
   notes: 'Default account',
 }];
+const queryClient = new QueryClient();
 const renderOrganizationAccounts = () => render(
-  <OrganizationAccounts
-    accounts={accounts}
-  />,
+  <QueryClientProvider client={queryClient}>
+    <OrganizationAccounts
+      accounts={accounts}
+    />,
+  </QueryClientProvider>,
 );
 
 describe('OrganizationAccounts', () => {

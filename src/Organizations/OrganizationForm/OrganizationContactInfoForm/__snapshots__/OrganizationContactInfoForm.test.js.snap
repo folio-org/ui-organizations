@@ -275,14 +275,21 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               aria-labelledby="sl-label-selection-:r0: selected-selection-:r0:-item"
                               class="selectionControl formControl"
                               id="selection-:r0:"
+                              name="addresses[0].country"
                               type="button"
+                              value="USA"
                             >
                               <span
                                 class="sr-only"
                               >
                                 stripes-components.selection.controlLabel
                               </span>
-                              US
+                              <div
+                                class="singleValue"
+                                id="selected-selection-:r0:-item"
+                              >
+                                US
+                              </div>
                             </button>
                             <div
                               class="selectionEndControls"
@@ -3578,6 +3585,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               aria-labelledby="sl-label-selection-:r2: selected-selection-:r2:-item"
                               class="selectionControl formControl"
                               id="selection-:r2:"
+                              name="addresses[0].language"
                               type="button"
                             >
                               <span
@@ -3585,6 +3593,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               >
                                 stripes-components.selection.controlLabel
                               </span>
+                              <div
+                                class="singleValue"
+                                id="selected-selection-:r2:-item"
+                              />
                             </button>
                             <div
                               class="selectionEndControls"
@@ -9983,8 +9995,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="downshift-:r5:-input"
-                            id="multiselect-label-id-multiselect-:r4:"
+                            for="multiselect-:r4:-input"
+                            id="multiselect-:r4:-label"
                           >
                             ui-organizations.data.contactTypes.categories
                           </label>
@@ -10005,7 +10017,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           >
                             <div
                               aria-describedby="multi-describe-control-multiselect-:r4:"
-                              aria-labelledby="multiselect-label-id-multiselect-:r4: multi-value-status-multiselect-:r4:"
+                              aria-labelledby="multiselect-:r4:-label multi-value-status-multiselect-:r4:"
                               class="multiSelectControl formControl"
                               role="searchbox"
                               tabindex="0"
@@ -10079,10 +10091,11 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                   aria-autocomplete="list"
                                   aria-controls="multiselect-option-list-multiselect-:r4:"
                                   aria-expanded="false"
-                                  aria-labelledby="multiselect-label-id-multiselect-:r4:"
+                                  aria-labelledby="addressFormCategoriesLabel"
                                   autocomplete="off"
                                   class="multiSelectFilterField"
                                   id="multiselect-:r4:-input"
+                                  placeholder=""
                                   role="combobox"
                                   type="text"
                                   value=""
@@ -10098,7 +10111,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               <button
                                 aria-controls="multiselect-option-list-multiselect-:r4:"
                                 aria-expanded="false"
-                                aria-label="toggle menu"
+                                aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
                                 class="multiSelectToggleButton"
                                 id="downshift-:r5:-toggle-button"
                                 tabindex="-1"
@@ -10116,14 +10129,14 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <div
                               class="multiSelectMenu"
                               hidden=""
-                              style="width: 100%;"
+                              style="width: 100px;"
                             >
                               <div
                                 class="multiSelectFeedback"
                                 role="alert"
                               />
                               <ul
-                                aria-labelledby="multiselect-label-id-multiselect-:r4:"
+                                aria-labelledby="multiselect-:r4:-label"
                                 class="multiSelectOptionList"
                                 id="multiselect-option-list-multiselect-:r4:"
                                 role="listbox"
@@ -10399,6 +10412,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               aria-labelledby="sl-label-selection-:r6: selected-selection-:r6:-item"
                               class="selectionControl formControl"
                               id="selection-:r6:"
+                              name="phoneNumbers[0].language"
                               type="button"
                             >
                               <span
@@ -10406,6 +10420,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               >
                                 stripes-components.selection.controlLabel
                               </span>
+                              <div
+                                class="singleValue"
+                                id="selected-selection-:r6:-item"
+                              />
                             </button>
                             <div
                               class="selectionEndControls"
@@ -16804,8 +16822,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="downshift-:r9:-input"
-                            id="multiselect-label-id-multiselect-:r8:"
+                            for="multiselect-:r8:-input"
+                            id="multiselect-:r8:-label"
                           >
                             ui-organizations.data.contactTypes.categories
                           </label>
@@ -16826,7 +16844,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           >
                             <div
                               aria-describedby="multi-describe-control-multiselect-:r8:"
-                              aria-labelledby="multiselect-label-id-multiselect-:r8: multi-value-status-multiselect-:r8:"
+                              aria-labelledby="multiselect-:r8:-label multi-value-status-multiselect-:r8:"
                               class="multiSelectControl formControl"
                               role="searchbox"
                               tabindex="0"
@@ -16839,7 +16857,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                   aria-autocomplete="list"
                                   aria-controls="multiselect-option-list-multiselect-:r8:"
                                   aria-expanded="false"
-                                  aria-labelledby="multiselect-label-id-multiselect-:r8:"
+                                  aria-labelledby="phoneFormCategoriesLabel"
                                   autocomplete="off"
                                   class="multiSelectFilterField"
                                   id="multiselect-:r8:-input"
@@ -16858,7 +16876,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               <button
                                 aria-controls="multiselect-option-list-multiselect-:r8:"
                                 aria-expanded="false"
-                                aria-label="toggle menu"
+                                aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
                                 class="multiSelectToggleButton"
                                 id="downshift-:r9:-toggle-button"
                                 tabindex="-1"
@@ -16876,14 +16894,14 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <div
                               class="multiSelectMenu"
                               hidden=""
-                              style="width: 100%;"
+                              style="width: 100px;"
                             >
                               <div
                                 class="multiSelectFeedback"
                                 role="alert"
                               />
                               <ul
-                                aria-labelledby="multiselect-label-id-multiselect-:r8:"
+                                aria-labelledby="multiselect-:r8:-label"
                                 class="multiSelectOptionList"
                                 id="multiselect-option-list-multiselect-:r8:"
                                 role="listbox"
@@ -17134,6 +17152,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               aria-labelledby="sl-label-selection-:ra: selected-selection-:ra:-item"
                               class="selectionControl formControl"
                               id="selection-:ra:"
+                              name="emails[0].language"
                               type="button"
                             >
                               <span
@@ -17141,6 +17160,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               >
                                 stripes-components.selection.controlLabel
                               </span>
+                              <div
+                                class="singleValue"
+                                id="selected-selection-:ra:-item"
+                              />
                             </button>
                             <div
                               class="selectionEndControls"
@@ -23539,8 +23562,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="downshift-:rd:-input"
-                            id="multiselect-label-id-multiselect-:rc:"
+                            for="multiselect-:rc:-input"
+                            id="multiselect-:rc:-label"
                           >
                             ui-organizations.data.contactTypes.categories
                           </label>
@@ -23561,7 +23584,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           >
                             <div
                               aria-describedby="multi-describe-control-multiselect-:rc:"
-                              aria-labelledby="multiselect-label-id-multiselect-:rc: multi-value-status-multiselect-:rc:"
+                              aria-labelledby="multiselect-:rc:-label multi-value-status-multiselect-:rc:"
                               class="multiSelectControl formControl"
                               role="searchbox"
                               tabindex="0"
@@ -23574,7 +23597,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                   aria-autocomplete="list"
                                   aria-controls="multiselect-option-list-multiselect-:rc:"
                                   aria-expanded="false"
-                                  aria-labelledby="multiselect-label-id-multiselect-:rc:"
+                                  aria-labelledby="emailFormCategoriesLabel"
                                   autocomplete="off"
                                   class="multiSelectFilterField"
                                   id="multiselect-:rc:-input"
@@ -23593,7 +23616,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               <button
                                 aria-controls="multiselect-option-list-multiselect-:rc:"
                                 aria-expanded="false"
-                                aria-label="toggle menu"
+                                aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
                                 class="multiSelectToggleButton"
                                 id="downshift-:rd:-toggle-button"
                                 tabindex="-1"
@@ -23611,14 +23634,14 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <div
                               class="multiSelectMenu"
                               hidden=""
-                              style="width: 100%;"
+                              style="width: 100px;"
                             >
                               <div
                                 class="multiSelectFeedback"
                                 role="alert"
                               />
                               <ul
-                                aria-labelledby="multiselect-label-id-multiselect-:rc:"
+                                aria-labelledby="multiselect-:rc:-label"
                                 class="multiSelectOptionList"
                                 id="multiselect-option-list-multiselect-:rc:"
                                 role="listbox"
@@ -23869,6 +23892,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               aria-labelledby="sl-label-selection-:re: selected-selection-:re:-item"
                               class="selectionControl formControl"
                               id="selection-:re:"
+                              name="urls[0].language"
                               type="button"
                             >
                               <span
@@ -23876,6 +23900,10 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               >
                                 stripes-components.selection.controlLabel
                               </span>
+                              <div
+                                class="singleValue"
+                                id="selected-selection-:re:-item"
+                              />
                             </button>
                             <div
                               class="selectionEndControls"
@@ -30274,8 +30302,8 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           />
                           <label
                             class="label"
-                            for="downshift-:rh:-input"
-                            id="multiselect-label-id-multiselect-:rg:"
+                            for="multiselect-:rg:-input"
+                            id="multiselect-:rg:-label"
                           >
                             ui-organizations.data.contactTypes.categories
                           </label>
@@ -30296,7 +30324,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                           >
                             <div
                               aria-describedby="multi-describe-control-multiselect-:rg:"
-                              aria-labelledby="multiselect-label-id-multiselect-:rg: multi-value-status-multiselect-:rg:"
+                              aria-labelledby="multiselect-:rg:-label multi-value-status-multiselect-:rg:"
                               class="multiSelectControl formControl"
                               role="searchbox"
                               tabindex="0"
@@ -30370,10 +30398,11 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                   aria-autocomplete="list"
                                   aria-controls="multiselect-option-list-multiselect-:rg:"
                                   aria-expanded="false"
-                                  aria-labelledby="multiselect-label-id-multiselect-:rg:"
+                                  aria-labelledby="urlFormCategoriesLabel"
                                   autocomplete="off"
                                   class="multiSelectFilterField"
                                   id="multiselect-:rg:-input"
+                                  placeholder=""
                                   role="combobox"
                                   type="text"
                                   value=""
@@ -30389,7 +30418,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                               <button
                                 aria-controls="multiselect-option-list-multiselect-:rg:"
                                 aria-expanded="false"
-                                aria-label="toggle menu"
+                                aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
                                 class="multiSelectToggleButton"
                                 id="downshift-:rh:-toggle-button"
                                 tabindex="-1"
@@ -30407,14 +30436,14 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                             <div
                               class="multiSelectMenu"
                               hidden=""
-                              style="width: 100%;"
+                              style="width: 100px;"
                             >
                               <div
                                 class="multiSelectFeedback"
                                 role="alert"
                               />
                               <ul
-                                aria-labelledby="multiselect-label-id-multiselect-:rg:"
+                                aria-labelledby="multiselect-:rg:-label"
                                 class="multiSelectOptionList"
                                 id="multiselect-option-list-multiselect-:rg:"
                                 role="listbox"

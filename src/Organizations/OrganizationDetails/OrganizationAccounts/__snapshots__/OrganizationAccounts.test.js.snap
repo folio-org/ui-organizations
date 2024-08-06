@@ -209,5 +209,6 @@ exports[`OrganizationAccounts should render correct structure 1`] = `
       </div>
     </div>
   </div>
+  ,
 </DocumentFragment>
 `;

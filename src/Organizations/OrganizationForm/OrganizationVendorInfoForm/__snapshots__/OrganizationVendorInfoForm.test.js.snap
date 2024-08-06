@@ -109,8 +109,8 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
               />
               <label
                 class="label"
-                for="downshift-:r1:-input"
-                id="multiselect-label-id-multiselect-:r0:"
+                for="multiselect-:r0:-input"
+                id="multiselect-:r0:-label"
               >
                 ui-organizations.vendorInfo.vendorCurrencies
               </label>
@@ -131,7 +131,7 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
               >
                 <div
                   aria-describedby="multi-describe-control-multiselect-:r0:"
-                  aria-labelledby="multiselect-label-id-multiselect-:r0: multi-value-status-multiselect-:r0:"
+                  aria-labelledby="multiselect-:r0:-label multi-value-status-multiselect-:r0:"
                   class="multiSelectControl formControl"
                   role="searchbox"
                   tabindex="0"
@@ -200,10 +200,11 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
                       aria-autocomplete="list"
                       aria-controls="multiselect-option-list-multiselect-:r0:"
                       aria-expanded="false"
-                      aria-labelledby="multiselect-label-id-multiselect-:r0:"
+                      aria-labelledby="vendorFormCurrenciesLabel"
                       autocomplete="off"
                       class="multiSelectFilterField"
                       id="multiselect-:r0:-input"
+                      placeholder=""
                       role="combobox"
                       type="text"
                       value=""
@@ -219,7 +220,7 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
                   <button
                     aria-controls="multiselect-option-list-multiselect-:r0:"
                     aria-expanded="false"
-                    aria-label="toggle menu"
+                    aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
                     class="multiSelectToggleButton"
                     id="downshift-:r1:-toggle-button"
                     tabindex="-1"
@@ -237,14 +238,14 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
                 <div
                   class="multiSelectMenu"
                   hidden=""
-                  style="width: 100%;"
+                  style="width: 100px;"
                 >
                   <div
                     class="multiSelectFeedback"
                     role="alert"
                   />
                   <ul
-                    aria-labelledby="multiselect-label-id-multiselect-:r0:"
+                    aria-labelledby="multiselect-:r0:-label"
                     class="multiSelectOptionList"
                     id="multiselect-option-list-multiselect-:r0:"
                     role="listbox"

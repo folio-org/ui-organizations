@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import stripesFinalForm from '@folio/stripes/final-form';
 
+import { QueryClient, QueryClientProvider } from 'react-query';
 import OrganizationAccountsForm from './OrganizationAccountsForm';
 
 const TestForm = stripesFinalForm({})(
@@ -29,11 +30,15 @@ const account = {
   notes: '',
   paymentMethod: 'Credit Card',
 };
+const queryClient = new QueryClient();
+
 const renderForm = ({ initialValues = {} } = {}) => render(
-  <TestForm
-    onSubmit={jest.fn()}
-    initialValues={initialValues}
-  />,
+  <QueryClientProvider client={queryClient}>
+    <TestForm
+      onSubmit={jest.fn()}
+      initialValues={initialValues}
+    />
+  </QueryClientProvider>,
   { wrapper: MemoryRouter },
 );
 

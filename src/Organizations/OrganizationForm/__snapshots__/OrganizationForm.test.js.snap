@@ -383,7 +383,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                   <span
                     class="inner"
                   >
-                    ui-organizations.button.saveAndClose
+                    stripes-components.saveAndClose
                   </span>
                 </button>
               </span>
@@ -792,7 +792,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                   <span
                     class="inner"
                   >
-                    ui-organizations.button.saveAndClose
+                    stripes-components.saveAndClose
                   </span>
                 </button>
               </span>
@@ -1375,7 +1375,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                   <span
                     class="inner"
                   >
-                    ui-organizations.button.saveAndClose
+                    stripes-components.saveAndClose
                   </span>
                 </button>
               </span>
