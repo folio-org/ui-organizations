@@ -1486,7 +1486,7 @@ exports[`OrganizationIntegrationForm should render correct form structure 1`] = 
               <span
                 class="inner"
               >
-                ui-organizations.button.saveAndClose
+                stripes-components.saveAndClose
               </span>
             </button>
           </span>
