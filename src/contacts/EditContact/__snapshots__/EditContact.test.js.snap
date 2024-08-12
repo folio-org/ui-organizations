@@ -350,6 +350,7 @@ exports[`EditContact should render correct form structure 1`] = `
                               aria-labelledby="sl-label-selection-:r0: selected-selection-:r0:-item"
                               class="selectionControl formControl"
                               id="selection-:r0:"
+                              name="language"
                               type="button"
                             >
                               <span
@@ -357,6 +358,10 @@ exports[`EditContact should render correct form structure 1`] = `
                               >
                                 stripes-components.selection.controlLabel
                               </span>
+                              <div
+                                class="singleValue"
+                                id="selected-selection-:r0:-item"
+                              />
                             </button>
                             <div
                               class="selectionEndControls"
@@ -6754,8 +6759,8 @@ exports[`EditContact should render correct form structure 1`] = `
                           />
                           <label
                             class="label"
-                            for="downshift-:r3:-input"
-                            id="multiselect-label-id-multiselect-:r2:"
+                            for="multiselect-:r2:-input"
+                            id="multiselect-:r2:-label"
                           >
                             ui-organizations.data.contactTypes.categories
                           </label>
@@ -6776,7 +6781,7 @@ exports[`EditContact should render correct form structure 1`] = `
                           >
                             <div
                               aria-describedby="multi-describe-control-multiselect-:r2:"
-                              aria-labelledby="multiselect-label-id-multiselect-:r2: multi-value-status-multiselect-:r2:"
+                              aria-labelledby="multiselect-:r2:-label multi-value-status-multiselect-:r2:"
                               class="multiSelectControl formControl"
                               role="searchbox"
                               tabindex="0"
@@ -6850,10 +6855,11 @@ exports[`EditContact should render correct form structure 1`] = `
                                   aria-autocomplete="list"
                                   aria-controls="multiselect-option-list-multiselect-:r2:"
                                   aria-expanded="false"
-                                  aria-labelledby="multiselect-label-id-multiselect-:r2:"
+                                  aria-labelledby="nameFormCategoriesLabel"
                                   autocomplete="off"
                                   class="multiSelectFilterField"
                                   id="multiselect-:r2:-input"
+                                  placeholder=""
                                   role="combobox"
                                   type="text"
                                   value=""
@@ -6869,7 +6875,7 @@ exports[`EditContact should render correct form structure 1`] = `
                               <button
                                 aria-controls="multiselect-option-list-multiselect-:r2:"
                                 aria-expanded="false"
-                                aria-label="toggle menu"
+                                aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
                                 class="multiSelectToggleButton"
                                 id="downshift-:r3:-toggle-button"
                                 tabindex="-1"
@@ -6887,14 +6893,14 @@ exports[`EditContact should render correct form structure 1`] = `
                             <div
                               class="multiSelectMenu"
                               hidden=""
-                              style="width: 100%;"
+                              style="width: 100px;"
                             >
                               <div
                                 class="multiSelectFeedback"
                                 role="alert"
                               />
                               <ul
-                                aria-labelledby="multiselect-label-id-multiselect-:r2:"
+                                aria-labelledby="multiselect-:r2:-label"
                                 class="multiSelectOptionList"
                                 id="multiselect-option-list-multiselect-:r2:"
                                 role="listbox"
@@ -7187,6 +7193,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                           aria-labelledby="sl-label-selection-:r4: selected-selection-:r4:-item"
                                           class="selectionControl formControl"
                                           id="selection-:r4:"
+                                          name="emails[0].language"
                                           type="button"
                                         >
                                           <span
@@ -7194,6 +7201,10 @@ exports[`EditContact should render correct form structure 1`] = `
                                           >
                                             stripes-components.selection.controlLabel
                                           </span>
+                                          <div
+                                            class="singleValue"
+                                            id="selected-selection-:r4:-item"
+                                          />
                                         </button>
                                         <div
                                           class="selectionEndControls"
@@ -13607,7 +13618,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                       >
                                         <div
                                           aria-describedby="multi-describe-control-multiselect-:r6:"
-                                          aria-labelledby="multi-value-status-multiselect-:r6:"
+                                          aria-labelledby="emailFormCategoriesLabel multi-value-status-multiselect-:r6:"
                                           class="multiSelectControl formControl"
                                           role="searchbox"
                                           tabindex="0"
@@ -13681,10 +13692,11 @@ exports[`EditContact should render correct form structure 1`] = `
                                               aria-autocomplete="list"
                                               aria-controls="multiselect-option-list-multiselect-:r6:"
                                               aria-expanded="false"
-                                              aria-labelledby="multiselect-label-id-multiselect-:r6:"
+                                              aria-labelledby="emailFormCategoriesLabel"
                                               autocomplete="off"
                                               class="multiSelectFilterField"
                                               id="multiselect-:r6:-input"
+                                              placeholder=""
                                               role="combobox"
                                               type="text"
                                               value=""
@@ -13700,7 +13712,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                           <button
                                             aria-controls="multiselect-option-list-multiselect-:r6:"
                                             aria-expanded="false"
-                                            aria-label="toggle menu"
+                                            aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
                                             class="multiSelectToggleButton"
                                             id="downshift-:r7:-toggle-button"
                                             tabindex="-1"
@@ -13718,14 +13730,14 @@ exports[`EditContact should render correct form structure 1`] = `
                                         <div
                                           class="multiSelectMenu"
                                           hidden=""
-                                          style="width: 100%;"
+                                          style="width: 100px;"
                                         >
                                           <div
                                             class="multiSelectFeedback"
                                             role="alert"
                                           />
                                           <ul
-                                            aria-labelledby="multiselect-label-id-multiselect-:r6:"
+                                            aria-labelledby="multiselect-:r6:-label"
                                             class="multiSelectOptionList"
                                             id="multiselect-option-list-multiselect-:r6:"
                                             role="listbox"
@@ -14065,6 +14077,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                           aria-labelledby="sl-label-selection-:r8: selected-selection-:r8:-item"
                                           class="selectionControl formControl"
                                           id="selection-:r8:"
+                                          name="phoneNumbers[0].language"
                                           type="button"
                                         >
                                           <span
@@ -14072,6 +14085,10 @@ exports[`EditContact should render correct form structure 1`] = `
                                           >
                                             stripes-components.selection.controlLabel
                                           </span>
+                                          <div
+                                            class="singleValue"
+                                            id="selected-selection-:r8:-item"
+                                          />
                                         </button>
                                         <div
                                           class="selectionEndControls"
@@ -20485,7 +20502,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                       >
                                         <div
                                           aria-describedby="multi-describe-control-multiselect-:ra:"
-                                          aria-labelledby="multi-value-status-multiselect-:ra:"
+                                          aria-labelledby="phoneFormCategoriesLabel multi-value-status-multiselect-:ra:"
                                           class="multiSelectControl formControl"
                                           role="searchbox"
                                           tabindex="0"
@@ -20559,10 +20576,11 @@ exports[`EditContact should render correct form structure 1`] = `
                                               aria-autocomplete="list"
                                               aria-controls="multiselect-option-list-multiselect-:ra:"
                                               aria-expanded="false"
-                                              aria-labelledby="multiselect-label-id-multiselect-:ra:"
+                                              aria-labelledby="phoneFormCategoriesLabel"
                                               autocomplete="off"
                                               class="multiSelectFilterField"
                                               id="multiselect-:ra:-input"
+                                              placeholder=""
                                               role="combobox"
                                               type="text"
                                               value=""
@@ -20578,7 +20596,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                           <button
                                             aria-controls="multiselect-option-list-multiselect-:ra:"
                                             aria-expanded="false"
-                                            aria-label="toggle menu"
+                                            aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
                                             class="multiSelectToggleButton"
                                             id="downshift-:rb:-toggle-button"
                                             tabindex="-1"
@@ -20596,14 +20614,14 @@ exports[`EditContact should render correct form structure 1`] = `
                                         <div
                                           class="multiSelectMenu"
                                           hidden=""
-                                          style="width: 100%;"
+                                          style="width: 100px;"
                                         >
                                           <div
                                             class="multiSelectFeedback"
                                             role="alert"
                                           />
                                           <ul
-                                            aria-labelledby="multiselect-label-id-multiselect-:ra:"
+                                            aria-labelledby="multiselect-:ra:-label"
                                             class="multiSelectOptionList"
                                             id="multiselect-option-list-multiselect-:ra:"
                                             role="listbox"
@@ -20920,6 +20938,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                           aria-labelledby="sl-label-selection-:rc: selected-selection-:rc:-item"
                                           class="selectionControl formControl"
                                           id="selection-:rc:"
+                                          name="urls[0].language"
                                           type="button"
                                         >
                                           <span
@@ -20927,6 +20946,10 @@ exports[`EditContact should render correct form structure 1`] = `
                                           >
                                             stripes-components.selection.controlLabel
                                           </span>
+                                          <div
+                                            class="singleValue"
+                                            id="selected-selection-:rc:-item"
+                                          />
                                         </button>
                                         <div
                                           class="selectionEndControls"
@@ -27340,7 +27363,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                       >
                                         <div
                                           aria-describedby="multi-describe-control-multiselect-:re:"
-                                          aria-labelledby="multi-value-status-multiselect-:re:"
+                                          aria-labelledby="urlFormCategoriesLabel multi-value-status-multiselect-:re:"
                                           class="multiSelectControl formControl"
                                           role="searchbox"
                                           tabindex="0"
@@ -27414,10 +27437,11 @@ exports[`EditContact should render correct form structure 1`] = `
                                               aria-autocomplete="list"
                                               aria-controls="multiselect-option-list-multiselect-:re:"
                                               aria-expanded="false"
-                                              aria-labelledby="multiselect-label-id-multiselect-:re:"
+                                              aria-labelledby="urlFormCategoriesLabel"
                                               autocomplete="off"
                                               class="multiSelectFilterField"
                                               id="multiselect-:re:-input"
+                                              placeholder=""
                                               role="combobox"
                                               type="text"
                                               value=""
@@ -27433,7 +27457,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                           <button
                                             aria-controls="multiselect-option-list-multiselect-:re:"
                                             aria-expanded="false"
-                                            aria-label="toggle menu"
+                                            aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
                                             class="multiSelectToggleButton"
                                             id="downshift-:rf:-toggle-button"
                                             tabindex="-1"
@@ -27451,14 +27475,14 @@ exports[`EditContact should render correct form structure 1`] = `
                                         <div
                                           class="multiSelectMenu"
                                           hidden=""
-                                          style="width: 100%;"
+                                          style="width: 100px;"
                                         >
                                           <div
                                             class="multiSelectFeedback"
                                             role="alert"
                                           />
                                           <ul
-                                            aria-labelledby="multiselect-label-id-multiselect-:re:"
+                                            aria-labelledby="multiselect-:re:-label"
                                             class="multiSelectOptionList"
                                             id="multiselect-option-list-multiselect-:re:"
                                             role="listbox"
@@ -27872,14 +27896,21 @@ exports[`EditContact should render correct form structure 1`] = `
                                               aria-labelledby="sl-label-selection-:rg: selected-selection-:rg:-item"
                                               class="selectionControl formControl"
                                               id="selection-:rg:"
+                                              name="addresses[0].country"
                                               type="button"
+                                              value="USA"
                                             >
                                               <span
                                                 class="sr-only"
                                               >
                                                 stripes-components.selection.controlLabel
                                               </span>
-                                              US
+                                              <div
+                                                class="singleValue"
+                                                id="selected-selection-:rg:-item"
+                                              >
+                                                US
+                                              </div>
                                             </button>
                                             <div
                                               class="selectionEndControls"
@@ -31175,6 +31206,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                               aria-labelledby="sl-label-selection-:ri: selected-selection-:ri:-item"
                                               class="selectionControl formControl"
                                               id="selection-:ri:"
+                                              name="addresses[0].language"
                                               type="button"
                                             >
                                               <span
@@ -31182,6 +31214,10 @@ exports[`EditContact should render correct form structure 1`] = `
                                               >
                                                 stripes-components.selection.controlLabel
                                               </span>
+                                              <div
+                                                class="singleValue"
+                                                id="selected-selection-:ri:-item"
+                                              />
                                             </button>
                                             <div
                                               class="selectionEndControls"
@@ -37580,8 +37616,8 @@ exports[`EditContact should render correct form structure 1`] = `
                                           />
                                           <label
                                             class="label"
-                                            for="downshift-:rl:-input"
-                                            id="multiselect-label-id-multiselect-:rk:"
+                                            for="multiselect-:rk:-input"
+                                            id="multiselect-:rk:-label"
                                           >
                                             ui-organizations.data.contactTypes.categories
                                           </label>
@@ -37602,7 +37638,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                           >
                                             <div
                                               aria-describedby="multi-describe-control-multiselect-:rk:"
-                                              aria-labelledby="multiselect-label-id-multiselect-:rk: multi-value-status-multiselect-:rk:"
+                                              aria-labelledby="multiselect-:rk:-label multi-value-status-multiselect-:rk:"
                                               class="multiSelectControl formControl"
                                               role="searchbox"
                                               tabindex="0"
@@ -37676,10 +37712,11 @@ exports[`EditContact should render correct form structure 1`] = `
                                                   aria-autocomplete="list"
                                                   aria-controls="multiselect-option-list-multiselect-:rk:"
                                                   aria-expanded="false"
-                                                  aria-labelledby="multiselect-label-id-multiselect-:rk:"
+                                                  aria-labelledby="addressFormCategoriesLabel"
                                                   autocomplete="off"
                                                   class="multiSelectFilterField"
                                                   id="multiselect-:rk:-input"
+                                                  placeholder=""
                                                   role="combobox"
                                                   type="text"
                                                   value=""
@@ -37695,7 +37732,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                               <button
                                                 aria-controls="multiselect-option-list-multiselect-:rk:"
                                                 aria-expanded="false"
-                                                aria-label="toggle menu"
+                                                aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
                                                 class="multiSelectToggleButton"
                                                 id="downshift-:rl:-toggle-button"
                                                 tabindex="-1"
@@ -37713,14 +37750,14 @@ exports[`EditContact should render correct form structure 1`] = `
                                             <div
                                               class="multiSelectMenu"
                                               hidden=""
-                                              style="width: 100%;"
+                                              style="width: 100px;"
                                             >
                                               <div
                                                 class="multiSelectFeedback"
                                                 role="alert"
                                               />
                                               <ul
-                                                aria-labelledby="multiselect-label-id-multiselect-:rk:"
+                                                aria-labelledby="multiselect-:rk:-label"
                                                 class="multiSelectOptionList"
                                                 id="multiselect-option-list-multiselect-:rk:"
                                                 role="listbox"
@@ -37833,7 +37870,7 @@ exports[`EditContact should render correct form structure 1`] = `
               <span
                 class="inner"
               >
-                ui-organizations.button.saveAndClose
+                stripes-components.saveAndClose
               </span>
             </button>
           </span>

@@ -5,6 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import stripesFinalForm from '@folio/stripes/final-form';
 
 import { organization, organizationTypes } from 'fixtures';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import OrganizationSummaryForm from './OrganizationSummaryForm';
 
 import { useTypes } from '../../../common/hooks';
@@ -25,11 +26,15 @@ const TestForm = stripesFinalForm({})(
   },
 );
 
+const queryClient = new QueryClient();
+
 const renderForm = ({ initialValues = {} } = {}) => render(
-  <TestForm
-    onSubmit={jest.fn()}
-    initialValues={initialValues}
-  />,
+  <QueryClientProvider client={queryClient}>
+    <TestForm
+      onSubmit={jest.fn()}
+      initialValues={initialValues}
+    />
+  </QueryClientProvider>,
   { wrapper: MemoryRouter },
 );
 

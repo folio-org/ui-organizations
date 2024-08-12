@@ -453,8 +453,8 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
                 />
                 <label
                   class="label"
-                  for="downshift-:r1:-input"
-                  id="multiselect-label-id-account-acq-units-0"
+                  for="account-acq-units-0-input"
+                  id="account-acq-units-0-label"
                 >
                   stripes-acq-components.label.acqUnits
                 </label>
@@ -475,7 +475,7 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
                 >
                   <div
                     aria-describedby="multi-describe-control-account-acq-units-0"
-                    aria-labelledby="multiselect-label-id-account-acq-units-0 multi-value-status-account-acq-units-0"
+                    aria-labelledby="account-acq-units-0-label multi-value-status-account-acq-units-0"
                     class="multiSelectControl formControl"
                     role="searchbox"
                     tabindex="0"
@@ -488,7 +488,7 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
                         aria-autocomplete="list"
                         aria-controls="multiselect-option-list-account-acq-units-0"
                         aria-expanded="false"
-                        aria-labelledby="multiselect-label-id-account-acq-units-0"
+                        aria-labelledby="account-acq-units-0-label"
                         autocomplete="off"
                         class="multiSelectFilterField"
                         id="account-acq-units-0-input"
@@ -507,7 +507,7 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
                     <button
                       aria-controls="multiselect-option-list-account-acq-units-0"
                       aria-expanded="false"
-                      aria-label="toggle menu"
+                      aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
                       class="multiSelectToggleButton"
                       id="downshift-:r1:-toggle-button"
                       tabindex="-1"
@@ -525,7 +525,7 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
                   <div
                     class="multiSelectMenu"
                     hidden=""
-                    style="width: 100%;"
+                    style="width: 100px;"
                   >
                     <div
                       class="multiSelectFeedback"
@@ -538,7 +538,7 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
                       </div>
                     </div>
                     <ul
-                      aria-labelledby="multiselect-label-id-account-acq-units-0"
+                      aria-labelledby="account-acq-units-0-label"
                       class="multiSelectOptionList"
                       id="multiselect-option-list-account-acq-units-0"
                       role="listbox"
