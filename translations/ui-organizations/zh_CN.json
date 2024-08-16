@@ -283,7 +283,6 @@
     "showTags": "显示标签",
     "search.keyword": "所有",
     "button.cancel": "取消",
-    "button.saveAndClose": "保存并关闭",
     "interface.url": "URL",
     "interface.type": "类型",
     "edit.hideCredentials": "隐藏凭证",
@@ -453,8 +452,8 @@
     "permission.privileged-contacts.view": "组织：可以查看特权捐助者信息",
     "permission.privileged-contacts.edit": "组织：可以查看、创建、编辑、删除特权捐赠者信息",
     "document.title.search": "组织 - {query} - 搜索",
-    "filterConfig.createdBy": "Created by",
-    "filterConfig.dateCreated": "Date created",
-    "filterConfig.dateUpdated": "Date updated",
-    "filterConfig.updatedBy": "Updated by"
+    "filterConfig.createdBy": "创建者",
+    "filterConfig.dateCreated": "创建日期",
+    "filterConfig.dateUpdated": "更新日期",
+    "filterConfig.updatedBy": "更新者"
 }
