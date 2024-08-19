@@ -1,13 +1,17 @@
 import React, { useCallback } from 'react';
-import { Field } from 'react-final-form';
+import { Field, useForm } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { stripesConnect } from '@folio/stripes/core';
-import { TextField } from '@folio/stripes/components';
+import { stripesConnect, useStripes } from '@folio/stripes/core';
+import { Col, Row, TextField } from '@folio/stripes/components';
+import { NumberGeneratorModalButton } from '@folio/service-interaction';
 
 import { fetchOrgsByParam } from '../../../../common/resources';
 import { validateOrgCode } from './validateOrgCode';
+import { useSettings } from '../../../../common/hooks';
+
+const CONFIG_NAME = 'number_generator';
 
 const FieldCode = ({ orgId, mutator }) => {
   const validate = useCallback(value => {
@@ -16,15 +20,47 @@ const FieldCode = ({ orgId, mutator }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   [orgId]);
 
+  const { change } = useForm();
+  const stripes = useStripes();
+
+  const { settings } = useSettings([CONFIG_NAME]);
+  let vendorCodeSetting = 'useTextField';
+
+  if (stripes.hasInterface('servint')) {
+    vendorCodeSetting = settings?.find(sett => sett?.configName === CONFIG_NAME)?.parsedSettings?.vendorGeneratorSetting ?? 'useTextField';
+  }
+
   return (
-    <Field
-      component={TextField}
-      fullWidth
-      label={<FormattedMessage id="ui-organizations.summary.code" />}
-      name="code"
-      required
-      validate={validate}
-    />
+    <Row>
+      <Col xs={12}>
+        <Field
+          component={TextField}
+          disabled={vendorCodeSetting === 'useGenerator'}
+          fullWidth
+          label={<FormattedMessage id="ui-organizations.summary.code" />}
+          name="code"
+          required
+          validate={validate}
+        />
+      </Col>
+      {(
+        vendorCodeSetting === 'useGenerator' ||
+        vendorCodeSetting === 'useBoth'
+      ) &&
+        <Col xs={12}>
+          <NumberGeneratorModalButton
+            buttonLabel={<FormattedMessage id="ui-organizations.numberGenerator.generateVendorCode" />}
+            callback={(generated) => change('code', generated)}
+            id="vendor-code-generator"
+            generateButtonLabel={<FormattedMessage id="ui-organizations.numberGenerator.generateVendorCode" />}
+            generator="organizations_vendorCode"
+            modalProps={{
+              label: <FormattedMessage id="ui-organizations.numberGenerator.vendorCodeGenerator" />
+            }}
+          />
+        </Col>
+      }
+    </Row>
   );
 };
 
