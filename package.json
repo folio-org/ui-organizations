@@ -63,7 +63,7 @@
       {
         "permissionName": "ui-organizations.third-party-services.execute",
         "displayName": "Organizations: Permissions required to call services apart from mod-organizations-storage",
-        "replaces": ["ui-organizations.third-party-services"]
+        "replaces": ["ui-organizations.third-party-services"],
         "visible": false,
         "subPermissions": [
           "acquisitions-units.memberships.collection.get",
