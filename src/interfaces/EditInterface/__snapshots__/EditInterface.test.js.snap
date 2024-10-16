@@ -576,6 +576,5 @@ exports[`EditContact should render correct form structure 1`] = `
       </div>
     </section>
   </div>
-  <div />
 </DocumentFragment>
 `;

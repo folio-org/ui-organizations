@@ -188,41 +188,44 @@ exports[`ViewContact should render correct structure 1`] = `
                 id="contact-name"
               >
                 <div
-                  class="headerWrapper"
-                  tabindex="-1"
+                  style="width: 100%; display: flex;"
                 >
                   <div
-                    class="header default"
+                    class="headerWrapper"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <div
+                      class="header default"
                     >
-                      <button
-                        aria-controls="accordion1"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-contact-name"
-                        type="button"
+                      <h3
+                        class="headline size-medium margin-none font-weight-bold block"
+                        data-test-headline="true"
                       >
-                        <span
-                          class="headerInner"
+                        <button
+                          aria-controls="accordion1"
+                          aria-expanded="true"
+                          class="defaultCollapseButton"
+                          id="accordion-toggle-button-contact-name"
+                          type="button"
                         >
                           <span
-                            class="defaultHeaderIcon"
+                            class="headerInner"
                           >
-                            <span>
-                              Icon
+                            <span
+                              class="defaultHeaderIcon"
+                            >
+                              <span>
+                                Icon
+                              </span>
                             </span>
+                            <div
+                              class="labelArea"
+                            >
+                              ui-organizations.contactPeople.name
+                            </div>
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-organizations.contactPeople.name
-                          </div>
-                        </span>
-                      </button>
-                    </h3>
+                        </button>
+                      </h3>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -390,41 +393,44 @@ exports[`ViewContact should render correct structure 1`] = `
                 id="contact-emails"
               >
                 <div
-                  class="headerWrapper"
-                  tabindex="-1"
+                  style="width: 100%; display: flex;"
                 >
                   <div
-                    class="header default"
+                    class="headerWrapper"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <div
+                      class="header default"
                     >
-                      <button
-                        aria-controls="accordion2"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-contact-emails"
-                        type="button"
+                      <h3
+                        class="headline size-medium margin-none font-weight-bold block"
+                        data-test-headline="true"
                       >
-                        <span
-                          class="headerInner"
+                        <button
+                          aria-controls="accordion2"
+                          aria-expanded="true"
+                          class="defaultCollapseButton"
+                          id="accordion-toggle-button-contact-emails"
+                          type="button"
                         >
                           <span
-                            class="defaultHeaderIcon"
+                            class="headerInner"
                           >
-                            <span>
-                              Icon
+                            <span
+                              class="defaultHeaderIcon"
+                            >
+                              <span>
+                                Icon
+                              </span>
                             </span>
+                            <div
+                              class="labelArea"
+                            >
+                              ui-organizations.contactPeople.emails
+                            </div>
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-organizations.contactPeople.emails
-                          </div>
-                        </span>
-                      </button>
-                    </h3>
+                        </button>
+                      </h3>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -601,41 +607,44 @@ exports[`ViewContact should render correct structure 1`] = `
                 id="contact-phones"
               >
                 <div
-                  class="headerWrapper"
-                  tabindex="-1"
+                  style="width: 100%; display: flex;"
                 >
                   <div
-                    class="header default"
+                    class="headerWrapper"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <div
+                      class="header default"
                     >
-                      <button
-                        aria-controls="accordion3"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-contact-phones"
-                        type="button"
+                      <h3
+                        class="headline size-medium margin-none font-weight-bold block"
+                        data-test-headline="true"
                       >
-                        <span
-                          class="headerInner"
+                        <button
+                          aria-controls="accordion3"
+                          aria-expanded="true"
+                          class="defaultCollapseButton"
+                          id="accordion-toggle-button-contact-phones"
+                          type="button"
                         >
                           <span
-                            class="defaultHeaderIcon"
+                            class="headerInner"
                           >
-                            <span>
-                              Icon
+                            <span
+                              class="defaultHeaderIcon"
+                            >
+                              <span>
+                                Icon
+                              </span>
                             </span>
+                            <div
+                              class="labelArea"
+                            >
+                              ui-organizations.contactPeople.phoneNumbers
+                            </div>
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-organizations.contactPeople.phoneNumbers
-                          </div>
-                        </span>
-                      </button>
-                    </h3>
+                        </button>
+                      </h3>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -812,41 +821,44 @@ exports[`ViewContact should render correct structure 1`] = `
                 id="contact-urls"
               >
                 <div
-                  class="headerWrapper"
-                  tabindex="-1"
+                  style="width: 100%; display: flex;"
                 >
                   <div
-                    class="header default"
+                    class="headerWrapper"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <div
+                      class="header default"
                     >
-                      <button
-                        aria-controls="accordion4"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-contact-urls"
-                        type="button"
+                      <h3
+                        class="headline size-medium margin-none font-weight-bold block"
+                        data-test-headline="true"
                       >
-                        <span
-                          class="headerInner"
+                        <button
+                          aria-controls="accordion4"
+                          aria-expanded="true"
+                          class="defaultCollapseButton"
+                          id="accordion-toggle-button-contact-urls"
+                          type="button"
                         >
                           <span
-                            class="defaultHeaderIcon"
+                            class="headerInner"
                           >
-                            <span>
-                              Icon
+                            <span
+                              class="defaultHeaderIcon"
+                            >
+                              <span>
+                                Icon
+                              </span>
                             </span>
+                            <div
+                              class="labelArea"
+                            >
+                              ui-organizations.contactPeople.urls
+                            </div>
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-organizations.contactPeople.urls
-                          </div>
-                        </span>
-                      </button>
-                    </h3>
+                        </button>
+                      </h3>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -1030,41 +1042,44 @@ exports[`ViewContact should render correct structure 1`] = `
                 id="contact-addresses"
               >
                 <div
-                  class="headerWrapper"
-                  tabindex="-1"
+                  style="width: 100%; display: flex;"
                 >
                   <div
-                    class="header default"
+                    class="headerWrapper"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <div
+                      class="header default"
                     >
-                      <button
-                        aria-controls="accordion5"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-contact-addresses"
-                        type="button"
+                      <h3
+                        class="headline size-medium margin-none font-weight-bold block"
+                        data-test-headline="true"
                       >
-                        <span
-                          class="headerInner"
+                        <button
+                          aria-controls="accordion5"
+                          aria-expanded="true"
+                          class="defaultCollapseButton"
+                          id="accordion-toggle-button-contact-addresses"
+                          type="button"
                         >
                           <span
-                            class="defaultHeaderIcon"
+                            class="headerInner"
                           >
-                            <span>
-                              Icon
+                            <span
+                              class="defaultHeaderIcon"
+                            >
+                              <span>
+                                Icon
+                              </span>
                             </span>
+                            <div
+                              class="labelArea"
+                            >
+                              ui-organizations.contactPeople.addresses
+                            </div>
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-organizations.contactPeople.addresses
-                          </div>
-                        </span>
-                      </button>
-                    </h3>
+                        </button>
+                      </h3>
+                    </div>
                   </div>
                 </div>
                 <div
