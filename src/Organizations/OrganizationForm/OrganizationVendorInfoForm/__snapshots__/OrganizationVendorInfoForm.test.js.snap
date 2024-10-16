@@ -597,41 +597,45 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
             id="taxSection"
           >
             <div
-              class="headerWrapper"
+              style="width: 100%; display: flex;"
               tabindex="-1"
             >
               <div
-                class="header default"
+                class="headerWrapper"
               >
-                <h3
-                  class="headline size-medium margin-none font-weight-bold block"
-                  data-test-headline="true"
+                <div
+                  class="header default"
                 >
-                  <button
-                    aria-controls="accordion1"
-                    aria-expanded="true"
-                    class="defaultCollapseButton"
-                    id="accordion-toggle-button-taxSection"
-                    type="button"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <span
-                      class="headerInner"
+                    <button
+                      aria-controls="accordion1"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-taxSection"
+                      type="button"
                     >
                       <span
-                        class="defaultHeaderIcon"
+                        class="headerInner"
                       >
-                        <span>
-                          Icon
+                        <span
+                          class="defaultHeaderIcon"
+                        >
+                          <span>
+                            Icon
+                          </span>
                         </span>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-organizations.vendorInfo.tax
+                        </div>
                       </span>
-                      <div
-                        class="labelArea"
-                      >
-                        ui-organizations.vendorInfo.tax
-                      </div>
-                    </span>
-                  </button>
-                </h3>
+                    </button>
+                  </h3>
+                </div>
               </div>
             </div>
             <div
@@ -780,6 +784,5 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;

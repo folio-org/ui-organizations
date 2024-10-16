@@ -89,6 +89,7 @@ describe('OrganizationBankingInfoForm', () => {
     renderOrganizationBankingInfoForm();
 
     await addField();
+    await user.click(screen.getAllByText('stripes-components.selection.controlLabel')[1]);
 
     bankingAccountTypes.forEach(({ name }) => {
       expect(screen.getByText(name)).toBeInTheDocument();
@@ -100,6 +101,7 @@ describe('OrganizationBankingInfoForm', () => {
       renderOrganizationBankingInfoForm();
 
       await addField();
+      await user.click(screen.getAllByText('stripes-components.selection.controlLabel')[0]);
 
       categories.forEach(({ value }) => {
         expect(within(screen.getByTestId('banking-information-card')).getByText(value)).toBeInTheDocument();
@@ -117,6 +119,7 @@ describe('OrganizationBankingInfoForm', () => {
       });
 
       await addField();
+      await user.click(screen.getAllByText('stripes-components.selection.controlLabel')[0]);
 
       categories.forEach(({ value }) => {
         expect(within(screen.getByTestId('banking-information-card')).queryByText(value)).not.toBeInTheDocument();

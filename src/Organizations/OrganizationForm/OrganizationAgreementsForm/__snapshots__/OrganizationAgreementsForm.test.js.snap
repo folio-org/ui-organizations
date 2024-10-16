@@ -194,7 +194,6 @@ exports[`OrganizationAgreementsForm should render correct structure with defined
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;
 
@@ -235,6 +234,5 @@ exports[`OrganizationAgreementsForm should render correct structure without acco
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;

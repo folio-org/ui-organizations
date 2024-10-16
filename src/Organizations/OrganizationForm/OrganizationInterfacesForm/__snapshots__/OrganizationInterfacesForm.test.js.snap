@@ -172,6 +172,5 @@ exports[`OrganizationInterfacesForm should render correct structure 1`] = `
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;

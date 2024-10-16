@@ -593,7 +593,6 @@ exports[`OrganizationAccountsForm should render correct structure with defined a
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;
 
@@ -630,6 +629,5 @@ exports[`OrganizationAccountsForm should render correct structure without accoun
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;
