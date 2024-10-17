@@ -6,6 +6,7 @@
 * Settings > Organizations > Banking information is not properly fenced off by permissions. Refs UIORGS-436.
 * Use Save & close button label stripes-component translation key - all UI modules. Refs UIORGS-425.
 * Clean up ui-organizations permissions. Refs UIORGS-445.
+* Banking - prevent deletion of account type if it is being used by an organization. Refs UIORGS-435.
 
 ## [5.1.1](https://github.com/folio-org/ui-organizations/tree/v5.1.1) (2024-04-18)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.1.0...v5.1.1)
