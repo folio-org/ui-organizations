@@ -423,7 +423,7 @@
     "settings.bankingInformation.enable": "Enable banking information",
     "settings.bankingAccountTypes": "Account types",
     "settings.bankingAccountTypes.cannotDeleteTermHeader": "Cannot delete account type",
-    "settings.bankingAccountTypes.cannotDeleteTermMessage": "This account type cannot be deleted, as it is in use by one or more records.",
+    "settings.bankingAccountTypes.cannotDeleteTermMessage": "Unable to delete. Account type is in use by one or more organizations.",
     "settings.bankingAccountTypes.deleteEntry": "Delete account type",
     "settings.bankingAccountTypes.termDeleted": "The account type <b>{term}</b> was successfully <b>deleted</b>",
     "settings.bankingAccountTypes.termWillBeDeleted": "The account type <b>{term}</b> will be <b>deleted.</b>",

@@ -423,7 +423,7 @@
     "settings.bankingInformation.enable": "Habilitar informações bancárias",
     "settings.bankingAccountTypes": "Tipos de conta",
     "settings.bankingAccountTypes.cannotDeleteTermHeader": "Não é possível excluir o tipo de conta",
-    "settings.bankingAccountTypes.cannotDeleteTermMessage": "Este tipo de conta não pode ser excluído, pois está em uso por um ou mais registros.",
+    "settings.bankingAccountTypes.cannotDeleteTermMessage": "Não é possível excluir. O tipo de conta está em uso por uma ou mais organizações.",
     "settings.bankingAccountTypes.deleteEntry": "Excluir tipo de conta",
     "settings.bankingAccountTypes.termDeleted": "O tipo de conta <b>{term}</b> foi <b>excluído</b> com sucesso",
     "settings.bankingAccountTypes.termWillBeDeleted": "O tipo de conta <b>{term}</b> será <b>excluído.</b>",
