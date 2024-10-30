@@ -14,6 +14,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
           class="repeatableField hasMargin"
           data-test-repeatable-field="true"
           id="addresses"
+          tabindex="-1"
         >
           <legend
             class="headline size-medium margin-medium font-weight-bold"
@@ -348,6 +349,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                 id="downshift-:r1:-menu"
                                 role="listbox"
                                 style="max-height: 174px;"
+                                tabindex="-1"
                               />
                             </div>
                           </div>
@@ -439,6 +441,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                 id="downshift-:r3:-menu"
                                 role="listbox"
                                 style="max-height: 174px;"
+                                tabindex="-1"
                               />
                             </div>
                           </div>
@@ -697,6 +700,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
           class="repeatableField hasMargin"
           data-test-repeatable-field="true"
           id="phone-numbers"
+          tabindex="-1"
         >
           <legend
             class="headline size-medium margin-medium font-weight-bold"
@@ -943,6 +947,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                 id="downshift-:r7:-menu"
                                 role="listbox"
                                 style="max-height: 174px;"
+                                tabindex="-1"
                               />
                             </div>
                           </div>
@@ -1139,6 +1144,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
           class="repeatableField hasMargin"
           data-test-repeatable-field="true"
           id="emails"
+          tabindex="-1"
         >
           <legend
             class="headline size-medium margin-medium font-weight-bold"
@@ -1360,6 +1366,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                 id="downshift-:rb:-menu"
                                 role="listbox"
                                 style="max-height: 174px;"
+                                tabindex="-1"
                               />
                             </div>
                           </div>
@@ -1556,6 +1563,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
           class="repeatableField hasMargin"
           data-test-repeatable-field="true"
           id="urls"
+          tabindex="-1"
         >
           <legend
             class="headline size-medium margin-medium font-weight-bold"
@@ -1777,6 +1785,7 @@ exports[`OrganizationContactInfoForm should render correct structure with define
                                 id="downshift-:rf:-menu"
                                 role="listbox"
                                 style="max-height: 174px;"
+                                tabindex="-1"
                               />
                             </div>
                           </div>

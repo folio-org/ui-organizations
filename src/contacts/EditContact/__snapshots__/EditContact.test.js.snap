@@ -107,44 +107,46 @@ exports[`EditContact should render correct form structure 1`] = `
                 data-test-accordion-section="true"
                 id="contact-name"
               >
-                <div
-                  style="width: 100%; display: flex;"
-                >
+                <div>
                   <div
-                    class="headerWrapper"
+                    style="width: 100%; display: flex;"
                   >
                     <div
-                      class="header default"
+                      class="headerWrapper"
                     >
-                      <h3
-                        class="headline size-medium margin-none font-weight-bold block"
-                        data-test-headline="true"
+                      <div
+                        class="header default"
                       >
-                        <button
-                          aria-controls="accordion1"
-                          aria-expanded="true"
-                          class="defaultCollapseButton"
-                          id="accordion-toggle-button-contact-name"
-                          type="button"
+                        <h3
+                          class="headline size-medium margin-none font-weight-bold block"
+                          data-test-headline="true"
                         >
-                          <span
-                            class="headerInner"
+                          <button
+                            aria-controls="accordion1"
+                            aria-expanded="true"
+                            class="defaultCollapseButton"
+                            id="accordion-toggle-button-contact-name"
+                            type="button"
                           >
                             <span
-                              class="defaultHeaderIcon"
+                              class="headerInner"
                             >
-                              <span>
-                                Icon
+                              <span
+                                class="defaultHeaderIcon"
+                              >
+                                <span>
+                                  Icon
+                                </span>
                               </span>
+                              <div
+                                class="labelArea"
+                              >
+                                ui-organizations.contactPeople.name
+                              </div>
                             </span>
-                            <div
-                              class="labelArea"
-                            >
-                              ui-organizations.contactPeople.name
-                            </div>
-                          </span>
-                        </button>
-                      </h3>
+                          </button>
+                        </h3>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -418,6 +420,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                 id="downshift-:r1:-menu"
                                 role="listbox"
                                 style="max-height: 174px;"
+                                tabindex="-1"
                               />
                             </div>
                           </div>
@@ -649,44 +652,46 @@ exports[`EditContact should render correct form structure 1`] = `
                 data-test-accordion-section="true"
                 id="contact-emails"
               >
-                <div
-                  style="width: 100%; display: flex;"
-                >
+                <div>
                   <div
-                    class="headerWrapper"
+                    style="width: 100%; display: flex;"
                   >
                     <div
-                      class="header default"
+                      class="headerWrapper"
                     >
-                      <h3
-                        class="headline size-medium margin-none font-weight-bold block"
-                        data-test-headline="true"
+                      <div
+                        class="header default"
                       >
-                        <button
-                          aria-controls="accordion2"
-                          aria-expanded="true"
-                          class="defaultCollapseButton"
-                          id="accordion-toggle-button-contact-emails"
-                          type="button"
+                        <h3
+                          class="headline size-medium margin-none font-weight-bold block"
+                          data-test-headline="true"
                         >
-                          <span
-                            class="headerInner"
+                          <button
+                            aria-controls="accordion2"
+                            aria-expanded="true"
+                            class="defaultCollapseButton"
+                            id="accordion-toggle-button-contact-emails"
+                            type="button"
                           >
                             <span
-                              class="defaultHeaderIcon"
+                              class="headerInner"
                             >
-                              <span>
-                                Icon
+                              <span
+                                class="defaultHeaderIcon"
+                              >
+                                <span>
+                                  Icon
+                                </span>
                               </span>
+                              <div
+                                class="labelArea"
+                              >
+                                ui-organizations.contactPeople.emails
+                              </div>
                             </span>
-                            <div
-                              class="labelArea"
-                            >
-                              ui-organizations.contactPeople.emails
-                            </div>
-                          </span>
-                        </button>
-                      </h3>
+                          </button>
+                        </h3>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -712,6 +717,7 @@ exports[`EditContact should render correct form structure 1`] = `
                           class="repeatableField hasMargin"
                           data-test-repeatable-field="true"
                           id="emails"
+                          tabindex="-1"
                         >
                           <ul
                             class="repeatableFieldList"
@@ -941,6 +947,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                             id="downshift-:r5:-menu"
                                             role="listbox"
                                             style="max-height: 174px;"
+                                            tabindex="-1"
                                           />
                                         </div>
                                       </div>
@@ -1190,44 +1197,46 @@ exports[`EditContact should render correct form structure 1`] = `
                 data-test-accordion-section="true"
                 id="contact-phones"
               >
-                <div
-                  style="width: 100%; display: flex;"
-                >
+                <div>
                   <div
-                    class="headerWrapper"
+                    style="width: 100%; display: flex;"
                   >
                     <div
-                      class="header default"
+                      class="headerWrapper"
                     >
-                      <h3
-                        class="headline size-medium margin-none font-weight-bold block"
-                        data-test-headline="true"
+                      <div
+                        class="header default"
                       >
-                        <button
-                          aria-controls="accordion3"
-                          aria-expanded="true"
-                          class="defaultCollapseButton"
-                          id="accordion-toggle-button-contact-phones"
-                          type="button"
+                        <h3
+                          class="headline size-medium margin-none font-weight-bold block"
+                          data-test-headline="true"
                         >
-                          <span
-                            class="headerInner"
+                          <button
+                            aria-controls="accordion3"
+                            aria-expanded="true"
+                            class="defaultCollapseButton"
+                            id="accordion-toggle-button-contact-phones"
+                            type="button"
                           >
                             <span
-                              class="defaultHeaderIcon"
+                              class="headerInner"
                             >
-                              <span>
-                                Icon
+                              <span
+                                class="defaultHeaderIcon"
+                              >
+                                <span>
+                                  Icon
+                                </span>
                               </span>
+                              <div
+                                class="labelArea"
+                              >
+                                ui-organizations.contactPeople.phoneNumbers
+                              </div>
                             </span>
-                            <div
-                              class="labelArea"
-                            >
-                              ui-organizations.contactPeople.phoneNumbers
-                            </div>
-                          </span>
-                        </button>
-                      </h3>
+                          </button>
+                        </h3>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1253,6 +1262,7 @@ exports[`EditContact should render correct form structure 1`] = `
                           class="repeatableField hasMargin"
                           data-test-repeatable-field="true"
                           id="phoneNumbers"
+                          tabindex="-1"
                         >
                           <ul
                             class="repeatableFieldList"
@@ -1505,6 +1515,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                             id="downshift-:r9:-menu"
                                             role="listbox"
                                             style="max-height: 174px;"
+                                            tabindex="-1"
                                           />
                                         </div>
                                       </div>
@@ -1754,44 +1765,46 @@ exports[`EditContact should render correct form structure 1`] = `
                 data-test-accordion-section="true"
                 id="contact-urls"
               >
-                <div
-                  style="width: 100%; display: flex;"
-                >
+                <div>
                   <div
-                    class="headerWrapper"
+                    style="width: 100%; display: flex;"
                   >
                     <div
-                      class="header default"
+                      class="headerWrapper"
                     >
-                      <h3
-                        class="headline size-medium margin-none font-weight-bold block"
-                        data-test-headline="true"
+                      <div
+                        class="header default"
                       >
-                        <button
-                          aria-controls="accordion4"
-                          aria-expanded="true"
-                          class="defaultCollapseButton"
-                          id="accordion-toggle-button-contact-urls"
-                          type="button"
+                        <h3
+                          class="headline size-medium margin-none font-weight-bold block"
+                          data-test-headline="true"
                         >
-                          <span
-                            class="headerInner"
+                          <button
+                            aria-controls="accordion4"
+                            aria-expanded="true"
+                            class="defaultCollapseButton"
+                            id="accordion-toggle-button-contact-urls"
+                            type="button"
                           >
                             <span
-                              class="defaultHeaderIcon"
+                              class="headerInner"
                             >
-                              <span>
-                                Icon
+                              <span
+                                class="defaultHeaderIcon"
+                              >
+                                <span>
+                                  Icon
+                                </span>
                               </span>
+                              <div
+                                class="labelArea"
+                              >
+                                ui-organizations.contactPeople.urls
+                              </div>
                             </span>
-                            <div
-                              class="labelArea"
-                            >
-                              ui-organizations.contactPeople.urls
-                            </div>
-                          </span>
-                        </button>
-                      </h3>
+                          </button>
+                        </h3>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1817,6 +1830,7 @@ exports[`EditContact should render correct form structure 1`] = `
                           class="repeatableField hasMargin"
                           data-test-repeatable-field="true"
                           id="urls"
+                          tabindex="-1"
                         >
                           <ul
                             class="repeatableFieldList"
@@ -2046,6 +2060,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                             id="downshift-:rd:-menu"
                                             role="listbox"
                                             style="max-height: 174px;"
+                                            tabindex="-1"
                                           />
                                         </div>
                                       </div>
@@ -2295,44 +2310,46 @@ exports[`EditContact should render correct form structure 1`] = `
                 data-test-accordion-section="true"
                 id="contact-addresses"
               >
-                <div
-                  style="width: 100%; display: flex;"
-                >
+                <div>
                   <div
-                    class="headerWrapper"
+                    style="width: 100%; display: flex;"
                   >
                     <div
-                      class="header default"
+                      class="headerWrapper"
                     >
-                      <h3
-                        class="headline size-medium margin-none font-weight-bold block"
-                        data-test-headline="true"
+                      <div
+                        class="header default"
                       >
-                        <button
-                          aria-controls="accordion5"
-                          aria-expanded="true"
-                          class="defaultCollapseButton"
-                          id="accordion-toggle-button-contact-addresses"
-                          type="button"
+                        <h3
+                          class="headline size-medium margin-none font-weight-bold block"
+                          data-test-headline="true"
                         >
-                          <span
-                            class="headerInner"
+                          <button
+                            aria-controls="accordion5"
+                            aria-expanded="true"
+                            class="defaultCollapseButton"
+                            id="accordion-toggle-button-contact-addresses"
+                            type="button"
                           >
                             <span
-                              class="defaultHeaderIcon"
+                              class="headerInner"
                             >
-                              <span>
-                                Icon
+                              <span
+                                class="defaultHeaderIcon"
+                              >
+                                <span>
+                                  Icon
+                                </span>
                               </span>
+                              <div
+                                class="labelArea"
+                              >
+                                ui-organizations.contactPeople.addresses
+                              </div>
                             </span>
-                            <div
-                              class="labelArea"
-                            >
-                              ui-organizations.contactPeople.addresses
-                            </div>
-                          </span>
-                        </button>
-                      </h3>
+                          </button>
+                        </h3>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2358,6 +2375,7 @@ exports[`EditContact should render correct form structure 1`] = `
                           class="repeatableField hasMargin"
                           data-test-repeatable-field="true"
                           id="addresses"
+                          tabindex="-1"
                         >
                           <legend
                             class="headline size-medium margin-medium font-weight-bold"
@@ -2692,6 +2710,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                                 id="downshift-:rh:-menu"
                                                 role="listbox"
                                                 style="max-height: 174px;"
+                                                tabindex="-1"
                                               />
                                             </div>
                                           </div>
@@ -2783,6 +2802,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                                 id="downshift-:rj:-menu"
                                                 role="listbox"
                                                 style="max-height: 174px;"
+                                                tabindex="-1"
                                               />
                                             </div>
                                           </div>
