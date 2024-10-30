@@ -418,6 +418,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                 id="downshift-:r1:-menu"
                                 role="listbox"
                                 style="max-height: 174px;"
+                                tabindex="-1"
                               />
                             </div>
                           </div>
@@ -712,6 +713,7 @@ exports[`EditContact should render correct form structure 1`] = `
                           class="repeatableField hasMargin"
                           data-test-repeatable-field="true"
                           id="emails"
+                          tabindex="-1"
                         >
                           <ul
                             class="repeatableFieldList"
@@ -941,6 +943,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                             id="downshift-:r5:-menu"
                                             role="listbox"
                                             style="max-height: 174px;"
+                                            tabindex="-1"
                                           />
                                         </div>
                                       </div>
@@ -1253,6 +1256,7 @@ exports[`EditContact should render correct form structure 1`] = `
                           class="repeatableField hasMargin"
                           data-test-repeatable-field="true"
                           id="phoneNumbers"
+                          tabindex="-1"
                         >
                           <ul
                             class="repeatableFieldList"
@@ -1505,6 +1509,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                             id="downshift-:r9:-menu"
                                             role="listbox"
                                             style="max-height: 174px;"
+                                            tabindex="-1"
                                           />
                                         </div>
                                       </div>
@@ -1817,6 +1822,7 @@ exports[`EditContact should render correct form structure 1`] = `
                           class="repeatableField hasMargin"
                           data-test-repeatable-field="true"
                           id="urls"
+                          tabindex="-1"
                         >
                           <ul
                             class="repeatableFieldList"
@@ -2046,6 +2052,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                             id="downshift-:rd:-menu"
                                             role="listbox"
                                             style="max-height: 174px;"
+                                            tabindex="-1"
                                           />
                                         </div>
                                       </div>
@@ -2358,6 +2365,7 @@ exports[`EditContact should render correct form structure 1`] = `
                           class="repeatableField hasMargin"
                           data-test-repeatable-field="true"
                           id="addresses"
+                          tabindex="-1"
                         >
                           <legend
                             class="headline size-medium margin-medium font-weight-bold"
@@ -2692,6 +2700,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                                 id="downshift-:rh:-menu"
                                                 role="listbox"
                                                 style="max-height: 174px;"
+                                                tabindex="-1"
                                               />
                                             </div>
                                           </div>
@@ -2783,6 +2792,7 @@ exports[`EditContact should render correct form structure 1`] = `
                                                 id="downshift-:rj:-menu"
                                                 role="listbox"
                                                 style="max-height: 174px;"
+                                                tabindex="-1"
                                               />
                                             </div>
                                           </div>

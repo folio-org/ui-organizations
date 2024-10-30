@@ -449,6 +449,7 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
                 id="downshift-:r3:-menu"
                 role="listbox"
                 style="max-height: 174px;"
+                tabindex="-1"
               />
             </div>
           </div>
@@ -711,6 +712,7 @@ exports[`OrganizationSummaryForm should render correct structure 1`] = `
           class="repeatableField hasMargin"
           data-test-repeatable-field="true"
           id="aliases"
+          tabindex="-1"
         >
           <legend
             class="headline size-medium margin-medium font-weight-bold"
