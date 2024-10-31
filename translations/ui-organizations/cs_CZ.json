@@ -423,7 +423,7 @@
     "settings.bankingInformation.enable": "Povolit bankovní informace",
     "settings.bankingAccountTypes": "Typy účtů",
     "settings.bankingAccountTypes.cannotDeleteTermHeader": "Nelze smazat typ účtu",
-    "settings.bankingAccountTypes.cannotDeleteTermMessage": "Tento typ účtu nelze odstranit, protože je používán jedním nebo více záznamy.",
+    "settings.bankingAccountTypes.cannotDeleteTermMessage": "Nelze smazat. Typ účtu používá jedna nebo více organizací.",
     "settings.bankingAccountTypes.deleteEntry": "Smazat typ účtu",
     "settings.bankingAccountTypes.termDeleted": "Typ účtu <b>{term}</b> byl úspěšně <b>smazán</b>",
     "settings.bankingAccountTypes.termWillBeDeleted": "Typ účtu <b>{term}</b> bude <b>smazán.</b>",
