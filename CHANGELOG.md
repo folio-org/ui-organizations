@@ -2,7 +2,7 @@
 
 ## 5.3.0 (IN PROGRESS)
 
-## [5.2.0](https://github.com/folio-org/ui-organizations/tree/v5.2.0) (2024-10-30)
+## [5.2.0](https://github.com/folio-org/ui-organizations/tree/v5.2.0) (2024-10-31)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.1.1...v5.2.0)
 
 * UX Consistency: HTML Page Title display when the third pane (detail record) displays. Refs UIORGS-423.
