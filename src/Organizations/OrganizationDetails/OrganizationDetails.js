@@ -39,10 +39,12 @@ import {
   TagsPane,
   useAcqRestrictions,
   useModalToggle,
+  VersionHistoryButton,
 } from '@folio/stripes-acq-components';
 
 import {
   NOTES_ROUTE,
+  ORGANIZATION_VERSIONS_VIEW_ROUTE,
   ORGANIZATIONS_ROUTE,
 } from '../../common/constants';
 import {
@@ -135,6 +137,13 @@ const OrganizationDetails = ({
     if (isDetailsPaneInFocus) paneTitleRef.current.focus();
   }, [isDetailsPaneInFocus]);
 
+  const openVersionHistory = useCallback(() => {
+    history.push({
+      pathname: ORGANIZATION_VERSIONS_VIEW_ROUTE.replace(':id', organization.id),
+      search: location.search,
+    });
+  }, [history, location.search, organization.id]);
+
   const getActionMenu = useCallback(
     ({ onToggle }) => {
       return (
@@ -200,6 +209,7 @@ const OrganizationDetails = ({
         tagsQuantity={get(organization, 'tags.tagList', []).length}
         tagsToggle={toggleTagsPane}
       />
+      <VersionHistoryButton onClick={openVersionHistory} />
     </PaneMenu>
   );
 
