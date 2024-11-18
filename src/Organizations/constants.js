@@ -47,4 +47,4 @@ export const MAP_FIELD_ACCORDION = {
 
 export const BANKING_INFORMATION_FIELD_NAME = 'bankingInformation';
 
-export const HIDDEN_FIELDS_FOR_VERSION_HISTORY = [];
+export const HIDDEN_FIELDS_FOR_ORGANIZATION_VERSION_HISTORY = [];

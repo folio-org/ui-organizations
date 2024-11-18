@@ -2,6 +2,7 @@ import get from 'lodash/get';
 import {
   memo,
   useCallback,
+  useMemo,
 } from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
@@ -18,7 +19,8 @@ import {
   ORGANIZATIONS_ROUTE,
   VIEW_ORG_DETAILS,
 } from '../../common/constants';
-import { HIDDEN_FIELDS_FOR_VERSION_HISTORY } from '../constants';
+import { HIDDEN_FIELDS_FOR_ORGANIZATION_VERSION_HISTORY } from '../constants';
+import { getOrganizationFieldsLabelMap } from './getOrganizationFieldsLabelMap';
 import { useOrganizationVersions } from './hooks';
 
 const OrganizationVersion = ({
@@ -64,6 +66,8 @@ const OrganizationVersion = ({
     isOrganizationLoading || isHistoryLoading
   );
 
+  const labelsMap = useMemo(() => getOrganizationFieldsLabelMap(), []);
+
   return (
     <VersionViewContextProvider
       snapshotPath={snapshotPath}
@@ -90,9 +94,9 @@ const OrganizationVersion = ({
         onClose={onHistoryClose}
         onSelectVersion={onSelectVersion}
         snapshotPath={snapshotPath}
-        labelsMap={{}}
+        labelsMap={labelsMap}
         versions={versions}
-        hiddenFields={HIDDEN_FIELDS_FOR_VERSION_HISTORY}
+        hiddenFields={HIDDEN_FIELDS_FOR_ORGANIZATION_VERSION_HISTORY}
       />
     </VersionViewContextProvider>
   );
