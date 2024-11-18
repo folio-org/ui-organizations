@@ -48,10 +48,10 @@ const OrganizationVersion = ({
 
   const onSelectVersion = useCallback((_versionId) => {
     history.push({
-      pathname: `${ORGANIZATION_VERSIONS_VIEW_ROUTE}/${_versionId}`,
+      pathname: `${ORGANIZATION_VERSIONS_VIEW_ROUTE.replace(':id', organizationId)}/${_versionId}`,
       search: location.search,
     });
-  }, [history, location.search]);
+  }, [history, location.search, organizationId]);
 
   const {
     versions,

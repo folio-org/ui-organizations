@@ -260,7 +260,7 @@ const OrganizationsList = ({
 
         <Route
           exact
-          path={ORGANIZATION_VERSIONS_VIEW_ROUTE}
+          path={`${ORGANIZATION_VERSIONS_VIEW_ROUTE}/:versionId?`}
           component={OrganizationVersion}
         />
       </PersistedPaneset>
