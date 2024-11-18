@@ -1,15 +1,17 @@
-import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
+import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { Settings } from '@folio/stripes/smart-components';
 
-import { useBankingInformationSettings } from '../common/hooks';
+import {
+  useBankingInformationSettings,
+  useVendorCodeGeneratorSettings,
+} from '../common/hooks';
 import { CategorySettings } from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
-import NumberGeneratorOptions from './NumberGeneratorOptions';
 import { BankingAccountTypeSettings } from './BankingAccountTypeSettings';
 import { BankingInformationSettings } from './BankingInformationSettings';
+import { NumberGeneratorSettingsForm } from './NumberGeneratorSettings';
 
 const pages = [
   {
@@ -23,13 +25,6 @@ const pages = [
     label: <FormattedMessage id="ui-organizations.settings.types" />,
     perm: 'ui-organizations.settings.view',
     route: 'type',
-  },
-  {
-    component: NumberGeneratorOptions,
-    label: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />,
-    perm: 'ui-organizations.settings.numberGenerator.manage',
-    interface: 'servint',
-    route: 'numberGeneratorOptions',
   },
   {
     component: BankingInformationSettings,
@@ -46,10 +41,24 @@ const bankingAccountTypesPage = {
   route: 'banking-account-types',
 };
 
-const SettingsPage = (props) => {
-  const { enabled } = useBankingInformationSettings();
+const numberGeneratorOptionsPage = {
+  component: NumberGeneratorSettingsForm,
+  label: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />,
+  perm: 'ui-organizations.settings.numberGenerator.manage',
+  route: 'numberGeneratorOptions',
+};
 
-  const settingsPages = useMemo(() => (enabled ? pages.concat(bankingAccountTypesPage) : pages), [enabled]);
+const SettingsPage = (props) => {
+  const { enabled: bankingInformationEnabled } = useBankingInformationSettings();
+  const { enabled: numberGeneratorEnabled } = useVendorCodeGeneratorSettings();
+
+  const settingsPages = useMemo(() => {
+    return [
+      ...pages,
+      ...(bankingInformationEnabled ? [bankingAccountTypesPage] : []),
+      ...(numberGeneratorEnabled ? [numberGeneratorOptionsPage] : []),
+    ];
+  }, [bankingInformationEnabled, numberGeneratorEnabled]);
 
   return (
     <Settings
@@ -59,17 +68,6 @@ const SettingsPage = (props) => {
       paneTitle={<FormattedMessage id="ui-organizations.settings.vendorSettings" />}
     />
   );
-};
-
-SettingsPage.propTypes = {
-  stripes: PropTypes.shape({
-    hasInterface: PropTypes.func.isRequired,
-    timezone: PropTypes.string.isRequired,
-    store: PropTypes.shape({
-      dispatch: PropTypes.func.isRequired,
-      getState: PropTypes.func,
-    }),
-  }).isRequired,
 };
 
 export default SettingsPage;

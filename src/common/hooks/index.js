@@ -10,4 +10,4 @@ export * from './useLinkedAgreements';
 export * from './useOrganizationBankingInformation';
 export * from './useTranslatedCategories';
 export * from './useTypes';
-export * from './useSettings';
+export * from './useVendorCodeGeneratorSettings';

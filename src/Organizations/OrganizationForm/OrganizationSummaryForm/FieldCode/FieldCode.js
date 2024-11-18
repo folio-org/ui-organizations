@@ -1,41 +1,45 @@
 import React, { useCallback } from 'react';
-import { Field, useForm } from 'react-final-form';
+import {
+  Field,
+  useForm,
+} from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
-import { stripesConnect, useStripes } from '@folio/stripes/core';
-import { Col, Row, TextField } from '@folio/stripes/components';
 import { NumberGeneratorModalButton } from '@folio/service-interaction';
+import { stripesConnect } from '@folio/stripes/core';
+import {
+  Col,
+  Row,
+  TextField,
+} from '@folio/stripes/components';
 
+import { VENDOR_CODE_GENERATOR_CODE } from '../../../../common/constants';
+import { useVendorCodeGeneratorSettings } from '../../../../common/hooks';
 import { fetchOrgsByParam } from '../../../../common/resources';
 import { validateOrgCode } from './validateOrgCode';
-import { useSettings } from '../../../../common/hooks';
-
-const CONFIG_NAME = 'number_generator';
 
 const FieldCode = ({ orgId, mutator }) => {
+  const { change, resetFieldState } = useForm();
+  const { isUseGenerator, isUseBoth } = useVendorCodeGeneratorSettings();
+
   const validate = useCallback(value => {
     return validateOrgCode(mutator.fetchOrgByCode, orgId, value);
   },
   // eslint-disable-next-line react-hooks/exhaustive-deps
   [orgId]);
 
-  const { change } = useForm();
-  const stripes = useStripes();
-
-  const { settings } = useSettings([CONFIG_NAME]);
-  let vendorCodeSetting = 'useTextField';
-
-  if (stripes.hasInterface('servint')) {
-    vendorCodeSetting = settings?.find(sett => sett?.configName === CONFIG_NAME)?.parsedSettings?.vendorGeneratorSetting ?? 'useTextField';
-  }
+  const handleGeneratedValue = useCallback((generatedValue) => {
+    change('code', generatedValue);
+    resetFieldState('code');
+  }, [change, resetFieldState]);
 
   return (
     <Row>
       <Col xs={12}>
         <Field
           component={TextField}
-          disabled={vendorCodeSetting === 'useGenerator'}
+          disabled={isUseGenerator}
           fullWidth
           label={<FormattedMessage id="ui-organizations.summary.code" />}
           name="code"
@@ -43,23 +47,20 @@ const FieldCode = ({ orgId, mutator }) => {
           validate={validate}
         />
       </Col>
-      {(
-        vendorCodeSetting === 'useGenerator' ||
-        vendorCodeSetting === 'useBoth'
-      ) &&
+      {(isUseGenerator || isUseBoth) && (
         <Col xs={12}>
           <NumberGeneratorModalButton
             buttonLabel={<FormattedMessage id="ui-organizations.numberGenerator.generateVendorCode" />}
-            callback={(generated) => change('code', generated)}
-            id="vendor-code-generator"
+            callback={handleGeneratedValue}
             generateButtonLabel={<FormattedMessage id="ui-organizations.numberGenerator.generateVendorCode" />}
-            generator="organizations_vendorCode"
+            generator={VENDOR_CODE_GENERATOR_CODE}
+            id="vendor-code-generator"
             modalProps={{
-              label: <FormattedMessage id="ui-organizations.numberGenerator.vendorCodeGenerator" />
+              label: <FormattedMessage id="ui-organizations.numberGenerator.vendorCodeGenerator" />,
             }}
           />
         </Col>
-      }
+      )}
     </Row>
   );
 };

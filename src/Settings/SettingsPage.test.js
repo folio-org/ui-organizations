@@ -2,7 +2,10 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { screen, render } from '@folio/jest-config-stripes/testing-library/react';
 
-import { useBankingInformationSettings } from '../common/hooks';
+import {
+  useBankingInformationSettings,
+  useVendorCodeGeneratorSettings,
+} from '../common/hooks';
 import SettingsPage from './SettingsPage';
 
 jest.mock('@folio/stripes/core');
@@ -16,6 +19,9 @@ jest.mock('../common/hooks', () => ({
   ...jest.requireActual('../common/hooks'),
   useBankingInformationSettings: jest.fn(() => ({
     isLoading: false,
+    enabled: false,
+  })),
+  useVendorCodeGeneratorSettings: jest.fn(() => ({
     enabled: false,
   })),
 }));
@@ -49,6 +55,8 @@ describe('SettingsPage', () => {
     expect(screen.getByText('ui-organizations.settings.categories')).toBeInTheDocument();
     expect(screen.getByText('ui-organizations.settings.types')).toBeInTheDocument();
     expect(screen.getByText('ui-organizations.settings.bankingInformation')).toBeInTheDocument();
+    expect(screen.queryByText('ui-organizations.settings.bankingAccountTypes')).not.toBeInTheDocument();
+    expect(screen.queryByText('ui-organizations.settings.numberGeneratorOptions')).not.toBeInTheDocument();
   });
 
   it('should return banking account types link', async () => {
@@ -60,5 +68,13 @@ describe('SettingsPage', () => {
     renderSettingsPage();
 
     expect(screen.getByText('ui-organizations.settings.bankingAccountTypes')).toBeInTheDocument();
+  });
+
+  it('should return numberGeneratorOptions link', async () => {
+    useVendorCodeGeneratorSettings.mockReturnValueOnce({ enabled: true });
+
+    renderSettingsPage();
+
+    expect(screen.getByText('ui-organizations.settings.numberGeneratorOptions')).toBeInTheDocument();
   });
 });
