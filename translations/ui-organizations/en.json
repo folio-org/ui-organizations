@@ -1,6 +1,7 @@
 {
   "meta.title": "Organizations",
   "appMenu.organizationsAppSearch": "Organizations app Search",
+  "document.title.search": "Organizations - {query} - Search",
   "search": "Search",
   "resultCount": "{count, number} {count, plural, one {Record found} other {Records found}}",
   "showMore": "Show more",
@@ -42,6 +43,9 @@
   "filterConfig.addressCategory": "Address category",
   "filterConfig.contactPeopleCategory": "Contact people category",
   "filterConfig.country": "Country",
+  "filterConfig.createdBy": "Created by",
+  "filterConfig.dateCreated": "Date created",
+  "filterConfig.dateUpdated": "Date updated",
   "filterConfig.isVendor": "Is vendor",
   "filterConfig.isDonor": "Is donor",
   "filterConfig.languages": "Languages",
@@ -51,6 +55,7 @@
   "filterConfig.boolean.true": "Yes",
   "filterConfig.boolean.false": "No",
   "filterConfig.types": "Types",
+  "filterConfig.updatedBy": "Updated by",
 
   "search.keyword": "All",
   "search.name": "Name",
@@ -133,7 +138,6 @@
 
   "button.bankingInformation.add": "Add banking information",
   "button.cancel": "Cancel",
-  "button.saveAndClose": "Save & close",
 
   "contacts.actions.load.error": "Failed to load contacts data",
 
@@ -466,8 +470,8 @@
   "settings.bankingInformation.enable": "Enable banking information",
   "settings.bankingAccountTypes": "Account types",
   "settings.bankingAccountTypes.cannotDeleteTermHeader": "Cannot delete account type",
-  "settings.bankingAccountTypes.cannotDeleteTermMessage": "This account type cannot be deleted, as it is in use by one or more records.",
   "settings.bankingAccountTypes.deleteEntry": "Delete account type",
+  "settings.bankingAccountTypes.cannotDeleteTermMessage": "Unable to delete. Account type is in use by one or more organizations.",
   "settings.bankingAccountTypes.termDeleted": "The account type <b>{term}</b> was successfully <b>deleted</b>",
   "settings.bankingAccountTypes.termWillBeDeleted": "The account type <b>{term}</b> will be <b>deleted.</b>",
   "settings.accountTypes.save.error.accountTypeMustBeUnique": "Account type must be unique.",

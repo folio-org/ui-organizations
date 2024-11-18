@@ -177,42 +177,47 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                 data-test-accordion-section="true"
                 id="integrationInfo"
               >
-                <div
-                  class="headerWrapper"
-                  tabindex="-1"
-                >
+                <div>
                   <div
-                    class="header default"
+                    style="width: 100%; display: flex;"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <div
+                      class="headerWrapper"
                     >
-                      <button
-                        aria-controls="accordion1"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-integrationInfo"
-                        type="button"
+                      <div
+                        class="header default"
                       >
-                        <span
-                          class="headerInner"
+                        <h3
+                          class="headline size-medium margin-none font-weight-bold block"
+                          data-test-headline="true"
                         >
-                          <span
-                            class="defaultHeaderIcon"
+                          <button
+                            aria-controls="accordion1"
+                            aria-expanded="true"
+                            class="defaultCollapseButton"
+                            id="accordion-toggle-button-integrationInfo"
+                            type="button"
                           >
-                            <span>
-                              Icon
+                            <span
+                              class="headerInner"
+                            >
+                              <span
+                                class="defaultHeaderIcon"
+                              >
+                                <span>
+                                  Icon
+                                </span>
+                              </span>
+                              <div
+                                class="labelArea"
+                              >
+                                ui-organizations.integration.info
+                              </div>
                             </span>
-                          </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-organizations.integration.info
-                          </div>
-                        </span>
-                      </button>
-                    </h3>
+                          </button>
+                        </h3>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -329,42 +334,47 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                 data-test-accordion-section="true"
                 id="edi"
               >
-                <div
-                  class="headerWrapper"
-                  tabindex="-1"
-                >
+                <div>
                   <div
-                    class="header default"
+                    style="width: 100%; display: flex;"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <div
+                      class="headerWrapper"
                     >
-                      <button
-                        aria-controls="accordion2"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-edi"
-                        type="button"
+                      <div
+                        class="header default"
                       >
-                        <span
-                          class="headerInner"
+                        <h3
+                          class="headline size-medium margin-none font-weight-bold block"
+                          data-test-headline="true"
                         >
-                          <span
-                            class="defaultHeaderIcon"
+                          <button
+                            aria-controls="accordion2"
+                            aria-expanded="true"
+                            class="defaultCollapseButton"
+                            id="accordion-toggle-button-edi"
+                            type="button"
                           >
-                            <span>
-                              Icon
+                            <span
+                              class="headerInner"
+                            >
+                              <span
+                                class="defaultHeaderIcon"
+                              >
+                                <span>
+                                  Icon
+                                </span>
+                              </span>
+                              <div
+                                class="labelArea"
+                              >
+                                ui-organizations.integration.edi
+                              </div>
                             </span>
-                          </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-organizations.integration.edi
-                          </div>
-                        </span>
-                      </button>
-                    </h3>
+                          </button>
+                        </h3>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -724,42 +734,47 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                 data-test-accordion-section="true"
                 id="ftp"
               >
-                <div
-                  class="headerWrapper"
-                  tabindex="-1"
-                >
+                <div>
                   <div
-                    class="header default"
+                    style="width: 100%; display: flex;"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <div
+                      class="headerWrapper"
                     >
-                      <button
-                        aria-controls="accordion3"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-ftp"
-                        type="button"
+                      <div
+                        class="header default"
                       >
-                        <span
-                          class="headerInner"
+                        <h3
+                          class="headline size-medium margin-none font-weight-bold block"
+                          data-test-headline="true"
                         >
-                          <span
-                            class="defaultHeaderIcon"
+                          <button
+                            aria-controls="accordion3"
+                            aria-expanded="true"
+                            class="defaultCollapseButton"
+                            id="accordion-toggle-button-ftp"
+                            type="button"
                           >
-                            <span>
-                              Icon
+                            <span
+                              class="headerInner"
+                            >
+                              <span
+                                class="defaultHeaderIcon"
+                              >
+                                <span>
+                                  Icon
+                                </span>
+                              </span>
+                              <div
+                                class="labelArea"
+                              >
+                                ui-organizations.integration.ftp
+                              </div>
                             </span>
-                          </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-organizations.integration.ftp
-                          </div>
-                        </span>
-                      </button>
-                    </h3>
+                          </button>
+                        </h3>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -1021,42 +1036,47 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                 data-test-accordion-section="true"
                 id="scheduling"
               >
-                <div
-                  class="headerWrapper"
-                  tabindex="-1"
-                >
+                <div>
                   <div
-                    class="header default"
+                    style="width: 100%; display: flex;"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <div
+                      class="headerWrapper"
                     >
-                      <button
-                        aria-controls="accordion4"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-scheduling"
-                        type="button"
+                      <div
+                        class="header default"
                       >
-                        <span
-                          class="headerInner"
+                        <h3
+                          class="headline size-medium margin-none font-weight-bold block"
+                          data-test-headline="true"
                         >
-                          <span
-                            class="defaultHeaderIcon"
+                          <button
+                            aria-controls="accordion4"
+                            aria-expanded="true"
+                            class="defaultCollapseButton"
+                            id="accordion-toggle-button-scheduling"
+                            type="button"
                           >
-                            <span>
-                              Icon
+                            <span
+                              class="headerInner"
+                            >
+                              <span
+                                class="defaultHeaderIcon"
+                              >
+                                <span>
+                                  Icon
+                                </span>
+                              </span>
+                              <div
+                                class="labelArea"
+                              >
+                                ui-organizations.integration.scheduling
+                              </div>
                             </span>
-                          </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-organizations.integration.scheduling
-                          </div>
-                        </span>
-                      </button>
-                    </h3>
+                          </button>
+                        </h3>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div

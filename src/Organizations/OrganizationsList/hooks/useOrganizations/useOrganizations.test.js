@@ -15,6 +15,7 @@ jest.mock('@folio/stripes/core', () => ({
   ...jest.requireActual('@folio/stripes/core'),
   useNamespace: () => ['namespace'],
   useOkapiKy: jest.fn(),
+  useStripes: jest.fn(() => ({})),
 }));
 
 const organizations = [organization];

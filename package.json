@@ -1,6 +1,6 @@
 {
   "name": "@folio/organizations",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "Organizations",
   "main": "index.js",
   "repository": "folio-org/ui-organizations",
@@ -61,15 +61,17 @@
         ]
       },
       {
-        "permissionName": "ui-organizations.third-party-services",
+        "permissionName": "ui-organizations.third-party-services.execute",
         "displayName": "Organizations: Permissions required to call services apart from mod-organizations-storage",
+        "replaces": ["ui-organizations.third-party-services"],
         "visible": false,
         "subPermissions": [
           "acquisitions-units.memberships.collection.get",
           "acquisitions-units.units.collection.get",
           "configuration.entries.collection.get",
           "tags.collection.get",
-          "users.collection.get"
+          "users.collection.get",
+          "usergroups.collection.get"
         ]
       },
       {
@@ -101,7 +103,7 @@
           "organizations-storage.settings.collection.get",
           "organizations-storage.urls.collection.get",
           "organizations-storage.urls.item.get",
-          "ui-organizations.third-party-services"
+          "ui-organizations.third-party-services.execute"
         ]
       },
       {
@@ -361,8 +363,9 @@
   },
   "dependencies": {
     "@folio/plugin-find-organization": "^5.0.0",
-    "@folio/stripes-acq-components": "~5.0.0",
+    "@folio/stripes-acq-components": "~6.0.0",
     "lodash": "^4.17.5",
+    "moment": "^2.24.0",
     "moment-timezone": "^0.5.20",
     "prop-types": "^15.5.10",
     "query-string": "^6.1.0",

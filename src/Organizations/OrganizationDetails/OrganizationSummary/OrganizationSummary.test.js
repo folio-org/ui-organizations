@@ -4,6 +4,7 @@ import { IntlProvider } from 'react-intl';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
 
+import { QueryClient, QueryClientProvider } from 'react-query';
 import OrganizationSummary from './OrganizationSummary';
 
 const STUB_ORG = {
@@ -52,22 +53,26 @@ const messages = {
   'stripes-components.noValue.noValueSet': 'noValueSet',
 };
 
+const queryClient = new QueryClient();
+
 const renderOrganizationSummary = (organization) => (render(
-  <IntlProvider locale="en" messages={messages}>
-    <OrganizationSummary
-      acqUnitIds={organization.acqUnitIds}
-      aliases={organization.aliases}
-      code={organization.code}
-      description={organization.description}
-      erpCode={organization.erpCode}
-      isVendor={organization.isVendor}
-      language={organization.language}
-      metadata={organization.metadata}
-      name={organization.name}
-      status={organization.status}
-      organizationTypes={organization.organizationTypes}
-    />
-  </IntlProvider>,
+  <QueryClientProvider client={queryClient}>
+    <IntlProvider locale="en" messages={messages}>
+      <OrganizationSummary
+        acqUnitIds={organization.acqUnitIds}
+        aliases={organization.aliases}
+        code={organization.code}
+        description={organization.description}
+        erpCode={organization.erpCode}
+        isVendor={organization.isVendor}
+        language={organization.language}
+        metadata={organization.metadata}
+        name={organization.name}
+        status={organization.status}
+        organizationTypes={organization.organizationTypes}
+      />
+    </IntlProvider>,
+  </QueryClientProvider>,
 ));
 
 describe('OrganizationSummary component', () => {

@@ -114,42 +114,47 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                     data-test-accordion-section="true"
                     id="summarySection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion48"
-                            aria-expanded="true"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-summarySection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion48"
+                                aria-expanded="true"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-summarySection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.summary
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.summary
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -175,42 +180,47 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                     data-test-accordion-section="true"
                     id="contactInformationSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion49"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-contactInformationSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion49"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-contactInformationSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.contactInformation
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.contactInformation
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -233,42 +243,47 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                     data-test-accordion-section="true"
                     id="contactPeopleSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion50"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-contactPeopleSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion50"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-contactPeopleSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.contactPeople
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.contactPeople
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -291,42 +306,47 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                     data-test-accordion-section="true"
                     id="interfacesSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion51"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-interfacesSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion51"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-interfacesSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.interface
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.interface
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -383,7 +403,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                   <span
                     class="inner"
                   >
-                    ui-organizations.button.saveAndClose
+                    stripes-components.saveAndClose
                   </span>
                 </button>
               </span>
@@ -408,7 +428,6 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;
 
@@ -526,42 +545,47 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                     data-test-accordion-section="true"
                     id="summarySection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion2"
-                            aria-expanded="true"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-summarySection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion2"
+                                aria-expanded="true"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-summarySection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.summary
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.summary
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -584,42 +608,47 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                     data-test-accordion-section="true"
                     id="contactInformationSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion3"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-contactInformationSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion3"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-contactInformationSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.contactInformation
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.contactInformation
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -642,42 +671,47 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                     data-test-accordion-section="true"
                     id="contactPeopleSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion4"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-contactPeopleSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion4"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-contactPeopleSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.contactPeople
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.contactPeople
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -700,42 +734,47 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                     data-test-accordion-section="true"
                     id="interfacesSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion5"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-interfacesSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion5"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-interfacesSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.interface
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.interface
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -792,7 +831,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                   <span
                     class="inner"
                   >
-                    ui-organizations.button.saveAndClose
+                    stripes-components.saveAndClose
                   </span>
                 </button>
               </span>
@@ -817,7 +856,6 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;
 
@@ -935,42 +973,47 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     data-test-accordion-section="true"
                     id="summarySection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion19"
-                            aria-expanded="true"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-summarySection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion19"
+                                aria-expanded="true"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-summarySection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.summary
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.summary
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -993,42 +1036,47 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     data-test-accordion-section="true"
                     id="contactInformationSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion20"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-contactInformationSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion20"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-contactInformationSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.contactInformation
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.contactInformation
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1051,42 +1099,47 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     data-test-accordion-section="true"
                     id="contactPeopleSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion21"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-contactPeopleSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion21"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-contactPeopleSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.contactPeople
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.contactPeople
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1109,42 +1162,47 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     data-test-accordion-section="true"
                     id="interfacesSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion22"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-interfacesSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion22"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-interfacesSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.interface
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.interface
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1167,42 +1225,47 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     data-test-accordion-section="true"
                     id="vendorInformationSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion23"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-vendorInformationSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion23"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-vendorInformationSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.vendorInformation
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.vendorInformation
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1225,42 +1288,47 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     data-test-accordion-section="true"
                     id="agreementsSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion24"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-agreementsSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion24"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-agreementsSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.vendorTerms
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.vendorTerms
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1283,42 +1351,47 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                     data-test-accordion-section="true"
                     id="accountsSection"
                   >
-                    <div
-                      class="headerWrapper"
-                      tabindex="-1"
-                    >
+                    <div>
                       <div
-                        class="header default"
+                        style="width: 100%; display: flex;"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="headerWrapper"
                         >
-                          <button
-                            aria-controls="accordion25"
-                            aria-expanded="false"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-accountsSection"
-                            type="button"
+                          <div
+                            class="header default"
                           >
-                            <span
-                              class="headerInner"
+                            <h3
+                              class="headline size-medium margin-none font-weight-bold block"
+                              data-test-headline="true"
                             >
-                              <span
-                                class="defaultHeaderIcon"
+                              <button
+                                aria-controls="accordion25"
+                                aria-expanded="false"
+                                class="defaultCollapseButton"
+                                id="accordion-toggle-button-accountsSection"
+                                type="button"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="headerInner"
+                                >
+                                  <span
+                                    class="defaultHeaderIcon"
+                                  >
+                                    <span>
+                                      Icon
+                                    </span>
+                                  </span>
+                                  <div
+                                    class="labelArea"
+                                  >
+                                    ui-organizations.accounts
+                                  </div>
                                 </span>
-                              </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-organizations.accounts
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1375,7 +1448,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                   <span
                     class="inner"
                   >
-                    ui-organizations.button.saveAndClose
+                    stripes-components.saveAndClose
                   </span>
                 </button>
               </span>
@@ -1400,6 +1473,5 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;

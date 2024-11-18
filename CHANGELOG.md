@@ -1,6 +1,23 @@
 # Change history for ui-organizations
 
-## 5.1.0 (IN PROGRESS)
+## 5.3.0 (IN PROGRESS)
+
+## [5.2.0](https://github.com/folio-org/ui-organizations/tree/v5.2.0) (2024-10-31)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.1.1...v5.2.0)
+
+* UX Consistency: HTML Page Title display when the third pane (detail record) displays. Refs UIORGS-423.
+* Settings > Organizations > Banking information is not properly fenced off by permissions. Refs UIORGS-436.
+* Use Save & close button label stripes-component translation key - all UI modules. Refs UIORGS-425.
+* Clean up ui-organizations permissions. Refs UIORGS-445.
+* Banking - prevent deletion of account type if it is being used by an organization. Refs UIORGS-435.
+
+## [5.1.1](https://github.com/folio-org/ui-organizations/tree/v5.1.1) (2024-04-18)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.1.0...v5.1.1)
+
+* Add additional filters to support reporting requirements. Refs UIORG-193.
+
+## [5.1.0](https://github.com/folio-org/ui-organizations/tree/v5.1.0) (2024-03-19)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.0.0...v5.1.0)
 
 * Designate Organization as donor. Refs UIORGS-383.
 * Settings for banking information. Refs UIORGS-391.
@@ -15,6 +32,8 @@
 * Suppress banking information management for unauthorized user. Refs UIORGS-418.
 * Add validation for `Day` field in `Monthly` scheduler for export method. Refs UIORGS-417.
 * Support `data-export-spring` interface `v2.0`. Refs UXPROD-3903.
+* Accurately handle user permissions for banking information operations. Refs UIORGS-424.
+* UX Consistency > Search results > Update HTML page title with search term entered. Refs UIORGS-421.
 
 ## [5.0.0](https://github.com/folio-org/ui-organizations/tree/v5.0.0) (2023-10-12)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v4.0.0...v5.0.0)

@@ -97,185 +97,185 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
             data-test-currency="true"
           >
             <div
+              aria-expanded="false"
               class="multiSelectContainer"
-              id="multiselect-1"
+              id="multiselect-:r0:"
+              role="application"
             >
               <div
                 aria-live="assertive"
                 aria-relevant="additions"
                 class="sr-only"
               />
-              <div
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                aria-labelledby="vendorFormCurrenciesLabel"
-                class="multiSelectContainer"
-                role="application"
+              <label
+                class="label"
+                for="multiselect-:r0:-input"
+                id="multiselect-:r0:-label"
               >
-                <label
-                  class="label"
-                  for="multiselect-1-input"
-                  id="vendorFormCurrenciesLabel"
-                >
-                  ui-organizations.vendorInfo.vendorCurrencies
-                </label>
-                <span
-                  class="sr-only"
-                  id="multi-value-status-multiselect-1"
-                >
-                  1 item selected
-                </span>
-                <span
-                  class="sr-only"
-                  id="multi-describe-control-multiselect-1"
-                >
-                  stripes-components.multiSelection.controlDescription
-                </span>
+                ui-organizations.vendorInfo.vendorCurrencies
+              </label>
+              <span
+                class="sr-only"
+                id="multi-value-status-multiselect-:r0:"
+              >
+                1 item selected
+              </span>
+              <span
+                class="sr-only"
+                id="multi-describe-control-multiselect-:r0:"
+              >
+                stripes-components.multiSelection.controlDescription
+              </span>
+              <div
+                class="multiSelectControlWrapper"
+              >
                 <div
-                  class="multiSelectControlWrapper"
+                  aria-describedby="multi-describe-control-multiselect-:r0:"
+                  aria-labelledby="multiselect-:r0:-label multi-value-status-multiselect-:r0:"
+                  class="multiSelectControl formControl"
+                  role="searchbox"
+                  tabindex="0"
                 >
                   <div
-                    aria-describedby="multi-describe-control-multiselect-1"
-                    aria-labelledby="vendorFormCurrenciesLabel multi-value-status-multiselect-1"
-                    class="multiSelectControl formControl"
-                    role="search"
-                    tabindex="0"
+                    class="multiSelectControlGroup"
                   >
                     <div
-                      class="multiSelectControlGroup"
+                      class="multiSelectValueListContainer"
+                      id="multi-values-list-multiselect-:r0:"
                     >
-                      <div
-                        class="multiSelectValueListContainer"
-                        id="multi-values-list-multiselect-1"
+                      <span
+                        class="sr-only"
+                        id="multi-value-multiselect-:r0:"
                       >
-                        <span
-                          class="sr-only"
-                          id="multi-value-multiselect-1"
+                        stripes-components.multiSelection.removeSelectedButtonLabel
+                      </span>
+                      <span
+                        class="sr-only"
+                        id="multi-describe-action-multiselect-:r0:"
+                      >
+                        stripes-components.multiSelection.removeSelectedButtonDescription
+                      </span>
+                      <ul
+                        class="multiSelectValueList"
+                      >
+                        <li
+                          class="valueChipRoot"
+                          id="USD-0_multiselect_selected"
                         >
-                          stripes-components.multiSelection.removeSelectedButtonLabel
-                        </span>
-                        <span
-                          class="sr-only"
-                          id="multi-describe-action-multiselect-1"
-                        >
-                          stripes-components.multiSelection.removeSelectedButtonDescription
-                        </span>
-                        <ul
-                          class="multiSelectValueList"
-                        >
-                          <li
-                            class="valueChipRoot"
-                            id="USD-0_multiselect_selected"
+                          <div
+                            class="valueChipGroup"
                           >
                             <div
-                              class="valueChipGroup"
+                              class="valueChipValue"
+                              id="USD-0_multiselect_selected_label"
                             >
-                              <div
-                                class="valueChipValue"
-                                id="USD-0_multiselect_selected_label"
-                              >
-                                USD (USD)
-                              </div>
-                              <button
-                                aria-describedby="multi-describe-action-multiselect-1"
-                                aria-label="times"
-                                aria-labelledby="USD-0_multiselect_selected_label multi-value-multiselect-1"
-                                class="iconButton small"
-                                icon="times"
-                                style="padding: 0px;"
-                                type="button"
-                              >
-                                <span
-                                  aria-describedby="multi-describe-action-multiselect-1"
-                                  class="iconButtonInner smallOffset"
-                                >
-                                  <span>
-                                    Icon
-                                  </span>
-                                </span>
-                              </button>
+                              USD (USD)
                             </div>
-                          </li>
-                        </ul>
-                      </div>
-                      <input
-                        aria-autocomplete="list"
-                        aria-labelledby="vendorFormCurrenciesLabel"
-                        autocomplete="off"
-                        class="multiSelectFilterField"
-                        id="multiselect-1-input"
-                        placeholder=""
-                        type="text"
-                        value=""
-                      />
-                      <input
-                        aria-autocomplete="list"
-                        aria-hidden="true"
-                        autocomplete="off"
-                        class="multiSelectValueInput"
-                        id="multiselect-input-multiselect-1"
-                        tabindex="-1"
-                        type="text"
-                        value="USD"
-                      />
+                            <button
+                              aria-describedby="multi-describe-action-multiselect-:r0:"
+                              aria-label="times"
+                              aria-labelledby="USD-0_multiselect_selected_label multi-value-multiselect-:r0:"
+                              class="iconButton small"
+                              icon="times"
+                              index="0"
+                              style="padding: 0px;"
+                              type="button"
+                            >
+                              <span
+                                aria-describedby="multi-describe-action-multiselect-:r0:"
+                                class="iconButtonInner smallOffset"
+                                index="0"
+                              >
+                                <span>
+                                  Icon
+                                </span>
+                              </span>
+                            </button>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
-                    <button
-                      aria-haspopup="true"
-                      aria-label="open menu"
-                      class="multiSelectToggleButton"
-                      data-toggle="true"
-                      role="button"
-                      type="button"
-                    >
-                      <div
-                        class="textFieldIcon"
-                      >
-                        <span>
-                          Icon
-                        </span>
-                      </div>
-                    </button>
+                    <input
+                      aria-activedescendant=""
+                      aria-autocomplete="list"
+                      aria-controls="multiselect-option-list-multiselect-:r0:"
+                      aria-expanded="false"
+                      aria-labelledby="vendorFormCurrenciesLabel"
+                      autocomplete="off"
+                      class="multiSelectFilterField"
+                      id="multiselect-:r0:-input"
+                      placeholder=""
+                      role="combobox"
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      aria-hidden="true"
+                      class="multiSelectValueInput"
+                      id="multiselect-input-multiselect-:r0:"
+                      tabindex="-1"
+                      value="USD"
+                    />
                   </div>
-                  <div
-                    class="multiSelectMenu"
-                    hidden=""
-                    style="width: 100px;"
+                  <button
+                    aria-controls="multiselect-option-list-multiselect-:r0:"
+                    aria-expanded="false"
+                    aria-label="stripes-components.multiSelection.dropdownTriggerLabel"
+                    class="multiSelectToggleButton"
+                    id="downshift-:r1:-toggle-button"
+                    tabindex="-1"
+                    type="button"
                   >
                     <div
-                      class="multiSelectFeedback"
-                      role="alert"
-                    />
-                    <ul
-                      aria-labelledby="vendorFormCurrenciesLabel"
-                      class="multiSelectOptionList"
-                      id="multiselect-option-list-multiselect-1"
-                      role="listbox"
-                      style="max-height: 168px;"
+                      class="textFieldIcon"
                     >
-                      <li
-                        aria-selected="false"
-                        class="multiSelectOption optionCursor"
-                        id="multiselect-1-main-item-0"
-                        role="option"
-                      >
-                        BYN (BYN)
-                        <div>
-                          +
-                        </div>
-                      </li>
-                      <li
-                        aria-selected="true"
-                        class="multiSelectOption optionSelected"
-                        id="multiselect-1-main-item-1"
-                        role="option"
-                      >
-                        USD (USD)
-                        <div>
-                          -
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
+                      <span>
+                        Icon
+                      </span>
+                    </div>
+                  </button>
+                </div>
+                <div
+                  class="multiSelectMenu"
+                  hidden=""
+                  style="width: 100px;"
+                >
+                  <div
+                    class="multiSelectFeedback"
+                    role="alert"
+                  />
+                  <ul
+                    aria-labelledby="multiselect-:r0:-label"
+                    class="multiSelectOptionList"
+                    id="multiselect-option-list-multiselect-:r0:"
+                    role="listbox"
+                    style="max-height: 168px;"
+                  >
+                    <li
+                      aria-disabled="false"
+                      aria-selected="false"
+                      class="multiSelectOption optionCursor"
+                      id="downshift-:r1:-item-0"
+                      role="option"
+                    >
+                      BYN (BYN)
+                      <div>
+                        +
+                      </div>
+                    </li>
+                    <li
+                      aria-disabled="false"
+                      aria-selected="true"
+                      class="multiSelectOption optionSelected"
+                      id="downshift-:r1:-item-1"
+                      role="option"
+                    >
+                      USD (USD)
+                      <div>
+                        -
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div
@@ -596,42 +596,47 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
             data-test-accordion-section="true"
             id="taxSection"
           >
-            <div
-              class="headerWrapper"
-              tabindex="-1"
-            >
+            <div>
               <div
-                class="header default"
+                style="width: 100%; display: flex;"
               >
-                <h3
-                  class="headline size-medium margin-none font-weight-bold block"
-                  data-test-headline="true"
+                <div
+                  class="headerWrapper"
                 >
-                  <button
-                    aria-controls="accordion2"
-                    aria-expanded="true"
-                    class="defaultCollapseButton"
-                    id="accordion-toggle-button-taxSection"
-                    type="button"
+                  <div
+                    class="header default"
                   >
-                    <span
-                      class="headerInner"
+                    <h3
+                      class="headline size-medium margin-none font-weight-bold block"
+                      data-test-headline="true"
                     >
-                      <span
-                        class="defaultHeaderIcon"
+                      <button
+                        aria-controls="accordion1"
+                        aria-expanded="true"
+                        class="defaultCollapseButton"
+                        id="accordion-toggle-button-taxSection"
+                        type="button"
                       >
-                        <span>
-                          Icon
+                        <span
+                          class="headerInner"
+                        >
+                          <span
+                            class="defaultHeaderIcon"
+                          >
+                            <span>
+                              Icon
+                            </span>
+                          </span>
+                          <div
+                            class="labelArea"
+                          >
+                            ui-organizations.vendorInfo.tax
+                          </div>
                         </span>
-                      </span>
-                      <div
-                        class="labelArea"
-                      >
-                        ui-organizations.vendorInfo.tax
-                      </div>
-                    </span>
-                  </button>
-                </h3>
+                      </button>
+                    </h3>
+                  </div>
+                </div>
               </div>
             </div>
             <div
@@ -642,7 +647,7 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
                 aria-labelledby="accordion-toggle-button-taxSection"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion2"
+                id="accordion1"
                 role="region"
               >
                 <div
@@ -780,6 +785,5 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;
