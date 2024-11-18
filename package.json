@@ -45,6 +45,7 @@
       }
     ],
     "stripesDeps": [
+      "@folio/service-interaction",
       "@folio/stripes-acq-components"
     ],
     "permissionSets": [
@@ -333,9 +334,10 @@
     "@bigtest/react": "^0.1.2",
     "@folio/eslint-config-stripes": "^7.0.0",
     "@folio/jest-config-stripes": "^2.0.0",
-    "@folio/service-interaction": "^3.0.0",
+    "@folio/service-interaction": "^3.1.0",
     "@folio/stripes": "^9.0.0",
     "@folio/stripes-cli": "^3.0.0",
+    "@folio/stripes-erm-components": "^9.2.0",
     "@formatjs/cli": "^6.1.3",
     "babel-jest": "^26.3.0",
     "chai": "^4.2.0",
@@ -374,7 +376,7 @@
     "redux-form": "^8.3.0"
   },
   "peerDependencies": {
-    "@folio/service-interaction": "^3.0.0",
+    "@folio/service-interaction": "^3.1.0",
     "@folio/stripes": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -389,6 +391,6 @@
     "@folio/plugin-find-interface": "^5.0.0"
   },
   "optionalOkapiInterfaces": {
-    "servint": "2.0 3.0"
+    "servint": "4.0"
   }
 }
