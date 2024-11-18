@@ -105,7 +105,7 @@ export const getOrganizationFieldsLabelMap = () => {
     'edi.ediFtp.ftpFormat': 'ui-organizations.integration.ftp.ftpFormat',
     'edi.ediFtp.serverAddress': 'ui-organizations.integration.ftp.serverAddress',
     'edi.ediFtp.username': 'ui-organizations.integration.ftp.username',
-    'edi.ediFtp.password': 'ui-organizations.edit.password',
+    'edi.ediFtp.password': 'ui-organizations.edit.password', // NOSONAR - it's a label mapping, not the actual password
     'edi.ediFtp.ftpMode': 'ui-organizations.integration.ftp.ftpMode',
     'edi.ediFtp.ftpConnMode': 'ui-organizations.integration.ftp.ftpConnectionMode',
     'edi.ediFtp.ftpPort': 'ui-organizations.integration.ftp.ftpPort',
