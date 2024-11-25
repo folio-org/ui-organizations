@@ -1,0 +1,1 @@
+export { useInterfacesByIds } from './useInterfacesByIds';

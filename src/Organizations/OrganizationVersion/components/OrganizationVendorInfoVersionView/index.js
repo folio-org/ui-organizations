@@ -1,0 +1,1 @@
+export { OrganizationVendorInfoVersionView } from './OrganizationVendorInfoVersionView';

@@ -1,0 +1,6 @@
+.mark {
+  &.version-wrapped.version-row-formatted {
+    background-color: mark;
+    margin: 0.15rem 0;
+  }
+}

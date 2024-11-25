@@ -21,7 +21,11 @@ import {
 } from '../../common/constants';
 import { HIDDEN_FIELDS_FOR_ORGANIZATION_VERSION_HISTORY } from '../constants';
 import { getOrganizationFieldsLabelMap } from './getOrganizationFieldsLabelMap';
-import { useOrganizationVersions } from './hooks';
+import {
+  useOrganizationVersions,
+  useSelectedOrganizationVersion,
+} from './hooks';
+import { OrganizationVersionView } from './OrganizationVersionView';
 
 const OrganizationVersion = ({
   history,
@@ -62,8 +66,15 @@ const OrganizationVersion = ({
     },
   });
 
+  const {
+    isLoading: isOrganizationVersionLoading,
+    selectedVersion,
+  } = useSelectedOrganizationVersion({ versionId, versions, snapshotPath });
+
   const isVersionLoading = (
-    isOrganizationLoading || isHistoryLoading
+    isOrganizationLoading
+    || isHistoryLoading
+    || isOrganizationVersionLoading
   );
 
   const labelsMap = useMemo(() => getOrganizationFieldsLabelMap(), []);
@@ -84,7 +95,7 @@ const OrganizationVersion = ({
         tags={get(organization, 'tags.tagList', [])}
         versionId={versionId}
       >
-        {/* TODO: https://folio-org.atlassian.net/browse/UIORGS-356 */}
+        <OrganizationVersionView version={selectedVersion} />
       </VersionView>
 
       <VersionHistoryPane
