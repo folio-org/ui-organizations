@@ -44,10 +44,12 @@ import {
 } from '@folio/plugin-find-organization';
 
 import {
+  ORGANIZATION_VERSIONS_VIEW_ROUTE,
   ORGANIZATIONS_ROUTE,
   VIEW_ORG_DETAILS,
 } from '../../common/constants';
 import { OrganizationDetailsContainer } from '../OrganizationDetails';
+import { OrganizationVersion } from '../OrganizationVersion';
 import OrganizationsListLastMenu from './OrganizationsListLastMenu';
 
 const resultsPaneTitle = <FormattedMessage id="ui-organizations.meta.title" />;
@@ -251,8 +253,15 @@ const OrganizationsList = ({
         </ResultsPane>
 
         <Route
+          exact
           path={`${VIEW_ORG_DETAILS}:id`}
           render={renderOrganizationDetails}
+        />
+
+        <Route
+          exact
+          path={`${ORGANIZATION_VERSIONS_VIEW_ROUTE}/:versionId?`}
+          component={OrganizationVersion}
         />
       </PersistedPaneset>
     </HasCommand>
