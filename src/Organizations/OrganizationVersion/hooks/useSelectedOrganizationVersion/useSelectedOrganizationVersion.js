@@ -75,9 +75,9 @@ export const useSelectedOrganizationVersion = ({ versionId, versions, snapshotPa
   const {
     isLoading: isVersionDataLoading,
     data = {},
-  } = useQuery(
-    [namespace, versionId, versionSnapshot?.id],
-    async () => {
+  } = useQuery({
+    queryKey: [namespace, versionId, versionSnapshot?.id],
+    queryFn: async () => {
       const acqUnitsIds = [
         ...get('acqUnitIds', versionSnapshot, []),
         ...flow(
@@ -87,9 +87,7 @@ export const useSelectedOrganizationVersion = ({ versionId, versions, snapshotPa
         )(versionSnapshot),
       ];
 
-      const [
-        acqUnitsMap,
-      ] = await Promise.all([
+      const [acqUnitsMap] = await Promise.all([
         fetchAcqUnitsByIds(ky)(acqUnitsIds).then(keyBy('id')),
       ]);
 
@@ -111,11 +109,9 @@ export const useSelectedOrganizationVersion = ({ versionId, versions, snapshotPa
         metadata,
       };
     },
-    {
-      enabled: Boolean(versionId && organization?.id),
-      ...options,
-    },
-  );
+    enabled: Boolean(versionId && organization?.id),
+    ...options,
+  });
 
   const selectedVersion = useMemo(() => {
     const versionUsersMap = keyBy('id', users);
