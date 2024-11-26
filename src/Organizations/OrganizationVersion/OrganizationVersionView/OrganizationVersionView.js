@@ -54,8 +54,6 @@ export const OrganizationVersionView = ({ version }) => {
     },
   ];
 
-  console.log('version', version);
-
   return (
     <HasCommand
       commands={shortcuts}

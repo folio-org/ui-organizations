@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -10,31 +9,27 @@ import {
 import {
   LANG_LABEL_BY_CODE,
   VersionKeyValue,
-  VersionViewContext,
 } from '@folio/stripes-acq-components';
 
 import { ContactPersonSection } from '../../../../../ContactPeople/ContactPerson';
+import { ContactCardHeaderVersionView } from './ContactCardHeaderVersionView';
 
 export const ContactPersonEmailsVersionView = ({ emails }) => {
-  const versionContext = useContext(VersionViewContext);
-
   if (!emails?.length) return null;
 
   const renderBody = () => (
     <Row>
       <Col xs={12}>
         {emails?.map((email) => {
-          const isPrimaryValue = (
-            <h4 style={{ margin: 0 }}>
-              <FormattedMessage id={`ui-organizations.${email?.isPrimary ? 'primaryItem' : 'alternateItem'}`} />
-            </h4>
-          );
-          const headerStart = versionContext?.paths?.includes(`${email?._initialFieldPath}.isPrimary`)
-            ? <span><mark>{isPrimaryValue}</mark></span>
-            : isPrimaryValue;
-
           return (
-            <Card headerStart={headerStart}>
+            <Card
+              headerStart={(
+                <ContactCardHeaderVersionView
+                  name={`${email?._initialFieldPath}.isPrimary`}
+                  isPrimary={email?.isPrimary}
+                />
+              )}
+            >
               <Row>
                 <Col xs={3}>
                   <VersionKeyValue
