@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -7,29 +6,24 @@ import {
   Col,
   Row,
 } from '@folio/stripes/components';
-import {
-  VersionKeyValue,
-  VersionViewContext,
-} from '@folio/stripes-acq-components';
+import { VersionKeyValue } from '@folio/stripes-acq-components';
+
+import { ContactCardHeaderVersionView } from './ContactCardHeaderVersionView';
 
 export const ContactAddressesVersionView = ({ addresses }) => {
-  const versionContext = useContext(VersionViewContext);
-
   return (
     <Row>
       <Col xs={12}>
         {addresses?.map((address) => {
-          const isPrimaryValue = (
-            <h4 style={{ margin: 0 }}>
-              <FormattedMessage id={`ui-organizations.${address?.isPrimary ? 'primaryItem' : 'alternateItem'}`} />
-            </h4>
-          );
-          const headerStart = versionContext?.paths?.includes(`${address?._initialFieldPath}.isPrimary`)
-            ? <mark>{isPrimaryValue}</mark>
-            : isPrimaryValue;
-
           return (
-            <Card headerStart={headerStart}>
+            <Card
+              headerStart={(
+                <ContactCardHeaderVersionView
+                  name={`${address?._initialFieldPath}.isPrimary`}
+                  isPrimary={address?.isPrimary}
+                />
+              )}
+            >
               <Row>
                 <Col xs={3}>
                   <VersionKeyValue

@@ -85,14 +85,8 @@ export const OrganizationContactInfoVersionView = ({ version: currentVersion }) 
         >
           <ContactAddressesVersionView addresses={data[category.id].addresses} />
           <ContactPersonPhonesVersionView phones={data[category.id].phoneNumbers} />
-          <ContactPersonEmailsVersionView
-            name="emails"
-            emails={data[category.id].emails}
-          />
-          <ContactPersonURLsVersionView
-            name="urls"
-            urls={data[category.id].urls}
-          />
+          <ContactPersonEmailsVersionView emails={data[category.id].emails} />
+          <ContactPersonURLsVersionView urls={data[category.id].urls} />
         </Accordion>
       ))}
     </Layout>
