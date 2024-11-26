@@ -8,6 +8,7 @@ import {
   render,
   screen,
 } from '@folio/jest-config-stripes/testing-library/react';
+import { useCategories } from '@folio/stripes-acq-components';
 
 import {
   organization,
@@ -15,6 +16,11 @@ import {
 } from 'fixtures';
 import { ORGANIZATION_VERSIONS_VIEW_ROUTE } from '../../../common/constants';
 import { OrganizationVersionView } from './OrganizationVersionView';
+
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  useCategories: jest.fn(),
+}));
 
 const { organizationSnapshot } = organizationAuditEvent;
 
@@ -40,6 +46,14 @@ const renderOrganizationVersionView = (props = {}) => render(
 );
 
 describe('OrganizationVersion', () => {
+  beforeEach(() => {
+    useCategories.mockReturnValue({ categories: [{ id: 'f52ceea4-8e35-404b-9ebd-5c7db6613195', value: 'cat' }] });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render version history view', async () => {
     renderOrganizationVersionView();
 
