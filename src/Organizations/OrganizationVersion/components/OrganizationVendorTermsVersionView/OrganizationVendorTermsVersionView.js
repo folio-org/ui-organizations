@@ -21,7 +21,7 @@ export const OrganizationVendorTermsVersionView = ({ name, version }) => {
     <>
       {version?.agreements?.map((agreement, indx) => {
         return (
-          <Row>
+          <Row key={agreement.id}>
             <Col xs={3}>
               <VersionKeyValue
                 name={`${name}[${indx}].name`}

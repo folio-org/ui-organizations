@@ -24,6 +24,7 @@ export const ContactPersonURLsVersionView = ({ urls }) => {
         {urls?.map((url) => {
           return (
             <Card
+              key={url.id}
               headerStart={(
                 <ContactCardHeaderVersionView
                   name={`${url?._initialFieldPath}.isPrimary`}

@@ -26,7 +26,7 @@ import {
 
 const setInitialArrayFieldPaths = (obj, paths) => {
   return paths.reduce((result, path) => {
-    const target = get(result, path);
+    const target = get(result, path, []);
 
     target.forEach((item, indx) => {
       item._initialFieldPath = `${path}[${indx}]`;

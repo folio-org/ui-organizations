@@ -17,6 +17,7 @@ export const ContactAddressesVersionView = ({ addresses }) => {
         {addresses?.map((address) => {
           return (
             <Card
+              key={address.id}
               headerStart={(
                 <ContactCardHeaderVersionView
                   name={`${address?._initialFieldPath}.isPrimary`}

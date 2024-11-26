@@ -25,7 +25,10 @@ export const OrganizationAccountsVersionView = ({ name, version }) => {
     <>
       {version?.accounts?.map((account, indx) => {
         return (
-          <Row className={css.organizationAccount}>
+          <Row
+            key={account.id}
+            className={css.organizationAccount}
+          >
             <Col xs={3}>
               <VersionKeyValue
                 name={`${name}[${indx}].name`}

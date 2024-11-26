@@ -23,6 +23,7 @@ export const ContactPersonEmailsVersionView = ({ emails }) => {
         {emails?.map((email) => {
           return (
             <Card
+              key={email.id}
               headerStart={(
                 <ContactCardHeaderVersionView
                   name={`${email?._initialFieldPath}.isPrimary`}
