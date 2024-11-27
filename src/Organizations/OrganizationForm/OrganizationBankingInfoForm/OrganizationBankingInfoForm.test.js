@@ -97,8 +97,7 @@ describe('OrganizationBankingInfoForm', () => {
   });
 
   describe('Interaction with \'Addresses\' categories fields', () => {
-    // ignore until master is fixed
-    xit('should render categories options based on selected address categories', async () => {
+    it('should render categories options based on selected address categories', async () => {
       renderOrganizationBankingInfoForm();
 
       await addField();
