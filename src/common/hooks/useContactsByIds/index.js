@@ -1,0 +1,1 @@
+export { useContactsByIds } from './useContactsByIds';

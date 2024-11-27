@@ -1,0 +1,1 @@
+export { ContactCardHeaderVersionView } from './ContactCardHeaderVersionView';

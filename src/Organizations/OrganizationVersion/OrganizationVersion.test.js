@@ -35,7 +35,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
 const { organizationSnapshot, ...auditEvent } = organizationAuditEvent;
 
 const latestSnapshot = {
-  ...organizationSnapshot,
+  ...organizationSnapshot.map,
   edition: 'Second edition',
 };
 const originalSnapshot = { ...organizationSnapshot };

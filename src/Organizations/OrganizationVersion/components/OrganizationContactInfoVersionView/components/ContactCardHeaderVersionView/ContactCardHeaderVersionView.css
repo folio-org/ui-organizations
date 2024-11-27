@@ -1,0 +1,7 @@
+.cardHeader {
+  margin: 0;
+  
+  & .mark {
+    background-color: mark;
+  }
+}

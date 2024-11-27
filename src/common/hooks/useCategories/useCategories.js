@@ -4,7 +4,10 @@ import {
   useNamespace,
   useOkapiKy,
 } from '@folio/stripes/core';
-import { LIMIT_MAX } from '@folio/stripes-acq-components';
+import {
+  ALL_RECORDS_CQL,
+  LIMIT_MAX,
+} from '@folio/stripes-acq-components';
 
 import { CATEGORIES_API } from '../../constants';
 import { useTranslatedCategories } from '../useTranslatedCategories';
@@ -17,7 +20,7 @@ export const useCategories = (options = {}) => {
 
   const searchParams = {
     limit: LIMIT_MAX,
-    query: 'cql.allRecords=1',
+    query: ALL_RECORDS_CQL,
   };
 
   const {
@@ -26,7 +29,7 @@ export const useCategories = (options = {}) => {
     isLoading,
   } = useQuery(
     [namespace],
-    () => ky.get(CATEGORIES_API, { searchParams }).json(),
+    ({ signal }) => ky.get(CATEGORIES_API, { searchParams, signal }).json(),
     options,
   );
 
