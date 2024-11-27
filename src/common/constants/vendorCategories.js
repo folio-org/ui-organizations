@@ -1,3 +1,4 @@
+export const UNCATEGORIZED_ID = 'uncategorized';
 export const UNCATEGORIZED_VALUE = 'Uncategorized';
 
 export const VENDOR_DEFAULT_CATEGORIES = {
