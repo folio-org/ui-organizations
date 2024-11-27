@@ -17,7 +17,7 @@ export const useInterfacesByIds = (interfaceIds, options = {}) => {
   } = options;
 
   const ky = useOkapiKy();
-  const [namespace] = useNamespace('interfaces');
+  const [namespace] = useNamespace({ key: 'interfaces' });
 
   const {
     data,

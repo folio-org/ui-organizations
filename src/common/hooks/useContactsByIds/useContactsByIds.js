@@ -17,7 +17,7 @@ export const useContactsByIds = (contactIds, options = {}) => {
   } = options;
 
   const ky = useOkapiKy();
-  const [namespace] = useNamespace('contacts');
+  const [namespace] = useNamespace({ key: 'contacts' });
 
   const {
     data,

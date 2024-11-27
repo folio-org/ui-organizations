@@ -13,7 +13,9 @@ export const ContactCardHeaderVersionView = ({ isPrimary, name }) => {
 
   const headerStart = (
     <h4 className={css.cardHeader}>
-      <span className={isUpdated ? css.mark : ''}><FormattedMessage id={`ui-organizations.${isPrimary ? 'primaryItem' : 'alternateItem'}`} /></span>
+      <span className={isUpdated ? css.mark : ''}>
+        <FormattedMessage id={`ui-organizations.${isPrimary ? 'primaryItem' : 'alternateItem'}`} />
+      </span>
     </h4>
   );
 

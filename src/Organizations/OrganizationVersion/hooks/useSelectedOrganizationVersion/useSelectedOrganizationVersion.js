@@ -1,7 +1,7 @@
-import get from 'lodash/fp/get';
 import filter from 'lodash/fp/filter';
 import flatMap from 'lodash/fp/flatMap';
 import flow from 'lodash/fp/flow';
+import get from 'lodash/fp/get';
 import keyBy from 'lodash/fp/keyBy';
 import uniq from 'lodash/fp/uniq';
 import { useMemo } from 'react';
