@@ -104,7 +104,6 @@ export const useSelectedOrganizationVersion = ({ versionId, versions, snapshotPa
           acqUnits: account?.acqUnitIds?.map((acqUnitId) => acqUnitsMap[acqUnitId]?.name || deletedRecordLabel),
         })),
         acqUnits: acqUnitsIds.map(acqUnitsId => acqUnitsMap[acqUnitsId]?.name || deletedRecordLabel).join(', '),
-        alternativeNames: versionSnapshot?.aliases?.map(({ value }) => value).join(', '),
         vendorCurrenciesValue,
         metadata,
       };
