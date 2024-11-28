@@ -1,8 +1,13 @@
 import PropTypes from 'prop-types';
+import {
+  useContext,
+  useMemo,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import {
   Col,
+  KeyValue,
   NoValue,
   Row,
 } from '@folio/stripes/components';
@@ -11,11 +16,16 @@ import {
   LANG_LABEL_BY_CODE,
   VersionCheckbox,
   VersionKeyValue,
+  VersionViewContext,
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATION_SECTIONS } from '../../../constants';
 
 export const OrganizationSummaryVersionView = ({ version }) => {
+  const versionContext = useContext(VersionViewContext);
+
+  const changedFieldNameSet = useMemo(() => new Set(versionContext?.paths), [versionContext?.paths]);
+
   return (
     <>
       <Row>
@@ -113,12 +123,15 @@ export const OrganizationSummaryVersionView = ({ version }) => {
         </Col>
 
         <Col xs={3}>
-          <VersionKeyValue
-            name="aliases"
-            label={<FormattedMessage id="ui-organizations.summary.alternativeNames" />}
-            value={version?.alternativeNames || <NoValue />}
-            multiple
-          />
+          <KeyValue label={<FormattedMessage id="ui-organizations.summary.alternativeNames" />}>
+            {
+              version?.aliases?.map(({ value }, indx, arr) => {
+                const displayValue = changedFieldNameSet.has(`aliases[${indx}].value`) ? <mark>{value}</mark> : value;
+
+                return <>{displayValue}{indx !== arr.length - 1 && ', '}</>;
+              })
+            }
+          </KeyValue>
         </Col>
       </Row>
     </>
