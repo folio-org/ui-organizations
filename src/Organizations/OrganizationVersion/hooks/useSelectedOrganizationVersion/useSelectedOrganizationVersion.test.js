@@ -79,7 +79,6 @@ describe('useSelectedOrganizationVersion', () => {
         acqUnits: [],
       })),
       acqUnits: '',
-      alternativeNames: 'Amazon',
       contactsList: contacts,
       interfacesList: interfaces,
       vendorCurrenciesValue: 'US Dollar (USD)',
