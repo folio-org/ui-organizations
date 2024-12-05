@@ -5,6 +5,7 @@
 * *BREAKING* Display all versions in change log in fourth pane. Refs UIORGS-355.
 * Show in version history record view, which fields have been edited. Refs UIORGS-356.
 * Adapt organization metadata fields to version history mechanism. Refs UIORGS-359.
+* *BREAKING* Add number generator for vendor code including settings page. Refs UIORGS-336, UIORGS-337.
 
 ## [5.2.0](https://github.com/folio-org/ui-organizations/tree/v5.2.0) (2024-10-31)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.1.1...v5.2.0)

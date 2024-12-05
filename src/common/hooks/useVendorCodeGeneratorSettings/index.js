@@ -1,0 +1,1 @@
+export { useVendorCodeGeneratorSettings } from './useVendorCodeGeneratorSettings';
