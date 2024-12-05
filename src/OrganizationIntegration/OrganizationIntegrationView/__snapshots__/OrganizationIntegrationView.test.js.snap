@@ -326,6 +326,95 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                         </div>
                       </div>
                     </div>
+                    <div
+                      class="row"
+                    >
+                      <div
+                        class="col-xs-6 col-md-3"
+                      >
+                        <div
+                          class="kvRoot"
+                        >
+                          <div
+                            class="kvLabel"
+                          >
+                            ui-organizations.integration.info.integrationType
+                          </div>
+                          <div
+                            class="kvValue"
+                            data-test-kv-value="true"
+                          >
+                            <span>
+                              NoValue
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="col-xs-6 col-md-3"
+                      >
+                        <div
+                          class="kvRoot"
+                        >
+                          <div
+                            class="kvLabel"
+                          >
+                            ui-organizations.integration.info.transmissionMethod
+                          </div>
+                          <div
+                            class="kvValue"
+                            data-test-kv-value="true"
+                          >
+                            <span>
+                              NoValue
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="col-xs-6 col-md-3"
+                      >
+                        <div
+                          class="kvRoot"
+                        >
+                          <div
+                            class="kvLabel"
+                          >
+                            ui-organizations.integration.info.fileFormat
+                          </div>
+                          <div
+                            class="kvValue"
+                            data-test-kv-value="true"
+                          >
+                            <span>
+                              NoValue
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="col-xs-6 col-md-3"
+                        data-test-edi-account-numbers="true"
+                      >
+                        <div
+                          class="kvRoot"
+                        >
+                          <div
+                            class="kvLabel"
+                          >
+                            ui-organizations.integration.edi.accountNumbers
+                          </div>
+                          <div
+                            class="kvValue"
+                            data-test-kv-value="true"
+                          >
+                            <span>
+                              NoValue
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -391,28 +480,6 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                     <div
                       class="row"
                     >
-                      <div
-                        class="col-xs-6 col-md-3"
-                        data-test-edi-account-numbers="true"
-                      >
-                        <div
-                          class="kvRoot"
-                        >
-                          <div
-                            class="kvLabel"
-                          >
-                            ui-organizations.integration.edi.accountNumbers
-                          </div>
-                          <div
-                            class="kvValue"
-                            data-test-kv-value="true"
-                          >
-                            <span>
-                              NoValue
-                            </span>
-                          </div>
-                        </div>
-                      </div>
                       <div
                         class="col-xs-6 col-md-3"
                         data-test-edi-acq-methods="true"
