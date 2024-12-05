@@ -1,7 +1,10 @@
-import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { useMemo } from 'react';
+import {
+  Field,
+  useForm,
+} from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
-import { Field, useForm } from 'react-final-form';
 
 import {
   Accordion,
@@ -13,33 +16,23 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
-import {
-  validateRequired,
-} from '@folio/stripes-acq-components';
+import { validateRequired } from '@folio/stripes-acq-components';
 
 import {
   EDI_CODE_TYPES,
   EDI_NAMING_TOKENS,
 } from '../../constants';
 import {
-  getAccountOptions,
   getAcqMethodOptions,
+  isFileFormatEDI,
 } from '../../utils';
 
-export const EdiForm = ({
-  acqMethods = [],
-  accounts = [],
-}) => {
+export const EdiForm = ({ acqMethods }) => {
   const { getState } = useForm();
 
   const acqMethodOptions = useMemo(() => getAcqMethodOptions(acqMethods), [acqMethods]);
-  const accountOptions = useMemo(() => getAccountOptions(accounts), [accounts]);
 
-  const isDefaultConfig = getState()
-    ?.values
-    ?.exportTypeSpecificParameters
-    ?.vendorEdiOrdersExportConfig
-    ?.isDefaultConfig;
+  const isFormatEDI = isFileFormatEDI(getState()?.values);
 
   return (
     <Accordion
@@ -47,27 +40,6 @@ export const EdiForm = ({
       label={<FormattedMessage id="ui-organizations.integration.edi" />}
     >
       <Row>
-        {
-          !isDefaultConfig && (
-            <Col
-              data-test-edi-account-numbers
-              xs={6}
-              md={3}
-            >
-              <Field
-                label={<FormattedMessage id="ui-organizations.integration.edi.accountNumbers" />}
-                name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.accountNoList"
-                component={Select}
-                dataOptions={accountOptions}
-                fullWidth
-                multiple
-                required
-                validate={validateRequired}
-              />
-            </Col>
-          )
-        }
-
         <Col
           data-test-edi-acq-methods
           xs={6}
@@ -94,8 +66,8 @@ export const EdiForm = ({
             id="vendorEdiCode"
             label={<FormattedMessage id="ui-organizations.integration.edi.vendorEDICode" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.vendorEdiCode"
-            required
-            validate={validateRequired}
+            required={isFormatEDI}
+            validate={isFormatEDI ? validateRequired : undefined}
           />
         </Col>
 
@@ -124,8 +96,8 @@ export const EdiForm = ({
             id="libEdiCode"
             label={<FormattedMessage id="ui-organizations.integration.edi.libraryEDICode" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.libEdiCode"
-            required
-            validate={validateRequired}
+            required={isFormatEDI}
+            validate={isFormatEDI ? validateRequired : undefined}
           />
         </Col>
 
@@ -226,5 +198,4 @@ export const EdiForm = ({
 
 EdiForm.propTypes = {
   acqMethods: PropTypes.arrayOf(PropTypes.object),
-  accounts: PropTypes.arrayOf(PropTypes.string),
 };

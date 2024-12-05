@@ -1,7 +1,12 @@
 import { flow, join, map, pick, values } from 'lodash/fp';
 import moment from 'moment-timezone';
 
-import { EDI_NAMING_TOKENS } from './constants';
+import {
+  EDI_NAMING_TOKENS,
+  FILE_FORMAT,
+  INTEGRATION_TYPE,
+  TRANSMISSION_METHOD,
+} from './constants';
 
 export const buildAvailableAccounts = (organization, integrations, currentIntegration) => {
   const accounts = organization.accounts.map(({ accountNo }) => accountNo);
@@ -65,3 +70,67 @@ export const getDefaultEdiNamingConvention = () => (
     join('-'),
   )(EDI_NAMING_TOKENS)
 );
+
+export const getIntegrationTypeOptions = (intl) => {
+  return Object.entries(INTEGRATION_TYPE).map(([key, value]) => ({
+    label: intl.formatMessage({ id: `ui-organizations.integration.info.integrationType.${key}` }),
+    value,
+  }));
+};
+
+export const getTransmissionMethodOptions = (intl) => {
+  return Object.entries(TRANSMISSION_METHOD).map(([key, value]) => ({
+    label: intl.formatMessage({ id: `ui-organizations.integration.info.transmissionMethod.${key}` }),
+    value,
+  }));
+};
+
+export const getFileFormatOptions = () => {
+  return Object.values(FILE_FORMAT).map((value) => ({
+    label: value,
+    value,
+  }));
+};
+
+export const isFileFormat = (config, type) => {
+  const integrationType = config
+    ?.exportTypeSpecificParameters
+    ?.vendorEdiOrdersExportConfig
+    ?.fileFormat;
+
+  return integrationType === type;
+};
+
+export const isFileFormatEDI = (config) => {
+  return isFileFormat(config, FILE_FORMAT.edi);
+};
+
+export const isTransmissionMethod = (config, type) => {
+  const transmissionMethod = config
+    ?.exportTypeSpecificParameters
+    ?.vendorEdiOrdersExportConfig
+    ?.transmissionMethod;
+
+  return transmissionMethod === type;
+};
+
+export const isTransmissionMethodFTP = (config) => {
+  return isTransmissionMethod(config, TRANSMISSION_METHOD.ftp);
+};
+
+export const isIntegrationType = (config, type) => {
+  const integrationType = config
+    ?.exportTypeSpecificParameters
+    ?.vendorEdiOrdersExportConfig
+    ?.integrationType;
+
+  return integrationType === type;
+};
+
+export const isClaimingIntegration = (config) => {
+  return isIntegrationType(config, INTEGRATION_TYPE.claiming);
+};
+
+export const isOrderingIntegration = (config) => {
+  return isIntegrationType(config, INTEGRATION_TYPE.ordering);
+};

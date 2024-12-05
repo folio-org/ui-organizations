@@ -17,9 +17,12 @@ import {
 
 import {
   EDI_CODE_TYPES,
+  FILE_FORMAT,
   FTP_TYPES,
+  TRANSMISSION_METHOD,
   TRANSMISSION_MODES,
   CONNECTION_MODES,
+  INTEGRATION_TYPE,
 } from '../constants';
 import {
   buildAvailableAccounts,
@@ -38,6 +41,9 @@ const buildInitialValues = (organization, withMigration) => {
     exportTypeSpecificParameters: {
       vendorEdiOrdersExportConfig: {
         vendorId: organization.id,
+        integrationType: INTEGRATION_TYPE.claiming,
+        transmissionMethod: TRANSMISSION_METHOD.fileDownLoad,
+        fileFormat: FILE_FORMAT.csv,
         ediConfig: {
           vendorEdiCode: edi.vendorEdiCode,
           vendorEdiType: edi.vendorEdiType || EDI_CODE_TYPES[0].value,

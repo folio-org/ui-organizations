@@ -37,3 +37,18 @@ export const EDI_NAMING_TOKENS = {
   jobID: 'jobID',
   numberSequence: 'numberSequence',
 };
+
+export const INTEGRATION_TYPE = {
+  claiming: 'Claiming',
+  ordering: 'Ordering',
+};
+
+export const TRANSMISSION_METHOD = {
+  fileDownLoad: 'File download',
+  ftp: 'FTP',
+};
+
+export const FILE_FORMAT = {
+  csv: 'CSV',
+  edi: 'EDI',
+};
