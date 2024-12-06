@@ -1,6 +1,8 @@
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Field } from 'react-final-form';
+import {
+  Field,
+  useForm,
+} from 'react-final-form';
 
 import {
   Accordion,
@@ -24,8 +26,13 @@ import {
   TRANSMISSION_MODES,
   CONNECTION_MODES,
 } from '../../constants';
+import { isTransmissionMethodFTP } from '../../utils';
 
 export const FtpForm = () => {
+  const { getState } = useForm();
+
+  const isMethodFTP = isTransmissionMethodFTP(getState()?.values);
+
   return (
     <Accordion
       id="ftp"
@@ -69,10 +76,10 @@ export const FtpForm = () => {
             label={<FormattedMessage id="ui-organizations.integration.ftp.serverAddress" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.serverAddress"
             type="text"
-            validate={validateURLRequired}
+            validate={isMethodFTP ? validateURLRequired : undefined}
             component={TextField}
             fullWidth
-            required
+            required={isMethodFTP}
             validateFields={[]}
           />
         </Col>
@@ -139,9 +146,9 @@ export const FtpForm = () => {
             type="number"
             component={TextField}
             fullWidth
-            required
+            required={isMethodFTP}
             validateFields={[]}
-            validate={validateRequired}
+            validate={isMethodFTP ? validateRequired : undefined}
           />
         </Col>
         <Col

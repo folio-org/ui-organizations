@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -10,7 +10,34 @@ import {
   Row,
 } from '@folio/stripes/components';
 
+import {
+  INTEGRATION_TYPE,
+  TRANSMISSION_METHOD,
+} from '../../constants';
+
 const IntegrationInfoView = ({ integrationConfig = {} }) => {
+  const isDefaultConfig = integrationConfig?.isDefaultConfig;
+
+  const integrationType = useMemo(() => {
+    const translationKey = Object.entries(INTEGRATION_TYPE).find(([, value]) => {
+      return value === integrationConfig?.integrationType;
+    })?.[0];
+
+    return translationKey
+      ? <FormattedMessage id={`ui-organizations.integration.info.integrationType.${translationKey}`} />
+      : integrationConfig?.integrationType;
+  }, [integrationConfig?.integrationType]);
+
+  const transmissionMethod = useMemo(() => {
+    const translationKey = Object.entries(TRANSMISSION_METHOD).find(([, value]) => {
+      return value === integrationConfig?.transmissionMethod;
+    })?.[0];
+
+    return translationKey
+      ? <FormattedMessage id={`ui-organizations.integration.info.transmissionMethod.${translationKey}`} />
+      : integrationConfig?.transmissionMethod;
+  }, [integrationConfig?.transmissionMethod]);
+
   return (
     <Accordion
       id="integrationInfo"
@@ -39,6 +66,52 @@ const IntegrationInfoView = ({ integrationConfig = {} }) => {
             disabled
           />
         </Col>
+      </Row>
+      <Row>
+        <Col
+          xs={6}
+          md={3}
+        >
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.integration.info.integrationType" />}
+            value={integrationType}
+          />
+        </Col>
+
+        <Col
+          xs={6}
+          md={3}
+        >
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.integration.info.transmissionMethod" />}
+            value={transmissionMethod}
+          />
+        </Col>
+
+        <Col
+          xs={6}
+          md={3}
+        >
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.integration.info.fileFormat" />}
+            value={integrationConfig.fileFormat}
+          />
+        </Col>
+
+        {
+          !isDefaultConfig && (
+            <Col
+              data-test-edi-account-numbers
+              xs={6}
+              md={3}
+            >
+              <KeyValue
+                label={<FormattedMessage id="ui-organizations.integration.edi.accountNumbers" />}
+                value={integrationConfig.ediConfig?.accountNoList?.join(', ')}
+              />
+            </Col>
+          )
+        }
       </Row>
     </Accordion>
   );

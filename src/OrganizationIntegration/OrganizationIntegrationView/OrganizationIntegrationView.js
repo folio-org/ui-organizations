@@ -34,6 +34,7 @@ import {
   useIntegrationConfig,
   useIntegrationConfigMutation,
 } from '../../common/hooks';
+import { isClaimingIntegration } from '../utils';
 import { IntegrationInfoView } from './IntegrationInfoView';
 import { EdiView } from './EdiView';
 import { FtpView } from './FtpView';
@@ -50,6 +51,8 @@ const OrganizationIntegrationView = ({ orgId }) => {
 
   const { integrationConfig, isLoading } = useIntegrationConfig(id);
   const { acqMethods, isLoading: isAcqMethodsLoading } = useAcqMethods();
+
+  const isClaimingType = isClaimingIntegration(integrationConfig);
 
   const onEdit = useCallback(
     () => {
@@ -208,11 +211,13 @@ const OrganizationIntegrationView = ({ orgId }) => {
                   ?.ediFtp}
                 />
 
-                <SchedulingView ediSchedule={integrationConfig
-                  ?.exportTypeSpecificParameters
-                  ?.vendorEdiOrdersExportConfig
-                  ?.ediSchedule}
-                />
+                {!isClaimingType && (
+                  <SchedulingView ediSchedule={integrationConfig
+                    ?.exportTypeSpecificParameters
+                    ?.vendorEdiOrdersExportConfig
+                    ?.ediSchedule}
+                  />
+                )}
               </AccordionSet>
             </AccordionStatus>
           </Col>

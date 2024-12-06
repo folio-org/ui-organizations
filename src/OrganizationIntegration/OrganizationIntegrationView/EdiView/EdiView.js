@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -23,29 +23,12 @@ const EdiView = ({
       .join(', ');
   }, [vendorEdiOrdersExportConfig.ediConfig?.defaultAcquisitionMethods, acqMethods]);
 
-  const isDefaultConfig = vendorEdiOrdersExportConfig?.isDefaultConfig;
-
   return (
     <Accordion
       id="edi"
       label={<FormattedMessage id="ui-organizations.integration.edi" />}
     >
       <Row>
-        {
-          !isDefaultConfig && (
-            <Col
-              data-test-edi-account-numbers
-              xs={6}
-              md={3}
-            >
-              <KeyValue
-                label={<FormattedMessage id="ui-organizations.integration.edi.accountNumbers" />}
-                value={vendorEdiOrdersExportConfig.ediConfig?.accountNoList?.join(', ')}
-              />
-            </Col>
-          )
-        }
-
         <Col
           data-test-edi-acq-methods
           xs={6}
