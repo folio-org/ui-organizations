@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 import stripesForm from '@folio/stripes/final-form';
 import { AppIcon } from '@folio/stripes/core';
