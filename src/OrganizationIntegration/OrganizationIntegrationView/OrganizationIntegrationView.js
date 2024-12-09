@@ -15,7 +15,7 @@ import {
   useHistory,
   useParams,
   useLocation,
-} from 'react-router';
+} from 'react-router-dom';
 
 import { AppIcon } from '@folio/stripes/core';
 import {
@@ -312,6 +312,7 @@ const OrganizationIntegrationView = ({ orgId }) => {
         {isDuplicateConfirmation && (
           <ConfirmationModal
             id="duplicate-integration-modal"
+            confirmLabel={<FormattedMessage id="ui-organizations.integration.confirmation.confirm" />}
             heading={<FormattedMessage id="ui-organizations.integrationDetails.duplicate.confirmModal.heading" />}
             message={(
               <FormattedMessage

@@ -1,9 +1,15 @@
-import React from 'react';
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  MemoryRouter,
+  useHistory,
+  useParams,
+} from 'react-router-dom';
+
+import {
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
 import { queryHelpers } from '@folio/jest-config-stripes/testing-library/dom';
 import user from '@folio/jest-config-stripes/testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom';
-import { useHistory, useParams } from 'react-router';
 
 import {
   HasCommand,
@@ -20,8 +26,10 @@ import {
 } from '../../common/hooks';
 import OrganizationIntegrationView from './OrganizationIntegrationView';
 
-jest.mock('react-router', () => ({
-  ...jest.requireActual('react-router'),
+import { getDuplicateTimestamp } from '../utils';
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
   useHistory: jest.fn(),
   useParams: jest.fn(),
 }));
@@ -43,6 +51,10 @@ jest.mock('../../common/hooks', () => ({
   useIntegrationConfig: jest.fn(),
   useIntegrationConfigMutation: jest.fn().mockReturnValue({ mutateIntegrationConfig: jest.fn() }),
 }));
+jest.mock('../utils', () => ({
+  ...jest.requireActual('../utils'),
+  getDuplicateTimestamp: jest.fn(),
+}));
 
 const queryAllByClass = queryHelpers.queryAllByAttribute.bind(null, 'class');
 
@@ -54,19 +66,23 @@ const renderOrganizationIntegrationView = (props = defaultProps) => render(
 );
 
 describe('OrganizationIntegrationView', () => {
+  const mutateIntegrationConfig = jest.fn();
+
   beforeEach(() => {
+    getDuplicateTimestamp.mockReturnValue('01/01/2025');
     global.document.createRange = global.document.originalCreateRange;
 
-    useParams.mockClear().mockReturnValue({ id: integrationConfig.id });
-    useOrganization.mockClear().mockReturnValue({
+    useParams.mockReturnValue({ id: integrationConfig.id });
+    useOrganization.mockReturnValue({
       organization: { id: defaultProps.orgId, accounts: [] },
       isLoading: false,
     });
-    useIntegrationConfigMutation.mockClear().mockReturnValue({ });
-    useIntegrationConfig.mockClear().mockReturnValue({ integrationConfig });
+    useIntegrationConfigMutation.mockReturnValue({ mutateIntegrationConfig });
+    useIntegrationConfig.mockReturnValue({ integrationConfig });
   });
 
   afterEach(() => {
+    jest.clearAllMocks();
     global.document.createRange = global.document.mockCreateRange;
   });
 
@@ -128,6 +144,23 @@ describe('OrganizationIntegrationView', () => {
 
       expect(pushMock).toHaveBeenCalledWith({
         pathname: `/organizations/${orgId}/integration/${integrationConfig.id}/edit`,
+        search: '',
+      });
+    });
+
+    it('should duplicate integration config', async () => {
+      const pushMock = jest.fn();
+
+      useHistory.mockReturnValue({ push: pushMock });
+
+      renderOrganizationIntegrationView();
+
+      await user.click(screen.getByTestId('duplicate-integration-action'));
+      await user.click(screen.getByText('ui-organizations.integration.confirmation.confirm'));
+
+      expect(mutateIntegrationConfig).toHaveBeenCalled();
+      expect(pushMock).toHaveBeenCalledWith({
+        pathname: `/organizations/view/${orgId}`,
         search: '',
       });
     });

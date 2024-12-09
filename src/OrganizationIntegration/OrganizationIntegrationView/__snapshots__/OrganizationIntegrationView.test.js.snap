@@ -119,6 +119,19 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
                     </button>
                     <button
                       class="button dropdownItem"
+                      data-testid="duplicate-integration-action"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        <span>
+                          Icon
+                        </span>
+                      </span>
+                    </button>
+                    <button
+                      class="button dropdownItem"
                       data-testid="remove-integration-action"
                       type="button"
                     >
