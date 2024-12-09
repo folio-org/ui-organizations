@@ -86,6 +86,7 @@ describe('useSelectedOrganizationVersion', () => {
         acqUnits: [],
       })),
       acqUnits: '',
+      createdByUser: null,
       contactsList: contacts,
       interfacesList: interfaces,
       organizationTypesResolved: 'Type name',
