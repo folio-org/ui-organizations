@@ -1,9 +1,14 @@
-import React from 'react';
+import cloneDeep from 'lodash/cloneDeep';
+import set from 'lodash/set';
+
+import {
+  useHistory,
+  MemoryRouter,
+} from 'react-router-dom';
+
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import { queryHelpers } from '@folio/jest-config-stripes/testing-library/dom';
 import user from '@folio/jest-config-stripes/testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom';
-import { useHistory } from 'react-router';
 
 import {
   HasCommand,
@@ -17,11 +22,12 @@ import {
   FTP_TYPES,
   TRANSMISSION_MODES,
   CONNECTION_MODES,
+  INTEGRATION_TYPE,
 } from '../constants';
 import OrganizationIntegrationForm from './OrganizationIntegrationForm';
 
-jest.mock('react-router', () => ({
-  ...jest.requireActual('react-router'),
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
   useHistory: jest.fn(),
 }));
 jest.mock('@folio/stripes-components/lib/Commander', () => ({
@@ -40,6 +46,7 @@ const initialValues = {
   exportTypeSpecificParameters: {
     vendorEdiOrdersExportConfig: {
       vendorId: 'orgId',
+      integrationType: INTEGRATION_TYPE.ordering,
       ediConfig: {
         accountNoList: [],
         defaultAcquisitionMethods: [],
@@ -64,8 +71,12 @@ const defaultProps = {
   onClose: jest.fn(),
   paneTitle: 'Create integration',
 };
-const renderOrganizationIntegrationForm = (props = defaultProps) => render(
-  <OrganizationIntegrationForm {...props} />,
+
+const renderOrganizationIntegrationForm = (props = {}) => render(
+  <OrganizationIntegrationForm
+    {...defaultProps}
+    {...props}
+  />,
   { wrapper: MemoryRouter },
 );
 
@@ -84,6 +95,40 @@ describe('OrganizationIntegrationForm', () => {
     container.querySelector('#org-integration-form-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should hide scheduling details for claiming integration', async () => {
+    renderOrganizationIntegrationForm();
+
+    expect(screen.getByText('ui-organizations.integration.scheduling')).toBeInTheDocument();
+
+    await user.selectOptions(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.integrationType' }), INTEGRATION_TYPE.claiming);
+
+    expect(screen.queryByText('ui-organizations.integration.scheduling')).not.toBeInTheDocument();
+  });
+
+  it('should disable transmission and file type fields for ordering integration', async () => {
+    const clonedInitialValues = cloneDeep(initialValues);
+
+    set(
+      clonedInitialValues,
+      [
+        'exportTypeSpecificParameters',
+        'vendorEdiOrdersExportConfig',
+        'integrationType',
+      ],
+      INTEGRATION_TYPE.claiming,
+    );
+
+    renderOrganizationIntegrationForm({ initialValues: clonedInitialValues });
+
+    expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.transmissionMethod' })).not.toBeDisabled();
+    expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.fileFormat' })).not.toBeDisabled();
+
+    await user.selectOptions(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.integrationType' }), INTEGRATION_TYPE.ordering);
+
+    expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.transmissionMethod' })).toBeDisabled();
+    expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.fileFormat' })).toBeDisabled();
   });
 
   describe('Sections toggle', () => {

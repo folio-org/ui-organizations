@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 import stripesForm from '@folio/stripes/final-form';
 import { AppIcon } from '@folio/stripes/core';
@@ -28,6 +28,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
+import { isClaimingIntegration } from '../utils';
 import { IntegrationInfoForm } from './IntegrationInfoForm';
 import { EdiForm } from './EdiForm';
 import { FtpForm } from './FtpForm';
@@ -37,6 +38,7 @@ const OrganizationIntegrationForm = ({
   acqMethods,
   accounts,
   defaultIntegration,
+  form: { getState },
   onClose,
   paneTitle,
   handleSubmit,
@@ -107,6 +109,8 @@ const OrganizationIntegrationForm = ({
     },
   ];
 
+  const isClaimingType = isClaimingIntegration(getState()?.values);
+
   return (
     <HasCommand
       commands={shortcuts}
@@ -140,16 +144,16 @@ const OrganizationIntegrationForm = ({
                 </Col>
               </Row>
               <AccordionSet id="org-integration-form-accordion-set">
-                <IntegrationInfoForm defaultIntegration={defaultIntegration} />
-
-                <EdiForm
-                  acqMethods={acqMethods}
+                <IntegrationInfoForm
                   accounts={accounts}
+                  defaultIntegration={defaultIntegration}
                 />
+
+                <EdiForm acqMethods={acqMethods} />
 
                 <FtpForm />
 
-                <SchedulingForm />
+                {!isClaimingType && <SchedulingForm />}
               </AccordionSet>
             </AccordionStatus>
           </Col>
@@ -163,6 +167,9 @@ OrganizationIntegrationForm.propTypes = {
   acqMethods: PropTypes.arrayOf(PropTypes.object),
   accounts: PropTypes.arrayOf(PropTypes.string),
   defaultIntegration: PropTypes.object,
+  form: PropTypes.shape({
+    getState: PropTypes.func.isRequired,
+  }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   paneTitle: PropTypes.node.isRequired,
