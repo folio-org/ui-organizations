@@ -5,25 +5,25 @@ import get from 'lodash/fp/get';
 import keyBy from 'lodash/fp/keyBy';
 import uniq from 'lodash/fp/uniq';
 import { useMemo } from 'react';
-import { useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
 
 import {
   useNamespace,
   useOkapiKy,
 } from '@folio/stripes/core';
-import { getFullName } from '@folio/stripes/util';
 import {
   fetchAcqUnitsByIds,
   getVersionMetadata,
   useOrganization,
   useUsersBatch,
+  useVersionHistoryValueResolvers,
 } from '@folio/stripes-acq-components';
 import { currenciesByCode } from '@folio/stripes/components';
 
 import {
   useContactsByIds,
   useInterfacesByIds,
+  useTypes,
 } from '../../../../common/hooks';
 
 const getUniqItems = (arr) => (
@@ -34,11 +34,13 @@ const getUniqItems = (arr) => (
 );
 
 export const useSelectedOrganizationVersion = ({ versionId, versions, snapshotPath }, options = {}) => {
-  const intl = useIntl();
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'organization-version-data' });
 
-  const deletedRecordLabel = intl.formatMessage({ id: 'stripes-acq-components.versionHistory.deletedRecord' });
+  const {
+    getObjectPropertyById,
+    getUserFullNameById,
+  } = useVersionHistoryValueResolvers();
 
   const currentVersion = useMemo(() => (
     versions?.find(({ id }) => id === versionId)
@@ -73,6 +75,11 @@ export const useSelectedOrganizationVersion = ({ versionId, versions, snapshotPa
   } = useInterfacesByIds(versionSnapshot?.interfaces);
 
   const {
+    organizationTypes,
+    isLoading: isOrganizationTypesLoading,
+  } = useTypes();
+
+  const {
     isLoading: isVersionDataLoading,
     data = {},
   } = useQuery({
@@ -101,9 +108,9 @@ export const useSelectedOrganizationVersion = ({ versionId, versions, snapshotPa
         ...versionSnapshot,
         accounts: versionSnapshot?.accounts?.map((account) => ({
           ...account,
-          acqUnits: account?.acqUnitIds?.map((acqUnitId) => acqUnitsMap[acqUnitId]?.name || deletedRecordLabel),
+          acqUnits: account?.acqUnitIds?.map((id) => getObjectPropertyById(id, 'name', acqUnitsMap)),
         })),
-        acqUnits: acqUnitsIds.map(acqUnitsId => acqUnitsMap[acqUnitsId]?.name || deletedRecordLabel).join(', '),
+        acqUnits: acqUnitsIds.map((id) => getObjectPropertyById(id, 'name', acqUnitsMap)).join(', '),
         vendorCurrenciesValue,
         metadata,
       };
@@ -113,19 +120,26 @@ export const useSelectedOrganizationVersion = ({ versionId, versions, snapshotPa
   });
 
   const selectedVersion = useMemo(() => {
-    const versionUsersMap = keyBy('id', users);
-
-    const createdByUser = versionUsersMap[createdByUserId]
-      ? getFullName(versionUsersMap[createdByUserId])
-      : deletedRecordLabel;
+    const versionUsersDict = keyBy('id', users);
+    const organizationTypesDict = keyBy('id', organizationTypes);
 
     return {
       ...data,
-      createdByUser: createdByUserId && createdByUser,
+      organizationTypesResolved: data.organizationTypes?.map((id) => getObjectPropertyById(id, 'name', organizationTypesDict))?.join(', '),
+      createdByUser: getUserFullNameById(createdByUserId, versionUsersDict),
       contactsList: contacts,
       interfacesList: interfaces,
     };
-  }, [users, createdByUserId, deletedRecordLabel, data, contacts, interfaces]);
+  }, [
+    getObjectPropertyById,
+    getUserFullNameById,
+    users,
+    createdByUserId,
+    data,
+    contacts,
+    interfaces,
+    organizationTypes,
+  ]);
 
   const isLoading = (
     isOrganizationLoading
@@ -133,6 +147,7 @@ export const useSelectedOrganizationVersion = ({ versionId, versions, snapshotPa
     || isVersionDataLoading
     || isContactsLoading
     || isInterfacesLoading
+    || isOrganizationTypesLoading
   );
 
   return {
