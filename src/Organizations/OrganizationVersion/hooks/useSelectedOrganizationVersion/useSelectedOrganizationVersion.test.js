@@ -19,6 +19,7 @@ import { organizationAuditEvent } from 'fixtures';
 import {
   useContactsByIds,
   useInterfacesByIds,
+  useTypes,
 } from '../../../../common/hooks';
 import { useSelectedOrganizationVersion } from './useSelectedOrganizationVersion';
 
@@ -33,6 +34,7 @@ jest.mock('../../../../common/hooks', () => ({
   ...jest.requireActual('../../../../common/hooks'),
   useContactsByIds: jest.fn(),
   useInterfacesByIds: jest.fn(),
+  useTypes: jest.fn(),
 }));
 
 const versionId = organizationAuditEvent.id;
@@ -43,6 +45,10 @@ const contacts = [{ id: 'contact1' }];
 const interfaces = [{ id: 'interface1' }];
 const organization = { id: 'org1' };
 const users = [{ id: 'user1', personal: { firstName: 'John', lastName: 'Doe' } }];
+const organizationTypes = [{
+  id: 'e7e9af00-c12c-448f-8ad1-d15ff209605a',
+  name: 'Type name',
+}];
 
 const queryClient = new QueryClient();
 const wrapper = ({ children }) => (
@@ -58,6 +64,7 @@ describe('useSelectedOrganizationVersion', () => {
     useUsersBatch.mockReturnValue({ users, isLoading: false });
     useContactsByIds.mockReturnValue({ contacts, isLoading: false });
     useInterfacesByIds.mockReturnValue({ interfaces, isLoading: false });
+    useTypes.mockReturnValue({ organizationTypes, isLoading: false });
   });
 
   afterEach(() => {
@@ -81,6 +88,7 @@ describe('useSelectedOrganizationVersion', () => {
       acqUnits: '',
       contactsList: contacts,
       interfacesList: interfaces,
+      organizationTypesResolved: 'Type name',
       vendorCurrenciesValue: 'US Dollar (USD)',
       metadata: getVersionMetadata(organizationAuditEvent, organization),
     });
