@@ -134,3 +134,16 @@ export const isClaimingIntegration = (config) => {
 export const isOrderingIntegration = (config) => {
   return isIntegrationType(config, INTEGRATION_TYPE.ordering);
 };
+
+export const getDuplicateTimestamp = ({ intl }) => {
+  const timestamp = intl.formatDate(Date.now(), {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+  });
+
+  return timestamp;
+};

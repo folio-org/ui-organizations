@@ -75,6 +75,7 @@
 
   "view.edit": "Edit",
   "view.delete": "Delete",
+  "view.duplicate": "Duplicate",
   "view.exportLog": "View export log",
   "view.editVendorDialog": "Edit vendor dialog",
   "view.details": "Details",
@@ -107,7 +108,13 @@
   "ediInformation": "EDI information",
   "interface": "Interface",
   "accounts": "Accounts",
+
   "integrationDetails": "Integration details",
+  "integrationDetails.duplicate.name": "Copy of {term}",
+  "integrationDetails.duplicate.success": "Integration <b>{term}</b> was successfully duplicated",
+  "integrationDetails.duplicate.error": "Integration was not duplicated",
+  "integrationDetails.duplicate.confirmModal.heading": "Duplicate integration config",
+  "integrationDetails.duplicate.confirmModal.message": "Are you sure you want to duplicate the <b>{term}</b> integration config?",
 
   "main.code":"Code",
   "main.description":"Description",

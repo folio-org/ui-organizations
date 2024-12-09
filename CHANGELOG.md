@@ -6,6 +6,7 @@
 * Show in version history record view, which fields have been edited. Refs UIORGS-356.
 * Adapt organization metadata fields to version history mechanism. Refs UIORGS-359.
 * Add claiming to organization integration details. Refs UIORGS-442.
+* Add "Duplicate" integration action to organization integration view. Refs UIORGS-441.
 
 ## [5.2.0](https://github.com/folio-org/ui-organizations/tree/v5.2.0) (2024-10-31)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.1.1...v5.2.0)
