@@ -32,10 +32,13 @@
       "organizations-storage.interfaces": "2.1",
       "organizations-storage.phone-numbers": "2.0",
       "organizations-storage.privileged-contacts": "1.0",
-      "organizations-storage.settings": "1.0",
+      "organizations-storage.settings": "1.1",
       "organizations-storage.urls": "1.1",
       "tags": "1.0",
       "users": "15.1 16.0"
+    },
+    "optionalOkapiInterfaces": {
+      "servint": "4.0"
     },
     "queryResource": "query",
     "icons": [
@@ -46,6 +49,7 @@
       }
     ],
     "stripesDeps": [
+      "@folio/service-interaction",
       "@folio/stripes-acq-components"
     ],
     "permissionSets": [
@@ -64,7 +68,9 @@
       {
         "permissionName": "ui-organizations.third-party-services.execute",
         "displayName": "Organizations: Permissions required to call services apart from mod-organizations-storage",
-        "replaces": ["ui-organizations.third-party-services"],
+        "replaces": [
+          "ui-organizations.third-party-services"
+        ],
         "visible": false,
         "subPermissions": [
           "acquisition.organization.events.get",
@@ -297,6 +303,17 @@
           "organizations-storage.banking-account-types.item.put",
           "organizations-storage.banking-account-types.item.delete"
         ]
+      },
+      {
+        "permissionName": "ui-organizations.settings.numberGenerator.manage",
+        "displayName": "Settings (Organizations): Manage number generator options",
+        "subPermissions": [
+          "settings.organizations.enabled",
+          "organizations-storage.settings.collection.get",
+          "organizations-storage.settings.item.post",
+          "organizations-storage.settings.item.put"
+        ],
+        "visible": true
       }
     ]
   },
@@ -327,8 +344,10 @@
     "@bigtest/react": "^0.1.2",
     "@folio/eslint-config-stripes": "^7.0.0",
     "@folio/jest-config-stripes": "^2.0.0",
+    "@folio/service-interaction": "^3.1.0",
     "@folio/stripes": "^9.0.0",
     "@folio/stripes-cli": "^3.0.0",
+    "@folio/stripes-erm-components": "^9.2.0",
     "@formatjs/cli": "^6.1.3",
     "babel-jest": "^26.3.0",
     "chai": "^4.2.0",
@@ -367,6 +386,7 @@
     "redux-form": "^8.3.0"
   },
   "peerDependencies": {
+    "@folio/service-interaction": "^3.1.0",
     "@folio/stripes": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

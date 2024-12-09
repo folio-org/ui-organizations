@@ -3,11 +3,15 @@ import { FormattedMessage } from 'react-intl';
 
 import { Settings } from '@folio/stripes/smart-components';
 
-import { useBankingInformationSettings } from '../common/hooks';
+import {
+  useBankingInformationSettings,
+  useVendorCodeGeneratorSettings,
+} from '../common/hooks';
 import { CategorySettings } from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
 import { BankingAccountTypeSettings } from './BankingAccountTypeSettings';
 import { BankingInformationSettings } from './BankingInformationSettings';
+import { NumberGeneratorSettings } from './NumberGeneratorSettings';
 
 const pages = [
   {
@@ -37,10 +41,24 @@ const bankingAccountTypesPage = {
   route: 'banking-account-types',
 };
 
-const SettingsPage = (props) => {
-  const { enabled } = useBankingInformationSettings();
+const numberGeneratorOptionsPage = {
+  component: NumberGeneratorSettings,
+  label: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />,
+  perm: 'ui-organizations.settings.numberGenerator.manage',
+  route: 'numberGeneratorOptions',
+};
 
-  const settingsPages = useMemo(() => (enabled ? pages.concat(bankingAccountTypesPage) : pages), [enabled]);
+const SettingsPage = (props) => {
+  const { enabled: bankingInformationEnabled } = useBankingInformationSettings();
+  const { enabled: numberGeneratorEnabled } = useVendorCodeGeneratorSettings();
+
+  const settingsPages = useMemo(() => {
+    return [
+      ...pages,
+      ...(bankingInformationEnabled ? [bankingAccountTypesPage] : []),
+      ...(numberGeneratorEnabled ? [numberGeneratorOptionsPage] : []),
+    ];
+  }, [bankingInformationEnabled, numberGeneratorEnabled]);
 
   return (
     <Settings
