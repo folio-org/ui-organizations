@@ -1,7 +1,21 @@
-import React, { useCallback, useRef } from 'react';
+import cloneDeep from 'lodash/cloneDeep';
+import get from 'lodash/get';
+import omit from 'lodash/omit';
+import set from 'lodash/set';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
-import { useHistory, useParams, useLocation } from 'react-router';
+import {
+  useCallback,
+  useRef,
+} from 'react';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
+import {
+  useHistory,
+  useParams,
+  useLocation,
+} from 'react-router';
 
 import { AppIcon } from '@folio/stripes/core';
 import {
@@ -34,24 +48,32 @@ import {
   useIntegrationConfig,
   useIntegrationConfigMutation,
 } from '../../common/hooks';
-import { isClaimingIntegration } from '../utils';
+import {
+  getDuplicateTimestamp,
+  isClaimingIntegration,
+} from '../utils';
 import { IntegrationInfoView } from './IntegrationInfoView';
 import { EdiView } from './EdiView';
 import { FtpView } from './FtpView';
 import { SchedulingView } from './SchedulingView';
 
+const CONFIG_NAME_PATH = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.configName';
+
 const OrganizationIntegrationView = ({ orgId }) => {
+  const intl = useIntl();
   const history = useHistory();
   const location = useLocation();
   const accordionStatusRef = useRef();
   const { id } = useParams();
   const showCallout = useShowCallout();
 
+  const [isDuplicateConfirmation, toggleDuplicateConfirmation] = useModalToggle();
   const [isRemoveConfirmation, toggleRemoveConfirmation] = useModalToggle();
 
   const { integrationConfig, isLoading } = useIntegrationConfig(id);
   const { acqMethods, isLoading: isAcqMethodsLoading } = useAcqMethods();
 
+  const configName = get(integrationConfig, CONFIG_NAME_PATH);
   const isClaimingType = isClaimingIntegration(integrationConfig);
 
   const onEdit = useCallback(
@@ -74,6 +96,10 @@ const OrganizationIntegrationView = ({ orgId }) => {
     [history, location.search, orgId],
   );
 
+  const {
+    mutateIntegrationConfig: createIntegrationConfig,
+  } = useIntegrationConfigMutation({ method: 'post' });
+
   const { mutateIntegrationConfig } = useIntegrationConfigMutation({
     method: 'delete',
     onSuccess: () => {
@@ -89,6 +115,50 @@ const OrganizationIntegrationView = ({ orgId }) => {
       });
     },
   });
+
+  const onDuplicate = useCallback(async () => {
+    toggleDuplicateConfirmation();
+
+    const integrationConfigCloned = omit(cloneDeep(integrationConfig), 'id');
+    const configNameCloned = `${configName} (${getDuplicateTimestamp({ intl })})`;
+
+    set(
+      integrationConfigCloned,
+      CONFIG_NAME_PATH,
+      intl.formatMessage(
+        { id: 'ui-organizations.integrationDetails.duplicate.name' },
+        { term: configNameCloned },
+      ),
+    );
+
+    try {
+      await createIntegrationConfig(integrationConfigCloned);
+
+      showCallout({
+        messageId: 'ui-organizations.integrationDetails.duplicate.success',
+        values: { term: configNameCloned },
+      });
+      history.push({
+        pathname: `/organizations/view/${orgId}`,
+        search: location.search,
+      });
+    } catch {
+      showCallout({
+        messageId: 'ui-organizations.integrationDetails.duplicate.error',
+        type: 'error',
+      });
+    }
+  }, [
+    configName,
+    createIntegrationConfig,
+    history,
+    integrationConfig,
+    intl,
+    location.search,
+    orgId,
+    showCallout,
+    toggleDuplicateConfirmation,
+  ]);
 
   const onRemove = useCallback(
     () => mutateIntegrationConfig(integrationConfig),
@@ -108,6 +178,22 @@ const OrganizationIntegrationView = ({ orgId }) => {
           icon="edit"
         >
           <FormattedMessage id="ui-organizations.view.edit" />
+        </Icon>
+      </Button>
+
+      <Button
+        buttonStyle="dropdownItem"
+        data-testid="duplicate-integration-action"
+        onClick={() => {
+          onToggle();
+          toggleDuplicateConfirmation();
+        }}
+      >
+        <Icon
+          size="small"
+          icon="duplicate"
+        >
+          <FormattedMessage id="ui-organizations.view.duplicate" />
         </Icon>
       </Button>
 
@@ -176,7 +262,7 @@ const OrganizationIntegrationView = ({ orgId }) => {
         dismissible
         id="integration-view"
         onClose={onClose}
-        paneTitle={integrationConfig.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig?.configName}
+        paneTitle={configName}
       >
         <Row>
           <Col
@@ -222,6 +308,22 @@ const OrganizationIntegrationView = ({ orgId }) => {
             </AccordionStatus>
           </Col>
         </Row>
+
+        {isDuplicateConfirmation && (
+          <ConfirmationModal
+            id="duplicate-integration-modal"
+            heading={<FormattedMessage id="ui-organizations.integrationDetails.duplicate.confirmModal.heading" />}
+            message={(
+              <FormattedMessage
+                id="ui-organizations.integrationDetails.duplicate.confirmModal.message"
+                values={{ term: configName }}
+              />
+            )}
+            onCancel={toggleDuplicateConfirmation}
+            onConfirm={onDuplicate}
+            open
+          />
+        )}
 
         {isRemoveConfirmation && (
           <ConfirmationModal
