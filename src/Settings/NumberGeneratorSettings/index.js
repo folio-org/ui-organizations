@@ -1,1 +1,1 @@
-export { NumberGeneratorSettingsForm } from './NumberGeneratorSettingsForm';
+export { default as NumberGeneratorSettings } from './NumberGeneratorSettings';

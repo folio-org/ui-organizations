@@ -32,11 +32,13 @@
       "organizations-storage.interfaces": "2.1",
       "organizations-storage.phone-numbers": "2.0",
       "organizations-storage.privileged-contacts": "1.0",
-      "organizations-storage.settings": "1.0",
+      "organizations-storage.settings": "1.1",
       "organizations-storage.urls": "1.1",
-      "settings": "1.1",
       "tags": "1.0",
       "users": "15.1 16.0"
+    },
+    "optionalOkapiInterfaces": {
+      "servint": "4.0"
     },
     "queryResource": "query",
     "icons": [
@@ -66,7 +68,9 @@
       {
         "permissionName": "ui-organizations.third-party-services.execute",
         "displayName": "Organizations: Permissions required to call services apart from mod-organizations-storage",
-        "replaces": ["ui-organizations.third-party-services"],
+        "replaces": [
+          "ui-organizations.third-party-services"
+        ],
         "visible": false,
         "subPermissions": [
           "acquisition.organization.events.get",
@@ -87,8 +91,6 @@
           "data-export.config.collection.get",
           "data-export.config.item.get",
           "erm.agreements.collection.get",
-          "mod-settings.entries.collection.get",
-          "mod-settings.global.read.ui-organizations.vendor-generator-setting",
           "orders.acquisition-methods.collection.get",
           "orders.acquisition-method.item.get",
           "organizations.organizations.collection.get",
@@ -307,11 +309,9 @@
         "displayName": "Settings (Organizations): Manage number generator options",
         "subPermissions": [
           "settings.organizations.enabled",
-          "mod-settings.entries.collection.get",
-          "mod-settings.entries.item.post",
-          "mod-settings.entries.item.put",
-          "mod-settings.global.read.ui-organizations.vendor-generator-setting",
-          "mod-settings.global.write.ui-organizations.vendor-generator-setting"
+          "organizations-storage.settings.collection.get",
+          "organizations-storage.settings.item.post",
+          "organizations-storage.settings.item.put"
         ],
         "visible": true
       }
@@ -399,8 +399,5 @@
   "optionalDependencies": {
     "@folio/plugin-find-contact": "^5.0.0",
     "@folio/plugin-find-interface": "^5.0.0"
-  },
-  "optionalOkapiInterfaces": {
-    "servint": "4.0"
   }
 }

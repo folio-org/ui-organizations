@@ -503,6 +503,8 @@
   "settings.numberGeneratorOptions.useGeneratorForVendor": "Number generator on, fixed: the vendor code can be filled using the generator only.",
   "settings.numberGeneratorOptions.useTextFieldForVendor": "Number generator off: the vendor code can be filled manually only.",
   "settings.numberGeneratorOptions.useBothForVendor": "Number generator on, editable: the vendor code can be filled using the generator and be edited, or filled manually.",
+  "settings.numberGeneratorOptions.save.error": "Error saving setting",
+  "settings.numberGeneratorOptions.save.success": "Setting was successfully saved",
   "numberGenerator.vendorCodeGenerator": "Vendor code generator",
   "numberGenerator.generateVendorCode": "Generate vendor code",
   "settings.bankingInformation": "Banking information",

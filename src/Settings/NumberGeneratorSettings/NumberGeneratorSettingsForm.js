@@ -1,40 +1,51 @@
-import { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 
 import {
+  Button,
   Col,
   MessageBanner,
+  Pane,
+  PaneFooter,
+  PaneHeader,
   RadioButton,
   Row,
 } from '@folio/stripes/components';
-import { useStripes } from '@folio/stripes/core';
-import { ConfigManager } from '@folio/stripes/smart-components';
+import stripesFinalForm from '@folio/stripes/final-form';
 
 import css from './NumberGeneratorSettingsForm.css';
 import {
   VENDOR_CODE_GENERATOR_OPTIONS,
   VENDOR_CODE_GENERATOR_SETTINGS_KEY,
-  VENDOR_CODE_GENERATOR_SETTINGS_SCOPE,
 } from '../../common/constants/numberGenerator';
 
-export const NumberGeneratorSettingsForm = () => {
-  const stripes = useStripes();
-  const ConnectedConfigManager = useMemo(() => stripes.connect(ConfigManager), [stripes]);
+const NumberGeneratorSettingsForm = ({ handleSubmit, pristine, submitting }) => {
+  const paneHeader = (renderProps) => (
+    <PaneHeader
+      {...renderProps}
+      paneTitle={<FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />}
+    />
+  );
 
-  const beforeSave = (data) => data[VENDOR_CODE_GENERATOR_SETTINGS_KEY] || '';
-  const getInitialValues = (items) => ({ [VENDOR_CODE_GENERATOR_SETTINGS_KEY]: items?.[0]?.value || '' });
+  const paneFooter = (
+    <PaneFooter
+      renderEnd={
+        <Button
+          buttonStyle="primary mega"
+          disabled={pristine || submitting}
+          id="clickable-save-number-generator-settings"
+          onClick={handleSubmit}
+          type="submit"
+        >
+          <FormattedMessage id="stripes-core.button.save" />
+        </Button>
+      }
+    />
+  );
 
   return (
-    <ConnectedConfigManager
-      configName={VENDOR_CODE_GENERATOR_SETTINGS_KEY}
-      formType="final-form"
-      getInitialValues={getInitialValues}
-      label={<FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />}
-      onBeforeSave={beforeSave}
-      scope={VENDOR_CODE_GENERATOR_SETTINGS_SCOPE}
-      stripes={stripes}
-    >
+    <Pane defaultWidth="fill" footer={paneFooter} id="vendor-code-settings" renderHeader={paneHeader}>
       <Row>
         <Col xs={12}>
           <div className={css.marginBottomGutter}>
@@ -72,6 +83,19 @@ export const NumberGeneratorSettingsForm = () => {
           />
         </Col>
       </Row>
-    </ConnectedConfigManager>
+    </Pane>
   );
 };
+
+NumberGeneratorSettingsForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  pristine: PropTypes.bool.isRequired,
+  submitting: PropTypes.bool.isRequired,
+};
+
+export default stripesFinalForm({
+  enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
+  navigationCheck: true,
+  subscription: { values: true },
+})(NumberGeneratorSettingsForm);

@@ -8,5 +8,4 @@ export const VENDOR_CODE_GENERATOR_OPTIONS = {
 };
 
 export const VENDOR_CODE_GENERATOR_CODE = 'organizations_vendorCode';
-export const VENDOR_CODE_GENERATOR_SETTINGS_KEY = 'vendor-generator-setting';
-export const VENDOR_CODE_GENERATOR_SETTINGS_SCOPE = 'ui-organizations.vendor-generator-setting';
+export const VENDOR_CODE_GENERATOR_SETTINGS_KEY = 'vendor-code-generator-setting';

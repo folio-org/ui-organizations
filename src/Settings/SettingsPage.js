@@ -11,7 +11,7 @@ import { CategorySettings } from './CategorySettings';
 import { TypeSettings } from './TypeSettings';
 import { BankingAccountTypeSettings } from './BankingAccountTypeSettings';
 import { BankingInformationSettings } from './BankingInformationSettings';
-import { NumberGeneratorSettingsForm } from './NumberGeneratorSettings';
+import { NumberGeneratorSettings } from './NumberGeneratorSettings';
 
 const pages = [
   {
@@ -42,7 +42,7 @@ const bankingAccountTypesPage = {
 };
 
 const numberGeneratorOptionsPage = {
-  component: NumberGeneratorSettingsForm,
+  component: NumberGeneratorSettings,
   label: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions" />,
   perm: 'ui-organizations.settings.numberGenerator.manage',
   route: 'numberGeneratorOptions',

@@ -13,11 +13,21 @@ import {
 } from '@folio/stripes/core';
 
 import { useVendorCodeGeneratorSettings } from './useVendorCodeGeneratorSettings';
+import {
+  VENDOR_CODE_GENERATOR_OPTIONS,
+  VENDOR_CODE_GENERATOR_SETTINGS_KEY,
+} from '../../constants';
+
+const settingsEntity = {
+  id: '3297a4ed-2071-4455-8874-23ff88029490',
+  key: VENDOR_CODE_GENERATOR_SETTINGS_KEY,
+  value: VENDOR_CODE_GENERATOR_OPTIONS.GENERATOR,
+};
 
 const mockKy = {
   get: jest.fn(() => ({
     json: jest.fn(() => Promise.resolve({
-      items: [{ value: 'useGenerator' }],
+      settings: [settingsEntity],
     })),
   })),
 };
@@ -42,6 +52,7 @@ describe('useVendorCodeGeneratorSettings', () => {
 
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(mockKy.get).toHaveBeenCalled();
+    expect(result.current.vendorCodeSetting).toEqual(settingsEntity);
     expect(result.current.isUseGenerator).toBe(true);
     expect(result.current.isUseTextField).toBe(false);
     expect(result.current.isUseBoth).toBe(false);
@@ -54,6 +65,7 @@ describe('useVendorCodeGeneratorSettings', () => {
 
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(mockKy.get).not.toHaveBeenCalled();
+    expect(result.current.vendorCodeSetting).toBeUndefined();
     expect(result.current.isUseGenerator).toBe(false);
     expect(result.current.isUseTextField).toBe(false);
     expect(result.current.isUseBoth).toBe(false);
