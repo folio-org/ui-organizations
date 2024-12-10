@@ -84,7 +84,7 @@ export const OrganizationSummaryVersionView = ({ version }) => {
           <VersionKeyValue
             name="organizationTypes"
             label={<FormattedMessage id="ui-organizations.summary.type" />}
-            value={version?.organizationTypes?.join(', ') || <NoValue />}
+            value={version?.organizationTypesResolved || <NoValue />}
             multiple
           />
         </Col>
