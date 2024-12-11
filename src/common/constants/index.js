@@ -2,6 +2,7 @@ export * from './api';
 export * from './categories';
 export * from './events';
 export * from './interfaces';
+export * from './numberGenerator';
 export * from './organization';
 export * from './organizationTypes';
 export * from './routes';

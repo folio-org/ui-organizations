@@ -7,6 +7,7 @@
 * Adapt organization metadata fields to version history mechanism. Refs UIORGS-359.
 * Add claiming to organization integration details. Refs UIORGS-442.
 * Add "Duplicate" integration action to organization integration view. Refs UIORGS-441.
+* *BREAKING* Add number generator for vendor code including settings page. Refs UIORGS-336, UIORGS-337.
 
 ## [5.2.0](https://github.com/folio-org/ui-organizations/tree/v5.2.0) (2024-10-31)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.1.1...v5.2.0)

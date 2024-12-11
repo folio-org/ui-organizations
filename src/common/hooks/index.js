@@ -12,4 +12,5 @@ export * from './useLinkedAgreements';
 export * from './useOrganizationBankingInformation';
 export * from './useTranslatedCategories';
 export * from './useTypes';
+export * from './useVendorCodeGeneratorSettings';
 export * from './useVersionWrappedRowFormatter';

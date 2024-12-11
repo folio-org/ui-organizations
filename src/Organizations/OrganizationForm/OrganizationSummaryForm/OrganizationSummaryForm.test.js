@@ -1,4 +1,5 @@
 import React from 'react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -8,10 +9,25 @@ import { organization, organizationTypes } from 'fixtures';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import OrganizationSummaryForm from './OrganizationSummaryForm';
 
-import { useTypes } from '../../../common/hooks';
+import {
+  useTypes,
+  useVendorCodeGeneratorSettings,
+} from '../../../common/hooks';
 
 jest.mock('../../../common/hooks', () => ({
   useTypes: jest.fn(),
+  useVendorCodeGeneratorSettings: jest.fn(),
+}));
+
+jest.mock('@folio/service-interaction', () => ({
+  NumberGeneratorModalButton: ({ callback }) => (
+    <button
+      onClick={() => callback('abc123')}
+      type="button"
+    >
+      NumberGeneratorModalButton
+    </button>
+  ),
 }));
 
 const TestForm = stripesFinalForm({})(
@@ -44,6 +60,11 @@ describe('OrganizationSummaryForm', () => {
     useTypes
       .mockClear()
       .mockReturnValue({ organizationTypes, totalRecords: organizationTypes.length });
+    useVendorCodeGeneratorSettings.mockReturnValue({
+      isUseGenerator: false,
+      isUseBoth: false,
+      isUseTextfield: false,
+    });
   });
 
   afterEach(() => {
@@ -72,5 +93,42 @@ describe('OrganizationSummaryForm', () => {
     const selectedType = await screen.findAllByText('Book trade');
 
     expect((selectedType).length).toEqual(1);
+  });
+
+  it('should not render the NumberGeneratorModalButton', async () => {
+    renderForm();
+
+    expect(screen.getByRole('textbox', { name: 'ui-organizations.summary.code' })).toBeEnabled();
+    expect(screen.queryByRole('button', { name: 'NumberGeneratorModalButton' })).not.toBeInTheDocument();
+  });
+
+  it('should render the NumberGeneratorModalButton when setting=isUseGenerator', async () => {
+    useVendorCodeGeneratorSettings.mockReturnValue({ isUseGenerator: true });
+
+    renderForm();
+
+    expect(screen.getByRole('textbox', { name: 'ui-organizations.summary.code' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'NumberGeneratorModalButton' })).toBeInTheDocument();
+  });
+
+  it('should render the NumberGeneratorModalButton when setting=isUseBoth', async () => {
+    useVendorCodeGeneratorSettings.mockReturnValue({ isUseBoth: true });
+
+    renderForm();
+
+    expect(screen.getByRole('textbox', { name: 'ui-organizations.summary.code' })).toBeEnabled();
+    expect(screen.getByRole('button', { name: 'NumberGeneratorModalButton' })).toBeInTheDocument();
+  });
+
+  it('should update vendor code field value when NumberGeneratorModalButton is clicked', async () => {
+    useVendorCodeGeneratorSettings.mockReturnValue({ isUseBoth: true });
+
+    renderForm();
+    const button = screen.getByRole('button', { name: 'NumberGeneratorModalButton' });
+    const input = screen.getByRole('textbox', { name: 'ui-organizations.summary.code' });
+
+    expect(input).toHaveValue('');
+    await userEvent.click(button);
+    expect(input).toHaveValue('abc123');
   });
 });
