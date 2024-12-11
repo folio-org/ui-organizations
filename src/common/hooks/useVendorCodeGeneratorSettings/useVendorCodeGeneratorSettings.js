@@ -26,7 +26,7 @@ export const useVendorCodeGeneratorSettings = () => {
     query: `key==${VENDOR_CODE_GENERATOR_SETTINGS_KEY}`,
     limit: 1,
   };
-  const queryFn = () => ky.get(SETTINGS_API, { searchParams }).json();
+  const queryFn = ({ signal }) => ky.get(SETTINGS_API, { searchParams, signal }).json();
   const { data, isFetching, isLoading } = useQuery([namespace], queryFn, { enabled });
 
   const vendorCodeSetting = data?.settings?.[0];
