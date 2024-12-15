@@ -507,13 +507,13 @@
     "integrationDetails.duplicate.error": "Integration was not duplicated",
     "integrationDetails.duplicate.confirmModal.heading": "Duplicate integration config",
     "integrationDetails.duplicate.confirmModal.message": "Are you sure you want to duplicate the <b>{term}</b> integration config?",
-    "settings.numberGeneratorOptions": "Number generator options",
-    "settings.numberGeneratorOptions.info": "Fields which are usually filled using a numeric sequence can use the number generator. When the generator is switched on the field can either be fixed to prevent manual update, or made fully editable. When switched off, the field must be filled manually.",
-    "settings.numberGeneratorOptions.useGeneratorForVendor": "Number generator on, fixed: the vendor code can be filled using the generator only.",
-    "settings.numberGeneratorOptions.useTextFieldForVendor": "Number generator off: the vendor code can be filled manually only.",
-    "settings.numberGeneratorOptions.useBothForVendor": "Number generator on, editable: the vendor code can be filled using the generator and be edited, or filled manually.",
-    "settings.numberGeneratorOptions.save.error": "Error saving setting",
-    "settings.numberGeneratorOptions.save.success": "Setting was successfully saved",
-    "numberGenerator.vendorCodeGenerator": "Vendor code generator",
-    "numberGenerator.generateVendorCode": "Generate vendor code"
+    "settings.numberGeneratorOptions": "Nummerngenerator-Optionen",
+    "settings.numberGeneratorOptions.info": "Felder, die normalerweise Nummernkreise nutzen, könnten einen Nummerngenerator verwenden. Wenn der Generator aktiviert ist, kann das Feld entweder vor manueller Aktualisierung geschützt werden oder editierbar sein. Wenn der Generator deaktiviert ist, kann das Feld nur manuell verwendet werden.",
+    "settings.numberGeneratorOptions.useGeneratorForVendor": "Nummerngenerator aktiviert, nicht-editierbar: Der Code kann nur anhand des Nummerngenerators generiert werden.",
+    "settings.numberGeneratorOptions.useTextFieldForVendor": "Nummerngenerator deaktiviert: Der Code kann nur manuell eingegeben werden.",
+    "settings.numberGeneratorOptions.useBothForVendor": "Nummerngenerator aktiviert, editierbar: Der Code kann durch den Nummerngenerator generiert und editiert, oder manuell eingegeben werden.",
+    "settings.numberGeneratorOptions.save.error": "Fehler beim Speichern der Einstellung",
+    "settings.numberGeneratorOptions.save.success": "Einstellung wurde erfolgreich gespeichert",
+    "numberGenerator.vendorCodeGenerator": "Code Nummerngenerator",
+    "numberGenerator.generateVendorCode": "Code generieren"
 }
