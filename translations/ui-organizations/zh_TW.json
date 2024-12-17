@@ -415,7 +415,7 @@
     "settings.types.termDeleted": "類型<b> {term} </b>已成功<b>刪除</b>",
     "settings.types.termWillBeDeleted": "類型<b> {term} </b>將被<b>刪除。 </b>",
     "save.success": "<b>組織 -“ {organizationName} ” </b>已成功<b>儲存</b>",
-    "permission.settings.view": "設定（組織）：查看設定",
+    "permission.settings.view": "設定 ( 組織 ) : 查看設定",
     "comingSoon": "將在未來版本中推出。",
     "summary.isDonor": "捐贈者",
     "filterConfig.isDonor": "是捐贈者",
@@ -514,6 +514,6 @@
     "settings.numberGeneratorOptions.useBothForVendor": "Number generator on, editable: the vendor code can be filled using the generator and be edited, or filled manually.",
     "settings.numberGeneratorOptions.save.error": "Error saving setting",
     "settings.numberGeneratorOptions.save.success": "Setting was successfully saved",
-    "numberGenerator.vendorCodeGenerator": "Vendor code generator",
-    "numberGenerator.generateVendorCode": "Generate vendor code"
+    "numberGenerator.vendorCodeGenerator": "供應商代碼產生器",
+    "numberGenerator.generateVendorCode": "產生供應商代碼"
 }
