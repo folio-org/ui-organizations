@@ -38,6 +38,11 @@ export const EDI_NAMING_TOKENS = {
   numberSequence: 'numberSequence',
 };
 
+export const EXPORT_TYPES = {
+  edifactOrders: 'EDIFACT_ORDERS_EXPORT',
+  claims: 'CLAIMS',
+};
+
 export const INTEGRATION_TYPE = {
   claiming: 'Claiming',
   ordering: 'Ordering',
