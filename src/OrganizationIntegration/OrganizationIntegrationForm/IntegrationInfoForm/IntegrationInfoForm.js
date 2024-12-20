@@ -21,6 +21,7 @@ import {
 import { validateRequired } from '@folio/stripes-acq-components';
 
 import {
+  EXPORT_TYPES,
   FILE_FORMAT,
   INTEGRATION_TYPE,
   TRANSMISSION_METHOD,
@@ -67,11 +68,13 @@ export const IntegrationInfoForm = ({
 
       switch (value) {
         case INTEGRATION_TYPE.ordering: {
+          change('type', EXPORT_TYPES.edifactOrders);
           change('exportTypeSpecificParameters.vendorEdiOrdersExportConfig.transmissionMethod', TRANSMISSION_METHOD.ftp);
           change('exportTypeSpecificParameters.vendorEdiOrdersExportConfig.fileFormat', FILE_FORMAT.edi);
           break;
         }
         case INTEGRATION_TYPE.claiming: {
+          change('type', EXPORT_TYPES.claims);
           change('exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule', null);
           break;
         }

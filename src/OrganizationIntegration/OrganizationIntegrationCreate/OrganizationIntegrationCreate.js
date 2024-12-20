@@ -1,7 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { useHistory, useLocation } from 'react-router-dom';
+import {
+  useHistory,
+  useLocation,
+} from 'react-router-dom';
 
 import {
   LoadingPane,
@@ -14,22 +16,22 @@ import {
   useAcqMethods,
   useIntegrationConfigMutation,
 } from '../../common/hooks';
-
 import {
+  CONNECTION_MODES,
   EDI_CODE_TYPES,
+  EXPORT_TYPES,
   FILE_FORMAT,
   FTP_TYPES,
+  INTEGRATION_TYPE,
   TRANSMISSION_METHOD,
   TRANSMISSION_MODES,
-  CONNECTION_MODES,
-  INTEGRATION_TYPE,
 } from '../constants';
+import { OrganizationIntegrationForm } from '../OrganizationIntegrationForm';
 import {
   buildAvailableAccounts,
   findDefaultIntegration,
   getDefaultEdiNamingConvention,
 } from '../utils';
-import { OrganizationIntegrationForm } from '../OrganizationIntegrationForm';
 
 // should be removed after lotus release
 const buildInitialValues = (organization, withMigration) => {
@@ -37,7 +39,7 @@ const buildInitialValues = (organization, withMigration) => {
 
   return {
     schedulePeriod: 'NONE',
-    type: 'EDIFACT_ORDERS_EXPORT',
+    type: EXPORT_TYPES.claims,
     exportTypeSpecificParameters: {
       vendorEdiOrdersExportConfig: {
         vendorId: organization.id,
