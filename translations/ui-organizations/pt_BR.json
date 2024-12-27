@@ -495,7 +495,7 @@
     "versionHistory.field.accounts.description": "Descrição (Conta)",
     "versionHistory.field.accounts.notes": "Notas (Conta)",
     "integration.info.integrationType": "Tipo de integração",
-    "integration.info.integrationType.claiming": "Reivindicação",
+    "integration.info.integrationType.claiming": "Reclamação",
     "integration.info.integrationType.ordering": "Pedidos",
     "integration.info.transmissionMethod": "Método de transmissão",
     "integration.info.transmissionMethod.fileDownLoad": "Baixar arquivo",
