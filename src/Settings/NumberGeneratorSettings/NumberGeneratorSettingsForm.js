@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 
@@ -51,6 +52,25 @@ const NumberGeneratorSettingsForm = ({ handleSubmit, pristine, submitting }) => 
           <div className={css.marginBottomGutter}>
             <MessageBanner>
               <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.info" />
+              <br />
+              <FormattedMessage
+                id="ui-organizations.settings.numberGeneratorOptions.enhancement"
+                values={{
+                  serviceInteractionLink: (
+                    <Link to="/settings/service-interaction">
+                      <FormattedMessage id="stripes-core.settings" />{' > '}
+                      <FormattedMessage id="ui-service-interaction.meta.title" />
+                    </Link>
+                  ),
+                  numberGeneratorSequencesLink: (
+                    <Link to="/settings/service-interaction/numberGeneratorSequences/">
+                      <FormattedMessage id="stripes-core.settings" />{' > '}
+                      <FormattedMessage id="ui-service-interaction.meta.title" />{' > '}
+                      <FormattedMessage id="ui-service-interaction.settings.numberGeneratorSequences" />
+                    </Link>
+                  ),
+                }}
+              />
             </MessageBanner>
           </div>
         </Col>
