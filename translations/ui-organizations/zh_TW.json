@@ -515,5 +515,6 @@
     "settings.numberGeneratorOptions.save.error": "Error saving setting",
     "settings.numberGeneratorOptions.save.success": "Setting was successfully saved",
     "numberGenerator.vendorCodeGenerator": "供應商代碼產生器",
-    "numberGenerator.generateVendorCode": "產生供應商代碼"
+    "numberGenerator.generateVendorCode": "產生供應商代碼",
+    "settings.numberGeneratorOptions.infoAdditional": "Additional number generator settings are available under {serviceInteractionLink}.  At {numberGeneratorSequencesLink} sequences can be defined by selecting the appropriate generator via the drop-down menu."
 }
