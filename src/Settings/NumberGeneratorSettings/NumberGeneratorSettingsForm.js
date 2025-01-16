@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 
@@ -16,6 +17,8 @@ import stripesFinalForm from '@folio/stripes/final-form';
 
 import css from './NumberGeneratorSettingsForm.css';
 import {
+  SERVICE_INTERACTION_API,
+  SERVICE_INTERACTION_NUMBER_GENERATOR_SEQUENCES_API,
   VENDOR_CODE_GENERATOR_OPTIONS,
   VENDOR_CODE_GENERATOR_SETTINGS_KEY,
 } from '../../common/constants/numberGenerator';
@@ -50,7 +53,27 @@ const NumberGeneratorSettingsForm = ({ handleSubmit, pristine, submitting }) => 
         <Col xs={12}>
           <div className={css.marginBottomGutter}>
             <MessageBanner>
-              <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.info" />
+              <p><FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.info" /></p>
+              <p>
+                <FormattedMessage
+                  id="ui-organizations.settings.numberGeneratorOptions.infoAdditional"
+                  values={{
+                    serviceInteractionLink: (
+                      <Link to={SERVICE_INTERACTION_API}>
+                        <FormattedMessage id="stripes-core.settings" />{' > '}
+                        <FormattedMessage id="ui-service-interaction.meta.title" />
+                      </Link>
+                    ),
+                    numberGeneratorSequencesLink: (
+                      <Link to={SERVICE_INTERACTION_NUMBER_GENERATOR_SEQUENCES_API}>
+                        <FormattedMessage id="stripes-core.settings" />{' > '}
+                        <FormattedMessage id="ui-service-interaction.meta.title" />{' > '}
+                        <FormattedMessage id="ui-service-interaction.settings.numberGeneratorSequences" />
+                      </Link>
+                    ),
+                  }}
+                />
+              </p>
             </MessageBanner>
           </div>
         </Col>

@@ -32,6 +32,7 @@ describe('NumberGeneratorSettingsForm', () => {
 
     expect(screen.getByText('ui-organizations.settings.numberGeneratorOptions')).toBeInTheDocument();
     expect(screen.getByText('ui-organizations.settings.numberGeneratorOptions.info')).toBeInTheDocument();
+    expect(screen.getByText('ui-organizations.settings.numberGeneratorOptions.infoAdditional')).toBeInTheDocument();
     expect(
       screen.getByLabelText('ui-organizations.settings.numberGeneratorOptions.useTextFieldForVendor'),
     ).toBeInTheDocument();
