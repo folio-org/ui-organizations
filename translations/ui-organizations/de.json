@@ -515,5 +515,6 @@
     "settings.numberGeneratorOptions.save.error": "Fehler beim Speichern der Einstellung",
     "settings.numberGeneratorOptions.save.success": "Einstellung wurde erfolgreich gespeichert",
     "numberGenerator.vendorCodeGenerator": "Code Nummerngenerator",
-    "numberGenerator.generateVendorCode": "Code generieren"
+    "numberGenerator.generateVendorCode": "Code generieren",
+    "settings.numberGeneratorOptions.infoAdditional": "Additional number generator settings are available under {serviceInteractionLink}.  At {numberGeneratorSequencesLink} sequences can be defined by selecting the appropriate generator via the drop-down menu."
 }

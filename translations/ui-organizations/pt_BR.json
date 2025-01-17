@@ -515,5 +515,6 @@
     "settings.numberGeneratorOptions.save.error": "Erro ao salvar configuração",
     "settings.numberGeneratorOptions.save.success": "A configuração foi salva com sucesso",
     "numberGenerator.vendorCodeGenerator": "Gerador de código do fornecedor",
-    "numberGenerator.generateVendorCode": "Gerar código de fornecedor"
+    "numberGenerator.generateVendorCode": "Gerar código de fornecedor",
+    "settings.numberGeneratorOptions.infoAdditional": "Configurações adicionais do gerador de números estão disponíveis em {serviceInteractionLink}.  Em {numberGeneratorSequencesLink}, as sequências podem ser definidas selecionando-se o gerador apropriado no menu suspenso."
 }
