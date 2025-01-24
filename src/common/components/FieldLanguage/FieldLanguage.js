@@ -9,7 +9,7 @@ import {
 } from '@folio/stripes-acq-components';
 import { languageOptions } from '@folio/stripes/components';
 
-const FieldLanguage = ({ namePrefix, intl, withLabel, ...rest }) => {
+const FieldLanguage = ({ namePrefix, intl, withLabel = true, ...rest }) => {
   const langOptions = useMemo(() => languageOptions(intl), [intl]);
 
   return (
@@ -26,10 +26,6 @@ FieldLanguage.propTypes = {
   intl: PropTypes.object.isRequired,
   namePrefix: PropTypes.string,
   withLabel: PropTypes.bool,
-};
-
-FieldLanguage.defaultProps = {
-  withLabel: true,
 };
 
 export default injectIntl(FieldLanguage);

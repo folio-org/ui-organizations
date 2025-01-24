@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ContactAddress from './ContactAddress';
 
-const ContactAddresses = ({ addresses }) => (
+const ContactAddresses = ({ addresses = [] }) => (
   addresses.map((address, i) => (
     <ContactAddress address={address} key={i} />
   ))
@@ -11,10 +11,6 @@ const ContactAddresses = ({ addresses }) => (
 
 ContactAddresses.propTypes = {
   addresses: PropTypes.arrayOf(PropTypes.object),
-};
-
-ContactAddresses.defaultProps = {
-  addresses: [],
 };
 
 export default ContactAddresses;

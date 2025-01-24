@@ -19,12 +19,12 @@ import { ORGANIZATION_SECTIONS } from '../../constants';
 
 const OrganizationSummary = ({
   acqUnitIds,
-  aliases,
+  aliases = [],
   code,
   description,
   erpCode,
-  isVendor,
-  isDonor,
+  isVendor = false,
+  isDonor = false,
   language,
   metadata,
   name,
@@ -153,12 +153,6 @@ OrganizationSummary.propTypes = {
   name: PropTypes.string,
   status: PropTypes.string,
   organizationTypes: PropTypes.arrayOf(PropTypes.string),
-};
-
-OrganizationSummary.defaultProps = {
-  aliases: [],
-  isVendor: false,
-  isDonor: false,
 };
 
 export default OrganizationSummary;

@@ -19,7 +19,7 @@ const columnMapping = {
   urlPrimary: <FormattedMessage id="ui-organizations.primaryItem" />,
 };
 
-const ContactUrls = ({ categories, urls }) => {
+const ContactUrls = ({ categories, urls = [] }) => {
   const resultsFormatter = {
     url: url => (
       <TextLink
@@ -50,10 +50,6 @@ const ContactUrls = ({ categories, urls }) => {
 ContactUrls.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
   urls: PropTypes.arrayOf(PropTypes.object),
-};
-
-ContactUrls.defaultProps = {
-  urls: [],
 };
 
 export default ContactUrls;

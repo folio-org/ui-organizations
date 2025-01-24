@@ -51,7 +51,11 @@ const getResultsFormatter = ({ intl, vendorCategories }) => ({
 
 const alignRowProps = { alignLastColToEnd: true };
 
-const OrganizationContactPeople = ({ vendorCategories, contacts, openContact }) => {
+const OrganizationContactPeople = ({
+  vendorCategories = [],
+  contacts = [],
+  openContact,
+}) => {
   const intl = useIntl();
 
   const resultsFormatter = useMemo(() => {
@@ -75,11 +79,6 @@ OrganizationContactPeople.propTypes = {
   vendorCategories: PropTypes.arrayOf(PropTypes.object),
   contacts: PropTypes.arrayOf(PropTypes.object),
   openContact: PropTypes.func.isRequired,
-};
-
-OrganizationContactPeople.defaultProps = {
-  vendorCategories: [],
-  contacts: [],
 };
 
 export default OrganizationContactPeople;
