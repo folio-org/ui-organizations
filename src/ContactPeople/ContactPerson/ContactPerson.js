@@ -13,7 +13,7 @@ import ContactPersonPhones from './ContactPersonPhones';
 import ContactPersonEmails from './ContactPersonEmails';
 import ContactPersonURLs from './ContactPersonURLs';
 
-const ContactPerson = ({ contact, categories, withCollapsing }) => {
+const ContactPerson = ({ contact, categories = [], withCollapsing = true }) => {
   const addresses = hydrateAddresses(categories, contact.addresses);
   const emails = mixCategories(categories, contact.emails);
   const phoneNumbers = mixCategories(categories, contact.phoneNumbers);
@@ -59,11 +59,6 @@ ContactPerson.propTypes = {
   contact: PropTypes.object.isRequired,
   categories: PropTypes.arrayOf(PropTypes.object),
   withCollapsing: PropTypes.bool,
-};
-
-ContactPerson.defaultProps = {
-  categories: [],
-  withCollapsing: true,
 };
 
 export default ContactPerson;

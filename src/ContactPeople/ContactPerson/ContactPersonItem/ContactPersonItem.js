@@ -6,7 +6,7 @@ import { LayoutHeader } from '@folio/stripes/components';
 
 import css from './ContactPersonItem.css';
 
-const ContactPersonItem = ({ children, isPrimary }) => {
+const ContactPersonItem = ({ children, isPrimary = false }) => {
   const title = <FormattedMessage id={`ui-organizations.${isPrimary ? 'primaryItem' : 'alternateItem'}`} />;
 
   return (
@@ -22,10 +22,6 @@ const ContactPersonItem = ({ children, isPrimary }) => {
 ContactPersonItem.propTypes = {
   isPrimary: PropTypes.bool,
   children: PropTypes.node.isRequired,
-};
-
-ContactPersonItem.defaultProps = {
-  isPrimary: false,
 };
 
 export default ContactPersonItem;

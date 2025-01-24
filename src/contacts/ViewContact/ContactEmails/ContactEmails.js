@@ -16,7 +16,7 @@ const columnMapping = {
   emailPrimary: <FormattedMessage id="ui-organizations.primaryItem" />,
 };
 
-const ContactEmails = ({ categories, emails }) => {
+const ContactEmails = ({ categories, emails = [] }) => {
   const resultsFormatter = {
     email: ({ value }) => value,
     emailDescription: ({ description }) => description,
@@ -39,10 +39,6 @@ const ContactEmails = ({ categories, emails }) => {
 ContactEmails.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
   emails: PropTypes.arrayOf(PropTypes.object),
-};
-
-ContactEmails.defaultProps = {
-  emails: [],
 };
 
 export default ContactEmails;

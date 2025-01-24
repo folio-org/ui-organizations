@@ -6,7 +6,13 @@ import { Button, Icon } from '@folio/stripes/components';
 
 import css from './EntitiesWithCollapsing.css';
 
-const EntitiesWithCollapsing = ({ entities, renderEntity, showMoreLabel }) => {
+const defaultShowMoreLabel = <FormattedMessage id="ui-organizations.showMore" />;
+
+const EntitiesWithCollapsing = ({
+  entities = [],
+  renderEntity,
+  showMoreLabel = defaultShowMoreLabel,
+}) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   return (
@@ -37,11 +43,6 @@ EntitiesWithCollapsing.propTypes = {
   entities: PropTypes.arrayOf(PropTypes.object),
   renderEntity: PropTypes.func.isRequired,
   showMoreLabel: PropTypes.node,
-};
-
-EntitiesWithCollapsing.defaultProps = {
-  entities: [],
-  showMoreLabel: <FormattedMessage id="ui-organizations.showMore" />,
 };
 
 export default EntitiesWithCollapsing;

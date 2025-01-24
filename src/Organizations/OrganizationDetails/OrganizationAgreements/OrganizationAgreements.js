@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import OrganizationAgreement from './OrganizationAgreement';
 
-const OrganizationAgreements = ({ agreements }) => {
+const OrganizationAgreements = ({ agreements = [] }) => {
   if (!agreements.length) {
     return (
       <p>
@@ -35,10 +35,6 @@ const OrganizationAgreements = ({ agreements }) => {
 
 OrganizationAgreements.propTypes = {
   agreements: PropTypes.arrayOf(PropTypes.object),
-};
-
-OrganizationAgreements.defaultProps = {
-  agreements: [],
 };
 
 export default OrganizationAgreements;

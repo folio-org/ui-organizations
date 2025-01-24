@@ -50,7 +50,7 @@ const renderURL = url => (
   </ContactPersonItem>
 );
 
-const ContactPersonURLs = ({ urls, withCollapsing }) => {
+const ContactPersonURLs = ({ urls = [], withCollapsing = true }) => {
   if (!urls.length) return null;
 
   const renderHeader = () => (
@@ -78,11 +78,6 @@ const ContactPersonURLs = ({ urls, withCollapsing }) => {
 ContactPersonURLs.propTypes = {
   urls: PropTypes.arrayOf(PropTypes.object),
   withCollapsing: PropTypes.bool,
-};
-
-ContactPersonURLs.defaultProps = {
-  urls: [],
-  withCollapsing: true,
 };
 
 export default ContactPersonURLs;

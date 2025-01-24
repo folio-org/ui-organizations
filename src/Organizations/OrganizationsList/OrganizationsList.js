@@ -81,11 +81,11 @@ const getResultsFormatter = ({ search }) => ({
 });
 
 const OrganizationsList = ({
-  isLoading,
+  isLoading = false,
   onNeedMoreData,
   resetData,
-  organizations,
-  organizationsCount,
+  organizations = [],
+  organizationsCount = 0,
   refreshList,
   resultsPaneTitleRef,
   pagination,
@@ -277,12 +277,6 @@ OrganizationsList.propTypes = {
   refreshList: PropTypes.func.isRequired,
   resultsPaneTitleRef: PropTypes.object,
   pagination: PropTypes.object,
-};
-
-OrganizationsList.defaultProps = {
-  organizationsCount: 0,
-  isLoading: false,
-  organizations: [],
 };
 
 export default OrganizationsList;

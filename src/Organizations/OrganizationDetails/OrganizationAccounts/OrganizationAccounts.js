@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { OrganizationAccount } from './OrganizationAccount';
 
-const OrganizationAccounts = ({ accounts }) => {
+const OrganizationAccounts = ({ accounts = [] }) => {
   if (!accounts.length) {
     return (
       <p>
@@ -38,10 +38,6 @@ const OrganizationAccounts = ({ accounts }) => {
 
 OrganizationAccounts.propTypes = {
   accounts: PropTypes.arrayOf(PropTypes.object),
-};
-
-OrganizationAccounts.defaultProps = {
-  accounts: [],
 };
 
 export default OrganizationAccounts;

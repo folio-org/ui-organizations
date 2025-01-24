@@ -12,7 +12,7 @@ import { filterCategories } from './utils';
 function CategoryDropdown({
   dropdownVendorCategories,
   name,
-  withLabel,
+  withLabel = true,
   ariaLabelledBy,
   onChange: onChangeProp,
 }) {
@@ -70,10 +70,6 @@ CategoryDropdown.propTypes = {
   withLabel: PropTypes.bool,
   ariaLabelledBy: PropTypes.string,
   onChange: PropTypes.func,
-};
-
-CategoryDropdown.defaultProps = {
-  withLabel: true,
 };
 
 export default CategoryDropdown;

@@ -14,7 +14,7 @@ import { PAYMENT_METHOD_LABELS } from '@folio/stripes-acq-components';
 
 const OrganizationVendorInfo = ({
   paymentMethod,
-  vendorCurrencies,
+  vendorCurrencies = [],
   claimingInterval,
   discountPercent,
   expectedActivationInterval,
@@ -25,7 +25,7 @@ const OrganizationVendorInfo = ({
   taxId,
   taxPercentage,
   isLiableForVat,
-  isExportToAccounting,
+  isExportToAccounting = true,
 }) => {
   const vendorCurrenciesString = vendorCurrencies
     .map(currency => {
@@ -159,11 +159,6 @@ OrganizationVendorInfo.propTypes = {
   taxPercentage: PropTypes.number,
   isLiableForVat: PropTypes.bool,
   isExportToAccounting: PropTypes.bool,
-};
-
-OrganizationVendorInfo.defaultProps = {
-  vendorCurrencies: [],
-  isExportToAccounting: false,
 };
 
 export default OrganizationVendorInfo;

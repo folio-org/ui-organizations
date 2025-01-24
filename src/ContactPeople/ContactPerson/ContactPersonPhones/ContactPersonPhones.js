@@ -39,7 +39,7 @@ const renderPhone = phone => (
   </ContactPersonItem>
 );
 
-const ContactPersonPhones = ({ phones, withCollapsing }) => {
+const ContactPersonPhones = ({ phones = [], withCollapsing = true }) => {
   if (!phones.length) return null;
 
   const renderHeader = () => (
@@ -67,11 +67,6 @@ const ContactPersonPhones = ({ phones, withCollapsing }) => {
 ContactPersonPhones.propTypes = {
   phones: PropTypes.arrayOf(PropTypes.object),
   withCollapsing: PropTypes.bool,
-};
-
-ContactPersonPhones.defaultProps = {
-  phones: [],
-  withCollapsing: true,
 };
 
 export default ContactPersonPhones;

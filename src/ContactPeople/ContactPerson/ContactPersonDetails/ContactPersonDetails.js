@@ -8,13 +8,13 @@ import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
 import ContactPersonSection from '../ContactPersonSection';
 
 const ContactPersonDetails = ({
-  categories,
+  categories = '',
   firstName,
-  isInactive,
-  language,
+  isInactive = false,
+  language = '',
   lastName,
   notes,
-  prefix,
+  prefix = '',
 }) => {
   const renderHeader = () => (
     <FormattedMessage id="ui-organizations.contactPeople.name" />
@@ -84,13 +84,6 @@ ContactPersonDetails.propTypes = {
   isInactive: PropTypes.bool,
   categories: PropTypes.string,
   notes: PropTypes.string,
-};
-
-ContactPersonDetails.defaultProps = {
-  prefix: '',
-  language: '',
-  isInactive: false,
-  categories: '',
 };
 
 export default ContactPersonDetails;
