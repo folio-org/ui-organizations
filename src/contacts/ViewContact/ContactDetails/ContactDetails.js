@@ -10,13 +10,13 @@ import {
 import { LANG_LABEL_BY_CODE } from '@folio/stripes-acq-components';
 
 const ContactDetails = ({
-  categories,
+  categories = '',
   firstName,
-  isInactive,
-  language,
+  isInactive = false,
+  language = '',
   lastName,
   notes,
-  prefix,
+  prefix = '',
 }) => (
   <Row>
     <Col xs={3}>
@@ -82,13 +82,6 @@ ContactDetails.propTypes = {
   isInactive: PropTypes.bool,
   categories: PropTypes.string,
   notes: PropTypes.string,
-};
-
-ContactDetails.defaultProps = {
-  prefix: '',
-  language: '',
-  isInactive: false,
-  categories: '',
 };
 
 export default ContactDetails;

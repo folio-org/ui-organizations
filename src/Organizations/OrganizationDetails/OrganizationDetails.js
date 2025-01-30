@@ -88,9 +88,9 @@ const OrganizationDetails = ({
   onViewExportLog,
   onUpdate,
   organization,
-  organizationCategories,
+  organizationCategories = [],
   integrationConfigs,
-  isBankingInformationEnabled,
+  isBankingInformationEnabled = false,
   organizationTypes,
 }) => {
   const stripes = useStripes();
@@ -481,11 +481,6 @@ OrganizationDetails.propTypes = {
   integrationConfigs: PropTypes.arrayOf(PropTypes.object),
   isBankingInformationEnabled: PropTypes.bool,
   organizationTypes: PropTypes.arrayOf(PropTypes.object),
-};
-
-OrganizationDetails.defaultProps = {
-  organizationCategories: [],
-  isBankingInformationEnabled: false,
 };
 
 export default OrganizationDetails;

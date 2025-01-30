@@ -79,7 +79,7 @@ const headLabels = (
   </Row>
 );
 
-const PhoneForm = ({ categories, phoneTypesList }) => {
+const PhoneForm = ({ categories, phoneTypesList = [] }) => {
   const addNewPhone = useCallback((fields) => createAddNewItem()(fields), []);
 
   const renderEmailFields = (elem, index, fields) => {
@@ -166,10 +166,6 @@ const PhoneForm = ({ categories, phoneTypesList }) => {
 PhoneForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
   phoneTypesList: PropTypes.arrayOf(PropTypes.object),
-};
-
-PhoneForm.defaultProps = {
-  phoneTypesList: [],
 };
 
 export default PhoneForm;

@@ -19,7 +19,7 @@ export const OrganizationContactPeopleContainer = ({
   history,
   match,
   mutator,
-  vendorCategories,
+  vendorCategories = [],
 }) => {
   const organizationId = match.params.id;
   const [contacts, setContacts] = useState([]);
@@ -85,10 +85,6 @@ OrganizationContactPeopleContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
   contactsIds: PropTypes.arrayOf(PropTypes.string),
   vendorCategories: PropTypes.arrayOf(PropTypes.object),
-};
-
-OrganizationContactPeopleContainer.defaultProps = {
-  vendorCategories: [],
 };
 
 export default withRouter(stripesConnect(OrganizationContactPeopleContainer));

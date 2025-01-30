@@ -39,7 +39,7 @@ const renderEmail = email => (
   </ContactPersonItem>
 );
 
-const ContactPersonEmails = ({ emails, withCollapsing }) => {
+const ContactPersonEmails = ({ emails = [], withCollapsing = true }) => {
   if (!emails.length) return null;
 
   const renderHeader = () => (
@@ -67,11 +67,6 @@ const ContactPersonEmails = ({ emails, withCollapsing }) => {
 ContactPersonEmails.propTypes = {
   emails: PropTypes.arrayOf(PropTypes.object),
   withCollapsing: PropTypes.bool,
-};
-
-ContactPersonEmails.defaultProps = {
-  emails: [],
-  withCollapsing: true,
 };
 
 export default ContactPersonEmails;

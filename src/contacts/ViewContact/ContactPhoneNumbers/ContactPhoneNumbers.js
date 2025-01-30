@@ -16,7 +16,7 @@ const columnMapping = {
   phonePrimary: <FormattedMessage id="ui-organizations.primaryItem" />,
 };
 
-const ContactPhoneNumbers = ({ categories, phoneNumbers }) => {
+const ContactPhoneNumbers = ({ categories, phoneNumbers = [] }) => {
   const resultsFormatter = {
     phoneNumber: ({ phoneNumber }) => phoneNumber,
     phoneType: ({ type }) => type,
@@ -39,10 +39,6 @@ const ContactPhoneNumbers = ({ categories, phoneNumbers }) => {
 ContactPhoneNumbers.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
   phoneNumbers: PropTypes.arrayOf(PropTypes.object),
-};
-
-ContactPhoneNumbers.defaultProps = {
-  phoneNumbers: [],
 };
 
 export default ContactPhoneNumbers;

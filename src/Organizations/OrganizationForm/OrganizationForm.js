@@ -41,12 +41,14 @@ import {
   MAP_FIELD_ACCORDION,
 } from '../constants';
 
+const defaultPaneTitle = <FormattedMessage id="ui-organizations.createOrg.title" />;
+
 const OrganizationForm = ({
   pristine,
   submitting,
   handleSubmit,
   initialValues,
-  paneTitle,
+  paneTitle = defaultPaneTitle,
   cancelForm,
   values: formValues,
   form,
@@ -273,10 +275,6 @@ OrganizationForm.propTypes = {
   paneTitle: PropTypes.node,
   values: PropTypes.object,
   form: PropTypes.object,
-};
-
-OrganizationForm.defaultProps = {
-  paneTitle: <FormattedMessage id="ui-organizations.createOrg.title" />,
 };
 
 export default stripesForm({

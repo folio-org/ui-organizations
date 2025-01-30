@@ -43,7 +43,7 @@ import ContactUrls from './ContactUrls';
 import ContactPhoneNumbers from './ContactPhoneNumbers';
 
 const ViewContact = ({
-  categories,
+  categories = [],
   onClose,
   contact,
   editUrl,
@@ -238,10 +238,6 @@ ViewContact.propTypes = {
   unassign: PropTypes.func.isRequired,
   deleteContact: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(PropTypes.object),
-};
-
-ViewContact.defaultProps = {
-  categories: [],
 };
 
 export default ViewContact;

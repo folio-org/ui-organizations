@@ -8,7 +8,11 @@ import ContactPersonAddress from './ContactPersonAddress';
 
 const renderAddressFn = (address, i) => <ContactPersonAddress address={address} key={i} />;
 
-const ContactPersonAddresses = ({ addresses, withCollapsing, renderAddress }) => {
+const ContactPersonAddresses = ({
+  addresses = [],
+  withCollapsing = true,
+  renderAddress = renderAddressFn,
+}) => {
   if (!addresses.length) return null;
 
   const renderHeader = () => (
@@ -37,12 +41,6 @@ ContactPersonAddresses.propTypes = {
   addresses: PropTypes.arrayOf(PropTypes.object),
   withCollapsing: PropTypes.bool,
   renderAddress: PropTypes.func,
-};
-
-ContactPersonAddresses.defaultProps = {
-  addresses: [],
-  withCollapsing: true,
-  renderAddress: renderAddressFn,
 };
 
 export default ContactPersonAddresses;

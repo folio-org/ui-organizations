@@ -25,7 +25,7 @@ const filterByCatId = (catId) => ({ categories = [] }) => {
     : categories.includes(catId);
 };
 
-const OrganizationContactInfo = ({ organization, vendorCategories }) => {
+const OrganizationContactInfo = ({ organization, vendorCategories = [] }) => {
   if (!organization) {
     return (
       <div style={{ paddingTop: '1rem' }}><Icon icon="spinner-ellipsis" width="100px" /></div>
@@ -80,10 +80,6 @@ const OrganizationContactInfo = ({ organization, vendorCategories }) => {
 OrganizationContactInfo.propTypes = {
   organization: PropTypes.object,
   vendorCategories: PropTypes.arrayOf(PropTypes.object),
-};
-
-OrganizationContactInfo.defaultProps = {
-  vendorCategories: [],
 };
 
 export default OrganizationContactInfo;
