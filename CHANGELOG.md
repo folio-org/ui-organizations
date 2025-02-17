@@ -11,6 +11,7 @@
 * Enhancement help text on Settings > Organizations > Number generator options. Refs UIORGS-453.
 * React v19: refactor away from react-test-renderer. Refs UIORGS-433.
 * React v19: refactor away from default props for functional components. Refs UIORGS-434.
+* Migrate to shared GA workflows. Refs UIORGS-458.
 
 ## [5.2.0](https://github.com/folio-org/ui-organizations/tree/v5.2.0) (2024-10-31)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.1.1...v5.2.0)
