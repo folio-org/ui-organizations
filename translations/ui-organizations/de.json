@@ -514,7 +514,7 @@
     "settings.numberGeneratorOptions.useBothForVendor": "Nummerngenerator aktiviert, editierbar: Der Code kann durch den Nummerngenerator generiert und editiert, oder manuell eingegeben werden.",
     "settings.numberGeneratorOptions.save.error": "Fehler beim Speichern der Einstellung",
     "settings.numberGeneratorOptions.save.success": "Einstellung wurde erfolgreich gespeichert",
-    "numberGenerator.vendorCodeGenerator": "Code Nummerngenerator",
+    "numberGenerator.vendorCodeGenerator": "Code-Nummerngenerator",
     "numberGenerator.generateVendorCode": "Code generieren",
     "settings.numberGeneratorOptions.infoAdditional": "Weitere Einstellungen für Nummerngeneratoren sind unter {serviceInteractionLink} verfügbar. Unter {numberGeneratorSequencesLink} können Nummernkreise definiert werden, indem der entsprechende Generator über das Dropdown-Menü ausgewählt wird."
 }
