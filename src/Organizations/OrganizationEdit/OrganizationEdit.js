@@ -19,10 +19,17 @@ import {
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
-import { VIEW_ORG_DETAILS } from '../../common/constants';
+import {
+  ORGANIZATIONS_ROUTE,
+  VIEW_ORG_DETAILS,
+} from '../../common/constants';
 import { useOrganizationBankingInformation } from '../../common/hooks';
 import { organizationResourceByUrl } from '../../common/resources';
-import { BANKING_INFORMATION_FIELD_NAME } from '../constants';
+import {
+  BANKING_INFORMATION_FIELD_NAME,
+  SUBMIT_ACTION,
+  SUBMIT_ACTION_FIELD_NAME,
+} from '../constants';
 import { OrganizationForm } from '../OrganizationForm';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 import { useBankingInformationManager } from '../useBankingInformationManager';
@@ -42,17 +49,32 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
     isLoading: isBankingInformationLoading,
   } = useOrganizationBankingInformation(organizationId);
 
-  useEffect(
-    () => {
-      mutator.editOrganizationOrg.GET()
-        .then(organizationsResponse => {
-          setOrganization(organizationsResponse);
-        })
-        .finally(() => setIsOrganizationLoading(false));
-    },
+  const fetchOrganization = useCallback(() => {
+    setIsOrganizationLoading(true);
+
+    return mutator.editOrganizationOrg.GET()
+      .then(organizationsResponse => {
+        setOrganization(organizationsResponse);
+      })
+      .finally(() => setIsOrganizationLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
+  }, []);
+
+  useEffect(() => {
+    fetchOrganization();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const saveAndKeepEditingHandler = useCallback(() => {
+    fetchOrganization();
+
+    history.push({
+      pathname: `${ORGANIZATIONS_ROUTE}/${organizationId}/edit`,
+      search: location.search,
+    });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchOrganization, location.search, organizationId]);
 
   const cancelForm = useCallback(
     () => {
@@ -66,32 +88,42 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
     [location.search],
   );
 
-  const updateOrganization = useCallback(
-    (values, { getFieldState }) => {
-      const { [BANKING_INFORMATION_FIELD_NAME]: bankingInformation, ...data } = values;
+  const updateOrganization = useCallback((
+    { [SUBMIT_ACTION_FIELD_NAME]: submitAction, ...values },
+    { getFieldState },
+  ) => {
+    const { [BANKING_INFORMATION_FIELD_NAME]: bankingInformation, ...data } = values;
 
-      return mutator.editOrganizationOrg.PUT(data)
-        .then(() => {
-          return manageBankingInformation({
-            initBankingInformation: getFieldState(BANKING_INFORMATION_FIELD_NAME)?.initial,
-            bankingInformation,
-            organization: values,
-          });
-        })
-        .then(() => {
-          setTimeout(cancelForm);
-          showCallout({
-            messageId: 'ui-organizations.save.success',
-            values: { organizationName: data.name },
-          });
-        })
-        .catch(async e => {
-          await handleSaveErrorResponse(intl, showCallout, e);
+    return mutator.editOrganizationOrg.PUT(data)
+      .then(() => {
+        return manageBankingInformation({
+          initBankingInformation: getFieldState(BANKING_INFORMATION_FIELD_NAME)?.initial,
+          bankingInformation,
+          organization: values,
         });
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [cancelForm, intl, manageBankingInformation, showCallout],
-  );
+      })
+      .then(() => {
+        showCallout({
+          messageId: 'ui-organizations.save.success',
+          values: { organizationName: data.name },
+        });
+
+        switch (submitAction) {
+          case SUBMIT_ACTION.saveAndKeepEditing:
+            setTimeout(saveAndKeepEditingHandler);
+            break;
+          case SUBMIT_ACTION.saveAndClose:
+          default:
+            setTimeout(cancelForm);
+            break;
+        }
+      })
+      .catch(async e => {
+        await handleSaveErrorResponse(intl, showCallout, e);
+      });
+  },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [cancelForm, intl, manageBankingInformation, saveAndKeepEditingHandler, showCallout]);
 
   const initialValues = useMemo(() => ({
     [BANKING_INFORMATION_FIELD_NAME]: bankingInformationData,
@@ -111,6 +143,7 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
   return (
     <OrganizationForm
       initialValues={initialValues}
+      isSubmitDisabled={isOrganizationLoading}
       onSubmit={updateOrganization}
       cancelForm={cancelForm}
       paneTitle={<FormattedMessage id="ui-organizations.editOrg.title" values={{ name: organization.name }} />}

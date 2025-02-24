@@ -378,34 +378,65 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                 class="renderStart"
                 data-test-pane-footer-start="true"
               >
-                <button
-                  class="button default mega"
-                  data-test-cancel-button="true"
-                  type="button"
+                <div
+                  class="row"
                 >
-                  <span
-                    class="inner"
+                  <div
+                    class="col-xs"
                   >
-                    stripes-acq-components.FormFooter.cancel
-                  </span>
-                </button>
+                    <button
+                      class="button default mega"
+                      id="clickable-close-organization-form"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.cancel
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </span>
               <span
                 data-test-pane-footer-end="true"
               >
-                <button
-                  class="button primary mega"
-                  data-test-save-button="true"
-                  disabled=""
-                  id="organization-form-save"
-                  type="submit"
+                <div
+                  class="row"
                 >
-                  <span
-                    class="inner"
+                  <div
+                    class="col-xs"
                   >
-                    stripes-components.saveAndClose
-                  </span>
-                </button>
+                    <button
+                      class="button default mega"
+                      disabled=""
+                      id="clickable-save-and-keep-editing"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.saveAndKeepEditing
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="col-xs"
+                  >
+                    <button
+                      class="button primary mega"
+                      disabled=""
+                      id="clickable-save"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.saveAndClose
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </span>
             </div>
           </div>
@@ -806,34 +837,65 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                 class="renderStart"
                 data-test-pane-footer-start="true"
               >
-                <button
-                  class="button default mega"
-                  data-test-cancel-button="true"
-                  type="button"
+                <div
+                  class="row"
                 >
-                  <span
-                    class="inner"
+                  <div
+                    class="col-xs"
                   >
-                    stripes-acq-components.FormFooter.cancel
-                  </span>
-                </button>
+                    <button
+                      class="button default mega"
+                      id="clickable-close-organization-form"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.cancel
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </span>
               <span
                 data-test-pane-footer-end="true"
               >
-                <button
-                  class="button primary mega"
-                  data-test-save-button="true"
-                  disabled=""
-                  id="organization-form-save"
-                  type="submit"
+                <div
+                  class="row"
                 >
-                  <span
-                    class="inner"
+                  <div
+                    class="col-xs"
                   >
-                    stripes-components.saveAndClose
-                  </span>
-                </button>
+                    <button
+                      class="button default mega"
+                      disabled=""
+                      id="clickable-save-and-keep-editing"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.saveAndKeepEditing
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="col-xs"
+                  >
+                    <button
+                      class="button primary mega"
+                      disabled=""
+                      id="clickable-save"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.saveAndClose
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </span>
             </div>
           </div>
@@ -1423,34 +1485,65 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                 class="renderStart"
                 data-test-pane-footer-start="true"
               >
-                <button
-                  class="button default mega"
-                  data-test-cancel-button="true"
-                  type="button"
+                <div
+                  class="row"
                 >
-                  <span
-                    class="inner"
+                  <div
+                    class="col-xs"
                   >
-                    stripes-acq-components.FormFooter.cancel
-                  </span>
-                </button>
+                    <button
+                      class="button default mega"
+                      id="clickable-close-organization-form"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.cancel
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </span>
               <span
                 data-test-pane-footer-end="true"
               >
-                <button
-                  class="button primary mega"
-                  data-test-save-button="true"
-                  disabled=""
-                  id="organization-form-save"
-                  type="submit"
+                <div
+                  class="row"
                 >
-                  <span
-                    class="inner"
+                  <div
+                    class="col-xs"
                   >
-                    stripes-components.saveAndClose
-                  </span>
-                </button>
+                    <button
+                      class="button default mega"
+                      disabled=""
+                      id="clickable-save-and-keep-editing"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.saveAndKeepEditing
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="col-xs"
+                  >
+                    <button
+                      class="button primary mega"
+                      disabled=""
+                      id="clickable-save"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.saveAndClose
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </span>
             </div>
           </div>

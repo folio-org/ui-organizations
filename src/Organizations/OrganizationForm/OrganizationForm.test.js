@@ -150,7 +150,7 @@ describe('OrganizationForm', () => {
       cancelForm,
     });
 
-    await user.click(screen.getByText('stripes-acq-components.FormFooter.cancel'));
+    await user.click(screen.getByText('stripes-components.cancel'));
 
     expect(cancelForm).toHaveBeenCalled();
   });
