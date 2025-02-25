@@ -4,6 +4,7 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 import { OrganizationForm } from '../OrganizationForm';
 import { useBankingInformationManager } from '../useBankingInformationManager';
 import { OrganizationCreate } from './OrganizationCreate';
+import { SUBMIT_ACTION_FIELD_NAME, SUBMIT_ACTION } from '../constants';
 
 jest.mock('../OrganizationForm', () => ({
   OrganizationForm: jest.fn().mockReturnValue('OrganizationForm'),
@@ -23,6 +24,7 @@ const historyMock = {
 
 const getFieldState = jest.fn();
 const manageBankingInformation = jest.fn();
+const saveAndKeepEditingHandler = jest.fn();
 
 const queryClient = new QueryClient();
 
@@ -96,5 +98,19 @@ describe('OrganizationCreate', () => {
     await OrganizationForm.mock.calls[0][0].onSubmit({}, { getFieldState });
 
     expect(manageBankingInformation).toHaveBeenCalled();
+  });
+
+  it('should redirect to org edit page when save and keep editing is pressed', async () => {
+    mutatorMock.createOrganizationOrg.POST.mockReturnValue(Promise.resolve({ id: 'orgUid' }));
+
+    renderOrganizationCreate();
+
+    await OrganizationForm.mock.calls[0][0].onSubmit({
+      [SUBMIT_ACTION_FIELD_NAME]: SUBMIT_ACTION.saveAndKeepEditing,
+    }, { getFieldState });
+
+    await new Promise((resolve) => setTimeout(resolve));
+
+    expect(historyMock.push.mock.calls[2][0].pathname).toBe('/organizations/orgUid/edit');
   });
 });
