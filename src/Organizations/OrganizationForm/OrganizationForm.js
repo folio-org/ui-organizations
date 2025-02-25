@@ -102,7 +102,7 @@ const OrganizationForm = ({
     },
     {
       name: 'save',
-      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting || isSubmitDisabled }),
     },
     {
       name: 'expandAllSections',

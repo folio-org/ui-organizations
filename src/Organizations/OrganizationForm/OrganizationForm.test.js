@@ -142,6 +142,14 @@ describe('OrganizationForm', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  it('should render footer buttons', async () => {
+    renderOrganizationForm();
+
+    expect(screen.getByText('stripes-components.cancel')).toBeInTheDocument();
+    expect(screen.getByText('stripes-components.saveAndKeepEditing')).toBeInTheDocument();
+    expect(screen.getByText('stripes-components.saveAndClose')).toBeInTheDocument();
+  });
+
   it('should call cancelForm prop when cancel button is pressed', async () => {
     const cancelForm = jest.fn();
 
