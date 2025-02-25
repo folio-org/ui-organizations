@@ -3,6 +3,10 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { useOrganizationBankingInformation } from '../../common/hooks';
+import {
+  SUBMIT_ACTION,
+  SUBMIT_ACTION_FIELD_NAME,
+} from '../constants';
 import { OrganizationForm } from '../OrganizationForm';
 import { useBankingInformationManager } from '../useBankingInformationManager';
 import { OrganizationEdit } from './OrganizationEdit';
@@ -121,5 +125,18 @@ describe('OrganizationEdit', () => {
     await OrganizationForm.mock.calls[0][0].onSubmit({}, { getFieldState });
 
     expect(manageBankingInformation).toHaveBeenCalled();
+  });
+
+  it('should refetch data on saveAndKeepEditing', async () => {
+    mutatorMock.editOrganizationOrg.GET.mockReturnValue(Promise.resolve({ id: 'orgUid' }));
+
+    renderOrganizationEdit();
+
+    await screen.findByText('OrganizationForm');
+    await OrganizationForm.mock.calls[0][0].onSubmit({
+      [SUBMIT_ACTION_FIELD_NAME]: SUBMIT_ACTION.saveAndKeepEditing,
+    }, { getFieldState });
+
+    expect(mutatorMock.editOrganizationOrg.GET).toHaveBeenCalled();
   });
 });

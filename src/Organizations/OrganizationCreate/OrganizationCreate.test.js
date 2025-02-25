@@ -1,10 +1,13 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
+import {
+  SUBMIT_ACTION_FIELD_NAME,
+  SUBMIT_ACTION,
+} from '../constants';
 import { OrganizationForm } from '../OrganizationForm';
 import { useBankingInformationManager } from '../useBankingInformationManager';
 import { OrganizationCreate } from './OrganizationCreate';
-import { SUBMIT_ACTION_FIELD_NAME, SUBMIT_ACTION } from '../constants';
 
 jest.mock('../OrganizationForm', () => ({
   OrganizationForm: jest.fn().mockReturnValue('OrganizationForm'),
@@ -24,7 +27,6 @@ const historyMock = {
 
 const getFieldState = jest.fn();
 const manageBankingInformation = jest.fn();
-const saveAndKeepEditingHandler = jest.fn();
 
 const queryClient = new QueryClient();
 

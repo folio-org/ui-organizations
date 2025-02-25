@@ -124,7 +124,7 @@ const OrganizationForm = ({
         <Button
           id="clickable-close-organization-form"
           buttonStyle="default mega"
-          onClick={cancelForm}
+          onClick={() => cancelForm()}
         >
           <FormattedMessage id="stripes-components.cancel" />
         </Button>
