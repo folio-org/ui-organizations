@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router';
 import { mapValues } from 'lodash';
@@ -49,7 +49,7 @@ const defaultPaneTitle = <FormattedMessage id="ui-organizations.createOrg.title"
 
 const OrganizationForm = ({
   cancelForm,
-  form: { change, getState },
+  form,
   handleSubmit,
   initialValues,
   isSubmitDisabled,
@@ -58,6 +58,11 @@ const OrganizationForm = ({
   submitting,
   values: formValues,
 }) => {
+  const {
+    change,
+    getState,
+  } = form;
+
   const initialAccordionStatus = {
     [ORGANIZATION_SECTIONS.summarySection]: true,
     [ORGANIZATION_SECTIONS.contactInformationSection]: false,
@@ -94,6 +99,8 @@ const OrganizationForm = ({
     handleSubmit();
   }, [change, handleSubmit]);
 
+  const disabled = pristine || submitting || isSubmitDisabled;
+
   const shortcuts = [
     {
       name: 'cancel',
@@ -102,7 +109,7 @@ const OrganizationForm = ({
     },
     {
       name: 'save',
-      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting || isSubmitDisabled }),
+      handler: handleKeyCommand(handleSubmit, { disabled }),
     },
     {
       name: 'expandAllSections',
@@ -138,7 +145,7 @@ const OrganizationForm = ({
         <Button
           id="clickable-save-and-keep-editing"
           buttonStyle="default mega"
-          disabled={pristine || submitting || isSubmitDisabled}
+          disabled={disabled}
           onClick={onSaveAndKeepEditing}
         >
           <FormattedMessage id="stripes-components.saveAndKeepEditing" />
@@ -149,7 +156,7 @@ const OrganizationForm = ({
         <Button
           id="clickable-save"
           buttonStyle="primary mega"
-          disabled={pristine || submitting || isSubmitDisabled}
+          disabled={disabled}
           onClick={onSaveAndClose}
         >
           <FormattedMessage id="stripes-components.saveAndClose" />
