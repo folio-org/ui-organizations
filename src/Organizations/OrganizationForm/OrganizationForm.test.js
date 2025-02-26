@@ -162,6 +162,14 @@ describe('OrganizationForm', () => {
     expect(defaultProps.onSubmit).toHaveBeenCalled();
   });
 
+  it('should render pane footer elements', async () => {
+    const { container } = renderOrganizationForm();
+
+    expect(container.querySelector('#clickable-close-organization-form')).toBeInTheDocument();
+    expect(container.querySelector('#clickable-save-and-keep-editing')).toBeInTheDocument();
+    expect(container.querySelector('#clickable-save')).toBeInTheDocument();
+  });
+
   describe('Sections toggle', () => {
     it('should have all collapsed sections by default expect summary', () => {
       const { container } = renderOrganizationForm();
