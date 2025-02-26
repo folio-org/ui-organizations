@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router';
 import { mapValues } from 'lodash';

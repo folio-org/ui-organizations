@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import { useOrganization } from '@folio/stripes-acq-components';
 
 import { useOrganizationBankingInformation } from '../../common/hooks';
 import {
@@ -11,6 +12,10 @@ import { OrganizationForm } from '../OrganizationForm';
 import { useBankingInformationManager } from '../useBankingInformationManager';
 import { OrganizationEdit } from './OrganizationEdit';
 
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  useOrganization: jest.fn(),
+}));
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
   useOrganizationBankingInformation: jest.fn(),
@@ -35,7 +40,6 @@ const bankingInformation = [{
 
 const mutatorMock = {
   editOrganizationOrg: {
-    GET: jest.fn(),
     PUT: jest.fn(),
   },
 };
@@ -76,7 +80,11 @@ describe('OrganizationEdit', () => {
 
     getFieldState.mockClear();
     historyMock.push.mockClear();
-    mutatorMock.editOrganizationOrg.GET.mockClear().mockReturnValue(Promise.resolve(organization));
+    useOrganization.mockClear().mockReturnValue({
+      organization,
+      isFetching: false,
+      refetch: jest.fn(),
+    });
     mutatorMock.editOrganizationOrg.PUT.mockClear();
 
     useOrganizationBankingInformation
@@ -127,16 +135,24 @@ describe('OrganizationEdit', () => {
     expect(manageBankingInformation).toHaveBeenCalled();
   });
 
-  it('should refetch data on saveAndKeepEditing', async () => {
-    mutatorMock.editOrganizationOrg.GET.mockReturnValue(Promise.resolve({ id: 'orgUid' }));
+  it('should restart and refetch data on saveAndKeepEditing', async () => {
+    const refetch = jest.fn();
+    const restart = jest.fn();
+
+    useOrganization.mockReturnValue({
+      organization,
+      isFetching: false,
+      refetch,
+    });
 
     renderOrganizationEdit();
 
     await screen.findByText('OrganizationForm');
     await OrganizationForm.mock.calls[0][0].onSubmit({
       [SUBMIT_ACTION_FIELD_NAME]: SUBMIT_ACTION.saveAndKeepEditing,
-    }, { getFieldState });
+    }, { getFieldState, restart });
 
-    expect(mutatorMock.editOrganizationOrg.GET).toHaveBeenCalled();
+    expect(refetch).toHaveBeenCalled();
+    expect(restart).toHaveBeenCalled();
   });
 });

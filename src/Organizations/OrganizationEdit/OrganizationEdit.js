@@ -59,9 +59,7 @@ export const OrganizationEdit = ({ match, history, location, mutator }) => {
       pathname: `${ORGANIZATIONS_ROUTE}/${organizationId}/edit`,
       search: location.search,
     });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refetch, location.search, organizationId]);
+  }, [history, location.search, organizationId, refetch]);
 
   const cancelForm = useCallback(
     () => {
