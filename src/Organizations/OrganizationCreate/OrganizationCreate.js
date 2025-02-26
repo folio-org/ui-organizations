@@ -3,12 +3,18 @@ import { useCallback, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
-import { stripesConnect } from '@folio/stripes/core';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
-import { VIEW_ORG_DETAILS } from '../../common/constants';
-import { organizationsResource } from '../../common/resources';
-import { BANKING_INFORMATION_FIELD_NAME } from '../constants';
+import {
+  ORGANIZATIONS_ROUTE,
+  VIEW_ORG_DETAILS,
+} from '../../common/constants';
+import { useOrganizationMutation } from '../../common/hooks';
+import {
+  BANKING_INFORMATION_FIELD_NAME,
+  SUBMIT_ACTION,
+  SUBMIT_ACTION_FIELD_NAME,
+} from '../constants';
 import { handleSaveErrorResponse } from '../handleSaveErrorResponse';
 import { OrganizationForm } from '../OrganizationForm';
 import { useBankingInformationManager } from '../useBankingInformationManager';
@@ -29,8 +35,20 @@ const INITIAL_VALUES = {
   },
 };
 
-export const OrganizationCreate = ({ history, location, mutator }) => {
+export const OrganizationCreate = ({ history, location }) => {
   const { manageBankingInformation } = useBankingInformationManager();
+
+  const {
+    createOrganization,
+    isLoading: isCreateOrganizationLoading,
+  } = useOrganizationMutation();
+
+  const saveAndKeepEditingHandler = useCallback((id) => {
+    history.push({
+      pathname: `${ORGANIZATIONS_ROUTE}/${id}/edit`,
+      search: location.search,
+    });
+  }, [history, location.search]);
 
   const cancelForm = useCallback(
     (id) => {
@@ -46,34 +64,42 @@ export const OrganizationCreate = ({ history, location, mutator }) => {
   const showCallout = useShowCallout();
   const intl = useIntl();
 
-  const createOrganization = useCallback(
-    (values, { getFieldState }) => {
-      const { [BANKING_INFORMATION_FIELD_NAME]: bankingInformation, ...data } = values;
+  const onSubmit = useCallback((
+    { [SUBMIT_ACTION_FIELD_NAME]: submitAction, ...values },
+    { getFieldState },
+  ) => {
+    const { [BANKING_INFORMATION_FIELD_NAME]: bankingInformation, ...data } = values;
 
-      return mutator.createOrganizationOrg.POST(data)
-        .then(async organization => {
-          await manageBankingInformation({
-            initBankingInformation: getFieldState(BANKING_INFORMATION_FIELD_NAME)?.initial,
-            bankingInformation,
-            organization,
-          });
-
-          return organization;
-        })
-        .then(organization => {
-          setTimeout(() => cancelForm(organization.id));
-          showCallout({
-            messageId: 'ui-organizations.save.success',
-            values: { organizationName: organization.name },
-          });
-        })
-        .catch(async e => {
-          await handleSaveErrorResponse(intl, showCallout, e);
+    return createOrganization({ data })
+      .then(async (organization) => {
+        await manageBankingInformation({
+          initBankingInformation: getFieldState(BANKING_INFORMATION_FIELD_NAME)?.initial,
+          bankingInformation,
+          organization,
         });
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [cancelForm, intl, manageBankingInformation, showCallout],
-  );
+
+        return organization;
+      })
+      .then((organization) => {
+        showCallout({
+          messageId: 'ui-organizations.save.success',
+          values: { organizationName: organization.name },
+        });
+
+        switch (submitAction) {
+          case SUBMIT_ACTION.saveAndKeepEditing:
+            saveAndKeepEditingHandler(organization.id);
+            break;
+          case SUBMIT_ACTION.saveAndClose:
+          default:
+            cancelForm(organization.id);
+            break;
+        }
+      })
+      .catch(async (e) => {
+        await handleSaveErrorResponse(intl, showCallout, e?.response);
+      });
+  }, [cancelForm, createOrganization, intl, manageBankingInformation, saveAndKeepEditingHandler, showCallout]);
 
   const initialValues = useMemo(() => ({
     [BANKING_INFORMATION_FIELD_NAME]: [],
@@ -83,20 +109,16 @@ export const OrganizationCreate = ({ history, location, mutator }) => {
   return (
     <OrganizationForm
       initialValues={initialValues}
-      onSubmit={createOrganization}
+      isSubmitDisabled={isCreateOrganizationLoading}
+      onSubmit={onSubmit}
       cancelForm={cancelForm}
     />
   );
 };
 
-OrganizationCreate.manifest = Object.freeze({
-  createOrganizationOrg: organizationsResource,
-});
-
 OrganizationCreate.propTypes = {
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  mutator: PropTypes.object.isRequired,
 };
 
-export default withRouter(stripesConnect(OrganizationCreate));
+export default withRouter(OrganizationCreate);

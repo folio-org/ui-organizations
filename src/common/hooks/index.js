@@ -10,6 +10,7 @@ export * from './useIntegrationConfigMutation';
 export * from './useInterfacesByIds';
 export * from './useLinkedAgreements';
 export * from './useOrganizationBankingInformation';
+export * from './useOrganizationMutation';
 export * from './useTranslatedCategories';
 export * from './useTypes';
 export * from './useVendorCodeGeneratorSettings';

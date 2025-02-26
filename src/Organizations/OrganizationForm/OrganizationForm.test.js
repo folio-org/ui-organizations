@@ -15,7 +15,6 @@ import {
 import { queryHelpers } from '@folio/jest-config-stripes/testing-library/dom';
 import user from '@folio/jest-config-stripes/testing-library/user-event';
 
-import { organizationTypes } from 'fixtures';
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
 import { useBankingInformationSettings } from '../../common/hooks';
 import OrganizationForm from './OrganizationForm';
@@ -28,6 +27,9 @@ jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   PrivilegedDonorContacts: jest.fn(() => 'PrivilegedDonorContacts'),
 }));
+jest.mock('@folio/service-interaction', () => ({
+  NumberGeneratorModalButton: jest.fn(),
+}));
 jest.mock('@folio/stripes-components/lib/Commander', () => ({
   HasCommand: jest.fn(({ children }) => <div>{children}</div>),
   expandAllSections: jest.fn(),
@@ -37,48 +39,12 @@ jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
   useBankingInformationSettings: jest.fn(),
 }));
-jest.mock(
-  './OrganizationSummaryForm',
-  () => ({ OrganizationSummaryForm: () => 'OrganizationSummaryForm' }),
-);
-jest.mock(
-  './OrganizationContactInfoForm',
-  () => ({ OrganizationContactInfoFormContainer: () => 'OrganizationContactInfoFormContainer' }),
-);
-jest.mock(
-  './OrganizationContactPeopleForm',
-  () => ({ OrganizationContactPeopleForm: () => 'OrganizationContactPeopleForm' }),
-);
-jest.mock(
-  './OrganizationInterfacesForm',
-  () => ({ OrganizationInterfacesForm: () => 'OrganizationInterfacesForm' }),
-);
-jest.mock(
-  './OrganizationVendorInfoForm',
-  () => ({ OrganizationVendorInfoForm: () => 'OrganizationVendorInfoForm' }),
-);
-jest.mock(
-  './OrganizationAgreementsForm',
-  () => ({ OrganizationAgreementsForm: () => 'OrganizationAgreementsForm' }),
-);
-jest.mock(
-  './OrganizationAccountsForm',
-  () => ({ OrganizationAccountsForm: () => 'OrganizationAccountsForm' }),
-);
-jest.mock('./OrganizationBankingInfoForm', () => ({
-  OrganizationBankingInfoForm: () => 'OrganizationBankingInfoForm',
-}));
 
 const queryAllByClass = queryHelpers.queryAllByAttribute.bind(null, 'class');
-
-const organizationTypesMock = {
-  records: organizationTypes,
-};
 
 const defaultProps = {
   onSubmit: jest.fn(),
   initialValues: {},
-  organizationTypes: organizationTypesMock,
   cancelForm: jest.fn(),
 };
 
@@ -92,8 +58,11 @@ const wrapper = ({ children }) => (
   </MemoryRouter>
 );
 
-const renderOrganizationForm = (props = defaultProps) => render(
-  <OrganizationForm {...props} />,
+const renderOrganizationForm = (props = {}) => render(
+  <OrganizationForm
+    {...defaultProps}
+    {...props}
+  />,
   { wrapper },
 );
 
@@ -118,7 +87,6 @@ describe('OrganizationForm', () => {
 
   it('should render correct vendor form structure', () => {
     const { container, asFragment } = renderOrganizationForm({
-      ...defaultProps,
       initialValues: { isVendor: true },
     });
 
@@ -129,7 +97,6 @@ describe('OrganizationForm', () => {
 
   it('should render correct form with metadata', () => {
     const { container, asFragment } = renderOrganizationForm({
-      ...defaultProps,
       initialValues: {
         metadata: {
           createdAt: '2019-04-04',
@@ -142,17 +109,65 @@ describe('OrganizationForm', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  it('should render footer buttons', async () => {
+    renderOrganizationForm();
+
+    expect(screen.getByText('stripes-components.cancel')).toBeInTheDocument();
+    expect(screen.getByText('stripes-components.saveAndKeepEditing')).toBeInTheDocument();
+    expect(screen.getByText('stripes-components.saveAndClose')).toBeInTheDocument();
+  });
+
   it('should call cancelForm prop when cancel button is pressed', async () => {
     const cancelForm = jest.fn();
 
     renderOrganizationForm({
-      ...defaultProps,
       cancelForm,
     });
 
-    await user.click(screen.getByText('stripes-acq-components.FormFooter.cancel'));
+    await user.click(screen.getByText('stripes-components.cancel'));
 
     expect(cancelForm).toHaveBeenCalled();
+  });
+
+  it('should render with the correct title when paneTitle prop is passed', () => {
+    const customTitle = 'Custom Organization Title';
+
+    renderOrganizationForm({
+      paneTitle: customTitle,
+    });
+
+    expect(screen.getByText(customTitle)).toBeInTheDocument();
+  });
+
+  it('should trigger handleSubmit when submit button is clicked', async () => {
+    renderOrganizationForm({
+      initialValues: {
+        code: 'code',
+        name: 'name',
+        status: 'status',
+      },
+    });
+    const submitButton = screen.getByRole('button', { name: 'stripes-components.saveAndClose' });
+
+    expect(submitButton.disabled).toBe(true);
+
+    await user.type(screen.getByRole('textbox', { name: 'ui-organizations.summary.name' }), 'test name');
+    await user.type(screen.getByRole('textbox', { name: 'ui-organizations.summary.code' }), 'test code');
+    await user.type(screen.getByRole('combobox', { name: 'ui-organizations.summary.organizationStatus' }), 'Active');
+
+    expect(submitButton.disabled).toBe(false);
+
+    await user.click(submitButton);
+
+    expect(defaultProps.onSubmit).toHaveBeenCalled();
+  });
+
+  it('should render pane footer elements', async () => {
+    const { container } = renderOrganizationForm();
+
+    expect(container.querySelector('#clickable-close-organization-form')).toBeInTheDocument();
+    expect(container.querySelector('#clickable-save-and-keep-editing')).toBeInTheDocument();
+    expect(container.querySelector('#clickable-save')).toBeInTheDocument();
   });
 
   describe('Sections toggle', () => {
@@ -186,18 +201,16 @@ describe('OrganizationForm', () => {
       useBankingInformationSettings.mockReturnValue({ enabled: true });
 
       renderOrganizationForm({
-        ...defaultProps,
         initialValues: { isVendor: true },
       });
 
-      expect(screen.getByText('OrganizationBankingInfoForm')).toBeInTheDocument();
+      expect(screen.getByText('ui-organizations.bankingInformation')).toBeInTheDocument();
     });
 
     it('should render privileged donor contacts form', () => {
       useBankingInformationSettings.mockReturnValue({ enabled: true });
 
       renderOrganizationForm({
-        ...defaultProps,
         initialValues: {
           isDonor: true,
           isVendor: true,
@@ -231,7 +244,7 @@ describe('OrganizationForm', () => {
       ).toBe(sections.length);
     });
 
-    it('should call collapseAllSections when collapseAllSections shortcut is called', () => {
+    it('should call collapseAllSections when collapseAllSections shortcut is called except Summary', () => {
       const { container } = renderOrganizationForm();
 
       act(() => {
@@ -244,7 +257,7 @@ describe('OrganizationForm', () => {
         sections
           .filter(collapseButton => collapseButton.getAttribute('aria-expanded') === 'false')
           .length,
-      ).toBe(sections.length);
+      ).toBe(sections.length - 1);
     });
 
     it('should cancel form when cancel shortcut is called', () => {

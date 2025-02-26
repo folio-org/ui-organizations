@@ -32,7 +32,7 @@ export const useOrganizationBankingInformation = (organizationId, options = {}) 
     isLoading,
     refetch,
   } = useQuery(
-    [namespace],
+    [namespace, organizationId],
     () => {
       const searchParams = {
         query: `organizationId==${organizationId} sortby metadata.createdDate/sort.ascending`,
