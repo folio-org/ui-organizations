@@ -1,8 +1,8 @@
+import mapValues from 'lodash/mapValues';
 import PropTypes from 'prop-types';
 import { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router';
-import { mapValues } from 'lodash';
 
 import { IfPermission } from '@folio/stripes/core';
 import stripesForm from '@folio/stripes/final-form';
@@ -179,7 +179,7 @@ const OrganizationForm = ({
         isWithinScope={checkScope}
         scope={document.body}
       >
-        <Paneset>
+        <Paneset isRoot>
           <Pane
             data-test-form-vendor-pane
             defaultWidth="100%"

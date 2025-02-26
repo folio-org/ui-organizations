@@ -1,9 +1,18 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
 
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
 import { useOrganization } from '@folio/stripes-acq-components';
 
-import { useOrganizationBankingInformation } from '../../common/hooks';
+import {
+  useOrganizationBankingInformation,
+  useOrganizationMutation,
+} from '../../common/hooks';
 import {
   SUBMIT_ACTION,
   SUBMIT_ACTION_FIELD_NAME,
@@ -19,6 +28,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
   useOrganizationBankingInformation: jest.fn(),
+  useOrganizationMutation: jest.fn(),
 }));
 jest.mock('../OrganizationForm', () => ({
   OrganizationForm: jest.fn().mockReturnValue('OrganizationForm'),
@@ -38,11 +48,6 @@ const bankingInformation = [{
   isPrimary: true,
 }];
 
-const mutatorMock = {
-  editOrganizationOrg: {
-    PUT: jest.fn(),
-  },
-};
 const historyMock = {
   push: jest.fn(),
 };
@@ -54,21 +59,25 @@ const matchMock = {
 
 const getFieldState = jest.fn();
 const manageBankingInformation = jest.fn();
+const refetchOrganization = jest.fn(() => Promise.resolve());
+const updateOrganization = jest.fn(() => Promise.resolve());
 
 const queryClient = new QueryClient();
-
 const wrapper = ({ children }) => (
   <QueryClientProvider client={queryClient}>
     {children}
   </QueryClientProvider>
 );
 
-const renderOrganizationEdit = (props) => render(
+const defaultProps = {
+  history: historyMock,
+  match: matchMock,
+  location: {},
+};
+
+const renderOrganizationEdit = (props = {}) => render(
   <OrganizationEdit
-    match={matchMock}
-    location={{}}
-    history={historyMock}
-    mutator={mutatorMock}
+    {...defaultProps}
     {...props}
   />,
   { wrapper },
@@ -83,16 +92,16 @@ describe('OrganizationEdit', () => {
     useOrganization.mockClear().mockReturnValue({
       organization,
       isFetching: false,
-      refetch: jest.fn(),
+      refetch: refetchOrganization,
     });
-    mutatorMock.editOrganizationOrg.PUT.mockClear();
 
-    useOrganizationBankingInformation
-      .mockClear()
-      .mockReturnValue({ bankingInformation, isLoading: false });
-    useBankingInformationManager
-      .mockClear()
-      .mockReturnValue({ manageBankingInformation });
+    useBankingInformationManager.mockReturnValue({ manageBankingInformation });
+    useOrganizationBankingInformation.mockReturnValue({ bankingInformation, isLoading: false });
+    useOrganizationMutation.mockReturnValue({ updateOrganization });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should display organization form', async () => {
@@ -114,19 +123,15 @@ describe('OrganizationEdit', () => {
   });
 
   it('should save organization', async () => {
-    mutatorMock.editOrganizationOrg.PUT.mockReturnValue(Promise.resolve({ id: 'orgUid' }));
-
     renderOrganizationEdit();
 
     await screen.findByText('OrganizationForm');
     await OrganizationForm.mock.calls[0][0].onSubmit({}, { getFieldState });
 
-    expect(mutatorMock.editOrganizationOrg.PUT).toHaveBeenCalled();
+    expect(updateOrganization).toHaveBeenCalled();
   });
 
   it('should handle banking information on form submit', async () => {
-    mutatorMock.editOrganizationOrg.PUT.mockReturnValue(Promise.resolve({ id: 'orgUid' }));
-
     renderOrganizationEdit();
 
     await screen.findByText('OrganizationForm');
@@ -136,14 +141,7 @@ describe('OrganizationEdit', () => {
   });
 
   it('should restart and refetch data on saveAndKeepEditing', async () => {
-    const refetch = jest.fn();
     const restart = jest.fn();
-
-    useOrganization.mockReturnValue({
-      organization,
-      isFetching: false,
-      refetch,
-    });
 
     renderOrganizationEdit();
 
@@ -152,7 +150,7 @@ describe('OrganizationEdit', () => {
       [SUBMIT_ACTION_FIELD_NAME]: SUBMIT_ACTION.saveAndKeepEditing,
     }, { getFieldState, restart });
 
-    expect(refetch).toHaveBeenCalled();
+    expect(refetchOrganization).toHaveBeenCalled();
     expect(restart).toHaveBeenCalled();
   });
 });
