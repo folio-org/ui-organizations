@@ -1,24 +1,26 @@
+import mapValues from 'lodash/mapValues';
 import PropTypes from 'prop-types';
+import { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router';
-import { mapValues } from 'lodash';
 
 import { IfPermission } from '@folio/stripes/core';
 import stripesForm from '@folio/stripes/final-form';
 import {
   Accordion,
   AccordionSet,
+  Button,
   Col,
   checkScope,
   ExpandAllButton,
   HasCommand,
   Pane,
+  PaneFooter,
   Paneset,
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
-  FormFooter,
   PrivilegedDonorContacts,
   handleKeyCommand,
   useAccordionToggle,
@@ -39,20 +41,28 @@ import {
   ORGANIZATION_SECTIONS,
   ORGANIZATION_SECTION_LABELS,
   MAP_FIELD_ACCORDION,
+  SUBMIT_ACTION,
+  SUBMIT_ACTION_FIELD_NAME,
 } from '../constants';
 
 const defaultPaneTitle = <FormattedMessage id="ui-organizations.createOrg.title" />;
 
 const OrganizationForm = ({
-  pristine,
-  submitting,
+  cancelForm,
+  form,
   handleSubmit,
   initialValues,
+  isSubmitDisabled,
   paneTitle = defaultPaneTitle,
-  cancelForm,
+  pristine,
+  submitting,
   values: formValues,
-  form,
 }) => {
+  const {
+    change,
+    getState,
+  } = form;
+
   const initialAccordionStatus = {
     [ORGANIZATION_SECTIONS.summarySection]: true,
     [ORGANIZATION_SECTIONS.contactInformationSection]: false,
@@ -65,7 +75,7 @@ const OrganizationForm = ({
     [ORGANIZATION_SECTIONS.accountsSection]: false,
   };
   const [expandAll, stateSections, toggleSection] = useAccordionToggle(initialAccordionStatus);
-  const errorAccordions = Object.keys(form.getState().errors).map(
+  const errorAccordions = Object.keys(getState().errors).map(
     (fieldName) => ({ [MAP_FIELD_ACCORDION[fieldName]]: true }),
   );
   const sections = errorAccordions.length
@@ -79,6 +89,18 @@ const OrganizationForm = ({
 
   const { enabled: isBankingInformationEnabled } = useBankingInformationSettings();
 
+  const onSaveAndClose = useCallback(() => {
+    change(SUBMIT_ACTION_FIELD_NAME, SUBMIT_ACTION.saveAndClose);
+    handleSubmit();
+  }, [change, handleSubmit]);
+
+  const onSaveAndKeepEditing = useCallback(() => {
+    change(SUBMIT_ACTION_FIELD_NAME, SUBMIT_ACTION.saveAndKeepEditing);
+    handleSubmit();
+  }, [change, handleSubmit]);
+
+  const disabled = pristine || submitting || isSubmitDisabled;
+
   const shortcuts = [
     {
       name: 'cancel',
@@ -87,7 +109,7 @@ const OrganizationForm = ({
     },
     {
       name: 'save',
-      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
+      handler: handleKeyCommand(handleSubmit, { disabled }),
     },
     {
       name: 'expandAllSections',
@@ -103,14 +125,50 @@ const OrganizationForm = ({
     },
   ];
 
+  const paneFooterStart = (
+    <Row>
+      <Col xs>
+        <Button
+          id="clickable-close-organization-form"
+          buttonStyle="default mega"
+          onClick={() => cancelForm()}
+        >
+          <FormattedMessage id="stripes-components.cancel" />
+        </Button>
+      </Col>
+    </Row>
+  );
+
+  const paneFooterEnd = (
+    <Row>
+      <Col xs>
+        <Button
+          id="clickable-save-and-keep-editing"
+          buttonStyle="default mega"
+          disabled={disabled}
+          onClick={onSaveAndKeepEditing}
+        >
+          <FormattedMessage id="stripes-components.saveAndKeepEditing" />
+        </Button>
+      </Col>
+
+      <Col xs>
+        <Button
+          id="clickable-save"
+          buttonStyle="primary mega"
+          disabled={disabled}
+          onClick={onSaveAndClose}
+        >
+          <FormattedMessage id="stripes-components.saveAndClose" />
+        </Button>
+      </Col>
+    </Row>
+  );
+
   const paneFooter = (
-    <FormFooter
-      id="organization-form-save"
-      label={<FormattedMessage id="stripes-components.saveAndClose" />}
-      pristine={pristine}
-      submitting={submitting}
-      handleSubmit={handleSubmit}
-      onCancel={cancelForm}
+    <PaneFooter
+      renderStart={paneFooterStart}
+      renderEnd={paneFooterEnd}
     />
   );
 
@@ -121,7 +179,7 @@ const OrganizationForm = ({
         isWithinScope={checkScope}
         scope={document.body}
       >
-        <Paneset>
+        <Paneset isRoot>
           <Pane
             data-test-form-vendor-pane
             defaultWidth="100%"
@@ -267,14 +325,15 @@ const OrganizationForm = ({
 };
 
 OrganizationForm.propTypes = {
+  cancelForm: PropTypes.func.isRequired,
+  form: PropTypes.object,
+  handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
+  isSubmitDisabled: PropTypes.bool,
+  paneTitle: PropTypes.node,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  cancelForm: PropTypes.func.isRequired,
-  paneTitle: PropTypes.node,
   values: PropTypes.object,
-  form: PropTypes.object,
 };
 
 export default stripesForm({

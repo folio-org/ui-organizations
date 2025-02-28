@@ -14,6 +14,7 @@
 * Migrate to shared GA workflows. Refs UIORGS-458.
 * *BREAKING* Migrate stripes dependencies to their Sunflower versions. Refs UIORGS-459.
 * *BREAKING* Migrate `react-intl` to v7. Refs UIORGS-460.
+* Add a Save & keep editing button. Refs UIORGS-449.
 
 ## [5.2.0](https://github.com/folio-org/ui-organizations/tree/v5.2.0) (2024-10-31)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.1.1...v5.2.0)
