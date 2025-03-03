@@ -459,7 +459,7 @@
     "versionHistory.field.metadata.createdByUserId": "Created by",
     "versionHistory.field.metadata.createdDate": "Created date",
     "versionHistory.field.metadata.updatedByUserId": "Updated by",
-    "versionHistory.field.metadata.updatedDate": "Updated date",
+    "versionHistory.field.metadata.updatedDate": "Zaktualizowana data",
     "versionHistory.field.alias.description": "Alias description",
     "versionHistory.field.sanCode": "SAN Code",
     "versionHistory.field.accounts.acqUnitsIds": "Account acquisition units",
