@@ -508,7 +508,7 @@
     "integrationDetails.duplicate.confirmModal.heading": "Duplicate integration config",
     "integrationDetails.duplicate.confirmModal.message": "Are you sure you want to duplicate the <b>{term}</b> integration config?",
     "settings.numberGeneratorOptions": "Number generator options",
-    "settings.numberGeneratorOptions.info": "Fields which are usually filled using a numeric sequence can use the number generator. When the generator is switched on the field can either be fixed to prevent manual update, or made fully editable. When switched off, the field must be filled manually.",
+    "settings.numberGeneratorOptions.info": "Velden die gewoonlijk worden ingevuld met een numerieke reeks kunnen de nummergenerator gebruiken. Wanneer de generator is ingeschakeld, kan het veld worden vastgezet om een handmatige update te voorkomen, of het kan volledig bewerkbaar worden gemaakt. Wanneer uitgeschakeld, moet het veld handmatig worden ingevuld.",
     "settings.numberGeneratorOptions.useGeneratorForVendor": "Number generator on, fixed: the vendor code can be filled using the generator only.",
     "settings.numberGeneratorOptions.useTextFieldForVendor": "Number generator off: the vendor code can be filled manually only.",
     "settings.numberGeneratorOptions.useBothForVendor": "Number generator on, editable: the vendor code can be filled using the generator and be edited, or filled manually.",
