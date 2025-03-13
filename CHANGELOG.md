@@ -1,6 +1,9 @@
 # Change history for ui-organizations
 
-## 6.0.0 (IN PROGRESS)
+## 6.1.0 (IN PROGRESS)
+
+## [6.0.0](https://github.com/folio-org/ui-organizations/tree/v6.0.0) (2025-03-12)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.2.0...v6.0.0)
 
 * *BREAKING* Display all versions in change log in fourth pane. Refs UIORGS-355.
 * Show in version history record view, which fields have been edited. Refs UIORGS-356.
