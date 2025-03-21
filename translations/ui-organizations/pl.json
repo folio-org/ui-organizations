@@ -116,7 +116,7 @@
     "vendorInfo.expectedInvoiceInterval": "Przewidywany okres fakturowania",
     "vendorInfo.expectedReceiptInterval": "Przewidywany czas wpływu",
     "vendorInfo.renewalActivationInterval": "Okres odnawiania prolongaty",
-    "vendorInfo.subscriptionInterval": "Okres subskrypcji",
+    "vendorInfo.subscriptionInterval": "Interwał subskrypcji",
     "vendorInfo.tax": "Podatek",
     "vendorInfo.taxID": "Identyfikator podatkowy",
     "vendorInfo.taxPercentage": "Procent podatku",
@@ -516,5 +516,5 @@
     "settings.numberGeneratorOptions.save.success": "Setting was successfully saved",
     "numberGenerator.vendorCodeGenerator": "Vendor code generator",
     "numberGenerator.generateVendorCode": "Generate vendor code",
-    "settings.numberGeneratorOptions.infoAdditional": "Additional number generator settings are available under {serviceInteractionLink}.  At {numberGeneratorSequencesLink} sequences can be defined by selecting the appropriate generator via the drop-down menu."
+    "settings.numberGeneratorOptions.infoAdditional": "Dodatkowe ustawienia generatora liczb są dostępne pod {serviceInteractionLink}. W {numberGeneratorSequencesLink} sekwencje można zdefiniować, wybierając odpowiedni generator za pomocą rozwijanego menu."
 }
