@@ -14,14 +14,14 @@ import {
 
 import { useVendorCodeGeneratorSettings } from './useVendorCodeGeneratorSettings';
 import {
-  VENDOR_CODE_GENERATOR_OPTIONS,
+  NUMBER_GENERATOR_OPTIONS_ONNOTEDITABLE,
   VENDOR_CODE_GENERATOR_SETTINGS_KEY,
 } from '../../constants';
 
 const settingsEntity = {
   id: '3297a4ed-2071-4455-8874-23ff88029490',
   key: VENDOR_CODE_GENERATOR_SETTINGS_KEY,
-  value: VENDOR_CODE_GENERATOR_OPTIONS.GENERATOR,
+  value: NUMBER_GENERATOR_OPTIONS_ONNOTEDITABLE,
 };
 
 const mockKy = {
