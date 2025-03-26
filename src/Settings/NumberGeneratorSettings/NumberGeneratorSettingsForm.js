@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Field } from 'react-final-form';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
 import {
   Button,
@@ -10,8 +13,8 @@ import {
   Pane,
   PaneFooter,
   PaneHeader,
-  RadioButton,
   Row,
+  Select,
 } from '@folio/stripes/components';
 import stripesFinalForm from '@folio/stripes/final-form';
 
@@ -24,6 +27,17 @@ import {
 } from '../../common/constants/numberGenerator';
 
 const NumberGeneratorSettingsForm = ({ handleSubmit, pristine, submitting }) => {
+  const intl = useIntl();
+
+  const getTranslatedDataOptions = (field) => {
+    return field.map(item => ({
+      label: item.value ? intl.formatMessage({ id: `ui-organizations.settings.numberGeneratorOptions.${item.value}` }) : '',
+      value: item.value,
+    }));
+  };
+
+  const dataOptionsTranslated = getTranslatedDataOptions(VENDOR_CODE_GENERATOR_OPTIONS);
+
   const paneHeader = (renderProps) => (
     <PaneHeader
       {...renderProps}
@@ -81,28 +95,11 @@ const NumberGeneratorSettingsForm = ({ handleSubmit, pristine, submitting }) => 
       <Row>
         <Col xs={12}>
           <Field
-            component={RadioButton}
-            id={VENDOR_CODE_GENERATOR_OPTIONS.TEXTFIELD}
-            label={<FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.useTextFieldForVendor" />}
+            component={Select}
+            dataOptions={dataOptionsTranslated}
+            id={VENDOR_CODE_GENERATOR_SETTINGS_KEY}
+            label={<FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.code" />}
             name={VENDOR_CODE_GENERATOR_SETTINGS_KEY}
-            type="radio"
-            value={VENDOR_CODE_GENERATOR_OPTIONS.TEXTFIELD}
-          />
-          <Field
-            component={RadioButton}
-            id={VENDOR_CODE_GENERATOR_OPTIONS.BOTH}
-            label={<FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.useBothForVendor" />}
-            name={VENDOR_CODE_GENERATOR_SETTINGS_KEY}
-            type="radio"
-            value={VENDOR_CODE_GENERATOR_OPTIONS.BOTH}
-          />
-          <Field
-            component={RadioButton}
-            id={VENDOR_CODE_GENERATOR_OPTIONS.GENERATOR}
-            label={<FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.useGeneratorForVendor" />}
-            name={VENDOR_CODE_GENERATOR_SETTINGS_KEY}
-            type="radio"
-            value={VENDOR_CODE_GENERATOR_OPTIONS.GENERATOR}
           />
         </Col>
       </Row>

@@ -10,7 +10,7 @@ import { VENDOR_CODE_GENERATOR_SETTINGS_KEY } from '../../common/constants/numbe
 import { useVendorCodeGeneratorSettings } from '../../common/hooks/useVendorCodeGeneratorSettings';
 
 const NumberGeneratorSettings = () => {
-  const { vendorCodeSetting, isLoading } = useVendorCodeGeneratorSettings();
+  const { vendorCodeSetting, isLoading, refetch } = useVendorCodeGeneratorSettings();
   const ky = useOkapiKy();
   const sendCallout = useShowCallout();
 
@@ -29,6 +29,7 @@ const NumberGeneratorSettings = () => {
       sendCallout({
         message: <FormattedMessage id="ui-organizations.settings.numberGeneratorOptions.save.success" />,
       });
+      refetch();
     } catch (error) {
       sendCallout({
         type: 'error',
