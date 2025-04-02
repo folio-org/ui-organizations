@@ -508,13 +508,14 @@
     "integrationDetails.duplicate.confirmModal.heading": "Duplikovat nastavení integrace",
     "integrationDetails.duplicate.confirmModal.message": "Opravdu chcete duplikovat konfiguraci integrace <b> {term} </b>?",
     "settings.numberGeneratorOptions": "Možnosti generátoru čísel",
-    "settings.numberGeneratorOptions.info": "Pole, která se obvykle vyplňují pomocí číselné posloupnosti, mohou používat generátor čísel. Po zapnutí generátoru lze pole buď uzamknout, aby se zabránilo ruční aktualizaci, nebo jej lze plně upravovat. Když je generátor vypnutý, je třeba pole vyplnit ručně.",
-    "settings.numberGeneratorOptions.useGeneratorForVendor": "Zapnutý generátor čísel, nastaven napevno: kód prodejce lze vyplnit pouze pomocí generátoru.",
-    "settings.numberGeneratorOptions.useTextFieldForVendor": "Generátor čísel vypnutý: kód prodejce lze vyplnit pouze ručně.",
-    "settings.numberGeneratorOptions.useBothForVendor": "Zapnutý generátor čísel, možnost úprav: kód prodejce lze vyplnit pomocí generátoru a upravit jej, nebo vyplnit ručně.",
+    "settings.numberGeneratorOptions.info": "Pole, která se obvykle vyplňují pomocí číselné posloupnosti, mohou používat generátor čísel. Po zapnutí generátoru lze pole buď uzamknout, aby se zabránilo ruční aktualizaci, nebo jej lze nechat upravovatelné. Když je generátor vypnutý, je třeba pole vyplnit ručně.",
     "settings.numberGeneratorOptions.save.error": "Při ukládání nastavení došlo k chybě",
     "settings.numberGeneratorOptions.save.success": "Nastavení bylo úspěšně uloženo",
     "numberGenerator.vendorCodeGenerator": "Generátor kódu prodejce",
     "numberGenerator.generateVendorCode": "Generování kódu prodejce",
-    "settings.numberGeneratorOptions.infoAdditional": "Další nastavení generátoru čísel jsou k dispozici v části {serviceInteractionLink}. Na stránce {numberGeneratorSequencesLink} lze sekvence definovat výběrem příslušného generátoru z rozbalovací nabídky."
+    "settings.numberGeneratorOptions.infoAdditional": "Další nastavení generátoru čísel jsou k dispozici v části {serviceInteractionLink}. Na stránce {numberGeneratorSequencesLink} lze sekvence definovat výběrem příslušného generátoru z rozbalovací nabídky.",
+    "settings.numberGeneratorOptions.code": "Kód",
+    "settings.numberGeneratorOptions.off": "Vypnuto",
+    "settings.numberGeneratorOptions.onEditable": "Zapnuto, pole lze upravovat",
+    "settings.numberGeneratorOptions.onNotEditable": "Zapnuto, pole nelze upravovat"
 }

@@ -509,12 +509,13 @@
     "integrationDetails.duplicate.confirmModal.message": "Weet u zeker dat u de <b> wilt dupliceren?{Voorwaarde}</b> Integraties configureren?",
     "settings.numberGeneratorOptions": "Nummergenerator opties",
     "settings.numberGeneratorOptions.info": "Velden die gewoonlijk worden ingevuld met een numerieke reeks kunnen de nummergenerator gebruiken. Wanneer de generator is ingeschakeld, kan het veld worden vastgezet om een handmatige update te voorkomen, of het kan volledig bewerkbaar worden gemaakt. Wanneer uitgeschakeld, moet het veld handmatig worden ingevuld.",
-    "settings.numberGeneratorOptions.useGeneratorForVendor": "Nummergenerator aan, vast: de leverancierscode kan alleen met de generator worden ingevuld.",
-    "settings.numberGeneratorOptions.useTextFieldForVendor": "Nummergenerator uit: de code van de Leverancier kan alleen handmatig worden ingevuld.",
-    "settings.numberGeneratorOptions.useBothForVendor": "Nummergenerator aan, bewerkbaar: de leverancierscode kan met de generator worden ingevuld en bewerkt, of handmatig worden ingevuld.",
     "settings.numberGeneratorOptions.save.error": "Fout bij het opslaan van de instelling",
     "settings.numberGeneratorOptions.save.success": "Opslaan is gelukt",
     "numberGenerator.vendorCodeGenerator": "Leverancier code generator",
     "numberGenerator.generateVendorCode": "Leveranciercode genereren",
-    "settings.numberGeneratorOptions.infoAdditional": "Extra instellingen voor de nummergenerator zijn beschikbaar onder {serviceInteractionLink}.  Op {numberGeneratorSequencesLink} sequenties kunnen worden gedefinieerd door de juiste generator via het vervolgkeuzemenu te selecteren."
+    "settings.numberGeneratorOptions.infoAdditional": "Extra instellingen voor de nummergenerator zijn beschikbaar onder {serviceInteractionLink}.  Op {numberGeneratorSequencesLink} sequenties kunnen worden gedefinieerd door de juiste generator via het vervolgkeuzemenu te selecteren.",
+    "settings.numberGeneratorOptions.code": "Code",
+    "settings.numberGeneratorOptions.off": "Off",
+    "settings.numberGeneratorOptions.onEditable": "On, field editable",
+    "settings.numberGeneratorOptions.onNotEditable": "On, field not editable"
 }
