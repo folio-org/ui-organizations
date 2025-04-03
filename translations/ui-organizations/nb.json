@@ -509,12 +509,13 @@
     "integrationDetails.duplicate.confirmModal.message": "Are you sure you want to duplicate the <b>{term}</b> integration config?",
     "settings.numberGeneratorOptions": "Number generator options",
     "settings.numberGeneratorOptions.info": "Fields which are usually filled using a numeric sequence can use the number generator. When the generator is switched on the field can either be fixed to prevent manual update, or made fully editable. When switched off, the field must be filled manually.",
-    "settings.numberGeneratorOptions.useGeneratorForVendor": "Number generator on, fixed: the vendor code can be filled using the generator only.",
-    "settings.numberGeneratorOptions.useTextFieldForVendor": "Number generator off: the vendor code can be filled manually only.",
-    "settings.numberGeneratorOptions.useBothForVendor": "Number generator on, editable: the vendor code can be filled using the generator and be edited, or filled manually.",
     "settings.numberGeneratorOptions.save.error": "Error saving setting",
     "settings.numberGeneratorOptions.save.success": "Setting was successfully saved",
     "numberGenerator.vendorCodeGenerator": "Vendor code generator",
     "numberGenerator.generateVendorCode": "Generate vendor code",
-    "settings.numberGeneratorOptions.infoAdditional": "Additional number generator settings are available under {serviceInteractionLink}.  At {numberGeneratorSequencesLink} sequences can be defined by selecting the appropriate generator via the drop-down menu."
+    "settings.numberGeneratorOptions.infoAdditional": "Additional number generator settings are available under {serviceInteractionLink}.  At {numberGeneratorSequencesLink} sequences can be defined by selecting the appropriate generator via the drop-down menu.",
+    "settings.numberGeneratorOptions.code": "Code",
+    "settings.numberGeneratorOptions.off": "Off",
+    "settings.numberGeneratorOptions.onEditable": "On, field editable",
+    "settings.numberGeneratorOptions.onNotEditable": "On, field not editable"
 }

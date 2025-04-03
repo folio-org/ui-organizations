@@ -509,12 +509,13 @@
     "integrationDetails.duplicate.confirmModal.message": "Tem certeza de que deseja duplicar o <b>{term}</b> configuração de integração?",
     "settings.numberGeneratorOptions": "Opções do gerador de números",
     "settings.numberGeneratorOptions.info": "Os campos que normalmente são preenchidos com uma sequência numérica podem usar o gerador de números. Quando o gerador é ativado, o campo pode ser fixo para impedir a atualização manual ou pode ser totalmente editável. Quando desativado, o campo deve ser preenchido manualmente.",
-    "settings.numberGeneratorOptions.useGeneratorForVendor": "Gerador de números ativado, fixo: o código do fornecedor pode ser preenchido usando apenas o gerador.",
-    "settings.numberGeneratorOptions.useTextFieldForVendor": "Gerador de números desativado: o código do fornecedor só pode ser preenchido manualmente.",
-    "settings.numberGeneratorOptions.useBothForVendor": "Gerador de números ativado, editável: o código do fornecedor pode ser preenchido usando o gerador e ser editado ou preenchido manualmente.",
     "settings.numberGeneratorOptions.save.error": "Erro ao salvar configuração",
     "settings.numberGeneratorOptions.save.success": "A configuração foi salva com sucesso",
     "numberGenerator.vendorCodeGenerator": "Gerador de código do fornecedor",
     "numberGenerator.generateVendorCode": "Gerar código de fornecedor",
-    "settings.numberGeneratorOptions.infoAdditional": "Configurações adicionais do gerador de números estão disponíveis em {serviceInteractionLink}.  Em {numberGeneratorSequencesLink}, as sequências podem ser definidas selecionando-se o gerador apropriado no menu suspenso."
+    "settings.numberGeneratorOptions.infoAdditional": "Configurações adicionais do gerador de números estão disponíveis em {serviceInteractionLink}.  Em {numberGeneratorSequencesLink}, as sequências podem ser definidas selecionando-se o gerador apropriado no menu suspenso.",
+    "settings.numberGeneratorOptions.code": "Código",
+    "settings.numberGeneratorOptions.off": "Desligado",
+    "settings.numberGeneratorOptions.onEditable": "Ligado, campo editável",
+    "settings.numberGeneratorOptions.onNotEditable": "Ligado, campo não editável"
 }

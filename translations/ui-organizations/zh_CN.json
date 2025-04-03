@@ -509,12 +509,13 @@
     "integrationDetails.duplicate.confirmModal.message": "确定要复制<b> {term} </b>集成配置吗？",
     "settings.numberGeneratorOptions": "数字生成器选项",
     "settings.numberGeneratorOptions.info": "通常使用数字序列填写的字段可以使用数字生成器。当生成器打开时，可以固定该字段以防止手动更新，或使其完全可编辑。当关闭时，必须手动填写该字段。",
-    "settings.numberGeneratorOptions.useGeneratorForVendor": "数字生成器开启，已固定 : 供应商代码只能使用生成器来填充。",
-    "settings.numberGeneratorOptions.useTextFieldForVendor": "数字生成器关闭 : 只能手动填写供应商代码。",
-    "settings.numberGeneratorOptions.useBothForVendor": "数字生成器开启，可编辑 : 可以使用生成器填写供应商代码并进行编辑，也可以手动填写。",
     "settings.numberGeneratorOptions.save.error": "保存设置错误",
     "settings.numberGeneratorOptions.save.success": "设置已成功保存",
     "numberGenerator.vendorCodeGenerator": "供应商代码生成器",
     "numberGenerator.generateVendorCode": "生成供应商代码",
-    "settings.numberGeneratorOptions.infoAdditional": "{serviceInteractionLink}下有其他数字生成器设置。在{numberGeneratorSequencesLink}中，可以通过下拉菜单选择适当的生成器来定义序列。"
+    "settings.numberGeneratorOptions.infoAdditional": "{serviceInteractionLink}下有其他数字生成器设置。在{numberGeneratorSequencesLink}中，可以通过下拉菜单选择适当的生成器来定义序列。",
+    "settings.numberGeneratorOptions.code": "Code",
+    "settings.numberGeneratorOptions.off": "Off",
+    "settings.numberGeneratorOptions.onEditable": "On, field editable",
+    "settings.numberGeneratorOptions.onNotEditable": "On, field not editable"
 }
