@@ -1,6 +1,6 @@
 {
   "name": "@folio/organizations",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Organizations",
   "main": "index.js",
   "repository": "folio-org/ui-organizations",
@@ -24,16 +24,12 @@
       "data-export-spring": "1.0 2.0",
       "configuration": "2.0",
       "organizations.organizations": "1.0",
-      "organizations-storage.addresses": "1.1",
       "organizations-storage.categories": "1.1",
       "organizations-storage.organization-types": "1.0",
       "organizations-storage.contacts": "2.0",
-      "organizations-storage.emails": "1.1",
       "organizations-storage.interfaces": "2.1",
-      "organizations-storage.phone-numbers": "2.0",
       "organizations-storage.privileged-contacts": "1.0",
       "organizations-storage.settings": "1.1",
-      "organizations-storage.urls": "1.1",
       "tags": "1.0",
       "users": "15.1 16.0"
     },
@@ -95,22 +91,14 @@
           "orders.acquisition-method.item.get",
           "organizations.organizations.collection.get",
           "organizations.organizations.item.get",
-          "organizations-storage.addresses.collection.get",
-          "organizations-storage.addresses.item.get",
           "organizations-storage.categories.collection.get",
           "organizations-storage.organization-types.collection.get",
           "organizations-storage.categories.item.get",
           "organizations-storage.contacts.item.get",
           "organizations-storage.contacts.collection.get",
-          "organizations-storage.emails.collection.get",
-          "organizations-storage.emails.item.get",
           "organizations-storage.interfaces.item.get",
           "organizations-storage.interfaces.collection.get",
-          "organizations-storage.phone-numbers.collection.get",
-          "organizations-storage.phone-numbers.item.get",
           "organizations-storage.settings.collection.get",
-          "organizations-storage.urls.collection.get",
-          "organizations-storage.urls.item.get",
           "ui-organizations.third-party-services.execute"
         ]
       },
@@ -123,10 +111,6 @@
           "data-export.config.item.post",
           "data-export.config.item.put",
           "organizations.organizations.item.put",
-          "organizations-storage.addresses.item.put",
-          "organizations-storage.emails.item.put",
-          "organizations-storage.phone-numbers.item.put",
-          "organizations-storage.urls.item.put",
           "organizations-storage.contacts.item.post",
           "organizations-storage.contacts.item.put",
           "organizations-storage.contacts.item.delete",
@@ -142,10 +126,6 @@
         "visible": true,
         "subPermissions": [
           "organizations.organizations.item.post",
-          "organizations-storage.addresses.item.post",
-          "organizations-storage.emails.item.post",
-          "organizations-storage.phone-numbers.item.post",
-          "organizations-storage.urls.item.post",
           "ui-organizations.edit"
         ]
       },
@@ -155,10 +135,6 @@
         "visible": true,
         "subPermissions": [
           "organizations.organizations.item.delete",
-          "organizations-storage.addresses.item.delete",
-          "organizations-storage.emails.item.delete",
-          "organizations-storage.phone-numbers.item.delete",
-          "organizations-storage.urls.item.delete",
           "ui-organizations.edit"
         ]
       },
