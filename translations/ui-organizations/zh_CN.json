@@ -514,8 +514,8 @@
     "numberGenerator.vendorCodeGenerator": "供应商代码生成器",
     "numberGenerator.generateVendorCode": "生成供应商代码",
     "settings.numberGeneratorOptions.infoAdditional": "{serviceInteractionLink}下有其他数字生成器设置。在{numberGeneratorSequencesLink}中，可以通过下拉菜单选择适当的生成器来定义序列。",
-    "settings.numberGeneratorOptions.code": "Code",
-    "settings.numberGeneratorOptions.off": "Off",
-    "settings.numberGeneratorOptions.onEditable": "On, field editable",
-    "settings.numberGeneratorOptions.onNotEditable": "On, field not editable"
+    "settings.numberGeneratorOptions.code": "代码",
+    "settings.numberGeneratorOptions.off": "关闭",
+    "settings.numberGeneratorOptions.onEditable": "开启，字段可编辑",
+    "settings.numberGeneratorOptions.onNotEditable": "开启，字段不可编辑"
 }
