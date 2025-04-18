@@ -320,7 +320,7 @@
     "integration.edit.paneTitle": "Edit integration - {name}",
     "integration.info": "Integration information",
     "integration.info.configName": "Integration name",
-    "integration.info.configDescription": "Description",
+    "integration.info.configDescription": "Опис",
     "integration.info.isDefaultConfig": "Default integration",
     "integration.edi": "EDI configuration",
     "integration.edi.accountNumbers": "Account numbers",
