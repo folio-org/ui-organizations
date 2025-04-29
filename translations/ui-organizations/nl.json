@@ -515,7 +515,7 @@
     "numberGenerator.generateVendorCode": "Leveranciercode genereren",
     "settings.numberGeneratorOptions.infoAdditional": "Extra instellingen voor de nummergenerator zijn beschikbaar onder {serviceInteractionLink}.  Op {numberGeneratorSequencesLink} sequenties kunnen worden gedefinieerd door de juiste generator via het vervolgkeuzemenu te selecteren.",
     "settings.numberGeneratorOptions.code": "Code",
-    "settings.numberGeneratorOptions.off": "Off",
-    "settings.numberGeneratorOptions.onEditable": "On, field editable",
-    "settings.numberGeneratorOptions.onNotEditable": "On, field not editable"
+    "settings.numberGeneratorOptions.off": "Uit",
+    "settings.numberGeneratorOptions.onEditable": "Aan, veld bewerkbaar",
+    "settings.numberGeneratorOptions.onNotEditable": "Aan, veld niet bewerkbaar"
 }
