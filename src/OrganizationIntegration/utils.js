@@ -2,6 +2,11 @@ import { flow, join, map, pick, values } from 'lodash/fp';
 import moment from 'moment-timezone';
 
 import {
+  validateRequired,
+  validateURLRequired,
+} from '@folio/stripes-acq-components';
+
+import {
   EDI_NAMING_TOKENS,
   FILE_FORMAT,
   INTEGRATION_TYPE,
@@ -146,4 +151,36 @@ export const getDuplicateTimestamp = ({ intl }) => {
   });
 
   return timestamp;
+};
+
+/* Validators */
+
+/*
+ * Returns a function that checks if the condition is met and then applies the validator.
+ * If the condition is not met, it returns undefined.
+ */
+export const createConditionalValidator = (condition, validator) => {
+  return (value, allValues, meta) => {
+    return condition(allValues, value, meta) ? validator(value, allValues, meta) : undefined;
+  };
+};
+
+export const validateAccountNumbersField = (...params) => {
+  return createConditionalValidator(isFileFormatEDI, validateRequired)(...params);
+};
+
+export const validateVendorEDICode = (...params) => {
+  return createConditionalValidator(isFileFormatEDI, validateRequired)(...params);
+};
+
+export const validateLibraryEDICode = (...params) => {
+  return createConditionalValidator(isFileFormatEDI, validateRequired)(...params);
+};
+
+export const validateFTPServerAddress = (...params) => {
+  return createConditionalValidator(isTransmissionMethodFTP, validateURLRequired)(...params);
+};
+
+export const validateFTPPort = (...params) => {
+  return createConditionalValidator(isTransmissionMethodFTP, validateRequired)(...params);
 };

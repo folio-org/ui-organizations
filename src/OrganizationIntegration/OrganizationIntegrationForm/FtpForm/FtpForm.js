@@ -12,10 +12,6 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
-import {
-  validateRequired,
-  validateURLRequired,
-} from '@folio/stripes-acq-components';
 
 import {
   Credentials,
@@ -26,7 +22,11 @@ import {
   TRANSMISSION_MODES,
   CONNECTION_MODES,
 } from '../../constants';
-import { isTransmissionMethodFTP } from '../../utils';
+import {
+  isTransmissionMethodFTP,
+  validateFTPPort,
+  validateFTPServerAddress,
+} from '../../utils';
 
 export const FtpForm = () => {
   const { getState } = useForm();
@@ -76,10 +76,10 @@ export const FtpForm = () => {
             label={<FormattedMessage id="ui-organizations.integration.ftp.serverAddress" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediFtp.serverAddress"
             type="text"
-            validate={isMethodFTP ? validateURLRequired : undefined}
             component={TextField}
             fullWidth
             required={isMethodFTP}
+            validate={validateFTPServerAddress}
             validateFields={[]}
           />
         </Col>
@@ -148,7 +148,7 @@ export const FtpForm = () => {
             fullWidth
             required={isMethodFTP}
             validateFields={[]}
-            validate={isMethodFTP ? validateRequired : undefined}
+            validate={validateFTPPort}
           />
         </Col>
         <Col

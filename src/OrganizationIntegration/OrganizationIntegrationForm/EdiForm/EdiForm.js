@@ -16,7 +16,6 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
-import { validateRequired } from '@folio/stripes-acq-components';
 
 import {
   EDI_CODE_TYPES,
@@ -25,6 +24,8 @@ import {
 import {
   getAcqMethodOptions,
   isFileFormatEDI,
+  validateLibraryEDICode,
+  validateVendorEDICode,
 } from '../../utils';
 
 export const EdiForm = ({ acqMethods }) => {
@@ -67,7 +68,7 @@ export const EdiForm = ({ acqMethods }) => {
             label={<FormattedMessage id="ui-organizations.integration.edi.vendorEDICode" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.vendorEdiCode"
             required={isFormatEDI}
-            validate={isFormatEDI ? validateRequired : undefined}
+            validate={validateVendorEDICode}
           />
         </Col>
 
@@ -97,7 +98,7 @@ export const EdiForm = ({ acqMethods }) => {
             label={<FormattedMessage id="ui-organizations.integration.edi.libraryEDICode" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.libEdiCode"
             required={isFormatEDI}
-            validate={isFormatEDI ? validateRequired : undefined}
+            validate={validateLibraryEDICode}
           />
         </Col>
 
