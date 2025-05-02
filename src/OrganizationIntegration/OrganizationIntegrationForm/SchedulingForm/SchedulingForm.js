@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
-import { Field, useForm } from 'react-final-form';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
+import {
+  Field,
+  useForm,
+} from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 
 import {
