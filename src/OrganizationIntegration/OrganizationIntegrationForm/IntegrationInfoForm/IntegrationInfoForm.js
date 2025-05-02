@@ -33,6 +33,7 @@ import {
   getTransmissionMethodOptions,
   isFileFormatEDI,
   isOrderingIntegration,
+  validateAccountNumbersField,
 } from '../../utils';
 
 export const IntegrationInfoForm = ({
@@ -169,7 +170,7 @@ export const IntegrationInfoForm = ({
                 fullWidth
                 multiple
                 required={isFormatEDI}
-                validate={isFormatEDI ? validateRequired : undefined}
+                validate={validateAccountNumbersField}
               />
             </Col>
           )

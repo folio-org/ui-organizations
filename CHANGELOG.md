@@ -4,6 +4,7 @@
 
 * Change radio buttons into drop-down in Settings > Organizations > Number generator options. Refs UIORGS-462.
 * Upgrade `@folio/stripes-acq-components` to `v7.0.2`. Refs UIORGS-466.
+* Improve organization integration form fields validation. Refs UIORGS-468.
 
 ## [6.0.0](https://github.com/folio-org/ui-organizations/tree/v6.0.0) (2025-03-12)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v5.2.0...v6.0.0)
