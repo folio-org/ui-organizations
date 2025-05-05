@@ -1,6 +1,9 @@
 # Change history for ui-organizations
 
-## 6.1.0 (IN PROGRESS)
+## 7.0.0 (IN PROGRESS)
+
+## [6.0.1](https://github.com/folio-org/ui-organizations/tree/v6.0.1) (2025-05-05)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v6.0.0...v6.0.1)
 
 * Improve organization integration form fields validation. Refs UIORGS-468.
 
