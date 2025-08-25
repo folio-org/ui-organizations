@@ -249,7 +249,7 @@ exports[`OrganizationVendorInfoForm should render correct structure 1`] = `
                     class="multiSelectOptionList"
                     id="multiselect-option-list-multiselect-:r0:"
                     role="listbox"
-                    style="max-height: 168px;"
+                    style="max-height: 182px;"
                   >
                     <li
                       aria-disabled="false"
