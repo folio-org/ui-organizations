@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import {
   useHistory,
@@ -35,14 +36,14 @@ import {
 
 // should be removed after lotus release
 const buildInitialValues = (organization, withMigration) => {
-  const edi = withMigration ? organization.edi || {} : {};
+  const edi = withMigration ? organization?.edi || {} : {};
 
   return {
     schedulePeriod: 'NONE',
     type: EXPORT_TYPES.claims,
     exportTypeSpecificParameters: {
       vendorEdiOrdersExportConfig: {
-        vendorId: organization.id,
+        vendorId: organization?.id,
         integrationType: INTEGRATION_TYPE.claiming,
         transmissionMethod: TRANSMISSION_METHOD.fileDownLoad,
         fileFormat: FILE_FORMAT.csv,
@@ -99,6 +100,10 @@ export const OrganizationIntegrationCreate = ({ orgId }) => {
     },
   });
 
+  const initialValues = useMemo(() => {
+    return buildInitialValues(organization, !integrationConfigs.length);
+  }, [organization, integrationConfigs]);
+
   if (isLoading || isIntegrationsLoading || isAcqMethodsLoading) {
     return (
       <LoadingPane
@@ -113,7 +118,7 @@ export const OrganizationIntegrationCreate = ({ orgId }) => {
       acqMethods={acqMethods}
       accounts={buildAvailableAccounts(organization, integrationConfigs)}
       defaultIntegration={findDefaultIntegration(integrationConfigs)}
-      initialValues={buildInitialValues(organization, !integrationConfigs.length)}
+      initialValues={initialValues}
       onSubmit={mutateIntegrationConfig}
       onClose={closeForm}
       paneTitle={<FormattedMessage id="ui-organizations.integration.create.paneTitle" />}
