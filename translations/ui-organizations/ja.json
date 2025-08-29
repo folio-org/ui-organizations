@@ -142,7 +142,7 @@
     "accounts.description": "説明",
     "accounts.payable": "会計コード",
     "accounts.paymentMethod": "支払方法",
-    "accounts.accountStatus": "Account status",
+    "accounts.accountStatus": "アカウントステータス",
     "accounts.libraryCode": "図書館コード",
     "accounts.libraryEDICode": "図書館EDIコード",
     "accounts.notes": "ノート",

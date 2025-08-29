@@ -273,7 +273,7 @@
     "organization.delete.heading": "Supprimer {organizationName} ?",
     "organization.delete.confirmLabel": "Supprimer",
     "organization.delete.success": "L'organisation <b> {organizationName} </b> été correctement <b> supprimée </b>",
-    "view.delete": "Effacer",
+    "view.delete": "Supprimer",
     "view.delete.message": "Supprimer l'organisation?",
     "vendor.confirmation.heading": "Confirmer la suppression des données du fournisseur",
     "vendor.confirmation.confirm": "Confirmer",
