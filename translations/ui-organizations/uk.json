@@ -295,7 +295,7 @@
     "vendorInfo.exportToAccounting": "Експорт до системи обліку",
     "notes.entity": "Організація",
     "notes.entityPlural": "Організації",
-    "contactInfo.vendorCategory.customerService": "Customer Service",
+    "contactInfo.vendorCategory.customerService": "Обслуговування клієнтів",
     "contactInfo.vendorCategory.payments": "Оплата",
     "contactInfo.vendorCategory.returns": "Повернення",
     "contactInfo.vendorCategory.shipments": "Відвантаження",
