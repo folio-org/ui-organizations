@@ -447,29 +447,6 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                                     </div>
                                   </button>
                                 </div>
-                                <div
-                                  class="multiSelectMenu"
-                                  hidden=""
-                                  style="width: 100px;"
-                                >
-                                  <div
-                                    class="multiSelectFeedback"
-                                    role="alert"
-                                  >
-                                    <div
-                                      class="multiSelectEmptyMessage"
-                                    >
-                                      stripes-components.multiSelection.defaultEmptyMessage
-                                    </div>
-                                  </div>
-                                  <ul
-                                    aria-labelledby="organizations-type-label"
-                                    class="multiSelectOptionList"
-                                    id="multiselect-option-list-organizations-type"
-                                    role="listbox"
-                                    style="max-height: 182px;"
-                                  />
-                                </div>
                               </div>
                               <div
                                 role="alert"
@@ -529,44 +506,6 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                                 <div
                                   role="alert"
                                 />
-                              </div>
-                              <div
-                                class="overlay"
-                                hidden=""
-                              >
-                                <div
-                                  class="selectionListRoot"
-                                  id="sl-container-selection-:rg:"
-                                  style="width: 0px;"
-                                >
-                                  <div
-                                    class="selectionFilterContainer"
-                                  >
-                                    <input
-                                      aria-activedescendant=""
-                                      aria-autocomplete="list"
-                                      aria-controls="downshift-:rh:-menu"
-                                      aria-expanded="false"
-                                      aria-label="stripes-components.selection.filterOptionsLabel"
-                                      aria-labelledby="downshift-:rh:-label"
-                                      autocomplete="off"
-                                      class="selectionFilter"
-                                      id="downshift-:rh:-input"
-                                      placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                      role="combobox"
-                                      type="text"
-                                      value=""
-                                    />
-                                  </div>
-                                  <ul
-                                    aria-labelledby="sl-label-selection-:rg:"
-                                    class="selectionList"
-                                    id="downshift-:rh:-menu"
-                                    role="listbox"
-                                    style="max-height: 174px;"
-                                    tabindex="-1"
-                                  />
-                                </div>
                               </div>
                             </div>
                           </div>
@@ -654,29 +593,6 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                                       </span>
                                     </div>
                                   </button>
-                                </div>
-                                <div
-                                  class="multiSelectMenu"
-                                  hidden=""
-                                  style="width: 100px;"
-                                >
-                                  <div
-                                    class="multiSelectFeedback"
-                                    role="alert"
-                                  >
-                                    <div
-                                      class="multiSelectEmptyMessage"
-                                    >
-                                      stripes-components.multiSelection.defaultEmptyMessage
-                                    </div>
-                                  </div>
-                                  <ul
-                                    aria-labelledby="org-acq-units-label"
-                                    class="multiSelectOptionList"
-                                    id="multiselect-option-list-org-acq-units"
-                                    role="listbox"
-                                    style="max-height: 182px;"
-                                  />
                                 </div>
                               </div>
                               <div
@@ -1610,29 +1526,6 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                                     </div>
                                   </button>
                                 </div>
-                                <div
-                                  class="multiSelectMenu"
-                                  hidden=""
-                                  style="width: 100px;"
-                                >
-                                  <div
-                                    class="multiSelectFeedback"
-                                    role="alert"
-                                  >
-                                    <div
-                                      class="multiSelectEmptyMessage"
-                                    >
-                                      stripes-components.multiSelection.defaultEmptyMessage
-                                    </div>
-                                  </div>
-                                  <ul
-                                    aria-labelledby="organizations-type-label"
-                                    class="multiSelectOptionList"
-                                    id="multiselect-option-list-organizations-type"
-                                    role="listbox"
-                                    style="max-height: 182px;"
-                                  />
-                                </div>
                               </div>
                               <div
                                 role="alert"
@@ -1692,44 +1585,6 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                                 <div
                                   role="alert"
                                 />
-                              </div>
-                              <div
-                                class="overlay"
-                                hidden=""
-                              >
-                                <div
-                                  class="selectionListRoot"
-                                  id="sl-container-selection-:r2:"
-                                  style="width: 0px;"
-                                >
-                                  <div
-                                    class="selectionFilterContainer"
-                                  >
-                                    <input
-                                      aria-activedescendant=""
-                                      aria-autocomplete="list"
-                                      aria-controls="downshift-:r3:-menu"
-                                      aria-expanded="false"
-                                      aria-label="stripes-components.selection.filterOptionsLabel"
-                                      aria-labelledby="downshift-:r3:-label"
-                                      autocomplete="off"
-                                      class="selectionFilter"
-                                      id="downshift-:r3:-input"
-                                      placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                      role="combobox"
-                                      type="text"
-                                      value=""
-                                    />
-                                  </div>
-                                  <ul
-                                    aria-labelledby="sl-label-selection-:r2:"
-                                    class="selectionList"
-                                    id="downshift-:r3:-menu"
-                                    role="listbox"
-                                    style="max-height: 174px;"
-                                    tabindex="-1"
-                                  />
-                                </div>
                               </div>
                             </div>
                           </div>
@@ -1817,29 +1672,6 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
                                       </span>
                                     </div>
                                   </button>
-                                </div>
-                                <div
-                                  class="multiSelectMenu"
-                                  hidden=""
-                                  style="width: 100px;"
-                                >
-                                  <div
-                                    class="multiSelectFeedback"
-                                    role="alert"
-                                  >
-                                    <div
-                                      class="multiSelectEmptyMessage"
-                                    >
-                                      stripes-components.multiSelection.defaultEmptyMessage
-                                    </div>
-                                  </div>
-                                  <ul
-                                    aria-labelledby="org-acq-units-label"
-                                    class="multiSelectOptionList"
-                                    id="multiselect-option-list-org-acq-units"
-                                    role="listbox"
-                                    style="max-height: 182px;"
-                                  />
                                 </div>
                               </div>
                               <div
@@ -2773,29 +2605,6 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                     </div>
                                   </button>
                                 </div>
-                                <div
-                                  class="multiSelectMenu"
-                                  hidden=""
-                                  style="width: 100px;"
-                                >
-                                  <div
-                                    class="multiSelectFeedback"
-                                    role="alert"
-                                  >
-                                    <div
-                                      class="multiSelectEmptyMessage"
-                                    >
-                                      stripes-components.multiSelection.defaultEmptyMessage
-                                    </div>
-                                  </div>
-                                  <ul
-                                    aria-labelledby="organizations-type-label"
-                                    class="multiSelectOptionList"
-                                    id="multiselect-option-list-organizations-type"
-                                    role="listbox"
-                                    style="max-height: 182px;"
-                                  />
-                                </div>
                               </div>
                               <div
                                 role="alert"
@@ -2855,44 +2664,6 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                 <div
                                   role="alert"
                                 />
-                              </div>
-                              <div
-                                class="overlay"
-                                hidden=""
-                              >
-                                <div
-                                  class="selectionListRoot"
-                                  id="sl-container-selection-:r8:"
-                                  style="width: 0px;"
-                                >
-                                  <div
-                                    class="selectionFilterContainer"
-                                  >
-                                    <input
-                                      aria-activedescendant=""
-                                      aria-autocomplete="list"
-                                      aria-controls="downshift-:r9:-menu"
-                                      aria-expanded="false"
-                                      aria-label="stripes-components.selection.filterOptionsLabel"
-                                      aria-labelledby="downshift-:r9:-label"
-                                      autocomplete="off"
-                                      class="selectionFilter"
-                                      id="downshift-:r9:-input"
-                                      placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                      role="combobox"
-                                      type="text"
-                                      value=""
-                                    />
-                                  </div>
-                                  <ul
-                                    aria-labelledby="sl-label-selection-:r8:"
-                                    class="selectionList"
-                                    id="downshift-:r9:-menu"
-                                    role="listbox"
-                                    style="max-height: 174px;"
-                                    tabindex="-1"
-                                  />
-                                </div>
                               </div>
                             </div>
                           </div>
@@ -2980,29 +2751,6 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                       </span>
                                     </div>
                                   </button>
-                                </div>
-                                <div
-                                  class="multiSelectMenu"
-                                  hidden=""
-                                  style="width: 100px;"
-                                >
-                                  <div
-                                    class="multiSelectFeedback"
-                                    role="alert"
-                                  >
-                                    <div
-                                      class="multiSelectEmptyMessage"
-                                    >
-                                      stripes-components.multiSelection.defaultEmptyMessage
-                                    </div>
-                                  </div>
-                                  <ul
-                                    aria-labelledby="org-acq-units-label"
-                                    class="multiSelectOptionList"
-                                    id="multiselect-option-list-org-acq-units"
-                                    role="listbox"
-                                    style="max-height: 182px;"
-                                  />
                                 </div>
                               </div>
                               <div
@@ -3628,48 +3376,6 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                           </span>
                                         </div>
                                       </button>
-                                    </div>
-                                    <div
-                                      class="multiSelectMenu"
-                                      hidden=""
-                                      style="width: 100px;"
-                                    >
-                                      <div
-                                        class="multiSelectFeedback"
-                                        role="alert"
-                                      />
-                                      <ul
-                                        aria-labelledby="multiselect-:rc:-label"
-                                        class="multiSelectOptionList"
-                                        id="multiselect-option-list-multiselect-:rc:"
-                                        role="listbox"
-                                        style="max-height: 182px;"
-                                      >
-                                        <li
-                                          aria-disabled="false"
-                                          aria-selected="false"
-                                          class="multiSelectOption optionCursor"
-                                          id="downshift-:rd:-item-0"
-                                          role="option"
-                                        >
-                                          BYN (BYN)
-                                          <div>
-                                            +
-                                          </div>
-                                        </li>
-                                        <li
-                                          aria-disabled="false"
-                                          aria-selected="false"
-                                          class="multiSelectOption"
-                                          id="downshift-:rd:-item-1"
-                                          role="option"
-                                        >
-                                          USD (USD)
-                                          <div>
-                                            +
-                                          </div>
-                                        </li>
-                                      </ul>
                                     </div>
                                   </div>
                                   <div
