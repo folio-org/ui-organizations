@@ -110,7 +110,7 @@
     "agreement.pleaseAddAgreements": "Vereinbarungen hinzufügen",
     "vendorInfo.paymentMethod": "Zahlungsart",
     "vendorInfo.vendorCurrencies": "Währungen",
-    "vendorInfo.claimingInterval": "Forderungsintervall",
+    "vendorInfo.claimingInterval": "Mahnintervall",
     "vendorInfo.discountPercent": "Rabatt %",
     "vendorInfo.expectedActivationInterval": "Erwartetes Aktivierungsintervall",
     "vendorInfo.expectedInvoiceInterval": "Erwartetes Rechnungsintervall",
