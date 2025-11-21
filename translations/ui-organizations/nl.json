@@ -489,7 +489,7 @@
     "versionHistory.field.urls.language": "Taal (URL)",
     "versionHistory.field.urls.isPrimary": "Primair (URL)",
     "versionHistory.field.urls.categories": "Categorieën (URL)",
-    "versionHistory.field.agreements.name": "Naam overeenkomst",
+    "versionHistory.field.agreements.name": "Naam (overeenkomst)",
     "versionHistory.field.agreements.notes": "Notities (Overeenkomst)",
     "versionHistory.field.accounts.name": "Naam (Account)",
     "versionHistory.field.accounts.description": "Omschrijving (Account)",
