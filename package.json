@@ -79,6 +79,7 @@
           "acquisitions-units.memberships.collection.get",
           "acquisitions-units.units.collection.get",
           "configuration.entries.collection.get",
+          "mod-settings.global.read.ui-tags.tags.manage",
           "tags.collection.get",
           "users.collection.get",
           "usergroups.collection.get"
