@@ -110,7 +110,7 @@
     "agreement.pleaseAddAgreements": "Přidejte prosím smlouvy",
     "vendorInfo.paymentMethod": "Platební metoda",
     "vendorInfo.vendorCurrencies": "Měny distributora",
-    "vendorInfo.claimingInterval": "Interval nárokování",
+    "vendorInfo.claimingInterval": "Reklamační interval",
     "vendorInfo.discountPercent": "Procento slevy",
     "vendorInfo.expectedActivationInterval": "Očekávaný interval aktivace",
     "vendorInfo.expectedInvoiceInterval": "Očekávaný interval fakturace",
