@@ -515,7 +515,7 @@
     "numberGenerator.generateVendorCode": "Wygeneruj kod dostawcy",
     "settings.numberGeneratorOptions.infoAdditional": "Dodatkowe ustawienia generatora liczb są dostępne pod {serviceInteractionLink}. W {numberGeneratorSequencesLink} sekwencje można zdefiniować, wybierając odpowiedni generator za pomocą rozwijanego menu.",
     "settings.numberGeneratorOptions.code": "Kod",
-    "settings.numberGeneratorOptions.off": "Generator liczb wyłączony",
-    "settings.numberGeneratorOptions.onEditable": "Generator liczb włączony, z możliwością edycji",
-    "settings.numberGeneratorOptions.onNotEditable": "Generator liczb włączony, bez możliwości edycji"
+    "settings.numberGeneratorOptions.off": "Generator numerów wyłączony",
+    "settings.numberGeneratorOptions.onEditable": "Generator numerów włączony, z możliwością edycji",
+    "settings.numberGeneratorOptions.onNotEditable": "Generator numerów włączony, bez możliwości edycji"
 }
