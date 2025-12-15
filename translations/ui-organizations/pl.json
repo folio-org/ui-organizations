@@ -110,7 +110,7 @@
     "agreement.pleaseAddAgreements": "Proszę dodać umowy",
     "vendorInfo.paymentMethod": "Metoda płatności",
     "vendorInfo.vendorCurrencies": "Waluta dostawcy",
-    "vendorInfo.claimingInterval": "Okres reklamacyjny",
+    "vendorInfo.claimingInterval": "Interwał monitowania",
     "vendorInfo.discountPercent": "Rabat %",
     "vendorInfo.expectedActivationInterval": "Przewidywany czas aktywacji",
     "vendorInfo.expectedInvoiceInterval": "Przewidywany czas fakturowania",
