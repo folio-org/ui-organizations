@@ -1,7 +1,6 @@
-import moment from 'moment';
+import queryString from 'query-string';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router';
-import queryString from 'query-string';
 
 import {
   useNamespace,
@@ -21,7 +20,7 @@ export const useOrganizations = ({
   options = {},
 }) => {
   const ky = useOkapiKy();
-  const stripes = useStripes();
+  const { timezone } = useStripes();
   const [namespace] = useNamespace({ key: 'organizations-list' });
 
   const { search } = useLocation();
@@ -29,11 +28,7 @@ export const useOrganizations = ({
   const queryParams = queryString.parse(search);
   const filtersCount = getFiltersCount(queryParams);
 
-  moment.tz.setDefault(stripes.timezone);
-
-  const query = buildQuery(queryParams);
-
-  moment.tz.setDefault();
+  const query = buildQuery(queryParams, { timezone });
 
   const defaultSearchParams = {
     query,

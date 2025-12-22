@@ -1,3 +1,5 @@
+import { NO_DST_TIMEZONES } from '@folio/stripes-acq-components/test/jest/fixtures';
+
 import { EDI_NAMING_TOKENS } from './constants';
 import {
   buildAvailableAccounts,
@@ -5,8 +7,8 @@ import {
   getAcqMethodOptions,
   getAccountOptions,
   getTenantTime,
-  getUTCDate,
   getDefaultEdiNamingConvention,
+  getSchedulingDatetime,
 } from './utils';
 
 const organization = {
@@ -89,10 +91,76 @@ describe('OrganizationIntegration utils', () => {
     });
   });
 
-  describe('getUTCDate', () => {
-    it('should return UTC date time', () => {
-      expect(getUTCDate({ time: '05:30:00.000Z', timezone: 'Europe/Berlin', date: '2022-01-01T23:00:00.000Z' }))
-        .toEqual('2022-01-02T04:30:00Z');
+  describe('getSchedulingDatetime', () => {
+    /*
+      [<System timezone>]: [
+        {
+          date: '<Datepicker value - in UTC>',
+          time: '<Timepicker value - in UTC>',
+          expected: '<Expected UTC date-time>',
+        },
+        ...
+      ]
+    */
+    const expectedResultsDict = {
+      [NO_DST_TIMEZONES.AFRICA_DAKAR]: [{
+        description: 'an user selects date "01/01/2026" and time "03:30 AM" at 12:03 AM (UTC+0).',
+        date: '2026-01-01T00:00:03.000Z', // Datepicker view: 01/01/2026
+        time: '03:30:00.000Z', // Timepicker view: 03:30 AM
+        expected: '2026-01-01T03:30:00.000Z',
+      }],
+      [NO_DST_TIMEZONES.AMERICA_BOGOTA]: [
+        {
+          description: 'an user selects date "12/31/2025" and time "12:30 AM (12:30:00)" on 12/31/2025 at 08:25 PM (20:25:00) (UTC-5).',
+          date: '2026-01-01T01:25:00.000Z', // Datepicker view: 12/31/2025
+          time: '05:30:00.000Z', // Timepicker view: 12:30 AM (12:30:00)
+          expected: '2025-12-31T05:30:00.000Z',
+        },
+        {
+          description: 'an user selects date "01/01/2026" and time "06:30 PM (18:30:00)" on 01/01/2026 at 07:24 AM (07:24:00) (UTC-5).',
+          date: '2026-01-01T12:24:00.000Z', // Datepicker view: 01/01/2026
+          time: '23:30:00.000Z', // Timepicker view: 06:30 PM (18:30:00)
+          expected: '2026-01-01T23:30:00.000Z',
+        },
+        {
+          description: 'an user selects date "01/01/2026" and time "01:25 AM (01:25:00)" on 01/01/2026 at 03:16 PM (15:16:00) (UTC-5).',
+          date: '2026-01-01T20:16:00.000Z', // Datepicker view: 01/01/2026
+          time: '06:25:00.000Z', // Timepicker view: 01:25 AM (01:25:00)
+          expected: '2026-01-01T06:25:00.000Z',
+        },
+        {
+          description: 'an user selects date "01/01/2026" and time "02:00 PM (14:00:00)" on 01/01/2026 at 10:48 PM (22:48:00) (UTC-5).',
+          date: '2026-01-02T03:48:00.000Z', // Datepicker view: 01/01/2026
+          time: '19:00:00.000Z', // Timepicker view: 02:00 PM (14:00:00)
+          expected: '2026-01-01T19:00:00.000Z',
+        },
+      ],
+      [NO_DST_TIMEZONES.ASIA_TOKIO]: [
+        {
+          description: 'an user selects date "12/31/2025" and time "11:00 PM" (23:00:00) on 12/31/2025 at 02:15 PM (14:15:00) (UTC+9).',
+          date: '2025-12-31T05:15:00.000Z', // Datepicker view: 12/31/2025
+          time: '14:00:00.000Z', // Timepicker view: 11:00 PM (23:00:00)
+          expected: '2025-12-31T14:00:00.000Z',
+        },
+        {
+          description: 'an user selects date "01/01/2026" and time "12:30 AM" (00:30:00) on 01/01/2026 at 01:45 AM (01:45:00) (UTC+9).',
+          date: '2025-12-31T16:45:00.000Z', // Datepicker view: 01/01/2026
+          time: '15:30:00.000Z', // Timepicker view: 12:30 AM (00:30:00)
+          expected: '2025-12-31T15:30:00.000Z',
+        },
+        {
+          description: 'an user selects date "01/02/2026" and time "04:02 AM" (04:02:00) on 01/02/2026 at 03:25 AM (03:25:00) (UTC+9).',
+          date: '2026-01-01T18:45:00.000Z', // Datepicker view: 01/02/2026
+          time: '19:02:00.000Z', // Timepicker view: 04:02 AM (04:02:00)
+          expected: '2026-01-01T19:02:00.000Z',
+        },
+      ],
+    };
+
+    describe.each(Object.keys(expectedResultsDict))('Timezone: %s', (timezone) => {
+      it.each(expectedResultsDict[timezone])('should return proper UTC datetime when $description', ({ date, time, expected }) => {
+        expect(getSchedulingDatetime({ date, time, timezone })).toEqual(expected);
+      });
     });
   });
 

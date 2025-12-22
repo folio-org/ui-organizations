@@ -1,6 +1,6 @@
 import { flow, join, map, pick, values } from 'lodash/fp';
-import moment from 'moment-timezone';
 
+import { dayjs } from '@folio/stripes/components';
 import {
   validateRequired,
   validateURLRequired,
@@ -45,22 +45,30 @@ export const getAccountOptions = (accounts = []) => accounts.map(account => ({
   value: account,
 }));
 
+/*
+  Converts time from UTC to the provided time zone and returns only the time part.
+  The `time` value is expected in UTC time zone.
+*/
 export const getTenantTime = ({ time, timeZone }) => {
   const date = new Date().toISOString();
-  const trimmedTime = time.slice(0, 8);
   const trimmedDate = date.slice(0, 11);
-  const tenantDate = moment.tz(`${trimmedDate}${trimmedTime}.000Z`, timeZone).format();
+  const tenantDate = dayjs.utc(`${trimmedDate}${time}`).tz(timeZone).format();
 
   return tenantDate.slice(11, 19);
 };
 
-export const getUTCDate = ({ time, date, timezone }) => {
-  const tenantDate = moment.tz(date, timezone).format();
+/*
+  Build a UTC date-time string from the provided date, time and time zone.
+  This function uses time and date independently from the datepicker and timepicker, which should be connected to return a correct UTC datetime.
+*/
+export const getSchedulingDatetime = ({ time, date, timezone }) => {
+  const tenantDate = dayjs.utc(date).tz(timezone).format();
+  const tenantTime = getTenantTime({ time, timeZone: timezone });
   const trimmedDate = tenantDate.slice(0, 11);
-  const trimmedTime = time.slice(0, 8);
-  const tenantTimezone = tenantDate.slice(19);
+  const trimmedTime = tenantTime.slice(0, 8);
+  const utcDateTime = dayjs.tz(`${trimmedDate}${trimmedTime}`, timezone).toISOString();
 
-  return moment.tz(`${trimmedDate}${trimmedTime}${tenantTimezone}`, 'UTC').format();
+  return utcDateTime;
 };
 
 export const getDefaultEdiNamingConvention = () => (

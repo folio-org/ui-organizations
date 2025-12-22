@@ -1,10 +1,22 @@
-import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
+import queryString from 'query-string';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
 import { useLocation } from 'react-router';
-import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { useOkapiKy } from '@folio/stripes/core';
+import {
+  renderHook,
+  waitFor,
+} from '@folio/jest-config-stripes/testing-library/react';
+import { FILTERS } from '@folio/plugin-find-organization';
+import {
+  useOkapiKy,
+  useStripes,
+} from '@folio/stripes/core';
+import { NO_DST_TIMEZONES } from '@folio/stripes-acq-components/test/jest/fixtures';
+
 import { organization } from 'fixtures';
-
 import { useOrganizations } from './useOrganizations';
 
 jest.mock('react-router', () => ({
@@ -21,37 +33,39 @@ jest.mock('@folio/stripes/core', () => ({
 const organizations = [organization];
 
 const queryClient = new QueryClient();
-// eslint-disable-next-line react/prop-types
 const wrapper = ({ children }) => (
   <QueryClientProvider client={queryClient}>
     {children}
   </QueryClientProvider>
 );
 
+const renderTestHook = (...args) => renderHook(() => useOrganizations(...args), { wrapper });
+const waitForLoading = async (result) => waitFor(() => expect(result.current.isFetching).toBeFalsy());
+
 describe('useOrganizations', () => {
+  const getMock = jest.fn(() => ({
+    json: () => ({
+      organizations,
+      totalRecords: organizations.length,
+    }),
+  }));
+
   beforeEach(() => {
-    useOkapiKy
-      .mockClear()
-      .mockReturnValue({
-        get: () => ({
-          json: () => ({
-            organizations,
-            totalRecords: organizations.length,
-          }),
-        }),
-      });
+    useLocation.mockReturnValue({ search: '' });
+    useOkapiKy.mockReturnValue({ get: getMock });
+    useStripes.mockReturnValue({ timezone: 'UTC' });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should return an empty list if there no filters were passed in the query', async () => {
-    useLocation
-      .mockClear()
-      .mockReturnValue({ search: '' });
-
-    const { result } = renderHook(() => useOrganizations({
+    const { result } = renderTestHook({
       pagination: { limit: 5, offset: 0, timestamp: 42 },
-    }), { wrapper });
+    });
 
-    await waitFor(() => expect(result.current.isFetching).toBeFalsy());
+    await waitForLoading(result);
 
     expect(result.current).toEqual({
       organizations: [],
@@ -61,20 +75,82 @@ describe('useOrganizations', () => {
   });
 
   it('should return fetched organizations list', async () => {
-    useLocation
-      .mockClear()
-      .mockReturnValue({ search: 'status=Inactive&status=Active' });
+    useLocation.mockReturnValue({ search: 'status=Inactive&status=Active' });
 
-    const { result } = renderHook(() => useOrganizations({
+    const { result } = renderTestHook({
       pagination: { limit: 5, offset: 0, timestamp: 42 },
-    }), { wrapper });
+    });
 
-    await waitFor(() => expect(result.current.isFetching).toBeFalsy());
+    await waitForLoading(result);
 
     expect(result.current).toEqual({
       organizations: [organization],
       totalRecords: 1,
       isFetching: false,
+    });
+  });
+
+  describe('Datetime filters', () => {
+    const dateTimeConfig = {
+      from: '2014-07-14',
+      to: '2020-07-14',
+    };
+
+    const expectedResultsDict = {
+      [NO_DST_TIMEZONES.AFRICA_DAKAR]: {
+        start: '2014-07-14T00:00:00.000',
+        end: '2020-07-14T23:59:59.999',
+      },
+      [NO_DST_TIMEZONES.AMERICA_BOGOTA]: {
+        start: '2014-07-14T05:00:00.000',
+        end: '2020-07-15T04:59:59.999',
+      },
+      [NO_DST_TIMEZONES.ASIA_DUBAI]: {
+        start: '2014-07-13T20:00:00.000',
+        end: '2020-07-14T19:59:59.999',
+      },
+      [NO_DST_TIMEZONES.ASIA_SHANGHAI]: {
+        start: '2014-07-13T16:00:00.000',
+        end: '2020-07-14T15:59:59.999',
+      },
+      [NO_DST_TIMEZONES.ASIA_TOKIO]: {
+        start: '2014-07-13T15:00:00.000',
+        end: '2020-07-14T14:59:59.999',
+      },
+      [NO_DST_TIMEZONES.EUROPE_MOSCOW]: {
+        start: '2014-07-13T20:00:00.000',
+        end: '2020-07-14T20:59:59.999',
+      },
+      [NO_DST_TIMEZONES.PACIFIC_TAHITI]: {
+        start: '2014-07-14T10:00:00.000',
+        end: '2020-07-15T09:59:59.999',
+      },
+      [NO_DST_TIMEZONES.UTC]: {
+        start: '2014-07-14T00:00:00.000',
+        end: '2020-07-14T23:59:59.999',
+      },
+    };
+
+    const datetimeFilters = [
+      FILTERS.DATE_CREATED,
+      FILTERS.DATE_UPDATED,
+    ];
+
+    describe.each(Object.values(datetimeFilters))('Datetime range filter: %s', (filter) => {
+      it.each(Object.keys(expectedResultsDict))('should properly apply filter for the timezone - %s', async (timezone) => {
+        const search = queryString.stringify({
+          [filter]: [dateTimeConfig.from, dateTimeConfig.to].join(':'),
+        });
+
+        useLocation.mockReturnValue({ search });
+        useStripes.mockReturnValue({ timezone });
+
+        const { start, end } = expectedResultsDict[timezone];
+
+        renderTestHook({ pagination: { limit: 5, offset: 0, timestamp: 42 } });
+
+        expect(getMock.mock.calls[0][1].searchParams.query).toContain(`(${filter}>="${start}" and ${filter}<="${end}")`);
+      });
     });
   });
 });

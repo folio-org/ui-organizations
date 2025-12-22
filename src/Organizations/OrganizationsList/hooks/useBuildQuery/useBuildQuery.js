@@ -17,17 +17,19 @@ const CUSTOM_SORT_MAP = {
 export const useBuildQuery = () => {
   const stripes = useStripes();
 
-  return useCallback(makeQueryBuilder(
-    'cql.allRecords=1',
-    (query, qindex) => {
-      if (qindex) {
-        return `(${qindex}=${query}*)`;
-      }
+  return useCallback((queryParams, options) => {
+    return makeQueryBuilder(
+      'cql.allRecords=1',
+      (query, qindex) => {
+        if (qindex) {
+          return `(${qindex}=${query}*)`;
+        }
 
-      return getKeywordQuery(query, stripes);
-    },
-    'sortby name/sort.ascending',
-    filterMap,
-    CUSTOM_SORT_MAP,
-  ), []);
+        return getKeywordQuery(query, stripes);
+      },
+      'sortby name/sort.ascending',
+      filterMap,
+      CUSTOM_SORT_MAP,
+    )(queryParams, options);
+  }, [stripes]);
 };
