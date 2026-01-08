@@ -1,10 +1,9 @@
 import { useQuery } from 'react-query';
-import moment from 'moment-timezone';
 
+import { dayjs } from '@folio/stripes/components';
 import {
   useNamespace,
   useOkapiKy,
-  useStripes,
 } from '@folio/stripes/core';
 
 import { SCHEDULE_PERIODS } from '../../../OrganizationIntegration/constants';
@@ -12,7 +11,6 @@ import { SCHEDULE_PERIODS } from '../../../OrganizationIntegration/constants';
 export const useIntegrationConfig = (id) => {
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'organization-integration' });
-  const stripes = useStripes();
 
   const { isFetching, data = {} } = useQuery(
     [namespace, id],
@@ -32,7 +30,7 @@ export const useIntegrationConfig = (id) => {
       }
 
       if (scheduleParameters?.schedulePeriod === SCHEDULE_PERIODS.days && scheduleParameters?.schedulingDate) {
-        const tenantDate = moment.tz(scheduleParameters.schedulingDate, stripes.timezone).format();
+        const tenantDate = dayjs.utc(scheduleParameters.schedulingDate).toISOString();
 
         scheduleParameters.scheduleTime = tenantDate.slice(11, 19);
       }

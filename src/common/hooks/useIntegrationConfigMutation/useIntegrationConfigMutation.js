@@ -6,7 +6,7 @@ import { cloneDeep } from 'lodash';
 import { useOkapiKy, useStripes } from '@folio/stripes/core';
 
 import { SCHEDULE_PERIODS } from '../../../OrganizationIntegration/constants';
-import { getUTCDate } from '../../../OrganizationIntegration/utils';
+import { getSchedulingDatetime } from '../../../OrganizationIntegration/utils';
 
 export const useIntegrationConfigMutation = (options = {}) => {
   const ky = useOkapiKy();
@@ -27,7 +27,7 @@ export const useIntegrationConfigMutation = (options = {}) => {
       }
 
       if (scheduleParameters?.schedulePeriod === SCHEDULE_PERIODS.days && scheduleParameters?.schedulingDate) {
-        scheduleParameters.schedulingDate = getUTCDate({
+        scheduleParameters.schedulingDate = getSchedulingDatetime({
           date: scheduleParameters.schedulingDate,
           time: scheduleParameters.scheduleTime,
           timezone: stripes.timezone,
