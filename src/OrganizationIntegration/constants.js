@@ -51,9 +51,11 @@ export const INTEGRATION_TYPE = {
 export const TRANSMISSION_METHOD = {
   fileDownLoad: 'File download',
   ftp: 'FTP',
+  email: 'Email',
 };
 
 export const FILE_FORMAT = {
   csv: 'CSV',
   edi: 'EDI',
+  eml: 'EML',
 };

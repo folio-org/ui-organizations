@@ -51,10 +51,13 @@ import {
 import {
   getDuplicateTimestamp,
   isClaimingIntegration,
+  isTransmissionMethodFTP,
+  isTransmissionMethodEmail,
 } from '../utils';
 import { IntegrationInfoView } from './IntegrationInfoView';
 import { EdiView } from './EdiView';
 import { FtpView } from './FtpView';
+import { EmailView } from './EmailView';
 import { SchedulingView } from './SchedulingView';
 
 const CONFIG_NAME_PATH = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.configName';
@@ -75,6 +78,8 @@ const OrganizationIntegrationView = ({ orgId }) => {
 
   const configName = get(integrationConfig, CONFIG_NAME_PATH);
   const isClaimingType = isClaimingIntegration(integrationConfig);
+  const isMethodFTP = isTransmissionMethodFTP(integrationConfig);
+  const isMethodEmail = isTransmissionMethodEmail(integrationConfig);
 
   const onEdit = useCallback(
     () => {
@@ -291,11 +296,21 @@ const OrganizationIntegrationView = ({ orgId }) => {
                   acqMethods={acqMethods}
                 />
 
-                <FtpView ediFtp={integrationConfig
-                  ?.exportTypeSpecificParameters
-                  ?.vendorEdiOrdersExportConfig
-                  ?.ediFtp}
-                />
+                {isMethodFTP && (
+                  <FtpView ediFtp={integrationConfig
+                    ?.exportTypeSpecificParameters
+                    ?.vendorEdiOrdersExportConfig
+                    ?.ediFtp}
+                  />
+                )}
+
+                {isMethodEmail && (
+                  <EmailView ediEmail={integrationConfig
+                    ?.exportTypeSpecificParameters
+                    ?.vendorEdiOrdersExportConfig
+                    ?.ediEmail}
+                  />
+                )}
 
                 {!isClaimingType && (
                   <SchedulingView ediSchedule={integrationConfig

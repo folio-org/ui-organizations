@@ -131,6 +131,10 @@ export const isTransmissionMethodFTP = (config) => {
   return isTransmissionMethod(config, TRANSMISSION_METHOD.ftp);
 };
 
+export const isTransmissionMethodEmail = (config) => {
+  return isTransmissionMethod(config, TRANSMISSION_METHOD.email);
+};
+
 export const isIntegrationType = (config, type) => {
   const integrationType = config
     ?.exportTypeSpecificParameters
@@ -191,4 +195,8 @@ export const validateFTPServerAddress = (...params) => {
 
 export const validateFTPPort = (...params) => {
   return createConditionalValidator(isTransmissionMethodFTP, validateRequired)(...params);
+};
+
+export const validateEmailAddress = (...params) => {
+  return createConditionalValidator(isTransmissionMethodEmail, validateRequired)(...params);
 };

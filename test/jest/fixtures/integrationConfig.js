@@ -15,6 +15,10 @@ export const integrationConfig = {
         ftpFormat: 'SFTP',
         ftpMode: 'ASCII',
       },
+      ediEmail: {
+        emailAddress: 'test@example.com',
+        emailTemplate: 'template-1',
+      },
       ediSchedule: {
         enableScheduledExport: true,
         scheduleParameters: {
