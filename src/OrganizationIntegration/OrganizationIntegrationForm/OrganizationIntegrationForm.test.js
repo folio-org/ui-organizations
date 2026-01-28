@@ -23,6 +23,7 @@ import {
   TRANSMISSION_MODES,
   CONNECTION_MODES,
   INTEGRATION_TYPE,
+  TRANSMISSION_METHOD,
 } from '../constants';
 import OrganizationIntegrationForm from './OrganizationIntegrationForm';
 
@@ -129,6 +130,20 @@ describe('OrganizationIntegrationForm', () => {
 
     expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.transmissionMethod' })).toBeDisabled();
     expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.fileFormat' })).toBeDisabled();
+  });
+
+  it('should render Email accordion when transmission method is Email', () => {
+    const emailInitialValues = cloneDeep(initialValues);
+
+    set(
+      emailInitialValues,
+      'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.transmissionMethod',
+      TRANSMISSION_METHOD.email,
+    );
+
+    renderOrganizationIntegrationForm({ initialValues: emailInitialValues });
+
+    expect(screen.getByText('ui-organizations.integration.email')).toBeInTheDocument();
   });
 
   describe('Sections toggle', () => {
