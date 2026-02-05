@@ -329,7 +329,7 @@
     "integration.edi.vendorEDIType": "Typ kodu EDI dostawcy",
     "integration.edi.libraryEDICode": "Kod EDI biblioteki",
     "integration.edi.libraryEDIType": "Typ kodu EDI biblioteki",
-    "integration.edi.ediNamingConvention": "EDI naming convention",
+    "integration.edi.ediNamingConvention": "Konwencja nazewnictwa EDI",
     "integration.edi.sendAccountNumber": "Wyślij numer konta",
     "integration.edi.receiveNotifications": "Jakich komunikatów można się spodziewać od tego dostawcy?",
     "integration.edi.orders": "Zamówienia ",
