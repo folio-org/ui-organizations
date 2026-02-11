@@ -157,13 +157,13 @@ const OrganizationIntegrationForm = ({
                   defaultIntegration={defaultIntegration}
                 />
 
-                <EdiForm acqMethods={acqMethods} />
+                {!isMethodEmail && <EdiForm acqMethods={acqMethods} />}
 
                 {isMethodFTP && <FtpForm />}
 
                 {isMethodEmail && <EmailForm />}
 
-                {!isClaimingType && <SchedulingForm />}
+                {(!isClaimingType || isMethodEmail) && <SchedulingForm />}
               </AccordionSet>
             </AccordionStatus>
           </Col>

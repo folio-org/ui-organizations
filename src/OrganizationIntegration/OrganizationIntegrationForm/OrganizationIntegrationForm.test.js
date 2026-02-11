@@ -108,7 +108,7 @@ describe('OrganizationIntegrationForm', () => {
     expect(screen.queryByText('ui-organizations.integration.scheduling')).not.toBeInTheDocument();
   });
 
-  it('should disable transmission and file type fields for ordering integration', async () => {
+  it('should disable file format (but not transmission method) for ordering+FTP', async () => {
     const clonedInitialValues = cloneDeep(initialValues);
 
     set(
@@ -128,7 +128,9 @@ describe('OrganizationIntegrationForm', () => {
 
     await user.selectOptions(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.integrationType' }), INTEGRATION_TYPE.ordering);
 
-    expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.transmissionMethod' })).toBeDisabled();
+    // Transmission method is now selectable for ordering (to allow Email)
+    expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.transmissionMethod' })).not.toBeDisabled();
+    // File format is disabled because ordering defaults to FTP+EDI
     expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.fileFormat' })).toBeDisabled();
   });
 

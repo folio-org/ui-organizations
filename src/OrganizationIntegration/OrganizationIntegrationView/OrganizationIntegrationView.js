@@ -288,13 +288,15 @@ const OrganizationIntegrationView = ({ orgId }) => {
                     ?.vendorEdiOrdersExportConfig
                   }
                 />
-                <EdiView
-                  vendorEdiOrdersExportConfig={integrationConfig
-                    ?.exportTypeSpecificParameters
-                    ?.vendorEdiOrdersExportConfig
-                  }
-                  acqMethods={acqMethods}
-                />
+                {!isMethodEmail && (
+                  <EdiView
+                    vendorEdiOrdersExportConfig={integrationConfig
+                      ?.exportTypeSpecificParameters
+                      ?.vendorEdiOrdersExportConfig
+                    }
+                    acqMethods={acqMethods}
+                  />
+                )}
 
                 {isMethodFTP && (
                   <FtpView ediFtp={integrationConfig
@@ -312,7 +314,7 @@ const OrganizationIntegrationView = ({ orgId }) => {
                   />
                 )}
 
-                {!isClaimingType && (
+                {(!isClaimingType || isMethodEmail) && (
                   <SchedulingView ediSchedule={integrationConfig
                     ?.exportTypeSpecificParameters
                     ?.vendorEdiOrdersExportConfig
