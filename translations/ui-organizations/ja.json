@@ -514,7 +514,7 @@
     "numberGenerator.vendorCodeGenerator": "Vendor code generator",
     "numberGenerator.generateVendorCode": "Generate vendor code",
     "settings.numberGeneratorOptions.infoAdditional": "追加の番号ジェネレーターは {serviceInteractionLink} で設定できます。\n{numberGeneratorSequencesLink} では、ドロップダウンメニューから適切なジェネレーターを選択することで、シーケンスを定義できます。",
-    "settings.numberGeneratorOptions.code": "Code",
+    "settings.numberGeneratorOptions.code": "コード",
     "settings.numberGeneratorOptions.off": "Off",
     "settings.numberGeneratorOptions.onEditable": "On, field editable",
     "settings.numberGeneratorOptions.onNotEditable": "On, field not editable"
