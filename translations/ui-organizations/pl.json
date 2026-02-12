@@ -439,7 +439,7 @@
     "data.bankingInformation.bankName": "Nazwa banku",
     "data.bankingInformation.isPrimary": "Use as primary banking information",
     "data.bankingInformation.notes": "Uwagi",
-    "data.bankingInformation.transitNumber": "Transit number",
+    "data.bankingInformation.transitNumber": "Numer transferu",
     "bankingInformation": "Informacje bankowe",
     "bankingInformation.save.error": "Failed to save banking information.",
     "button.bankingInformation.add": "Dodaj informacje bankowe",
