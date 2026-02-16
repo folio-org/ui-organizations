@@ -376,7 +376,7 @@
     "integration.message.save.success": "Integration was saved",
     "integration.message.save.error": "Integration could not be saved",
     "integration.confirmation.heading": "Confirm integration deletion",
-    "integration.confirmation.confirm": "Confirm",
+    "integration.confirmation.confirm": "Potwierdź",
     "integration.confirmation.message": "Are you sure you want to delete the integration?",
     "integration.message.delete.error": "The integration was not <b>deleted</b>",
     "integration.message.delete.success": "The integration was successfully <b>deleted</b>",
