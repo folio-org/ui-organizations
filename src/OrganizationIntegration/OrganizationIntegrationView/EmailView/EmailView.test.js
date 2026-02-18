@@ -21,7 +21,7 @@ describe('EmailView', () => {
     renderEmailView();
 
     expect(screen.getByText('ui-organizations.integration.email')).toBeInTheDocument();
-    expect(screen.getByText(defaultProps.ediEmail.emailAddress)).toBeInTheDocument();
+    expect(screen.getByText(defaultProps.ediEmail.emailTo)).toBeInTheDocument();
     expect(screen.getByText(defaultProps.ediEmail.emailTemplate)).toBeInTheDocument();
   });
 

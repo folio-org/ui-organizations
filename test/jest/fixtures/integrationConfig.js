@@ -16,7 +16,7 @@ export const integrationConfig = {
         ftpMode: 'ASCII',
       },
       ediEmail: {
-        emailAddress: 'test@example.com',
+        emailTo: 'test@example.com',
         emailTemplate: 'template-1',
       },
       ediSchedule: {

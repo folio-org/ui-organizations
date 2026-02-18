@@ -22,7 +22,7 @@ export const EmailView = ({ ediEmail = {} }) => {
         >
           <KeyValue
             label={<FormattedMessage id="ui-organizations.integration.email.emailAddress" />}
-            value={ediEmail.emailAddress}
+            value={ediEmail.emailTo}
           />
         </Col>
         <Col

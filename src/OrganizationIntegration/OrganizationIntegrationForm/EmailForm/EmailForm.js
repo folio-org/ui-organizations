@@ -42,7 +42,7 @@ export const EmailForm = () => {
         >
           <Field
             label={<FormattedMessage id="ui-organizations.integration.email.emailAddress" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediEmail.emailAddress"
+            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediEmail.emailTo"
             type="email"
             component={TextField}
             fullWidth
