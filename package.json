@@ -53,8 +53,7 @@
         "permissionName": "module.organizations.enabled",
         "displayName": "UI: Organizations module is enabled",
         "subPermissions": [
-          "mod-settings.entries.collection.get",
-          "mod-settings.global.read.stripes-core.prefs.manage"
+          "stripes-core.settings.read"
         ]
       },
       {
@@ -63,8 +62,7 @@
         "visible": false,
         "subPermissions": [
           "settings.enabled",
-          "mod-settings.entries.collection.get",
-          "mod-settings.global.read.stripes-core.prefs.manage"
+          "stripes-core.settings.read"
         ]
       },
       {
