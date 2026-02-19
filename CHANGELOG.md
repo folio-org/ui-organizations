@@ -5,7 +5,7 @@
 * Change radio buttons into drop-down in Settings > Organizations > Number generator options. Refs UIORGS-462.
 * Upgrade `@folio/stripes-acq-components` to `v7.0.2`. Refs UIORGS-466.
 * Memoize initial values for the integration form to prevent data from becoming stale. Refs UIORGS-472.
-* Include global `mod-settings` permissions in base permission sets. Refs UIORGS-476.
+* Include global `stripes-core.settings.read` permission in base permission sets. Refs UIORGS-476.
 * Replace the `moment` library with `dayjs` (Part 1). Refs UIORGS-463.
 
 ## [6.0.1](https://github.com/folio-org/ui-organizations/tree/v6.0.1) (2025-05-05)
