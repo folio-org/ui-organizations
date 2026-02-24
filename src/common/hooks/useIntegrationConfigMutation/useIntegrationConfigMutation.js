@@ -5,7 +5,7 @@ import { cloneDeep } from 'lodash';
 
 import { useOkapiKy, useStripes } from '@folio/stripes/core';
 
-import { SCHEDULE_PERIODS } from '../../../OrganizationIntegration/constants';
+import { SCHEDULE_PERIODS, TRANSMISSION_METHOD } from '../../../OrganizationIntegration/constants';
 import { getSchedulingDatetime } from '../../../OrganizationIntegration/utils';
 
 export const useIntegrationConfigMutation = (options = {}) => {
@@ -15,6 +15,17 @@ export const useIntegrationConfigMutation = (options = {}) => {
   const { mutateAsync } = useMutation({
     mutationFn: (integrationConfig) => {
       const json = cloneDeep(integrationConfig);
+      const vendorConfig = json.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig;
+
+      if (vendorConfig) {
+        if (vendorConfig.transmissionMethod === TRANSMISSION_METHOD.email) {
+          delete vendorConfig.ediConfig;
+          delete vendorConfig.ediFtp;
+        } else {
+          delete vendorConfig.ediEmail;
+        }
+      }
+
       const scheduleParameters = json
         .exportTypeSpecificParameters
         ?.vendorEdiOrdersExportConfig

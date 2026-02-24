@@ -20,8 +20,8 @@ import {
 // TODO: Replace with actual API call when backend is ready
 const mockTemplates = [
   { value: '', label: '' },
-  { value: 'template-1', label: 'Email Template 1' },
-  { value: 'template-2', label: 'Email Template 2' },
+  { value: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', label: 'Email Template 1' },
+  { value: 'b2c3d4e5-f6a7-8901-bcde-f12345678901', label: 'Email Template 2' },
 ];
 
 export const EmailForm = () => {

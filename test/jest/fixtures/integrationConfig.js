@@ -17,7 +17,7 @@ export const integrationConfig = {
       },
       ediEmail: {
         emailTo: 'test@example.com',
-        emailTemplate: 'template-1',
+        emailTemplate: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
       },
       ediSchedule: {
         enableScheduledExport: true,
