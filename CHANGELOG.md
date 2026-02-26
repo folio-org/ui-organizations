@@ -7,6 +7,7 @@
 * Memoize initial values for the integration form to prevent data from becoming stale. Refs UIORGS-472.
 * Include global `stripes-core.settings.read` permission in base permission sets. Refs UIORGS-476.
 * Replace the `moment` library with `dayjs` (Part 1). Refs UIORGS-463.
+* Rename permissions to make it easier to differentiate between them. Refs UIORGS-478.
 
 ## [6.0.1](https://github.com/folio-org/ui-organizations/tree/v6.0.1) (2025-05-05)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v6.0.0...v6.0.1)
