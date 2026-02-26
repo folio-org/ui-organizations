@@ -235,21 +235,27 @@
         ]
       },
       {
-        "permissionName": "ui-organizations.acqUnits.assign",
+        "permissionName": "ui-organizations.organizations.acquisitions_units.assign.execute",
         "displayName": "Organizations: Assign acquisition units to new organization",
         "description": "",
         "visible": true,
+        "replaces": [
+          "ui-organizations.acqUnits.assign"
+        ],
         "subPermissions": [
-          "organizations.acquisitions-units-assignments.assign"
+          "organizations.acquisitions-units-assignments.create.execute"
         ]
       },
       {
-        "permissionName": "ui-organizations.acqUnits.manage",
+        "permissionName": "ui-organizations.organizations.acquisitions_units.manage.execute",
         "displayName": "Organizations: Manage acquisition units",
         "description": "",
         "visible": true,
+        "replaces": [
+          "ui-organizations.acqUnits.manage"
+        ],
         "subPermissions": [
-          "organizations.acquisitions-units-assignments.manage"
+          "organizations.acquisitions-units-assignments.manage.execute"
         ]
       },
       {
