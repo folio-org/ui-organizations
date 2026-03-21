@@ -340,7 +340,7 @@
     "integration.ftp.ftpMode": "FTP mode",
     "integration.ftp.serverAddress": "Server address",
     "integration.ftp.ftpConnectionMode": "FTP connection mode",
-    "integration.ftp.ftpConnectionMode.Active": "Active",
+    "integration.ftp.ftpConnectionMode.Active": "Actif",
     "integration.ftp.ftpConnectionMode.Passive": "Passive",
     "integration.ftp.username": "Nom d'utilisateur",
     "integration.ftp.password": "Mot de passe",
