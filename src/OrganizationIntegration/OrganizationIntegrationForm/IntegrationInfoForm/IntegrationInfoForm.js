@@ -33,6 +33,7 @@ import { AccountNumbersInUseBanner } from '../../AccountNumbersInUseBanner';
 import {
   buildAvailableAccounts,
   getAccountOptions,
+  getAcqMethodOptions,
   getFileFormatOptions,
   getIntegrationTypeOptions,
   getTransmissionMethodOptions,
@@ -47,6 +48,7 @@ const ACCOUNT_NO_LIST_FIELD = 'exportTypeSpecificParameters.vendorEdiOrdersExpor
 const NO_ACCOUNTS = [];
 
 export const IntegrationInfoForm = ({
+  acqMethods,
   defaultIntegration,
   integrationConfigs,
   organization,
@@ -83,6 +85,7 @@ export const IntegrationInfoForm = ({
 
     return getAccountOptions(buildAvailableAccounts(organization, integrationConfigs, { id, type }, assignedAccounts));
   }, [organization, integrationConfigs, id, type, storedAccounts, selectedAccounts]);
+  const acqMethodOptions = useMemo(() => getAcqMethodOptions(acqMethods), [acqMethods]);
 
   const integrationTypeOptions = useMemo(() => getIntegrationTypeOptions(intl), [intl]);
   const transmissionMethods = isOrderingType ? ORDERING_TRANSMISSION_METHODS : CLAIMING_TRANSMISSION_METHODS;
@@ -206,8 +209,24 @@ export const IntegrationInfoForm = ({
             required
           />
         </Col>
+      </Row>
+      <Row>
+        <Col
+          data-test-edi-acq-methods
+          xs={6}
+          md={3}
+        >
+          <Field
+            label={<FormattedMessage id="ui-organizations.integration.info.acquisitionMethods" />}
+            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods"
+            component={Select}
+            dataOptions={acqMethodOptions}
+            fullWidth
+            multiple
+          />
+        </Col>
         {
-          !isDefaultConfig && !isMethodEmail && (
+          !isDefaultConfig && (
             <Col
               data-test-edi-account-numbers
               xs={6}
@@ -232,6 +251,7 @@ export const IntegrationInfoForm = ({
 };
 
 IntegrationInfoForm.propTypes = {
+  acqMethods: PropTypes.arrayOf(PropTypes.object),
   defaultIntegration: PropTypes.object,
   integrationConfigs: PropTypes.arrayOf(PropTypes.object),
   organization: PropTypes.object,

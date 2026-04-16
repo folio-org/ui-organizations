@@ -52,6 +52,7 @@ import {
 import {
   getDuplicateTimestamp,
   isClaimingIntegration,
+  isFileFormatEDI,
   isTransmissionMethodFTP,
   isTransmissionMethodEmail,
 } from '../utils';
@@ -83,6 +84,7 @@ const OrganizationIntegrationView = ({ orgId }) => {
   const isClaimingType = isClaimingIntegration(integrationConfig);
   const isMethodFTP = isTransmissionMethodFTP(integrationConfig);
   const isMethodEmail = isTransmissionMethodEmail(integrationConfig);
+  const isFormatEDI = isFileFormatEDI(integrationConfig);
 
   const onEdit = useCallback(
     () => {
@@ -294,14 +296,14 @@ const OrganizationIntegrationView = ({ orgId }) => {
                     ?.exportTypeSpecificParameters
                     ?.vendorEdiOrdersExportConfig
                   }
+                  acqMethods={acqMethods}
                 />
-                {!isMethodEmail && (
+                {(!isMethodEmail || isFormatEDI) && (
                   <EdiView
                     vendorEdiOrdersExportConfig={integrationConfig
                       ?.exportTypeSpecificParameters
                       ?.vendorEdiOrdersExportConfig
                     }
-                    acqMethods={acqMethods}
                   />
                 )}
 
