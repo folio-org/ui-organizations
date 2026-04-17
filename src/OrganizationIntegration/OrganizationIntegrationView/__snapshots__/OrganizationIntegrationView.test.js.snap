@@ -153,7 +153,7 @@ exports[`OrganizationIntegrationView should render correct view structure 1`] = 
       <div
         class="paneContent hasPadding"
         id="integration-view-content"
-        tabindex="-1"
+        tabindex="0"
       >
         <div
           class="row"
