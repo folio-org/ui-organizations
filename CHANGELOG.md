@@ -1,6 +1,9 @@
 # Change history for ui-organizations
 
-## 6.1.0 (IN PROGRESS)
+## 7.1.0 (IN PROGRESS)
+
+## [7.0.0](https://github.com/folio-org/ui-organizations/tree/v7.0.0) (2026-04-17)
+[Full Changelog](https://github.com/folio-org/ui-organizations/compare/v6.0.1...v7.0.0)
 
 * Change radio buttons into drop-down in Settings > Organizations > Number generator options. Refs UIORGS-462.
 * Upgrade `@folio/stripes-acq-components` to `v7.0.2`. Refs UIORGS-466.
