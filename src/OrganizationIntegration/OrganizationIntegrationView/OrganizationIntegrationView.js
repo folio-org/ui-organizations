@@ -39,6 +39,7 @@ import {
   useShowCallout,
   LoadingPane,
   handleKeyCommand,
+  useIntegrationConfigs,
   useModalToggle,
 } from '@folio/stripes-acq-components';
 
@@ -52,6 +53,7 @@ import {
   getDuplicateTimestamp,
   isClaimingIntegration,
 } from '../utils';
+import { AccountNumbersInUseBanner } from '../AccountNumbersInUseBanner';
 import { IntegrationInfoView } from './IntegrationInfoView';
 import { EdiView } from './EdiView';
 import { FtpView } from './FtpView';
@@ -72,6 +74,7 @@ const OrganizationIntegrationView = ({ orgId }) => {
 
   const { integrationConfig, isLoading } = useIntegrationConfig(id);
   const { acqMethods, isLoading: isAcqMethodsLoading } = useAcqMethods();
+  const { integrationConfigs } = useIntegrationConfigs({ organizationId: orgId });
 
   const configName = get(integrationConfig, CONFIG_NAME_PATH);
   const isClaimingType = isClaimingIntegration(integrationConfig);
@@ -270,6 +273,10 @@ const OrganizationIntegrationView = ({ orgId }) => {
             md={8}
             mdOffset={2}
           >
+            <AccountNumbersInUseBanner
+              integrationConfigs={integrationConfigs}
+              integrationConfig={integrationConfig}
+            />
             <AccordionStatus ref={accordionStatusRef}>
               <Row end="xs">
                 <Col xs={12}>
