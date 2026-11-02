@@ -68,3 +68,5 @@ export const FILE_FORMAT = {
   csv: 'CSV',
   edi: 'EDI',
 };
+
+export const ORDERS_EMAIL_TEMPLATE_SCOPE = 'orders-email';

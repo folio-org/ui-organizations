@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { useQuery } from 'react-query';
 
-import { useOkapiKy } from '@folio/stripes/core';
 import {
   Accordion,
   Col,
@@ -10,18 +8,10 @@ import {
   Row,
 } from '@folio/stripes/components';
 
-const TEMPLATES_API = 'templates';
+import { useEmailTemplate } from '../../../common/hooks';
 
 export const EmailView = ({ ediEmail = {} }) => {
-  const ky = useOkapiKy();
-
-  const { data: templateData } = useQuery(
-    ['ui-organizations', 'email-template', ediEmail.emailTemplate],
-    () => ky.get(`${TEMPLATES_API}/${ediEmail.emailTemplate}`).json(),
-    { enabled: Boolean(ediEmail.emailTemplate) },
-  );
-
-  const templateName = templateData?.name || ediEmail.emailTemplate;
+  const { template } = useEmailTemplate(ediEmail.emailTemplate);
 
   return (
     <Accordion
@@ -66,7 +56,7 @@ export const EmailView = ({ ediEmail = {} }) => {
         >
           <KeyValue
             label={<FormattedMessage id="ui-organizations.integration.email.emailTemplate" />}
-            value={templateName}
+            value={template?.name || ediEmail.emailTemplate}
           />
         </Col>
       </Row>

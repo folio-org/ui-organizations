@@ -151,9 +151,7 @@ describe('OrganizationIntegrationForm', () => {
 
     await user.selectOptions(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.integrationType' }), INTEGRATION_TYPE.ordering);
 
-    // Transmission method is now selectable for ordering (to allow Email)
     expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.transmissionMethod' })).not.toBeDisabled();
-    // File format is disabled because ordering defaults to FTP+EDI
     expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.fileFormat' })).toBeDisabled();
   });
 
