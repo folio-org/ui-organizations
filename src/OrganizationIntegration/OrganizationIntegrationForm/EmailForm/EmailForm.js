@@ -195,7 +195,7 @@ export const EmailForm = ({ organizationEmails = [] }) => {
   const filterBccOptions = useCallback((filterText, list) => {
     const search = filterText?.toLowerCase();
     const renderedItems = search ? list.filter((address) => address.toLowerCase().startsWith(search)) : list;
-    const exactMatch = renderedItems.some((address) => address === filterText);
+    const exactMatch = renderedItems.includes(filterText);
 
     return { renderedItems, exactMatch };
   }, []);
