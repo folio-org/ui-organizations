@@ -1,31 +1,27 @@
-import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { useQuery } from 'react-query';
 
+import { useOkapiKy } from '@folio/stripes/core';
 import {
   Accordion,
   Col,
   KeyValue,
   Row,
 } from '@folio/stripes/components';
-import { useCategories } from '@folio/stripes-acq-components';
 
-import { RECIPIENT_PRIMARY_EMAIL } from '../../constants';
+const TEMPLATES_API = 'templates';
 
 export const EmailView = ({ ediEmail = {} }) => {
-  const { categories } = useCategories();
+  const ky = useOkapiKy();
 
-  const recipientLabel = useMemo(() => {
-    if (!ediEmail.recipient) return '-';
+  const { data: templateData } = useQuery(
+    ['ui-organizations', 'email-template', ediEmail.emailTemplate],
+    () => ky.get(`${TEMPLATES_API}/${ediEmail.emailTemplate}`).json(),
+    { enabled: Boolean(ediEmail.emailTemplate) },
+  );
 
-    if (ediEmail.recipient === RECIPIENT_PRIMARY_EMAIL) {
-      return <FormattedMessage id="ui-organizations.integration.email.recipient.primaryEmail" />;
-    }
-
-    const category = categories.find(c => c.id === ediEmail.recipient);
-
-    return category?.value || ediEmail.recipient;
-  }, [ediEmail.recipient, categories]);
+  const templateName = templateData?.name || ediEmail.emailTemplate;
 
   return (
     <Accordion
@@ -50,7 +46,17 @@ export const EmailView = ({ ediEmail = {} }) => {
         >
           <KeyValue
             label={<FormattedMessage id="ui-organizations.integration.email.recipient" />}
-            value={recipientLabel}
+            value={ediEmail.emailTo || '-'}
+          />
+        </Col>
+        <Col
+          data-test-bcc
+          xs={6}
+          md={3}
+        >
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.integration.email.bcc" />}
+            value={ediEmail.emailBcc?.length ? ediEmail.emailBcc.join(', ') : '-'}
           />
         </Col>
         <Col
@@ -60,7 +66,7 @@ export const EmailView = ({ ediEmail = {} }) => {
         >
           <KeyValue
             label={<FormattedMessage id="ui-organizations.integration.email.emailTemplate" />}
-            value={ediEmail.emailTemplate}
+            value={templateName}
           />
         </Col>
       </Row>
