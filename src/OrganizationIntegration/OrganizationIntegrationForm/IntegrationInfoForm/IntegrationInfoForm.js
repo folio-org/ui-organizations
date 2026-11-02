@@ -42,6 +42,7 @@ import {
   isTransmissionMethodEmail,
   isTransmissionMethodFTP,
   validateAccountNumbersField,
+  validateAcquisitionMethodsField,
 } from '../../utils';
 
 const ACCOUNT_NO_LIST_FIELD = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.accountNoList';
@@ -223,6 +224,9 @@ export const IntegrationInfoForm = ({
             dataOptions={acqMethodOptions}
             fullWidth
             multiple
+            required={isOrderingType && isMethodEmail}
+            validate={validateAcquisitionMethodsField}
+            validateFields={[]}
           />
         </Col>
         {

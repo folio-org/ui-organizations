@@ -1,4 +1,5 @@
 import { flow, join, map, pick, values } from 'lodash/fp';
+import { FormattedMessage } from 'react-intl';
 
 import { dayjs } from '@folio/stripes/components';
 import {
@@ -215,6 +216,20 @@ export const createConditionalValidator = (condition, validator) => {
 
 export const validateAccountNumbersField = (...params) => {
   return createConditionalValidator(isFileFormatEDI, validateRequired)(...params);
+};
+
+const isEmailOrderingIntegration = (config) => {
+  return isOrderingIntegration(config) && isTransmissionMethodEmail(config);
+};
+
+// `validateRequired` lets an empty array pass, so multi-selects need their own check.
+const validateRequiredList = (value) => {
+  return value?.length ? undefined : <FormattedMessage id="stripes-acq-components.validation.required" />;
+};
+
+// The export job resolves email integrations by acquisition method, so the list must not be empty.
+export const validateAcquisitionMethodsField = (...params) => {
+  return createConditionalValidator(isEmailOrderingIntegration, validateRequiredList)(...params);
 };
 
 export const validateVendorEDICode = (...params) => {
