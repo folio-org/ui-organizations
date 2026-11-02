@@ -7,7 +7,11 @@ import {
   MemoryRouter,
 } from 'react-router-dom';
 
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  render,
+  screen,
+  within,
+} from '@folio/jest-config-stripes/testing-library/react';
 import { queryHelpers } from '@folio/jest-config-stripes/testing-library/dom';
 import user from '@folio/jest-config-stripes/testing-library/user-event';
 
@@ -25,6 +29,7 @@ import {
   CONNECTION_MODES,
   EXPORT_TYPES,
   INTEGRATION_TYPE,
+  TRANSMISSION_METHOD,
 } from '../constants';
 import OrganizationIntegrationForm from './OrganizationIntegrationForm';
 
@@ -126,7 +131,7 @@ describe('OrganizationIntegrationForm', () => {
     expect(screen.queryByText('ui-organizations.integration.scheduling')).not.toBeInTheDocument();
   });
 
-  it('should disable transmission and file type fields for ordering integration', async () => {
+  it('should disable file format (but not transmission method) for ordering+FTP', async () => {
     const clonedInitialValues = cloneDeep(initialValues);
 
     set(
@@ -146,8 +151,24 @@ describe('OrganizationIntegrationForm', () => {
 
     await user.selectOptions(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.integrationType' }), INTEGRATION_TYPE.ordering);
 
-    expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.transmissionMethod' })).toBeDisabled();
+    // Transmission method is now selectable for ordering (to allow Email)
+    expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.transmissionMethod' })).not.toBeDisabled();
+    // File format is disabled because ordering defaults to FTP+EDI
     expect(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.fileFormat' })).toBeDisabled();
+  });
+
+  it('should offer email only for ordering integrations', async () => {
+    renderOrganizationIntegrationForm();
+
+    const getMethodOptions = () => within(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.transmissionMethod' }))
+      .getAllByRole('option')
+      .map(({ value }) => value);
+
+    expect(getMethodOptions()).toEqual([TRANSMISSION_METHOD.ftp, TRANSMISSION_METHOD.email]);
+
+    await user.selectOptions(screen.getByRole('combobox', { name: 'ui-organizations.integration.info.integrationType' }), INTEGRATION_TYPE.claiming);
+
+    expect(getMethodOptions()).toEqual([TRANSMISSION_METHOD.fileDownLoad, TRANSMISSION_METHOD.ftp]);
   });
 
   describe('Account numbers', () => {
@@ -246,6 +267,20 @@ describe('OrganizationIntegrationForm', () => {
       expect(screen.getByRole('option', { name: '123' }).selected).toBe(true);
       expect(screen.getByText(IN_USE_WARNING)).toBeInTheDocument();
     });
+  });
+
+  it('should render Email accordion when transmission method is Email', () => {
+    const emailInitialValues = cloneDeep(initialValues);
+
+    set(
+      emailInitialValues,
+      'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.transmissionMethod',
+      TRANSMISSION_METHOD.email,
+    );
+
+    renderOrganizationIntegrationForm({ initialValues: emailInitialValues });
+
+    expect(screen.getByText('ui-organizations.integration.email')).toBeInTheDocument();
   });
 
   describe('Sections toggle', () => {

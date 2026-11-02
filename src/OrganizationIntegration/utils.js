@@ -125,11 +125,13 @@ export const getIntegrationTypeOptions = (intl) => {
   }));
 };
 
-export const getTransmissionMethodOptions = (intl) => {
-  return Object.entries(TRANSMISSION_METHOD).map(([key, value]) => ({
-    label: intl.formatMessage({ id: `ui-organizations.integration.info.transmissionMethod.${key}` }),
-    value,
-  }));
+export const getTransmissionMethodOptions = (intl, methods = Object.values(TRANSMISSION_METHOD)) => {
+  return Object.entries(TRANSMISSION_METHOD)
+    .filter(([, value]) => methods.includes(value))
+    .map(([key, value]) => ({
+      label: intl.formatMessage({ id: `ui-organizations.integration.info.transmissionMethod.${key}` }),
+      value,
+    }));
 };
 
 export const getFileFormatOptions = () => {
@@ -163,6 +165,10 @@ export const isTransmissionMethod = (config, type) => {
 
 export const isTransmissionMethodFTP = (config) => {
   return isTransmissionMethod(config, TRANSMISSION_METHOD.ftp);
+};
+
+export const isTransmissionMethodEmail = (config) => {
+  return isTransmissionMethod(config, TRANSMISSION_METHOD.email);
 };
 
 export const isIntegrationType = (config, type) => {

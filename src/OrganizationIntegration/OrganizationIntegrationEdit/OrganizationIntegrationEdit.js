@@ -70,6 +70,7 @@ export const OrganizationIntegrationEdit = ({ orgId }) => {
       organization={organization}
       onSubmit={mutateIntegrationConfig}
       onClose={closeForm}
+      organizationEmails={organization?.emails}
       paneTitle={
         <FormattedMessage
           id="ui-organizations.integration.edit.paneTitle"

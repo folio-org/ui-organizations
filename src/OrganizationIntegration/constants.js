@@ -51,7 +51,18 @@ export const INTEGRATION_TYPE = {
 export const TRANSMISSION_METHOD = {
   fileDownLoad: 'File download',
   ftp: 'FTP',
+  email: 'Email',
 };
+
+export const ORDERING_TRANSMISSION_METHODS = [
+  TRANSMISSION_METHOD.ftp,
+  TRANSMISSION_METHOD.email,
+];
+
+export const CLAIMING_TRANSMISSION_METHODS = [
+  TRANSMISSION_METHOD.fileDownLoad,
+  TRANSMISSION_METHOD.ftp,
+];
 
 export const FILE_FORMAT = {
   csv: 'CSV',

@@ -22,9 +22,11 @@ import {
 import { validateRequired } from '@folio/stripes-acq-components';
 
 import {
+  CLAIMING_TRANSMISSION_METHODS,
   EXPORT_TYPES,
   FILE_FORMAT,
   INTEGRATION_TYPE,
+  ORDERING_TRANSMISSION_METHODS,
   TRANSMISSION_METHOD,
 } from '../../constants';
 import { AccountNumbersInUseBanner } from '../../AccountNumbersInUseBanner';
@@ -36,6 +38,8 @@ import {
   getTransmissionMethodOptions,
   isFileFormatEDI,
   isOrderingIntegration,
+  isTransmissionMethodEmail,
+  isTransmissionMethodFTP,
   validateAccountNumbersField,
 } from '../../utils';
 
@@ -61,6 +65,8 @@ export const IntegrationInfoForm = ({
 
   const isFormatEDI = isFileFormatEDI(formValues);
   const isOrderingType = isOrderingIntegration(formValues);
+  const isMethodEmail = isTransmissionMethodEmail(formValues);
+  const isMethodFTP = isTransmissionMethodFTP(formValues);
 
   const isDefaultConfig = formValues
     ?.exportTypeSpecificParameters
@@ -79,26 +85,48 @@ export const IntegrationInfoForm = ({
   }, [organization, integrationConfigs, id, type, storedAccounts, selectedAccounts]);
 
   const integrationTypeOptions = useMemo(() => getIntegrationTypeOptions(intl), [intl]);
-  const transmissionMethodOptions = useMemo(() => getTransmissionMethodOptions(intl), [intl]);
+  const transmissionMethods = isOrderingType ? ORDERING_TRANSMISSION_METHODS : CLAIMING_TRANSMISSION_METHODS;
+  const transmissionMethodOptions = useMemo(
+    () => getTransmissionMethodOptions(intl, transmissionMethods),
+    [intl, transmissionMethods],
+  );
   const fileFormatOptions = useMemo(() => getFileFormatOptions(), []);
+
+  const configPath = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig';
 
   const handleIntegrationTypeChange = ({ target: { value } }) => {
     batch(() => {
-      change('exportTypeSpecificParameters.vendorEdiOrdersExportConfig.integrationType', value);
+      change(`${configPath}.integrationType`, value);
 
       switch (value) {
         case INTEGRATION_TYPE.ordering: {
           change('type', EXPORT_TYPES.edifactOrders);
-          change('exportTypeSpecificParameters.vendorEdiOrdersExportConfig.transmissionMethod', TRANSMISSION_METHOD.ftp);
-          change('exportTypeSpecificParameters.vendorEdiOrdersExportConfig.fileFormat', FILE_FORMAT.edi);
+          change(`${configPath}.transmissionMethod`, TRANSMISSION_METHOD.ftp);
+          change(`${configPath}.fileFormat`, FILE_FORMAT.edi);
           break;
         }
         case INTEGRATION_TYPE.claiming: {
           change('type', EXPORT_TYPES.claims);
-          change('exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule', null);
+          change(`${configPath}.ediSchedule`, null);
+
+          if (isMethodEmail) {
+            change(`${configPath}.transmissionMethod`, TRANSMISSION_METHOD.ftp);
+          }
           break;
         }
         default: break;
+      }
+    });
+  };
+
+  const handleTransmissionMethodChange = ({ target: { value } }) => {
+    batch(() => {
+      change(`${configPath}.transmissionMethod`, value);
+
+      if (value === TRANSMISSION_METHOD.email) {
+        change(`${configPath}.fileFormat`, FILE_FORMAT.csv);
+      } else if (value === TRANSMISSION_METHOD.ftp && isOrderingType) {
+        change(`${configPath}.fileFormat`, FILE_FORMAT.edi);
       }
     });
   };
@@ -160,10 +188,10 @@ export const IntegrationInfoForm = ({
           <Field
             component={Select}
             dataOptions={transmissionMethodOptions}
-            disabled={isOrderingType}
             fullWidth
             label={<FormattedMessage id="ui-organizations.integration.info.transmissionMethod" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.transmissionMethod"
+            onChange={handleTransmissionMethodChange}
             required
           />
         </Col>
@@ -171,7 +199,7 @@ export const IntegrationInfoForm = ({
           <Field
             component={Select}
             dataOptions={fileFormatOptions}
-            disabled={isOrderingType}
+            disabled={isOrderingType && isMethodFTP}
             fullWidth
             label={<FormattedMessage id="ui-organizations.integration.info.fileFormat" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.fileFormat"
@@ -179,7 +207,7 @@ export const IntegrationInfoForm = ({
           />
         </Col>
         {
-          !isDefaultConfig && (
+          !isDefaultConfig && !isMethodEmail && (
             <Col
               data-test-edi-account-numbers
               xs={6}

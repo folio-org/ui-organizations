@@ -28,10 +28,15 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
-import { isClaimingIntegration } from '../utils';
+import {
+  isClaimingIntegration,
+  isTransmissionMethodFTP,
+  isTransmissionMethodEmail,
+} from '../utils';
 import { IntegrationInfoForm } from './IntegrationInfoForm';
 import { EdiForm } from './EdiForm';
 import { FtpForm } from './FtpForm';
+import { EmailForm } from './EmailForm';
 import { SchedulingForm } from './SchedulingForm';
 
 const OrganizationIntegrationForm = ({
@@ -41,6 +46,7 @@ const OrganizationIntegrationForm = ({
   integrationConfigs,
   onClose,
   organization,
+  organizationEmails,
   paneTitle,
   handleSubmit,
   pristine,
@@ -110,7 +116,10 @@ const OrganizationIntegrationForm = ({
     },
   ];
 
-  const isClaimingType = isClaimingIntegration(getState()?.values);
+  const formValues = getState()?.values;
+  const isClaimingType = isClaimingIntegration(formValues);
+  const isMethodFTP = isTransmissionMethodFTP(formValues);
+  const isMethodEmail = isTransmissionMethodEmail(formValues);
 
   return (
     <HasCommand
@@ -151,9 +160,11 @@ const OrganizationIntegrationForm = ({
                   organization={organization}
                 />
 
-                <EdiForm acqMethods={acqMethods} />
+                {!isMethodEmail && <EdiForm acqMethods={acqMethods} />}
 
-                <FtpForm />
+                {isMethodFTP && <FtpForm />}
+
+                {isMethodEmail && <EmailForm organizationEmails={organizationEmails} />}
 
                 {!isClaimingType && <SchedulingForm />}
               </AccordionSet>
@@ -175,6 +186,7 @@ OrganizationIntegrationForm.propTypes = {
   integrationConfigs: PropTypes.arrayOf(PropTypes.object),
   onClose: PropTypes.func.isRequired,
   organization: PropTypes.object,
+  organizationEmails: PropTypes.arrayOf(PropTypes.object),
   paneTitle: PropTypes.node.isRequired,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,

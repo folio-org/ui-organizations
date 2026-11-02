@@ -52,11 +52,14 @@ import {
 import {
   getDuplicateTimestamp,
   isClaimingIntegration,
+  isTransmissionMethodFTP,
+  isTransmissionMethodEmail,
 } from '../utils';
 import { AccountNumbersInUseBanner } from '../AccountNumbersInUseBanner';
 import { IntegrationInfoView } from './IntegrationInfoView';
 import { EdiView } from './EdiView';
 import { FtpView } from './FtpView';
+import { EmailView } from './EmailView';
 import { SchedulingView } from './SchedulingView';
 
 const CONFIG_NAME_PATH = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.configName';
@@ -78,6 +81,8 @@ const OrganizationIntegrationView = ({ orgId }) => {
 
   const configName = get(integrationConfig, CONFIG_NAME_PATH);
   const isClaimingType = isClaimingIntegration(integrationConfig);
+  const isMethodFTP = isTransmissionMethodFTP(integrationConfig);
+  const isMethodEmail = isTransmissionMethodEmail(integrationConfig);
 
   const onEdit = useCallback(
     () => {
@@ -290,19 +295,31 @@ const OrganizationIntegrationView = ({ orgId }) => {
                     ?.vendorEdiOrdersExportConfig
                   }
                 />
-                <EdiView
-                  vendorEdiOrdersExportConfig={integrationConfig
+                {!isMethodEmail && (
+                  <EdiView
+                    vendorEdiOrdersExportConfig={integrationConfig
+                      ?.exportTypeSpecificParameters
+                      ?.vendorEdiOrdersExportConfig
+                    }
+                    acqMethods={acqMethods}
+                  />
+                )}
+
+                {isMethodFTP && (
+                  <FtpView ediFtp={integrationConfig
                     ?.exportTypeSpecificParameters
                     ?.vendorEdiOrdersExportConfig
-                  }
-                  acqMethods={acqMethods}
-                />
+                    ?.ediFtp}
+                  />
+                )}
 
-                <FtpView ediFtp={integrationConfig
-                  ?.exportTypeSpecificParameters
-                  ?.vendorEdiOrdersExportConfig
-                  ?.ediFtp}
-                />
+                {isMethodEmail && (
+                  <EmailView ediEmail={integrationConfig
+                    ?.exportTypeSpecificParameters
+                    ?.vendorEdiOrdersExportConfig
+                    ?.ediEmail}
+                  />
+                )}
 
                 {!isClaimingType && (
                   <SchedulingView ediSchedule={integrationConfig
