@@ -193,10 +193,9 @@ export const EmailForm = ({ organizationEmails = [] }) => {
   ), []);
 
   const filterBccOptions = useCallback((filterText, list) => {
-    const escapedFilterText = filterText?.replace(/[#-.]|[[-^]|[?|{}]/g, '\\$&');
-    const filterRegExp = new RegExp(`^${escapedFilterText}`, 'i');
-    const renderedItems = filterText ? list.filter((item) => item.search(filterRegExp) !== -1) : list;
-    const exactMatch = filterText ? renderedItems.filter((item) => item === filterText).length === 1 : false;
+    const search = filterText?.toLowerCase();
+    const renderedItems = search ? list.filter((address) => address.toLowerCase().startsWith(search)) : list;
+    const exactMatch = renderedItems.some((address) => address === filterText);
 
     return { renderedItems, exactMatch };
   }, []);
