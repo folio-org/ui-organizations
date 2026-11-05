@@ -1,4 +1,5 @@
 import { flow, join, map, pick, values } from 'lodash/fp';
+import { FormattedMessage } from 'react-intl';
 
 import { dayjs } from '@folio/stripes/components';
 import {
@@ -125,11 +126,13 @@ export const getIntegrationTypeOptions = (intl) => {
   }));
 };
 
-export const getTransmissionMethodOptions = (intl) => {
-  return Object.entries(TRANSMISSION_METHOD).map(([key, value]) => ({
-    label: intl.formatMessage({ id: `ui-organizations.integration.info.transmissionMethod.${key}` }),
-    value,
-  }));
+export const getTransmissionMethodOptions = (intl, methods = Object.values(TRANSMISSION_METHOD)) => {
+  return Object.entries(TRANSMISSION_METHOD)
+    .filter(([, value]) => methods.includes(value))
+    .map(([key, value]) => ({
+      label: intl.formatMessage({ id: `ui-organizations.integration.info.transmissionMethod.${key}` }),
+      value,
+    }));
 };
 
 export const getFileFormatOptions = () => {
@@ -163,6 +166,10 @@ export const isTransmissionMethod = (config, type) => {
 
 export const isTransmissionMethodFTP = (config) => {
   return isTransmissionMethod(config, TRANSMISSION_METHOD.ftp);
+};
+
+export const isTransmissionMethodEmail = (config) => {
+  return isTransmissionMethod(config, TRANSMISSION_METHOD.email);
 };
 
 export const isIntegrationType = (config, type) => {
@@ -209,6 +216,20 @@ export const createConditionalValidator = (condition, validator) => {
 
 export const validateAccountNumbersField = (...params) => {
   return createConditionalValidator(isFileFormatEDI, validateRequired)(...params);
+};
+
+const isEmailOrderingIntegration = (config) => {
+  return isOrderingIntegration(config) && isTransmissionMethodEmail(config);
+};
+
+// `validateRequired` lets an empty array pass, so multi-selects need their own check.
+const validateRequiredList = (value) => {
+  return value?.length ? undefined : <FormattedMessage id="stripes-acq-components.validation.required" />;
+};
+
+// The export job resolves email integrations by acquisition method, so the list must not be empty.
+export const validateAcquisitionMethodsField = (...params) => {
+  return createConditionalValidator(isEmailOrderingIntegration, validateRequiredList)(...params);
 };
 
 export const validateVendorEDICode = (...params) => {

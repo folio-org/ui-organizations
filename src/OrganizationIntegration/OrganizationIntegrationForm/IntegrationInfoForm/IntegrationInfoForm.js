@@ -22,27 +22,34 @@ import {
 import { validateRequired } from '@folio/stripes-acq-components';
 
 import {
+  CLAIMING_TRANSMISSION_METHODS,
   EXPORT_TYPES,
   FILE_FORMAT,
   INTEGRATION_TYPE,
+  ORDERING_TRANSMISSION_METHODS,
   TRANSMISSION_METHOD,
 } from '../../constants';
 import { AccountNumbersInUseBanner } from '../../AccountNumbersInUseBanner';
 import {
   buildAvailableAccounts,
   getAccountOptions,
+  getAcqMethodOptions,
   getFileFormatOptions,
   getIntegrationTypeOptions,
   getTransmissionMethodOptions,
   isFileFormatEDI,
   isOrderingIntegration,
+  isTransmissionMethodEmail,
+  isTransmissionMethodFTP,
   validateAccountNumbersField,
+  validateAcquisitionMethodsField,
 } from '../../utils';
 
 const ACCOUNT_NO_LIST_FIELD = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.accountNoList';
 const NO_ACCOUNTS = [];
 
 export const IntegrationInfoForm = ({
+  acqMethods,
   defaultIntegration,
   integrationConfigs,
   organization,
@@ -61,6 +68,8 @@ export const IntegrationInfoForm = ({
 
   const isFormatEDI = isFileFormatEDI(formValues);
   const isOrderingType = isOrderingIntegration(formValues);
+  const isMethodEmail = isTransmissionMethodEmail(formValues);
+  const isMethodFTP = isTransmissionMethodFTP(formValues);
 
   const isDefaultConfig = formValues
     ?.exportTypeSpecificParameters
@@ -77,28 +86,51 @@ export const IntegrationInfoForm = ({
 
     return getAccountOptions(buildAvailableAccounts(organization, integrationConfigs, { id, type }, assignedAccounts));
   }, [organization, integrationConfigs, id, type, storedAccounts, selectedAccounts]);
+  const acqMethodOptions = useMemo(() => getAcqMethodOptions(acqMethods), [acqMethods]);
 
   const integrationTypeOptions = useMemo(() => getIntegrationTypeOptions(intl), [intl]);
-  const transmissionMethodOptions = useMemo(() => getTransmissionMethodOptions(intl), [intl]);
+  const transmissionMethods = isOrderingType ? ORDERING_TRANSMISSION_METHODS : CLAIMING_TRANSMISSION_METHODS;
+  const transmissionMethodOptions = useMemo(
+    () => getTransmissionMethodOptions(intl, transmissionMethods),
+    [intl, transmissionMethods],
+  );
   const fileFormatOptions = useMemo(() => getFileFormatOptions(), []);
+
+  const configPath = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig';
 
   const handleIntegrationTypeChange = ({ target: { value } }) => {
     batch(() => {
-      change('exportTypeSpecificParameters.vendorEdiOrdersExportConfig.integrationType', value);
+      change(`${configPath}.integrationType`, value);
 
       switch (value) {
         case INTEGRATION_TYPE.ordering: {
           change('type', EXPORT_TYPES.edifactOrders);
-          change('exportTypeSpecificParameters.vendorEdiOrdersExportConfig.transmissionMethod', TRANSMISSION_METHOD.ftp);
-          change('exportTypeSpecificParameters.vendorEdiOrdersExportConfig.fileFormat', FILE_FORMAT.edi);
+          change(`${configPath}.transmissionMethod`, TRANSMISSION_METHOD.ftp);
+          change(`${configPath}.fileFormat`, FILE_FORMAT.edi);
           break;
         }
         case INTEGRATION_TYPE.claiming: {
           change('type', EXPORT_TYPES.claims);
-          change('exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediSchedule', null);
+          change(`${configPath}.ediSchedule`, null);
+
+          if (isMethodEmail) {
+            change(`${configPath}.transmissionMethod`, TRANSMISSION_METHOD.ftp);
+          }
           break;
         }
         default: break;
+      }
+    });
+  };
+
+  const handleTransmissionMethodChange = ({ target: { value } }) => {
+    batch(() => {
+      change(`${configPath}.transmissionMethod`, value);
+
+      if (value === TRANSMISSION_METHOD.email) {
+        change(`${configPath}.fileFormat`, FILE_FORMAT.csv);
+      } else if (value === TRANSMISSION_METHOD.ftp && isOrderingType) {
+        change(`${configPath}.fileFormat`, FILE_FORMAT.edi);
       }
     });
   };
@@ -160,10 +192,10 @@ export const IntegrationInfoForm = ({
           <Field
             component={Select}
             dataOptions={transmissionMethodOptions}
-            disabled={isOrderingType}
             fullWidth
             label={<FormattedMessage id="ui-organizations.integration.info.transmissionMethod" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.transmissionMethod"
+            onChange={handleTransmissionMethodChange}
             required
           />
         </Col>
@@ -171,11 +203,30 @@ export const IntegrationInfoForm = ({
           <Field
             component={Select}
             dataOptions={fileFormatOptions}
-            disabled={isOrderingType}
+            disabled={isOrderingType && isMethodFTP}
             fullWidth
             label={<FormattedMessage id="ui-organizations.integration.info.fileFormat" />}
             name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.fileFormat"
             required
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col
+          data-test-edi-acq-methods
+          xs={6}
+          md={3}
+        >
+          <Field
+            label={<FormattedMessage id="ui-organizations.integration.info.acquisitionMethods" />}
+            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods"
+            component={Select}
+            dataOptions={acqMethodOptions}
+            fullWidth
+            multiple
+            required={isOrderingType && isMethodEmail}
+            validate={validateAcquisitionMethodsField}
+            validateFields={[]}
           />
         </Col>
         {
@@ -204,6 +255,7 @@ export const IntegrationInfoForm = ({
 };
 
 IntegrationInfoForm.propTypes = {
+  acqMethods: PropTypes.arrayOf(PropTypes.object),
   defaultIntegration: PropTypes.object,
   integrationConfigs: PropTypes.arrayOf(PropTypes.object),
   organization: PropTypes.object,
