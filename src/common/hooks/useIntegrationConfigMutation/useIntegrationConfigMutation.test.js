@@ -73,6 +73,88 @@ describe('useIntegrationConfigMutation', () => {
     expect(putMock).toHaveBeenCalled();
   });
 
+  it('should add vendorName from organization to the request payload', async () => {
+    const postMock = jest.fn();
+
+    useOkapiKy.mockClear().mockReturnValue({
+      post: postMock,
+    });
+
+    const { result } = renderHook(
+      () => useIntegrationConfigMutation({ organization: { id: 'orgId', name: 'Amazon' } }),
+      { wrapper },
+    );
+
+    await result.current.mutateIntegrationConfig({
+      exportTypeSpecificParameters: {
+        vendorEdiOrdersExportConfig: {
+          vendorId: 'orgId',
+          vendorName: 'Outdated name',
+        },
+      },
+    });
+
+    expect(postMock).toHaveBeenCalledWith('data-export-spring/configs', {
+      json: {
+        exportTypeSpecificParameters: {
+          vendorEdiOrdersExportConfig: {
+            vendorId: 'orgId',
+            vendorName: 'Amazon',
+          },
+        },
+      },
+    });
+  });
+
+  it('should not add vendorName when organization is not provided', async () => {
+    const postMock = jest.fn();
+
+    useOkapiKy.mockClear().mockReturnValue({
+      post: postMock,
+    });
+
+    const { result } = renderHook(
+      () => useIntegrationConfigMutation(),
+      { wrapper },
+    );
+
+    await result.current.mutateIntegrationConfig({
+      exportTypeSpecificParameters: {
+        vendorEdiOrdersExportConfig: {
+          vendorId: 'orgId',
+        },
+      },
+    });
+
+    expect(postMock.mock.calls[0][1].json.exportTypeSpecificParameters.vendorEdiOrdersExportConfig)
+      .not.toHaveProperty('vendorName');
+  });
+
+  it('should not add vendorName for delete request', async () => {
+    const deleteMock = jest.fn();
+
+    useOkapiKy.mockClear().mockReturnValue({
+      delete: deleteMock,
+    });
+
+    const { result } = renderHook(
+      () => useIntegrationConfigMutation({ method: 'delete', organization: { id: 'orgId', name: 'Amazon' } }),
+      { wrapper },
+    );
+
+    await result.current.mutateIntegrationConfig({
+      id: 1,
+      exportTypeSpecificParameters: {
+        vendorEdiOrdersExportConfig: {
+          vendorId: 'orgId',
+        },
+      },
+    });
+
+    expect(deleteMock.mock.calls[0][1].json.exportTypeSpecificParameters.vendorEdiOrdersExportConfig)
+      .not.toHaveProperty('vendorName');
+  });
+
   it('should make delete request when \'delete\' method is specified in options', async () => {
     const deleteMock = jest.fn();
 
