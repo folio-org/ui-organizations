@@ -67,6 +67,16 @@ describe('OrganizationIntegrationCreate', () => {
     expect(screen.queryByText('OrganizationIntegrationForm')).not.toBeInTheDocument();
   });
 
+  it('should initialize the config with the vendor name', () => {
+    renderOrganizationIntegrationCreate();
+
+    expect(OrganizationIntegrationForm.mock.calls[0][0].initialValues
+      .exportTypeSpecificParameters.vendorEdiOrdersExportConfig).toEqual(expect.objectContaining({
+      vendorId: organization.id,
+      vendorName: organization.name,
+    }));
+  });
+
   it('should redirect to org details when form is closed', async () => {
     const pushMock = jest.fn();
 
