@@ -25,7 +25,6 @@ exports[`OrganizationContactPeopleForm should render correct structure 1`] = `
             data-total-count="0"
             id="contact-list"
             role="grid"
-            tabindex="0"
           >
             <div
               class="mclHeaderContainer"

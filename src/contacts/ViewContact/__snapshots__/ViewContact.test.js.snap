@@ -461,7 +461,6 @@ exports[`ViewContact should render correct structure 1`] = `
                         class="mclGridBody"
                         data-total-count="0"
                         role="grid"
-                        tabindex="0"
                       >
                         <div
                           class="mclHeaderContainer"
@@ -677,7 +676,6 @@ exports[`ViewContact should render correct structure 1`] = `
                         class="mclGridBody"
                         data-total-count="0"
                         role="grid"
-                        tabindex="0"
                       >
                         <div
                           class="mclHeaderContainer"
@@ -893,7 +891,6 @@ exports[`ViewContact should render correct structure 1`] = `
                         class="mclGridBody"
                         data-total-count="0"
                         role="grid"
-                        tabindex="0"
                       >
                         <div
                           class="mclHeaderContainer"
