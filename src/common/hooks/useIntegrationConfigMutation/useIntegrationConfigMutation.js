@@ -9,28 +9,32 @@ import { SCHEDULE_PERIODS, TRANSMISSION_METHOD } from '../../../OrganizationInte
 import { getSchedulingDatetime } from '../../../OrganizationIntegration/utils';
 
 export const useIntegrationConfigMutation = (options = {}) => {
+  const { organization, ...mutationOptions } = options;
   const ky = useOkapiKy();
   const stripes = useStripes();
 
   const { mutateAsync } = useMutation({
     mutationFn: (integrationConfig) => {
       const json = cloneDeep(integrationConfig);
-      const vendorConfig = json.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig;
+      const kyMethod = mutationOptions.method ?? (integrationConfig.id ? 'put' : 'post');
+      const vendorEdiOrdersExportConfig = json.exportTypeSpecificParameters?.vendorEdiOrdersExportConfig;
 
-      if (vendorConfig) {
-        if (vendorConfig.transmissionMethod === TRANSMISSION_METHOD.email) {
+      if (vendorEdiOrdersExportConfig) {
+        if (vendorEdiOrdersExportConfig.transmissionMethod === TRANSMISSION_METHOD.email) {
           // ediConfig stays: acquisition methods and account numbers apply to every method.
-          delete vendorConfig.ediFtp;
+          delete vendorEdiOrdersExportConfig.ediFtp;
         } else {
-          delete vendorConfig.ediEmail;
+          delete vendorEdiOrdersExportConfig.ediEmail;
         }
       }
 
-      const scheduleParameters = json
-        .exportTypeSpecificParameters
-        ?.vendorEdiOrdersExportConfig
+      const scheduleParameters = vendorEdiOrdersExportConfig
         ?.ediSchedule
         ?.scheduleParameters;
+
+      if (kyMethod !== 'delete' && vendorEdiOrdersExportConfig && organization?.name) {
+        vendorEdiOrdersExportConfig.vendorName = organization.name;
+      }
 
       if (scheduleParameters?.weekDays) {
         scheduleParameters.weekDays = Object.keys(scheduleParameters.weekDays)
@@ -49,14 +53,13 @@ export const useIntegrationConfigMutation = (options = {}) => {
         scheduleParameters.scheduleTime = scheduleParameters.scheduleTime.slice(0, 8);
       }
 
-      const kyMethod = options.method ?? (integrationConfig.id ? 'put' : 'post');
       const kyPath = integrationConfig.id
         ? `data-export-spring/configs/${integrationConfig.id}`
         : 'data-export-spring/configs';
 
       return ky[kyMethod](kyPath, { json });
     },
-    ...options,
+    ...mutationOptions,
   });
 
   return {
