@@ -5,6 +5,7 @@
 * Keep assigned account numbers editable in the integration form and warn about duplicates. Refs UIORGS-481.
 * Do not show metadata fields in version view. Refs UIORGS-482.
 * Provide vendor name in the organization integration details. Refs UIORGS-485.
+* Leverage `yarn.lock` file. Ref UIORGS-486.
 
 ## [7.0.0](https://github.com/folio-org/ui-organizations/tree/v7.0.0) (2026-04-17)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v6.0.1...v7.0.0)
