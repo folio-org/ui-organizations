@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`OrganizationForm should render correct form with metadata 1`] = `
 <DocumentFragment>
@@ -15,10 +15,10 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
           style="flex: 0 0 100%;"
         >
           <div
-            aria-labelledby="paneHeader36-pane-title"
+            aria-labelledby="paneHeader34-pane-title"
             class="paneHeader"
             data-test-pane-header="true"
-            id="paneHeader36"
+            id="paneHeader34"
             role="region"
             tabindex="-1"
           >
@@ -51,7 +51,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
             >
               <div
                 class="paneHeaderCenterInner"
-                id="paneHeader36-pane-title"
+                id="paneHeader34-pane-title"
               >
                 <h2
                   class="paneTitle"
@@ -68,8 +68,8 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
           </div>
           <div
             class="paneContent hasPadding"
-            id="36-content"
-            tabindex="-1"
+            id="34-content"
+            tabindex="0"
           >
             <div
               class="row"
@@ -129,7 +129,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                             data-test-headline="true"
                           >
                             <button
-                              aria-controls="accordion70"
+                              aria-controls="accordion59"
                               aria-expanded="true"
                               class="defaultCollapseButton"
                               id="accordion-toggle-button-summarySection"
@@ -164,7 +164,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                         aria-labelledby="accordion-toggle-button-summarySection"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
-                        id="accordion70"
+                        id="accordion59"
                         role="region"
                       >
                         <div>
@@ -229,7 +229,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                                 >
                                   <label
                                     class="label"
-                                    for="text-input-43"
+                                    for="text-input-41"
                                   >
                                     ui-organizations.summary.code
                                     <span
@@ -249,7 +249,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                                       autocomplete="off"
                                       autocorrect="off"
                                       error=""
-                                      id="text-input-43"
+                                      id="text-input-41"
                                       name="code"
                                       required=""
                                       spellcheck="false"
@@ -273,7 +273,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                             >
                               <label
                                 class="label"
-                                for="text-input-44"
+                                for="text-input-42"
                               >
                                 ui-organizations.summary.accountingCode
                               </label>
@@ -286,7 +286,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                                   autocomplete="off"
                                   autocorrect="off"
                                   error=""
-                                  id="text-input-44"
+                                  id="text-input-42"
                                   name="erpCode"
                                   spellcheck="false"
                                   type="text"
@@ -307,8 +307,8 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                             >
                               <label
                                 class="label"
-                                for="select-45"
-                                id="select-45-label"
+                                for="select-43"
+                                id="select-43-label"
                               >
                                 ui-organizations.summary.organizationStatus
                                 <span
@@ -323,10 +323,10 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                               >
                                 <select
                                   aria-invalid="false"
-                                  aria-labelledby="select-45-label"
+                                  aria-labelledby="select-43-label"
                                   aria-required="true"
                                   class="selectControl formControl"
-                                  id="select-45"
+                                  id="select-43"
                                   name="status"
                                   required=""
                                 >
@@ -598,7 +598,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                             >
                               <label
                                 class="label"
-                                for="textarea-input-46"
+                                for="textarea-input-44"
                               >
                                 ui-organizations.summary.description
                               </label>
@@ -608,7 +608,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                                 <textarea
                                   aria-invalid="false"
                                   class="formControl"
-                                  id="textarea-input-46"
+                                  id="textarea-input-44"
                                   name="description"
                                 />
                                 <div
@@ -626,7 +626,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                             >
                               <label
                                 class="label label checkboxInteractionStylesControl"
-                                for="checkbox-47"
+                                for="checkbox-45"
                               >
                                 <span
                                   class="labelText"
@@ -639,7 +639,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                                   <input
                                     aria-invalid="false"
                                     class="input"
-                                    id="checkbox-47"
+                                    id="checkbox-45"
                                     name="isDonor"
                                     type="checkbox"
                                     value=""
@@ -679,7 +679,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                             >
                               <label
                                 class="label label checkboxInteractionStylesControl"
-                                for="checkbox-48"
+                                for="checkbox-46"
                               >
                                 <span
                                   class="labelText"
@@ -692,7 +692,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                                   <input
                                     aria-invalid="false"
                                     class="input"
-                                    id="checkbox-48"
+                                    id="checkbox-46"
                                     name="isVendor"
                                     type="checkbox"
                                     value=""
@@ -777,7 +777,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                             data-test-headline="true"
                           >
                             <button
-                              aria-controls="accordion71"
+                              aria-controls="accordion60"
                               aria-expanded="false"
                               class="defaultCollapseButton"
                               id="accordion-toggle-button-contactInformationSection"
@@ -812,7 +812,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                         aria-labelledby="accordion-toggle-button-contactInformationSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion71"
+                        id="accordion60"
                         role="region"
                       >
                         <span>
@@ -841,7 +841,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                             data-test-headline="true"
                           >
                             <button
-                              aria-controls="accordion72"
+                              aria-controls="accordion61"
                               aria-expanded="false"
                               class="defaultCollapseButton"
                               id="accordion-toggle-button-contactPeopleSection"
@@ -876,7 +876,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                         aria-labelledby="accordion-toggle-button-contactPeopleSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion72"
+                        id="accordion61"
                         role="region"
                       >
                         <div
@@ -916,7 +916,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                             data-test-headline="true"
                           >
                             <button
-                              aria-controls="accordion73"
+                              aria-controls="accordion62"
                               aria-expanded="false"
                               class="defaultCollapseButton"
                               id="accordion-toggle-button-interfacesSection"
@@ -951,7 +951,7 @@ exports[`OrganizationForm should render correct form with metadata 1`] = `
                         aria-labelledby="accordion-toggle-button-interfacesSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion73"
+                        id="accordion62"
                         role="region"
                       >
                         <div
@@ -1138,7 +1138,7 @@ exports[`OrganizationForm should render correct non-vendor form structure 1`] = 
           <div
             class="paneContent hasPadding"
             id="1-content"
-            tabindex="-1"
+            tabindex="0"
           >
             <div
               class="row"
@@ -2150,10 +2150,10 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
           style="flex: 0 0 100%;"
         >
           <div
-            aria-labelledby="paneHeader15-pane-title"
+            aria-labelledby="paneHeader14-pane-title"
             class="paneHeader"
             data-test-pane-header="true"
-            id="paneHeader15"
+            id="paneHeader14"
             role="region"
             tabindex="-1"
           >
@@ -2186,7 +2186,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
             >
               <div
                 class="paneHeaderCenterInner"
-                id="paneHeader15-pane-title"
+                id="paneHeader14-pane-title"
               >
                 <h2
                   class="paneTitle"
@@ -2203,8 +2203,8 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
           </div>
           <div
             class="paneContent hasPadding"
-            id="15-content"
-            tabindex="-1"
+            id="14-content"
+            tabindex="0"
           >
             <div
               class="row"
@@ -2264,7 +2264,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             data-test-headline="true"
                           >
                             <button
-                              aria-controls="accordion23"
+                              aria-controls="accordion19"
                               aria-expanded="true"
                               class="defaultCollapseButton"
                               id="accordion-toggle-button-summarySection"
@@ -2299,7 +2299,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                         aria-labelledby="accordion-toggle-button-summarySection"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
-                        id="accordion23"
+                        id="accordion19"
                         role="region"
                       >
                         <div
@@ -2361,7 +2361,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                 >
                                   <label
                                     class="label"
-                                    for="text-input-25"
+                                    for="text-input-24"
                                   >
                                     ui-organizations.summary.code
                                     <span
@@ -2381,7 +2381,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                       autocomplete="off"
                                       autocorrect="off"
                                       error=""
-                                      id="text-input-25"
+                                      id="text-input-24"
                                       name="code"
                                       required=""
                                       spellcheck="false"
@@ -2405,7 +2405,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             >
                               <label
                                 class="label"
-                                for="text-input-26"
+                                for="text-input-25"
                               >
                                 ui-organizations.summary.accountingCode
                               </label>
@@ -2418,7 +2418,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                   autocomplete="off"
                                   autocorrect="off"
                                   error=""
-                                  id="text-input-26"
+                                  id="text-input-25"
                                   name="erpCode"
                                   spellcheck="false"
                                   type="text"
@@ -2439,8 +2439,8 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             >
                               <label
                                 class="label"
-                                for="select-27"
-                                id="select-27-label"
+                                for="select-26"
+                                id="select-26-label"
                               >
                                 ui-organizations.summary.organizationStatus
                                 <span
@@ -2455,10 +2455,10 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                               >
                                 <select
                                   aria-invalid="false"
-                                  aria-labelledby="select-27-label"
+                                  aria-labelledby="select-26-label"
                                   aria-required="true"
                                   class="selectControl formControl"
-                                  id="select-27"
+                                  id="select-26"
                                   name="status"
                                   required=""
                                 >
@@ -2730,7 +2730,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             >
                               <label
                                 class="label"
-                                for="textarea-input-28"
+                                for="textarea-input-27"
                               >
                                 ui-organizations.summary.description
                               </label>
@@ -2740,7 +2740,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                 <textarea
                                   aria-invalid="false"
                                   class="formControl"
-                                  id="textarea-input-28"
+                                  id="textarea-input-27"
                                   name="description"
                                 />
                                 <div
@@ -2758,7 +2758,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             >
                               <label
                                 class="label label checkboxInteractionStylesControl"
-                                for="checkbox-29"
+                                for="checkbox-28"
                               >
                                 <span
                                   class="labelText"
@@ -2771,7 +2771,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                   <input
                                     aria-invalid="false"
                                     class="input"
-                                    id="checkbox-29"
+                                    id="checkbox-28"
                                     name="isDonor"
                                     type="checkbox"
                                     value=""
@@ -2811,7 +2811,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             >
                               <label
                                 class="label label checkboxInteractionStylesControl"
-                                for="checkbox-30"
+                                for="checkbox-29"
                               >
                                 <span
                                   class="labelText"
@@ -2825,7 +2825,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                     aria-invalid="false"
                                     checked=""
                                     class="input"
-                                    id="checkbox-30"
+                                    id="checkbox-29"
                                     name="isVendor"
                                     type="checkbox"
                                     value=""
@@ -2910,7 +2910,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             data-test-headline="true"
                           >
                             <button
-                              aria-controls="accordion24"
+                              aria-controls="accordion20"
                               aria-expanded="false"
                               class="defaultCollapseButton"
                               id="accordion-toggle-button-contactInformationSection"
@@ -2945,7 +2945,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                         aria-labelledby="accordion-toggle-button-contactInformationSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion24"
+                        id="accordion20"
                         role="region"
                       >
                         <span>
@@ -2974,7 +2974,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             data-test-headline="true"
                           >
                             <button
-                              aria-controls="accordion25"
+                              aria-controls="accordion21"
                               aria-expanded="false"
                               class="defaultCollapseButton"
                               id="accordion-toggle-button-contactPeopleSection"
@@ -3009,7 +3009,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                         aria-labelledby="accordion-toggle-button-contactPeopleSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion25"
+                        id="accordion21"
                         role="region"
                       >
                         <div
@@ -3049,7 +3049,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             data-test-headline="true"
                           >
                             <button
-                              aria-controls="accordion26"
+                              aria-controls="accordion22"
                               aria-expanded="false"
                               class="defaultCollapseButton"
                               id="accordion-toggle-button-interfacesSection"
@@ -3084,7 +3084,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                         aria-labelledby="accordion-toggle-button-interfacesSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion26"
+                        id="accordion22"
                         role="region"
                       >
                         <div
@@ -3124,7 +3124,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             data-test-headline="true"
                           >
                             <button
-                              aria-controls="accordion27"
+                              aria-controls="accordion23"
                               aria-expanded="false"
                               class="defaultCollapseButton"
                               id="accordion-toggle-button-vendorInformationSection"
@@ -3159,7 +3159,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                         aria-labelledby="accordion-toggle-button-vendorInformationSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion27"
+                        id="accordion23"
                         role="region"
                       >
                         <div
@@ -3180,8 +3180,8 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                 >
                                   <label
                                     class="label"
-                                    for="select-31"
-                                    id="select-31-label"
+                                    for="select-30"
+                                    id="select-30-label"
                                   >
                                     ui-organizations.vendorInfo.paymentMethod
                                   </label>
@@ -3190,10 +3190,10 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                   >
                                     <select
                                       aria-invalid="false"
-                                      aria-labelledby="select-31-label"
+                                      aria-labelledby="select-30-label"
                                       aria-required="false"
                                       class="selectControl formControl"
-                                      id="select-31"
+                                      id="select-30"
                                       name="paymentMethod"
                                     >
                                       <option
@@ -3417,7 +3417,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                 >
                                   <label
                                     class="label"
-                                    for="text-input-32"
+                                    for="text-input-31"
                                   >
                                     ui-organizations.vendorInfo.claimingInterval
                                   </label>
@@ -3430,7 +3430,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                       autocomplete="off"
                                       autocorrect="off"
                                       error=""
-                                      id="text-input-32"
+                                      id="text-input-31"
                                       name="claimingInterval"
                                       spellcheck="false"
                                       type="number"
@@ -3487,7 +3487,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                 >
                                   <label
                                     class="label"
-                                    for="text-input-33"
+                                    for="text-input-32"
                                   >
                                     ui-organizations.vendorInfo.discountPercent
                                   </label>
@@ -3500,7 +3500,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                       autocomplete="off"
                                       autocorrect="off"
                                       error=""
-                                      id="text-input-33"
+                                      id="text-input-32"
                                       name="discountPercent"
                                       spellcheck="false"
                                       type="text"
@@ -3665,7 +3665,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                         data-test-headline="true"
                                       >
                                         <button
-                                          aria-controls="accordion42"
+                                          aria-controls="accordion38"
                                           aria-expanded="true"
                                           class="defaultCollapseButton"
                                           id="accordion-toggle-button-taxSection"
@@ -3700,7 +3700,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                                     aria-labelledby="accordion-toggle-button-taxSection"
                                     class="content-region expanded"
                                     data-test-accordion-wrapper="true"
-                                    id="accordion42"
+                                    id="accordion38"
                                     role="region"
                                   >
                                     <div
@@ -3860,7 +3860,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             data-test-headline="true"
                           >
                             <button
-                              aria-controls="accordion28"
+                              aria-controls="accordion24"
                               aria-expanded="false"
                               class="defaultCollapseButton"
                               id="accordion-toggle-button-agreementsSection"
@@ -3895,7 +3895,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                         aria-labelledby="accordion-toggle-button-agreementsSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion28"
+                        id="accordion24"
                         role="region"
                       >
                         <div
@@ -3954,7 +3954,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                             data-test-headline="true"
                           >
                             <button
-                              aria-controls="accordion29"
+                              aria-controls="accordion25"
                               aria-expanded="false"
                               class="defaultCollapseButton"
                               id="accordion-toggle-button-accountsSection"
@@ -3989,7 +3989,7 @@ exports[`OrganizationForm should render correct vendor form structure 1`] = `
                         aria-labelledby="accordion-toggle-button-accountsSection"
                         class="content-region"
                         data-test-accordion-wrapper="true"
-                        id="accordion29"
+                        id="accordion25"
                         role="region"
                       >
                         <div
