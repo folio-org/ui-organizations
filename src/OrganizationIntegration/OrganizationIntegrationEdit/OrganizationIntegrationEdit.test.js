@@ -7,7 +7,7 @@ import {
   useOrganization,
 } from '@folio/stripes-acq-components';
 
-import { organization } from 'fixtures';
+import { integrationConfig, organization } from 'fixtures';
 import { history, location } from '../../../test/jest/routerMocks';
 
 import {
@@ -98,5 +98,50 @@ describe('OrganizationIntegrationEdit', () => {
     OrganizationIntegrationForm.mock.calls[0][0].onSubmit({});
 
     expect(saveIntegrationConfigMock).toHaveBeenCalled();
+  });
+
+  it.each([undefined, 'Outdated vendor name'])('should initialize vendorName with the current name when it was %s', (vendorName) => {
+    const config = {
+      ...integrationConfig,
+      exportTypeSpecificParameters: {
+        ...integrationConfig.exportTypeSpecificParameters,
+        vendorEdiOrdersExportConfig: {
+          ...integrationConfig.exportTypeSpecificParameters.vendorEdiOrdersExportConfig,
+          vendorName,
+        },
+      },
+    };
+
+    useIntegrationConfig.mockReturnValue({ integrationConfig: config });
+    renderOrganizationIntegrationEdit();
+
+    const initialValues = OrganizationIntegrationForm.mock.calls[0][0].initialValues;
+
+    expect(initialValues.exportTypeSpecificParameters.vendorEdiOrdersExportConfig).toEqual({
+      ...config.exportTypeSpecificParameters.vendorEdiOrdersExportConfig,
+      vendorName: organization.name,
+    });
+    expect(config.exportTypeSpecificParameters.vendorEdiOrdersExportConfig.vendorName).toBe(vendorName);
+  });
+
+  it('should initialize the config and vendor name after they load', () => {
+    useIntegrationConfig.mockReturnValue({ isLoading: true });
+    useOrganization.mockReturnValue({ isLoading: true });
+
+    const { rerender } = renderOrganizationIntegrationEdit();
+
+    expect(OrganizationIntegrationForm).not.toHaveBeenCalled();
+
+    useIntegrationConfig.mockReturnValue({ integrationConfig, isLoading: false });
+    useOrganization.mockReturnValue({ organization, isLoading: false });
+    rerender(<OrganizationIntegrationEdit {...defaultProps} />);
+
+    const initialValues = OrganizationIntegrationForm.mock.calls[0][0].initialValues;
+
+    expect(initialValues.id).toBe(integrationConfig.id);
+    expect(initialValues.exportTypeSpecificParameters.vendorEdiOrdersExportConfig).toEqual({
+      ...integrationConfig.exportTypeSpecificParameters.vendorEdiOrdersExportConfig,
+      vendorName: organization.name,
+    });
   });
 });

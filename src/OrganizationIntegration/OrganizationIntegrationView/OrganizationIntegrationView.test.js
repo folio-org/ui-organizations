@@ -91,7 +91,7 @@ describe('OrganizationIntegrationView', () => {
 
     useParams.mockReturnValue({ id: integrationConfig.id });
     useOrganization.mockReturnValue({
-      organization: { id: defaultProps.orgId, accounts: [] },
+      organization: { id: defaultProps.orgId, name: 'Current vendor name', accounts: [] },
       isLoading: false,
     });
     useIntegrationConfigMutation.mockReturnValue({ mutateIntegrationConfig });
@@ -203,17 +203,36 @@ describe('OrganizationIntegrationView', () => {
       });
     });
 
-    it('should duplicate integration config', async () => {
+    it.each([undefined, 'Outdated vendor name'])('should duplicate integration config with the current vendor name when it was %s', async (vendorName) => {
       const pushMock = jest.fn();
+      const config = {
+        ...integrationConfig,
+        exportTypeSpecificParameters: {
+          ...integrationConfig.exportTypeSpecificParameters,
+          vendorEdiOrdersExportConfig: {
+            ...integrationConfig.exportTypeSpecificParameters.vendorEdiOrdersExportConfig,
+            vendorName,
+          },
+        },
+      };
 
       useHistory.mockReturnValue({ push: pushMock });
+      useIntegrationConfig.mockReturnValue({ integrationConfig: config });
 
       renderOrganizationIntegrationView();
 
       await user.click(screen.getByTestId('duplicate-integration-action'));
       await user.click(screen.getByText('ui-organizations.integration.confirmation.confirm'));
 
-      expect(mutateIntegrationConfig).toHaveBeenCalled();
+      expect(mutateIntegrationConfig).toHaveBeenCalledWith(expect.objectContaining({
+        exportTypeSpecificParameters: expect.objectContaining({
+          vendorEdiOrdersExportConfig: expect.objectContaining({
+            vendorName: 'Current vendor name',
+          }),
+        }),
+      }));
+      expect(mutateIntegrationConfig.mock.calls[0][0]).not.toHaveProperty('id');
+      expect(config.exportTypeSpecificParameters.vendorEdiOrdersExportConfig.vendorName).toBe(vendorName);
       expect(pushMock).toHaveBeenCalledWith({
         pathname: `/organizations/view/${orgId}`,
         search: '',
@@ -277,6 +296,14 @@ describe('OrganizationIntegrationView', () => {
   });
 
   describe('Loading pane', () => {
+    it('should wait for the organization before allowing duplication', () => {
+      useOrganization.mockReturnValue({ isLoading: true });
+      renderOrganizationIntegrationView();
+
+      expect(screen.getByTestId('integration-view-loading')).toBeInTheDocument();
+      expect(screen.queryByTestId('duplicate-integration-action')).not.toBeInTheDocument();
+    });
+
     it('should render loading pane', () => {
       useIntegrationConfig.mockClear().mockReturnValue({ isLoading: true });
       renderOrganizationIntegrationView();

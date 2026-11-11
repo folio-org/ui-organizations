@@ -1,5 +1,6 @@
-import React from 'react';
+import set from 'lodash/set';
 import PropTypes from 'prop-types';
+import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
 
@@ -29,6 +30,12 @@ export const OrganizationIntegrationEdit = ({ orgId }) => {
   const { organization, isLoading: isOrgLoading } = useOrganization(orgId);
   const { acqMethods, isLoading: isAcqMethodsLoading } = useAcqMethods();
   const { integrationConfigs, isFetching: isIntegrationsLoading } = useIntegrationConfigs({ organizationId: orgId });
+
+  const initialValues = useMemo(() => {
+    const config = structuredClone(integrationConfig);
+
+    return set(config, 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.vendorName', organization?.name);
+  }, [integrationConfig, organization?.name]);
 
   const closeForm = () => {
     history.push({
@@ -65,7 +72,7 @@ export const OrganizationIntegrationEdit = ({ orgId }) => {
     <OrganizationIntegrationForm
       acqMethods={acqMethods}
       defaultIntegration={findDefaultIntegration(integrationConfigs, integrationConfig)}
-      initialValues={integrationConfig}
+      initialValues={initialValues}
       integrationConfigs={integrationConfigs}
       organization={organization}
       onSubmit={mutateIntegrationConfig}
