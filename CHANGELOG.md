@@ -6,6 +6,7 @@
 * Do not show metadata fields in version view. Refs UIORGS-482.
 * Provide vendor name in the organization integration details. Refs UIORGS-485.
 * Leverage `yarn.lock` file. Ref UIORGS-486.
+* Add email as transmission method for ordering integrations. Refs UIORGS-477.
 
 ## [7.0.0](https://github.com/folio-org/ui-organizations/tree/v7.0.0) (2026-04-17)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v6.0.1...v7.0.0)
