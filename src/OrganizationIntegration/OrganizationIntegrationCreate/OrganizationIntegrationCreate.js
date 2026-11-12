@@ -43,6 +43,7 @@ const buildInitialValues = (organization, withMigration) => {
     exportTypeSpecificParameters: {
       vendorEdiOrdersExportConfig: {
         vendorId: organization?.id,
+        vendorName: organization?.name,
         integrationType: INTEGRATION_TYPE.claiming,
         transmissionMethod: TRANSMISSION_METHOD.fileDownLoad,
         fileFormat: FILE_FORMAT.csv,

@@ -41,6 +41,7 @@ import {
   handleKeyCommand,
   useIntegrationConfigs,
   useModalToggle,
+  useOrganization,
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
@@ -76,9 +77,12 @@ const OrganizationIntegrationView = ({ orgId }) => {
   const [isDuplicateConfirmation, toggleDuplicateConfirmation] = useModalToggle();
   const [isRemoveConfirmation, toggleRemoveConfirmation] = useModalToggle();
 
-  const { integrationConfig, isLoading } = useIntegrationConfig(id);
+  const { integrationConfig, isLoading: isIntegrationConfigLoading } = useIntegrationConfig(id);
   const { acqMethods, isLoading: isAcqMethodsLoading } = useAcqMethods();
   const { integrationConfigs } = useIntegrationConfigs({ organizationId: orgId });
+  const { organization, isLoading: isOrgLoading } = useOrganization(orgId);
+
+  const isLoading = isIntegrationConfigLoading || isAcqMethodsLoading || isOrgLoading;
 
   const configName = get(integrationConfig, CONFIG_NAME_PATH);
   const isClaimingType = isClaimingIntegration(integrationConfig);
@@ -106,11 +110,9 @@ const OrganizationIntegrationView = ({ orgId }) => {
     [history, location.search, orgId],
   );
 
-  const {
-    mutateIntegrationConfig: createIntegrationConfig,
-  } = useIntegrationConfigMutation({ method: 'post' });
+  const { mutateIntegrationConfig: createIntegrationConfig } = useIntegrationConfigMutation({ method: 'post' });
 
-  const { mutateIntegrationConfig } = useIntegrationConfigMutation({
+  const { mutateIntegrationConfig: deleteIntegrationConfig } = useIntegrationConfigMutation({
     method: 'delete',
     onSuccess: () => {
       showCallout({
@@ -131,6 +133,8 @@ const OrganizationIntegrationView = ({ orgId }) => {
 
     const integrationConfigCloned = omit(cloneDeep(integrationConfig), 'id');
     const configNameCloned = `${configName} (${getDuplicateTimestamp({ intl })})`;
+
+    set(integrationConfigCloned, 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.vendorName', organization.name);
 
     set(
       integrationConfigCloned,
@@ -166,13 +170,14 @@ const OrganizationIntegrationView = ({ orgId }) => {
     intl,
     location.search,
     orgId,
+    organization,
     showCallout,
     toggleDuplicateConfirmation,
   ]);
 
   const onRemove = useCallback(
-    () => mutateIntegrationConfig(integrationConfig),
-    [integrationConfig, mutateIntegrationConfig],
+    () => deleteIntegrationConfig(integrationConfig),
+    [integrationConfig, deleteIntegrationConfig],
   );
 
   // eslint-disable-next-line react/prop-types
@@ -244,7 +249,7 @@ const OrganizationIntegrationView = ({ orgId }) => {
     },
   ];
 
-  if (isLoading || isAcqMethodsLoading) {
+  if (isLoading) {
     return (
       <LoadingPane
         id="integration-view-loading"
