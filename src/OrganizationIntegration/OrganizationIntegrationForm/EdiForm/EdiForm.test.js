@@ -1,6 +1,7 @@
 import { MemoryRouter } from 'react-router';
 
 import { render, screen, within } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 import stripesFinalForm from '@folio/stripes/final-form';
 
 import { EdiForm } from './EdiForm';
@@ -45,5 +46,20 @@ describe('EdiForm', () => {
     expect(getOptionValues()).toEqual(['active-id', 'saved-deprecated-id']);
     expect(within(screen.getByRole('listbox')).getByRole('option', { name: DEPRECATED_LABEL }))
       .toHaveValue('saved-deprecated-id');
+  });
+
+  it('should keep a saved deprecated acquisition method selectable after it was deselected', async () => {
+    renderEdiForm(['saved-deprecated-id']);
+
+    await user.deselectOptions(screen.getByRole('listbox'), 'saved-deprecated-id');
+
+    expect(getOptionValues()).toEqual(['active-id', 'saved-deprecated-id']);
+    expect(getAcqMethodOptions().filter((option) => option.selected)).toEqual([]);
+  });
+
+  it('should not offer deprecated acquisition methods when the saved methods are empty (null)', () => {
+    renderEdiForm(null);
+
+    expect(getOptionValues()).toEqual(['active-id']);
   });
 });

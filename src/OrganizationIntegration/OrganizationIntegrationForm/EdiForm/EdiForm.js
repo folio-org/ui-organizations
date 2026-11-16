@@ -36,7 +36,7 @@ export const EdiForm = ({ acqMethods }) => {
   const { getState } = useForm();
   const { initialValues } = useFormState({ subscription: { initialValues: true } });
 
-  const savedAcqMethodIds = get(initialValues, DEFAULT_ACQ_METHODS_FIELD);
+  const savedAcqMethodIds = get(initialValues, DEFAULT_ACQ_METHODS_FIELD) || [];
   const acqMethodOptions = useAcqMethodsOptions(
     getSelectableAcqMethods(acqMethods, savedAcqMethodIds),
     { withDeprecatedSuffix: true },
