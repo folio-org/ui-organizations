@@ -1,8 +1,9 @@
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
 import {
   Field,
   useForm,
+  useFormState,
 } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 
@@ -16,22 +17,30 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
+import { useAcqMethodsOptions } from '@folio/stripes-acq-components';
 
 import {
   EDI_CODE_TYPES,
   EDI_NAMING_TOKENS,
 } from '../../constants';
 import {
-  getAcqMethodOptions,
+  getSelectableAcqMethods,
   isFileFormatEDI,
   validateLibraryEDICode,
   validateVendorEDICode,
 } from '../../utils';
 
+const DEFAULT_ACQ_METHODS_FIELD = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods';
+
 export const EdiForm = ({ acqMethods }) => {
   const { getState } = useForm();
+  const { initialValues } = useFormState({ subscription: { initialValues: true } });
 
-  const acqMethodOptions = useMemo(() => getAcqMethodOptions(acqMethods), [acqMethods]);
+  const savedAcqMethodIds = get(initialValues, DEFAULT_ACQ_METHODS_FIELD);
+  const acqMethodOptions = useAcqMethodsOptions(
+    getSelectableAcqMethods(acqMethods, savedAcqMethodIds),
+    { withDeprecatedSuffix: true },
+  );
 
   const isFormatEDI = isFileFormatEDI(getState()?.values);
 
@@ -48,7 +57,7 @@ export const EdiForm = ({ acqMethods }) => {
         >
           <Field
             label={<FormattedMessage id="ui-organizations.integration.edi.defaultAcquisitionMethods" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods"
+            name={DEFAULT_ACQ_METHODS_FIELD}
             component={Select}
             dataOptions={acqMethodOptions}
             fullWidth
