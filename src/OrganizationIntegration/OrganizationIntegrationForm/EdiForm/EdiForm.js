@@ -1,9 +1,7 @@
-import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import {
   Field,
   useForm,
-  useFormState,
 } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 
@@ -30,15 +28,11 @@ import {
   validateVendorEDICode,
 } from '../../utils';
 
-const DEFAULT_ACQ_METHODS_FIELD = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods';
-
-export const EdiForm = ({ acqMethods }) => {
+export const EdiForm = ({ acqMethods, initialAcqMethods }) => {
   const { getState } = useForm();
-  const { initialValues } = useFormState({ subscription: { initialValues: true } });
 
-  const savedAcqMethodIds = get(initialValues, DEFAULT_ACQ_METHODS_FIELD) || [];
   const acqMethodOptions = useAcqMethodsOptions(
-    getSelectableAcqMethods(acqMethods, savedAcqMethodIds),
+    getSelectableAcqMethods(acqMethods, initialAcqMethods || []),
     { withDeprecatedSuffix: true },
   );
 
@@ -57,7 +51,7 @@ export const EdiForm = ({ acqMethods }) => {
         >
           <Field
             label={<FormattedMessage id="ui-organizations.integration.edi.defaultAcquisitionMethods" />}
-            name={DEFAULT_ACQ_METHODS_FIELD}
+            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods"
             component={Select}
             dataOptions={acqMethodOptions}
             fullWidth
@@ -208,4 +202,5 @@ export const EdiForm = ({ acqMethods }) => {
 
 EdiForm.propTypes = {
   acqMethods: PropTypes.arrayOf(PropTypes.object),
+  initialAcqMethods: PropTypes.arrayOf(PropTypes.string),
 };

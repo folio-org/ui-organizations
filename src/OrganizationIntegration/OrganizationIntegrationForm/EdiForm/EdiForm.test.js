@@ -15,19 +15,26 @@ const acqMethods = [
 // The test intl renders message ids: deprecated methods get this label
 const DEPRECATED_LABEL = 'stripes-acq-components.acquisition_method.deprecatedSuffix';
 
-const TestForm = stripesFinalForm({})(() => <EdiForm acqMethods={acqMethods} />);
+const renderEdiForm = (savedAcqMethodIds = []) => {
+  const TestForm = stripesFinalForm({})(() => (
+    <EdiForm
+      acqMethods={acqMethods}
+      initialAcqMethods={savedAcqMethodIds}
+    />
+  ));
 
-const renderEdiForm = (savedAcqMethodIds = []) => render(
-  <TestForm
-    initialValues={{
-      exportTypeSpecificParameters: {
-        vendorEdiOrdersExportConfig: { ediConfig: { defaultAcquisitionMethods: savedAcqMethodIds } },
-      },
-    }}
-    onSubmit={jest.fn()}
-  />,
-  { wrapper: MemoryRouter },
-);
+  return render(
+    <TestForm
+      initialValues={{
+        exportTypeSpecificParameters: {
+          vendorEdiOrdersExportConfig: { ediConfig: { defaultAcquisitionMethods: savedAcqMethodIds } },
+        },
+      }}
+      onSubmit={jest.fn()}
+    />,
+    { wrapper: MemoryRouter },
+  );
+};
 
 // The multi-select of the default acquisition methods is the only listbox in the form
 const getAcqMethodOptions = () => within(screen.getByRole('listbox')).getAllByRole('option');
