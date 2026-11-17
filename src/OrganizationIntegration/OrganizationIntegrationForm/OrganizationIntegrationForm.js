@@ -43,6 +43,7 @@ const OrganizationIntegrationForm = ({
   organization,
   paneTitle,
   handleSubmit,
+  initialValues,
   pristine,
   submitting,
 }) => {
@@ -111,6 +112,11 @@ const OrganizationIntegrationForm = ({
   ];
 
   const isClaimingType = isClaimingIntegration(getState()?.values);
+  const initialAcqMethods = initialValues
+    ?.exportTypeSpecificParameters
+    ?.vendorEdiOrdersExportConfig
+    ?.ediConfig
+    ?.defaultAcquisitionMethods;
 
   return (
     <HasCommand
@@ -151,7 +157,10 @@ const OrganizationIntegrationForm = ({
                   organization={organization}
                 />
 
-                <EdiForm acqMethods={acqMethods} />
+                <EdiForm
+                  acqMethods={acqMethods}
+                  initialAcqMethods={initialAcqMethods}
+                />
 
                 <FtpForm />
 
@@ -172,6 +181,7 @@ OrganizationIntegrationForm.propTypes = {
     getState: PropTypes.func.isRequired,
   }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  initialValues: PropTypes.object,
   integrationConfigs: PropTypes.arrayOf(PropTypes.object),
   onClose: PropTypes.func.isRequired,
   organization: PropTypes.object,

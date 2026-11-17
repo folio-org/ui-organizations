@@ -69,10 +69,10 @@ export const findDefaultIntegration = (integrations, currentIntegration) => {
     ));
 };
 
-export const getAcqMethodOptions = (acqMethods = []) => acqMethods.map(acqMethod => ({
-  label: acqMethod.value,
-  value: acqMethod.id,
-}));
+// Deprecated methods are hidden, except the saved ones, which stay selectable
+export const getSelectableAcqMethods = (acqMethods = [], savedAcqMethodIds = []) => (
+  acqMethods.filter(({ id, deprecated }) => !deprecated || savedAcqMethodIds.includes(id))
+);
 
 export const getAccountOptions = (accounts = []) => accounts.map(account => ({
   label: account,
