@@ -1,9 +1,5 @@
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
-import {
-  FormattedMessage,
-  useIntl,
-} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import {
   Accordion,
@@ -12,40 +8,16 @@ import {
   KeyValue,
   Row,
 } from '@folio/stripes/components';
-import { getAcqMethodLabel } from '@folio/stripes-acq-components';
 
 const EdiView = ({
   vendorEdiOrdersExportConfig = {},
-  acqMethods = [],
 }) => {
-  const intl = useIntl();
-
-  const defaultAcquisitionMethodsOptions = useMemo(() => {
-    const defaultAcquisitionMethods = vendorEdiOrdersExportConfig.ediConfig?.defaultAcquisitionMethods || [];
-
-    return acqMethods
-      .filter(({ id }) => defaultAcquisitionMethods.includes(id))
-      .map((acqMethod) => getAcqMethodLabel(acqMethod, { intl, withDeprecatedSuffix: true }))
-      .join(', ');
-  }, [vendorEdiOrdersExportConfig.ediConfig?.defaultAcquisitionMethods, acqMethods, intl]);
-
   return (
     <Accordion
       id="edi"
       label={<FormattedMessage id="ui-organizations.integration.edi" />}
     >
       <Row>
-        <Col
-          data-test-edi-acq-methods
-          xs={6}
-          md={3}
-        >
-          <KeyValue
-            label={<FormattedMessage id="ui-organizations.integration.edi.defaultAcquisitionMethods" />}
-            value={defaultAcquisitionMethodsOptions}
-          />
-        </Col>
-
         <Col
           data-test-vendor-edi-code
           xs={6}
@@ -157,7 +129,6 @@ const EdiView = ({
 
 EdiView.propTypes = {
   vendorEdiOrdersExportConfig: PropTypes.object,
-  acqMethods: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default EdiView;

@@ -4,7 +4,7 @@ import { render, screen, within } from '@folio/jest-config-stripes/testing-libra
 import user from '@folio/jest-config-stripes/testing-library/user-event';
 import stripesFinalForm from '@folio/stripes/final-form';
 
-import { EdiForm } from './EdiForm';
+import { IntegrationInfoForm } from './IntegrationInfoForm';
 
 const acqMethods = [
   { id: 'active-id', value: 'Active method' },
@@ -15,12 +15,9 @@ const acqMethods = [
 // The test intl renders message ids: deprecated methods get this label
 const DEPRECATED_LABEL = 'stripes-acq-components.acquisition_method.deprecatedSuffix';
 
-const renderEdiForm = (savedAcqMethodIds = []) => {
+const renderIntegrationInfoForm = (savedAcqMethodIds = []) => {
   const TestForm = stripesFinalForm({})(() => (
-    <EdiForm
-      acqMethods={acqMethods}
-      initialAcqMethods={savedAcqMethodIds}
-    />
+    <IntegrationInfoForm acqMethods={acqMethods} />
   ));
 
   return render(
@@ -36,36 +33,36 @@ const renderEdiForm = (savedAcqMethodIds = []) => {
   );
 };
 
-// The multi-select of the default acquisition methods is the only listbox in the form
-const getAcqMethodOptions = () => within(screen.getByRole('listbox')).getAllByRole('option');
+const getAcqMethodsField = () => screen.getByRole('listbox', { name: 'ui-organizations.integration.info.acquisitionMethods' });
+const getAcqMethodOptions = () => within(getAcqMethodsField()).getAllByRole('option');
 const getOptionValues = () => getAcqMethodOptions().map((option) => option.value);
 
-describe('EdiForm', () => {
+describe('IntegrationInfoForm', () => {
   it('should not offer deprecated acquisition methods for a new selection', () => {
-    renderEdiForm();
+    renderIntegrationInfoForm();
 
     expect(getOptionValues()).toEqual(['active-id']);
   });
 
   it('should keep the saved deprecated acquisition methods, marked as deprecated', () => {
-    renderEdiForm(['active-id', 'saved-deprecated-id']);
+    renderIntegrationInfoForm(['active-id', 'saved-deprecated-id']);
 
     expect(getOptionValues()).toEqual(['active-id', 'saved-deprecated-id']);
-    expect(within(screen.getByRole('listbox')).getByRole('option', { name: DEPRECATED_LABEL }))
+    expect(within(getAcqMethodsField()).getByRole('option', { name: DEPRECATED_LABEL }))
       .toHaveValue('saved-deprecated-id');
   });
 
   it('should keep a saved deprecated acquisition method selectable after it was deselected', async () => {
-    renderEdiForm(['saved-deprecated-id']);
+    renderIntegrationInfoForm(['saved-deprecated-id']);
 
-    await user.deselectOptions(screen.getByRole('listbox'), 'saved-deprecated-id');
+    await user.deselectOptions(getAcqMethodsField(), 'saved-deprecated-id');
 
     expect(getOptionValues()).toEqual(['active-id', 'saved-deprecated-id']);
     expect(getAcqMethodOptions().filter((option) => option.selected)).toEqual([]);
   });
 
   it('should not offer deprecated acquisition methods when the saved methods are empty (null)', () => {
-    renderEdiForm(null);
+    renderIntegrationInfoForm(null);
 
     expect(getOptionValues()).toEqual(['active-id']);
   });

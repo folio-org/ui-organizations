@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
 import {
   Accordion,
@@ -9,14 +12,28 @@ import {
   KeyValue,
   Row,
 } from '@folio/stripes/components';
+import { getAcqMethodLabel } from '@folio/stripes-acq-components';
 
 import {
   INTEGRATION_TYPE,
   TRANSMISSION_METHOD,
 } from '../../constants';
 
-const IntegrationInfoView = ({ integrationConfig = {} }) => {
+const IntegrationInfoView = ({
+  integrationConfig = {},
+  acqMethods = [],
+}) => {
+  const intl = useIntl();
   const isDefaultConfig = integrationConfig?.isDefaultConfig;
+
+  const defaultAcquisitionMethodsLabels = useMemo(() => {
+    const defaultAcquisitionMethods = integrationConfig?.ediConfig?.defaultAcquisitionMethods || [];
+
+    return acqMethods
+      .filter(({ id }) => defaultAcquisitionMethods.includes(id))
+      .map((acqMethod) => getAcqMethodLabel(acqMethod, { intl, withDeprecatedSuffix: true }))
+      .join(', ');
+  }, [integrationConfig?.ediConfig?.defaultAcquisitionMethods, acqMethods, intl]);
 
   const integrationType = useMemo(() => {
     const translationKey = Object.entries(INTEGRATION_TYPE).find(([, value]) => {
@@ -98,6 +115,17 @@ const IntegrationInfoView = ({ integrationConfig = {} }) => {
           />
         </Col>
 
+        <Col
+          data-test-edi-acq-methods
+          xs={6}
+          md={3}
+        >
+          <KeyValue
+            label={<FormattedMessage id="ui-organizations.integration.info.acquisitionMethods" />}
+            value={defaultAcquisitionMethodsLabels}
+          />
+        </Col>
+
         {
           !isDefaultConfig && (
             <Col
@@ -119,6 +147,7 @@ const IntegrationInfoView = ({ integrationConfig = {} }) => {
 
 IntegrationInfoView.propTypes = {
   integrationConfig: PropTypes.object,
+  acqMethods: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default IntegrationInfoView;

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {
   Field,
   useForm,
@@ -15,26 +14,19 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
-import { useAcqMethodsOptions } from '@folio/stripes-acq-components';
 
 import {
   EDI_CODE_TYPES,
   EDI_NAMING_TOKENS,
 } from '../../constants';
 import {
-  getSelectableAcqMethods,
   isFileFormatEDI,
   validateLibraryEDICode,
   validateVendorEDICode,
 } from '../../utils';
 
-export const EdiForm = ({ acqMethods, initialAcqMethods }) => {
+export const EdiForm = () => {
   const { getState } = useForm();
-
-  const acqMethodOptions = useAcqMethodsOptions(
-    getSelectableAcqMethods(acqMethods, initialAcqMethods || []),
-    { withDeprecatedSuffix: true },
-  );
 
   const isFormatEDI = isFileFormatEDI(getState()?.values);
 
@@ -44,21 +36,6 @@ export const EdiForm = ({ acqMethods, initialAcqMethods }) => {
       label={<FormattedMessage id="ui-organizations.integration.edi" />}
     >
       <Row>
-        <Col
-          data-test-edi-acq-methods
-          xs={6}
-          md={3}
-        >
-          <Field
-            label={<FormattedMessage id="ui-organizations.integration.edi.defaultAcquisitionMethods" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods"
-            component={Select}
-            dataOptions={acqMethodOptions}
-            fullWidth
-            multiple
-          />
-        </Col>
-
         <Col
           data-test-vendor-edi-code
           xs={6}
@@ -198,9 +175,4 @@ export const EdiForm = ({ acqMethods, initialAcqMethods }) => {
       </Row>
     </Accordion>
   );
-};
-
-EdiForm.propTypes = {
-  acqMethods: PropTypes.arrayOf(PropTypes.object),
-  initialAcqMethods: PropTypes.arrayOf(PropTypes.string),
 };

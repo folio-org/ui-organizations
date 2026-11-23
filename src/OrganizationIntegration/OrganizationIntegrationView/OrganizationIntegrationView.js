@@ -53,11 +53,15 @@ import {
 import {
   getDuplicateTimestamp,
   isClaimingIntegration,
+  isFileFormatEDI,
+  isTransmissionMethodFTP,
+  isTransmissionMethodEmail,
 } from '../utils';
 import { AccountNumbersInUseBanner } from '../AccountNumbersInUseBanner';
 import { IntegrationInfoView } from './IntegrationInfoView';
 import { EdiView } from './EdiView';
 import { FtpView } from './FtpView';
+import { EmailView } from './EmailView';
 import { SchedulingView } from './SchedulingView';
 
 const CONFIG_NAME_PATH = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.configName';
@@ -82,6 +86,9 @@ const OrganizationIntegrationView = ({ orgId }) => {
 
   const configName = get(integrationConfig, CONFIG_NAME_PATH);
   const isClaimingType = isClaimingIntegration(integrationConfig);
+  const isMethodFTP = isTransmissionMethodFTP(integrationConfig);
+  const isMethodEmail = isTransmissionMethodEmail(integrationConfig);
+  const isFormatEDI = isFileFormatEDI(integrationConfig);
 
   const onEdit = useCallback(
     () => {
@@ -294,26 +301,40 @@ const OrganizationIntegrationView = ({ orgId }) => {
                     ?.exportTypeSpecificParameters
                     ?.vendorEdiOrdersExportConfig
                   }
-                />
-                <EdiView
-                  vendorEdiOrdersExportConfig={integrationConfig
-                    ?.exportTypeSpecificParameters
-                    ?.vendorEdiOrdersExportConfig
-                  }
                   acqMethods={acqMethods}
                 />
+                {(!isMethodEmail || isFormatEDI) && (
+                  <EdiView
+                    vendorEdiOrdersExportConfig={integrationConfig
+                      ?.exportTypeSpecificParameters
+                      ?.vendorEdiOrdersExportConfig
+                    }
+                  />
+                )}
 
-                <FtpView ediFtp={integrationConfig
-                  ?.exportTypeSpecificParameters
-                  ?.vendorEdiOrdersExportConfig
-                  ?.ediFtp}
-                />
-
-                {!isClaimingType && (
-                  <SchedulingView ediSchedule={integrationConfig
+                {isMethodFTP && (
+                  <FtpView ediFtp={integrationConfig
                     ?.exportTypeSpecificParameters
                     ?.vendorEdiOrdersExportConfig
-                    ?.ediSchedule}
+                    ?.ediFtp}
+                  />
+                )}
+
+                {isMethodEmail && (
+                  <EmailView ediEmail={integrationConfig
+                    ?.exportTypeSpecificParameters
+                    ?.vendorEdiOrdersExportConfig
+                    ?.ediEmail}
+                  />
+                )}
+
+                {!isClaimingType && (
+                  <SchedulingView
+                    ediSchedule={integrationConfig
+                      ?.exportTypeSpecificParameters
+                      ?.vendorEdiOrdersExportConfig
+                      ?.ediSchedule}
+                    isMethodEmail={isMethodEmail}
                   />
                 )}
               </AccordionSet>

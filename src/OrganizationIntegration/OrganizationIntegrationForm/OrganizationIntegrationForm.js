@@ -28,10 +28,16 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { ORGANIZATIONS_ROUTE } from '../../common/constants';
-import { isClaimingIntegration } from '../utils';
+import {
+  isClaimingIntegration,
+  isFileFormatEDI,
+  isTransmissionMethodFTP,
+  isTransmissionMethodEmail,
+} from '../utils';
 import { IntegrationInfoForm } from './IntegrationInfoForm';
 import { EdiForm } from './EdiForm';
 import { FtpForm } from './FtpForm';
+import { EmailForm } from './EmailForm';
 import { SchedulingForm } from './SchedulingForm';
 
 const OrganizationIntegrationForm = ({
@@ -43,7 +49,6 @@ const OrganizationIntegrationForm = ({
   organization,
   paneTitle,
   handleSubmit,
-  initialValues,
   pristine,
   submitting,
 }) => {
@@ -111,12 +116,11 @@ const OrganizationIntegrationForm = ({
     },
   ];
 
-  const isClaimingType = isClaimingIntegration(getState()?.values);
-  const initialAcqMethods = initialValues
-    ?.exportTypeSpecificParameters
-    ?.vendorEdiOrdersExportConfig
-    ?.ediConfig
-    ?.defaultAcquisitionMethods;
+  const formValues = getState()?.values;
+  const isClaimingType = isClaimingIntegration(formValues);
+  const isMethodFTP = isTransmissionMethodFTP(formValues);
+  const isMethodEmail = isTransmissionMethodEmail(formValues);
+  const isFormatEDI = isFileFormatEDI(formValues);
 
   return (
     <HasCommand
@@ -152,17 +156,17 @@ const OrganizationIntegrationForm = ({
               </Row>
               <AccordionSet id="org-integration-form-accordion-set">
                 <IntegrationInfoForm
+                  acqMethods={acqMethods}
                   defaultIntegration={defaultIntegration}
                   integrationConfigs={integrationConfigs}
                   organization={organization}
                 />
 
-                <EdiForm
-                  acqMethods={acqMethods}
-                  initialAcqMethods={initialAcqMethods}
-                />
+                {(!isMethodEmail || isFormatEDI) && <EdiForm />}
 
-                <FtpForm />
+                {isMethodFTP && <FtpForm />}
+
+                {isMethodEmail && <EmailForm organizationEmails={organization?.emails} />}
 
                 {!isClaimingType && <SchedulingForm />}
               </AccordionSet>
@@ -181,7 +185,6 @@ OrganizationIntegrationForm.propTypes = {
     getState: PropTypes.func.isRequired,
   }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  initialValues: PropTypes.object,
   integrationConfigs: PropTypes.arrayOf(PropTypes.object),
   onClose: PropTypes.func.isRequired,
   organization: PropTypes.object,

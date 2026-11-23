@@ -15,6 +15,12 @@ export const integrationConfig = {
         ftpFormat: 'SFTP',
         ftpMode: 'ASCII',
       },
+      ediEmail: {
+        emailFrom: 'orders@library.org',
+        emailTo: 'orders@vendor.org',
+        emailBcc: ['archive@library.org'],
+        emailTemplate: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+      },
       ediSchedule: {
         enableScheduledExport: true,
         scheduleParameters: {
