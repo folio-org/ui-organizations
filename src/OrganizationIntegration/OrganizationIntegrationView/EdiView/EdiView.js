@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
 import {
   Accordion,
@@ -9,19 +12,22 @@ import {
   KeyValue,
   Row,
 } from '@folio/stripes/components';
+import { getAcqMethodLabel } from '@folio/stripes-acq-components';
 
 const EdiView = ({
   vendorEdiOrdersExportConfig = {},
   acqMethods = [],
 }) => {
+  const intl = useIntl();
+
   const defaultAcquisitionMethodsOptions = useMemo(() => {
     const defaultAcquisitionMethods = vendorEdiOrdersExportConfig.ediConfig?.defaultAcquisitionMethods || [];
 
     return acqMethods
       .filter(({ id }) => defaultAcquisitionMethods.includes(id))
-      .map(({ value }) => value)
+      .map((acqMethod) => getAcqMethodLabel(acqMethod, { intl, withDeprecatedSuffix: true }))
       .join(', ');
-  }, [vendorEdiOrdersExportConfig.ediConfig?.defaultAcquisitionMethods, acqMethods]);
+  }, [vendorEdiOrdersExportConfig.ediConfig?.defaultAcquisitionMethods, acqMethods, intl]);
 
   return (
     <Accordion

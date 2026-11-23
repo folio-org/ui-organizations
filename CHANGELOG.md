@@ -6,6 +6,7 @@
 * Do not show metadata fields in version view. Refs UIORGS-482.
 * Provide vendor name in the organization integration details. Refs UIORGS-485.
 * Leverage `yarn.lock` file. Ref UIORGS-486.
+* Hide deprecated acquisition methods in the EDI "Default acquisition methods", except the saved ones, which are marked as deprecated. Show translated method names. Refs UIORGS-487.
 
 ## [7.0.0](https://github.com/folio-org/ui-organizations/tree/v7.0.0) (2026-04-17)
 [Full Changelog](https://github.com/folio-org/ui-organizations/compare/v6.0.1...v7.0.0)

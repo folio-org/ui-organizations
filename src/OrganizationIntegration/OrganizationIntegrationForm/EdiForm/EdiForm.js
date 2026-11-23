@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
 import {
   Field,
   useForm,
@@ -16,22 +15,26 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
+import { useAcqMethodsOptions } from '@folio/stripes-acq-components';
 
 import {
   EDI_CODE_TYPES,
   EDI_NAMING_TOKENS,
 } from '../../constants';
 import {
-  getAcqMethodOptions,
+  getSelectableAcqMethods,
   isFileFormatEDI,
   validateLibraryEDICode,
   validateVendorEDICode,
 } from '../../utils';
 
-export const EdiForm = ({ acqMethods }) => {
+export const EdiForm = ({ acqMethods, initialAcqMethods }) => {
   const { getState } = useForm();
 
-  const acqMethodOptions = useMemo(() => getAcqMethodOptions(acqMethods), [acqMethods]);
+  const acqMethodOptions = useAcqMethodsOptions(
+    getSelectableAcqMethods(acqMethods, initialAcqMethods || []),
+    { withDeprecatedSuffix: true },
+  );
 
   const isFormatEDI = isFileFormatEDI(getState()?.values);
 
@@ -199,4 +202,5 @@ export const EdiForm = ({ acqMethods }) => {
 
 EdiForm.propTypes = {
   acqMethods: PropTypes.arrayOf(PropTypes.object),
+  initialAcqMethods: PropTypes.arrayOf(PropTypes.string),
 };
