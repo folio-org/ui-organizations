@@ -102,14 +102,16 @@ export const EmailForm = ({ organizationEmails = [] }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Sender: the default address and the identities from the email settings.
+  // Sender: the default address, if there is one, and the identities from the email settings.
   // An identity only replaces the plain default address when it adds a name.
   const senderIdentities = useMemo(() => {
-    if (!smtpConfiguration?.from) return [];
+    const byAddress = new Map();
 
-    const byAddress = new Map([[smtpConfiguration.from, { address: smtpConfiguration.from }]]);
+    if (smtpConfiguration?.from) {
+      byAddress.set(smtpConfiguration.from, { address: smtpConfiguration.from });
+    }
 
-    (smtpConfiguration.identities || []).forEach((identity) => {
+    (smtpConfiguration?.identities || []).forEach((identity) => {
       const existing = byAddress.get(identity.address);
 
       if (!existing || (identity.name && !existing.name)) {
@@ -194,7 +196,7 @@ export const EmailForm = ({ organizationEmails = [] }) => {
 
   const filterBccOptions = useCallback((filterText, list) => {
     const search = filterText?.toLowerCase();
-    const renderedItems = search ? list.filter((address) => address.toLowerCase().startsWith(search)) : list;
+    const renderedItems = search ? list.filter((address) => address.toLowerCase().includes(search)) : list;
     const exactMatch = renderedItems.includes(filterText);
 
     return { renderedItems, exactMatch };

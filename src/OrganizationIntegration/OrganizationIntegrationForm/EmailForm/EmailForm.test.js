@@ -103,6 +103,19 @@ describe('EmailForm', () => {
       expect(screen.getByText('Acquisitions <acq@library.org>')).toBeInTheDocument();
     });
 
+    it('should offer the identities when the email settings have no default address', () => {
+      useSmtpConfiguration.mockReturnValue({
+        smtpConfiguration: { identities: SMTP_CONFIGURATION.identities },
+        isLoading: false,
+      });
+
+      renderEmailForm();
+
+      expect(getOptionValues(LABELS.sender)).toEqual(['', 'acq@library.org']);
+      expect(screen.queryByText('ui-organizations.integration.email.senderAddress.noSenderError')).not.toBeInTheDocument();
+      expect(screen.queryByText(/defaultLabel/)).not.toBeInTheDocument();
+    });
+
     it('should show an error and disable the select without configured sender', () => {
       useSmtpConfiguration.mockReturnValue({ smtpConfiguration: undefined, isLoading: false });
 
@@ -156,6 +169,18 @@ describe('EmailForm', () => {
       renderEmailForm({ ediEmail: { emailBcc: ['gone@library.org'] } });
 
       expect(screen.getByText('ui-organizations.integration.email.bcc.orphanedWarning')).toBeInTheDocument();
+    });
+
+    it('should find BCC addresses by any part of the address', async () => {
+      renderEmailForm();
+
+      await user.type(screen.getByRole('combobox', { name: /integration\.email\.bcc/ }), 'vendor');
+
+      // The selects are comboboxes, so the menu of the multi-select is the only listbox.
+      const options = within(screen.getByRole('listbox')).getAllByRole('option');
+
+      expect(options).toHaveLength(1);
+      expect(options[0]).toHaveTextContent('other@vendor.org');
     });
 
     it('should drop a BCC address that is the selected sender', async () => {
