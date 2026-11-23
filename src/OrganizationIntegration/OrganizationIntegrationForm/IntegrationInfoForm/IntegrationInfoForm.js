@@ -19,7 +19,10 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
-import { validateRequired } from '@folio/stripes-acq-components';
+import {
+  useAcqMethodsOptions,
+  validateRequired,
+} from '@folio/stripes-acq-components';
 
 import {
   CLAIMING_TRANSMISSION_METHODS,
@@ -33,9 +36,9 @@ import { AccountNumbersInUseBanner } from '../../AccountNumbersInUseBanner';
 import {
   buildAvailableAccounts,
   getAccountOptions,
-  getAcqMethodOptions,
   getFileFormatOptions,
   getIntegrationTypeOptions,
+  getSelectableAcqMethods,
   getTransmissionMethodOptions,
   isFileFormatEDI,
   isOrderingIntegration,
@@ -46,6 +49,7 @@ import {
 } from '../../utils';
 
 const ACCOUNT_NO_LIST_FIELD = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.accountNoList';
+const ACQ_METHODS_FIELD = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods';
 const NO_ACCOUNTS = [];
 
 export const IntegrationInfoForm = ({
@@ -86,7 +90,10 @@ export const IntegrationInfoForm = ({
 
     return getAccountOptions(buildAvailableAccounts(organization, integrationConfigs, { id, type }, assignedAccounts));
   }, [organization, integrationConfigs, id, type, storedAccounts, selectedAccounts]);
-  const acqMethodOptions = useMemo(() => getAcqMethodOptions(acqMethods), [acqMethods]);
+  const acqMethodOptions = useAcqMethodsOptions(
+    getSelectableAcqMethods(acqMethods, get(initialValues, ACQ_METHODS_FIELD) || []),
+    { withDeprecatedSuffix: true },
+  );
 
   const integrationTypeOptions = useMemo(() => getIntegrationTypeOptions(intl), [intl]);
   const transmissionMethods = isOrderingType ? ORDERING_TRANSMISSION_METHODS : CLAIMING_TRANSMISSION_METHODS;
@@ -219,7 +226,7 @@ export const IntegrationInfoForm = ({
         >
           <Field
             label={<FormattedMessage id="ui-organizations.integration.info.acquisitionMethods" />}
-            name="exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods"
+            name={ACQ_METHODS_FIELD}
             component={Select}
             dataOptions={acqMethodOptions}
             fullWidth

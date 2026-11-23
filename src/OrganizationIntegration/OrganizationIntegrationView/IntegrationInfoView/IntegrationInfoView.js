@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
 import {
   Accordion,
@@ -9,6 +12,7 @@ import {
   KeyValue,
   Row,
 } from '@folio/stripes/components';
+import { getAcqMethodLabel } from '@folio/stripes-acq-components';
 
 import {
   INTEGRATION_TYPE,
@@ -19,6 +23,7 @@ const IntegrationInfoView = ({
   integrationConfig = {},
   acqMethods = [],
 }) => {
+  const intl = useIntl();
   const isDefaultConfig = integrationConfig?.isDefaultConfig;
 
   const defaultAcquisitionMethodsLabels = useMemo(() => {
@@ -26,9 +31,9 @@ const IntegrationInfoView = ({
 
     return acqMethods
       .filter(({ id }) => defaultAcquisitionMethods.includes(id))
-      .map(({ value }) => value)
+      .map((acqMethod) => getAcqMethodLabel(acqMethod, { intl, withDeprecatedSuffix: true }))
       .join(', ');
-  }, [integrationConfig?.ediConfig?.defaultAcquisitionMethods, acqMethods]);
+  }, [integrationConfig?.ediConfig?.defaultAcquisitionMethods, acqMethods, intl]);
 
   const integrationType = useMemo(() => {
     const translationKey = Object.entries(INTEGRATION_TYPE).find(([, value]) => {

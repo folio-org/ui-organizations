@@ -80,6 +80,7 @@ const initialValues = {
 };
 
 const ACCOUNT_NO_LIST_PATH = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.accountNoList';
+const DEFAULT_ACQ_METHODS_PATH = 'exportTypeSpecificParameters.vendorEdiOrdersExportConfig.ediConfig.defaultAcquisitionMethods';
 const IN_USE_WARNING = 'ui-organizations.integration.edi.accountNumbers.inUseWarning';
 
 const buildInitialValues = (accountNoList) => set(cloneDeep(initialValues), ACCOUNT_NO_LIST_PATH, accountNoList);
@@ -336,6 +337,22 @@ describe('OrganizationIntegrationForm', () => {
       expect(screen.getByRole('combobox', { name: METHOD_SELECT }).value).toBe(TRANSMISSION_METHOD.ftp);
       expect(screen.queryByText('ui-organizations.integration.email')).not.toBeInTheDocument();
     });
+  });
+
+  it('should keep only the saved deprecated acquisition methods selectable', () => {
+    renderOrganizationIntegrationForm({
+      acqMethods: [
+        { id: 'active-id', value: 'Active method' },
+        { id: 'saved-deprecated-id', value: 'Saved old method', deprecated: true },
+        { id: 'other-deprecated-id', value: 'Other old method', deprecated: true },
+      ],
+      initialValues: set(cloneDeep(initialValues), DEFAULT_ACQ_METHODS_PATH, ['saved-deprecated-id']),
+    });
+
+    const acqMethodsField = screen.getByRole('listbox', { name: 'ui-organizations.integration.info.acquisitionMethods' });
+    const optionValues = within(acqMethodsField).getAllByRole('option').map((option) => option.value);
+
+    expect(optionValues).toEqual(['active-id', 'saved-deprecated-id']);
   });
 
   describe('Sections toggle', () => {

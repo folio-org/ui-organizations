@@ -9,13 +9,13 @@ import {
 import {
   buildAvailableAccounts,
   findDefaultIntegration,
-  getAcqMethodOptions,
   getAccountNumbersInUse,
   getAccountNumbersInUseMessage,
   getAccountOptions,
   getTenantTime,
   getDefaultEdiNamingConvention,
   getSchedulingDatetime,
+  getSelectableAcqMethods,
   isTransmissionMethodEmail,
   validateAcquisitionMethodsField,
 } from './utils';
@@ -69,7 +69,6 @@ const orderingCopy = buildIntegration('ordering-2', EXPORT_TYPES.edifactOrders, 
 const claimingIntegration = buildIntegration('claiming-1', EXPORT_TYPES.claims, 'Claiming', ['456']);
 const typedIntegrations = [orderingIntegration, orderingCopy, claimingIntegration];
 
-const acqMethods = [{ id: 'acqMethodId', value: 'acqMethod' }];
 const accounts = ['1'];
 
 describe('OrganizationIntegration utils', () => {
@@ -175,12 +174,6 @@ describe('OrganizationIntegration utils', () => {
 
     it('should return an empty string without conflicts', () => {
       expect(getAccountNumbersInUseMessage(typedIntegrations, claimingIntegration)).toBe('');
-    });
-  });
-
-  describe('getAcqMethodOptions', () => {
-    it('should return acq method options', () => {
-      expect(getAcqMethodOptions(acqMethods)).toEqual([{ label: acqMethods[0].value, value: acqMethods[0].id }]);
     });
   });
 
@@ -321,5 +314,20 @@ describe('OrganizationIntegration utils', () => {
 
       expect(validateAcquisitionMethodsField([], emailClaiming)).toBeUndefined();
     });
+  });
+});
+
+describe('getSelectableAcqMethods', () => {
+  const activeMethod = { id: 'active-id', value: 'Active method' };
+  const savedDeprecatedMethod = { id: 'saved-id', value: 'Saved old method', deprecated: true };
+  const otherDeprecatedMethod = { id: 'other-id', value: 'Other old method', deprecated: true };
+  const acqMethods = [activeMethod, savedDeprecatedMethod, otherDeprecatedMethod];
+
+  it('should hide deprecated methods when none are saved', () => {
+    expect(getSelectableAcqMethods(acqMethods)).toEqual([activeMethod]);
+  });
+
+  it('should keep the saved deprecated methods', () => {
+    expect(getSelectableAcqMethods(acqMethods, ['saved-id'])).toEqual([activeMethod, savedDeprecatedMethod]);
   });
 });
